@@ -1,0 +1,7 @@
+To Do list:
+
+[General]
+* Review gramatical errors in the entire project.
+* Enable session storing.
+** Show query result as is is processed.
+** Open Source documentation.
