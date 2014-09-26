@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/documentation">
+        <file>Calíope.doxygen</file>
+    </qresource>
+</RCC>

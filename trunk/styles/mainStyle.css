@@ -1,0 +1,38 @@
+/* @see
+ http://qt-project.org/doc/qt-5/stylesheet-examples.html
+*/
+
+QLineEdit {
+  border: 2px groove gray;
+  border-radius: 10px;
+}
+
+QLineEdit:focus {
+  background-color: lightblue;
+}
+
+QPlainTextEdit {
+  background-color: lightyellow;
+}
+
+QTableWidget {
+  background-color: lightyellow;
+}
+
+QTableView {
+  background-color: lightyellow;
+}
+
+QTreeWidget {
+  background-color: lightyellow;
+}
+
+QDockWidget {
+  background-color: lightyellow;
+}
+
+QToolTip {
+  border: 1px solid green;
+  border-radius: 4px;
+  background-color: lightyellow;
+}
