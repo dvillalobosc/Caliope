@@ -27,6 +27,8 @@
 #include <QCompleter>
 #include <QLineEdit>
 #include <QToolBar>
+#include <QAction>
+//#include <QWebFrame>
 
 #include "dwebview.h"
 
@@ -64,6 +66,11 @@ DWebView::DWebView(QString title, QUrl url)
   mainToolBar->addWidget(urlLineEdit);
   mainToolBar->addAction(webView->pageAction(QWebPage::Stop));
 
+  showSourceCode = new QAction(this);
+  showSourceCode->setIcon(QIcon::fromTheme("text-html", QIcon(":/images/svg/text-html.svg")));
+  connect(showSourceCode, SIGNAL(triggered()), this, SLOT(showSourceCodeTriggered()));
+  mainToolBar->addAction(showSourceCode);
+
 //  QNetworkProxyFactory::setUseSystemConfiguration(true);
   QWebSettings::globalSettings()->setAttribute(QWebSettings::PluginsEnabled, true);
   QWebSettings::globalSettings()->setAttribute(QWebSettings::AutoLoadImages, true);
@@ -89,6 +96,7 @@ void DWebView::retranslateUi()
 {
   setWindowTitle(title);
   setObjectName(windowTitle());
+  showSourceCode->setText(tr("Show page source"));
 }
 
 void DWebView::loadStartedSlot()
@@ -144,4 +152,11 @@ void DWebView::urlLineEditReturnPressed()
 void DWebView::statusBarProgressMessageSlot(const QString &message, const unsigned int timeout, const double progress)
 {
   emit statusBarProgressMessage(message, timeout, progress);
+}
+
+void DWebView::showSourceCodeTriggered()
+{
+  //qDebug() << webView->page()->currentFrame()->toHtml();
+  //emit returnPagesource(webView->page()->currentFrame()->toHtml());
+  emit showPagesource("asdf");
 }
