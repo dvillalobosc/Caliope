@@ -157,6 +157,8 @@ private slots:
   void updatedatabaseInformationMenu();
   void databaseInformationSlot(QString database);
   void takeASnapShotActionTriggered();
+  void caliopeSourceDocumentationActionTriggered();
+  void viewDWebViewPageSource(QString pageSource);
 
 public slots:
   void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 2000);
@@ -191,7 +193,7 @@ private:
   Preferences *preferences;
   QAction *exitAction;
   QAction *aboutQtAction;
-  QAction *aboutMySQLGUIAction;
+  QAction *aboutMariaDBGUIAction;
   QAction *connectToServerAction;
   QAction *serverInformationAction;
   QAction *userAdministrationAction;
@@ -307,6 +309,7 @@ private:
   QMenu *databaseInformationMenu;
   QSignalMapper *databaseInformationMapper;
   QAction *takeASnapShotAction;
+  QAction *caliopeSourceDocumentationAction;
 
   /*! \brief This is the code executed when aboutMySQLGUIAction is triggered.
    *

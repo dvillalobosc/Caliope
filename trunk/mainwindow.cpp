@@ -76,6 +76,7 @@
 #include "databasecomparision.h"
 #include "dmdisubwindow.h"
 #include "dquerylog.h"
+#include "basetexteditor.h"
 
 #include "QDebug"
 
@@ -347,9 +348,9 @@ void MainWindow::createActions()
   aboutQtAction->setIcon(QIcon(":/images/svg/Qt-logo.svg"));
   connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 
-  aboutMySQLGUIAction = new QAction(this);
-  aboutMySQLGUIAction->setIcon(QIcon(":/images/svg/server-database.svg"));
-  connect(aboutMySQLGUIAction, SIGNAL(triggered()), this, SLOT(aboutMariaDBGUIActionTriggered()));
+  aboutMariaDBGUIAction = new QAction(this);
+  aboutMariaDBGUIAction->setIcon(QIcon(":/images/svg/server-database.svg"));
+  connect(aboutMariaDBGUIAction, SIGNAL(triggered()), this, SLOT(aboutMariaDBGUIActionTriggered()));
 
   connectToServerAction = new QAction(this);
   connectToServerAction->setIcon(QIcon(":/images/svg/network-server-database.svg"));
@@ -596,6 +597,10 @@ void MainWindow::createActions()
   takeASnapShotAction = new QAction(this);
   takeASnapShotAction->setIcon(QIcon::fromTheme("camera-photo", QIcon(":/images/svg/camera-photo-6.svg")));
   connect(takeASnapShotAction, SIGNAL(triggered()), this, SLOT(takeASnapShotActionTriggered()));
+
+  caliopeSourceDocumentationAction = new QAction(this);
+  caliopeSourceDocumentationAction->setIcon(windowIcon());
+  connect(caliopeSourceDocumentationAction, SIGNAL(triggered()), this, SLOT(caliopeSourceDocumentationActionTriggered()));
 }
 
 void MainWindow::objectsDiagramActionTriggered()
@@ -1077,6 +1082,53 @@ void MainWindow::takeASnapShotActionTriggered()
   statusBarMessage(tr("File saved at: %1").arg(file));
 }
 
+void MainWindow::caliopeSourceDocumentationActionTriggered()
+{
+  QApplication::setOverrideCursor(Qt::WaitCursor);
+  QDir tempDir(QDir::tempPath() + "/html");
+  tempDir.removeRecursively();
+  tempDir.mkpath(QDir::tempPath() + "/html/search");
+  QFile fileList(":/documentation/docs/filelist.txt");
+  fileList.open(QIODevice::ReadOnly | QIODevice::Text);
+  QTextStream stream(&fileList);
+  while (!stream.atEnd()) {
+    QString fileName(stream.readLine());
+    QFile fileToOpen(":/documentation/docs" + fileName);
+    if (!fileToOpen.open(QIODevice::ReadOnly | QIODevice::Text))
+      qDebug() << fileName << fileToOpen.error();
+    //Work arround since fileToOpen.copy is not coping HTML file correctly.
+    if (fileName.endsWith(".html") || fileName.endsWith(".css") || fileName.endsWith(".js")) {
+      QFile fileToSave(QDir::tempPath() + fileName);
+      if (!fileToSave.open(QIODevice::WriteOnly | QIODevice::Text))
+        qDebug() << fileName << fileToOpen.error();
+      QTextStream out(&fileToSave);
+      out << fileToOpen.readAll();
+      fileToSave.close();
+      fileToOpen.close();
+    } else {
+      if (!fileToOpen.copy(QDir::tempPath() + fileName))
+        qDebug() << fileName << fileToOpen.error();
+    }
+  }
+  dWebView = new DWebView(tr("Calíope source documentation"), QUrl("file:///tmp/html/index.html"));
+  connect(dWebView, SIGNAL(statusBarProgressMessage(QString,uint,double)), this, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
+  connect(dWebView, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
+  connect(dWebView, SIGNAL(showPagesource(QString)), this, SLOT(viewDWebViewPageSource(QString)));
+  addSubWindow(dWebView);
+  QApplication::restoreOverrideCursor();
+}
+
+void MainWindow::viewDWebViewPageSource(QString pageSource)
+{
+  QApplication::setOverrideCursor(Qt::WaitCursor);
+  htmlEditor = new TextEditor(projects, this->serverConnection, EditorTypes::HTML, ++htmlWindowCounter);
+  connect(htmlEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
+  connect(htmlEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
+  addSubWindow(htmlEditor);
+  htmlEditor->textEditor->setPlainText(pageSource);
+  QApplication::restoreOverrideCursor();
+}
+
 void MainWindow::finishedDatabaseMigrationSlot(int exitCode)
 {
   if (exitCode == QProcess::NormalExit && processMariaDBDump->exitCode() == QProcess::NormalExit) {
@@ -1142,8 +1194,8 @@ void MainWindow::retranslateUi()
   aboutQtAction->setText(tr("About &Qt"));
   aboutQtAction->setStatusTip(tr("Shows the About dialog for Qt."));
 
-  aboutMySQLGUIAction->setText(tr("About Calíope"));
-  aboutMySQLGUIAction->setStatusTip(tr("Shows the About dialog for Calíope."));
+  aboutMariaDBGUIAction->setText(tr("About Calíope"));
+  aboutMariaDBGUIAction->setStatusTip(tr("Shows the About dialog for Calíope."));
 
   connectToServerAction->setText(tr("Connect to Server..."));
   connectToServerAction->setStatusTip(tr("Connect to a Database Server."));
@@ -1338,6 +1390,9 @@ void MainWindow::retranslateUi()
 
   takeASnapShotAction->setText(tr("Take a snapshot"));
   takeASnapShotAction->setStatusTip(takeASnapShotAction->text());
+
+  caliopeSourceDocumentationAction->setText(tr("Calíope source documentation"));
+  caliopeSourceDocumentationAction->setStatusTip(caliopeSourceDocumentationAction->text());
 }
 
 void MainWindow::createInitialSettings()
@@ -1911,7 +1966,8 @@ void MainWindow::createMenus()
   helpMenu->addAction(phpOnLineHelpAction);
   helpMenu->addSeparator();
   helpMenu->addAction(aboutQtAction);
-  helpMenu->addAction(aboutMySQLGUIAction);
+  helpMenu->addAction(aboutMariaDBGUIAction);
+  helpMenu->addAction(caliopeSourceDocumentationAction);
 }
 
 void MainWindow::swithLanguage(QAction *action)

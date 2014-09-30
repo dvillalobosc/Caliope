@@ -141,5 +141,6 @@ QT += network
 QT += svg
 QT += sql
 
+#cd html; for file in *; do echo "/html/"$file >> ../filelist.txt; done; cd search; for file in *; do echo "/html/search/"$file >> ../../filelist.txt; done; cd ..; cd ..;
 #!contains(QT_MAJOR_VERSION, 4)
 #{ error("you are using an old version of Qt") }

@@ -45,8 +45,8 @@ private:
   QSettings settings;
   QCompleter *urlCompleter;
   QToolBar *mainToolBar;
-  QAction *stopLoadAction;
   QString title;
+  QAction *showSourceCode;
 
 protected:
   void retranslateUi();
@@ -57,6 +57,7 @@ signals:
   void loadProgress(QString message, unsigned int timeout, double progress);
   void statusBarProgressMessage(const QString &message, const unsigned int timeout = 2000, const double progress = 0);
   void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 2000);
+  void showPagesource(const QString pageSource);
 
 private slots:
 //  void statusBarMessage(const QString &message1, const QString &message2, const QString &message3, const int timeout = 2000);
@@ -67,6 +68,7 @@ private slots:
   void urlChangedSlot(const QUrl &url);
   void urlLineEditReturnPressed();
   void statusBarProgressMessageSlot(const QString &message, const unsigned int timeout = 2000, const double progress = 0);
+  void showSourceCodeTriggered();
 };
 
 #endif // DWEBVIEW_H
