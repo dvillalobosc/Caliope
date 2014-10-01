@@ -1890,7 +1890,7 @@ void MainWindow::createMenus()
   connectionMenu->addMenu(changeDatabaseMenu);
 
   databaseInformationMenu = new QMenu(this);
-  databaseInformationMenu->setIcon(QIcon(":/images/svg/server-database.svg"));
+  databaseInformationMenu->setIcon(QIcon::fromTheme("dialog-information", QIcon(":/images/svg/dialog-information-4.svg")));
   databaseInformationMenu->setDisabled(true);
   connect(databaseInformationMenu, SIGNAL(aboutToShow()), this, SLOT(updatedatabaseInformationMenu()));
   connectionMenu->addMenu(databaseInformationMenu);
