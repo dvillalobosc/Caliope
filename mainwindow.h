@@ -80,9 +80,14 @@ protected:
   /*! \brief Reilplements the closeEvent.
    *  \param event to be processed.
    *
-   *  Reilplements the closeEvent to make some checks on the window closing.
+   *  Reilplements the closeEvent to make some checks on the window closing event.
    */
   void closeEvent(QCloseEvent *event);
+  /*! \brief Reilplements the resizeEvent.
+   *  \param resizeEvent to be processed.
+   *
+   *  Reilplements the resizeEvent scale the background image.
+   */
   void resizeEvent(QResizeEvent *resizeEvent);
 
 private slots:
