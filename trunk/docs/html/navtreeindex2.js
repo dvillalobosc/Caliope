@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"class_text_editor.html#afd7f6e106f9981e933267c0dc7b3a25e":[0,0,59,17],
 "class_users.html":[0,0,60],
 "class_users.html#a1e1bd90815a39a09646f7f5ee2c66819":[0,0,60,1],
 "class_users.html#ad8b4e6a575b855d489ee30673fe564b9":[0,0,60,2],
@@ -94,8 +95,8 @@ var NAVTREEINDEX2 =
 "findreplace_8cpp_source.html":[1,0,48],
 "findreplace_8h.html":[1,0,49],
 "findreplace_8h_source.html":[1,0,49],
-"functions.html":[0,3,0],
 "functions.html":[0,3,0,0],
+"functions.html":[0,3,0],
 "functions_0x62.html":[0,3,0,1],
 "functions_0x63.html":[0,3,0,2],
 "functions_0x64.html":[0,3,0,3],
