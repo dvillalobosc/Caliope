@@ -932,39 +932,37 @@ void MainWindow::migrateDatabaseActionTriggered()
       argumentsProcess1 << "--password=" + params.at(4);
       argumentsProcess1 << "--port=" + params.at(2);
       argumentsProcess1 << params.at(5);
-    }
-    connectFrom = new ConnectDialog(secondaryServerConnection);
-    if (connectFrom->exec() == QDialog::Accepted) {
-      params = connectFrom->getValues();
-      argumentsProcess2 << "--user=" + params.at(3);
-      argumentsProcess2 << "--host=" + params.at(1);
-      argumentsProcess2 << "--password=" + params.at(4);
-      argumentsProcess2 << "--port=" + params.at(2);
-      argumentsProcess2 << params.at(5);
+      connectFrom = new ConnectDialog(secondaryServerConnection);
+      if (connectFrom->exec() == QDialog::Accepted) {
+        params = connectFrom->getValues();
+        argumentsProcess2 << "--user=" + params.at(3);
+        argumentsProcess2 << "--host=" + params.at(1);
+        argumentsProcess2 << "--password=" + params.at(4);
+        argumentsProcess2 << "--port=" + params.at(2);
+        argumentsProcess2 << params.at(5);
+        if (secondaryServerConnection->isOpened())
+          secondaryServerConnection->close();
+        params = connectFrom->getValues();
+        secondaryServerConnection->setUserName(params.at(3));
+        secondaryServerConnection->setHostName(params.at(1));
+        secondaryServerConnection->setPassword(params.at(4));
+        secondaryServerConnection->setDatabase(params.at(5));
+        secondaryServerConnection->setPort(params.at(2).toUInt());
 
-      if (secondaryServerConnection->isOpened())
-        secondaryServerConnection->close();
-      params = connectFrom->getValues();
-      secondaryServerConnection->setUserName(params.at(3));
-      secondaryServerConnection->setHostName(params.at(1));
-      secondaryServerConnection->setPassword(params.at(4));
-      secondaryServerConnection->setDatabase(params.at(5));
-      secondaryServerConnection->setPort(params.at(2).toUInt());
-
-      timerTableCount = new QTimer(this);
-      timerTableCount->setInterval(2000);
-      connect(timerTableCount, SIGNAL(timeout()), this, SLOT(tableCountSlot()));
-    }
-
-    if (secondaryServerConnection->open()) {
-//      timerTableCount->start();
-      migrationProgressDialog = new QProgressDialog(tr("Migrating data"), tr("Abort"), 0, 0, this);
-      migrationProgressDialog->setWindowModality(Qt::WindowModal);
-      connect(migrationProgressDialog, SIGNAL(canceled()), this, SLOT(cancelDatabaseMigrationSlot()));
-      processMariaDBDump->start("mysqldump", argumentsProcess1);
-      processMariaDB->start("mysql", argumentsProcess2);
-      migrationProgressDialog->show();
-      secondaryServerConnection->close();
+        timerTableCount = new QTimer(this);
+        timerTableCount->setInterval(2000);
+        connect(timerTableCount, SIGNAL(timeout()), this, SLOT(tableCountSlot()));
+        if (secondaryServerConnection->open()) {
+          //      timerTableCount->start();
+          migrationProgressDialog = new QProgressDialog(tr("Migrating data"), tr("Abort"), 0, 0, this);
+          migrationProgressDialog->setWindowModality(Qt::WindowModal);
+          connect(migrationProgressDialog, SIGNAL(canceled()), this, SLOT(cancelDatabaseMigrationSlot()));
+          processMariaDBDump->start("mysqldump", argumentsProcess1);
+          processMariaDB->start("mysql", argumentsProcess2);
+          migrationProgressDialog->show();
+          secondaryServerConnection->close();
+        }
+      }
     }
     break;
   case StaticFunctions::PostgreSQL:
@@ -972,7 +970,7 @@ void MainWindow::migrateDatabaseActionTriggered()
   default:
     QMessageBox::information(this, tr("Database migration"), tr("Database migration is only aviable for MariaDB and MySQL."));
     break;
-}
+  }
 }
 
 void MainWindow::tableCountSlot()
