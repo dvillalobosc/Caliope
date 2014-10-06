@@ -31,7 +31,7 @@ class QLabel;
 class FileSelectorContexts
 {
 public:
-  enum FileSelectorContext {BackupFile = 1, LicenseFile, ProjectFile, PHPExecutable};
+  enum FileSelectorContext {BackupFile = 1, LicenseFile, ProjectFile, PHPExecutable, Image};
 };
 
 class FileSelector : public QWidget

@@ -120,5 +120,6 @@
         <file>images/svg/camera-photo-6.svg</file>
         <file>images/svg/text-x-log.svg</file>
         <file>images/png/64/server-database.png</file>
+        <file>images/svg/preferences-desktop-theme-5.svg</file>
     </qresource>
 </RCC>

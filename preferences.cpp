@@ -39,6 +39,7 @@
 #include "fileassociations.h"
 #include "fileselector.h"
 #include "dstackedwidget.h"
+#include "applicationtheme.h"
 
 #include "QDebug"
 
@@ -78,6 +79,12 @@ Preferences::Preferences()
   styleFLayout->addRow(checkBoxSaveQueryBeforeExecution);
   styleGroupBox= new QGroupBox;
   styleGroupBox->setLayout(styleFLayout);
+  fileSelectorBackgroundImage = new FileSelector(FileSelectorContexts::Image);
+  fileSelectorBackgroundImage->setFileName(settings.value("General/BackgroundImage", ":/images/png/512/server-database.png").toString());
+  connect(fileSelectorBackgroundImage, SIGNAL(changed()), this, SLOT(fileSelectorBackgroundImageSlot()));
+  fileSelectorBackgroundImage->setText(tr("Change default background image"));
+  fileSelectorBackgroundImage->retranslateUi();
+  styleFLayout->addRow(fileSelectorBackgroundImage);
   QVBoxLayout *generalLayout = new QVBoxLayout;
   generalLayout->addWidget(styleGroupBox);
   generalLayout->addStretch();
@@ -157,6 +164,10 @@ Preferences::Preferences()
   QWidget *phpWid = new QWidget;
   phpWid->setLayout(vLayoutPHP);
   dStackedWidget->addWidget(phpWid, QIcon(":/images/svg/php-logo.svg"), tr("PHP"));
+
+  //Application Theme
+  applicationTheme = new ApplicationTheme;
+  dStackedWidget->addWidget(applicationTheme, QIcon(":/images/svg/preferences-desktop-theme-5.svg"), tr("Application Theme"));
 
   mainVLayout->addWidget(dStackedWidget);
   QWidget *widMain = new QWidget;
@@ -244,6 +255,11 @@ void Preferences::checkBoxShowTabsAndSpacesValueChanged(int value)
 void Preferences::checkBoxEnableQueryLogValueChanged(int value)
 {
   settings.setValue("EnableQueryLog", value);
+}
+
+void Preferences::fileSelectorBackgroundImageSlot()
+{
+  settings.setValue("General/BackgroundImage", fileSelectorBackgroundImage->getFileName());
 }
 
 void Preferences::checkBoxAutomaticIndentationValueChanged(int value)

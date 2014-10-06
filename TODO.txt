@@ -5,3 +5,4 @@ To Do list:
 * Enable session storing.
 ** Show query result as is is processed.
 ** View source in DWebView. It has an error in Qt5. See DWebView::showSourceCodeTriggered()
+** Enable the Scheme Color in Preferences, so we can change the color of the wigets.
