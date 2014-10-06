@@ -45,7 +45,8 @@ HEADERS += \
     databasecomparision.h \
     dmdisubwindow.h \
     dstackedwidget.h \
-    dquerylog.h
+    dquerylog.h \
+    applicationtheme.h
 SOURCES += \
     main.cpp \
     connectdialog.cpp \
@@ -94,7 +95,8 @@ SOURCES += \
     databasecomparision.cpp \
     dmdisubwindow.cpp \
     dstackedwidget.cpp \
-    dquerylog.cpp
+    dquerylog.cpp \
+    applicationtheme.cpp
 FORMS +=
 RESOURCES += icons.qrc \
     styles.qrc \

@@ -329,7 +329,8 @@ void MainWindow::resizeEvent(QResizeEvent *resizeEvent)
   QImage newBackground(mdiMain->size(), QImage::Format_ARGB32_Premultiplied);
   QPainter painter(&newBackground);
   painter.fillRect(newBackground.rect(), Qt::darkGray);
-  QImage originalImage(":/images/png/512/server-database.png");
+  QSettings setting;
+  QImage originalImage(setting.value("General/BackgroundImage", ":/images/png/512/server-database.png").toString());
   QRect scaledRect = originalImage.rect();
   scaledRect.moveCenter(newBackground.rect().center());
   painter.drawImage(scaledRect, originalImage);

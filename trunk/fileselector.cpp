@@ -43,13 +43,15 @@ FileSelector::FileSelector(FileSelectorContexts::FileSelectorContext context, QS
     break;
   case FileSelectorContexts::PHPExecutable:
     setting = "PHP/Executable";
+  case FileSelectorContexts::Image:
+    setting = "LastFileImg";
     break;
   // default: Q_ASSERT(false);
   }
   QHBoxLayout *fileLayout = new QHBoxLayout;
   fileLabel = new QLabel;
   setText(label);
-  fileLabel->setMargin(5);
+  //fileLabel->setMargin(5);
   lineEditFile = new DLineEdit(QIcon::fromTheme("folder", QIcon(":/images/svg/folder.svg")));
 //  lineEditFile->setText(settings.value(setting, "").toString());
   connect(lineEditFile, SIGNAL(textChanged(QString)), this, SLOT(emitChanged()));
@@ -75,6 +77,9 @@ void FileSelector::retranslateUi()
     break;
   case FileSelectorContexts::PHPExecutable:
     title = tr("Bin files (*)");
+    break;
+  case FileSelectorContexts::Image:
+    title = tr("Image files (*.png *.jpg *.bmp)");
     break;
   // default: Q_ASSERT(false);
   }

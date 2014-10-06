@@ -37,6 +37,7 @@ class QGroupBox;
 class LicenseTemplate;
 class NetworkSettings;
 class DStackedWidget;
+class ApplicationTheme;
 
 #include "dmdisubwindow.h"
 
@@ -72,6 +73,8 @@ private:
   void fillModelData();
   DStackedWidget *dStackedWidget;
   QCheckBox *checkBoxEnableQueryLog;
+  ApplicationTheme *applicationTheme;
+  FileSelector *fileSelectorBackgroundImage;
 
 protected:
   void retranslateUi();
@@ -88,6 +91,7 @@ private slots:
   void checkBoxSaveQueryBeforeExecutionStateChanged();
   void checkBoxShowTabsAndSpacesValueChanged(int value);
   void checkBoxEnableQueryLogValueChanged(int value);
+  void fileSelectorBackgroundImageSlot();
 };
 
 #endif // PREFERENCES_H
