@@ -70,6 +70,7 @@ private:
   QCompleter *completer;
   void setDBMS();
   unsigned int count;
+  QCheckBox *sortConnectionList;
 };
 
 #endif // CONNECTDIALOG_H
