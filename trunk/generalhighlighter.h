@@ -23,6 +23,7 @@
 
 #include <QSyntaxHighlighter>
 #include <QTextBlockUserData>
+#include <QSettings>
 
 #include "editortypes.h"
 
@@ -82,6 +83,7 @@ private:
   EditorTypes::EditorType editorType;
   QTextCharFormat normalFormat;
   QTextDocument *document;
+  QSettings settings;
  };
 
 class TextBlockData : public QTextBlockUserData

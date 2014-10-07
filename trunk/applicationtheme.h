@@ -2,6 +2,7 @@
 #define APPLICATIONTHEME_H
 
 #include <QWidget>
+#include <QSettings>
 
 class ApplicationTheme : public QWidget
 {
@@ -10,6 +11,8 @@ class ApplicationTheme : public QWidget
 public:
   ApplicationTheme();
 
+private:
+  QSettings settings;
 };
 
 #endif // APPLICATIONTHEME_H

@@ -51,12 +51,20 @@ ConnectDialog::ConnectDialog(DBMS *serverConnection)
   settings.beginGroup("ServerConnections");
   QStringList connections = settings.allKeys();
   connections.removeAt(connections.indexOf("StorePassword"));
+  connections.removeAt(connections.indexOf("SortConnectionList"));
 
-  QMap<int, QString> connectionsMap;
-  foreach (QString connection, connections)
-    connectionsMap.insert(StaticFunctions::explodeConnectionString(connection).at(6).split(":").at(1).toUInt() * -1, connection);
-  comboConnectionName->insertItems(0, connectionsMap.values());
-  connect(comboConnectionName, SIGNAL(activated(QString)), this, SLOT(fillLineEdits(QString)));
+  sortConnectionList = new QCheckBox(tr("Sort connection list by used times"));
+  sortConnectionList->setCheckState(settings.value("SortConnectionList", "false") == "true" ? Qt::Checked : Qt::Unchecked);
+
+  if (sortConnectionList->isChecked()) {
+    QMap<int, QString> connectionsMap;
+    foreach (QString connection, connections)
+      connectionsMap.insert(StaticFunctions::explodeConnectionString(connection).at(6).split(":").at(1).toUInt() * -1, connection);
+    comboConnectionName->insertItems(0, connectionsMap.values());
+    connect(comboConnectionName, SIGNAL(activated(QString)), this, SLOT(fillLineEdits(QString)));
+  } else {
+    comboConnectionName->insertItems(0, connections);
+  }
 
   completer = new QCompleter(connections, comboConnectionName);
 #if QT_VERSION > 0x040801
@@ -68,6 +76,7 @@ ConnectDialog::ConnectDialog(DBMS *serverConnection)
   comboConnectionType = new QComboBox();
   comboConnectionType->insertItems(0, StaticFunctions::dbmsEnabled());
   connect(comboConnectionType, SIGNAL(activated(QString)), this, SLOT(comboConnectionTypeSlot(QString)));
+
 
   lineEditServer = new QLineEdit;
   connect(lineEditServer, SIGNAL(textChanged(QString)), this, SLOT(validateInputs()));
@@ -100,6 +109,7 @@ ConnectDialog::ConnectDialog(DBMS *serverConnection)
 
   QFormLayout *formLayout = new QFormLayout;
   formLayout->addRow(tr("&Connection Name:"), comboConnectionName);
+  formLayout->addRow(sortConnectionList);
   formLayout->addRow(tr("Connection &Type:"), comboConnectionType);
   formLayout->addRow(tr("&Server:"), lineEditServer);
   formLayout->addRow(tr("&Port:"), spinBoxPort);
@@ -204,6 +214,7 @@ QList<QString> ConnectDialog::getValues()
                     .arg(lineEditServer->text()).arg(spinBoxPort->value()).arg(lineEditDatabase->text())
                     .arg(storePasswords->isChecked() ? StaticFunctions::password(lineEditPassword->text(), true) : "").arg(++count));
   settings.setValue("StorePassword", storePasswords->isChecked());
+  settings.setValue("SortConnectionList", sortConnectionList->isChecked());
   return listValues;
 }
 

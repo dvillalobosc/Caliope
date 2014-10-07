@@ -560,6 +560,9 @@ void GeneralHighlighter::sqlHighlightRules()
   rule.pattern = QRegExp("\\d+\\.\\d+");
   secondHighlightingRules.append(rule);
 
+//  QColor color;
+//  QFont font;
+
   switch(qApp->property("DBMSType").toInt()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
@@ -571,6 +574,15 @@ void GeneralHighlighter::sqlHighlightRules()
     }
 
     //Keywords
+//    color = QColor(settings.value("Theme/SQLKeywords-Foreground-ColorName", "#0000ff").toString());
+//    color.setAlpha(settings.value("Theme/SQLKeywords-Foreground-ColorAlpha", 255).toInt());
+//    rule.format.setFontFamily(settings.value("Theme/SQLKeywords-Foreground-FontFamily").toString());
+//    rule.format.setFontPointSize(settings.value("Theme/SQLKeywords-Foreground-FontSize", 9).toInt());
+//    font = QFont(rule.format.font());
+//    font.setStyle(static_cast<QFont::Style>(settings.value("Theme/SQLKeywords-Foreground-FontStyle", 0).toInt()));
+//    rule.format.setFont(font);
+//    rule.format.setForeground(color);
+
     rule.format.setForeground(Qt::blue);
     for (int i = 0; i < StaticFunctions::mariadbKeywords().count(); i++) {
       rule.pattern = QRegExp(QString("\\b%1\\b").arg(StaticFunctions::mariadbKeywords().at(i)), Qt::CaseInsensitive);
