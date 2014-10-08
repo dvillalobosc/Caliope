@@ -44,8 +44,7 @@ BaseTextEditor::BaseTextEditor(EditorTypes::EditorType type)
   connect(this, SIGNAL(updateRequest(QRect,int)), this, SLOT(updateLineNumberArea(QRect,int)));
   connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(highlightCurrentLine()));
   updateLineNumberAreaWidth();
-  QSettings settings;
-  if (settings.value("TextEditor/ShowTabsAndSpaces", Qt::Unchecked) == Qt::Checked) {
+  if (settings.value("TextEditor/VisualizeSpaces", false).toBool()) {
     QTextOption option =  document()->defaultTextOption();
     option.setFlags(option.flags() | QTextOption::ShowTabsAndSpaces);
     document()->setDefaultTextOption(option);
@@ -374,6 +373,10 @@ void BaseTextEditor::createActions()
   connect(unidentAction, SIGNAL(triggered()), this, SLOT(unidentActionTriggered()));
   insertLicenceTamplateAction = new QAction(this);
   connect(insertLicenceTamplateAction, SIGNAL(triggered()), this, SLOT(insertLicenceTemplateSlot()));
+  visualizeSpacesAction = new QAction(this);
+  visualizeSpacesAction->setCheckable(true);
+  visualizeSpacesAction->setChecked(settings.value("TextEditor/VisualizeSpaces", false).toBool() ? Qt::Checked : Qt::Unchecked);
+  connect(visualizeSpacesAction, SIGNAL(toggled(bool)), this, SLOT(visualizeSpacesActionTriggered(bool)));
 }
 
 void BaseTextEditor::retranslateUi()
@@ -384,6 +387,8 @@ void BaseTextEditor::retranslateUi()
   unidentAction->setToolTip(unidentAction->text());
   insertLicenceTamplateAction->setText(tr("Insert licence template"));
   insertLicenceTamplateAction->setToolTip(insertLicenceTamplateAction->text());
+  visualizeSpacesAction->setText(tr("Visualize spaces"));
+  visualizeSpacesAction->setToolTip(visualizeSpacesAction->text());
 }
 
 void BaseTextEditor::insertLicenceTemplateSlot()
@@ -410,6 +415,18 @@ void BaseTextEditor::indentActionTriggered()
 void BaseTextEditor::unidentActionTriggered()
 {
   indentOrUnindent(false);
+}
+
+void BaseTextEditor::visualizeSpacesActionTriggered(bool toggled)
+{
+  QTextOption option = document()->defaultTextOption();
+  if (toggled)
+    option.setFlags(option.flags() | QTextOption::ShowTabsAndSpaces);
+  else
+    option.setFlags(option.flags() & ~QTextOption::ShowTabsAndSpaces);
+  //option.setFlags(option.flags() | QTextOption::AddSpaceForLineAndParagraphSeparators);
+  document()->setDefaultTextOption(option);
+  settings.setValue("TextEditor/VisualizeSpaces", toggled);
 }
 
 void BaseTextEditor::indentOrUnindent(bool doIndent)

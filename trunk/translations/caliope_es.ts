@@ -301,19 +301,24 @@
 <context>
     <name>BaseTextEditor</name>
     <message>
-        <location filename="../basetexteditor.cpp" line="381"/>
+        <location filename="../basetexteditor.cpp" line="385"/>
         <source>Indent</source>
         <translation>Indentar</translation>
     </message>
     <message>
-        <location filename="../basetexteditor.cpp" line="383"/>
+        <location filename="../basetexteditor.cpp" line="387"/>
         <source>Unindent</source>
         <translation>Desindentar</translation>
     </message>
     <message>
-        <location filename="../basetexteditor.cpp" line="385"/>
+        <location filename="../basetexteditor.cpp" line="389"/>
         <source>Insert licence template</source>
         <translation>Insertar plantilla de licencia</translation>
+    </message>
+    <message>
+        <location filename="../basetexteditor.cpp" line="391"/>
+        <source>Visualize spaces</source>
+        <translation>Visualizar espacios</translation>
     </message>
 </context>
 <context>
@@ -2441,9 +2446,8 @@ Total progess: %5.</source>
         <translation>Guardar una copia de seguridad antes de guardar el archivo.</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="209"/>
         <source>Show Tabs and Spaces.</source>
-        <translation>Mostar Tabulaciones y Espacios.</translation>
+        <translation type="obsolete">Mostar Tabulaciones y Espacios.</translation>
     </message>
     <message>
         <location filename="../preferences.cpp" line="120"/>
@@ -6801,7 +6805,7 @@ Total of queries: %5, remaining: %6.</source>
     </message>
     <message>
         <location filename="../texteditor.cpp" line="960"/>
-        <location filename="../texteditor.cpp" line="1828"/>
+        <location filename="../texteditor.cpp" line="1829"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>No es posible escribir en el archivo %1:
@@ -6824,11 +6828,11 @@ Total of queries: %5, remaining: %6.</source>
     </message>
     <message>
         <location filename="../texteditor.cpp" line="975"/>
-        <location filename="../texteditor.cpp" line="1803"/>
-        <location filename="../texteditor.cpp" line="1816"/>
-        <location filename="../texteditor.cpp" line="1834"/>
-        <location filename="../texteditor.cpp" line="1853"/>
-        <location filename="../texteditor.cpp" line="1876"/>
+        <location filename="../texteditor.cpp" line="1804"/>
+        <location filename="../texteditor.cpp" line="1817"/>
+        <location filename="../texteditor.cpp" line="1835"/>
+        <location filename="../texteditor.cpp" line="1854"/>
+        <location filename="../texteditor.cpp" line="1877"/>
         <source>File saved at: %1</source>
         <translation>Archivo guardado en: %1</translation>
     </message>
@@ -7021,52 +7025,52 @@ Total of queries: %5, remaining: %6.</source>
         <translation>Enfocar</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1796"/>
+        <location filename="../texteditor.cpp" line="1797"/>
         <source>Save to Pdf</source>
         <translation>Guardar en Pdf</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1796"/>
+        <location filename="../texteditor.cpp" line="1797"/>
         <source>Pdf &amp; Ps files (*.pdf *.ps)</source>
         <translation>Archivos Pdf &amp; Ps (*.pdf *.ps)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1811"/>
+        <location filename="../texteditor.cpp" line="1812"/>
         <source>Save to Odt</source>
         <translation>Guardar en Odt</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1811"/>
+        <location filename="../texteditor.cpp" line="1812"/>
         <source>Odt files (*.odt)</source>
         <translation>Archivos Odt (*.odt)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1824"/>
+        <location filename="../texteditor.cpp" line="1825"/>
         <source>Save to Html</source>
         <translation>Guardar en Html</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1824"/>
+        <location filename="../texteditor.cpp" line="1825"/>
         <source>Html files (*.html *.htm)</source>
         <translation>Archivos Html (*.html *.htm)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1842"/>
+        <location filename="../texteditor.cpp" line="1843"/>
         <source>Save to Svg</source>
         <translation>Guardar en Svg</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1842"/>
+        <location filename="../texteditor.cpp" line="1843"/>
         <source>Svg files (*.svg)</source>
         <translation>Archivos Svg (*.svg)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1864"/>
+        <location filename="../texteditor.cpp" line="1865"/>
         <source>Save to Image</source>
         <translation>Guardar en Imagen</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1864"/>
+        <location filename="../texteditor.cpp" line="1865"/>
         <source>Image files (%1)</source>
         <translation>Archivos de imagen (%1)</translation>
     </message>

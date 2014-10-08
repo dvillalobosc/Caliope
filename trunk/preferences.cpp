@@ -111,10 +111,10 @@ Preferences::Preferences()
   checkBoxSaveABackupFile->setChecked(settings.value("TextEditor/CreateBackupFile", Qt::Checked).toInt());
   connect(checkBoxSaveABackupFile, SIGNAL(stateChanged(int)), this, SLOT(checkBoxSaveABackupFileValueChanged(int)));
   textEditorFLayout->addRow(checkBoxSaveABackupFile);
-  checkBoxShowTabsAndSpaces = new QCheckBox;
-  checkBoxShowTabsAndSpaces->setChecked(settings.value("TextEditor/ShowTabsAndSpaces", Qt::Unchecked).toInt());
-  connect(checkBoxShowTabsAndSpaces, SIGNAL(stateChanged(int)), this, SLOT(checkBoxShowTabsAndSpacesValueChanged(int)));
-  textEditorFLayout->addRow(checkBoxShowTabsAndSpaces);
+//  checkBoxShowTabsAndSpaces = new QCheckBox;
+//  checkBoxShowTabsAndSpaces->setChecked(settings.value("TextEditor/ShowTabsAndSpaces", Qt::Unchecked).toInt());
+//  connect(checkBoxShowTabsAndSpaces, SIGNAL(stateChanged(int)), this, SLOT(checkBoxShowTabsAndSpacesValueChanged(int)));
+//  textEditorFLayout->addRow(checkBoxShowTabsAndSpaces);
   QWidget *widgetTextEditor = new QWidget;
   widgetTextEditor->setLayout(textEditorFLayout);
   dStackedWidget->addWidget(widgetTextEditor, QIcon::fromTheme("accessories-text-editor", QIcon(":/images/svg/accessories-text-editor-7.svg")), tr("Text Editor"));
@@ -206,7 +206,7 @@ void Preferences::retranslateUi()
   checkBoxAutomaticIndentation->setText(tr("Enable automatic indentation."));
   checkBoxCleanwhiteSpaces->setText(tr("Clean white spaces at the end of the line."));
   checkBoxSaveABackupFile->setText(tr("Save a backup copy before save a file."));
-  checkBoxShowTabsAndSpaces->setText(tr("Show Tabs and Spaces."));
+  //checkBoxShowTabsAndSpaces->setText(tr("Show Tabs and Spaces."));
   checkBoxEnableQueryLog->setText(tr("Enable query log"));
   licenseTemplate->retranslateUi();
   networkSettings->retranslateUi();
@@ -247,10 +247,10 @@ void Preferences::checkBoxSaveQueryBeforeExecutionStateChanged()
   settings.setValue("SaveQueriesBeforeExecution", checkBoxSaveQueryBeforeExecution->isChecked());
 }
 
-void Preferences::checkBoxShowTabsAndSpacesValueChanged(int value)
-{
-  settings.setValue("TextEditor/ShowTabsAndSpaces", value);
-}
+//void Preferences::checkBoxShowTabsAndSpacesValueChanged(int value)
+//{
+//  settings.setValue("TextEditor/ShowTabsAndSpaces", value);
+//}
 
 void Preferences::checkBoxEnableQueryLogValueChanged(int value)
 {
