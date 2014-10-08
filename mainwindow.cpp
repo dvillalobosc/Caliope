@@ -398,8 +398,9 @@ void MainWindow::createActions()
   connect(phpScriptAction, SIGNAL(triggered()), this, SLOT(phpScriptActionTriggered()));
 
   mariaDBGUIHelpAction = new QAction(this);
+  mariaDBGUIHelpAction->setShortcut(QKeySequence(Qt::Key_F1));
   mariaDBGUIHelpAction->setIcon(QIcon(":/images/svg/server-database.svg"));
-  //  connect(mysqlGuiHelpAction, SIGNAL(triggered()), this, SLOT(mysqlGuiHelpActionTriggered()));
+  connect(mariaDBGUIHelpAction, SIGNAL(triggered()), this, SLOT(mariaDBGUIHelpActionTriggered()));
 
   mysqlHelpAction = new QAction(this);
   mysqlHelpAction->setIcon(QIcon(":/images/svg/mysql.svg"));
@@ -1126,6 +1127,11 @@ void MainWindow::viewDWebViewPageSource(QString pageSource)
   addSubWindow(htmlEditor);
   htmlEditor->textEditor->setPlainText(pageSource);
   QApplication::restoreOverrideCursor();
+}
+
+void MainWindow::mariaDBGUIHelpActionTriggered()
+{
+  qDebug() << "asdf";
 }
 
 void MainWindow::finishedDatabaseMigrationSlot(int exitCode)
