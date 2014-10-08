@@ -62,6 +62,7 @@ private slots:
   void compareSeconadarySlot();
   void itemActivatedSlot(QTreeWidgetItem *item, int column);
   void secondaryItemActivatedSlot(QTreeWidgetItem *item, int column);
+  void statusBarMessageSlot(QString message);
 
 signals:
   void statusBarMessage(QString message);

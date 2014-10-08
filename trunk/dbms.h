@@ -158,7 +158,7 @@ class DBMS : public QObject
   Q_PROPERTY(QString database READ getDatabase WRITE setDatabase)
 
 public:
-  DBMS();
+  DBMS(bool enableQueryLog = true);
   ~DBMS();
 
   QString getUserName();
