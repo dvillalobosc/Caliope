@@ -1131,7 +1131,7 @@ void MainWindow::viewDWebViewPageSource(QString pageSource)
 
 void MainWindow::mariaDBGUIHelpActionTriggered()
 {
-  qDebug() << "asdf";
+
 }
 
 void MainWindow::finishedDatabaseMigrationSlot(int exitCode)
