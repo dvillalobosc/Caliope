@@ -1566,6 +1566,7 @@ QList<QAction *> TextEditor::editActionList()
   actionsList.append(wordWrapAction);
   actionsList.append(uppercaseKeywordsAction);
   actionsList.append(lowercaseKeywordsAction);
+  actionsList.append(textEditor->visualizeSpacesAction);
   //->setText(tr("Line"))
   actionsList.append(menu->addSeparator());
   actionsList.append(gotoLineAction);

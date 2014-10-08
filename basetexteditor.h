@@ -46,6 +46,7 @@ public:
   void retranslateUi();
   QAction *insertLicenceTamplateAction;
   QList<unsigned int> *foldRowList;
+  QAction *visualizeSpacesAction;
 
 protected:
   void resizeEvent(QResizeEvent *event);
@@ -58,6 +59,7 @@ private slots:
   void updateLineNumberArea(const QRect &rect, int dy);
   void indentActionTriggered();
   void unidentActionTriggered();
+  void visualizeSpacesActionTriggered(bool toggled);
 
 public slots:
   void highlightCurrentLine();

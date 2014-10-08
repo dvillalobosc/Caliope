@@ -61,7 +61,7 @@ private:
   QList<QStringList> *connectionsData;
   FileAssociations *fileAssociationsTab;
   QCheckBox *checkBoxSaveQueryBeforeExecution;
-  QCheckBox *checkBoxShowTabsAndSpaces;
+  //QCheckBox *checkBoxShowTabsAndSpaces;
   FileSelector *phpPHPCommand;
   DTitleLabel *dTitleLabel;
   QFormLayout *styleFLayout;
@@ -89,7 +89,7 @@ private slots:
   void checkBoxSaveABackupFileValueChanged(int value);
   void connectioItemChangedSlot(QStandardItem *item);
   void checkBoxSaveQueryBeforeExecutionStateChanged();
-  void checkBoxShowTabsAndSpacesValueChanged(int value);
+  //void checkBoxShowTabsAndSpacesValueChanged(int value);
   void checkBoxEnableQueryLogValueChanged(int value);
   void fileSelectorBackgroundImageSlot();
 };
