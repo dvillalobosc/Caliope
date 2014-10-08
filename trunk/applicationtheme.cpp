@@ -1,4 +1,6 @@
 #include <QTextCharFormat>
+#include <QPlainTextEdit>
+#include <QVBoxLayout>
 
 #include "applicationtheme.h"
 
@@ -13,4 +15,9 @@ ApplicationTheme::ApplicationTheme()
   settings.setValue("Theme/SQLKeywords-Foreground-FontFamily", textCharFormatSQLKeywords.font().family());
   settings.setValue("Theme/SQLKeywords-Foreground-FontSize", textCharFormatSQLKeywords.font().pointSize());
   settings.setValue("Theme/SQLKeywords-Foreground-FontStyle", textCharFormatSQLKeywords.font().style());
+
+  themePlainTextEdit = new QPlainTextEdit("Keywords\nIdentifiers");
+  QVBoxLayout *mainVLayout = new QVBoxLayout;
+  mainVLayout->addWidget(themePlainTextEdit);
+  setLayout(mainVLayout);
 }
