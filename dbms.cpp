@@ -48,7 +48,7 @@
 //  break;
 //}
 
-DBMS::DBMS()
+DBMS::DBMS(bool enableQueryLog)
 {
   opened = false;
   executedQueries = new QStringList;
@@ -59,7 +59,7 @@ DBMS::DBMS()
   errorMessage->setWindowTitle(tr("Error"));
   connect(errorMessage, SIGNAL(accepted()), this, SLOT(errorMessageAcceptedSlot()));
 
-  if (settings.value("EnableQueryLog", false).toBool()) {
+  if (settings.value("EnableQueryLog", false).toBool() && enableQueryLog) {
     QFileInfo fileInfo(settings.fileName());
     dbSQLite = QSqlDatabase::addDatabase("QSQLITE");
     qApp->setProperty("LocalDatabase", fileInfo.path() + "/" + QCoreApplication::applicationName() + ".sqlite");

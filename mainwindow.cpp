@@ -897,8 +897,8 @@ void MainWindow::maintenanceFlushRelayLogsActionTriggered()
 void MainWindow::databaseComparisionActionTriggered()
 {
   if (serverConnection->testOpened()) {
-    databaseComparision = mdiMain->findChild<DatabaseComparision *>(tr("Database Comaparision"));
-    if (!serverInformationTab) {
+    databaseComparision = mdiMain->findChild<DatabaseComparision *>(tr("Database Comparision"));
+    if (!databaseComparision) {
       databaseComparision = new DatabaseComparision(this->serverConnection);
       connect(databaseComparision, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
       addSubWindow(databaseComparision);
@@ -913,7 +913,7 @@ void MainWindow::migrateDatabaseActionTriggered()
   QStringList argumentsProcess1;
   QStringList argumentsProcess2;
   QStringList params;
-  secondaryServerConnection = new DBMS;
+  secondaryServerConnection = new DBMS(false);
   connect(secondaryServerConnection, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   connect(secondaryServerConnection, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
   processMariaDBDump = new QProcess;

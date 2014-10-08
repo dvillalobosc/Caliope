@@ -153,13 +153,13 @@ void TableMaintenance::fillTablesSlot()
     item->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
     item->setCheckState(0, Qt::Unchecked);
     tables.append(item);
-    foreach (QString table, serverConnection->database(database)->getTables()) {
-      QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(database + "." + table), ItemTypes::Table);
-      itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
-      itemChild->setIcon(0, QIcon(":/images/svg/table.svg"));
-      itemChild->setCheckState(0, Qt::Unchecked);
-      tables.append(itemChild);
-    }
+//    foreach (QString table, serverConnection->database(database)->getTables()) {
+//      QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(database + "." + table), ItemTypes::Table);
+//      itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+//      itemChild->setIcon(0, QIcon(":/images/svg/table.svg"));
+//      itemChild->setCheckState(0, Qt::Unchecked);
+//      tables.append(itemChild);
+//    }
   }
   tablesListWidget->clear();
   tablesListWidget->insertTopLevelItems(0, tables);
@@ -216,10 +216,21 @@ void TableMaintenance::repairPushButtonSlot()
 
 void TableMaintenance::itemActivatedSlot(QTreeWidgetItem *item, int column)
 {
-  if (item->type() == ItemTypes::Database)
+  if (item->type() == ItemTypes::Database) {
+    QApplication::setOverrideCursor(Qt::WaitCursor);
     foreach (QTreeWidgetItem *tableItem, tables)
       if (tableItem->parent() == item)
         tableItem->setCheckState(column, item->checkState(column));
+    if (item->childCount() == 0)
+      foreach (QString table, serverConnection->database(item->text(0))->getTables()) {
+        QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(item->text(0) + "." + table), ItemTypes::Table);
+        itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+        itemChild->setIcon(0, QIcon(":/images/svg/table.svg"));
+        itemChild->setCheckState(0, Qt::Unchecked);
+        tables.append(itemChild);
+      }
+    QApplication::restoreOverrideCursor();
+  }
 }
 
 //TableMaintenanceWizard::TableMaintenanceWizard()

@@ -38,8 +38,8 @@
 DatabaseComparision::DatabaseComparision(DBMS *serverConnection)
 {
   this->serverConnection = serverConnection;
-  secondaryServerConnection = new DBMS;
-  connect(secondaryServerConnection, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
+  secondaryServerConnection = new DBMS(false);
+  connect(secondaryServerConnection, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessageSlot(QString)));
   setWindowIcon(QIcon(":/images/svg/server-database.svg"));
   QWidget *widMain = new QWidget;
   QVBoxLayout *mainVLayout = new QVBoxLayout;
@@ -107,13 +107,13 @@ void DatabaseComparision::fillTablesSlot()
     item->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
     item->setCheckState(0, Qt::Unchecked);
     tables.append(item);
-    foreach (QString table, serverConnection->database(database)->getTables()) {
-      QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(database + "." + table), ItemTypes::Table);
-      itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
-      itemChild->setIcon(0, QIcon(":/images/svg/table.svg"));
-      itemChild->setCheckState(0, Qt::Unchecked);
-      tables.append(itemChild);
-    }
+//    foreach (QString table, serverConnection->database(database)->getTables()) {
+//      QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(database + "." + table), ItemTypes::Table);
+//      itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+//      itemChild->setIcon(0, QIcon(":/images/svg/table.svg"));
+//      itemChild->setCheckState(0, Qt::Unchecked);
+//      tables.append(itemChild);
+//    }
   }
   tablesListWidget->clear();
   tablesListWidget->insertTopLevelItems(0, tables);
@@ -147,13 +147,13 @@ void DatabaseComparision::fillTablesSlot()
       item->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
       item->setCheckState(0, Qt::Unchecked);
       secondaryTables.append(item);
-      foreach (QString table, secondaryServerConnection->database(database)->getTables()) {
-        QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(database + "." + table), ItemTypes::Table);
-        itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
-        itemChild->setIcon(0, QIcon(":/images/svg/table.svg"));
-        itemChild->setCheckState(0, Qt::Unchecked);
-        secondaryTables.append(itemChild);
-      }
+//      foreach (QString table, secondaryServerConnection->database(database)->getTables()) {
+//        QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(database + "." + table), ItemTypes::Table);
+//        itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+//        itemChild->setIcon(0, QIcon(":/images/svg/table.svg"));
+//        itemChild->setCheckState(0, Qt::Unchecked);
+//        secondaryTables.append(itemChild);
+//      }
     }
     secondaryTablesListWidget->clear();
     secondaryTablesListWidget->insertTopLevelItems(0, secondaryTables);
@@ -254,16 +254,43 @@ void DatabaseComparision::compareSeconadarySlot()
 
 void DatabaseComparision::itemActivatedSlot(QTreeWidgetItem *item, int column)
 {
-  if (item->type() == ItemTypes::Database)
+  if (item->type() == ItemTypes::Database) {
+    QApplication::setOverrideCursor(Qt::WaitCursor);
     foreach (QTreeWidgetItem *tableItem, tables)
       if (tableItem->parent() == item)
         tableItem->setCheckState(column, item->checkState(column));
+    if (item->childCount() == 0)
+      foreach (QString table, serverConnection->database(item->text(0))->getTables()) {
+        QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(item->text(0) + "." + table), ItemTypes::Table);
+        itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+        itemChild->setIcon(0, QIcon(":/images/svg/table.svg"));
+        itemChild->setCheckState(0, Qt::Unchecked);
+        tables.append(itemChild);
+      }
+    QApplication::restoreOverrideCursor();
+  }
 }
 
 void DatabaseComparision::secondaryItemActivatedSlot(QTreeWidgetItem *item, int column)
 {
-  if (item->type() == ItemTypes::Database)
+  if (item->type() == ItemTypes::Database) {
+    QApplication::setOverrideCursor(Qt::WaitCursor);
     foreach (QTreeWidgetItem *tableItem, secondaryTables)
       if (tableItem->parent() == item)
         tableItem->setCheckState(column, item->checkState(column));
+    if (item->childCount() == 0)
+      foreach (QString table, secondaryServerConnection->database(item->text(0))->getTables()) {
+        QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(item->text(0) + "." + table), ItemTypes::Table);
+        itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+        itemChild->setIcon(0, QIcon(":/images/svg/table.svg"));
+        itemChild->setCheckState(0, Qt::Unchecked);
+        secondaryTables.append(itemChild);
+      }
+    QApplication::restoreOverrideCursor();
+  }
+}
+
+void DatabaseComparision::statusBarMessageSlot(QString message)
+{
+  emit statusBarMessage(message);
 }

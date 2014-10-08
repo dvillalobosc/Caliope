@@ -1713,6 +1713,7 @@ Total progess: %5.</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="200"/>
+        <location filename="../mainwindow.cpp" line="900"/>
         <source>Database Comparision</source>
         <translation>Comparación de Bases de Datos</translation>
     </message>
@@ -1744,9 +1745,8 @@ Total progess: %5.</source>
         <translation>El esclavo ha sido reestablecido.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="900"/>
         <source>Database Comaparision</source>
-        <translation>Comparación de Bases de Datos</translation>
+        <translation type="obsolete">Comparación de Bases de Datos</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="957"/>
