@@ -1025,7 +1025,7 @@ QHash<QString, QString> StaticFunctions::mariadbFunctionsComplete()
   //  data.insert("EXTRACTVALUE", QString("<u>EXTRACTVALUE</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("FIELD", QString("<u>FIELD</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("FIND_IN_SET", QString("<u>FIND_IN_SET</u>(<b></b>) <br />%1").arg(tr("")));
-  //  data.insert("FLOOR", QString("<u>FLOOR</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("FLOOR", QString("<u>FLOOR</u>(<b>x</b>) <br />%1").arg(tr("Returns the largest integer value not greater than x.")));
   data.insert("FORMAT", QString("<u>FORMAT</u>(<b>X, D</b>) <br />%1").arg(tr("Formats the number X to a format like '#,###,###.##', rounded to D decimal places, and returns the result as a string.")));
   //  data.insert("FOUND_ROWS", QString("<u>FOUND_ROWS</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("FROM_DAYS", QString("<u>FROM_DAYS</u>(<b></b>) <br />%1").arg(tr("")));
