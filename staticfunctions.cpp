@@ -5108,7 +5108,7 @@ QHash<QString, QString> StaticFunctions::phpFunctionsComplete()
 //  data.insert("mhash_get_block_size", QString("<u>mhash_get_block_size</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("mhash_get_hash_name", QString("<u>mhash_get_hash_name</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("mhash_keygen_s2k", QString("<u>mhash_keygen_s2k</u>(<b></b>) <br />%1").arg(tr("")));
-//  data.insert("microtime", QString("<u>microtime</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("microtime", QString("mixed <u>microtime</u>(<b>[bool $get_as_float = false]</b>) <br />%1").arg(tr(" Return current Unix timestamp with microseconds.")));
 //  data.insert("mime_content_type", QString("<u>mime_content_type</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("min", QString("<u>min</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("ming_keypress", QString("<u>ming_keypress</u>(<b></b>) <br />%1").arg(tr("")));
@@ -6609,7 +6609,7 @@ QHash<QString, QString> StaticFunctions::phpFunctionsComplete()
 //  data.insert("rrdgraph", QString("<u>rrdgraph</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("rrdupdater", QString("<u>rrdupdater</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("rsort", QString("<u>rsort</u>(<b></b>) <br />%1").arg(tr("")));
-//  data.insert("rtrim", QString("<u>rtrim</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("rtrim", QString("string <u>rtrim</u>(<b>string $str [, string $character_mask]</b>) <br />%1").arg(tr("Strip whitespace (or other characters) from the end of a string.")));
 //  data.insert("runkit_class_adopt", QString("<u>runkit_class_adopt</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("runkit_class_emancipate", QString("<u>runkit_class_emancipate</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("runkit_constant_add", QString("<u>runkit_constant_add</u>(<b></b>) <br />%1").arg(tr("")));
