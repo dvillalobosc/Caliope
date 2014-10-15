@@ -125,11 +125,21 @@ void DatabaseComparision::fillTablesSlot()
     if (!connectFrom->getConnectionPerformed()) {
       if (secondaryServerConnection->isOpened())
         secondaryServerConnection->close();
-      secondaryServerConnection->setUserName(connectFrom->getValues().at(3));
-      secondaryServerConnection->setHostName(connectFrom->getValues().at(1));
-      secondaryServerConnection->setPassword(connectFrom->getValues().at(4));
-      secondaryServerConnection->setDatabase(connectFrom->getValues().at(5));
-      secondaryServerConnection->setPort(connectFrom->getValues().at(2).toUInt());
+      //0 - Connection name
+      //1 - User
+      //2 - Host
+      //3 - Port
+      //4 - Database
+      //5 - Conexion count -- No parsed but keeped the space.
+      //6 - Collation
+      //7 - Password
+      secondaryServerConnection->setUserName(connectFrom->getValues().at(1));
+      secondaryServerConnection->setHostName(connectFrom->getValues().at(2));
+      secondaryServerConnection->setPassword(connectFrom->getValues().at(7));
+      secondaryServerConnection->setDatabase(connectFrom->getValues().at(4));
+      secondaryServerConnection->setPort(connectFrom->getValues().at(3).toUInt());
+      secondaryServerConnection->setCharacterSet(connectFrom->getValues().at(6).split("|").at(0));
+      secondaryServerConnection->setCollation(connectFrom->getValues().at(6).split("|").at(1));
       if (!secondaryServerConnection->open())
         QMessageBox::critical(this, tr("Cannot connect to the server"), secondaryServerConnection->lastError());
     }

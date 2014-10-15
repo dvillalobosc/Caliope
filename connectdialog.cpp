@@ -59,7 +59,7 @@ ConnectDialog::ConnectDialog(DBMS *serverConnection)
   if (sortConnectionList->isChecked()) {
     QMap<int, QString> connectionsMap;
     foreach (QString connection, connections)
-      connectionsMap.insert(StaticFunctions::explodeConnectionString(connection).at(6).split(":").at(1).toUInt() * -1, connection);
+      connectionsMap.insert(StaticFunctions::explodeConnectionString(connection).at(5).toUInt() * -1, connection);
     comboConnectionName->insertItems(0, connectionsMap.values());
     connect(comboConnectionName, SIGNAL(activated(QString)), this, SLOT(fillLineEdits(QString)));
   } else {
@@ -107,6 +107,19 @@ ConnectDialog::ConnectDialog(DBMS *serverConnection)
   storePasswords = new QCheckBox(tr("Store passwords"));
   storePasswords->setCheckState(settings.value("StorePassword", "false") == "true" ? Qt::Checked : Qt::Unchecked);
 
+  collationsMenu = new QMenu(this);
+  collationsMenu->setIcon(QIcon(":/images/svg/character-set.svg"));
+  connect(collationsMenu, SIGNAL(aboutToShow()), this, SLOT(collatoinsMenuSlot()));
+  lineEditCollation = new QLineEdit;
+  collationPushButton = new QPushButton(QIcon(":/images/svg/character-set.svg"), "", this);
+  collationPushButton->setMenu(collationsMenu);
+  QHBoxLayout *collationHlLayout = new QHBoxLayout;
+  collationHlLayout->addWidget(lineEditCollation);
+  collationHlLayout->addWidget(collationPushButton);
+
+  collationsMapper = new QSignalMapper(this);
+  connect(collationsMapper, SIGNAL(mapped(QString)), this, SLOT(changeCollationSlot(QString)));
+
   QFormLayout *formLayout = new QFormLayout;
   formLayout->addRow(tr("&Connection Name:"), comboConnectionName);
   formLayout->addRow(sortConnectionList);
@@ -116,6 +129,7 @@ ConnectDialog::ConnectDialog(DBMS *serverConnection)
   formLayout->addRow(tr("&User:"), lineEditUser);
   formLayout->addRow(tr("&Password:"), lineEditPassword);
   formLayout->addRow(tr("Database:"), databaseHlLayout);
+  formLayout->addRow(tr("Collation:"), collationHlLayout);
   formLayout->addRow(storePasswords);
   QGroupBox *mainGroupBox = new QGroupBox(windowTitle());
   mainGroupBox->setLayout(formLayout);
@@ -137,15 +151,24 @@ ConnectDialog::ConnectDialog(DBMS *serverConnection)
 void ConnectDialog::fillLineEdits(const QString &text)
 {
   QStringList params = StaticFunctions::explodeConnectionString(text);
+  //0 - Connection name
+  //1 - User
+  //2 - Host
+  //3 - Port
+  //4 - Database
+  //5 - Conexion count
+  //6 - Collation
+  //7 - Password
   comboConnectionType->setCurrentIndex(comboConnectionType->findText(params.at(0)));
   lineEditUser->setText(params.at(1));
   lineEditServer->setText(params.at(2));
   spinBoxPort->setValue(params.at(3).toUInt());
   lineEditDatabase->setText(params.at(4));
   if (storePasswords->isChecked())
-    lineEditPassword->setText(StaticFunctions::password(params.at(5)));
+    lineEditPassword->setText(StaticFunctions::password(params.at(7)));
   setDBMS();
-  count = params.at(6).split(":").at(1).toUInt();
+  count = params.at(5).toInt();
+  lineEditCollation->setText(params.at(6));
 }
 
 void ConnectDialog::comboConnectionTypeSlot(const QString &text)
@@ -169,6 +192,8 @@ void ConnectDialog::databasesMenuSlot()
     serverConnection->setPassword(lineEditPassword->text());
     serverConnection->setDatabase(StaticFunctions::DBMSDefaultDatabase());
     serverConnection->setPort(spinBoxPort->value());
+    serverConnection->setCharacterSet(lineEditCollation->text().split("|").at(0));
+    serverConnection->setCollation(lineEditCollation->text().split("|").at(1));
     serverConnection->open();
     connectionPerformed = true;
   }
@@ -189,6 +214,39 @@ void ConnectDialog::changeDatabaseSlot(QString database)
   getValues();
 }
 
+void ConnectDialog::collatoinsMenuSlot()
+{
+  QApplication::setOverrideCursor(Qt::WaitCursor);
+  collationsMenu->clear();
+  if (!serverConnection->isOpened()) {
+    serverConnection->setUserName(lineEditUser->text());
+    serverConnection->setHostName(lineEditServer->text());
+    serverConnection->setPassword(lineEditPassword->text());
+    serverConnection->setDatabase(StaticFunctions::DBMSDefaultDatabase());
+    serverConnection->setPort(spinBoxPort->value());
+    serverConnection->setCharacterSet(lineEditCollation->text().split("|").at(0));
+    serverConnection->setCollation(lineEditCollation->text().split("|").at(1));
+    serverConnection->open();
+    connectionPerformed = true;
+  }
+  QList<QStringList> *collations = serverConnection->getCollationsApplicability();
+  for (int row = 0; row < collations->count() - 1; row++) {
+    QAction *action = collationsMenu->addAction(collations->at(row).at(1) + "|" + collations->at(row).at(0));
+    action->setCheckable(true);
+    action->setChecked(action->text() == lineEditCollation->text());
+    connect(action, SIGNAL(triggered()), collationsMapper, SLOT(map()));
+    collationsMapper->setMapping(action, collations->at(row).at(1) + "|" + collations->at(row).at(0));
+  }
+  QApplication::restoreOverrideCursor();
+}
+
+void ConnectDialog::changeCollationSlot(QString collation)
+{
+  lineEditCollation->setText(collation);
+  serverConnection->setCollation(collation.split("|").at(0), collation.split("|").at(1));
+  getValues();
+}
+
 void ConnectDialog::setDBMS()
 {
   if (comboConnectionType->currentText() == "--")
@@ -204,15 +262,35 @@ void ConnectDialog::setDBMS()
 QList<QString> ConnectDialog::getValues()
 {
   QList<QString> listValues;
-  listValues.append(comboConnectionType->currentText());
+  //0 - Connection name
+  //1 - User
+  //2 - Host
+  //3 - Port
+  //4 - Database
+  //5 - Conexion count -- No parsed but keeped the space.
+  //6 - Collation
+  //7 - Password
+  listValues.append(comboConnectionName->currentText());
+  listValues.append(lineEditUser->text());
   listValues.append(lineEditServer->text());
   listValues.append(QString("%1").arg(spinBoxPort->value()));
-  listValues.append(lineEditUser->text());
-  listValues.append(lineEditPassword->text());
   listValues.append(lineEditDatabase->text());
-  settings.setValue(comboConnectionName->currentText(), QString("%1:%2@%3:%4/%5 %6 Count:%7").arg(comboConnectionType->currentText()).arg(lineEditUser->text())
-                    .arg(lineEditServer->text()).arg(spinBoxPort->value()).arg(lineEditDatabase->text())
-                    .arg(storePasswords->isChecked() ? StaticFunctions::password(lineEditPassword->text(), true) : "").arg(++count));
+  listValues.append("");
+  listValues.append(lineEditCollation->text());
+  listValues.append(lineEditPassword->text());
+  //listValues.append(comboConnectionType->currentText());
+
+  settings.setValue(comboConnectionName->currentText()
+                    , QString("%1:%2@%3:%4/%5 Count:%6 Collation:%7 Password:%8")
+                    .arg(comboConnectionType->currentText())
+                    .arg(lineEditUser->text())
+                    .arg(lineEditServer->text())
+                    .arg(spinBoxPort->value())
+                    .arg(lineEditDatabase->text())
+                    .arg(++count)
+                    .arg(lineEditCollation->text())
+                    .arg(storePasswords->isChecked() ? StaticFunctions::password(lineEditPassword->text(), true) : "")
+                    );
   settings.setValue("StorePassword", storePasswords->isChecked());
   settings.setValue("SortConnectionList", sortConnectionList->isChecked());
   return listValues;

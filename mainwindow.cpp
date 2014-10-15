@@ -944,11 +944,21 @@ void MainWindow::migrateDatabaseActionTriggered()
         if (secondaryServerConnection->isOpened())
           secondaryServerConnection->close();
         params = connectFrom->getValues();
-        secondaryServerConnection->setUserName(params.at(3));
-        secondaryServerConnection->setHostName(params.at(1));
-        secondaryServerConnection->setPassword(params.at(4));
-        secondaryServerConnection->setDatabase(params.at(5));
-        secondaryServerConnection->setPort(params.at(2).toUInt());
+        //0 - Connection name
+        //1 - User
+        //2 - Host
+        //3 - Port
+        //4 - Database
+        //5 - Conexion count -- No parsed but keeped the space.
+        //6 - Collation
+        //7 - Password
+        secondaryServerConnection->setUserName(connectFrom->getValues().at(1));
+        secondaryServerConnection->setHostName(connectFrom->getValues().at(2));
+        secondaryServerConnection->setPassword(connectFrom->getValues().at(7));
+        secondaryServerConnection->setDatabase(connectFrom->getValues().at(4));
+        secondaryServerConnection->setPort(connectFrom->getValues().at(3).toUInt());
+        secondaryServerConnection->setCharacterSet(connectFrom->getValues().at(6).split("|").at(0));
+        secondaryServerConnection->setCollation(connectFrom->getValues().at(6).split("|").at(1));
 
         timerTableCount = new QTimer(this);
         timerTableCount->setInterval(2000);
@@ -1020,11 +1030,21 @@ void MainWindow::openRecentConnectionActionGroupTriggered(QAction *action)
   QStringList params = StaticFunctions::explodeConnectionString(action->text());
   if (serverConnection->isOpened())
     serverConnection->close();
+  //0 - Connection name
+  //1 - User
+  //2 - Host
+  //3 - Port
+  //4 - Database
+  //5 - Conexion count -- No parsed but keeped the space.
+  //6 - Collation
+  //7 - Password
   serverConnection->setUserName(params.at(1));
   serverConnection->setHostName(params.at(2));
-  serverConnection->setPassword(StaticFunctions::password(params.at(5)));
+  serverConnection->setPassword(params.at(7));
   serverConnection->setDatabase(params.at(4));
   serverConnection->setPort(params.at(3).toUInt());
+  serverConnection->setCharacterSet(params.at(6).split("|").at(0));
+  serverConnection->setCollation(params.at(6).split("|").at(1));
   if (!serverConnection->open())
     QMessageBox::critical(this, tr("Cannot connect to the server"), serverConnection->lastError());
   if (serverConnection->isOpened()) {
@@ -1611,11 +1631,21 @@ void MainWindow::connectToServerActionTriggered()
       if (serverConnection->isOpened())
         serverConnection->close();
       params = connectFrom->getValues();
-      serverConnection->setUserName(params.at(3));
-      serverConnection->setHostName(params.at(1));
-      serverConnection->setPassword(params.at(4));
-      serverConnection->setDatabase(params.at(5));
-      serverConnection->setPort(params.at(2).toUInt());
+      //0 - Connection name
+      //1 - User
+      //2 - Host
+      //3 - Port
+      //4 - Database
+      //5 - Conexion count -- No parsed but keeped the space.
+      //6 - Collation
+      //7 - Password
+      serverConnection->setUserName(params.at(1));
+      serverConnection->setHostName(params.at(2));
+      serverConnection->setPassword(params.at(7));
+      serverConnection->setDatabase(params.at(4));
+      serverConnection->setPort(params.at(3).toUInt());
+      serverConnection->setCharacterSet(params.at(6).split("|").at(0));
+      serverConnection->setCollation(params.at(6).split("|").at(1));
       if (!serverConnection->open())
         QMessageBox::critical(this, tr("Cannot connect to the server"), serverConnection->lastError());
     }

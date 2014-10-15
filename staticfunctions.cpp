@@ -27,6 +27,8 @@
 
 #include "staticfunctions.h"
 
+#include <QDebug>
+
 QString StaticFunctions::DelegateTypeNumber() { return "DelegateTypeNumber"; }
 QString StaticFunctions::DelegateTypeNoDelegate() { return "DelegateTypeNoDelegate"; }
 QString StaticFunctions::DelegateTypeDateTime() { return "DelegateTypeDateTime"; }
@@ -8908,7 +8910,7 @@ QStringList StaticFunctions::explodeConnectionString(QString connectionName)
   QStringList params;
   int startIndex = 0;
   int endIndex = 0;
-  QString connection(settings.value("ServerConnections/" + connectionName, "MariaDB:root@localhost:3306/mysql").toString());
+  QString connection(settings.value("ServerConnections/" + connectionName, "MariaDB:root@localhost:3306/mysql Count:0 Collation:utf8|utf8_general_ci Password:*99").toString());
   endIndex = connection.indexOf(":", startIndex);
   //0 - Connection name
   params.append(connection.mid(startIndex, endIndex));
@@ -8918,7 +8920,7 @@ QStringList StaticFunctions::explodeConnectionString(QString connectionName)
   params.append(connection.mid(startIndex, endIndex));
   startIndex += ++endIndex;
   endIndex = connection.indexOf(":", startIndex) - startIndex;
-  //2- Host
+  //2 - Host
   params.append(connection.mid(startIndex, endIndex));
   startIndex += ++endIndex;
   endIndex = connection.indexOf("/", startIndex) - startIndex;
@@ -8930,10 +8932,19 @@ QStringList StaticFunctions::explodeConnectionString(QString connectionName)
   params.append(connection.mid(startIndex, endIndex));
   startIndex += ++endIndex;
   endIndex = connection.indexOf(" ", startIndex) - startIndex;
-  //5 - Password
-  params.append(connection.mid(startIndex, endIndex));
-  //6 - Connection count
-  params.append(connection.mid(connection.lastIndexOf(" Count:"), 10));
+  //5 - Conexion count
+  params.append(connection.mid(startIndex, endIndex).split(":").at(1));
+  startIndex += ++endIndex;
+  endIndex = connection.indexOf(" ", startIndex) - startIndex;
+  //6 - Collation
+  params.append(connection.mid(startIndex, endIndex).split(":").at(1));
+  startIndex += ++endIndex;
+  endIndex = connection.indexOf(" ", startIndex) - startIndex;
+  //7 - Password
+  params.append(connection.mid(startIndex, endIndex).mid(9));
+  startIndex += ++endIndex;
+  endIndex = connection.indexOf(" ", startIndex) - startIndex;
+
   qApp->setProperty("ConnectionName", connectionName);
   return params;
 }
