@@ -156,6 +156,7 @@ class DBMS : public QObject
   Q_PROPERTY(QString userName READ getUserName WRITE setUserName)
   Q_PROPERTY(QString characterSet READ getCharacterSet WRITE setCharacterSet)
   Q_PROPERTY(QString database READ getDatabase WRITE setDatabase)
+  Q_PROPERTY(QString collation READ getCollation WRITE setCollation)
 
 public:
   DBMS(bool enableQueryLog = true);
@@ -164,6 +165,8 @@ public:
   QString getUserName();
   void setUserName(QString name);
 
+  void setCollation(QString collation);
+  QString getCollation();
   QString getFullUserName();
   QString getHostName();
   void setHostName(QString name);
@@ -234,6 +237,8 @@ public:
   QSqlTableModel *sqliteTableModel();
   QSqlQueryModel *sqliteFilterQueryModel();
   void clearSQLiteQueryLog();
+  void setCollation(QString charset, QString collation);
+  QList<QStringList> *getCollationsApplicability();
 
   Table *table(QString tableName, QString database = QString());
   View *view(QString viewName, QString database = QString());
@@ -279,6 +284,8 @@ private:
   static void printQueryProgress(const MYSQL *mysql, uint stage, uint max_stage, double progress, const char *proc_info, uint proc_info_length);
   QTime queryExecutionTime;
   QString millisecondsToTime(unsigned int milliseconds);
+  QString p_collation;
+  QString p_charset;
 };
 
 #endif // DBMS_H

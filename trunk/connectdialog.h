@@ -50,6 +50,8 @@ private slots:
   void comboConnectionTypeSlot(const QString &text);
   void databasesMenuSlot();
   void changeDatabaseSlot(QString database);
+  void collatoinsMenuSlot();
+  void changeCollationSlot(QString collation);
 
 private:
   QDialogButtonBox *buttonBox;
@@ -71,6 +73,10 @@ private:
   void setDBMS();
   unsigned int count;
   QCheckBox *sortConnectionList;
+  QMenu *collationsMenu;
+  QLineEdit *lineEditCollation;
+  QPushButton *collationPushButton;
+  QSignalMapper *collationsMapper;
 };
 
 #endif // CONNECTDIALOG_H

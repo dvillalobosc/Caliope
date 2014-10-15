@@ -148,7 +148,9 @@ bool DBMS::open()
   switch(qApp->property("DBMSType").toInt()) {
   case StaticFunctions::MySQL:
     if (opened) {
-      setCharacterSet(settings.value("DBMS/CharacterSet", "utf8").toString());
+      //setCharacterSet(settings.value("DBMS/CharacterSet", "utf8").toString());
+      setCharacterSet(p_charset);
+      setCollation(getCharacterSet(), getCollation());
       if (getMinorVersion() < 1 || getMayorVersion() < 5) {
         oldVersion = true;
         QMessageBox::warning(0, tr("MySQL Version"), tr("Your version of MySQL seems to be less than 5.1."));
@@ -156,6 +158,10 @@ bool DBMS::open()
     }
     break;
   case StaticFunctions::MariaDB:
+    if (opened) {
+      setCharacterSet(getCharacterSet());
+      setCollation(getCharacterSet(), getCollation());
+    }
   case StaticFunctions::PostgreSQL:
     break;
   case StaticFunctions::Undefined:
@@ -263,6 +269,16 @@ void DBMS::setPort(unsigned int number)
 void DBMS::setUserName(QString name)
 {
   p_userName = name;
+}
+
+void DBMS::setCollation(QString collation)
+{
+  p_collation = collation;
+}
+
+QString DBMS::getCollation()
+{
+  return p_collation;
 }
 
 QStringList DBMS::getDatabases()
@@ -1374,6 +1390,21 @@ void DBMS::clearSQLiteQueryLog()
     }
 }
 
+void DBMS::setCollation(QString charset, QString collation)
+{
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    query("SET NAMES " + charset + " COLLATE " + collation);
+    break;
+  case StaticFunctions::PostgreSQL:
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+}
+
 void DBMS::logExecutedQueries(QString query)
 {
   if (settings.value("EnableQueryLog", false).toBool())
@@ -1577,6 +1608,26 @@ QStringList DBMS::getCollations()
   return QStringList();
 }
 
+QList<QStringList> *DBMS::getCollationsApplicability()
+{
+  if (isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      return runQuery("SELECT `COLLATION_NAME`, CHARACTER_SET_NAME FROM `information_schema`.`COLLATIONS` ORDER BY `COLLATION_NAME`");
+      break;
+    case StaticFunctions::PostgreSQL:
+#if USEPOSTGRES == 1
+      return runQuery("SELECT COLLATION_NAME FROM information_schema.COLLATIONS ORDER BY COLLATION_NAME");
+#endif
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+  return new QList<QStringList>();
+}
+
 QList<QStringList> *DBMS::getCharacterSets()
 {
   QList<QStringList> *rows = new QList<QStringList>();
@@ -1601,22 +1652,23 @@ QList<QStringList> *DBMS::getCharacterSets()
 
 QString DBMS::getCharacterSet()
 {
-  if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
-    case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB:
-      return QString(mysql_character_set_name(mariadbConnection));
-      break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return pg_encoding_to_char(PQclientEncoding(postgresqlConnection));
-#endif
-      break;
-    case StaticFunctions::Undefined:
-    default:
-      break;
-    }
-  return QString();
+//  if (isOpened())
+//    switch(qApp->property("DBMSType").toInt()) {
+//    case StaticFunctions::MySQL:
+//    case StaticFunctions::MariaDB:
+//      return QString(mysql_character_set_name(mariadbConnection));
+//      break;
+//    case StaticFunctions::PostgreSQL:
+//#if USEPOSTGRES == 1
+//      return pg_encoding_to_char(PQclientEncoding(postgresqlConnection));
+//#endif
+//      break;
+//    case StaticFunctions::Undefined:
+//    default:
+//      break;
+//    }
+//  return QString();
+  return p_charset;
 }
 
 void DBMS::setCharacterSet(QString charset)
@@ -1641,6 +1693,7 @@ void DBMS::setCharacterSet(QString charset)
     default:
       break;
     }
+  p_charset = charset;
 }
 
 Table *DBMS::table(QString tableName, QString database)
