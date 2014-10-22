@@ -122,6 +122,7 @@ signals:
   void executionProgress(double progress);
   void showResultTab(QString table, QString database, QString where);
   void statusBarMessage(QString message);
+  void openURL(QString url);
 
 private slots:
   void executeActionTriggered();
@@ -153,6 +154,7 @@ private slots:
   void loadLastQuery();
   void logStatementsActionToggled();
   void trimColumnsActionTriggered();
+  void openURLSlot(QString url);
 
 protected:
   /*! \brief Reilplements the closeEvent.

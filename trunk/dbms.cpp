@@ -96,18 +96,18 @@ bool DBMS::shutdown()
 
 bool DBMS::open()
 {
-  my_bool reconnect = 1;
-  QString connectionString;
   //last_progress_report_length = 0;
 
   switch(qApp->property("DBMSType").toInt()) {
   case StaticFunctions::MySQL:
-  case StaticFunctions::MariaDB:
+  case StaticFunctions::MariaDB: {
+    my_bool reconnect = 1;
     mysql_library_init(0, NULL, NULL);
     mariadbConnection = mysql_init(NULL);
     mysql_options(mariadbConnection, MYSQL_OPT_LOCAL_INFILE, 0);
     mysql_options(mariadbConnection, MYSQL_OPT_RECONNECT, &reconnect);
     break;
+  }
   case StaticFunctions::PostgreSQL:
     break;
   case StaticFunctions::Undefined:
@@ -125,9 +125,9 @@ bool DBMS::open()
     opened = mysql_real_connect(mariadbConnection, hostName.toUtf8().data(), p_userName.toUtf8().data()
                                 , password.toUtf8().data(), p_database.toUtf8().data(), port, NULL, CLIENT_MULTI_STATEMENTS | CLIENT_PROGRESS);
     break;
-  case StaticFunctions::PostgreSQL:
+  case StaticFunctions::PostgreSQL: {
 #if USEPOSTGRES == 1
-    connectionString = QString("hostaddr = '%1' port = '%2' dbname = '%3' user = '%4' password = '%5' connect_timeout = '10'")
+    QString connectionString = QString("hostaddr = '%1' port = '%2' dbname = '%3' user = '%4' password = '%5' connect_timeout = '10'")
         .arg(hostName)
         .arg(port == 0 ? "" : QString("%1").arg(port))
         .arg(p_database)
@@ -140,6 +140,7 @@ bool DBMS::open()
       opened = false;
 #endif
     break;
+  }
   case StaticFunctions::Undefined:
   default:
     opened = false;

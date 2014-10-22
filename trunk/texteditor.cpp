@@ -48,6 +48,7 @@
 #include <QSplitter>
 #include <QLabel>
 #include <QProcess>
+#include <QWhatsThis>
 
 #include "texteditor.h"
 #include "editortypes.h"
@@ -776,7 +777,7 @@ void TextEditor::performCompletion()
       break;
     // default: Q_ASSERT(false);
     }
-    QToolTip::showText(mapToGlobal(textEditor->cursorRect().topLeft()), message);
+    QToolTip::showText(mapToGlobal(textEditor->cursorRect().topLeft()), message, this);
   }
 }
 
@@ -1879,7 +1880,66 @@ void TextEditor::exportoToImgActionTriggerd()
 
 bool TextEditor::event(QEvent *event)
 {
-  if (event->type() == QEvent::ToolTip) {
+  switch (event->type()) {
+  case QEvent::WhatsThis: {
+    QHelpEvent* helpEvent = static_cast<QHelpEvent*>(event);
+    QTextCursor cursor = textEditor->cursorForPosition(QPoint(helpEvent->x() - (textEditor->lineNumberAreaWidth() + 5), helpEvent->y() - (menuBar->height() + 5 + (dTitleLabel->isVisible() ? (dTitleLabel->height() + 5) : 0))));
+    cursor.select(QTextCursor::WordUnderCursor);
+    QString message = "<table><tr><td><img src=\":/images/svg/server-database.svg\" width=\"48\"></td><td valign=middle><p style='white-space:pre'><a href='%1'>%2</a></p></td></tr></table>";
+    QString matchedValue = QString();
+    QString url = QString();
+    switch(editorType) {
+    case EditorTypes::SQLQuery:
+      switch(qApp->property("DBMSType").toInt()) {
+      case StaticFunctions::MySQL:
+      case StaticFunctions::MariaDB:
+        matchedValue = StaticFunctions::mariadbFunctionsComplete().value(cursor.selectedText().toUpper());
+        url = "https://mariadb.com/kb/en/" + cursor.selectedText().toLower() + "/";
+        break;
+      case StaticFunctions::PostgreSQL:
+        matchedValue = StaticFunctions::postgresqlFunctionsComplete().value(cursor.selectedText().toLower());
+        break;
+      case StaticFunctions::Undefined:
+      default:
+        break;
+      }
+      break;
+    case EditorTypes::PHP:
+      matchedValue = StaticFunctions::phpFunctionsComplete().value(cursor.selectedText().toLower());
+      if (matchedValue.isEmpty())
+        matchedValue = project->getProjectFunctionListComplete().value(cursor.selectedText());
+      url = "http://php.net/manual/en/function." + cursor.selectedText().toLower() + ".php";
+      break;
+    case EditorTypes::HTML:
+      matchedValue = StaticFunctions::htmlTagsComplete().value(cursor.selectedText().toLower());
+      break;
+    case EditorTypes::JavaScript:
+      matchedValue = StaticFunctions::javascriptFunctionsComplete().value(cursor.selectedText().toLower());
+      break;
+    case EditorTypes::CSS:
+      matchedValue = StaticFunctions::cssPropertiesComplete().value(cursor.selectedText().toLower());
+      break;
+    case EditorTypes::Diff:
+    case EditorTypes::Commit:
+    case EditorTypes::SVNLog:
+    case EditorTypes::NoEditor:
+      break;
+      // default: Q_ASSERT(false);
+    }
+    if (!matchedValue.isEmpty())
+      QWhatsThis::showText(helpEvent->globalPos(), message.arg(url).arg(matchedValue), this);
+    event->accept();
+  }
+    break;
+  case QEvent::WhatsThisClicked: {
+    QWhatsThisClickedEvent *whatsThisEvent = static_cast<QWhatsThisClickedEvent*>(event);
+    QWhatsThis::hideText();
+    //emit linkClicked( wtcEvent->href() );
+    emit openURL(whatsThisEvent->href());
+    event->accept();
+  }
+    break;
+  case QEvent::ToolTip: {
     QHelpEvent* helpEvent = static_cast<QHelpEvent*>(event);
     QTextCursor cursor = textEditor->cursorForPosition(QPoint(helpEvent->x() - (textEditor->lineNumberAreaWidth() + 5), helpEvent->y() - (menuBar->height() + 5 + (dTitleLabel->isVisible() ? (dTitleLabel->height() + 5) : 0))));
     cursor.select(QTextCursor::WordUnderCursor);
@@ -1919,12 +1979,17 @@ bool TextEditor::event(QEvent *event)
     case EditorTypes::SVNLog:
     case EditorTypes::NoEditor:
       break;
-    // default: Q_ASSERT(false);
+      // default: Q_ASSERT(false);
     }
     if (!matchedValue.isEmpty())
-      QToolTip::showText(helpEvent->globalPos(), message.arg(matchedValue));
+      QToolTip::showText(helpEvent->globalPos(), message.arg(matchedValue), this);
+    event->accept();
   }
-  return QWidget::event(event);
+    break;
+  default:
+    break;
+  }
+  return QMdiSubWindow::event(event);
 }
 
 void TextEditor::showEvent(QShowEvent *event)

@@ -51,6 +51,7 @@
 #include <QTimer>
 //#include <QSplashScreen>
 #include <QImageWriter>
+#include <QWhatsThis>
 
 #include "mainwindow.h"
 #include "connectdialog.h"
@@ -127,6 +128,7 @@ MainWindow::MainWindow()
   setWindowTitle(QCoreApplication::applicationName());
   setObjectName(windowTitle());
   setAttribute(Qt::WA_DeleteOnClose);
+  setAttribute(Qt::WA_CustomWhatsThis);
   setWindowIcon(QIcon(":/images/svg/server-database.svg"));
 
   mdiMain = new QMdiArea;
@@ -736,6 +738,7 @@ void MainWindow::javasctiptEditorActionTriggered()
   javascriptEditor = new TextEditor(projects, this->serverConnection, EditorTypes::JavaScript, ++javascriptWindowCounter);
   connect(javascriptEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   connect(javascriptEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
+  connect(javascriptEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
   addSubWindow(javascriptEditor);
 }
 
@@ -746,6 +749,7 @@ void MainWindow::htmlEditorActionTriggered()
   htmlEditor = new TextEditor(projects, this->serverConnection, EditorTypes::HTML, ++htmlWindowCounter);
   connect(htmlEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   connect(htmlEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
+  connect(htmlEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
   addSubWindow(htmlEditor);
 }
 
@@ -756,6 +760,7 @@ void MainWindow::textEditorActionTriggered()
   textEditor = new TextEditor(projects, this->serverConnection, EditorTypes::NoEditor, ++textWindowCounter);
   connect(textEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   connect(textEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
+  connect(textEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
   addSubWindow(textEditor);
 }
 
@@ -1144,6 +1149,7 @@ void MainWindow::viewDWebViewPageSource(QString pageSource)
   htmlEditor = new TextEditor(projects, this->serverConnection, EditorTypes::HTML, ++htmlWindowCounter);
   connect(htmlEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   connect(htmlEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
+  connect(htmlEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
   addSubWindow(htmlEditor);
   htmlEditor->textEditor->setPlainText(pageSource);
   QApplication::restoreOverrideCursor();
@@ -1152,6 +1158,15 @@ void MainWindow::viewDWebViewPageSource(QString pageSource)
 void MainWindow::mariaDBGUIHelpActionTriggered()
 {
 
+}
+
+void MainWindow::openURLSlot(QString url)
+{
+  qDebug() << url;
+//  dWebView = new DWebView(tr("Online help"), QUrl(url));
+//  connect(dWebView, SIGNAL(statusBarProgressMessage(QString,uint,double)), this, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
+//  connect(dWebView, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
+//  addSubWindow(dWebView);
 }
 
 void MainWindow::finishedDatabaseMigrationSlot(int exitCode)
@@ -1201,6 +1216,7 @@ void MainWindow::cssEditorActionTriggered()
   cssEditor = new TextEditor(projects, this->serverConnection, EditorTypes::CSS, ++cssWindowCounter);
   connect(cssEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   connect(cssEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
+  connect(cssEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
   addSubWindow(cssEditor);
 }
 
@@ -1514,6 +1530,7 @@ void MainWindow::sqlScriptActionTriggered()
   sqlEditor = new TextEditor(projects, this->serverConnection, EditorTypes::SQLQuery, ++sqlWindowCounter);
   connect(sqlEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   connect(sqlEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
+  connect(sqlEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
   addSubWindow(sqlEditor);
 }
 
@@ -1522,6 +1539,7 @@ void MainWindow::phpScriptActionTriggered()
   phpEditor = new TextEditor(projects, this->serverConnection, EditorTypes::PHP, ++phpWindowCounter);
   connect(phpEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   connect(phpEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
+  connect(phpEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
   addSubWindow(phpEditor);
 }
 
@@ -1583,6 +1601,7 @@ void MainWindow::queryActionTriggered()
     connect(query, SIGNAL(executionFinished(double)) , this, SLOT(setProgressBarProgressSlot(double)));
     connect(query, SIGNAL(showResultTab(QString,QString,QString)), this, SLOT(showResultTab(QString,QString,QString)));
     connect(query, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
+    connect(query, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
   }
 }
 
@@ -2003,6 +2022,7 @@ void MainWindow::createMenus()
   helpMenu->addAction(aboutQtAction);
   helpMenu->addAction(aboutMariaDBGUIAction);
   helpMenu->addAction(caliopeSourceDocumentationAction);
+  helpMenu->addAction(QWhatsThis::createAction(this));
 }
 
 void MainWindow::swithLanguage(QAction *action)
