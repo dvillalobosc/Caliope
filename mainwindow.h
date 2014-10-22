@@ -165,6 +165,7 @@ private slots:
   void caliopeSourceDocumentationActionTriggered();
   void viewDWebViewPageSource(QString pageSource);
   void mariaDBGUIHelpActionTriggered();
+  void openURLSlot(QString url);
 
 public slots:
   void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 2000);

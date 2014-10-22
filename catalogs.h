@@ -58,9 +58,13 @@ public:
 private:
   ItemEditorTypes::ItemEditorType itemType;
 
+signals:
+  void openURL(QString url);
+
 private slots:
   void applyStatement();
   void help();
+  void openURLSlot(QString url);
 };
 
 class Catalogs : public DMdiSubWindow

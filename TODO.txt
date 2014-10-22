@@ -7,3 +7,4 @@ To Do list:
 ** View source in DWebView. It has an error in Qt5. See DWebView::showSourceCodeTriggered()
 ** Enable the Scheme Color in Preferences, so we can change the color of the wigets.
 ** Check why sqlHighlightRules() is called twice.
+** Fix bug in MainWindow::openURLSlot(QString url), I think it is a Qt thing.

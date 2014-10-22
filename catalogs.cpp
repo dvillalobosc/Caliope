@@ -754,6 +754,7 @@ ItemEditor::ItemEditor(DBMS *serverConnection, QString title, ItemEditorTypes::I
   QVBoxLayout *mainVLayout = new QVBoxLayout;
   mainVLayout->addWidget(new DTitleLabel(windowTitle()));
   editor = new TextEditor(new Projects, serverConnection, EditorTypes::SQLQuery);
+  connect(editor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
   ///connect(editor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), parent, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   //connect(editor, SIGNAL(updatePrositionViewer(int,int)), parentWidget->dStatusBar, SLOT(set)
   mainVLayout->addWidget(editor);
@@ -805,5 +806,10 @@ void ItemEditor::help()
     break;
   // default: Q_ASSERT(false);
   }
-//  editor->insertPlainText(helpText);
+  //  editor->insertPlainText(helpText);
+}
+
+void ItemEditor::openURLSlot(QString url)
+{
+  emit openURL(url);
 }

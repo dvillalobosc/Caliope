@@ -110,6 +110,7 @@ SQLQuery::SQLQuery(Projects *project, DBMS *serverConnection, unsigned int windo
   separatorFrame->setFrameShape(QFrame::HLine);
   mainVLayout->addWidget(separatorFrame);
   scriptEditor = new TextEditor(project, serverConnection, EditorTypes::SQLQuery, 0, true);
+  connect(scriptEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
   ///connect(scriptEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), project, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   mainSplitter->addWidget(scriptEditor);
   resutlEditor = new BaseTextEditor(EditorTypes::NoEditor);
@@ -741,4 +742,9 @@ void SQLQuery::trimColumnsActionTriggered()
   } else {
     resutlEditor->setPlainText(tr("Incorrect use of the TRIM columns Option. Example: TRIM COLUMNS IN `columns_pri`, it only works for the current database."));
   }
+}
+
+void SQLQuery::openURLSlot(QString url)
+{
+  emit openURL(url);
 }
