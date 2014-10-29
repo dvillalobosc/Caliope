@@ -59,7 +59,7 @@ ConnectDialog::ConnectDialog(DBMS *serverConnection)
   if (sortConnectionList->isChecked()) {
     QMap<int, QString> connectionsMap;
     foreach (QString connection, connections)
-      connectionsMap.insert(StaticFunctions::explodeConnectionString(connection).at(5).toUInt() * -1, connection);
+      connectionsMap.insertMulti(StaticFunctions::explodeConnectionString(connection).at(5).toUInt() * -1, connection);
     comboConnectionName->insertItems(0, connectionsMap.values());
     connect(comboConnectionName, SIGNAL(activated(QString)), this, SLOT(fillLineEdits(QString)));
   } else {
