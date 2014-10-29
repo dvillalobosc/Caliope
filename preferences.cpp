@@ -182,6 +182,7 @@ void Preferences::fillModelData()
   settings.beginGroup("ServerConnections");
   QStringList connections = settings.allKeys();
   connections.removeAt(connections.indexOf("StorePassword"));
+  connections.removeAt(connections.indexOf("SortConnectionList"));
   for (int step = 0; step < connections.count(); step++) {
     QStringList list = StaticFunctions::explodeConnectionString(connections.at(step));
     connectionsData->append(QStringList() << "" << list.at(0) << connections.at(step) << list.at(1) << list.at(2) << list.at(3) << list.at(4) << list.at(5));
