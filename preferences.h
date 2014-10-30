@@ -40,13 +40,14 @@ class DStackedWidget;
 class ApplicationTheme;
 
 #include "dmdisubwindow.h"
+#include "dbms.h"
 
 class Preferences : public DMdiSubWindow
 {
   Q_OBJECT
 
 public:
-  Preferences();
+  Preferences(DBMS *serverConnection);
 
 private:
   QComboBox *stylesCombo;
