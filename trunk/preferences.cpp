@@ -43,7 +43,7 @@
 
 #include "QDebug"
 
-Preferences::Preferences()
+Preferences::Preferences(DBMS *serverConnection)
 {
   setWindowIcon(QIcon::fromTheme("preferences-system", QIcon(":/images/svg/preferences-system-4.svg")));
 
@@ -133,13 +133,29 @@ Preferences::Preferences()
   */
   QString NoDelegate = StaticFunctions::DelegateTypeNoDelegate();
   QList<QStringList> *connectionsDTableViewHeaders = new QList<QStringList>;
-  connectionsDTableViewHeaders->append(QStringList() << tr("Type") << (StaticFunctions::DelegateTypeEnum() + "(" +
-                                                                       StaticFunctions::dbmsEnabled().join(",") + ")") << "" << "Left");
+  //0 - Connection name
+  //1 - User
+  //2 - Host
+  //3 - Port
+  //4 - Database
+  //5 - Conexion count
+  //6 - Collation
+  //7 - Password
+
+  QString collationsJoined;
+  QList<QStringList> *collations = serverConnection->getCollationsApplicability();
+  for (int row = 0; row < collations->count() - 1; row++)
+    collationsJoined += collations->at(row).at(1) + "|" + collations->at(row).at(0) + ",";
+  collationsJoined = collationsJoined.left(-1);
+
   connectionsDTableViewHeaders->append(QStringList() << tr("Name") << NoDelegate << "" << "Left");
+  connectionsDTableViewHeaders->append(QStringList() << tr("Type") << (StaticFunctions::DelegateTypeEnum() + "(" + StaticFunctions::dbmsEnabled().join(",") + ")") << "" << "Left");
   connectionsDTableViewHeaders->append(QStringList() << tr("User") << NoDelegate << "" << "Left");
   connectionsDTableViewHeaders->append(QStringList() << tr("Server") << NoDelegate << "" << "Left");
   connectionsDTableViewHeaders->append(QStringList() << tr("Port") << StaticFunctions::DelegateTypeNumber() << "" << "Right");
   connectionsDTableViewHeaders->append(QStringList() << tr("Database") << NoDelegate << "" << "Left");
+  connectionsDTableViewHeaders->append(QStringList() << tr("Count") << StaticFunctions::DelegateTypeNumber() << "" << "Left");
+  connectionsDTableViewHeaders->append(QStringList() << tr("Collation") << (StaticFunctions::DelegateTypeEnum() + "(" + collationsJoined + ")") << "" << "Left");
   connectionsDTableViewHeaders->append(QStringList() << tr("Password") << StaticFunctions::DelegateTypePassword() << "" << "Left");
   listConnections = new DTableView(connectionsDTableViewHeaders);
 //  connect(listConnections, SIGNAL(loadStarted(QString,uint,double)), parentWidget, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
@@ -183,10 +199,8 @@ void Preferences::fillModelData()
   QStringList connections = settings.allKeys();
   connections.removeAt(connections.indexOf("StorePassword"));
   connections.removeAt(connections.indexOf("SortConnectionList"));
-  for (int step = 0; step < connections.count(); step++) {
-    QStringList list = StaticFunctions::explodeConnectionString(connections.at(step));
-    connectionsData->append(QStringList() << "" << list.at(0) << connections.at(step) << list.at(1) << list.at(2) << list.at(3) << list.at(4) << list.at(5));
-  }
+  foreach (QString connection, connections)
+    connectionsData->append(QStringList() << "" << connection << StaticFunctions::explodeConnectionString(connection));
   settings.endGroup();
 }
 
@@ -227,17 +241,29 @@ void Preferences::checkBoxSaveABackupFileValueChanged(int value)
 
 void Preferences::connectioItemChangedSlot(QStandardItem *item)
 {
+  //0 - Connection name
+  //1 - User
+  //2 - Host
+  //3 - Port
+  //4 - Database
+  //5 - Conexion count
+  //6 - Collation
+  //7 - Password
+
   settings.beginGroup("ServerConnections");
-  if ((item->data(Qt::UserRole).toString() != item->data(Qt::DisplayRole).toString()) && (item->column() == 0))
-    settings.remove(item->data(Qt::UserRole).toString());
-  settings.setValue(listConnections->indexData(item->row(), 1, Qt::EditRole).toString()
-                    , QString("%1:%2@%3:%4/%5 %6")
-                    .arg(listConnections->indexData(item->row(), 0, Qt::EditRole).toString())
+//  if ((item->data(Qt::UserRole).toString() != item->data(Qt::DisplayRole).toString()) && (item->column() == 0))
+//    settings.remove(item->data(Qt::UserRole).toString());
+  settings.setValue(listConnections->indexData(item->row(), 0, Qt::EditRole).toString()
+                    , QString("%1:%2@%3:%4/%5 Count:%6 Collation:%7 Password:%8")
+                    .arg(listConnections->indexData(item->row(), 1, Qt::EditRole).toString())
                     .arg(listConnections->indexData(item->row(), 2, Qt::EditRole).toString())
                     .arg(listConnections->indexData(item->row(), 3, Qt::EditRole).toString())
                     .arg(listConnections->indexData(item->row(), 4, Qt::EditRole).toString())
                     .arg(listConnections->indexData(item->row(), 5, Qt::EditRole).toString())
-                    .arg(settings.value("StorePassword", false).toBool() ? StaticFunctions::password(listConnections->indexData(item->row(), 6, Qt::EditRole).toString(), true) : ""));
+                    .arg(listConnections->indexData(item->row(), 6, Qt::EditRole).toString())
+                    .arg(listConnections->indexData(item->row(), 7, Qt::EditRole).toString())
+                    .arg(StaticFunctions::password(listConnections->indexData(item->row(), 8, Qt::EditRole).toString(), true))
+                    );
   settings.endGroup();
   fillModelData();
   listConnections->setModelData(connectionsData, false);

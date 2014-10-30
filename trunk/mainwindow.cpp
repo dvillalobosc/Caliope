@@ -1483,7 +1483,7 @@ void MainWindow::preferencesActionTriggered()
 {
   preferences = mdiMain->findChild<Preferences *>(tr("Preferences"));
   if (!preferences) {
-    preferences = new Preferences();
+    preferences = new Preferences(serverConnection);
     addSubWindow(preferences);
   }
   mdiMain->setActiveSubWindow(preferences);
