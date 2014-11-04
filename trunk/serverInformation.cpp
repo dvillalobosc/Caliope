@@ -41,6 +41,7 @@
 ServerInformation::ServerInformation(DBMS *serverConnection)
 {
   this->serverConnection = serverConnection;
+  result = new QList<QStringList>;
   setWindowIcon(QIcon::fromTheme("dialog-information", QIcon(":/images/svg/dialog-information-4.svg")));
   serverInformationTab = new QTabWidget;
   serverInformationTab->setMovable(true);
@@ -258,6 +259,26 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
   widgetHDDUsage->setLayout(hddUsageStatusVLayout);
   serverInformationTab->addTab(widgetHDDUsage, QIcon::fromTheme("drive-harddisk", QIcon(":/images/svg/drive-harddisk-8.svg")), " ");
 
+  //case 6
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB: {
+    QVBoxLayout *serverGraphs3VLayout = new QVBoxLayout;
+    dTitleLabelPieChart = new DTitleLabel;
+    serverGraphs3VLayout->addWidget(dTitleLabelPieChart);
+    dPieChartWidget = new DPieChartWidget;
+    serverGraphs3VLayout->addWidget(dPieChartWidget);
+    serverGraphs3VLayout->setMargin(0);
+    widgetPieChart = new QWidget;
+    widgetPieChart->setLayout(serverGraphs3VLayout);
+    serverInformationTab->addTab(widgetPieChart, QIcon(":/images/svg/view-statistics.svg"), " ");
+  }
+    break;
+  case StaticFunctions::PostgreSQL:
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
 
   QVBoxLayout *mainVLayout = new QVBoxLayout;
   mainVLayout->setContentsMargins(3, 0, 3, 0);
@@ -360,6 +381,8 @@ void ServerInformation::retranslateUi()
   labelFilter->setText(tr("Filter:"));
   lineEditFilter->setPlaceholderText(tr("Three characters at least"));
   pushButtonServerGraphicsFullScreen->setText(tr("Full screen"));
+  dTitleLabelPieChart->setText(tr("HDD Usage Graphics"));
+  serverInformationTab->setTabText(6, tr("HDD Usage Graphics"));
 }
 
 void ServerInformation::setCurrentTab(unsigned int tabNumber)
@@ -435,6 +458,32 @@ void ServerInformation::showInformation(int tabIndex)
     break;
   case 5:
     hddUsageData();
+    break;
+  case 6: {
+    QApplication::setOverrideCursor(Qt::WaitCursor);
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB: {
+      result = serverConnection->runQuery("SELECT `TABLE_SCHEMA`, CAST(SUM(`DATA_LENGTH` + `INDEX_LENGTH`) / 1024 / 1024 AS UNSIGNED) AS `Total` FROM `information_schema`.`TABLES` GROUP BY `TABLE_SCHEMA` ORDER BY `Total` DESC");
+      result->takeLast(); //Remove the "Affected rows" line.
+      int otherTotal = 0;
+      for (int counter = 0; counter < result->count(); counter++) {
+        if (result->at(counter).at(1).toInt() >= 10) //Only Database bigger than 10 MB are shown indivialy.
+          dPieChartWidget->addEntry(result->at(counter).at(0), result->at(counter).at(1).toDouble());
+        else
+          otherTotal += result->at(counter).at(1).toInt();
+      }
+      dPieChartWidget->addEntry(tr("Other"), otherTotal);
+    }
+      break;
+    case StaticFunctions::PostgreSQL:
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+    QApplication::restoreOverrideCursor();
+
+  }
     break;
   // default: Q_ASSERT(false);
   }
@@ -773,4 +822,69 @@ QRect DBarChartWidget::drawGraphicArea(QPainter &painter, QRect rect, const QStr
   rect = drawWrapText(painter, rect, tr("Max: %1").arg(maximun));
   rect = drawWrapText(painter, rect, tr("Min: %1").arg(minimun));
   return QRect(margin, rect.y() + rect.height() + widgetSeparator1 + widgetSeparator2, graphAreaWidth, graphAreaHeight);
+}
+
+/*
+ * DPieChartWidget
+ */
+
+DPieChartWidget::DPieChartWidget()
+{
+
+}
+
+void DPieChartWidget::addEntry(const QString key, const double value)
+{
+  values.append(qMakePair(key, value));
+}
+
+void DPieChartWidget::paintEvent(QPaintEvent *event)
+{
+  Q_UNUSED(event);
+  QPainter painter(this);
+  painter.setRenderHint(QPainter::Antialiasing, true);
+
+  double totalValues = 0;
+  for (int counter = 0; counter < values.count(); counter++)
+    totalValues += values.at(counter).second;
+
+  QStringList colorNames = QColor::colorNames();
+  int colorPos = 13;
+  QRect pieRect(10, 10, rect().height() - 10, rect().height() - 20);
+
+  QRect legendRect = rect();
+  legendRect.setLeft(pieRect.width());
+  legendRect.adjust(20, 20, -10, -10);
+  int lastAngleOffset = 0;
+  int currentPos = 0;
+
+  for (int counter = 0; counter < values.count(); counter++) {
+    painter.setBrush(QBrush(QColor(colorNames.at(colorPos++ % colorNames.count()))));
+
+    int angle = (int) (16 * 360 * (values.at(counter).second / totalValues));
+
+    painter.drawPie(pieRect, lastAngleOffset, angle);
+    lastAngleOffset += angle;
+
+    QRect legendEntryRect(0,(fontMetrics().height() * 2) * currentPos, fontMetrics().height(), fontMetrics().height());
+    currentPos++;
+    legendEntryRect.translate(legendRect.topLeft());
+
+    painter.drawRect(legendEntryRect);
+
+    QPoint textStart = legendEntryRect.topRight();
+    textStart = textStart + QPoint(fontMetrics().width('X'), 0);
+
+    QPoint textEnd(legendRect.right(), legendEntryRect.bottom());
+    QRect textEntryRect(textStart, textEnd);
+    painter.drawText(textEntryRect, Qt::AlignVCenter, QString("%1: %2 MBs.").arg(values.at(counter).first).arg(values.at(counter).second));
+  }
+  QRect legendEntryRect(0,(fontMetrics().height() * 2) * currentPos, fontMetrics().height(), fontMetrics().height());
+  currentPos++;
+  legendEntryRect.translate(legendRect.topLeft());
+  QPoint textStart = legendEntryRect.topRight();
+  textStart = textStart + QPoint(fontMetrics().width('X'), 0);
+  QPoint textEnd(legendRect.right(), legendEntryRect.bottom());
+  QRect textEntryRect(textStart, textEnd);
+  painter.drawText(textEntryRect, Qt::AlignVCenter, tr("Total: %1 MBs.").arg(totalValues));
 }

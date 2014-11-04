@@ -36,6 +36,20 @@ class DLineEdit;
 #include "dmdisubwindow.h"
 #include "dbms.h"
 
+class DPieChartWidget : public QWidget
+{
+public:
+  DPieChartWidget();
+  void addEntry(const QString key, const double value);
+
+protected:
+  void paintEvent(QPaintEvent *event);
+
+private:
+  //QHash<QString, int> values;
+  QList<QPair<QString, double> > values;
+};
+
 class DBarChartWidget : public QWidget
 {
 public:
@@ -82,6 +96,7 @@ private:
   double rateBytesSent;
   DBarChartWidget *graphicsWidget;
   QTabWidget *serverInformationTab;
+  DPieChartWidget *dPieChartWidget;
 
   double tBytesReceived0;
   double tBytesReceived1;
@@ -140,6 +155,9 @@ private:
   QPushButton *pushButtonServerGraphicsFullScreen;
   QPushButton *pushButtonShowSlowQueries;
   QLabel *labelServerStatus;
+  DTitleLabel *dTitleLabelPieChart;
+  QWidget *widgetPieChart;
+  QList<QStringList> *result;
 
 public slots:
   void showInformation(int tabIndex);
