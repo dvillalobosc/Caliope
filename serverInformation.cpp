@@ -280,6 +280,27 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
     break;
   }
 
+  //case 7
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB: {
+    QVBoxLayout *serverGraphs4VLayout = new QVBoxLayout;
+    dTitleLabelExecutedQueries = new DTitleLabel;
+    serverGraphs4VLayout->addWidget(dTitleLabelExecutedQueries);
+    dPieChartWidgetExecutedQueries = new DPieChartWidget;
+    serverGraphs4VLayout->addWidget(dPieChartWidgetExecutedQueries);
+    serverGraphs4VLayout->setMargin(0);
+    widgetPieChartExecutedQueries = new QWidget;
+    widgetPieChartExecutedQueries->setLayout(serverGraphs4VLayout);
+    serverInformationTab->addTab(widgetPieChartExecutedQueries, QIcon(":/images/svg/view-statistics.svg"), " ");
+  }
+    break;
+  case StaticFunctions::PostgreSQL:
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+
   QVBoxLayout *mainVLayout = new QVBoxLayout;
   mainVLayout->setContentsMargins(3, 0, 3, 0);
   dTitleLabel = new DTitleLabel;
@@ -383,6 +404,8 @@ void ServerInformation::retranslateUi()
   pushButtonServerGraphicsFullScreen->setText(tr("Full screen"));
   dTitleLabelPieChart->setText(tr("HDD Usage Graphics"));
   serverInformationTab->setTabText(6, tr("HDD Usage Graphics"));
+  dTitleLabelExecutedQueries->setText(tr("Executed Queries"));
+  serverInformationTab->setTabText(7, tr("Executed Queries"));
 }
 
 void ServerInformation::setCurrentTab(unsigned int tabNumber)
@@ -464,6 +487,7 @@ void ServerInformation::showInformation(int tabIndex)
     switch(qApp->property("DBMSType").toInt()) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB: {
+      dPieChartWidget->clear();
       result = serverConnection->runQuery("SELECT `TABLE_SCHEMA`, CAST(SUM(`DATA_LENGTH` + `INDEX_LENGTH`) / 1024 / 1024 AS UNSIGNED) AS `Total` FROM `information_schema`.`TABLES` GROUP BY `TABLE_SCHEMA` ORDER BY `Total` DESC");
       result->takeLast(); //Remove the "Affected rows" line.
       int otherTotal = 0;
@@ -475,6 +499,26 @@ void ServerInformation::showInformation(int tabIndex)
       }
       dPieChartWidget->addEntry(tr("Other"), otherTotal);
     }
+      break;
+    case StaticFunctions::PostgreSQL:
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+    QApplication::restoreOverrideCursor();
+
+  }
+    break;
+  case 7: {
+    QApplication::setOverrideCursor(Qt::WaitCursor);
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      dPieChartWidgetExecutedQueries->clear();
+      result = serverConnection->runQuery("SELECT `VARIABLE_NAME`, `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` IN ('COM_DELETE', 'COM_INSERT', 'COM_SELECT', 'COM_UPDATE', 'COM_ROLLBACK') ORDER BY CAST(`VARIABLE_VALUE` AS UNSIGNED) DESC");
+      result->takeLast(); //Remove the "Affected rows" line.
+      for (int counter = 0; counter < result->count(); counter++)
+        dPieChartWidgetExecutedQueries->addEntry(result->at(counter).at(0), result->at(counter).at(1).toDouble());
       break;
     case StaticFunctions::PostgreSQL:
     case StaticFunctions::Undefined:
@@ -838,6 +882,11 @@ void DPieChartWidget::addEntry(const QString key, const double value)
   values.append(qMakePair(key, value));
 }
 
+void DPieChartWidget::clear()
+{
+  values.clear();
+}
+
 void DPieChartWidget::paintEvent(QPaintEvent *event)
 {
   Q_UNUSED(event);
@@ -877,7 +926,11 @@ void DPieChartWidget::paintEvent(QPaintEvent *event)
 
     QPoint textEnd(legendRect.right(), legendEntryRect.bottom());
     QRect textEntryRect(textStart, textEnd);
-    painter.drawText(textEntryRect, Qt::AlignVCenter, QString("%1: %2 MBs.").arg(values.at(counter).first).arg(values.at(counter).second));
+    painter.drawText(textEntryRect, Qt::AlignVCenter, QString("%1: %2. %3%.")
+                     .arg(values.at(counter).first)
+                     .arg(values.at(counter).second)
+                     .arg(QString::number((values.at(counter).second * 100 / totalValues), 'f', 2))
+                     );
   }
   QRect legendEntryRect(0,(fontMetrics().height() * 2) * currentPos, fontMetrics().height(), fontMetrics().height());
   currentPos++;
@@ -886,5 +939,5 @@ void DPieChartWidget::paintEvent(QPaintEvent *event)
   textStart = textStart + QPoint(fontMetrics().width('X'), 0);
   QPoint textEnd(legendRect.right(), legendEntryRect.bottom());
   QRect textEntryRect(textStart, textEnd);
-  painter.drawText(textEntryRect, Qt::AlignVCenter, tr("Total: %1 MBs.").arg(totalValues));
+  painter.drawText(textEntryRect, Qt::AlignVCenter, tr("Total: %1.").arg(totalValues));
 }
