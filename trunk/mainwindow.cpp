@@ -95,7 +95,7 @@ MainWindow::MainWindow()
   connect(projects, SIGNAL(updateTitle()), this, SLOT(setTitle()));
   connect(projects, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
   connect(projects, SIGNAL(addSubWindow(DMdiSubWindow*)), this, SLOT(addSubWindow(DMdiSubWindow*)));
-  connect(projects, SIGNAL(openFile(QString)), this, SLOT(openFile(QString)));
+  connect(projects, SIGNAL(openFile(QString,uint)), this, SLOT(openFile(QString,uint)));
   connect(projects, SIGNAL(statusBarMessagePopup(QString)), this, SLOT(statusBarMessagePopup(QString)));
 
   sqlWindowCounter = 0;
