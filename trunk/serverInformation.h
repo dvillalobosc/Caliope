@@ -41,6 +41,7 @@ class DPieChartWidget : public QWidget
 public:
   DPieChartWidget();
   void addEntry(const QString key, const double value);
+  void clear();
 
 protected:
   void paintEvent(QPaintEvent *event);
@@ -97,6 +98,7 @@ private:
   DBarChartWidget *graphicsWidget;
   QTabWidget *serverInformationTab;
   DPieChartWidget *dPieChartWidget;
+  DPieChartWidget *dPieChartWidgetExecutedQueries;
 
   double tBytesReceived0;
   double tBytesReceived1;
@@ -158,6 +160,8 @@ private:
   DTitleLabel *dTitleLabelPieChart;
   QWidget *widgetPieChart;
   QList<QStringList> *result;
+  DTitleLabel *dTitleLabelExecutedQueries;
+  QWidget *widgetPieChartExecutedQueries;
 
 public slots:
   void showInformation(int tabIndex);
