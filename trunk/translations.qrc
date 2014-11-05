@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>translations/caliope_es.qm</file>
-        <file>translations/caliope_es.ts</file>
+        <file>translations/caliope_es_cr.qm</file>
+        <file>translations/caliope_es_cr.ts</file>
     </qresource>
 </RCC>

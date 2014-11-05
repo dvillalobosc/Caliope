@@ -8987,6 +8987,18 @@ QStringList StaticFunctions::currentEditorTypeKeywords(const EditorTypes::Editor
   return QStringList();
 }
 
+QLocale StaticFunctions::currentLocale()
+{
+  QStringList languageData = qApp->property("ApplicationLanguage").toString().split("/");
+  QLocale::Language language(QLocale::English);
+  if (languageData.at(0) == "es")
+    language = QLocale::Spanish;
+  QLocale::Country country(QLocale::UnitedStates);
+  if (languageData.at(1) == "CR")
+    country = QLocale::CostaRica;
+  return QLocale(language, country);
+}
+
 QStringList StaticFunctions::htmlTags()
 {
   QStringList list = QStringList();

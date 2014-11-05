@@ -1987,16 +1987,16 @@ void MainWindow::createMenus()
   connect(languageActionGroup, SIGNAL(triggered(QAction*)), this, SLOT(swithLanguage(QAction*)));
 
   QSettings settings;
-  QAction *languageAction = new QAction("English", this);
+  QAction *languageAction = new QAction("English - U.S.A.", this);
   languageAction->setCheckable(true);
-  languageAction->setData("en");
+  languageAction->setData("en/US");
   languageAction->setChecked(settings.value("General/Language", "en") == languageAction->data().toString() ? true : false);
   languageAction->setIcon(QIcon::fromTheme("flag-us", QIcon(":/images/svg/flag-us.svg")));
   languageMenu->addAction(languageAction);
   languageActionGroup->addAction(languageAction);
-  languageAction = new QAction("Español", this);
+  languageAction = new QAction("Español - Costa Rica", this);
   languageAction->setCheckable(true);
-  languageAction->setData("es");
+  languageAction->setData("es/CR");
   languageAction->setChecked(settings.value("General/Language", "en") == languageAction->data().toString() ? true : false);
   languageAction->setIcon(QIcon::fromTheme("flag-cr", QIcon(":/images/svg/flag-cr.svg")));
   languageMenu->addAction(languageAction);
@@ -2025,10 +2025,13 @@ void MainWindow::createMenus()
 
 void MainWindow::swithLanguage(QAction *action)
 {
+  qApp->setProperty("ApplicationLanguage", action->data().toString());
+  ///Remember add entry in StaticFunctions::currentLocale()
+  QStringList languageData = action->data().toString().split("/");
   bool translatable = true;
-  if (action->data().toString() == "es")
-    translatable = mainTranslator->load("caliope_" + action->data().toString(), ":/translations");
-  if (action->data().toString() == "en")
+  if (action->data().toString() == "es/CR")
+    translatable = mainTranslator->load("caliope_" + languageData.at(0) + "_" + languageData.at(1).toLower(), ":/translations");
+  if (action->data().toString() == "en/US")
     mainTranslator->load("", "");
   if (translatable) {
     qApp->installTranslator(mainTranslator);
