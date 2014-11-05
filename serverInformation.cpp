@@ -928,7 +928,7 @@ void DPieChartWidget::paintEvent(QPaintEvent *event)
     QRect textEntryRect(textStart, textEnd);
     painter.drawText(textEntryRect, Qt::AlignVCenter, QString("%1: %2. %3%.")
                      .arg(values.at(counter).first)
-                     .arg(values.at(counter).second)
+                     .arg(QLocale(QLocale::system()).toString(values.at(counter).second, 'f', 2))
                      .arg(QString::number((values.at(counter).second * 100 / totalValues), 'f', 2))
                      );
   }
@@ -939,5 +939,5 @@ void DPieChartWidget::paintEvent(QPaintEvent *event)
   textStart = textStart + QPoint(fontMetrics().width('X'), 0);
   QPoint textEnd(legendRect.right(), legendEntryRect.bottom());
   QRect textEntryRect(textStart, textEnd);
-  painter.drawText(textEntryRect, Qt::AlignVCenter, tr("Total: %1.").arg(totalValues));
+  painter.drawText(textEntryRect, Qt::AlignVCenter, tr("Total: %1.").arg(QLocale(QLocale::system()).toString(totalValues, 'f', 2)));
 }
