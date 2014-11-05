@@ -23,6 +23,7 @@
 
 #include <QStringList>
 #include <QHash>
+#include <QLocale>
 
 #include "editortypes.h"
 
@@ -81,6 +82,7 @@ public:
   static QStringList explodeConnectionString(QString connectionName);
   static QString randomString(unsigned int length = 1);
   static QStringList currentEditorTypeKeywords(const EditorTypes::EditorType editorType);
+  static QLocale currentLocale();
 };
 
 #endif // STATICSYMBOLS_H
