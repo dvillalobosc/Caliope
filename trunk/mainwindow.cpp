@@ -98,15 +98,6 @@ MainWindow::MainWindow()
   connect(projects, SIGNAL(openFile(QString,uint)), this, SLOT(openFile(QString,uint)));
   connect(projects, SIGNAL(statusBarMessagePopup(QString)), this, SLOT(statusBarMessagePopup(QString)));
 
-  sqlWindowCounter = 0;
-  mysqlQueryWindowCounter = 0;
-  htmlWindowCounter = 0;
-  phpWindowCounter = 0;
-  cssWindowCounter = 0;
-  javascriptWindowCounter = 0;
-  textWindowCounter = 0;
-
-
 //  QSplashScreen *splash = new QSplashScreen(QPixmap(":/images/png/512/server-database.png"));
 //  splash->show();
 //  splash->showMessage("Task 1");
@@ -1673,6 +1664,13 @@ void MainWindow::connectToServerActionTriggered()
     statusBarMessage(tr("Connected successfully to: %1").arg(serverConnection->getHostName()));
     enabledDisableConnectionMenus(true);
     setTitle();
+    sqlWindowCounter = 0;
+    mysqlQueryWindowCounter = 0;
+    htmlWindowCounter = 0;
+    phpWindowCounter = 0;
+    cssWindowCounter = 0;
+    javascriptWindowCounter = 0;
+    textWindowCounter = 0;
   }
 }
 
