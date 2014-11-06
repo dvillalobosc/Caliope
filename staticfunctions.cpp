@@ -1621,7 +1621,6 @@ QStringList StaticFunctions::mariadbHelper()
       << "FLUSH TABLES tbl_name [, tbl_name]"
       << "FLUSH TABLES WITH READ LOCK"
       << "FLUSH TABLES"
-      << "FLUSH TABLES"
       << "FLUSH USER_RESOURCES"
       << "INSERT INTO"
       << "IS NULL"
