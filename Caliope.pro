@@ -104,7 +104,7 @@ RESOURCES += icons.qrc \
     styles.qrc \
     qmls.qrc \
     documentation.qrc
-TRANSLATIONS += translations/caliope_es.ts
+TRANSLATIONS += translations/caliope_es_cr.ts
 SUBDIRS += images
 
 UsePostgreSQL = 0
