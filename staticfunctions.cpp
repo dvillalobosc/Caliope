@@ -1369,7 +1369,6 @@ QStringList StaticFunctions::mariadbKeywords()
       << "INOUT"
       << "INSENSITIVE"
       << "INSERT"
-      << "INSERT INTO"
       << "INTERVAL"
       << "INTO"
       << "INVOKER"
