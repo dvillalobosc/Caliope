@@ -39,9 +39,11 @@ class DLineEdit;
 class DPieChartWidget : public QWidget
 {
 public:
-  DPieChartWidget();
+  DPieChartWidget(QString unit = QString());
   void addEntry(const QString key, const double value);
   void clear();
+  void setUnit(QString unit);
+  QString getUnit();
 
 protected:
   void paintEvent(QPaintEvent *event);
@@ -49,6 +51,7 @@ protected:
 private:
   //QHash<QString, int> values;
   QList<QPair<QString, double> > values;
+  QString unit;
 };
 
 class DBarChartWidget : public QWidget
@@ -99,6 +102,7 @@ private:
   QTabWidget *serverInformationTab;
   DPieChartWidget *dPieChartWidget;
   DPieChartWidget *dPieChartWidgetExecutedQueries;
+  DPieChartWidget *dPieChartWidgetDataSentAndRecived;
 
   double tBytesReceived0;
   double tBytesReceived1;
@@ -162,6 +166,8 @@ private:
   QList<QStringList> *result;
   DTitleLabel *dTitleLabelExecutedQueries;
   QWidget *widgetPieChartExecutedQueries;
+  DTitleLabel *dTitleLabelDataSentAndRecived;
+  QWidget *widgetPieChartDataSentAndRecived;
 
 public slots:
   void showInformation(int tabIndex);

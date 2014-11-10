@@ -266,7 +266,7 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
     QVBoxLayout *serverGraphs3VLayout = new QVBoxLayout;
     dTitleLabelPieChart = new DTitleLabel;
     serverGraphs3VLayout->addWidget(dTitleLabelPieChart);
-    dPieChartWidget = new DPieChartWidget;
+    dPieChartWidget = new DPieChartWidget("MB");
     serverGraphs3VLayout->addWidget(dPieChartWidget);
     serverGraphs3VLayout->setMargin(0);
     widgetPieChart = new QWidget;
@@ -287,12 +287,33 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
     QVBoxLayout *serverGraphs4VLayout = new QVBoxLayout;
     dTitleLabelExecutedQueries = new DTitleLabel;
     serverGraphs4VLayout->addWidget(dTitleLabelExecutedQueries);
-    dPieChartWidgetExecutedQueries = new DPieChartWidget;
+    dPieChartWidgetExecutedQueries = new DPieChartWidget(tr("queries"));
     serverGraphs4VLayout->addWidget(dPieChartWidgetExecutedQueries);
     serverGraphs4VLayout->setMargin(0);
     widgetPieChartExecutedQueries = new QWidget;
     widgetPieChartExecutedQueries->setLayout(serverGraphs4VLayout);
     serverInformationTab->addTab(widgetPieChartExecutedQueries, QIcon(":/images/svg/view-statistics.svg"), " ");
+  }
+    break;
+  case StaticFunctions::PostgreSQL:
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+
+  //case 8
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB: {
+    QVBoxLayout *serverGraphs5VLayout = new QVBoxLayout;
+    dTitleLabelDataSentAndRecived = new DTitleLabel;
+    serverGraphs5VLayout->addWidget(dTitleLabelDataSentAndRecived);
+    dPieChartWidgetDataSentAndRecived = new DPieChartWidget("MB");
+    serverGraphs5VLayout->addWidget(dPieChartWidgetDataSentAndRecived);
+    serverGraphs5VLayout->setMargin(0);
+    widgetPieChartDataSentAndRecived = new QWidget;
+    widgetPieChartDataSentAndRecived->setLayout(serverGraphs5VLayout);
+    serverInformationTab->addTab(widgetPieChartDataSentAndRecived, QIcon(":/images/svg/view-statistics.svg"), " ");
   }
     break;
   case StaticFunctions::PostgreSQL:
@@ -406,6 +427,8 @@ void ServerInformation::retranslateUi()
   serverInformationTab->setTabText(6, tr("HDD Usage Graphics"));
   dTitleLabelExecutedQueries->setText(tr("Executed Queries"));
   serverInformationTab->setTabText(7, tr("Executed Queries"));
+  dTitleLabelDataSentAndRecived->setText(tr("Data Sent/Received"));
+  serverInformationTab->setTabText(8, tr("Data Sent/Received"));
 }
 
 void ServerInformation::setCurrentTab(unsigned int tabNumber)
@@ -519,6 +542,25 @@ void ServerInformation::showInformation(int tabIndex)
       result->takeLast(); //Remove the "Affected rows" line.
       for (int counter = 0; counter < result->count(); counter++)
         dPieChartWidgetExecutedQueries->addEntry(result->at(counter).at(0), result->at(counter).at(1).toDouble());
+      break;
+    case StaticFunctions::PostgreSQL:
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+    QApplication::restoreOverrideCursor();
+
+  }
+  case 8: {
+    QApplication::setOverrideCursor(Qt::WaitCursor);
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      dPieChartWidgetDataSentAndRecived->clear();
+      result = serverConnection->runQuery("SELECT `VARIABLE_NAME`, `VARIABLE_VALUE` / 1024 / 1024 FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` IN ('BYTES_RECEIVED', 'BYTES_SENT')");
+      result->takeLast(); //Remove the "Affected rows" line.
+      for (int counter = 0; counter < result->count(); counter++)
+        dPieChartWidgetDataSentAndRecived->addEntry(result->at(counter).at(0), result->at(counter).at(1).toDouble());
       break;
     case StaticFunctions::PostgreSQL:
     case StaticFunctions::Undefined:
@@ -870,9 +912,9 @@ QRect DBarChartWidget::drawGraphicArea(QPainter &painter, QRect rect, const QStr
  * DPieChartWidget
  */
 
-DPieChartWidget::DPieChartWidget()
+DPieChartWidget::DPieChartWidget(QString unit)
 {
-
+  this->unit = unit;
 }
 
 void DPieChartWidget::addEntry(const QString key, const double value)
@@ -883,6 +925,16 @@ void DPieChartWidget::addEntry(const QString key, const double value)
 void DPieChartWidget::clear()
 {
   values.clear();
+}
+
+void DPieChartWidget::setUnit(QString unit)
+{
+  this->unit = unit;
+}
+
+QString DPieChartWidget::getUnit()
+{
+  return unit;
 }
 
 void DPieChartWidget::paintEvent(QPaintEvent *event)
@@ -937,5 +989,5 @@ void DPieChartWidget::paintEvent(QPaintEvent *event)
   textStart = textStart + QPoint(fontMetrics().width('X'), 0);
   QPoint textEnd(legendRect.right(), legendEntryRect.bottom());
   QRect textEntryRect(textStart, textEnd);
-  painter.drawText(textEntryRect, Qt::AlignVCenter, tr("Total: %1.").arg(StaticFunctions::currentLocale().toString(totalValues, 'f', 2)));
+  painter.drawText(textEntryRect, Qt::AlignVCenter, tr("Total: %1 %2.").arg(StaticFunctions::currentLocale().toString(totalValues, 'f', 2)).arg(unit));
 }
