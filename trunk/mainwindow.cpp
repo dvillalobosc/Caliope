@@ -145,6 +145,9 @@ MainWindow::MainWindow()
   connect(charsetMapper, SIGNAL(mapped(QString)), this, SLOT(changeCharsetSlot(QString)));
   databaseInformationMapper = new QSignalMapper(this);
   connect(databaseInformationMapper, SIGNAL(mapped(QString)), this, SLOT(databaseInformationSlot(QString)));
+  customReportMapper = new QSignalMapper(this);
+  connect(customReportMapper, SIGNAL(mapped(QString)), this, SLOT(openCustomReport(QString)));
+
 
   connect(showFileToolBarAction, SIGNAL(triggered(bool)), fileToolbar, SLOT(setVisible(bool)));
 
@@ -613,6 +616,10 @@ void MainWindow::createActions()
   actionReportDataSentReceived = new QAction(this);
   actionReportDataSentReceived->setIcon(QIcon(":/images/svg/view-statistics.svg"));
   connect(actionReportDataSentReceived, SIGNAL(triggered()), this, SLOT(actionReportDataSentReceivedTriggered()));
+
+  actionCreateCustomReport = new QAction(this);
+  actionCreateCustomReport->setIcon(QIcon::fromTheme("document-new", QIcon(":/images/svg/document-new-6.svg")));
+  connect(actionCreateCustomReport, SIGNAL(triggered()), this, SLOT(actionCreateCustomReportTriggered()));
 }
 
 void MainWindow::objectsDiagramActionTriggered()
@@ -1215,6 +1222,46 @@ void MainWindow::actionReportDataSentReceivedTriggered()
   dReportViewerDataSentReceived->showReportData();
 }
 
+void MainWindow::actionCreateCustomReportTriggered()
+{
+  DReportViewer *dReportViewer = new DReportViewer(0, tr("Custom reports"), ReportTypes::None);
+  dReportViewer->addCustomReport();
+}
+
+void MainWindow::menuReportsAboutToShowSlot()
+{
+  menuReports->clear();
+  menuReports->addAction(actionReportServerInformation);
+  menuReports->addAction(actionReportHDDUsage);
+  menuReports->addAction(actionReportDataSentReceived);
+  menuReports->addAction(actionReportExecutedQueries);
+  menuReports->addSeparator()->setText(tr("Custom reports"));
+
+  QSettings settings;
+  settings.beginGroup("CustomReports");
+  QStringList reports = settings.allKeys();
+  foreach (QString report, reports) {
+    QAction *action = menuReports->addAction(QIcon(":/images/svg/view-statistics.svg"), report);
+    connect(action, SIGNAL(triggered()), customReportMapper, SLOT(map()));
+    customReportMapper->setMapping(action, report);
+  }
+  settings.endGroup();
+
+  connectionMenu->addSeparator();
+  menuReports->addAction(actionCreateCustomReport);
+}
+
+void MainWindow::openCustomReport(QString report)
+{
+  QSettings settings;
+  QStringList data = settings.value("CustomReports/" + report).toString().split("#", QString::SkipEmptyParts);
+  dReportViewerCustomReport = new DReportViewer(serverConnection, report, (ReportTypes::ReportType) data.at(1).split(":").at(1).toInt(), data.at(0).split(":").at(1));
+  connect(dReportViewerCustomReport, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
+  dReportViewerCustomReport->setSqlQuery(data.at(2).split(":").at(1));
+  addSubWindow(dReportViewerCustomReport);
+  dReportViewerCustomReport->showReportData();
+}
+
 void MainWindow::finishedDatabaseMigrationSlot(int exitCode)
 {
   if (exitCode == QProcess::NormalExit && processMariaDBDump->exitCode() == QProcess::NormalExit) {
@@ -1493,6 +1540,9 @@ void MainWindow::retranslateUi()
 
   actionReportDataSentReceived->setText(tr("Data Sent/Received"));
   actionReportDataSentReceived->setStatusTip(actionReportDataSentReceived->text());
+
+  actionCreateCustomReport->setText(tr("Create a custom report"));
+  actionCreateCustomReport->setStatusTip(actionCreateCustomReport->text());
 }
 
 void MainWindow::createInitialSettings()
@@ -2049,10 +2099,7 @@ void MainWindow::createMenus()
 
   menuReports = new QMenu(this);
   menuReports->setIcon(QIcon(":/images/svg/view-statistics.svg"));
-  menuReports->addAction(actionReportServerInformation);
-  menuReports->addAction(actionReportHDDUsage);
-  menuReports->addAction(actionReportDataSentReceived);
-  menuReports->addAction(actionReportExecutedQueries);
+  connect(menuReports, SIGNAL(aboutToShow()), this, SLOT(menuReportsAboutToShowSlot()));
   menuReports->setDisabled(true);
   connectionMenu->addSeparator();
   connectionMenu->addMenu(menuReports);

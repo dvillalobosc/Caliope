@@ -7,11 +7,19 @@
 #include <QSettings>
 #include <QPrinter>
 #include <QImageWriter>
+#include <QDialogButtonBox>
+#include <QComboBox>
+#include <QFormLayout>
+#include <QLineEdit>
+#include <QCompleter>
 
 #include "dreportviewer.h"
 #include "dtitlelabel.h"
 #include "staticfunctions.h"
 #include "dpiechartwidget.h"
+#include "basetexteditor.h"
+
+#include <QDebug>
 
 DReportViewer::DReportViewer(DBMS *serverConnection, QString reportTitle, ReportTypes::ReportType reportType, QString unit)
 {
@@ -78,6 +86,62 @@ void DReportViewer::setSqlQuery(QString sqlQuery)
 QString DReportViewer::getSqlQuery()
 {
   return sqlQuery;
+}
+
+void DReportViewer::addCustomReport()
+{
+  QDialog *dialog = new QDialog(this);
+
+  QVBoxLayout *verticalLayout = new QVBoxLayout;
+  verticalLayout->addWidget(new DTitleLabel(windowTitle()));
+
+  comboReportName = new QComboBox();
+  connect(comboReportName, SIGNAL(activated(QString)), this, SLOT(fillCustomReportwidgets(QString)));
+  comboReportName->setEditable(true);
+  settings.beginGroup("CustomReports");
+  QStringList reports = settings.allKeys();
+  foreach (QString report, reports)
+    comboReportName->addItem(report);
+
+  completer = new QCompleter(reports, comboReportName);
+#if QT_VERSION > 0x040801
+    completer->setFilterMode(Qt::MatchContains);
+#endif
+  completer->setCaseSensitivity(Qt::CaseInsensitive);
+  comboReportName->setCompleter(completer);
+
+  lineEditUnit = new QLineEdit;
+
+  comboReportType = new QComboBox();
+  //PlainText, BarChart, PieChart
+  comboReportType->addItem(tr("Plain text"), ReportTypes::PlainText);
+  //comboReportType->addItem(tr("Bar chart"), ReportTypes::BarChart);
+  comboReportType->addItem(tr("Pie chart"), ReportTypes::PieChart);
+
+  baseTextEditor = new BaseTextEditor(EditorTypes::SQLQuery);
+
+  QFormLayout *formLayout = new QFormLayout;
+  formLayout->addRow(tr("&Report Name:"), comboReportName);
+  formLayout->addRow(tr("&Unit:"), lineEditUnit);
+  formLayout->addRow(tr("&Type:"), comboReportType);
+  formLayout->addRow(baseTextEditor);
+  verticalLayout->addLayout(formLayout);
+
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help);
+  connect(buttonBox, SIGNAL(accepted()), dialog, SLOT(accept()));
+  connect(buttonBox, SIGNAL(rejected()), dialog, SLOT(reject()));
+  verticalLayout->addWidget(buttonBox);
+
+  fillCustomReportwidgets(comboReportName->currentText());
+  comboReportName->lineEdit()->selectAll();
+
+  dialog->setLayout(verticalLayout);
+  if (dialog->exec() == QDialog::Accepted) {
+    settings.setValue(comboReportName->currentText(), QString("#Unit:%1#Type:%2#SQLQuery:%3")
+                      .arg(lineEditUnit->text())
+                      .arg(comboReportType->currentData().toString())
+                      .arg(baseTextEditor->toPlainText()));
+  }
 }
 
 void DReportViewer::showReportData()
@@ -149,4 +213,12 @@ void DReportViewer::pushButtonExportToImageClicked()
   pixmap.save(file, "PNG", 5);
   QApplication::restoreOverrideCursor();
   statusBarMessage(tr("File saved at: %1").arg(file));
+}
+
+void DReportViewer::fillCustomReportwidgets(QString reportName)
+{
+  QStringList data = settings.value(reportName).toString().split("#", QString::SkipEmptyParts);
+  lineEditUnit->setText(data.at(0).split(":").at(1));
+  comboReportType->setCurrentIndex(comboReportType->findData(data.at(1).split(":").at(1).toInt()));
+  baseTextEditor->setPlainText(data.at(2).split(":").at(1));
 }
