@@ -60,6 +60,7 @@ class QProcess;
 class QProgressDialog;
 class DMdiSubWindow;
 class DQueryLog;
+class DReportViewer;
 
 /*! \brief This class represents the main class.
  *
@@ -166,6 +167,10 @@ private slots:
   void viewDWebViewPageSource(QString pageSource);
   void mariaDBGUIHelpActionTriggered();
   void openURLSlot(QString url);
+  void actionReportServerInformationTriggered();
+  void actionReportHDDUsageTriggered();
+  void actionReportExecutedQueriesTriggered();
+  void actionReportDataSentReceivedTriggered();
 
 public slots:
   void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 2000);
@@ -317,6 +322,15 @@ private:
   QSignalMapper *databaseInformationMapper;
   QAction *takeASnapShotAction;
   QAction *caliopeSourceDocumentationAction;
+  QMenu *menuReports;
+  QAction *actionReportServerInformation;
+  DReportViewer *dReportViewerServerInformation;
+  DReportViewer *dReportViewerHDDUsage;
+  QAction *actionReportHDDUsage;
+  DReportViewer *dReportViewerExecutedQueries;
+  QAction *actionReportExecutedQueries;
+  DReportViewer *dReportViewerDataSentReceived;
+  QAction *actionReportDataSentReceived;
 
   /*! \brief This is the code executed when aboutMySQLGUIAction is triggered.
    *

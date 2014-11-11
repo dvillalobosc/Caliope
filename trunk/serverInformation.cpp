@@ -41,7 +41,6 @@
 ServerInformation::ServerInformation(DBMS *serverConnection)
 {
   this->serverConnection = serverConnection;
-  result = new QList<QStringList>;
   setWindowIcon(QIcon::fromTheme("dialog-information", QIcon(":/images/svg/dialog-information-4.svg")));
   serverInformationTab = new QTabWidget;
   serverInformationTab->setMovable(true);
@@ -75,7 +74,6 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
   pushButtonShowSlowQueries = new QPushButton(this);
   pushButtonShowSlowQueries->setIcon(QIcon::fromTheme("view-refresh", QIcon(":/images/svg/view-refresh-7.svg")));
   connect(pushButtonShowSlowQueries, SIGNAL(clicked()), this, SLOT(serverSlowQueriesTxt()));
-
 
   serverStatus = new QPlainTextEdit;
   serverStatus->setFont(StaticFunctions::fixedWidthFont());
@@ -259,69 +257,6 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
   widgetHDDUsage->setLayout(hddUsageStatusVLayout);
   serverInformationTab->addTab(widgetHDDUsage, QIcon::fromTheme("drive-harddisk", QIcon(":/images/svg/drive-harddisk-8.svg")), " ");
 
-  //case 6
-  switch(qApp->property("DBMSType").toInt()) {
-  case StaticFunctions::MySQL:
-  case StaticFunctions::MariaDB: {
-    QVBoxLayout *serverGraphs3VLayout = new QVBoxLayout;
-    dTitleLabelPieChart = new DTitleLabel;
-    serverGraphs3VLayout->addWidget(dTitleLabelPieChart);
-    dPieChartWidget = new DPieChartWidget("MB");
-    serverGraphs3VLayout->addWidget(dPieChartWidget);
-    serverGraphs3VLayout->setMargin(0);
-    widgetPieChart = new QWidget;
-    widgetPieChart->setLayout(serverGraphs3VLayout);
-    serverInformationTab->addTab(widgetPieChart, QIcon(":/images/svg/view-statistics.svg"), " ");
-  }
-    break;
-  case StaticFunctions::PostgreSQL:
-  case StaticFunctions::Undefined:
-  default:
-    break;
-  }
-
-  //case 7
-  switch(qApp->property("DBMSType").toInt()) {
-  case StaticFunctions::MySQL:
-  case StaticFunctions::MariaDB: {
-    QVBoxLayout *serverGraphs4VLayout = new QVBoxLayout;
-    dTitleLabelExecutedQueries = new DTitleLabel;
-    serverGraphs4VLayout->addWidget(dTitleLabelExecutedQueries);
-    dPieChartWidgetExecutedQueries = new DPieChartWidget(tr("queries"));
-    serverGraphs4VLayout->addWidget(dPieChartWidgetExecutedQueries);
-    serverGraphs4VLayout->setMargin(0);
-    widgetPieChartExecutedQueries = new QWidget;
-    widgetPieChartExecutedQueries->setLayout(serverGraphs4VLayout);
-    serverInformationTab->addTab(widgetPieChartExecutedQueries, QIcon(":/images/svg/view-statistics.svg"), " ");
-  }
-    break;
-  case StaticFunctions::PostgreSQL:
-  case StaticFunctions::Undefined:
-  default:
-    break;
-  }
-
-  //case 8
-  switch(qApp->property("DBMSType").toInt()) {
-  case StaticFunctions::MySQL:
-  case StaticFunctions::MariaDB: {
-    QVBoxLayout *serverGraphs5VLayout = new QVBoxLayout;
-    dTitleLabelDataSentAndRecived = new DTitleLabel;
-    serverGraphs5VLayout->addWidget(dTitleLabelDataSentAndRecived);
-    dPieChartWidgetDataSentAndRecived = new DPieChartWidget("MB");
-    serverGraphs5VLayout->addWidget(dPieChartWidgetDataSentAndRecived);
-    serverGraphs5VLayout->setMargin(0);
-    widgetPieChartDataSentAndRecived = new QWidget;
-    widgetPieChartDataSentAndRecived->setLayout(serverGraphs5VLayout);
-    serverInformationTab->addTab(widgetPieChartDataSentAndRecived, QIcon(":/images/svg/view-statistics.svg"), " ");
-  }
-    break;
-  case StaticFunctions::PostgreSQL:
-  case StaticFunctions::Undefined:
-  default:
-    break;
-  }
-
   QVBoxLayout *mainVLayout = new QVBoxLayout;
   mainVLayout->setContentsMargins(3, 0, 3, 0);
   dTitleLabel = new DTitleLabel;
@@ -423,12 +358,6 @@ void ServerInformation::retranslateUi()
   labelFilter->setText(tr("Filter:"));
   lineEditFilter->setPlaceholderText(tr("Three characters at least"));
   pushButtonServerGraphicsFullScreen->setText(tr("Full screen"));
-  dTitleLabelPieChart->setText(tr("HDD Usage Graphics"));
-  serverInformationTab->setTabText(6, tr("HDD Usage Graphics"));
-  dTitleLabelExecutedQueries->setText(tr("Executed Queries"));
-  serverInformationTab->setTabText(7, tr("Executed Queries"));
-  dTitleLabelDataSentAndRecived->setText(tr("Data Sent/Received"));
-  serverInformationTab->setTabText(8, tr("Data Sent/Received"));
 }
 
 void ServerInformation::setCurrentTab(unsigned int tabNumber)
@@ -504,72 +433,6 @@ void ServerInformation::showInformation(int tabIndex)
     break;
   case 5:
     hddUsageData();
-    break;
-  case 6: {
-    QApplication::setOverrideCursor(Qt::WaitCursor);
-    switch(qApp->property("DBMSType").toInt()) {
-    case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB: {
-      dPieChartWidget->clear();
-      result = serverConnection->runQuery("SELECT `TABLE_SCHEMA`, CAST(SUM(`DATA_LENGTH` + `INDEX_LENGTH`) / 1024 / 1024 AS UNSIGNED) AS `Total` FROM `information_schema`.`TABLES` GROUP BY `TABLE_SCHEMA` ORDER BY `Total` DESC");
-      result->takeLast(); //Remove the "Affected rows" line.
-      int otherTotal = 0;
-      for (int counter = 0; counter < result->count(); counter++) {
-        if (result->at(counter).at(1).toInt() >= 10) //Only Database bigger than 10 MB are shown indivialy.
-          dPieChartWidget->addEntry(result->at(counter).at(0), result->at(counter).at(1).toDouble());
-        else
-          otherTotal += result->at(counter).at(1).toInt();
-      }
-      dPieChartWidget->addEntry(tr("Other"), otherTotal);
-    }
-      break;
-    case StaticFunctions::PostgreSQL:
-    case StaticFunctions::Undefined:
-    default:
-      break;
-    }
-    QApplication::restoreOverrideCursor();
-
-  }
-    break;
-  case 7: {
-    QApplication::setOverrideCursor(Qt::WaitCursor);
-    switch(qApp->property("DBMSType").toInt()) {
-    case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB:
-      dPieChartWidgetExecutedQueries->clear();
-      result = serverConnection->runQuery("SELECT `VARIABLE_NAME`, `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` IN ('COM_DELETE', 'COM_INSERT', 'COM_SELECT', 'COM_UPDATE', 'COM_ROLLBACK') ORDER BY CAST(`VARIABLE_VALUE` AS UNSIGNED) DESC");
-      result->takeLast(); //Remove the "Affected rows" line.
-      for (int counter = 0; counter < result->count(); counter++)
-        dPieChartWidgetExecutedQueries->addEntry(result->at(counter).at(0), result->at(counter).at(1).toDouble());
-      break;
-    case StaticFunctions::PostgreSQL:
-    case StaticFunctions::Undefined:
-    default:
-      break;
-    }
-    QApplication::restoreOverrideCursor();
-
-  }
-  case 8: {
-    QApplication::setOverrideCursor(Qt::WaitCursor);
-    switch(qApp->property("DBMSType").toInt()) {
-    case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB:
-      dPieChartWidgetDataSentAndRecived->clear();
-      result = serverConnection->runQuery("SELECT `VARIABLE_NAME`, `VARIABLE_VALUE` / 1024 / 1024 FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` IN ('BYTES_RECEIVED', 'BYTES_SENT')");
-      result->takeLast(); //Remove the "Affected rows" line.
-      for (int counter = 0; counter < result->count(); counter++)
-        dPieChartWidgetDataSentAndRecived->addEntry(result->at(counter).at(0), result->at(counter).at(1).toDouble());
-      break;
-    case StaticFunctions::PostgreSQL:
-    case StaticFunctions::Undefined:
-    default:
-      break;
-    }
-    QApplication::restoreOverrideCursor();
-
-  }
     break;
   // default: Q_ASSERT(false);
   }
@@ -669,43 +532,7 @@ void ServerInformation::serverStatusTxt()
   switch(qApp->property("DBMSType").toInt()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
-    output += serverConnection->outputAsTable("SELECT '" + tr("Uptime in days") + "' AS `" + tr("Variable") + "`,  LPAD(FORMAT(`VARIABLE_VALUE` / 60 /60 / 24, 2), 12, ' ') AS `" + tr("Value") + "`, '" + tr("The number of days that the server has been up.") + "' AS `" + tr("Description")+ "` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'UPTIME'"
-                                              " UNION"
-                                              " SELECT '" + tr("Aborted clients") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The number of connections that were aborted because the client died without closing the connection properly.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'ABORTED_CLIENTS'"
-                                              " UNION"
-                                              " SELECT '" + tr("Aborted clients per day") + "', LPAD(FORMAT("
-                                              "  (SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'ABORTED_CLIENTS')"
-                                              "   / (SELECT `VARIABLE_VALUE` / 60 /60 / 24 AS `Value` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'UPTIME'), 2), 12, ' ')"
-                                              " , '" + tr("Rate of aborted clients per day.") + "'"
-                                              " UNION"
-                                              " SELECT '" + tr("Aborted connections") + "', LPAD(`VARIABLE_VALUE`, 12, ' '), '" + tr("The number of failed attempts to connect to the database server.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'ABORTED_CONNECTS'"
-                                              " UNION"
-                                              " SELECT '" + tr("Executed rollbacks") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The number of times each rollback statement has been executed.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'COM_ROLLBACK'"
-                                              " UNION"
-                                              " SELECT '" + tr("Executed queries") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The number of statements executed by the server.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'QUERIES'"
-                                              " UNION"
-                                              " SELECT '" + tr("Rollbacks per second") + "', LPAD(FORMAT("
-                                              "   ((SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'COM_ROLLBACK')"
-                                              "   / (SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'UPTIME')), 2), 12, ' ')"
-                                              " , '" + tr("Rate of rollbacks per second.") + "'"
-                                              " UNION"
-                                              " SELECT '" + tr("Temporary disk tables created") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The number of internal on-disk temporary tables created by the server while executing statements.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'CREATED_TMP_DISK_TABLES'"
-                                              " UNION"
-                                              " SELECT '" + tr("Free cache memory") + "', LPAD(FORMAT(`VARIABLE_VALUE` / 1024, 0), 12, ' '), '" + tr("The amount of free memory for the query cache.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'QCACHE_FREE_MEMORY'"
-                                              " UNION"
-                                              " SELECT '" + tr("Joins with full table scan") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The number of joins that perform table scans because they do not use indexes.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'SELECT_FULL_JOIN'"
-                                              " UNION"
-                                              " SELECT '" + tr("Log slow queries") + "', LPAD(`VARIABLE_VALUE`, 12, ' '), '" + tr("Is the slow queries logging enabled?") + "' FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'LOG_SLOW_QUERIES'"
-                                              " UNION"
-                                              " SELECT '" + tr("Slow queries time in seconds") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The number of seconds that determinate a slow query.") + "' FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'LONG_QUERY_TIME'"
-                                              " UNION"
-                                              " SELECT '" + tr("Count of slow queries") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The number of queries that have taken more than the allowed time.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'SLOW_QUERIES'"
-                                              " UNION"
-                                              " SELECT '" + tr("Idle connections") + "', LPAD(COUNT(*), 12, ' '), '" + tr("The number of connections that has been idle for more than 30 seconds.") + "' FROM `information_schema`.`PROCESSLIST` WHERE `TIME` >  30 AND `COMMAND` NOT IN ('Daemon', 'Binlog Dump')"
-                                              " UNION"
-                                              " SELECT '" + tr("Max connections aviable") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The maximum permitted number of simultaneous client connections.") + "' FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'MAX_CONNECTIONS'"
-                                              " UNION"
-                                              " SELECT '" + tr("Used connections") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The maximum number of connections that have been in use simultaneously since the server started.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'MAX_USED_CONNECTIONS'");
+    output += serverConnection->outputAsTable(StaticFunctions::serverInformationQuery());
     output += "\n" + tr("Average of slow queries per day since server started.") + "\n";
     output += serverConnection->outputAsTable("SELECT DATE(`start_time`) AS `" + tr("Date") + "`, DAYNAME(`start_time`) AS `" + tr("Day") + "`, LPAD(FORMAT(COUNT(*), 0), 13, ' ') AS `" + tr("Total queries") + "`"
                                                             ", LPAD(FORMAT(AVG(`query_time`), 2), 20,  ' ') AS `" + tr("Average (in seconds)") + "` FROM `mysql`.`slow_log` WHERE `start_time` >= (SELECT FROM_UNIXTIME("
@@ -906,88 +733,4 @@ QRect DBarChartWidget::drawGraphicArea(QPainter &painter, QRect rect, const QStr
   rect = drawWrapText(painter, rect, tr("Max: %1").arg(maximun));
   rect = drawWrapText(painter, rect, tr("Min: %1").arg(minimun));
   return QRect(margin, rect.y() + rect.height() + widgetSeparator1 + widgetSeparator2, graphAreaWidth, graphAreaHeight);
-}
-
-/*
- * DPieChartWidget
- */
-
-DPieChartWidget::DPieChartWidget(QString unit)
-{
-  this->unit = unit;
-}
-
-void DPieChartWidget::addEntry(const QString key, const double value)
-{
-  values.append(qMakePair(key, value));
-}
-
-void DPieChartWidget::clear()
-{
-  values.clear();
-}
-
-void DPieChartWidget::setUnit(QString unit)
-{
-  this->unit = unit;
-}
-
-QString DPieChartWidget::getUnit()
-{
-  return unit;
-}
-
-void DPieChartWidget::paintEvent(QPaintEvent *event)
-{
-  Q_UNUSED(event);
-  QPainter painter(this);
-  painter.setRenderHint(QPainter::Antialiasing, true);
-
-  double totalValues = 0;
-  for (int counter = 0; counter < values.count(); counter++)
-    totalValues += values.at(counter).second;
-
-  QStringList colorNames = QColor::colorNames();
-  int colorPos = 13;
-  QRect pieRect(10, 10, rect().height() - 10, rect().height() - 20);
-
-  QRect legendRect = rect();
-  legendRect.setLeft(pieRect.width());
-  legendRect.adjust(20, 20, -10, -10);
-  int lastAngleOffset = 0;
-  int currentPos = 0;
-
-  for (int counter = 0; counter < values.count(); counter++) {
-    painter.setBrush(QBrush(QColor(colorNames.at(colorPos++ % colorNames.count()))));
-
-    int angle = (int) (16 * 360 * (values.at(counter).second / totalValues));
-
-    painter.drawPie(pieRect, lastAngleOffset, angle);
-    lastAngleOffset += angle;
-
-    QRect legendEntryRect(0,(fontMetrics().height() * 2) * currentPos, fontMetrics().height(), fontMetrics().height());
-    currentPos++;
-    legendEntryRect.translate(legendRect.topLeft());
-
-    painter.drawRect(legendEntryRect);
-
-    QPoint textStart = legendEntryRect.topRight();
-    textStart = textStart + QPoint(fontMetrics().width('X'), 0);
-
-    QPoint textEnd(legendRect.right(), legendEntryRect.bottom());
-    QRect textEntryRect(textStart, textEnd);
-    painter.drawText(textEntryRect, Qt::AlignVCenter, QString("%1: %2. %3%.")
-                     .arg(values.at(counter).first)
-                     .arg(StaticFunctions::currentLocale().toString(values.at(counter).second, 'f', 2))
-                     .arg(QString::number((values.at(counter).second * 100 / totalValues), 'f', 2))
-                     );
-  }
-  QRect legendEntryRect(0,(fontMetrics().height() * 2) * currentPos, fontMetrics().height(), fontMetrics().height());
-  currentPos++;
-  legendEntryRect.translate(legendRect.topLeft());
-  QPoint textStart = legendEntryRect.topRight();
-  textStart = textStart + QPoint(fontMetrics().width('X'), 0);
-  QPoint textEnd(legendRect.right(), legendEntryRect.bottom());
-  QRect textEntryRect(textStart, textEnd);
-  painter.drawText(textEntryRect, Qt::AlignVCenter, tr("Total: %1 %2.").arg(StaticFunctions::currentLocale().toString(totalValues, 'f', 2)).arg(unit));
 }
