@@ -8997,6 +8997,58 @@ QLocale StaticFunctions::currentLocale()
   return QLocale(language, country);
 }
 
+QString StaticFunctions::serverInformationQuery()
+{
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    return "SELECT '" + tr("Uptime in days") + "' AS `" + tr("Variable") + "`,  LPAD(FORMAT(`VARIABLE_VALUE` / 60 /60 / 24, 2), 12, ' ') AS `" + tr("Value") + "`, '" + tr("The number of days that the server has been up.") + "' AS `" + tr("Description")+ "` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'UPTIME'"
+        " UNION"
+        " SELECT '" + tr("Aborted clients") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The number of connections that were aborted because the client died without closing the connection properly.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'ABORTED_CLIENTS'"
+        " UNION"
+        " SELECT '" + tr("Aborted clients per day") + "', LPAD(FORMAT("
+        "  (SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'ABORTED_CLIENTS')"
+        "   / (SELECT `VARIABLE_VALUE` / 60 /60 / 24 AS `Value` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'UPTIME'), 2), 12, ' ')"
+        " , '" + tr("Rate of aborted clients per day.") + "'"
+        " UNION"
+        " SELECT '" + tr("Aborted connections") + "', LPAD(`VARIABLE_VALUE`, 12, ' '), '" + tr("The number of failed attempts to connect to the database server.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'ABORTED_CONNECTS'"
+        " UNION"
+        " SELECT '" + tr("Executed rollbacks") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The number of times each rollback statement has been executed.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'COM_ROLLBACK'"
+        " UNION"
+        " SELECT '" + tr("Executed queries") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The number of statements executed by the server.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'QUERIES'"
+        " UNION"
+        " SELECT '" + tr("Rollbacks per second") + "', LPAD(FORMAT("
+        "   ((SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'COM_ROLLBACK')"
+        "   / (SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'UPTIME')), 2), 12, ' ')"
+        " , '" + tr("Rate of rollbacks per second.") + "'"
+        " UNION"
+        " SELECT '" + tr("Temporary disk tables created") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The number of internal on-disk temporary tables created by the server while executing statements.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'CREATED_TMP_DISK_TABLES'"
+        " UNION"
+        " SELECT '" + tr("Free cache memory") + "', LPAD(FORMAT(`VARIABLE_VALUE` / 1024, 0), 12, ' '), '" + tr("The amount of free memory for the query cache.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'QCACHE_FREE_MEMORY'"
+        " UNION"
+        " SELECT '" + tr("Joins with full table scan") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The number of joins that perform table scans because they do not use indexes.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'SELECT_FULL_JOIN'"
+        " UNION"
+        " SELECT '" + tr("Log slow queries") + "', LPAD(`VARIABLE_VALUE`, 12, ' '), '" + tr("Is the slow queries logging enabled?") + "' FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'LOG_SLOW_QUERIES'"
+        " UNION"
+        " SELECT '" + tr("Slow queries time in seconds") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The number of seconds that determinate a slow query.") + "' FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'LONG_QUERY_TIME'"
+        " UNION"
+        " SELECT '" + tr("Count of slow queries") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The number of queries that have taken more than the allowed time.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'SLOW_QUERIES'"
+        " UNION"
+        " SELECT '" + tr("Idle connections") + "', LPAD(COUNT(*), 12, ' '), '" + tr("The number of connections that has been idle for more than 30 seconds.") + "' FROM `information_schema`.`PROCESSLIST` WHERE `TIME` >  30 AND `COMMAND` NOT IN ('Daemon', 'Binlog Dump')"
+        " UNION"
+        " SELECT '" + tr("Max connections aviable") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The maximum permitted number of simultaneous client connections.") + "' FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'MAX_CONNECTIONS'"
+        " UNION"
+        " SELECT '" + tr("Used connections") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The maximum number of connections that have been in use simultaneously since the server started.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'MAX_USED_CONNECTIONS'";
+    break;
+  case StaticFunctions::PostgreSQL:
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QString();
+}
+
 QStringList StaticFunctions::htmlTags()
 {
   QStringList list = QStringList();

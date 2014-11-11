@@ -46,7 +46,9 @@ HEADERS += \
     dmdisubwindow.h \
     dstackedwidget.h \
     dquerylog.h \
-    applicationtheme.h
+    applicationtheme.h \
+    dreportviewer.h \
+    dpiechartwidget.h
 SOURCES += \
     main.cpp \
     connectdialog.cpp \
@@ -96,7 +98,9 @@ SOURCES += \
     dmdisubwindow.cpp \
     dstackedwidget.cpp \
     dquerylog.cpp \
-    applicationtheme.cpp
+    applicationtheme.cpp \
+    dreportviewer.cpp \
+    dpiechartwidget.cpp
 FORMS +=
 RESOURCES += icons.qrc \
     styles.qrc \

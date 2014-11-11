@@ -78,6 +78,7 @@
 #include "dmdisubwindow.h"
 #include "dquerylog.h"
 #include "basetexteditor.h"
+#include "dreportviewer.h"
 
 #include "QDebug"
 
@@ -596,6 +597,22 @@ void MainWindow::createActions()
   caliopeSourceDocumentationAction = new QAction(this);
   caliopeSourceDocumentationAction->setIcon(windowIcon());
   connect(caliopeSourceDocumentationAction, SIGNAL(triggered()), this, SLOT(caliopeSourceDocumentationActionTriggered()));
+
+  actionReportServerInformation = new QAction(this);
+  actionReportServerInformation->setIcon(QIcon(":/images/svg/view-statistics.svg"));
+  connect(actionReportServerInformation, SIGNAL(triggered()), this, SLOT(actionReportServerInformationTriggered()));
+
+  actionReportHDDUsage = new QAction(this);
+  actionReportHDDUsage->setIcon(QIcon(":/images/svg/view-statistics.svg"));
+  connect(actionReportHDDUsage, SIGNAL(triggered()), this, SLOT(actionReportHDDUsageTriggered()));
+
+  actionReportExecutedQueries = new QAction(this);
+  actionReportExecutedQueries->setIcon(QIcon(":/images/svg/view-statistics.svg"));
+  connect(actionReportExecutedQueries, SIGNAL(triggered()), this, SLOT(actionReportExecutedQueriesTriggered()));
+
+  actionReportDataSentReceived = new QAction(this);
+  actionReportDataSentReceived->setIcon(QIcon(":/images/svg/view-statistics.svg"));
+  connect(actionReportDataSentReceived, SIGNAL(triggered()), this, SLOT(actionReportDataSentReceivedTriggered()));
 }
 
 void MainWindow::objectsDiagramActionTriggered()
@@ -994,6 +1011,7 @@ void MainWindow::connectionMenuAboutToShowSlot()
     replicationMenu->setEnabled(false);
     maintenanceMenu->setEnabled(false);
     shutdownServerAction->setEnabled(false);
+    menuReports->setEnabled(false);
   } else {
     closeCurrentConnectionAction->setEnabled(true);
     changeCharsetMenu->setEnabled(true);
@@ -1001,6 +1019,7 @@ void MainWindow::connectionMenuAboutToShowSlot()
     replicationMenu->setEnabled(true);
     maintenanceMenu->setEnabled(true);
     shutdownServerAction->setEnabled(true);
+    menuReports->setEnabled(true);
   }
   QSettings settings;
   viewQueryLogAction->setEnabled(settings.value("EnableQueryLog", false).toBool());
@@ -1157,7 +1176,43 @@ void MainWindow::openURLSlot(QString url)
 //  dWebView = new DWebView(tr("Online help"), QUrl(url));
 //  connect(dWebView, SIGNAL(statusBarProgressMessage(QString,uint,double)), this, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
 //  connect(dWebView, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
-//  addSubWindow(dWebView);
+  //  addSubWindow(dWebView);
+}
+
+void MainWindow::actionReportServerInformationTriggered()
+{
+  dReportViewerServerInformation = new DReportViewer(serverConnection, tr("Server Information"), ReportTypes::PlainText);
+  connect(dReportViewerServerInformation, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
+  dReportViewerServerInformation->setSqlQuery(StaticFunctions::serverInformationQuery());
+  addSubWindow(dReportViewerServerInformation);
+  dReportViewerServerInformation->showReportData();
+}
+
+void MainWindow::actionReportHDDUsageTriggered()
+{
+  dReportViewerHDDUsage = new DReportViewer(serverConnection, tr("HDD Usage Graphics"), ReportTypes::PieChart, "MB");
+  connect(dReportViewerHDDUsage, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
+  dReportViewerHDDUsage->setSqlQuery("SELECT `TABLE_SCHEMA`, CAST(SUM(`DATA_LENGTH` + `INDEX_LENGTH`) / 1024 / 1024 AS UNSIGNED) AS `Total` FROM `information_schema`.`TABLES` GROUP BY `TABLE_SCHEMA` ORDER BY `Total` DESC");
+  addSubWindow(dReportViewerHDDUsage);
+  dReportViewerHDDUsage->showReportData();
+}
+
+void MainWindow::actionReportExecutedQueriesTriggered()
+{
+  dReportViewerExecutedQueries = new DReportViewer(serverConnection, tr("Executed Queries"), ReportTypes::PieChart, "queries");
+  connect(dReportViewerExecutedQueries, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
+  dReportViewerExecutedQueries->setSqlQuery("SELECT `VARIABLE_NAME`, `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` IN ('COM_DELETE', 'COM_INSERT', 'COM_SELECT', 'COM_UPDATE', 'COM_ROLLBACK') ORDER BY CAST(`VARIABLE_VALUE` AS UNSIGNED) DESC");
+  addSubWindow(dReportViewerExecutedQueries);
+  dReportViewerExecutedQueries->showReportData();
+}
+
+void MainWindow::actionReportDataSentReceivedTriggered()
+{
+  dReportViewerDataSentReceived = new DReportViewer(serverConnection, tr("Data Sent/Received"), ReportTypes::PieChart, "MB");
+  connect(dReportViewerDataSentReceived, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
+  dReportViewerDataSentReceived->setSqlQuery("SELECT `VARIABLE_NAME`, `VARIABLE_VALUE` / 1024 / 1024 FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` IN ('BYTES_RECEIVED', 'BYTES_SENT')");
+  addSubWindow(dReportViewerDataSentReceived);
+  dReportViewerDataSentReceived->showReportData();
 }
 
 void MainWindow::finishedDatabaseMigrationSlot(int exitCode)
@@ -1385,6 +1440,7 @@ void MainWindow::retranslateUi()
   helpMenu->setTitle(tr("&Help"));
   openRecentConnectionMenu->setTitle(tr("Recent connections"));
   databaseInformationMenu->setTitle(tr("Database information"));
+  menuReports->setTitle(tr("Reports"));
 
   //Create Toobar
   editorsPushButton->setText(tr("Editors"));
@@ -1425,6 +1481,18 @@ void MainWindow::retranslateUi()
 
   caliopeSourceDocumentationAction->setText(tr("Calíope source documentation"));
   caliopeSourceDocumentationAction->setStatusTip(caliopeSourceDocumentationAction->text());
+
+  actionReportServerInformation->setText(tr("Server information"));
+  actionReportServerInformation->setStatusTip(actionReportServerInformation->text());
+
+  actionReportHDDUsage->setText(tr("HDD Usage Graphics"));
+  actionReportHDDUsage->setStatusTip(actionReportHDDUsage->text());
+
+  actionReportExecutedQueries->setText(tr("Executed Queries"));
+  actionReportExecutedQueries->setStatusTip(actionReportExecutedQueries->text());
+
+  actionReportDataSentReceived->setText(tr("Data Sent/Received"));
+  actionReportDataSentReceived->setStatusTip(actionReportDataSentReceived->text());
 }
 
 void MainWindow::createInitialSettings()
@@ -1453,6 +1521,7 @@ void MainWindow::enabledDisableConnectionMenus(bool enabled)
   replicationMenu->setEnabled(enabled);
   maintenanceMenu->setEnabled(enabled);
   databaseInformationMenu->setEnabled(enabled);
+  menuReports->setEnabled(enabled);
 }
 
 void MainWindow::createSystemaTrayIcon()
@@ -1977,6 +2046,16 @@ void MainWindow::createMenus()
   connectionMenu->addAction(shutdownServerAction);
   connectionMenu->addSeparator();
   connectionMenu->addAction(viewQueryLogAction);
+
+  menuReports = new QMenu(this);
+  menuReports->setIcon(QIcon(":/images/svg/view-statistics.svg"));
+  menuReports->addAction(actionReportServerInformation);
+  menuReports->addAction(actionReportHDDUsage);
+  menuReports->addAction(actionReportDataSentReceived);
+  menuReports->addAction(actionReportExecutedQueries);
+  menuReports->setDisabled(true);
+  connectionMenu->addSeparator();
+  connectionMenu->addMenu(menuReports);
 
   viewMenu = menuBar()->addMenu("");
   viewMenu->addAction(toggleFullScreenAction);

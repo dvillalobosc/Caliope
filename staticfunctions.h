@@ -83,6 +83,7 @@ public:
   static QString randomString(unsigned int length = 1);
   static QStringList currentEditorTypeKeywords(const EditorTypes::EditorType editorType);
   static QLocale currentLocale();
+  static QString serverInformationQuery();
 };
 
 #endif // STATICSYMBOLS_H
