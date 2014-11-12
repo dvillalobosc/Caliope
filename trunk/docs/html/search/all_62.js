@@ -4,6 +4,7 @@ var searchData=
   ['backup_2ecpp',['backup.cpp',['../backup_8cpp.html',1,'']]],
   ['backup_2eh',['backup.h',['../backup_8h.html',1,'']]],
   ['backupfile',['BackupFile',['../class_file_selector_contexts.html#a1b498c8733dfb54849fc6ab565c77771a8d0824aa31c32fbb0ef802d362719d91',1,'FileSelectorContexts']]],
+  ['barchart',['BarChart',['../class_report_types.html#a284ccc290434e589cdb3c005d9b82550a0924d0e538eecdf968aaff3d3b37dddf',1,'ReportTypes']]],
   ['basedifffile',['BaseDiffFile',['../class_base_diff_file.html',1,'BaseDiffFile'],['../class_base_diff_file.html#ae0ba5721ffc56aced518f99c5c9440b4',1,'BaseDiffFile::BaseDiffFile()']]],
   ['basedifffile_2ecpp',['basedifffile.cpp',['../basedifffile_8cpp.html',1,'']]],
   ['basedifffile_2eh',['basedifffile.h',['../basedifffile_8h.html',1,'']]],

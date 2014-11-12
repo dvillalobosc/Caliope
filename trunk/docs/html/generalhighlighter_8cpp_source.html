@@ -663,229 +663,241 @@ $(document).ready(function(){initNavTree('generalhighlighter_8cpp_source.html','
 <div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;\\d+\\.\\d+&quot;</span>);</div>
 <div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;  secondHighlightingRules.append(rule);</div>
 <div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;  <span class="keywordflow">switch</span>(qApp-&gt;property(<span class="stringliteral">&quot;DBMSType&quot;</span>).toInt()) {</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_static_functions.html#a88600b088114bd8923325cbdc0f3cebfa0de080d62b99af0ae0c8ef02978b3490">StaticFunctions::MySQL</a>:</div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_static_functions.html#a88600b088114bd8923325cbdc0f3cebfa9b080c47f6670e5616f64a1394203fe5">StaticFunctions::MariaDB</a>:</div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;    <span class="comment">//Functions</span></div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;    rule.format.setForeground(Qt::darkCyan);</div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#ab8fe00d42965a1dfa43354098464927e">StaticFunctions::mariadbFunctions</a>().count(); i++) {</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;      rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#ab8fe00d42965a1dfa43354098464927e">StaticFunctions::mariadbFunctions</a>().at(i)), Qt::CaseInsensitive);</div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;      secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;    }</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;</div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;    <span class="comment">//Keywords</span></div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;    rule.format.setForeground(Qt::blue);</div>
-<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#a5889fe459b33899f485f5428c760b7ff">StaticFunctions::mariadbKeywords</a>().count(); i++) {</div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;      rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#a5889fe459b33899f485f5428c760b7ff">StaticFunctions::mariadbKeywords</a>().at(i)), Qt::CaseInsensitive);</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;      secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;    }</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    <span class="comment">//Datatypes</span></div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;    rule.format.setForeground(Qt::darkRed);</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#af94abf002b348e57a8996ae26939a687">StaticFunctions::mariadbDatatypes</a>().count(); i++) {</div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;      rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#af94abf002b348e57a8996ae26939a687">StaticFunctions::mariadbDatatypes</a>().at(i)), Qt::CaseInsensitive);</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;      secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;    }</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;</div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;    <span class="comment">//Charsets</span></div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;    rule.format.setForeground(QBrush(QColor(0, 195, 195)));</div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#a18994a40e0c82f6f396c89f01d45e505">StaticFunctions::mariadbCharsets</a>().count(); i++) {</div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;      rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#a18994a40e0c82f6f396c89f01d45e505">StaticFunctions::mariadbCharsets</a>().at(i)), Qt::CaseInsensitive);</div>
-<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;      secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;    }</div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;</div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;    <span class="comment">//Symbols</span></div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;    rule.format.setForeground(Qt::darkGreen);</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;    rule.pattern = QRegExp(<span class="stringliteral">&quot;`[A-Za-z_\\d%\\- ]*`&quot;</span>);</div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;    secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_static_functions.html#a88600b088114bd8923325cbdc0f3cebfa659eb81dd04740995394a794196021ac">StaticFunctions::PostgreSQL</a>:</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;    <span class="comment">//Functions</span></div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;    rule.format.setForeground(Qt::darkCyan);</div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#afacb7fc611c327588c35ee91c87683b6">StaticFunctions::postgresqlFunctions</a>().count(); i++) {</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;      rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#afacb7fc611c327588c35ee91c87683b6">StaticFunctions::postgresqlFunctions</a>().at(i)), Qt::CaseInsensitive);</div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;      secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;    }</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;    <span class="comment">//Keywords</span></div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;    rule.format.setForeground(Qt::blue);</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#a65f48c2ea1c55a53c31efb0373cd877f">StaticFunctions::postgresqlKeywords</a>().count(); i++) {</div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;      rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#a65f48c2ea1c55a53c31efb0373cd877f">StaticFunctions::postgresqlKeywords</a>().at(i)), Qt::CaseInsensitive);</div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;      secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;    }</div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;</div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;    <span class="comment">//Datatypes</span></div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;    rule.format.setForeground(Qt::darkRed);</div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#a19d7a0ed5956a8926a352bbb0893567f">StaticFunctions::postgresqlDatatypes</a>().count(); i++) {</div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;      rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#a19d7a0ed5956a8926a352bbb0893567f">StaticFunctions::postgresqlDatatypes</a>().at(i)), Qt::CaseInsensitive);</div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;      secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;    }</div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;    <span class="comment">//Charsets</span></div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;    rule.format.setForeground(QBrush(QColor(0, 195, 195)));</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#a9880fa029c5cfef45bf1c24ab9de3ea5">StaticFunctions::postgresqlCharsets</a>().count(); i++) {</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;      rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#a9880fa029c5cfef45bf1c24ab9de3ea5">StaticFunctions::postgresqlCharsets</a>().at(i)), Qt::CaseInsensitive);</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;      secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;    }</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_static_functions.html#a88600b088114bd8923325cbdc0f3cebfa31b35d78a499212a4d2f21c1496db9d4">StaticFunctions::Undefined</a>:</div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;  <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;  }</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;<span class="comment">//  QColor color;</span></div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;<span class="comment">//  QFont font;</span></div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;  <span class="keywordflow">switch</span>(qApp-&gt;property(<span class="stringliteral">&quot;DBMSType&quot;</span>).toInt()) {</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_static_functions.html#a88600b088114bd8923325cbdc0f3cebfa0de080d62b99af0ae0c8ef02978b3490">StaticFunctions::MySQL</a>:</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_static_functions.html#a88600b088114bd8923325cbdc0f3cebfa9b080c47f6670e5616f64a1394203fe5">StaticFunctions::MariaDB</a>:</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;    <span class="comment">//Functions</span></div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;    rule.format.setForeground(Qt::darkCyan);</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#ab8fe00d42965a1dfa43354098464927e">StaticFunctions::mariadbFunctions</a>().count(); i++) {</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;      rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#ab8fe00d42965a1dfa43354098464927e">StaticFunctions::mariadbFunctions</a>().at(i)), Qt::CaseInsensitive);</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;      secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;    }</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;    <span class="comment">//Keywords</span></div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;<span class="comment">//    color = QColor(settings.value(&quot;Theme/SQLKeywords-Foreground-ColorName&quot;, &quot;#0000ff&quot;).toString());</span></div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;<span class="comment">//    color.setAlpha(settings.value(&quot;Theme/SQLKeywords-Foreground-ColorAlpha&quot;, 255).toInt());</span></div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;<span class="comment">//    rule.format.setFontFamily(settings.value(&quot;Theme/SQLKeywords-Foreground-FontFamily&quot;).toString());</span></div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;<span class="comment">//    rule.format.setFontPointSize(settings.value(&quot;Theme/SQLKeywords-Foreground-FontSize&quot;, 9).toInt());</span></div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;<span class="comment">//    font = QFont(rule.format.font());</span></div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;<span class="comment">//    font.setStyle(static_cast&lt;QFont::Style&gt;(settings.value(&quot;Theme/SQLKeywords-Foreground-FontStyle&quot;, 0).toInt()));</span></div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;<span class="comment">//    rule.format.setFont(font);</span></div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;<span class="comment">//    rule.format.setForeground(color);</span></div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;    rule.format.setForeground(Qt::blue);</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#a5889fe459b33899f485f5428c760b7ff">StaticFunctions::mariadbKeywords</a>().count(); i++) {</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;      rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#a5889fe459b33899f485f5428c760b7ff">StaticFunctions::mariadbKeywords</a>().at(i)), Qt::CaseInsensitive);</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;      secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;    }</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;    <span class="comment">//Datatypes</span></div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;    rule.format.setForeground(Qt::darkRed);</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#af94abf002b348e57a8996ae26939a687">StaticFunctions::mariadbDatatypes</a>().count(); i++) {</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;      rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#af94abf002b348e57a8996ae26939a687">StaticFunctions::mariadbDatatypes</a>().at(i)), Qt::CaseInsensitive);</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;      secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;    }</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;    <span class="comment">//Charsets</span></div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;    rule.format.setForeground(QBrush(QColor(0, 195, 195)));</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#a18994a40e0c82f6f396c89f01d45e505">StaticFunctions::mariadbCharsets</a>().count(); i++) {</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;      rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#a18994a40e0c82f6f396c89f01d45e505">StaticFunctions::mariadbCharsets</a>().at(i)), Qt::CaseInsensitive);</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;      secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;    }</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;    <span class="comment">//Symbols</span></div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;    rule.format.setForeground(Qt::darkGreen);</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;    rule.pattern = QRegExp(<span class="stringliteral">&quot;`[A-Za-z_\\d%\\- ]*`&quot;</span>);</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_static_functions.html#a88600b088114bd8923325cbdc0f3cebfa659eb81dd04740995394a794196021ac">StaticFunctions::PostgreSQL</a>:</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;    <span class="comment">//Functions</span></div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;    rule.format.setForeground(Qt::darkCyan);</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#afacb7fc611c327588c35ee91c87683b6">StaticFunctions::postgresqlFunctions</a>().count(); i++) {</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;      rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#afacb7fc611c327588c35ee91c87683b6">StaticFunctions::postgresqlFunctions</a>().at(i)), Qt::CaseInsensitive);</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;      secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;    }</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;    <span class="comment">//Keywords</span></div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;    rule.format.setForeground(Qt::blue);</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#a65f48c2ea1c55a53c31efb0373cd877f">StaticFunctions::postgresqlKeywords</a>().count(); i++) {</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;      rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#a65f48c2ea1c55a53c31efb0373cd877f">StaticFunctions::postgresqlKeywords</a>().at(i)), Qt::CaseInsensitive);</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;      secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;    }</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;    <span class="comment">//Datatypes</span></div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;    rule.format.setForeground(Qt::darkRed);</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#a19d7a0ed5956a8926a352bbb0893567f">StaticFunctions::postgresqlDatatypes</a>().count(); i++) {</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;      rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#a19d7a0ed5956a8926a352bbb0893567f">StaticFunctions::postgresqlDatatypes</a>().at(i)), Qt::CaseInsensitive);</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;      secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;    }</div>
 <div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;</div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;</div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;  <span class="comment">//Result</span></div>
-<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;  rule.format.setForeground(Qt::black);</div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;^(\\+|\\|).*(\\+|\\|)&quot;</span>);</div>
-<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;  secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;</div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;  <span class="comment">//Comments</span></div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;  rule.format.setForeground(QBrush(QColor(106, 182, 182)));</div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;(#|-- ).*&quot;</span>);</div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;  thirdHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;</div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;  <span class="comment">//Commnets like /*----------*/</span></div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;  rule.format.setForeground(Qt::gray);</div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;/\\*.*\\*/&quot;</span>);</div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;  thirdHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;}</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;</div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;<span class="keywordtype">void</span> GeneralHighlighter::phpHighlightRules()</div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;{</div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;<span class="comment">//  //Operators</span></div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;<span class="comment">//  QStringList operatorPatterns = QStringList() &lt;&lt; &quot;\\+&quot; &lt;&lt; &quot;\\-&quot; &lt;&lt; &quot;\\*&quot; &lt;&lt; &quot;/&quot; &lt;&lt; &quot;=&quot; &lt;&lt; &quot;&lt;&quot; &lt;&lt; &quot;&gt;&quot; &lt;&lt; &quot;!= &quot;</span></div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;<span class="comment">//                                               &lt;&lt; &quot;&gt;=&quot; &lt;&lt; &quot;&lt;=&quot; &lt;&lt; &quot;:=&quot; &lt;&lt; &quot;\\:&quot; &lt;&lt; &quot;\\?&quot;;</span></div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;<span class="comment">//  rule.format.setForeground(Qt::red);</span></div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;<span class="comment">//  for (int i = 0; i &lt; operatorPatterns.count(); i++) {</span></div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;<span class="comment">//    rule.pattern = QRegExp(QString(&quot;\\b%1\\b&quot;).arg(operatorPatterns.at(i)));</span></div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;<span class="comment">//    secondHighlightingRules.append(rule);</span></div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;<span class="comment">//  }</span></div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;</div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;<span class="comment">//  //Integers</span></div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;<span class="comment">//  rule.format.setForeground(Qt::red);</span></div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;<span class="comment">//  rule.pattern = QRegExp(&quot;\\d+&quot;);</span></div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;<span class="comment">//  secondHighlightingRules.append(rule);</span></div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;</div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;  <span class="comment">//Decimals</span></div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;  rule.format.setForeground(Qt::darkBlue);</div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;\\d+\\.\\d+&quot;</span>);</div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;  secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;  <span class="comment">//Script delimiters</span></div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;  rule.format.setForeground(Qt::black);</div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;  rule.format.setFontWeight(QFont::Bold);</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;(&lt;\\?php|&lt;\\?|\\?&gt;)&quot;</span>);</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;  secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;  rule.format.setFontWeight(QFont::Normal);</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;    <span class="comment">//Charsets</span></div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;    rule.format.setForeground(QBrush(QColor(0, 195, 195)));</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#a9880fa029c5cfef45bf1c24ab9de3ea5">StaticFunctions::postgresqlCharsets</a>().count(); i++) {</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;      rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#a9880fa029c5cfef45bf1c24ab9de3ea5">StaticFunctions::postgresqlCharsets</a>().at(i)), Qt::CaseInsensitive);</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;      secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;    }</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;  <span class="keywordflow">case</span> <a class="code" href="class_static_functions.html#a88600b088114bd8923325cbdc0f3cebfa31b35d78a499212a4d2f21c1496db9d4">StaticFunctions::Undefined</a>:</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;  <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;  }</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;  <span class="comment">//Result</span></div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;  rule.format.setForeground(Qt::black);</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;^(\\+|\\|).*(\\+|\\|)&quot;</span>);</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;  secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;  <span class="comment">//Comments</span></div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;  rule.format.setForeground(QBrush(QColor(106, 182, 182)));</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;(#|-- ).*&quot;</span>);</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;  thirdHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;  <span class="comment">//Commnets like /*----------*/</span></div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;  rule.format.setForeground(Qt::gray);</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;/\\*.*\\*/&quot;</span>);</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;  thirdHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;}</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;<span class="keywordtype">void</span> GeneralHighlighter::phpHighlightRules()</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;{</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;<span class="comment">//  //Operators</span></div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;<span class="comment">//  QStringList operatorPatterns = QStringList() &lt;&lt; &quot;\\+&quot; &lt;&lt; &quot;\\-&quot; &lt;&lt; &quot;\\*&quot; &lt;&lt; &quot;/&quot; &lt;&lt; &quot;=&quot; &lt;&lt; &quot;&lt;&quot; &lt;&lt; &quot;&gt;&quot; &lt;&lt; &quot;!= &quot;</span></div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;<span class="comment">//                                               &lt;&lt; &quot;&gt;=&quot; &lt;&lt; &quot;&lt;=&quot; &lt;&lt; &quot;:=&quot; &lt;&lt; &quot;\\:&quot; &lt;&lt; &quot;\\?&quot;;</span></div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;<span class="comment">//  rule.format.setForeground(Qt::red);</span></div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;<span class="comment">//  for (int i = 0; i &lt; operatorPatterns.count(); i++) {</span></div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;<span class="comment">//    rule.pattern = QRegExp(QString(&quot;\\b%1\\b&quot;).arg(operatorPatterns.at(i)));</span></div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;<span class="comment">//    secondHighlightingRules.append(rule);</span></div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;<span class="comment">//  }</span></div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;<span class="comment">//  //Integers</span></div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;<span class="comment">//  rule.format.setForeground(Qt::red);</span></div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;<span class="comment">//  rule.pattern = QRegExp(&quot;\\d+&quot;);</span></div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;<span class="comment">//  secondHighlightingRules.append(rule);</span></div>
 <div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;</div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;  <span class="comment">//Keywords</span></div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;  rule.format.setForeground(QBrush(QColor(0, 119, 0)));</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#a099dbf9f96598690762fa8458cd582a5">StaticFunctions::phpKeywords</a>().count(); i++) {</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;    rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#a099dbf9f96598690762fa8458cd582a5">StaticFunctions::phpKeywords</a>().at(i)), Qt::CaseInsensitive);</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;    secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;  }</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;  <span class="comment">//Functions</span></div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#a1f88198eaaa4978b4c0d2cd69b685088">StaticFunctions::phpFunctions</a>().count(); i++) {</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;    QString phpFunction(<a class="code" href="class_static_functions.html#a1f88198eaaa4978b4c0d2cd69b685088">StaticFunctions::phpFunctions</a>().at(i));</div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;    rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(phpFunction), Qt::CaseInsensitive);</div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;    <span class="keywordflow">if</span> (phpFunction.startsWith(<span class="stringliteral">&quot;mysql&quot;</span>, Qt::CaseInsensitive))</div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;      rule.format.setForeground(QBrush(QColor(0, 128, 255)));</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;      rule.format.setForeground(QBrush(QColor(0, 0, 187)));</div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;    secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;  }</div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;  <span class="comment">//Constants</span></div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;  rule.format.setForeground(Qt::black);</div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;  rule.format.setFontWeight(QFont::Bold);</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;\\b[A-Z_]+\\b&quot;</span>);</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;  firstHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;  rule.format.setFontWeight(QFont::Normal);</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;  <span class="comment">//Drupal functions</span></div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;  rule.format.setForeground(Qt::darkCyan);</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;\\bdrupal_\\w+\\b&quot;</span>);</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;  secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;  <span class="comment">//Decimals</span></div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;  rule.format.setForeground(Qt::darkBlue);</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;\\d+\\.\\d+&quot;</span>);</div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;  secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;  <span class="comment">//Script delimiters</span></div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;  rule.format.setForeground(Qt::black);</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;  rule.format.setFontWeight(QFont::Bold);</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;(&lt;\\?php|&lt;\\?|\\?&gt;)&quot;</span>);</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;  secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;  rule.format.setFontWeight(QFont::Normal);</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;  <span class="comment">//Keywords</span></div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;  rule.format.setForeground(QBrush(QColor(0, 119, 0)));</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#a099dbf9f96598690762fa8458cd582a5">StaticFunctions::phpKeywords</a>().count(); i++) {</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;    rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(<a class="code" href="class_static_functions.html#a099dbf9f96598690762fa8458cd582a5">StaticFunctions::phpKeywords</a>().at(i)), Qt::CaseInsensitive);</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;    secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;  }</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;  <span class="comment">//Functions</span></div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_static_functions.html#a1f88198eaaa4978b4c0d2cd69b685088">StaticFunctions::phpFunctions</a>().count(); i++) {</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;    QString phpFunction(<a class="code" href="class_static_functions.html#a1f88198eaaa4978b4c0d2cd69b685088">StaticFunctions::phpFunctions</a>().at(i));</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;    rule.pattern = QRegExp(QString(<span class="stringliteral">&quot;\\b%1\\b&quot;</span>).arg(phpFunction), Qt::CaseInsensitive);</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;    <span class="keywordflow">if</span> (phpFunction.startsWith(<span class="stringliteral">&quot;mysql&quot;</span>, Qt::CaseInsensitive))</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;      rule.format.setForeground(QBrush(QColor(0, 128, 255)));</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;      rule.format.setForeground(QBrush(QColor(0, 0, 187)));</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;    secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;  }</div>
 <div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;  <span class="comment">//Strings with &quot;</span></div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;  rule.format.setForeground(QBrush(QColor(221, 0, 0)));</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;\&quot;.*\&quot;&quot;</span>);</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;  secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;  <span class="comment">//Object members</span></div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;  rule.format.setForeground(Qt::black);</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;  rule.format.setFontItalic(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;\\b\\w+-&gt;\\w+\\b&quot;</span>);</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;  secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;\\)-&gt;\\w+\\b&quot;</span>);</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;  secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;  rule.format.setFontWeight(QFont::Normal);</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;  rule.format.setFontItalic(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;</div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;  <span class="comment">//Variable</span></div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;  rule.format.setForeground(Qt::blue);</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;\\b*\\$\\w+&quot;</span>);</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;  secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;</div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;  <span class="comment">//@</span></div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;  rule.format.setForeground(Qt::blue);</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;  rule.format.setFontWeight(QFont::Bold);</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;@&quot;</span>);</div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;  secondHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;  rule.format.setFontWeight(QFont::Normal);</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;  <span class="comment">//Constants</span></div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;  rule.format.setForeground(Qt::black);</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;  rule.format.setFontWeight(QFont::Bold);</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;\\b[A-Z_]+\\b&quot;</span>);</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;  firstHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;  rule.format.setFontWeight(QFont::Normal);</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;  <span class="comment">//Drupal functions</span></div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;  rule.format.setForeground(Qt::darkCyan);</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;\\bdrupal_\\w+\\b&quot;</span>);</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;  secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;  <span class="comment">//Strings with &quot;</span></div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;  rule.format.setForeground(QBrush(QColor(221, 0, 0)));</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;\&quot;.*\&quot;&quot;</span>);</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;  secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;  <span class="comment">//Object members</span></div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;  rule.format.setForeground(Qt::black);</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;  rule.format.setFontItalic(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;\\b\\w+-&gt;\\w+\\b&quot;</span>);</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;  secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;\\)-&gt;\\w+\\b&quot;</span>);</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;  secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;  rule.format.setFontWeight(QFont::Normal);</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;  rule.format.setFontItalic(<span class="keyword">false</span>);</div>
 <div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;</div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;  <span class="comment">//Comments</span></div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;  rule.format.setForeground(QBrush(QColor(255, 153, 0)));</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;//.*&quot;</span>);</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;  thirdHighlightingRules.append(rule);</div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;  commentStartExpression = QRegExp(<span class="stringliteral">&quot;/\\*&quot;</span>);</div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;  commentEndExpression = QRegExp(<span class="stringliteral">&quot;\\*/&quot;</span>);</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;  <span class="comment">//Commnets like /*----------*/</span></div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;  rule.format.setForeground(Qt::gray);</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;/\\*.*\\*/&quot;</span>);</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;  thirdHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;  <span class="comment">//Variable</span></div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;  rule.format.setForeground(Qt::blue);</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;\\b*\\$\\w+&quot;</span>);</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;  secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;  <span class="comment">//@</span></div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;  rule.format.setForeground(Qt::blue);</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;  rule.format.setFontWeight(QFont::Bold);</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;@&quot;</span>);</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;  secondHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;  rule.format.setFontWeight(QFont::Normal);</div>
 <div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;}</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;  <span class="comment">//Comments</span></div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;  rule.format.setForeground(QBrush(QColor(255, 153, 0)));</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;//.*&quot;</span>);</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;  thirdHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;  commentStartExpression = QRegExp(<span class="stringliteral">&quot;/\\*&quot;</span>);</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;  commentEndExpression = QRegExp(<span class="stringliteral">&quot;\\*/&quot;</span>);</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;  <span class="comment">//Commnets like /*----------*/</span></div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;  rule.format.setForeground(Qt::gray);</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;  rule.pattern = QRegExp(<span class="stringliteral">&quot;/\\*.*\\*/&quot;</span>);</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;  thirdHighlightingRules.append(rule);</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;}</div>
 <div class="ttc" id="class_static_functions_html_aa5fa74e1569e0f435671eb9a22c26cd1"><div class="ttname"><a href="class_static_functions.html#aa5fa74e1569e0f435671eb9a22c26cd1">StaticFunctions::cssProperties</a></div><div class="ttdeci">static QStringList cssProperties()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l08340">staticfunctions.cpp:8340</a></div></div>
 <div class="ttc" id="class_static_functions_html_a099dbf9f96598690762fa8458cd582a5"><div class="ttname"><a href="class_static_functions.html#a099dbf9f96598690762fa8458cd582a5">StaticFunctions::phpKeywords</a></div><div class="ttdeci">static QStringList phpKeywords()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l07969">staticfunctions.cpp:7969</a></div></div>
 <div class="ttc" id="class_text_block_data_html_abe50f4719a5f4f3c848f856616531bb7"><div class="ttname"><a href="class_text_block_data.html#abe50f4719a5f4f3c848f856616531bb7">TextBlockData::brackets</a></div><div class="ttdeci">QVector&lt; BracketInfo * &gt; brackets()</div><div class="ttdef"><b>Definition:</b> <a href="generalhighlighter_8cpp_source.html#l00033">generalhighlighter.cpp:33</a></div></div>
 <div class="ttc" id="class_static_functions_html_a1f88198eaaa4978b4c0d2cd69b685088"><div class="ttname"><a href="class_static_functions.html#a1f88198eaaa4978b4c0d2cd69b685088">StaticFunctions::phpFunctions</a></div><div class="ttdeci">static QStringList phpFunctions()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l07958">staticfunctions.cpp:7958</a></div></div>
-<div class="ttc" id="class_static_functions_html_a5889fe459b33899f485f5428c760b7ff"><div class="ttname"><a href="class_static_functions.html#a5889fe459b33899f485f5428c760b7ff">StaticFunctions::mariadbKeywords</a></div><div class="ttdeci">static QStringList mariadbKeywords()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l01219">staticfunctions.cpp:1219</a></div></div>
-<div class="ttc" id="class_text_block_data_html"><div class="ttname"><a href="class_text_block_data.html">TextBlockData</a></div><div class="ttdef"><b>Definition:</b> <a href="generalhighlighter_8h_source.html#l00087">generalhighlighter.h:87</a></div></div>
-<div class="ttc" id="class_static_functions_html_a6974dbf6588334a7a018938d6aa2ea60"><div class="ttname"><a href="class_static_functions.html#a6974dbf6588334a7a018938d6aa2ea60">StaticFunctions::rightBracketMatch</a></div><div class="ttdeci">static char rightBracketMatch(const char leftBracket)</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l00926">staticfunctions.cpp:926</a></div></div>
+<div class="ttc" id="class_static_functions_html_a5889fe459b33899f485f5428c760b7ff"><div class="ttname"><a href="class_static_functions.html#a5889fe459b33899f485f5428c760b7ff">StaticFunctions::mariadbKeywords</a></div><div class="ttdeci">static QStringList mariadbKeywords()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l01221">staticfunctions.cpp:1221</a></div></div>
+<div class="ttc" id="class_text_block_data_html"><div class="ttname"><a href="class_text_block_data.html">TextBlockData</a></div><div class="ttdef"><b>Definition:</b> <a href="generalhighlighter_8h_source.html#l00089">generalhighlighter.h:89</a></div></div>
+<div class="ttc" id="class_static_functions_html_a6974dbf6588334a7a018938d6aa2ea60"><div class="ttname"><a href="class_static_functions.html#a6974dbf6588334a7a018938d6aa2ea60">StaticFunctions::rightBracketMatch</a></div><div class="ttdeci">static char rightBracketMatch(const char leftBracket)</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l00928">staticfunctions.cpp:928</a></div></div>
 <div class="ttc" id="class_general_highlighter_html_aa5f4b18d572520a2880c2fadae50fb00"><div class="ttname"><a href="class_general_highlighter.html#aa5f4b18d572520a2880c2fadae50fb00">GeneralHighlighter::GeneralHighlighter</a></div><div class="ttdeci">GeneralHighlighter(QTextDocument *parent=0, EditorTypes::EditorType type=EditorTypes::NoEditor)</div><div class="ttdef"><b>Definition:</b> <a href="generalhighlighter_8cpp_source.html#l00047">generalhighlighter.cpp:47</a></div></div>
 <div class="ttc" id="class_editor_types_html_a39331ac7248f3caec238e726edea03e9a11081a2b1486b887ada9c9e852cc7385"><div class="ttname"><a href="class_editor_types.html#a39331ac7248f3caec238e726edea03e9a11081a2b1486b887ada9c9e852cc7385">EditorTypes::HTML</a></div><div class="ttdef"><b>Definition:</b> <a href="editortypes_8h_source.html#l00027">editortypes.h:27</a></div></div>
 <div class="ttc" id="class_general_highlighter_html_a4efbe90adb9e6a642f782c585e59cb93"><div class="ttname"><a href="class_general_highlighter.html#a4efbe90adb9e6a642f782c585e59cb93">GeneralHighlighter::setFindPattern</a></div><div class="ttdeci">void setFindPattern(const QString &amp;exp)</div><div class="ttdef"><b>Definition:</b> <a href="generalhighlighter_8cpp_source.html#l00109">generalhighlighter.cpp:109</a></div></div>
-<div class="ttc" id="class_static_functions_html_a88600b088114bd8923325cbdc0f3cebfa659eb81dd04740995394a794196021ac"><div class="ttname"><a href="class_static_functions.html#a88600b088114bd8923325cbdc0f3cebfa659eb81dd04740995394a794196021ac">StaticFunctions::PostgreSQL</a></div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8h_source.html#l00071">staticfunctions.h:71</a></div></div>
-<div class="ttc" id="struct_bracket_info_html_a09bf1cc8866e526a8e0a789ebeca878c"><div class="ttname"><a href="struct_bracket_info.html#a09bf1cc8866e526a8e0a789ebeca878c">BracketInfo::position</a></div><div class="ttdeci">int position</div><div class="ttdef"><b>Definition:</b> <a href="generalhighlighter_8h_source.html#l00034">generalhighlighter.h:34</a></div></div>
-<div class="ttc" id="class_static_functions_html_a9cf6a1602ff799a6bdcc3ff5f2c43e55"><div class="ttname"><a href="class_static_functions.html#a9cf6a1602ff799a6bdcc3ff5f2c43e55">StaticFunctions::htmlTags</a></div><div class="ttdeci">static QStringList htmlTags()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l08979">staticfunctions.cpp:8979</a></div></div>
+<div class="ttc" id="class_static_functions_html_a88600b088114bd8923325cbdc0f3cebfa659eb81dd04740995394a794196021ac"><div class="ttname"><a href="class_static_functions.html#a88600b088114bd8923325cbdc0f3cebfa659eb81dd04740995394a794196021ac">StaticFunctions::PostgreSQL</a></div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8h_source.html#l00072">staticfunctions.h:72</a></div></div>
+<div class="ttc" id="struct_bracket_info_html_a09bf1cc8866e526a8e0a789ebeca878c"><div class="ttname"><a href="struct_bracket_info.html#a09bf1cc8866e526a8e0a789ebeca878c">BracketInfo::position</a></div><div class="ttdeci">int position</div><div class="ttdef"><b>Definition:</b> <a href="generalhighlighter_8h_source.html#l00035">generalhighlighter.h:35</a></div></div>
+<div class="ttc" id="class_static_functions_html_a9cf6a1602ff799a6bdcc3ff5f2c43e55"><div class="ttname"><a href="class_static_functions.html#a9cf6a1602ff799a6bdcc3ff5f2c43e55">StaticFunctions::htmlTags</a></div><div class="ttdeci">static QStringList htmlTags()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l09052">staticfunctions.cpp:9052</a></div></div>
 <div class="ttc" id="class_editor_types_html_a39331ac7248f3caec238e726edea03e9a4f0925554a0df840493152e155f7d05c"><div class="ttname"><a href="class_editor_types.html#a39331ac7248f3caec238e726edea03e9a4f0925554a0df840493152e155f7d05c">EditorTypes::SVNLog</a></div><div class="ttdef"><b>Definition:</b> <a href="editortypes_8h_source.html#l00027">editortypes.h:27</a></div></div>
 <div class="ttc" id="class_editor_types_html_a39331ac7248f3caec238e726edea03e9afd5a753ed8533034a0cd1aa311894985"><div class="ttname"><a href="class_editor_types.html#a39331ac7248f3caec238e726edea03e9afd5a753ed8533034a0cd1aa311894985">EditorTypes::Commit</a></div><div class="ttdef"><b>Definition:</b> <a href="editortypes_8h_source.html#l00027">editortypes.h:27</a></div></div>
 <div class="ttc" id="class_static_functions_html_a18994a40e0c82f6f396c89f01d45e505"><div class="ttname"><a href="class_static_functions.html#a18994a40e0c82f6f396c89f01d45e505">StaticFunctions::mariadbCharsets</a></div><div class="ttdeci">static QStringList mariadbCharsets()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l01758">staticfunctions.cpp:1758</a></div></div>
-<div class="ttc" id="class_static_functions_html_a9880fa029c5cfef45bf1c24ab9de3ea5"><div class="ttname"><a href="class_static_functions.html#a9880fa029c5cfef45bf1c24ab9de3ea5">StaticFunctions::postgresqlCharsets</a></div><div class="ttdeci">static QStringList postgresqlCharsets()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l00087">staticfunctions.cpp:87</a></div></div>
+<div class="ttc" id="class_static_functions_html_a9880fa029c5cfef45bf1c24ab9de3ea5"><div class="ttname"><a href="class_static_functions.html#a9880fa029c5cfef45bf1c24ab9de3ea5">StaticFunctions::postgresqlCharsets</a></div><div class="ttdeci">static QStringList postgresqlCharsets()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l00089">staticfunctions.cpp:89</a></div></div>
 <div class="ttc" id="class_static_functions_html_a2dec4bc98bd3f2d40788ec41c8b9a240"><div class="ttname"><a href="class_static_functions.html#a2dec4bc98bd3f2d40788ec41c8b9a240">StaticFunctions::cssKeywords</a></div><div class="ttdeci">static QStringList cssKeywords()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l08351">staticfunctions.cpp:8351</a></div></div>
 <div class="ttc" id="class_editor_types_html_a39331ac7248f3caec238e726edea03e9aa0dc50f3b214c6d2fda8e07a5d8a5dee"><div class="ttname"><a href="class_editor_types.html#a39331ac7248f3caec238e726edea03e9aa0dc50f3b214c6d2fda8e07a5d8a5dee">EditorTypes::NoEditor</a></div><div class="ttdef"><b>Definition:</b> <a href="editortypes_8h_source.html#l00027">editortypes.h:27</a></div></div>
 <div class="ttc" id="class_static_functions_html_a7c54de49de89aa6161002efcccf1fc82"><div class="ttname"><a href="class_static_functions.html#a7c54de49de89aa6161002efcccf1fc82">StaticFunctions::htmlAttributes</a></div><div class="ttdeci">static QStringList htmlAttributes()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l08649">staticfunctions.cpp:8649</a></div></div>
 <div class="ttc" id="class_static_functions_html_ab8fe00d42965a1dfa43354098464927e"><div class="ttname"><a href="class_static_functions.html#ab8fe00d42965a1dfa43354098464927e">StaticFunctions::mariadbFunctions</a></div><div class="ttdeci">static QStringList mariadbFunctions()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l01698">staticfunctions.cpp:1698</a></div></div>
 <div class="ttc" id="staticfunctions_8h_html"><div class="ttname"><a href="staticfunctions_8h.html">staticfunctions.h</a></div></div>
-<div class="ttc" id="class_static_functions_html_a19d7a0ed5956a8926a352bbb0893567f"><div class="ttname"><a href="class_static_functions.html#a19d7a0ed5956a8926a352bbb0893567f">StaticFunctions::postgresqlDatatypes</a></div><div class="ttdeci">static QStringList postgresqlDatatypes()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l00081">staticfunctions.cpp:81</a></div></div>
-<div class="ttc" id="class_static_functions_html_a65f48c2ea1c55a53c31efb0373cd877f"><div class="ttname"><a href="class_static_functions.html#a65f48c2ea1c55a53c31efb0373cd877f">StaticFunctions::postgresqlKeywords</a></div><div class="ttdeci">static QStringList postgresqlKeywords()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l00213">staticfunctions.cpp:213</a></div></div>
-<div class="ttc" id="class_static_functions_html_ab083603325204d64aa154d727eeee82c"><div class="ttname"><a href="class_static_functions.html#ab083603325204d64aa154d727eeee82c">StaticFunctions::bracketLeftList</a></div><div class="ttdeci">static QList&lt; char &gt; bracketLeftList()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l00948">staticfunctions.cpp:948</a></div></div>
+<div class="ttc" id="class_static_functions_html_a19d7a0ed5956a8926a352bbb0893567f"><div class="ttname"><a href="class_static_functions.html#a19d7a0ed5956a8926a352bbb0893567f">StaticFunctions::postgresqlDatatypes</a></div><div class="ttdeci">static QStringList postgresqlDatatypes()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l00083">staticfunctions.cpp:83</a></div></div>
+<div class="ttc" id="class_static_functions_html_a65f48c2ea1c55a53c31efb0373cd877f"><div class="ttname"><a href="class_static_functions.html#a65f48c2ea1c55a53c31efb0373cd877f">StaticFunctions::postgresqlKeywords</a></div><div class="ttdeci">static QStringList postgresqlKeywords()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l00215">staticfunctions.cpp:215</a></div></div>
+<div class="ttc" id="class_static_functions_html_ab083603325204d64aa154d727eeee82c"><div class="ttname"><a href="class_static_functions.html#ab083603325204d64aa154d727eeee82c">StaticFunctions::bracketLeftList</a></div><div class="ttdeci">static QList&lt; char &gt; bracketLeftList()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l00950">staticfunctions.cpp:950</a></div></div>
 <div class="ttc" id="class_editor_types_html_a39331ac7248f3caec238e726edea03e9a1308ae82648ff459d0c2f027b4c05c24"><div class="ttname"><a href="class_editor_types.html#a39331ac7248f3caec238e726edea03e9a1308ae82648ff459d0c2f027b4c05c24">EditorTypes::CSS</a></div><div class="ttdef"><b>Definition:</b> <a href="editortypes_8h_source.html#l00027">editortypes.h:27</a></div></div>
-<div class="ttc" id="class_static_functions_html_a88600b088114bd8923325cbdc0f3cebfa0de080d62b99af0ae0c8ef02978b3490"><div class="ttname"><a href="class_static_functions.html#a88600b088114bd8923325cbdc0f3cebfa0de080d62b99af0ae0c8ef02978b3490">StaticFunctions::MySQL</a></div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8h_source.html#l00071">staticfunctions.h:71</a></div></div>
+<div class="ttc" id="class_static_functions_html_a88600b088114bd8923325cbdc0f3cebfa0de080d62b99af0ae0c8ef02978b3490"><div class="ttname"><a href="class_static_functions.html#a88600b088114bd8923325cbdc0f3cebfa0de080d62b99af0ae0c8ef02978b3490">StaticFunctions::MySQL</a></div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8h_source.html#l00072">staticfunctions.h:72</a></div></div>
 <div class="ttc" id="class_editor_types_html_a39331ac7248f3caec238e726edea03e9a2743fee6e473c46eb3cf7aa93aafaf30"><div class="ttname"><a href="class_editor_types.html#a39331ac7248f3caec238e726edea03e9a2743fee6e473c46eb3cf7aa93aafaf30">EditorTypes::PHP</a></div><div class="ttdef"><b>Definition:</b> <a href="editortypes_8h_source.html#l00027">editortypes.h:27</a></div></div>
 <div class="ttc" id="class_static_functions_html_af94abf002b348e57a8996ae26939a687"><div class="ttname"><a href="class_static_functions.html#af94abf002b348e57a8996ae26939a687">StaticFunctions::mariadbDatatypes</a></div><div class="ttdeci">static QStringList mariadbDatatypes()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l01709">staticfunctions.cpp:1709</a></div></div>
-<div class="ttc" id="class_static_functions_html_a36e28bc5027a04b7fa8233b392899f3a"><div class="ttname"><a href="class_static_functions.html#a36e28bc5027a04b7fa8233b392899f3a">StaticFunctions::javascriptFunctions</a></div><div class="ttdeci">static QStringList javascriptFunctions()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l09289">staticfunctions.cpp:9289</a></div></div>
-<div class="ttc" id="struct_bracket_info_html_a940658ec7d789266c1a28effee68d3d7"><div class="ttname"><a href="struct_bracket_info.html#a940658ec7d789266c1a28effee68d3d7">BracketInfo::character</a></div><div class="ttdeci">char character</div><div class="ttdef"><b>Definition:</b> <a href="generalhighlighter_8h_source.html#l00033">generalhighlighter.h:33</a></div></div>
-<div class="ttc" id="class_static_functions_html_a88600b088114bd8923325cbdc0f3cebfa31b35d78a499212a4d2f21c1496db9d4"><div class="ttname"><a href="class_static_functions.html#a88600b088114bd8923325cbdc0f3cebfa31b35d78a499212a4d2f21c1496db9d4">StaticFunctions::Undefined</a></div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8h_source.html#l00071">staticfunctions.h:71</a></div></div>
+<div class="ttc" id="class_static_functions_html_a36e28bc5027a04b7fa8233b392899f3a"><div class="ttname"><a href="class_static_functions.html#a36e28bc5027a04b7fa8233b392899f3a">StaticFunctions::javascriptFunctions</a></div><div class="ttdeci">static QStringList javascriptFunctions()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l09362">staticfunctions.cpp:9362</a></div></div>
+<div class="ttc" id="struct_bracket_info_html_a940658ec7d789266c1a28effee68d3d7"><div class="ttname"><a href="struct_bracket_info.html#a940658ec7d789266c1a28effee68d3d7">BracketInfo::character</a></div><div class="ttdeci">char character</div><div class="ttdef"><b>Definition:</b> <a href="generalhighlighter_8h_source.html#l00034">generalhighlighter.h:34</a></div></div>
+<div class="ttc" id="class_static_functions_html_a88600b088114bd8923325cbdc0f3cebfa31b35d78a499212a4d2f21c1496db9d4"><div class="ttname"><a href="class_static_functions.html#a88600b088114bd8923325cbdc0f3cebfa31b35d78a499212a4d2f21c1496db9d4">StaticFunctions::Undefined</a></div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8h_source.html#l00072">staticfunctions.h:72</a></div></div>
 <div class="ttc" id="class_editor_types_html_a39331ac7248f3caec238e726edea03e9a9758e01ec9906d9cafacb393a42b26b0"><div class="ttname"><a href="class_editor_types.html#a39331ac7248f3caec238e726edea03e9a9758e01ec9906d9cafacb393a42b26b0">EditorTypes::SQLQuery</a></div><div class="ttdef"><b>Definition:</b> <a href="editortypes_8h_source.html#l00027">editortypes.h:27</a></div></div>
 <div class="ttc" id="class_text_block_data_html_ada1f248b03e3e17dc9480060956cee90"><div class="ttname"><a href="class_text_block_data.html#ada1f248b03e3e17dc9480060956cee90">TextBlockData::TextBlockData</a></div><div class="ttdeci">TextBlockData()</div><div class="ttdef"><b>Definition:</b> <a href="generalhighlighter_8cpp_source.html#l00029">generalhighlighter.cpp:29</a></div></div>
-<div class="ttc" id="class_static_functions_html_a88600b088114bd8923325cbdc0f3cebfa9b080c47f6670e5616f64a1394203fe5"><div class="ttname"><a href="class_static_functions.html#a88600b088114bd8923325cbdc0f3cebfa9b080c47f6670e5616f64a1394203fe5">StaticFunctions::MariaDB</a></div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8h_source.html#l00071">staticfunctions.h:71</a></div></div>
-<div class="ttc" id="class_static_functions_html_afacb7fc611c327588c35ee91c87683b6"><div class="ttname"><a href="class_static_functions.html#afacb7fc611c327588c35ee91c87683b6">StaticFunctions::postgresqlFunctions</a></div><div class="ttdeci">static QStringList postgresqlFunctions()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l00202">staticfunctions.cpp:202</a></div></div>
-<div class="ttc" id="struct_bracket_info_html"><div class="ttname"><a href="struct_bracket_info.html">BracketInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="generalhighlighter_8h_source.html#l00031">generalhighlighter.h:31</a></div></div>
-<div class="ttc" id="class_static_functions_html_ac8cbb6c4d9da622a44434ab8607ca385"><div class="ttname"><a href="class_static_functions.html#ac8cbb6c4d9da622a44434ab8607ca385">StaticFunctions::javascriptKeywords</a></div><div class="ttdeci">static QStringList javascriptKeywords()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l08990">staticfunctions.cpp:8990</a></div></div>
+<div class="ttc" id="class_static_functions_html_a88600b088114bd8923325cbdc0f3cebfa9b080c47f6670e5616f64a1394203fe5"><div class="ttname"><a href="class_static_functions.html#a88600b088114bd8923325cbdc0f3cebfa9b080c47f6670e5616f64a1394203fe5">StaticFunctions::MariaDB</a></div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8h_source.html#l00072">staticfunctions.h:72</a></div></div>
+<div class="ttc" id="class_static_functions_html_afacb7fc611c327588c35ee91c87683b6"><div class="ttname"><a href="class_static_functions.html#afacb7fc611c327588c35ee91c87683b6">StaticFunctions::postgresqlFunctions</a></div><div class="ttdeci">static QStringList postgresqlFunctions()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l00204">staticfunctions.cpp:204</a></div></div>
+<div class="ttc" id="struct_bracket_info_html"><div class="ttname"><a href="struct_bracket_info.html">BracketInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="generalhighlighter_8h_source.html#l00032">generalhighlighter.h:32</a></div></div>
+<div class="ttc" id="class_static_functions_html_ac8cbb6c4d9da622a44434ab8607ca385"><div class="ttname"><a href="class_static_functions.html#ac8cbb6c4d9da622a44434ab8607ca385">StaticFunctions::javascriptKeywords</a></div><div class="ttdeci">static QStringList javascriptKeywords()</div><div class="ttdef"><b>Definition:</b> <a href="staticfunctions_8cpp_source.html#l09063">staticfunctions.cpp:9063</a></div></div>
 <div class="ttc" id="generalhighlighter_8h_html"><div class="ttname"><a href="generalhighlighter_8h.html">generalhighlighter.h</a></div></div>
 <div class="ttc" id="class_editor_types_html_a39331ac7248f3caec238e726edea03e9"><div class="ttname"><a href="class_editor_types.html#a39331ac7248f3caec238e726edea03e9">EditorTypes::EditorType</a></div><div class="ttdeci">EditorType</div><div class="ttdef"><b>Definition:</b> <a href="editortypes_8h_source.html#l00027">editortypes.h:27</a></div></div>
 <div class="ttc" id="class_general_highlighter_html_ab9d9a7b38614f733556d2fde272289da"><div class="ttname"><a href="class_general_highlighter.html#ab9d9a7b38614f733556d2fde272289da">GeneralHighlighter::highlightBlock</a></div><div class="ttdeci">void highlightBlock(const QString &amp;text)</div><div class="ttdef"><b>Definition:</b> <a href="generalhighlighter_8cpp_source.html#l00114">generalhighlighter.cpp:114</a></div></div>
@@ -898,7 +910,7 @@ $(document).ready(function(){initNavTree('generalhighlighter_8cpp_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="generalhighlighter_8cpp.html">generalhighlighter.cpp</a></li>
-    <li class="footer">Generated on Wed Oct 1 2014 13:56:17 for Calíope - Qt MariaDB GUI by
+    <li class="footer">Generated on Wed Nov 12 2014 11:51:17 for Calíope - Qt MariaDB GUI by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

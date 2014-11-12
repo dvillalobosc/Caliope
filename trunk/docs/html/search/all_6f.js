@@ -9,6 +9,7 @@ var searchData=
   ['openedproject',['openedProject',['../class_projects.html#aa5743d643cbf38703776f1218acd2f5a',1,'Projects']]],
   ['openfile',['openFile',['../class_main_window.html#a38ac77b6be25323106bd8dce52278ad2',1,'MainWindow::openFile()'],['../class_project_find_replace.html#a7056e1b9d105f7dc39129402429a8c10',1,'ProjectFindReplace::openFile()'],['../class_projects.html#aefe07cac511eabb4258db5b10d526e2c',1,'Projects::openFile()'],['../class_text_editor.html#aa4b024a46cf6244fc136992a568b52ff',1,'TextEditor::openFile()']]],
   ['openfileactiontriggered',['openFileActionTriggered',['../class_text_editor.html#a8dd56bcefebb833c5e4362c5f387114d',1,'TextEditor']]],
+  ['openurl',['openURL',['../class_item_editor.html#aa127d23d11798b7fa83bc240931305b4',1,'ItemEditor::openURL()'],['../class_s_q_l_query.html#aad7065c87757dfa2c53edcc68266ce63',1,'SQLQuery::openURL()'],['../class_text_editor.html#a8491f27456397f78fa1ecb59f5b58b54',1,'TextEditor::openURL()']]],
   ['outputasg',['outputAsG',['../class_d_b_m_s.html#a71ea0d473e1c608007582a2ef43f0f76',1,'DBMS']]],
   ['outputashtml',['outputAsHTML',['../class_d_b_m_s.html#ab5c8f08b06f870d0db0e390f0230103f',1,'DBMS']]],
   ['outputastable',['outputAsTable',['../class_d_b_m_s.html#a0e8eb552b52689653941b05975367e57',1,'DBMS']]],

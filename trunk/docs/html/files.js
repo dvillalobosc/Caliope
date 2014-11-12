@@ -1,5 +1,9 @@
 var files =
 [
+    [ "applicationtheme.cpp", "applicationtheme_8cpp.html", null ],
+    [ "applicationtheme.h", "applicationtheme_8h.html", [
+      [ "ApplicationTheme", "class_application_theme.html", "class_application_theme" ]
+    ] ],
     [ "backup.cpp", "backup_8cpp.html", null ],
     [ "backup.h", "backup_8h.html", [
       [ "Backup", "class_backup.html", "class_backup" ]
@@ -58,9 +62,18 @@ var files =
       [ "MessageTypes", "class_message_types.html", "class_message_types" ],
       [ "DMessageLabel", "class_d_message_label.html", "class_d_message_label" ]
     ] ],
+    [ "dpiechartwidget.cpp", "dpiechartwidget_8cpp.html", null ],
+    [ "dpiechartwidget.h", "dpiechartwidget_8h.html", [
+      [ "DPieChartWidget", "class_d_pie_chart_widget.html", "class_d_pie_chart_widget" ]
+    ] ],
     [ "dquerylog.cpp", "dquerylog_8cpp.html", null ],
     [ "dquerylog.h", "dquerylog_8h.html", [
       [ "DQueryLog", "class_d_query_log.html", "class_d_query_log" ]
+    ] ],
+    [ "dreportviewer.cpp", "dreportviewer_8cpp.html", null ],
+    [ "dreportviewer.h", "dreportviewer_8h.html", [
+      [ "ReportTypes", "class_report_types.html", "class_report_types" ],
+      [ "DReportViewer", "class_d_report_viewer.html", "class_d_report_viewer" ]
     ] ],
     [ "dstackedwidget.cpp", "dstackedwidget_8cpp.html", null ],
     [ "dstackedwidget.h", "dstackedwidget_8h.html", [
