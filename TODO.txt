@@ -9,4 +9,3 @@ To Do list:
 ** Check why sqlHighlightRules() is called twice.
 ** Fix bug in MainWindow::openURLSlot(QString url), I think it is a Qt thing.
 ** Make F7 Works with formal names.
-* Add a report seccion in Connection and make them exportable. And enable custom reports.

@@ -1249,43 +1249,43 @@ Total progess: %5.</source>
         <translation>&amp;Tipo:</translation>
     </message>
     <message>
-        <location filename="../dreportviewer.cpp" line="181"/>
+        <location filename="../dreportviewer.cpp" line="182"/>
         <source>Export to PDF</source>
         <translation>Exportar a Pdf</translation>
     </message>
     <message>
-        <location filename="../dreportviewer.cpp" line="182"/>
+        <location filename="../dreportviewer.cpp" line="183"/>
         <source>Refresh</source>
         <translation>Refrescar</translation>
     </message>
     <message>
-        <location filename="../dreportviewer.cpp" line="183"/>
+        <location filename="../dreportviewer.cpp" line="184"/>
         <source>Export to Image</source>
         <translation>Exportar a Imagen</translation>
     </message>
     <message>
-        <location filename="../dreportviewer.cpp" line="191"/>
+        <location filename="../dreportviewer.cpp" line="192"/>
         <source>Save to Pdf</source>
         <translation>Guardar en Pdf</translation>
     </message>
     <message>
-        <location filename="../dreportviewer.cpp" line="191"/>
+        <location filename="../dreportviewer.cpp" line="192"/>
         <source>Pdf &amp; Ps files (*.pdf *.ps)</source>
         <translation>Archivos Pdf &amp; Ps (*.pdf *.ps)</translation>
     </message>
     <message>
-        <location filename="../dreportviewer.cpp" line="198"/>
-        <location filename="../dreportviewer.cpp" line="215"/>
+        <location filename="../dreportviewer.cpp" line="199"/>
+        <location filename="../dreportviewer.cpp" line="216"/>
         <source>File saved at: %1</source>
         <translation>Archivo guardado en: %1</translation>
     </message>
     <message>
-        <location filename="../dreportviewer.cpp" line="209"/>
+        <location filename="../dreportviewer.cpp" line="210"/>
         <source>Save to Image</source>
         <translation>Guardar en Imagen</translation>
     </message>
     <message>
-        <location filename="../dreportviewer.cpp" line="209"/>
+        <location filename="../dreportviewer.cpp" line="210"/>
         <source>Image files (%1)</source>
         <translation>Archivos de imagen (%1)</translation>
     </message>

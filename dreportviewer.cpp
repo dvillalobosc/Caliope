@@ -90,7 +90,7 @@ QString DReportViewer::getSqlQuery()
 
 void DReportViewer::addCustomReport()
 {
-  QDialog *dialog = new QDialog(this);
+  dialog = new QDialog(this);
 
   QVBoxLayout *verticalLayout = new QVBoxLayout;
   verticalLayout->addWidget(new DTitleLabel(windowTitle()));
@@ -127,9 +127,10 @@ void DReportViewer::addCustomReport()
   formLayout->addRow(baseTextEditor);
   verticalLayout->addLayout(formLayout);
 
-  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help);
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Discard | QDialogButtonBox::Help);
   connect(buttonBox, SIGNAL(accepted()), dialog, SLOT(accept()));
   connect(buttonBox, SIGNAL(rejected()), dialog, SLOT(reject()));
+  connect(buttonBox->button(QDialogButtonBox::Discard), SIGNAL(clicked()), this, SLOT(discardReportSlot()));
   verticalLayout->addWidget(buttonBox);
 
   fillCustomReportwidgets(comboReportName->currentText());
@@ -221,4 +222,10 @@ void DReportViewer::fillCustomReportwidgets(QString reportName)
   lineEditUnit->setText(data.at(0).split(":").at(1));
   comboReportType->setCurrentIndex(comboReportType->findData(data.at(1).split(":").at(1).toInt()));
   baseTextEditor->setPlainText(data.at(2).split(":").at(1));
+}
+
+void DReportViewer::discardReportSlot()
+{
+  settings.remove(comboReportName->currentText());
+  dialog->close();
 }
