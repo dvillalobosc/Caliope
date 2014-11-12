@@ -52,6 +52,7 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
   labelPort = new QLabel(QString::number(serverConnection->getPort()));
   labelVersion = new QLabel(serverConnection->getVersion());
   labelServerStatus = new QLabel(serverConnection->getStatus());
+  labelServerStatus->setWordWrap(true);
   labelConnectionId = new QLabel(QString::number(serverConnection->getConnectionId()));
   formLayout = new QFormLayout;
   formLayout->addRow(" ", labelUser);

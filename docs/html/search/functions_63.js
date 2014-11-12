@@ -8,7 +8,7 @@ var searchData=
   ['changedatabase',['changeDatabase',['../class_d_b_m_s.html#a68bc8eba5b80438535e5f3f346f69da6',1,'DBMS']]],
   ['changeengine',['changeEngine',['../class_table.html#a103cc86be0c11e95b0acd1b6e27adff3',1,'Table']]],
   ['changetitle',['changeTitle',['../class_text_editor.html#a1786fb9bdee851eaa5439180b2df1dd5',1,'TextEditor']]],
-  ['clear',['clear',['../class_text_editor.html#a63f9bab8dcbec46cf840bf199e7768a1',1,'TextEditor']]],
+  ['clear',['clear',['../class_d_pie_chart_widget.html#accf2f459765d63272337599bc88ee400',1,'DPieChartWidget::clear()'],['../class_text_editor.html#a63f9bab8dcbec46cf840bf199e7768a1',1,'TextEditor::clear()']]],
   ['clearsqlitequerylog',['clearSQLiteQueryLog',['../class_d_b_m_s.html#a46ae198ee805e740084fcbd7ba6ae3ac',1,'DBMS']]],
   ['clicked',['clicked',['../class_d_line_edit.html#a68a11871b187d463294ae8a91f4cebb8',1,'DLineEdit']]],
   ['close',['close',['../class_d_b_m_s.html#a73ae9d2335868e83feec2e6eebed3de0',1,'DBMS']]],
@@ -24,5 +24,6 @@ var searchData=
   ['currenteditortypekeywords',['currentEditorTypeKeywords',['../class_static_functions.html#a1c2e8e171a395da891c1fbabd527e493',1,'StaticFunctions']]],
   ['currentindexitem',['currentIndexItem',['../class_d_table_view.html#ae1f2d97eae69091d67ce810e50b12964',1,'DTableView']]],
   ['currentitem',['currentItem',['../class_d_table_view.html#a58eda1e77ce6794f9357311a21894c25',1,'DTableView']]],
+  ['currentlocale',['currentLocale',['../class_static_functions.html#a283790df1d512f696910874daef9ea02',1,'StaticFunctions']]],
   ['cutlineactiontriggerd',['cutLineActionTriggerd',['../class_text_editor.html#aa30d3b28ca35a4af3e476f41a8cd8bad',1,'TextEditor']]]
 ];

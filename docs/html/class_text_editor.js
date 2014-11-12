@@ -13,6 +13,7 @@ var class_text_editor =
     [ "okToClose", "class_text_editor.html#a50cc529cc374b300f62dea4bef215c1f", null ],
     [ "openFile", "class_text_editor.html#aa4b024a46cf6244fc136992a568b52ff", null ],
     [ "openFileActionTriggered", "class_text_editor.html#a8dd56bcefebb833c5e4362c5f387114d", null ],
+    [ "openURL", "class_text_editor.html#a8491f27456397f78fa1ecb59f5b58b54", null ],
     [ "retranslateUi", "class_text_editor.html#ab7969dc0c1dcc03cc57f23d504ec42ea", null ],
     [ "saveFileActionTriggered", "class_text_editor.html#af4aa9558561747376233822fb7b110cb", null ],
     [ "saveFileAsActionTriggered", "class_text_editor.html#a0c9d81d5018973aea649bf321b54abca", null ],

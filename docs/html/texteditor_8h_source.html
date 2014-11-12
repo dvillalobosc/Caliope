@@ -192,198 +192,200 @@ $(document).ready(function(){initNavTree('texteditor_8h_source.html','');});
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#a1786fb9bdee851eaa5439180b2df1dd5">changeTitle</a>(QString title);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#afd7f6e106f9981e933267c0dc7b3a25e">statusBarMessage</a>(<span class="keyword">const</span> QString &amp;message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, <span class="keywordtype">int</span> timeout = 2000);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#a23a1bca0b8b411492cd5810c1fefb1c8">updatePrositionViewer</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> x, <span class="keyword">const</span> <span class="keywordtype">int</span> y);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">public</span> slots:</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_text_editor.html#af4aa9558561747376233822fb7b110cb">saveFileActionTriggered</a>();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_text_editor.html#a0c9d81d5018973aea649bf321b54abca">saveFileAsActionTriggered</a>();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#a8dd56bcefebb833c5e4362c5f387114d">openFileActionTriggered</a>();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#a63f9bab8dcbec46cf840bf199e7768a1">clear</a>();</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#aa30d3b28ca35a4af3e476f41a8cd8bad">cutLineActionTriggerd</a>();</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#a54ca40287e02b2e5b0d9743314f38529">fillMariaDBSymbolsActionSlot</a>();</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#ab8177a5ae6b7fa4bb9ee99f67149753f">viewNormalActionTriggered</a>();</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#ae8214a0764b965a1d6d802c67ba3774c">viewVerticalActionTriggered</a>();</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#a420542eb6146c6db375705ea45dbcf65">viewHorizoltalActionTriggered</a>();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">private</span> slots:</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordtype">void</span> insertCompletion(<span class="keyword">const</span> QString &amp;completion);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordtype">void</span> performCompletion();</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordtype">void</span> wordWrapActionToggled();</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordtype">void</span> zoomIn();</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordtype">void</span> zoomOut();</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordtype">void</span> zoomReset();</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordtype">void</span> gotoLineActionTriggered();</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordtype">void</span> symbolsMenuAboutToShowSlot();</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordtype">void</span> openRecentFilesMenuAboutToShowSlot();</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keywordtype">void</span> clearRecentFilesActionTriggered();</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keywordtype">void</span> recentFilesActionGroupTriggered(QAction *action);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordtype">void</span> gotoLineActionGroupTriggered(QAction *action);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <span class="keywordtype">void</span> printActionTriggerd();</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordtype">void</span> reloadFileActionTriggerd();</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keywordtype">void</span> modificationChangedSlot(<span class="keywordtype">bool</span> changed);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordtype">void</span> exportoToPdfOrPsActionTriggerd();</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordtype">void</span> exportoToOdtActionTriggerd();</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="keywordtype">void</span> exportoToHtmlActionTriggerd();</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordtype">void</span> exportoToSvgActionTriggerd();</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordtype">void</span> exportoToImgActionTriggerd();</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="keywordtype">void</span> matchBracket();</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keywordtype">void</span> toggleCommentActionTriggerd();</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="keywordtype">void</span> showMariaDBHlperActionTriggered();</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keywordtype">void</span> highlightCurrentLineActionTriggered();</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keywordtype">void</span> updateCursorPositionSlot();</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordtype">void</span> showSymbolsActionTriggered(<span class="keywordtype">bool</span> checked = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="keywordtype">void</span> itemClickedSlot(QListWidgetItem *item);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordtype">void</span> sortSymbolsSlot();</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <span class="keywordtype">void</span> normalizeTextActionTriggered();</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keywordtype">void</span> executePHPScriptActionSlot();</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordtype">void</span> readyReadStandardOutputSlot();</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keywordtype">void</span> setTitle(QString title);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <span class="keywordtype">void</span> uppercaseKeywordsActionSlot();</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="keywordtype">void</span> lowercaseKeywordsActionSlot();</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <span class="keywordtype">void</span> performPeriodCompletion(<span class="keyword">const</span> QString &amp;completionPrefix);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="keywordtype">void</span> insertCompletionForPeriodCompeltion(<span class="keyword">const</span> QString &amp;completion);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <a class="code" href="class_d_b_m_s.html">DBMS</a> *serverConnection;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  QCompleter *completer;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  <span class="keywordtype">bool</span> completedAndSelected;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  <span class="keywordtype">void</span> performCompletion(<span class="keyword">const</span> QString &amp;completionPrefix);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="keywordtype">void</span> populateModel(<span class="keyword">const</span> QString &amp;completionPrefix);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  QStandardItemModel *model;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  QStringList keywords();</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  QStringList functions();</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  QStringList datatypes();</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  QStringList charsets();</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="keywordtype">void</span> createActions();</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <a class="code" href="class_projects.html">Projects</a> *project;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <a class="code" href="class_editor_types.html#a39331ac7248f3caec238e726edea03e9">EditorTypes::EditorType</a> editorType;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  QHash&lt;QString, int&gt; symbolsLineNumber;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  <span class="keywordtype">void</span> updateRecentFiles(QString fileToSave = QString());</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  QSettings settings;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  QFont newFont;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <span class="keywordtype">void</span> setFontToWidgets(<span class="keyword">const</span> QFont &amp;);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <span class="keywordtype">bool</span> saveAs;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  QString fileExtention();</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  QStringList databaseSymbols;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordtype">bool</span> matchLeftBracket(QTextBlock currentBlock, <span class="keywordtype">int</span> index, <span class="keywordtype">int</span> numLeftBracket, <span class="keyword">const</span> <span class="keywordtype">char</span> leftBracket);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  <span class="keywordtype">bool</span> matchRightBracket(QTextBlock currentBlock, <span class="keywordtype">int</span> index, <span class="keywordtype">int</span> numRightBracket, <span class="keyword">const</span> <span class="keywordtype">char</span> rightBracket, <span class="keywordtype">bool</span> firstTime = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="keywordtype">void</span> createBracketSelection(<span class="keywordtype">int</span> pos);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  QPrinter printer;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  QAction *copyAction;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  QAction *cutAction;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  QAction *cutLineAction;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  QAction *pasteAction;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  QAction *undoAction;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  QAction *redoAction;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  QAction *showHideLineNumbersAction;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  QAction *wordWrapAction;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  QAction *gotoLineAction;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  QAction *toggleCommentAction;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="keyword">inline</span> QString commentString();</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  QAction *clearAction;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  QAction *openAction;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  QAction *saveAction;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  QAction *saveAsAction;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  QAction *zoomInAction;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  QAction *zoomOutAction;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  QAction *restoreZoomAction;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  QAction *exportoToPdfOrPsAction;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  QAction *exportoToOdtAction;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  QAction *exportoToHtmlAction;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  QAction *exportoToSvgAction;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  QAction *exportoToImgAction;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  QAction *selectAllAction;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  QAction *clearRecentFilesAction;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  QActionGroup *recentFilesActionGroup;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  QActionGroup *gotoLineActionGroup;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  QAction *highlightCurrentLineAction;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  QAction *normalizeTextAction;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <a class="code" href="class_subversioned_file.html">SubversionedFile</a> *subversionedFile;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  <span class="keywordtype">void</span> createMenu();</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  QToolBar *mainToolBar;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  <span class="keywordtype">void</span> createToolBars();</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  QMenuBar *menuBar;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  QMenu *fileMenu;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  QMenu *editMenu;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  QMenu *optionsMenu;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  QMenu *subversionMenu;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  QMenu *viewMenu;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  <a class="code" href="class_find_replace.html">FindReplace</a> *findReplace;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  QSplitter *secondSplitter;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  QListWidget *listSymbols;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  QAction *viewNormalAction;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  QAction *viewVerticalAction;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  QAction *viewHorizoltalAction;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  <a class="code" href="class_base_text_editor.html">BaseTextEditor</a> *readOnlyTextEditor;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  <span class="keywordtype">void</span> updateReadOnlyEditor();</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  QAction *showSymbolsAction;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  QLineEdit *lineEditFile;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  QLabel *labelPosition;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  QAction *sortSymbols;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  <span class="keywordtype">void</span> fillMariaDBSymbols();</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  QAction *executePHPScriptAction;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  <span class="keywordtype">void</span> openLastOpenedFile();</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  QMenu *openRecentFilesMenu;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  QMenu *contextualMenu;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  QMenu *symbolsMenu;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  QMenu *exportMenu;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  QAction *printAction;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  QAction *fillMariaDBSymbolsAction;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  QList&lt;QAction *&gt; editActionList();</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  QList&lt;QAction *&gt; viewActionList();</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  QList&lt;QAction *&gt; fileActionList();</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  QAction *showMariaDBHelperAction;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  QAction *disableCompletionAction;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  QProcess *proc;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  <a class="code" href="class_base_text_editor.html">BaseTextEditor</a> *procOutput;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  QAction *contextualMenuSeparatorAction;</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  QAction *viewMenuSeparatorActionView;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  QAction *viewMenuSeparatorActionSymbols;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> windowCount;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  <a class="code" href="class_d_title_label.html">DTitleLabel</a> *dTitleLabel;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  QAction *uppercaseKeywordsAction;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  QAction *lowercaseKeywordsAction;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <span class="keywordtype">void</span> changeTextCase(<span class="keywordtype">bool</span> uppercse = <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  QStandardItemModel *modelForPeriodCompeltion;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  QCompleter *completerForPeriodCompeltion;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;};</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="preprocessor">#endif // TEXTEDITOR_H</span></div>
-<div class="ttc" id="class_text_editor_html_a50cc529cc374b300f62dea4bef215c1f"><div class="ttname"><a href="class_text_editor.html#a50cc529cc374b300f62dea4bef215c1f">TextEditor::okToClose</a></div><div class="ttdeci">bool okToClose()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01246">texteditor.cpp:1246</a></div></div>
-<div class="ttc" id="class_text_editor_html_ab7969dc0c1dcc03cc57f23d504ec42ea"><div class="ttname"><a href="class_text_editor.html#ab7969dc0c1dcc03cc57f23d504ec42ea">TextEditor::retranslateUi</a></div><div class="ttdeci">void retranslateUi()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l00233">texteditor.cpp:233</a></div></div>
-<div class="ttc" id="class_text_editor_html_ab8177a5ae6b7fa4bb9ee99f67149753f"><div class="ttname"><a href="class_text_editor.html#ab8177a5ae6b7fa4bb9ee99f67149753f">TextEditor::viewNormalActionTriggered</a></div><div class="ttdeci">void viewNormalActionTriggered()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l02038">texteditor.cpp:2038</a></div></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#a8491f27456397f78fa1ecb59f5b58b54">openURL</a>(QString url);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_text_editor.html#af4aa9558561747376233822fb7b110cb">saveFileActionTriggered</a>();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="class_text_editor.html#a0c9d81d5018973aea649bf321b54abca">saveFileAsActionTriggered</a>();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#a8dd56bcefebb833c5e4362c5f387114d">openFileActionTriggered</a>();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#a63f9bab8dcbec46cf840bf199e7768a1">clear</a>();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#aa30d3b28ca35a4af3e476f41a8cd8bad">cutLineActionTriggerd</a>();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#a54ca40287e02b2e5b0d9743314f38529">fillMariaDBSymbolsActionSlot</a>();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#ab8177a5ae6b7fa4bb9ee99f67149753f">viewNormalActionTriggered</a>();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#ae8214a0764b965a1d6d802c67ba3774c">viewVerticalActionTriggered</a>();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_text_editor.html#a420542eb6146c6db375705ea45dbcf65">viewHorizoltalActionTriggered</a>();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">private</span> slots:</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordtype">void</span> insertCompletion(<span class="keyword">const</span> QString &amp;completion);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordtype">void</span> performCompletion();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordtype">void</span> wordWrapActionToggled();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordtype">void</span> zoomIn();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordtype">void</span> zoomOut();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordtype">void</span> zoomReset();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordtype">void</span> gotoLineActionTriggered();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordtype">void</span> symbolsMenuAboutToShowSlot();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keywordtype">void</span> openRecentFilesMenuAboutToShowSlot();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keywordtype">void</span> clearRecentFilesActionTriggered();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordtype">void</span> recentFilesActionGroupTriggered(QAction *action);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <span class="keywordtype">void</span> gotoLineActionGroupTriggered(QAction *action);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordtype">void</span> printActionTriggerd();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keywordtype">void</span> reloadFileActionTriggerd();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordtype">void</span> modificationChangedSlot(<span class="keywordtype">bool</span> changed);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordtype">void</span> exportoToPdfOrPsActionTriggerd();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="keywordtype">void</span> exportoToOdtActionTriggerd();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordtype">void</span> exportoToHtmlActionTriggerd();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordtype">void</span> exportoToSvgActionTriggerd();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="keywordtype">void</span> exportoToImgActionTriggerd();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keywordtype">void</span> matchBracket();</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="keywordtype">void</span> toggleCommentActionTriggerd();</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keywordtype">void</span> showMariaDBHlperActionTriggered();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keywordtype">void</span> highlightCurrentLineActionTriggered();</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordtype">void</span> updateCursorPositionSlot();</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="keywordtype">void</span> showSymbolsActionTriggered(<span class="keywordtype">bool</span> checked = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordtype">void</span> itemClickedSlot(QListWidgetItem *item);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <span class="keywordtype">void</span> sortSymbolsSlot();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keywordtype">void</span> normalizeTextActionTriggered();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordtype">void</span> executePHPScriptActionSlot();</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keywordtype">void</span> readyReadStandardOutputSlot();</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <span class="keywordtype">void</span> setTitle(QString title);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="keywordtype">void</span> uppercaseKeywordsActionSlot();</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <span class="keywordtype">void</span> lowercaseKeywordsActionSlot();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="keywordtype">void</span> performPeriodCompletion(<span class="keyword">const</span> QString &amp;completionPrefix);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <span class="keywordtype">void</span> insertCompletionForPeriodCompeltion(<span class="keyword">const</span> QString &amp;completion);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <a class="code" href="class_d_b_m_s.html">DBMS</a> *serverConnection;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  QCompleter *completer;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  <span class="keywordtype">bool</span> completedAndSelected;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="keywordtype">void</span> performCompletion(<span class="keyword">const</span> QString &amp;completionPrefix);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keywordtype">void</span> populateModel(<span class="keyword">const</span> QString &amp;completionPrefix);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  QStandardItemModel *model;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  QStringList keywords();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  QStringList functions();</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  QStringList datatypes();</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  QStringList charsets();</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="keywordtype">void</span> createActions();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <a class="code" href="class_projects.html">Projects</a> *project;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <a class="code" href="class_editor_types.html#a39331ac7248f3caec238e726edea03e9">EditorTypes::EditorType</a> editorType;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  QHash&lt;QString, int&gt; symbolsLineNumber;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  <span class="keywordtype">void</span> updateRecentFiles(QString fileToSave = QString());</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  QSettings settings;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  QFont newFont;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <span class="keywordtype">void</span> setFontToWidgets(<span class="keyword">const</span> QFont &amp;);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keywordtype">bool</span> saveAs;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  QString fileExtention();</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  QStringList databaseSymbols;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  <span class="keywordtype">bool</span> matchLeftBracket(QTextBlock currentBlock, <span class="keywordtype">int</span> index, <span class="keywordtype">int</span> numLeftBracket, <span class="keyword">const</span> <span class="keywordtype">char</span> leftBracket);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="keywordtype">bool</span> matchRightBracket(QTextBlock currentBlock, <span class="keywordtype">int</span> index, <span class="keywordtype">int</span> numRightBracket, <span class="keyword">const</span> <span class="keywordtype">char</span> rightBracket, <span class="keywordtype">bool</span> firstTime = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keywordtype">void</span> createBracketSelection(<span class="keywordtype">int</span> pos);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  QPrinter printer;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  QAction *copyAction;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  QAction *cutAction;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  QAction *cutLineAction;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  QAction *pasteAction;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  QAction *undoAction;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  QAction *redoAction;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  QAction *showHideLineNumbersAction;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  QAction *wordWrapAction;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  QAction *gotoLineAction;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  QAction *toggleCommentAction;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  <span class="keyword">inline</span> QString commentString();</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  QAction *clearAction;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  QAction *openAction;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  QAction *saveAction;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  QAction *saveAsAction;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  QAction *zoomInAction;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  QAction *zoomOutAction;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  QAction *restoreZoomAction;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  QAction *exportoToPdfOrPsAction;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  QAction *exportoToOdtAction;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  QAction *exportoToHtmlAction;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  QAction *exportoToSvgAction;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  QAction *exportoToImgAction;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  QAction *selectAllAction;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  QAction *clearRecentFilesAction;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  QActionGroup *recentFilesActionGroup;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  QActionGroup *gotoLineActionGroup;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  QAction *highlightCurrentLineAction;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  QAction *normalizeTextAction;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  <a class="code" href="class_subversioned_file.html">SubversionedFile</a> *subversionedFile;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <span class="keywordtype">void</span> createMenu();</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  QToolBar *mainToolBar;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <span class="keywordtype">void</span> createToolBars();</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  QMenuBar *menuBar;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  QMenu *fileMenu;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  QMenu *editMenu;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  QMenu *optionsMenu;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  QMenu *subversionMenu;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  QMenu *viewMenu;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <a class="code" href="class_find_replace.html">FindReplace</a> *findReplace;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  QSplitter *secondSplitter;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  QListWidget *listSymbols;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  QAction *viewNormalAction;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  QAction *viewVerticalAction;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  QAction *viewHorizoltalAction;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  <a class="code" href="class_base_text_editor.html">BaseTextEditor</a> *readOnlyTextEditor;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  <span class="keywordtype">void</span> updateReadOnlyEditor();</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  QAction *showSymbolsAction;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  QLineEdit *lineEditFile;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  QLabel *labelPosition;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  QAction *sortSymbols;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  <span class="keywordtype">void</span> fillMariaDBSymbols();</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  QAction *executePHPScriptAction;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  <span class="keywordtype">void</span> openLastOpenedFile();</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  QMenu *openRecentFilesMenu;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  QMenu *contextualMenu;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  QMenu *symbolsMenu;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  QMenu *exportMenu;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  QAction *printAction;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  QAction *fillMariaDBSymbolsAction;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  QList&lt;QAction *&gt; editActionList();</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  QList&lt;QAction *&gt; viewActionList();</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  QList&lt;QAction *&gt; fileActionList();</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  QAction *showMariaDBHelperAction;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  QAction *disableCompletionAction;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  QProcess *proc;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  <a class="code" href="class_base_text_editor.html">BaseTextEditor</a> *procOutput;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  QAction *contextualMenuSeparatorAction;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  QAction *viewMenuSeparatorActionView;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  QAction *viewMenuSeparatorActionSymbols;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> windowCount;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  <a class="code" href="class_d_title_label.html">DTitleLabel</a> *dTitleLabel;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  QAction *uppercaseKeywordsAction;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  QAction *lowercaseKeywordsAction;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  <span class="keywordtype">void</span> changeTextCase(<span class="keywordtype">bool</span> uppercse = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  QStandardItemModel *modelForPeriodCompeltion;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  QCompleter *completerForPeriodCompeltion;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;};</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="preprocessor">#endif // TEXTEDITOR_H</span></div>
+<div class="ttc" id="class_text_editor_html_a50cc529cc374b300f62dea4bef215c1f"><div class="ttname"><a href="class_text_editor.html#a50cc529cc374b300f62dea4bef215c1f">TextEditor::okToClose</a></div><div class="ttdeci">bool okToClose()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01247">texteditor.cpp:1247</a></div></div>
+<div class="ttc" id="class_text_editor_html_ab7969dc0c1dcc03cc57f23d504ec42ea"><div class="ttname"><a href="class_text_editor.html#ab7969dc0c1dcc03cc57f23d504ec42ea">TextEditor::retranslateUi</a></div><div class="ttdeci">void retranslateUi()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l00234">texteditor.cpp:234</a></div></div>
+<div class="ttc" id="class_text_editor_html_ab8177a5ae6b7fa4bb9ee99f67149753f"><div class="ttname"><a href="class_text_editor.html#ab8177a5ae6b7fa4bb9ee99f67149753f">TextEditor::viewNormalActionTriggered</a></div><div class="ttdeci">void viewNormalActionTriggered()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l02104">texteditor.cpp:2104</a></div></div>
 <div class="ttc" id="class_d_b_m_s_html"><div class="ttname"><a href="class_d_b_m_s.html">DBMS</a></div><div class="ttdef"><b>Definition:</b> <a href="dbms_8h_source.html#l00152">dbms.h:152</a></div></div>
-<div class="ttc" id="class_text_editor_html_a420542eb6146c6db375705ea45dbcf65"><div class="ttname"><a href="class_text_editor.html#a420542eb6146c6db375705ea45dbcf65">TextEditor::viewHorizoltalActionTriggered</a></div><div class="ttdeci">void viewHorizoltalActionTriggered()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l02050">texteditor.cpp:2050</a></div></div>
+<div class="ttc" id="class_text_editor_html_a420542eb6146c6db375705ea45dbcf65"><div class="ttname"><a href="class_text_editor.html#a420542eb6146c6db375705ea45dbcf65">TextEditor::viewHorizoltalActionTriggered</a></div><div class="ttdeci">void viewHorizoltalActionTriggered()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l02116">texteditor.cpp:2116</a></div></div>
 <div class="ttc" id="class_text_editor_html_afd7f6e106f9981e933267c0dc7b3a25e"><div class="ttname"><a href="class_text_editor.html#afd7f6e106f9981e933267c0dc7b3a25e">TextEditor::statusBarMessage</a></div><div class="ttdeci">void statusBarMessage(const QString &amp;message, QSystemTrayIcon::MessageIcon icon=QSystemTrayIcon::Information, int timeout=2000)</div></div>
 <div class="ttc" id="class_text_editor_html_a23a1bca0b8b411492cd5810c1fefb1c8"><div class="ttname"><a href="class_text_editor.html#a23a1bca0b8b411492cd5810c1fefb1c8">TextEditor::updatePrositionViewer</a></div><div class="ttdeci">void updatePrositionViewer(const int x, const int y)</div></div>
-<div class="ttc" id="class_text_editor_html_acc2a33ca0d83157e05fe4bd90e734b49"><div class="ttname"><a href="class_text_editor.html#acc2a33ca0d83157e05fe4bd90e734b49">TextEditor::gotoLine</a></div><div class="ttdeci">void gotoLine(unsigned int line)</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l00322">texteditor.cpp:322</a></div></div>
+<div class="ttc" id="class_text_editor_html_acc2a33ca0d83157e05fe4bd90e734b49"><div class="ttname"><a href="class_text_editor.html#acc2a33ca0d83157e05fe4bd90e734b49">TextEditor::gotoLine</a></div><div class="ttdeci">void gotoLine(unsigned int line)</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l00323">texteditor.cpp:323</a></div></div>
+<div class="ttc" id="class_text_editor_html_a8491f27456397f78fa1ecb59f5b58b54"><div class="ttname"><a href="class_text_editor.html#a8491f27456397f78fa1ecb59f5b58b54">TextEditor::openURL</a></div><div class="ttdeci">void openURL(QString url)</div></div>
 <div class="ttc" id="class_text_editor_html_a1786fb9bdee851eaa5439180b2df1dd5"><div class="ttname"><a href="class_text_editor.html#a1786fb9bdee851eaa5439180b2df1dd5">TextEditor::changeTitle</a></div><div class="ttdeci">void changeTitle(QString title)</div></div>
-<div class="ttc" id="class_text_editor_html_aa4b024a46cf6244fc136992a568b52ff"><div class="ttname"><a href="class_text_editor.html#aa4b024a46cf6244fc136992a568b52ff">TextEditor::openFile</a></div><div class="ttdeci">void openFile(QString file=QString())</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01478">texteditor.cpp:1478</a></div></div>
+<div class="ttc" id="class_text_editor_html_aa4b024a46cf6244fc136992a568b52ff"><div class="ttname"><a href="class_text_editor.html#aa4b024a46cf6244fc136992a568b52ff">TextEditor::openFile</a></div><div class="ttdeci">void openFile(QString file=QString())</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01479">texteditor.cpp:1479</a></div></div>
 <div class="ttc" id="class_d_mdi_sub_window_html"><div class="ttname"><a href="class_d_mdi_sub_window.html">DMdiSubWindow</a></div><div class="ttdef"><b>Definition:</b> <a href="dmdisubwindow_8h_source.html#l00026">dmdisubwindow.h:26</a></div></div>
-<div class="ttc" id="class_text_editor_html_a4b491a89c3fee96f88767c5ae289935b"><div class="ttname"><a href="class_text_editor.html#a4b491a89c3fee96f88767c5ae289935b">TextEditor::mousePressEvent</a></div><div class="ttdeci">void mousePressEvent(QMouseEvent *event)</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l00690">texteditor.cpp:690</a></div></div>
+<div class="ttc" id="class_text_editor_html_a4b491a89c3fee96f88767c5ae289935b"><div class="ttname"><a href="class_text_editor.html#a4b491a89c3fee96f88767c5ae289935b">TextEditor::mousePressEvent</a></div><div class="ttdeci">void mousePressEvent(QMouseEvent *event)</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l00691">texteditor.cpp:691</a></div></div>
 <div class="ttc" id="class_text_editor_html_a853351ce43fac16eab13e412f7f4cb57"><div class="ttname"><a href="class_text_editor.html#a853351ce43fac16eab13e412f7f4cb57">TextEditor::textEditor</a></div><div class="ttdeci">BaseTextEditor * textEditor</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8h_source.html#l00070">texteditor.h:70</a></div></div>
-<div class="ttc" id="class_text_editor_html_a8dd56bcefebb833c5e4362c5f387114d"><div class="ttname"><a href="class_text_editor.html#a8dd56bcefebb833c5e4362c5f387114d">TextEditor::openFileActionTriggered</a></div><div class="ttdeci">void openFileActionTriggered()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01447">texteditor.cpp:1447</a></div></div>
+<div class="ttc" id="class_text_editor_html_a8dd56bcefebb833c5e4362c5f387114d"><div class="ttname"><a href="class_text_editor.html#a8dd56bcefebb833c5e4362c5f387114d">TextEditor::openFileActionTriggered</a></div><div class="ttdeci">void openFileActionTriggered()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01448">texteditor.cpp:1448</a></div></div>
 <div class="ttc" id="class_subversioned_file_html"><div class="ttname"><a href="class_subversioned_file.html">SubversionedFile</a></div><div class="ttdef"><b>Definition:</b> <a href="subversionedfile_8h_source.html#l00032">subversionedfile.h:32</a></div></div>
 <div class="ttc" id="class_text_editor_html_a9f66899f430ee3f5446cc7d6936322b6"><div class="ttname"><a href="class_text_editor.html#a9f66899f430ee3f5446cc7d6936322b6">TextEditor::reloadFile</a></div><div class="ttdeci">QAction * reloadFile</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8h_source.html#l00069">texteditor.h:69</a></div></div>
-<div class="ttc" id="class_text_editor_html_aa30d3b28ca35a4af3e476f41a8cd8bad"><div class="ttname"><a href="class_text_editor.html#aa30d3b28ca35a4af3e476f41a8cd8bad">TextEditor::cutLineActionTriggerd</a></div><div class="ttdeci">void cutLineActionTriggerd()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01202">texteditor.cpp:1202</a></div></div>
-<div class="ttc" id="class_text_editor_html_a63f9bab8dcbec46cf840bf199e7768a1"><div class="ttname"><a href="class_text_editor.html#a63f9bab8dcbec46cf840bf199e7768a1">TextEditor::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01356">texteditor.cpp:1356</a></div></div>
-<div class="ttc" id="class_text_editor_html_a23934e422663ed4cf37732653394a246"><div class="ttname"><a href="class_text_editor.html#a23934e422663ed4cf37732653394a246">TextEditor::closeEvent</a></div><div class="ttdeci">void closeEvent(QCloseEvent *event)</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01935">texteditor.cpp:1935</a></div></div>
-<div class="ttc" id="class_text_editor_html_a875901852bd099b1c9284670ef7d17dd"><div class="ttname"><a href="class_text_editor.html#a875901852bd099b1c9284670ef7d17dd">TextEditor::showEvent</a></div><div class="ttdeci">void showEvent(QShowEvent *event)</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01929">texteditor.cpp:1929</a></div></div>
+<div class="ttc" id="class_text_editor_html_aa30d3b28ca35a4af3e476f41a8cd8bad"><div class="ttname"><a href="class_text_editor.html#aa30d3b28ca35a4af3e476f41a8cd8bad">TextEditor::cutLineActionTriggerd</a></div><div class="ttdeci">void cutLineActionTriggerd()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01203">texteditor.cpp:1203</a></div></div>
+<div class="ttc" id="class_text_editor_html_a63f9bab8dcbec46cf840bf199e7768a1"><div class="ttname"><a href="class_text_editor.html#a63f9bab8dcbec46cf840bf199e7768a1">TextEditor::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01357">texteditor.cpp:1357</a></div></div>
+<div class="ttc" id="class_text_editor_html_a23934e422663ed4cf37732653394a246"><div class="ttname"><a href="class_text_editor.html#a23934e422663ed4cf37732653394a246">TextEditor::closeEvent</a></div><div class="ttdeci">void closeEvent(QCloseEvent *event)</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l02001">texteditor.cpp:2001</a></div></div>
+<div class="ttc" id="class_text_editor_html_a875901852bd099b1c9284670ef7d17dd"><div class="ttname"><a href="class_text_editor.html#a875901852bd099b1c9284670ef7d17dd">TextEditor::showEvent</a></div><div class="ttdeci">void showEvent(QShowEvent *event)</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01995">texteditor.cpp:1995</a></div></div>
 <div class="ttc" id="class_base_text_editor_html"><div class="ttname"><a href="class_base_text_editor.html">BaseTextEditor</a></div><div class="ttdef"><b>Definition:</b> <a href="basetexteditor_8h_source.html#l00031">basetexteditor.h:31</a></div></div>
-<div class="ttc" id="class_text_editor_html_a54b1e41cdc19f8c98aa44bb6407ad99f"><div class="ttname"><a href="class_text_editor.html#a54b1e41cdc19f8c98aa44bb6407ad99f">TextEditor::contextMenuEvent</a></div><div class="ttdeci">void contextMenuEvent(QContextMenuEvent *event)</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01442">texteditor.cpp:1442</a></div></div>
-<div class="ttc" id="class_text_editor_html_a0c9d81d5018973aea649bf321b54abca"><div class="ttname"><a href="class_text_editor.html#a0c9d81d5018973aea649bf321b54abca">TextEditor::saveFileAsActionTriggered</a></div><div class="ttdeci">bool saveFileAsActionTriggered()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l00936">texteditor.cpp:936</a></div></div>
+<div class="ttc" id="class_text_editor_html_a54b1e41cdc19f8c98aa44bb6407ad99f"><div class="ttname"><a href="class_text_editor.html#a54b1e41cdc19f8c98aa44bb6407ad99f">TextEditor::contextMenuEvent</a></div><div class="ttdeci">void contextMenuEvent(QContextMenuEvent *event)</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01443">texteditor.cpp:1443</a></div></div>
+<div class="ttc" id="class_text_editor_html_a0c9d81d5018973aea649bf321b54abca"><div class="ttname"><a href="class_text_editor.html#a0c9d81d5018973aea649bf321b54abca">TextEditor::saveFileAsActionTriggered</a></div><div class="ttdeci">bool saveFileAsActionTriggered()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l00937">texteditor.cpp:937</a></div></div>
 <div class="ttc" id="class_d_title_label_html"><div class="ttname"><a href="class_d_title_label.html">DTitleLabel</a></div><div class="ttdef"><b>Definition:</b> <a href="dtitlelabel_8h_source.html#l00026">dtitlelabel.h:26</a></div></div>
-<div class="ttc" id="class_text_editor_html_aafc6708b2e330650a15dec000544662e"><div class="ttname"><a href="class_text_editor.html#aafc6708b2e330650a15dec000544662e">TextEditor::event</a></div><div class="ttdeci">bool event(QEvent *event)</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01879">texteditor.cpp:1879</a></div></div>
-<div class="ttc" id="class_text_editor_html_af4aa9558561747376233822fb7b110cb"><div class="ttname"><a href="class_text_editor.html#af4aa9558561747376233822fb7b110cb">TextEditor::saveFileActionTriggered</a></div><div class="ttdeci">bool saveFileActionTriggered()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l00942">texteditor.cpp:942</a></div></div>
-<div class="ttc" id="class_text_editor_html_a54ca40287e02b2e5b0d9743314f38529"><div class="ttname"><a href="class_text_editor.html#a54ca40287e02b2e5b0d9743314f38529">TextEditor::fillMariaDBSymbolsActionSlot</a></div><div class="ttdeci">void fillMariaDBSymbolsActionSlot()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l00435">texteditor.cpp:435</a></div></div>
+<div class="ttc" id="class_text_editor_html_aafc6708b2e330650a15dec000544662e"><div class="ttname"><a href="class_text_editor.html#aafc6708b2e330650a15dec000544662e">TextEditor::event</a></div><div class="ttdeci">bool event(QEvent *event)</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01881">texteditor.cpp:1881</a></div></div>
+<div class="ttc" id="class_text_editor_html_af4aa9558561747376233822fb7b110cb"><div class="ttname"><a href="class_text_editor.html#af4aa9558561747376233822fb7b110cb">TextEditor::saveFileActionTriggered</a></div><div class="ttdeci">bool saveFileActionTriggered()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l00943">texteditor.cpp:943</a></div></div>
+<div class="ttc" id="class_text_editor_html_a54ca40287e02b2e5b0d9743314f38529"><div class="ttname"><a href="class_text_editor.html#a54ca40287e02b2e5b0d9743314f38529">TextEditor::fillMariaDBSymbolsActionSlot</a></div><div class="ttdeci">void fillMariaDBSymbolsActionSlot()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l00436">texteditor.cpp:436</a></div></div>
 <div class="ttc" id="class_find_replace_html"><div class="ttname"><a href="class_find_replace.html">FindReplace</a></div><div class="ttdef"><b>Definition:</b> <a href="findreplace_8h_source.html#l00033">findreplace.h:33</a></div></div>
-<div class="ttc" id="class_text_editor_html_ae8214a0764b965a1d6d802c67ba3774c"><div class="ttname"><a href="class_text_editor.html#ae8214a0764b965a1d6d802c67ba3774c">TextEditor::viewVerticalActionTriggered</a></div><div class="ttdeci">void viewVerticalActionTriggered()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l02043">texteditor.cpp:2043</a></div></div>
+<div class="ttc" id="class_text_editor_html_ae8214a0764b965a1d6d802c67ba3774c"><div class="ttname"><a href="class_text_editor.html#ae8214a0764b965a1d6d802c67ba3774c">TextEditor::viewVerticalActionTriggered</a></div><div class="ttdeci">void viewVerticalActionTriggered()</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l02109">texteditor.cpp:2109</a></div></div>
 <div class="ttc" id="class_projects_html"><div class="ttname"><a href="class_projects.html">Projects</a></div><div class="ttdef"><b>Definition:</b> <a href="projects_8h_source.html#l00039">projects.h:39</a></div></div>
 <div class="ttc" id="editortypes_8h_html"><div class="ttname"><a href="editortypes_8h.html">editortypes.h</a></div></div>
 <div class="ttc" id="class_text_editor_html_aa728ee6c244585b0f64347ce156141e8"><div class="ttname"><a href="class_text_editor.html#aa728ee6c244585b0f64347ce156141e8">TextEditor::fileName</a></div><div class="ttdeci">QString fileName</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8h_source.html#l00067">texteditor.h:67</a></div></div>
 <div class="ttc" id="class_editor_types_html_a39331ac7248f3caec238e726edea03e9"><div class="ttname"><a href="class_editor_types.html#a39331ac7248f3caec238e726edea03e9">EditorTypes::EditorType</a></div><div class="ttdeci">EditorType</div><div class="ttdef"><b>Definition:</b> <a href="editortypes_8h_source.html#l00027">editortypes.h:27</a></div></div>
 <div class="ttc" id="dmdisubwindow_8h_html"><div class="ttname"><a href="dmdisubwindow_8h.html">dmdisubwindow.h</a></div></div>
-<div class="ttc" id="class_text_editor_html_a4842b3a95a8e18f80276819da3b9debd"><div class="ttname"><a href="class_text_editor.html#a4842b3a95a8e18f80276819da3b9debd">TextEditor::TextEditor</a></div><div class="ttdeci">TextEditor(Projects *project, DBMS *serverConnection, EditorTypes::EditorType type, unsigned int windowCount=0, bool hideTitle=false)</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l00066">texteditor.cpp:66</a></div></div>
-<div class="ttc" id="class_text_editor_html_a2c722ff5781e038095050a6bb2ed7518"><div class="ttname"><a href="class_text_editor.html#a2c722ff5781e038095050a6bb2ed7518">TextEditor::wheelEvent</a></div><div class="ttdeci">void wheelEvent(QWheelEvent *e)</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01746">texteditor.cpp:1746</a></div></div>
+<div class="ttc" id="class_text_editor_html_a4842b3a95a8e18f80276819da3b9debd"><div class="ttname"><a href="class_text_editor.html#a4842b3a95a8e18f80276819da3b9debd">TextEditor::TextEditor</a></div><div class="ttdeci">TextEditor(Projects *project, DBMS *serverConnection, EditorTypes::EditorType type, unsigned int windowCount=0, bool hideTitle=false)</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l00067">texteditor.cpp:67</a></div></div>
+<div class="ttc" id="class_text_editor_html_a2c722ff5781e038095050a6bb2ed7518"><div class="ttname"><a href="class_text_editor.html#a2c722ff5781e038095050a6bb2ed7518">TextEditor::wheelEvent</a></div><div class="ttdeci">void wheelEvent(QWheelEvent *e)</div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8cpp_source.html#l01748">texteditor.cpp:1748</a></div></div>
 <div class="ttc" id="class_text_editor_html"><div class="ttname"><a href="class_text_editor.html">TextEditor</a></div><div class="ttdef"><b>Definition:</b> <a href="texteditor_8h_source.html#l00059">texteditor.h:59</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -391,7 +393,7 @@ $(document).ready(function(){initNavTree('texteditor_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="texteditor_8h.html">texteditor.h</a></li>
-    <li class="footer">Generated on Wed Oct 1 2014 13:56:17 for Calíope - Qt MariaDB GUI by
+    <li class="footer">Generated on Wed Nov 12 2014 11:51:18 for Calíope - Qt MariaDB GUI by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

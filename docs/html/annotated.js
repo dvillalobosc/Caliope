@@ -1,5 +1,6 @@
 var annotated =
 [
+    [ "ApplicationTheme", "class_application_theme.html", "class_application_theme" ],
     [ "Backup", "class_backup.html", "class_backup" ],
     [ "BaseDiffFile", "class_base_diff_file.html", "class_base_diff_file" ],
     [ "BaseSVNLog", "class_base_s_v_n_log.html", "class_base_s_v_n_log" ],
@@ -17,7 +18,9 @@ var annotated =
     [ "DLineEdit", "class_d_line_edit.html", "class_d_line_edit" ],
     [ "DMdiSubWindow", "class_d_mdi_sub_window.html", "class_d_mdi_sub_window" ],
     [ "DMessageLabel", "class_d_message_label.html", "class_d_message_label" ],
+    [ "DPieChartWidget", "class_d_pie_chart_widget.html", "class_d_pie_chart_widget" ],
     [ "DQueryLog", "class_d_query_log.html", "class_d_query_log" ],
+    [ "DReportViewer", "class_d_report_viewer.html", "class_d_report_viewer" ],
     [ "DStackedWidget", "class_d_stacked_widget.html", "class_d_stacked_widget" ],
     [ "DStatusBar", "class_d_status_bar.html", "class_d_status_bar" ],
     [ "DTableView", "class_d_table_view.html", "class_d_table_view" ],
@@ -46,6 +49,7 @@ var annotated =
     [ "ProcessList", "class_process_list.html", "class_process_list" ],
     [ "ProjectFindReplace", "class_project_find_replace.html", "class_project_find_replace" ],
     [ "Projects", "class_projects.html", "class_projects" ],
+    [ "ReportTypes", "class_report_types.html", "class_report_types" ],
     [ "Restore", "class_restore.html", "class_restore" ],
     [ "Result", "class_result.html", "class_result" ],
     [ "Routine", "class_routine.html", "class_routine" ],

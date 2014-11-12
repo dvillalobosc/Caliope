@@ -37,6 +37,7 @@ var hierarchy =
         [ "DatabaseComparision", "class_database_comparision.html", null ],
         [ "DiffFile", "class_diff_file.html", null ],
         [ "DQueryLog", "class_d_query_log.html", null ],
+        [ "DReportViewer", "class_d_report_viewer.html", null ],
         [ "DWebView", "class_d_web_view.html", null ],
         [ "MySQLHelp", "class_my_s_q_l_help.html", null ],
         [ "ObjectsDiagram", "class_objects_diagram.html", null ],
@@ -81,10 +82,12 @@ var hierarchy =
       [ "FindReplace", "class_find_replace.html", null ]
     ] ],
     [ "QWidget", null, [
+      [ "ApplicationTheme", "class_application_theme.html", null ],
       [ "BaseDiffFile", "class_base_diff_file.html", null ],
       [ "BaseSVNLog", "class_base_s_v_n_log.html", null ],
       [ "DBarChartWidget", "class_d_bar_chart_widget.html", null ],
       [ "DMessageLabel", "class_d_message_label.html", null ],
+      [ "DPieChartWidget", "class_d_pie_chart_widget.html", null ],
       [ "DStackedWidget", "class_d_stacked_widget.html", null ],
       [ "FileAssociations", "class_file_associations.html", null ],
       [ "FileSelector", "class_file_selector.html", null ],
@@ -92,6 +95,7 @@ var hierarchy =
       [ "NetworkSettings", "class_network_settings.html", null ],
       [ "SubversionedFile", "class_subversioned_file.html", null ]
     ] ],
+    [ "ReportTypes", "class_report_types.html", null ],
     [ "Routine", "class_routine.html", null ],
     [ "Table", "class_table.html", null ],
     [ "View", "class_view.html", null ]

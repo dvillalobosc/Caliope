@@ -1,7 +1,7 @@
 var searchData=
 [
   ['paint',['paint',['../class_table_graphics_item.html#accec8f613bb9581cee79f284b3591cbd',1,'TableGraphicsItem']]],
-  ['paintevent',['paintEvent',['../class_base_text_editor.html#abc6e1ee7cad0da5e564a32a4527f0b63',1,'BaseTextEditor::paintEvent()'],['../class_line_number_area.html#a56400934bfe272427deb3ffd975b3a7f',1,'LineNumberArea::paintEvent()'],['../class_d_bar_chart_widget.html#af7f7f236e7c2fe95f5f6b373f4adb4c1',1,'DBarChartWidget::paintEvent()']]],
+  ['paintevent',['paintEvent',['../class_base_text_editor.html#abc6e1ee7cad0da5e564a32a4527f0b63',1,'BaseTextEditor::paintEvent()'],['../class_line_number_area.html#a56400934bfe272427deb3ffd975b3a7f',1,'LineNumberArea::paintEvent()'],['../class_d_pie_chart_widget.html#ac44859d9ced507e92546709d155443f0',1,'DPieChartWidget::paintEvent()'],['../class_d_bar_chart_widget.html#af7f7f236e7c2fe95f5f6b373f4adb4c1',1,'DBarChartWidget::paintEvent()']]],
   ['password',['password',['../class_static_functions.html#a2d760d448b7093a047853373fa2b45bb',1,'StaticFunctions']]],
   ['performperiodcompletion',['performPeriodCompletion',['../class_base_text_editor.html#ae5fa7e3534cc776777fde9b90102ec99',1,'BaseTextEditor']]],
   ['phpfunctions',['phpFunctions',['../class_static_functions.html#a1f88198eaaa4978b4c0d2cd69b685088',1,'StaticFunctions']]],
@@ -13,7 +13,7 @@ var searchData=
   ['postgresqlfunctions',['postgresqlFunctions',['../class_static_functions.html#afacb7fc611c327588c35ee91c87683b6',1,'StaticFunctions']]],
   ['postgresqlfunctionscomplete',['postgresqlFunctionsComplete',['../class_static_functions.html#a3564fd39228ff2660de2f2c52f417808',1,'StaticFunctions']]],
   ['postgresqlkeywords',['postgresqlKeywords',['../class_static_functions.html#a65f48c2ea1c55a53c31efb0373cd877f',1,'StaticFunctions']]],
-  ['preferences',['Preferences',['../class_preferences.html#a9ca3b7029509bc36da1a57ed296c2fa8',1,'Preferences']]],
+  ['preferences',['Preferences',['../class_preferences.html#a0a4c9f8277890349451049e58eef21ce',1,'Preferences']]],
   ['processlist',['ProcessList',['../class_process_list.html#a979c62f4f9ffd4bcafdc37494a39685c',1,'ProcessList']]],
   ['projectfindreplace',['ProjectFindReplace',['../class_project_find_replace.html#af05d92fd70ac127a2039cb43bd5b514d',1,'ProjectFindReplace']]],
   ['projects',['Projects',['../class_projects.html#a69d34a471fdbf8ea6f415fbdc2d1ad23',1,'Projects']]],

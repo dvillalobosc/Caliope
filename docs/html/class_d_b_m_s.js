@@ -1,6 +1,6 @@
 var class_d_b_m_s =
 [
-    [ "DBMS", "class_d_b_m_s.html#a7f23164a6fa78a00f2b9ee81f2620e7e", null ],
+    [ "DBMS", "class_d_b_m_s.html#ae8354e45b9b9d23faa359c583c9d6363", null ],
     [ "~DBMS", "class_d_b_m_s.html#a7dc5716c4b329f436957c37508b5f07b", null ],
     [ "changeDatabase", "class_d_b_m_s.html#a68bc8eba5b80438535e5f3f346f69da6", null ],
     [ "clearSQLiteQueryLog", "class_d_b_m_s.html#a46ae198ee805e740084fcbd7ba6ae3ac", null ],
@@ -15,7 +15,9 @@ var class_d_b_m_s =
     [ "flushRelayLogs", "class_d_b_m_s.html#acfdc018b052e0dda97ab9d3dae42b8d0", null ],
     [ "getCharacterSet", "class_d_b_m_s.html#a9312995dd113923764de97a3fd28e8d3", null ],
     [ "getCharacterSets", "class_d_b_m_s.html#ac5449548f1d77bbe3acad575b2b5a154", null ],
+    [ "getCollation", "class_d_b_m_s.html#a94af88a0d783e0b7a58ac34757a6ddc0", null ],
     [ "getCollations", "class_d_b_m_s.html#abc0cb18cca185af8cd4d908a1d14c96f", null ],
+    [ "getCollationsApplicability", "class_d_b_m_s.html#a0883a467c524f6353ef1d8380e373abe", null ],
     [ "getConnectionId", "class_d_b_m_s.html#a7ba2d3e90ed436bc5296421275b418a2", null ],
     [ "getConnectionString", "class_d_b_m_s.html#ab51da68126947de56586003a1a8d67e4", null ],
     [ "getDatabase", "class_d_b_m_s.html#a95ebd7bee08b5b754db90a5fe361b448", null ],
@@ -63,6 +65,8 @@ var class_d_b_m_s =
     [ "runQuerySimpleResult", "class_d_b_m_s.html#a6542b5b89e94b2440b1afa4e82bb95c1", null ],
     [ "runQuerySingleColumn", "class_d_b_m_s.html#a812263425b9b9bb4d2c650897c3091a2", null ],
     [ "setCharacterSet", "class_d_b_m_s.html#a147dcbec0530fda6c1773c0eb53706b5", null ],
+    [ "setCollation", "class_d_b_m_s.html#af5bb14929a1682d6972c4049c0921fd0", null ],
+    [ "setCollation", "class_d_b_m_s.html#a6fd37f95d1db3816a07171c8cfce6150", null ],
     [ "setDatabase", "class_d_b_m_s.html#a47f48716d1b3026a2a8e76ed674f6b6a", null ],
     [ "setHostName", "class_d_b_m_s.html#a325d502ea53fdadf53df994beae90f0a", null ],
     [ "setPassword", "class_d_b_m_s.html#af2b5653e1efa133a29458a7809017319", null ],
@@ -82,6 +86,7 @@ var class_d_b_m_s =
     [ "executedQueries", "class_d_b_m_s.html#a861a58084379c2a7f25127613145083f", null ],
     [ "oldVersion", "class_d_b_m_s.html#ad3cc55594fce48c79abafd9f10c359f8", null ],
     [ "characterSet", "class_d_b_m_s.html#acd34137efd9e091065dd269233afe46e", null ],
+    [ "collation", "class_d_b_m_s.html#ae6e106123bb9f5fc047fb313c696680b", null ],
     [ "database", "class_d_b_m_s.html#aa9d686d7887f0fdd60a2706e6c1ac651", null ],
     [ "userName", "class_d_b_m_s.html#a74a07b57b5fd2138ea8681cc2f43c099", null ]
 ];

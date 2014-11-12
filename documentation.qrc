@@ -3,6 +3,10 @@
         <file>docs/filelist.txt</file>
         <file>docs/html/annotated.html</file>
         <file>docs/html/annotated.js</file>
+        <file>docs/html/applicationtheme_8cpp_source.html</file>
+        <file>docs/html/applicationtheme_8cpp.html</file>
+        <file>docs/html/applicationtheme_8h_source.html</file>
+        <file>docs/html/applicationtheme_8h.html</file>
         <file>docs/html/backup_8cpp_source.html</file>
         <file>docs/html/backup_8cpp.html</file>
         <file>docs/html/backup_8h_source.html</file>
@@ -25,6 +29,10 @@
         <file>docs/html/catalogs_8cpp.html</file>
         <file>docs/html/catalogs_8h_source.html</file>
         <file>docs/html/catalogs_8h.html</file>
+        <file>docs/html/class_application_theme-members.html</file>
+        <file>docs/html/class_application_theme.html</file>
+        <file>docs/html/class_application_theme.js</file>
+        <file>docs/html/class_application_theme.png</file>
         <file>docs/html/class_backup-members.html</file>
         <file>docs/html/class_backup.html</file>
         <file>docs/html/class_backup.js</file>
@@ -77,10 +85,18 @@
         <file>docs/html/class_d_message_label.html</file>
         <file>docs/html/class_d_message_label.js</file>
         <file>docs/html/class_d_message_label.png</file>
+        <file>docs/html/class_d_pie_chart_widget-members.html</file>
+        <file>docs/html/class_d_pie_chart_widget.html</file>
+        <file>docs/html/class_d_pie_chart_widget.js</file>
+        <file>docs/html/class_d_pie_chart_widget.png</file>
         <file>docs/html/class_d_query_log-members.html</file>
         <file>docs/html/class_d_query_log.html</file>
         <file>docs/html/class_d_query_log.js</file>
         <file>docs/html/class_d_query_log.png</file>
+        <file>docs/html/class_d_report_viewer-members.html</file>
+        <file>docs/html/class_d_report_viewer.html</file>
+        <file>docs/html/class_d_report_viewer.js</file>
+        <file>docs/html/class_d_report_viewer.png</file>
         <file>docs/html/class_d_stacked_widget-members.html</file>
         <file>docs/html/class_d_stacked_widget.html</file>
         <file>docs/html/class_d_stacked_widget.js</file>
@@ -199,6 +215,9 @@
         <file>docs/html/class_projects.html</file>
         <file>docs/html/class_projects.js</file>
         <file>docs/html/class_projects.png</file>
+        <file>docs/html/class_report_types-members.html</file>
+        <file>docs/html/class_report_types.html</file>
+        <file>docs/html/class_report_types.js</file>
         <file>docs/html/class_restore-members.html</file>
         <file>docs/html/class_restore.html</file>
         <file>docs/html/class_restore.js</file>
@@ -301,10 +320,18 @@
         <file>docs/html/dmessagelabel_8h.html</file>
         <file>docs/html/doxygen.css</file>
         <file>docs/html/doxygen.png</file>
+        <file>docs/html/dpiechartwidget_8cpp_source.html</file>
+        <file>docs/html/dpiechartwidget_8cpp.html</file>
+        <file>docs/html/dpiechartwidget_8h_source.html</file>
+        <file>docs/html/dpiechartwidget_8h.html</file>
         <file>docs/html/dquerylog_8cpp_source.html</file>
         <file>docs/html/dquerylog_8cpp.html</file>
         <file>docs/html/dquerylog_8h_source.html</file>
         <file>docs/html/dquerylog_8h.html</file>
+        <file>docs/html/dreportviewer_8cpp_source.html</file>
+        <file>docs/html/dreportviewer_8cpp.html</file>
+        <file>docs/html/dreportviewer_8h_source.html</file>
+        <file>docs/html/dreportviewer_8h.html</file>
         <file>docs/html/dstackedwidget_8cpp_source.html</file>
         <file>docs/html/dstackedwidget_8cpp.html</file>
         <file>docs/html/dstackedwidget_8h_source.html</file>
@@ -452,6 +479,7 @@
         <file>docs/html/navtreeindex0.js</file>
         <file>docs/html/navtreeindex1.js</file>
         <file>docs/html/navtreeindex2.js</file>
+        <file>docs/html/navtreeindex3.js</file>
         <file>docs/html/networksettings_8cpp_source.html</file>
         <file>docs/html/networksettings_8cpp.html</file>
         <file>docs/html/networksettings_8h_source.html</file>
@@ -593,6 +621,8 @@
         <file>docs/html/search/classes_6e.js</file>
         <file>docs/html/search/classes_6f.html</file>
         <file>docs/html/search/classes_6f.js</file>
+        <file>docs/html/search/classes_61.html</file>
+        <file>docs/html/search/classes_61.js</file>
         <file>docs/html/search/classes_62.html</file>
         <file>docs/html/search/classes_62.js</file>
         <file>docs/html/search/classes_63.html</file>
@@ -632,6 +662,8 @@
         <file>docs/html/search/enums_66.js</file>
         <file>docs/html/search/enums_69.html</file>
         <file>docs/html/search/enums_69.js</file>
+        <file>docs/html/search/enums_72.html</file>
+        <file>docs/html/search/enums_72.js</file>
         <file>docs/html/search/enumvalues_6a.html</file>
         <file>docs/html/search/enumvalues_6a.js</file>
         <file>docs/html/search/enumvalues_6c.html</file>
@@ -676,6 +708,8 @@
         <file>docs/html/search/files_6e.js</file>
         <file>docs/html/search/files_6f.html</file>
         <file>docs/html/search/files_6f.js</file>
+        <file>docs/html/search/files_61.html</file>
+        <file>docs/html/search/files_61.js</file>
         <file>docs/html/search/files_62.html</file>
         <file>docs/html/search/files_62.js</file>
         <file>docs/html/search/files_63.html</file>
@@ -787,5 +821,7 @@
         <file>docs/html/search/variables_74.js</file>
         <file>docs/html/search/variables_75.html</file>
         <file>docs/html/search/variables_75.js</file>
+        <file>docs/html/search/variables_76.html</file>
+        <file>docs/html/search/variables_76.js</file>
     </qresource>
 </RCC>

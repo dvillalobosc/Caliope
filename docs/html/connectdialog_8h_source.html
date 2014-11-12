@@ -157,32 +157,39 @@ $(document).ready(function(){initNavTree('connectdialog_8h_source.html','');});
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordtype">void</span> comboConnectionTypeSlot(<span class="keyword">const</span> QString &amp;text);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordtype">void</span> databasesMenuSlot();</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordtype">void</span> changeDatabaseSlot(QString database);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  QDialogButtonBox *buttonBox;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  QLineEdit *lineEditServer;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  QSpinBox *spinBoxPort;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  QLineEdit *lineEditUser;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  QLineEdit *lineEditPassword;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  QLineEdit *lineEditDatabase;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  QComboBox *comboConnectionName;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  QCheckBox *storePasswords;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  QSettings settings;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  QComboBox *comboConnectionType;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  QPushButton *databasesPushButton;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  QMenu *databasesMenu;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  QSignalMapper *databasesMapper;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordtype">bool</span> connectionPerformed;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="class_d_b_m_s.html">DBMS</a> *serverConnection;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  QCompleter *completer;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordtype">void</span> setDBMS();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> count;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;};</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif // CONNECTDIALOG_H</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordtype">void</span> collatoinsMenuSlot();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordtype">void</span> changeCollationSlot(QString collation);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  QDialogButtonBox *buttonBox;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  QLineEdit *lineEditServer;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  QSpinBox *spinBoxPort;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  QLineEdit *lineEditUser;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  QLineEdit *lineEditPassword;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  QLineEdit *lineEditDatabase;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  QComboBox *comboConnectionName;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  QCheckBox *storePasswords;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  QSettings settings;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  QComboBox *comboConnectionType;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  QPushButton *databasesPushButton;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  QMenu *databasesMenu;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  QSignalMapper *databasesMapper;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">bool</span> connectionPerformed;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="class_d_b_m_s.html">DBMS</a> *serverConnection;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  QCompleter *completer;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordtype">void</span> setDBMS();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> count;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  QCheckBox *sortConnectionList;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  QMenu *collationsMenu;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  QLineEdit *lineEditCollation;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  QPushButton *collationPushButton;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  QSignalMapper *collationsMapper;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;};</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#endif // CONNECTDIALOG_H</span></div>
 <div class="ttc" id="class_d_b_m_s_html"><div class="ttname"><a href="class_d_b_m_s.html">DBMS</a></div><div class="ttdef"><b>Definition:</b> <a href="dbms_8h_source.html#l00152">dbms.h:152</a></div></div>
-<div class="ttc" id="class_connect_dialog_html_ada88382498bb9e833d4050afcf6dfc5f"><div class="ttname"><a href="class_connect_dialog.html#ada88382498bb9e833d4050afcf6dfc5f">ConnectDialog::getConnectionPerformed</a></div><div class="ttdeci">bool getConnectionPerformed()</div><div class="ttdef"><b>Definition:</b> <a href="connectdialog_8cpp_source.html#l00210">connectdialog.cpp:210</a></div></div>
-<div class="ttc" id="class_connect_dialog_html_a9ed78274af42c8b9912d1008d1a4e098"><div class="ttname"><a href="class_connect_dialog.html#a9ed78274af42c8b9912d1008d1a4e098">ConnectDialog::getValues</a></div><div class="ttdeci">QList&lt; QString &gt; getValues()</div><div class="ttdef"><b>Definition:</b> <a href="connectdialog_8cpp_source.html#l00194">connectdialog.cpp:194</a></div></div>
+<div class="ttc" id="class_connect_dialog_html_ada88382498bb9e833d4050afcf6dfc5f"><div class="ttname"><a href="class_connect_dialog.html#ada88382498bb9e833d4050afcf6dfc5f">ConnectDialog::getConnectionPerformed</a></div><div class="ttdeci">bool getConnectionPerformed()</div><div class="ttdef"><b>Definition:</b> <a href="connectdialog_8cpp_source.html#l00299">connectdialog.cpp:299</a></div></div>
+<div class="ttc" id="class_connect_dialog_html_a9ed78274af42c8b9912d1008d1a4e098"><div class="ttname"><a href="class_connect_dialog.html#a9ed78274af42c8b9912d1008d1a4e098">ConnectDialog::getValues</a></div><div class="ttdeci">QList&lt; QString &gt; getValues()</div><div class="ttdef"><b>Definition:</b> <a href="connectdialog_8cpp_source.html#l00262">connectdialog.cpp:262</a></div></div>
 <div class="ttc" id="class_connect_dialog_html_a4cc45e496f2d569ece132331c4799e39"><div class="ttname"><a href="class_connect_dialog.html#a4cc45e496f2d569ece132331c4799e39">ConnectDialog::ConnectDialog</a></div><div class="ttdeci">ConnectDialog(DBMS *serverConnection)</div><div class="ttdef"><b>Definition:</b> <a href="connectdialog_8cpp_source.html#l00041">connectdialog.cpp:41</a></div></div>
 <div class="ttc" id="class_connect_dialog_html"><div class="ttname"><a href="class_connect_dialog.html">ConnectDialog</a></div><div class="ttdef"><b>Definition:</b> <a href="connectdialog_8h_source.html#l00038">connectdialog.h:38</a></div></div>
 <div class="ttc" id="dbms_8h_html"><div class="ttname"><a href="dbms_8h.html">dbms.h</a></div></div>
@@ -192,7 +199,7 @@ $(document).ready(function(){initNavTree('connectdialog_8h_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="connectdialog_8h.html">connectdialog.h</a></li>
-    <li class="footer">Generated on Wed Oct 1 2014 13:56:17 for Calíope - Qt MariaDB GUI by
+    <li class="footer">Generated on Wed Nov 12 2014 11:51:17 for Calíope - Qt MariaDB GUI by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

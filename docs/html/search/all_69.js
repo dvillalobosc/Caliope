@@ -1,6 +1,7 @@
 var searchData=
 [
   ['iconfromfilename',['iconFromFileName',['../class_static_functions.html#a27f7655ea20bf0c575b74abe85e7edf0',1,'StaticFunctions::iconFromFileName(const QString fileName)'],['../class_static_functions.html#aa9dea32734aff75fc45d1527f1b91a88',1,'StaticFunctions::iconFromFileName(const EditorTypes::EditorType editorType)']]],
+  ['image',['Image',['../class_file_selector_contexts.html#a1b498c8733dfb54849fc6ab565c77771a573504e458843f50c5244f020483809f',1,'FileSelectorContexts']]],
   ['indentaction',['indentAction',['../class_base_text_editor.html#afa95cb0513fd8f0dd4804b2f1b933655',1,'BaseTextEditor']]],
   ['index',['Index',['../class_item_editor_types.html#ade740b84be48d5cf9c683dcb804557a5a6de21b7e4f77f199efafcc193ff662e1',1,'ItemEditorTypes']]],
   ['indexdata',['indexData',['../class_d_table_view.html#a25118ddd1fe55772bf95821278784f2b',1,'DTableView::indexData(const QModelIndex &amp;index, int role=Qt::DisplayRole, int column=-1)'],['../class_d_table_view.html#a00761acf88a92aa8b3cf1e8ebd3c7eac',1,'DTableView::indexData(const unsigned int row, const unsigned int column, int role=Qt::DisplayRole)']]],

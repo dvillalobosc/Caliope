@@ -13,11 +13,12 @@ var searchData=
   ['changetitle',['changeTitle',['../class_text_editor.html#a1786fb9bdee851eaa5439180b2df1dd5',1,'TextEditor']]],
   ['character',['character',['../struct_bracket_info.html#a940658ec7d789266c1a28effee68d3d7',1,'BracketInfo']]],
   ['characterset',['characterSet',['../class_d_b_m_s.html#acd34137efd9e091065dd269233afe46e',1,'DBMS']]],
-  ['clear',['clear',['../class_text_editor.html#a63f9bab8dcbec46cf840bf199e7768a1',1,'TextEditor']]],
+  ['clear',['clear',['../class_d_pie_chart_widget.html#accf2f459765d63272337599bc88ee400',1,'DPieChartWidget::clear()'],['../class_text_editor.html#a63f9bab8dcbec46cf840bf199e7768a1',1,'TextEditor::clear()']]],
   ['clearsqlitequerylog',['clearSQLiteQueryLog',['../class_d_b_m_s.html#a46ae198ee805e740084fcbd7ba6ae3ac',1,'DBMS']]],
   ['clicked',['clicked',['../class_d_line_edit.html#a68a11871b187d463294ae8a91f4cebb8',1,'DLineEdit']]],
   ['close',['close',['../class_d_b_m_s.html#a73ae9d2335868e83feec2e6eebed3de0',1,'DBMS']]],
   ['closeevent',['closeEvent',['../class_main_window.html#a4e20a4a065fbb0e4d3532a45a0a91425',1,'MainWindow::closeEvent()'],['../class_text_editor.html#a23934e422663ed4cf37732653394a246',1,'TextEditor::closeEvent()']]],
+  ['collation',['collation',['../class_d_b_m_s.html#ae6e106123bb9f5fc047fb313c696680b',1,'DBMS']]],
   ['commit',['Commit',['../class_editor_types.html#a39331ac7248f3caec238e726edea03e9afd5a753ed8533034a0cd1aa311894985',1,'EditorTypes']]],
   ['commitdialog',['CommitDialog',['../class_commit_dialog.html',1,'CommitDialog'],['../class_commit_dialog.html#a5cf804ecb4ca3a74afb7dad7e4a3e5cc',1,'CommitDialog::CommitDialog()']]],
   ['commitdialog_2ecpp',['commitdialog.cpp',['../commitdialog_8cpp.html',1,'']]],
@@ -35,5 +36,6 @@ var searchData=
   ['currenteditortypekeywords',['currentEditorTypeKeywords',['../class_static_functions.html#a1c2e8e171a395da891c1fbabd527e493',1,'StaticFunctions']]],
   ['currentindexitem',['currentIndexItem',['../class_d_table_view.html#ae1f2d97eae69091d67ce810e50b12964',1,'DTableView']]],
   ['currentitem',['currentItem',['../class_d_table_view.html#a58eda1e77ce6794f9357311a21894c25',1,'DTableView']]],
+  ['currentlocale',['currentLocale',['../class_static_functions.html#a283790df1d512f696910874daef9ea02',1,'StaticFunctions']]],
   ['cutlineactiontriggerd',['cutLineActionTriggerd',['../class_text_editor.html#aa30d3b28ca35a4af3e476f41a8cd8bad',1,'TextEditor']]]
 ];

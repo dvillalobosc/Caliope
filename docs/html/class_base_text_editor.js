@@ -23,5 +23,6 @@ var class_base_text_editor =
     [ "lineNumberArea", "class_base_text_editor.html#a38db6c062935a9c63f70d484c72cba8c", null ],
     [ "pointList", "class_base_text_editor.html#a0a1a0f755206e2a75de6ef2679074c74", null ],
     [ "showNumberArea", "class_base_text_editor.html#a75119067990eecc89a99d12367ff8ccb", null ],
-    [ "unidentAction", "class_base_text_editor.html#a1c89347795a7a120e426404bba7434ec", null ]
+    [ "unidentAction", "class_base_text_editor.html#a1c89347795a7a120e426404bba7434ec", null ],
+    [ "visualizeSpacesAction", "class_base_text_editor.html#a62a9fa578b0e8dd9064f864f3f43e2a8", null ]
 ];
