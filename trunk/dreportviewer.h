@@ -50,6 +50,7 @@ private:
   QComboBox *comboReportType;
   BaseTextEditor *baseTextEditor;
   QCompleter *completer;
+  QDialog *dialog;
 
 protected:
   void retranslateUi();
@@ -58,6 +59,7 @@ private slots:
   void pushButtonExportToPDFClicked();
   void pushButtonExportToImageClicked();
   void fillCustomReportwidgets(QString reportName);
+  void discardReportSlot();
 
 signals:
   void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 2000);
