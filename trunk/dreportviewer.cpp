@@ -28,7 +28,7 @@ DReportViewer::DReportViewer(DBMS *serverConnection, QString reportTitle, Report
   setWindowTitle(tr("Report:") + " " +reportTitle);
   setObjectName(windowTitle());
 
-  setWindowIcon(QIcon(":/images/svg/view-statistics.svg"));
+  setWindowIcon((reportType == ReportTypes::PlainText ? QIcon::fromTheme("accessories-text-editor", QIcon(":/images/svg/accessories-text-editor-7.svg")) : QIcon(":/images/svg/view-statistics.svg")));
   QVBoxLayout *mainVLayout = new QVBoxLayout;
   mainVLayout->setContentsMargins(3, 0, 3, 0);
   mainVLayout->addWidget(new DTitleLabel(windowTitle()));
@@ -46,6 +46,12 @@ DReportViewer::DReportViewer(DBMS *serverConnection, QString reportTitle, Report
   connect(pushButtonExportToPDF, SIGNAL(clicked()), this, SLOT(pushButtonExportToPDFClicked()));
   groupBoxHLayout->addWidget(pushButtonExportToPDF);
 
+  pushButtonExportToTXT = new QPushButton;
+  pushButtonExportToTXT->hide();
+  pushButtonExportToTXT->setIcon(QIcon::fromTheme("accessories-text-editor", QIcon(":/images/svg/accessories-text-editor-7.svg")));
+  connect(pushButtonExportToTXT, SIGNAL(clicked()), this, SLOT(pushButtonExportToTXTClicked()));
+  groupBoxHLayout->addWidget(pushButtonExportToTXT);
+
   pushButtonExportToImage = new QPushButton;
   pushButtonExportToImage->hide();
   pushButtonExportToImage->setIcon(QIcon::fromTheme("image-x-generic", QIcon(":/images/svg/image-png.svg")));
@@ -62,6 +68,7 @@ DReportViewer::DReportViewer(DBMS *serverConnection, QString reportTitle, Report
     plainTextReport->setWordWrapMode(QTextOption::NoWrap);
     mainVLayout->addWidget(plainTextReport);
     pushButtonExportToPDF->show();
+    pushButtonExportToTXT->show();
     break;
   case ReportTypes::PieChart:
     dPieChart = new DPieChartWidget(unit);
@@ -182,6 +189,7 @@ void DReportViewer::retranslateUi()
   pushButtonExportToPDF->setText(tr("Export to PDF"));
   pushButtonRefresh->setText(tr("Refresh"));
   pushButtonExportToImage->setText(tr("Export to Image"));
+  pushButtonExportToTXT->setText(tr("Export to TXT"));
 }
 
 void DReportViewer::pushButtonExportToPDFClicked()
@@ -228,4 +236,18 @@ void DReportViewer::discardReportSlot()
 {
   settings.remove(comboReportName->currentText());
   dialog->close();
+}
+
+void DReportViewer::pushButtonExportToTXTClicked()
+{
+  QString fileName = QFileDialog::getSaveFileName(this, tr("Save file"), QDir::home().absolutePath(), tr("Text files (%1)").arg("txt"));
+  QApplication::setOverrideCursor(Qt::WaitCursor);
+  QFile file(fileName);
+  if (!file.open(QFile::WriteOnly | QFile::Text))
+    emit statusBarMessage(tr("Cannot write file %1:\n%2.").arg(fileName).arg(file.errorString()), QSystemTrayIcon::Critical);
+  QTextStream out(&file);
+  out << plainTextReport->toPlainText();
+  file.close();
+  emit statusBarMessage(tr("File saved at: %1").arg(fileName), QSystemTrayIcon::Information);
+  QApplication::restoreOverrideCursor();
 }

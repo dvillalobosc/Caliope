@@ -174,6 +174,7 @@ private slots:
   void actionCreateCustomReportTriggered();
   void menuReportsAboutToShowSlot();
   void openCustomReport(QString report);
+  void actionReportSlowQueriesTriggered();
 
 public slots:
   void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 2000);
@@ -337,6 +338,8 @@ private:
   QAction *actionCreateCustomReport;
   QSignalMapper *customReportMapper;
   DReportViewer *dReportViewerCustomReport;
+  QAction *actionReportSlowQueries;
+  DReportViewer *dReportViewerSlowQueries;
 
   /*! \brief This is the code executed when aboutMySQLGUIAction is triggered.
    *

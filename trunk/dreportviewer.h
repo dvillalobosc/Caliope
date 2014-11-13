@@ -51,6 +51,7 @@ private:
   BaseTextEditor *baseTextEditor;
   QCompleter *completer;
   QDialog *dialog;
+  QPushButton *pushButtonExportToTXT;
 
 protected:
   void retranslateUi();
@@ -60,6 +61,7 @@ private slots:
   void pushButtonExportToImageClicked();
   void fillCustomReportwidgets(QString reportName);
   void discardReportSlot();
+  void pushButtonExportToTXTClicked();
 
 signals:
   void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 2000);

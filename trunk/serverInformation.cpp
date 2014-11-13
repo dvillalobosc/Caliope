@@ -535,11 +535,7 @@ void ServerInformation::serverStatusTxt()
   case StaticFunctions::MariaDB:
     output += serverConnection->outputAsTable(StaticFunctions::serverInformationQuery());
     output += "\n" + tr("Average of slow queries per day since server started.") + "\n";
-    output += serverConnection->outputAsTable("SELECT DATE(`start_time`) AS `" + tr("Date") + "`, DAYNAME(`start_time`) AS `" + tr("Day") + "`, LPAD(FORMAT(COUNT(*), 0), 13, ' ') AS `" + tr("Total queries") + "`"
-                                                            ", LPAD(FORMAT(AVG(`query_time`), 2), 20,  ' ') AS `" + tr("Average (in seconds)") + "` FROM `mysql`.`slow_log` WHERE `start_time` >= (SELECT FROM_UNIXTIME("
-                                                            " (SELECT UNIX_TIMESTAMP(CURRENT_TIMESTAMP()))"
-                                                            " - (SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'UPTIME')))"
-                                                            " GROUP BY DATE(`start_time`)");
+    output += serverConnection->outputAsTable(StaticFunctions::slowQueriesQuery());
     serverStatus->setPlainText(output);
     break;
   case StaticFunctions::PostgreSQL:
