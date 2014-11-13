@@ -890,7 +890,7 @@ QIcon StaticFunctions::iconFromFileName(const EditorTypes::EditorType editorType
 
 QStringList StaticFunctions::dbmsEnabled()
 {
-  return QStringList() << "--" << "MySQL" << "MariaDB" << "PostgreSQL";
+  return QStringList() << "--" << "MySQL" << "MariaDB";// << "PostgreSQL";
 }
 
 QIcon StaticFunctions::iconFromFileName(const QString fileName)
@@ -9039,6 +9039,26 @@ QString StaticFunctions::serverInformationQuery()
         " SELECT '" + tr("Max connections aviable") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The maximum permitted number of simultaneous client connections.") + "' FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'MAX_CONNECTIONS'"
         " UNION"
         " SELECT '" + tr("Used connections") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The maximum number of connections that have been in use simultaneously since the server started.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'MAX_USED_CONNECTIONS'";
+    break;
+  case StaticFunctions::PostgreSQL:
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QString();
+}
+
+QString StaticFunctions::slowQueriesQuery()
+{
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    return "SELECT DATE(`start_time`) AS `" + tr("Date") + "`, DAYNAME(`start_time`) AS `" + tr("Day") + "`, LPAD(FORMAT(COUNT(*), 0), 13, ' ') AS `" + tr("Total queries") + "`"
+        ", LPAD(FORMAT(AVG(`query_time`), 2), 20,  ' ') AS `" + tr("Average (in seconds)") + "` FROM `mysql`.`slow_log` WHERE `start_time` >= (SELECT FROM_UNIXTIME("
+        " (SELECT UNIX_TIMESTAMP(CURRENT_TIMESTAMP()))"
+        " - (SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'UPTIME')))"
+        " GROUP BY DATE(`start_time`)";
     break;
   case StaticFunctions::PostgreSQL:
     break;

@@ -84,6 +84,7 @@ public:
   static QStringList currentEditorTypeKeywords(const EditorTypes::EditorType editorType);
   static QLocale currentLocale();
   static QString serverInformationQuery();
+  static QString slowQueriesQuery();
 };
 
 #endif // STATICSYMBOLS_H

@@ -602,7 +602,7 @@ void MainWindow::createActions()
   connect(caliopeSourceDocumentationAction, SIGNAL(triggered()), this, SLOT(caliopeSourceDocumentationActionTriggered()));
 
   actionReportServerInformation = new QAction(this);
-  actionReportServerInformation->setIcon(QIcon(":/images/svg/view-statistics.svg"));
+  actionReportServerInformation->setIcon(QIcon::fromTheme("accessories-text-editor", QIcon(":/images/svg/accessories-text-editor-7.svg")));
   connect(actionReportServerInformation, SIGNAL(triggered()), this, SLOT(actionReportServerInformationTriggered()));
 
   actionReportHDDUsage = new QAction(this);
@@ -620,6 +620,10 @@ void MainWindow::createActions()
   actionCreateCustomReport = new QAction(this);
   actionCreateCustomReport->setIcon(QIcon::fromTheme("document-new", QIcon(":/images/svg/document-new-6.svg")));
   connect(actionCreateCustomReport, SIGNAL(triggered()), this, SLOT(actionCreateCustomReportTriggered()));
+
+  actionReportSlowQueries = new QAction(this);
+  actionReportSlowQueries->setIcon(QIcon::fromTheme("accessories-text-editor", QIcon(":/images/svg/accessories-text-editor-7.svg")));
+  connect(actionReportSlowQueries, SIGNAL(triggered()), this, SLOT(actionReportSlowQueriesTriggered()));
 }
 
 void MainWindow::objectsDiagramActionTriggered()
@@ -1232,6 +1236,7 @@ void MainWindow::menuReportsAboutToShowSlot()
 {
   menuReports->clear();
   menuReports->addAction(actionReportServerInformation);
+  menuReports->addAction(actionReportSlowQueries);
   menuReports->addAction(actionReportHDDUsage);
   menuReports->addAction(actionReportDataSentReceived);
   menuReports->addAction(actionReportExecutedQueries);
@@ -1240,8 +1245,10 @@ void MainWindow::menuReportsAboutToShowSlot()
   QSettings settings;
   settings.beginGroup("CustomReports");
   QStringList reports = settings.allKeys();
+  ReportTypes::ReportType reportType;
   foreach (QString report, reports) {
-    QAction *action = menuReports->addAction(QIcon(":/images/svg/view-statistics.svg"), report);
+    reportType =  (ReportTypes::ReportType) settings.value(report).toString().split("#", QString::SkipEmptyParts).at(1).split(":").at(1).toInt();
+    QAction *action = menuReports->addAction((reportType == ReportTypes::PlainText ? QIcon::fromTheme("accessories-text-editor", QIcon(":/images/svg/accessories-text-editor-7.svg")) : QIcon(":/images/svg/view-statistics.svg")), report);
     connect(action, SIGNAL(triggered()), customReportMapper, SLOT(map()));
     customReportMapper->setMapping(action, report);
   }
@@ -1260,6 +1267,15 @@ void MainWindow::openCustomReport(QString report)
   dReportViewerCustomReport->setSqlQuery(data.at(2).split(":").at(1));
   addSubWindow(dReportViewerCustomReport);
   dReportViewerCustomReport->showReportData();
+}
+
+void MainWindow::actionReportSlowQueriesTriggered()
+{
+  dReportViewerSlowQueries = new DReportViewer(serverConnection, tr("Slow Queries"), ReportTypes::PlainText);
+  connect(dReportViewerSlowQueries, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
+  dReportViewerSlowQueries->setSqlQuery(StaticFunctions::slowQueriesQuery());
+  addSubWindow(dReportViewerSlowQueries);
+  dReportViewerSlowQueries->showReportData();
 }
 
 void MainWindow::finishedDatabaseMigrationSlot(int exitCode)
@@ -1543,6 +1559,9 @@ void MainWindow::retranslateUi()
 
   actionCreateCustomReport->setText(tr("Create a custom report"));
   actionCreateCustomReport->setStatusTip(actionCreateCustomReport->text());
+
+  actionReportSlowQueries->setText(tr("Slow Queries"));
+  actionReportSlowQueries->setStatusTip(actionReportSlowQueries->text());
 }
 
 void MainWindow::createInitialSettings()

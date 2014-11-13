@@ -320,6 +320,16 @@ void TextEditor::retranslateUi()
   dTitleLabel->setText(windowTitle());
 }
 
+void TextEditor::setPlainText(const QString &text)
+{
+  textEditor->setPlainText(text);
+}
+
+QTextDocument *TextEditor::document()
+{
+  return textEditor->document();
+}
+
 void TextEditor::gotoLine(unsigned int line)
 {
   textEditor->gotoLine(line);

@@ -55,6 +55,7 @@ class QTextBlock;
 class QProcess;
 class DTitleLabel;
 class DBMS;
+class QTextDocument;
 
 class TextEditor : public DMdiSubWindow
 {
@@ -70,6 +71,8 @@ public:
   BaseTextEditor *textEditor;
   void gotoLine(unsigned int line);
   void retranslateUi();
+  void setPlainText(const QString &text);
+  QTextDocument *document();
 
 protected:
 //  void keyPressEvent(QKeyEvent *event);
