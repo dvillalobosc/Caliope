@@ -2619,7 +2619,7 @@ QHash<QString, QString> StaticFunctions::phpFunctionsComplete()
 //  data.insert("dcgettext", QString("<u>dcgettext</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("dcngettext", QString("<u>dcngettext</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("deaggregate", QString("<u>deaggregate</u>(<b></b>) <br />%1").arg(tr("")));
-//  data.insert("debug_backtrace", QString("<u>debug_backtrace</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("debug_backtrace", QString("array <u>debug_backtrace</u>(<b>[ int $options = DEBUG_BACKTRACE_PROVIDE_OBJECT [, int $limit = 0 ]]</b>) <br />%1").arg(tr("Generates a backtrace.")));
 //  data.insert("debug_print_backtrace", QString("<u>debug_print_backtrace</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("debug_zval_dump", QString("<u>debug_zval_dump</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("decbin", QString("<u>decbin</u>(<b></b>) <br />%1").arg(tr("")));
@@ -5670,7 +5670,7 @@ QHash<QString, QString> StaticFunctions::phpFunctionsComplete()
 //  data.insert("ob_end_flush", QString("<u>ob_end_flush</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("ob_etaghandler", QString("<u>ob_etaghandler</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("ob_flush", QString("<u>ob_flush</u>(<b></b>) <br />%1").arg(tr("")));
-//  data.insert("ob_get_clean", QString("<u>ob_get_clean</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("ob_get_clean", QString("string <u>ob_get_clean</u>(<b></b>) <br />%1").arg(tr("Get current buffer contents and delete current output buffer.")));
 //  data.insert("ob_get_contents", QString("<u>ob_get_contents</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("ob_get_flush", QString("<u>ob_get_flush</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("ob_get_length", QString("<u>ob_get_length</u>(<b></b>) <br />%1").arg(tr("")));
@@ -5681,7 +5681,7 @@ QHash<QString, QString> StaticFunctions::phpFunctionsComplete()
 //  data.insert("ob_implicit_flush", QString("<u>ob_implicit_flush</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("ob_inflatehandler", QString("<u>ob_inflatehandler</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("ob_list_handlers", QString("<u>ob_list_handlers</u>(<b></b>) <br />%1").arg(tr("")));
-//  data.insert("ob_start", QString("<u>ob_start</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("ob_start", QString("bool <u>ob_start</u>(<b>[ callable $output_callback = NULL [, int $chunk_size = 0 [, int $flags = PHP_OUTPUT_HANDLER_STDFLAGS ]]]</b>) <br />%1").arg(tr("Turn on output buffering.")));
 //  data.insert("ob_tidyhandler", QString("<u>ob_tidyhandler</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("oci_bind_array_by_name", QString("<u>oci_bind_array_by_name</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("oci_bind_by_name", QString("<u>oci_bind_by_name</u>(<b></b>) <br />%1").arg(tr("")));
