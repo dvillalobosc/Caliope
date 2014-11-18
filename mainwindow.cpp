@@ -52,6 +52,7 @@
 //#include <QSplashScreen>
 #include <QImageWriter>
 #include <QWhatsThis>
+#include <QDesktopServices>
 
 #include "mainwindow.h"
 #include "connectdialog.h"
@@ -624,6 +625,9 @@ void MainWindow::createActions()
   actionReportSlowQueries = new QAction(this);
   actionReportSlowQueries->setIcon(QIcon::fromTheme("accessories-text-editor", QIcon(":/images/svg/accessories-text-editor-7.svg")));
   connect(actionReportSlowQueries, SIGNAL(triggered()), this, SLOT(actionReportSlowQueriesTriggered()));
+
+  tellUsYourCommentsAction = new QAction(this);
+  connect(tellUsYourCommentsAction, SIGNAL(triggered()), this, SLOT(tellUsYourCommentsActionTriggered()));
 }
 
 void MainWindow::objectsDiagramActionTriggered()
@@ -1279,6 +1283,11 @@ void MainWindow::actionReportSlowQueriesTriggered()
   dReportViewerSlowQueries->showReportData();
 }
 
+void MainWindow::tellUsYourCommentsActionTriggered()
+{
+  QDesktopServices::openUrl(QUrl("mailto:david.villalobos.c@gmail.com?subject=Comments on Calíope&body=Comments", QUrl::TolerantMode));
+}
+
 void MainWindow::finishedDatabaseMigrationSlot(int exitCode)
 {
   if (exitCode == QProcess::NormalExit && processMariaDBDump->exitCode() == QProcess::NormalExit) {
@@ -1563,6 +1572,9 @@ void MainWindow::retranslateUi()
 
   actionReportSlowQueries->setText(tr("Slow Queries"));
   actionReportSlowQueries->setStatusTip(actionReportSlowQueries->text());
+
+  tellUsYourCommentsAction->setText(tr("Tell us your comments"));
+  tellUsYourCommentsAction->setStatusTip(tellUsYourCommentsAction->text());
 }
 
 void MainWindow::createInitialSettings()
@@ -2167,6 +2179,8 @@ void MainWindow::createMenus()
   helpMenu->addAction(aboutMariaDBGUIAction);
   helpMenu->addAction(caliopeSourceDocumentationAction);
   helpMenu->addAction(QWhatsThis::createAction(this));
+  helpMenu->addSeparator();
+  helpMenu->addAction(tellUsYourCommentsAction);
 }
 
 void MainWindow::swithLanguage(QAction *action)
