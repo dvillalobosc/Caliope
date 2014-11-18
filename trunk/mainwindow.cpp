@@ -832,6 +832,7 @@ void MainWindow::showSlowLogActionTriggered()
   QVBoxLayout *mainVLayout = new QVBoxLayout;
   mainVLayout->addWidget(new DTitleLabel(tr("Select a date")));
   QDateTimeEdit *dateTimeEdit = new QDateTimeEdit(QDateTime::currentDateTime());
+  dateTimeEdit->setCalendarPopup(true);
   dateTimeEdit->setDisplayFormat("yyyy-MMM-dd hh:mm:ss");
   mainVLayout->addWidget(dateTimeEdit);
   QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Cancel | QDialogButtonBox::Ok);
