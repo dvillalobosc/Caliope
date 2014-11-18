@@ -29,6 +29,7 @@
 #include <QToolBar>
 #include <QAction>
 //#include <QWebFrame>
+#include <QDesktopServices>
 
 #include "dwebview.h"
 
@@ -71,6 +72,11 @@ DWebView::DWebView(QString title, QUrl url)
   connect(showSourceCode, SIGNAL(triggered()), this, SLOT(showSourceCodeTriggered()));
   mainToolBar->addAction(showSourceCode);
 
+  openInExternalBrowser = new QAction(this);
+  openInExternalBrowser->setIcon(QIcon(":/images/svg/document-export-4.svg"));
+  connect(openInExternalBrowser, SIGNAL(triggered()), this, SLOT(openInExternalBrowserTriggered()));
+  mainToolBar->addAction(openInExternalBrowser);
+
 //  QNetworkProxyFactory::setUseSystemConfiguration(true);
   QWebSettings::globalSettings()->setAttribute(QWebSettings::PluginsEnabled, true);
   QWebSettings::globalSettings()->setAttribute(QWebSettings::AutoLoadImages, true);
@@ -97,6 +103,7 @@ void DWebView::retranslateUi()
   setWindowTitle(title);
   setObjectName(windowTitle());
   showSourceCode->setText(tr("Show page source"));
+  openInExternalBrowser->setText(tr("Open in external browser"));
 }
 
 void DWebView::loadStartedSlot()
@@ -159,4 +166,9 @@ void DWebView::showSourceCodeTriggered()
   //qDebug() << webView->page()->currentFrame()->toHtml();
   //emit returnPagesource(webView->page()->currentFrame()->toHtml());
   emit showPagesource("asdf");
+}
+
+void DWebView::openInExternalBrowserTriggered()
+{
+  QDesktopServices::openUrl(QUrl(urlLineEdit->text(), QUrl::TolerantMode));
 }
