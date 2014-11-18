@@ -47,6 +47,7 @@ private:
   QToolBar *mainToolBar;
   QString title;
   QAction *showSourceCode;
+  QAction *openInExternalBrowser;
 
 protected:
   void retranslateUi();
@@ -69,6 +70,7 @@ private slots:
   void urlLineEditReturnPressed();
   void statusBarProgressMessageSlot(const QString &message, const unsigned int timeout = 2000, const double progress = 0);
   void showSourceCodeTriggered();
+  void openInExternalBrowserTriggered();
 };
 
 #endif // DWEBVIEW_H
