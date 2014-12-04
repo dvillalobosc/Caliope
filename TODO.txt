@@ -10,3 +10,4 @@ To Do list:
 ** Fix bug in MainWindow::openURLSlot(QString url), I think it is a Qt thing.
 ** Make F7 Works with formal names.
 ** Make TextEditor inherit from QWidget.
+** Add a sequence of Keys to select to next ; in SQLQuery and SQLEditor.
