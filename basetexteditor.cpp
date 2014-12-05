@@ -139,6 +139,7 @@ void BaseTextEditor::keyPressEvent(QKeyEvent *event)
 //  }
 
   QTextCursor cursor;
+  Qt::KeyboardModifiers modifiersControlShift;
   switch (event->key()) {
   case Qt::Key_QuoteDbl:
     smartTextInsertion("\"");
@@ -197,6 +198,14 @@ void BaseTextEditor::keyPressEvent(QKeyEvent *event)
         gotoLine(list.at(list.indexOf(cursor.blockNumber()) + 1));
         break;
       }
+    }
+    modifiersControlShift |= Qt::ShiftModifier;
+    modifiersControlShift |= Qt::ControlModifier;
+    if (event->modifiers() == modifiersControlShift) {
+      QTextCursor cursor = textCursor();
+      cursor.setPosition(cursor.position());
+      cursor.setPosition(document()->find(";", cursor.position()).position(), QTextCursor::KeepAnchor);
+      setTextCursor(cursor);
     }
     break;
   case Qt::Key_Return:
