@@ -105,6 +105,7 @@ SQLQuery::SQLQuery(Projects *project, DBMS *serverConnection, unsigned int windo
   queryToolBar->addAction(wordWrapOnResultAction);
   queryToolBar->addAction(logStatementsAction);
   queryToolBar->addAction(trimColumnsAction);
+  queryToolBar->addAction(checkTablesAction);
   mainVLayout->addWidget(queryToolBar);
   QFrame* separatorFrame = new QFrame();
   separatorFrame->setFrameShape(QFrame::HLine);
@@ -200,6 +201,8 @@ void SQLQuery::retranslateUi()
   logStatementsAction->setToolTip(logStatementsAction->text());
   trimColumnsAction->setText(tr("TRIM columns in table"));
   trimColumnsAction->setToolTip(trimColumnsAction->text());
+  checkTablesAction->setText(tr("Check tables status"));
+  checkTablesAction->setToolTip(checkTablesAction->text());
 
   scriptEditor->retranslateUi();
   resutlEditor->retranslateUi();
@@ -296,6 +299,10 @@ void SQLQuery::createActions()
   wordWrapOnResultAction->setChecked(settings.value("SQLQuery/WordWrapOnResul", false).toBool());
   connect(wordWrapOnResultAction, SIGNAL(toggled(bool)), this, SLOT(wordWrapOnResultActionToggled()));
 
+  checkTablesAction = new QAction(this);
+  checkTablesAction->setIcon(QIcon(":/images/svg/checkbox.svg"));
+  connect(checkTablesAction, SIGNAL(triggered()), this, SLOT(checkTablesActionTriggered()));
+
   queryPlayerToolBar = new QToolBar();
   queryPlayerToolBar->addAction(queryPlayerRunFirstQueryAction);
   queryPlayerToolBar->addAction(queryPlayerRunPreviousQueryAction);
@@ -354,7 +361,7 @@ void SQLQuery::queryPlayerStopActionTriggered()
 
 void SQLQuery::queryPlayerRunPreviousQueryActionTriggered()
 {
-  execureStatement(queryToBePlayed(--nextQueryToExecute));
+  executeStatement(queryToBePlayed(--nextQueryToExecute));
   emit enableDisableAction();
 }
 
@@ -373,7 +380,7 @@ QString SQLQuery::queryToBePlayed(int position)
 
 void SQLQuery::queryPlayerRunNextQueryActionTriggered()
 {
-  execureStatement(queryToBePlayed(++nextQueryToExecute));
+  executeStatement(queryToBePlayed(++nextQueryToExecute));
   emit enableDisableAction();
 }
 
@@ -404,14 +411,14 @@ void SQLQuery::enableDisableActionSlot()
 void SQLQuery::queryPlayerRunFirstQueryActionTriggered()
 {
   nextQueryToExecute = 0;
-  execureStatement(queryToBePlayed(nextQueryToExecute));
+  executeStatement(queryToBePlayed(nextQueryToExecute));
   emit enableDisableAction();
 }
 
 void SQLQuery::queryPlayerRunLastQueryActionTriggered()
 {
   nextQueryToExecute =  queriesToBePlayed->count() - 1;
-  execureStatement(queryToBePlayed(nextQueryToExecute));
+  executeStatement(queryToBePlayed(nextQueryToExecute));
   emit enableDisableAction();
 }
 
@@ -424,7 +431,7 @@ QString SQLQuery::statement()
   }
 }
 
-void SQLQuery::execureStatement(QString statement)
+void SQLQuery::executeStatement(QString statement)
 {
   if (!statement.isEmpty()) {
     if (statement.contains(QRegExp("^(ALTER|CREATE|DELETE|DROP|GRANT|LOAD|RENAME|TRUNCATE|UPDATE)", Qt::CaseInsensitive))
@@ -514,7 +521,7 @@ void SQLQuery::executeActionTriggered()
     emit showResultTab(table, database, where);
   } else {
     queryPlayerStopBecauseAnError = false;
-    execureStatement(statement());
+    executeStatement(statement());
   }
 }
 
@@ -656,7 +663,7 @@ void SQLQuery::runQueryActionTriggered()
     queryPlayerRunQueryAction->setIcon(QIcon::fromTheme("media-playback-start", QIcon(":/images/svg/media-playback-start-8.svg")));
   }
   if (!queryPlayerStopBecauseAnError)
-    execureStatement(queryToBePlayed(nextQueryToExecute++));
+    executeStatement(queryToBePlayed(nextQueryToExecute++));
   emit enableDisableAction();
   if (queryPlayerRunQueryAction->isChecked() && nextQueryToExecute < queriesToBePlayed->count())
     QTimer::singleShot(0, this, SLOT(runQueryActionTriggered()));
@@ -747,4 +754,23 @@ void SQLQuery::trimColumnsActionTriggered()
 void SQLQuery::openURLSlot(QString url)
 {
   emit openURL(url);
+}
+
+void SQLQuery::checkTablesActionTriggered()
+{
+//  QApplication::setOverrideCursor(Qt::WaitCursor);
+//  concatenateOutputAction->setChecked(true);
+//  foreach (QString table, serverConnection->database()->getTables())
+//    executeStatement("SELECT * FROM `" + table + "` LIMIT 1");
+//  concatenateOutputAction->setChecked(false);
+//  QApplication::restoreOverrideCursor();
+
+  startSQLPlayerActionTriggered();
+  nextQueryToExecute = 0;
+  emit executionStarted(0);
+  queriesToBePlayed->clear();
+  concatenateOutputAction->setChecked(true);
+  foreach (QString table, serverConnection->database()->getTables())
+    queriesToBePlayed->append("SELECT * FROM `" + table + "` LIMIT 1");
+  emit enableDisableAction();
 }

@@ -87,7 +87,7 @@ private:
   QToolBar *queryPlayerToolBar;
   QAction *queryPlayerRunQueryAction;
   QDialog *dialogQueryPlayer;
-  void execureStatement(QString statement = QString());
+  void executeStatement(QString statement = QString());
   float nextQueryToExecute;
   QAction *queryPlayerStopAction;
   QAction *queryPlayerRunPreviousQueryAction;
@@ -114,6 +114,7 @@ private:
   QAction *logStatementsAction;
   bool logStatements;
   QAction *trimColumnsAction;
+  QAction *checkTablesAction;
 
 signals:
   void enableDisableAction();
@@ -155,6 +156,7 @@ private slots:
   void logStatementsActionToggled();
   void trimColumnsActionTriggered();
   void openURLSlot(QString url);
+  void checkTablesActionTriggered();
 
 protected:
   /*! \brief Reilplements the closeEvent.
