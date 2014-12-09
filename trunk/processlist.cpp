@@ -112,7 +112,7 @@ ProcessList::ProcessList(DBMS *serverConnection)
   groupBoxHLayout->addWidget(pushButtonStopRefreshing);
   pushButtonKillIdleThreads = new QPushButton(this);
   pushButtonKillIdleThreads->setIcon(QIcon::fromTheme("user-trash", QIcon(":/images/svg/user-trash.svg")));
-  connect(pushButtonKillIdleThreads, SIGNAL(clicked()), this, SLOT(pushButtonKillIdleThreadsSlot()));
+  connect(pushButtonKillIdleThreads, SIGNAL(clicked()), serverConnection->processes(), SLOT(KillIdleThreads()));
   groupBoxHLayout->addWidget(pushButtonKillIdleThreads);
   groupBoxHLayout->addStretch(1);
   buttonGroup->setLayout(groupBoxHLayout);
@@ -139,57 +139,19 @@ void ProcessList::retranslateUi()
   buttonGroup->setTitle(tr("Actions"));
   pushButtonStopRefreshing->setText(tr("Stop refreshing"));
   killThread->setText(tr("Kill thread"));
+  killThread->setToolTip(tr("Kills the given thread."));
   pushButtonKillIdleThreads->setText(tr("Kill idle threads"));
+  pushButtonKillIdleThreads->setToolTip(tr("Kills thread exeding 30 seconds inactive."));
 }
 
 void ProcessList::killThreadSlot()
 {
-  switch(qApp->property("DBMSType").toInt()) {
-  case StaticFunctions::MySQL:
-  case StaticFunctions::MariaDB:
-    serverConnection->runQuery(QString("KILL CONNECTION %1").arg(killThread->text().split(": ").at(1)));
-    break;
-  case StaticFunctions::PostgreSQL:
-  case StaticFunctions::Undefined:
-  default:
-    break;
-  }
-}
-
-void ProcessList::pushButtonKillIdleThreadsSlot()
-{
-  switch(qApp->property("DBMSType").toInt()) {
-  case StaticFunctions::MySQL:
-  case StaticFunctions::MariaDB:
-    result = serverConnection->runQuery("SELECT `ID` FROM `information_schema`.`PROCESSLIST` WHERE `TIME` >  30 AND `COMMAND` NOT IN ('Daemon', 'Binlog Dump') AND `INFO` IS NULL");
-    result->removeLast();
-    for (int row = 0; row < result->count(); row++)
-      serverConnection->runQuery(QString("KILL CONNECTION %1").arg(result->at(row).at(0)));
-    break;
-  case StaticFunctions::PostgreSQL:
-  case StaticFunctions::Undefined:
-  default:
-    break;
-  }
+  serverConnection->processes()->killThread(killThread->text().split(": ").at(1).toLongLong());
 }
 
 void ProcessList::reloadData()
 {
-  switch(qApp->property("DBMSType").toInt()) {
-  case StaticFunctions::MySQL:
-    result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' ') FROM `information_schema`.`PROCESSLIST`");
-    break;
-  case StaticFunctions::MariaDB:
-    result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' '), `TIME_MS`, `STAGE`, `MAX_STAGE`, `PROGRESS`, `MEMORY_USED`, `EXAMINED_ROWS`, `QUERY_ID` FROM `information_schema`.`PROCESSLIST`");
-    break;
-  case StaticFunctions::PostgreSQL:
-    result = serverConnection->runQuery("SELECT '', datid, datname, procpid, usename, current_query, waiting, xact_start, query_start, backend_start, client_addr, client_port FROM pg_stat_activity");
-    break;
-  case StaticFunctions::Undefined:
-  default:
-    break;
-  }
-  result->takeLast(); //Remove the "Affected rows" line.
+  result = serverConnection->processes()->getProcessList();
   if (result->count() > 0)
     processTable->setModelData(result);
   if (pushButtonStopRefreshing->isChecked())
