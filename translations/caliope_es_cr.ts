@@ -7033,41 +7033,61 @@ Total of queries: %5, remaining: %6.</source>
     </message>
     <message>
         <location filename="../staticfunctions.cpp" line="9039"/>
+        <source>Active connections</source>
+        <translation>Conexiones activas</translation>
+    </message>
+    <message>
+        <location filename="../staticfunctions.cpp" line="9039"/>
+        <source>The number of connections that has been idle for less than 30 seconds.</source>
+        <translation>El número de conexiones que ha estado inactivo durante menos de 30 segundos.</translation>
+    </message>
+    <message>
+        <location filename="../staticfunctions.cpp" line="9041"/>
+        <source>Total connections</source>
+        <translation>Toral de conexiones</translation>
+    </message>
+    <message>
+        <location filename="../staticfunctions.cpp" line="9041"/>
+        <source>The number of active connections on the server.</source>
+        <translation>El número de conexiones activas en el servidor.</translation>
+    </message>
+    <message>
+        <location filename="../staticfunctions.cpp" line="9043"/>
         <source>Max connections aviable</source>
         <translation type="unfinished">Cantidad máxima de conexiones disponibles</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="9039"/>
+        <location filename="../staticfunctions.cpp" line="9043"/>
         <source>The maximum permitted number of simultaneous client connections.</source>
         <translation type="unfinished">El número máximo permitido de conexiones de cliente simultáneas.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="9041"/>
+        <location filename="../staticfunctions.cpp" line="9045"/>
         <source>Used connections</source>
         <translation type="unfinished">Conexiones usadas</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="9041"/>
+        <location filename="../staticfunctions.cpp" line="9045"/>
         <source>The maximum number of connections that have been in use simultaneously since the server started.</source>
         <translation type="unfinished">El número máximo de conexiones que han sido utilizadas simultáneamente desde que el servidor se inició.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="9057"/>
+        <location filename="../staticfunctions.cpp" line="9061"/>
         <source>Date</source>
         <translation type="unfinished">Fecha</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="9057"/>
+        <location filename="../staticfunctions.cpp" line="9061"/>
         <source>Day</source>
         <translation type="unfinished">Día</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="9057"/>
+        <location filename="../staticfunctions.cpp" line="9061"/>
         <source>Total queries</source>
         <translation type="unfinished">Total de consultas</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="9058"/>
+        <location filename="../staticfunctions.cpp" line="9062"/>
         <source>Average (in seconds)</source>
         <translation type="unfinished">Promedio (en segundos)</translation>
     </message>
