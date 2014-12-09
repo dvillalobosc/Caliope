@@ -1369,42 +1369,42 @@ Total progess: %5.</source>
 <context>
     <name>Database</name>
     <message>
-        <location filename="../dbms.cpp" line="1796"/>
+        <location filename="../dbms.cpp" line="1801"/>
         <source>Database: %1</source>
         <translation>Base de Datos: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1797"/>
+        <location filename="../dbms.cpp" line="1802"/>
         <source>Total of tables: %1</source>
         <translation>Total de tablas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1798"/>
+        <location filename="../dbms.cpp" line="1803"/>
         <source>Total of views: %1</source>
         <translation>Total de vistas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1799"/>
+        <location filename="../dbms.cpp" line="1804"/>
         <source>Total of triggers: %1</source>
         <translation>Total de disparadores: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1800"/>
+        <location filename="../dbms.cpp" line="1805"/>
         <source>Total of rutines: %1</source>
         <translation>Total de rutinas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1801"/>
+        <location filename="../dbms.cpp" line="1806"/>
         <source>Total of events: %1</source>
         <translation>Total de eventos: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1802"/>
+        <location filename="../dbms.cpp" line="1807"/>
         <source>Tables size: %1</source>
         <translation>Tamaño total de las tablas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1803"/>
+        <location filename="../dbms.cpp" line="1808"/>
         <source>Idexes: %1</source>
         <translation>Tamaño total de los índices: %1</translation>
     </message>
@@ -2871,11 +2871,21 @@ Total progess: %5.</source>
     </message>
     <message>
         <location filename="../processlist.cpp" line="142"/>
+        <source>Kills the given thread.</source>
+        <translation>Mata el proceso dado.</translation>
+    </message>
+    <message>
+        <location filename="../processlist.cpp" line="143"/>
         <source>Kill idle threads</source>
         <translation>Matar hilos inactivos</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="201"/>
+        <location filename="../processlist.cpp" line="144"/>
+        <source>Kills thread exeding 30 seconds inactive.</source>
+        <translation>Mata los hilos que exceden 30 inactivos.</translation>
+    </message>
+    <message>
+        <location filename="../processlist.cpp" line="189"/>
         <source>Kill thread: %1</source>
         <translation>Matar hilo: %1</translation>
     </message>

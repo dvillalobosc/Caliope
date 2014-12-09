@@ -55,7 +55,6 @@ private:
 private slots:
   void reloadData();
   void killThreadSlot();
-  void pushButtonKillIdleThreadsSlot();
 
 protected:
   void contextMenuEvent(QContextMenuEvent *event);

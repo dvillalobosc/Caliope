@@ -63,6 +63,23 @@ class QErrorMessage;
 class QSqlTableModel;
 class QSqlQueryModel;
 
+class Processes : public QObject
+{
+  Q_OBJECT
+
+public:
+  Processes(DBMS *serverConnection);
+  QList<QStringList>* getProcessList();
+  void killThread(long long int thread);
+
+public slots:
+  void KillIdleThreads();
+
+private:
+  DBMS *serverConnection;
+  QList<QStringList> *result;
+};
+
 class ItemTypes
 {
 public:
@@ -245,6 +262,7 @@ public:
   Routine *routine(QString routineName, QString database = QString());
   Database *database(QString databaseName = QString());
   Event *event(QString eventName, QString database = QString());
+  Processes *processes();
 
 signals:
   void errorOccurred();

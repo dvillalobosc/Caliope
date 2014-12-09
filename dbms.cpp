@@ -1712,6 +1712,11 @@ Event *DBMS::event(QString eventName, QString database)
   return new Event(this, eventName, database);
 }
 
+Processes *DBMS::processes()
+{
+  return new Processes(this);
+}
+
 void DBMS::errorMessageAcceptedSlot()
 {
   emit errorMessageAccepted();
@@ -1958,4 +1963,62 @@ QString Event::formalName()
 QString Event::getDefinition()
 {
   return serverConnection->runQuery("SHOW CREATE EVENT " + formalName())->at(0).at(3);
+}
+
+/***************************************************************************************************************/
+
+Processes::Processes(DBMS *serverConnection)
+{
+  this->serverConnection = serverConnection;
+}
+
+QList<QStringList> *Processes::getProcessList()
+{
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
+    result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' ') FROM `information_schema`.`PROCESSLIST`");
+    break;
+  case StaticFunctions::MariaDB:
+    result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' '), `TIME_MS`, `STAGE`, `MAX_STAGE`, `PROGRESS`, `MEMORY_USED`, `EXAMINED_ROWS`, `QUERY_ID` FROM `information_schema`.`PROCESSLIST`");
+    break;
+  case StaticFunctions::PostgreSQL:
+    result = serverConnection->runQuery("SELECT '', datid, datname, procpid, usename, current_query, waiting, xact_start, query_start, backend_start, client_addr, client_port FROM pg_stat_activity");
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  result->takeLast(); //Remove the "Affected rows" line.
+  return result;
+}
+
+void Processes::killThread(long long thread)
+{
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    serverConnection->runQuery(QString("KILL CONNECTION %1").arg(thread));
+    break;
+  case StaticFunctions::PostgreSQL:
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+}
+
+void Processes::KillIdleThreads()
+{
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    result = serverConnection->runQuery("SELECT `ID` FROM `information_schema`.`PROCESSLIST` WHERE `TIME` >  30 AND `COMMAND` NOT IN ('Daemon', 'Binlog Dump') AND `INFO` IS NULL");
+    result->removeLast();
+    for (int row = 0; row < result->count(); row++)
+      serverConnection->runQuery(QString("KILL CONNECTION %1").arg(result->at(row).at(0)));
+    break;
+  case StaticFunctions::PostgreSQL:
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
 }
