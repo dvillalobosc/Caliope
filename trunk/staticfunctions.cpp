@@ -9036,6 +9036,10 @@ QString StaticFunctions::serverInformationQuery()
         " UNION"
         " SELECT '" + tr("Idle connections") + "', LPAD(COUNT(*), 12, ' '), '" + tr("The number of connections that has been idle for more than 30 seconds.") + "' FROM `information_schema`.`PROCESSLIST` WHERE `TIME` >  30 AND `COMMAND` NOT IN ('Daemon', 'Binlog Dump')"
         " UNION"
+        " SELECT '" + tr("Active connections") + "', LPAD(COUNT(*), 12, ' '), '" + tr("The number of connections that has been idle for less than 30 seconds.") + "' FROM `information_schema`.`PROCESSLIST` WHERE `TIME` <  30 AND `COMMAND` NOT IN ('Daemon', 'Binlog Dump')"
+        " UNION"
+        " SELECT '" + tr("Total connections") + "', LPAD(COUNT(*), 12, ' '), '" + tr("The number of active connections on the server.") + "' FROM `information_schema`.`PROCESSLIST` WHERE `COMMAND` NOT IN ('Daemon', 'Binlog Dump')"
+        " UNION"
         " SELECT '" + tr("Max connections aviable") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The maximum permitted number of simultaneous client connections.") + "' FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'MAX_CONNECTIONS'"
         " UNION"
         " SELECT '" + tr("Used connections") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("The maximum number of connections that have been in use simultaneously since the server started.") + "' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'MAX_USED_CONNECTIONS'";
