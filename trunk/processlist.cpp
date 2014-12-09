@@ -110,6 +110,10 @@ ProcessList::ProcessList(DBMS *serverConnection)
   pushButtonStopRefreshing->setChecked(false);
   connect(pushButtonStopRefreshing, SIGNAL(toggled(bool)), timerRefresh, SLOT(start()));
   groupBoxHLayout->addWidget(pushButtonStopRefreshing);
+  pushButtonKillIdleThreads = new QPushButton(this);
+  pushButtonKillIdleThreads->setIcon(QIcon::fromTheme("user-trash", QIcon(":/images/svg/user-trash.svg")));
+  connect(pushButtonKillIdleThreads, SIGNAL(clicked()), this, SLOT(pushButtonKillIdleThreadsSlot()));
+  groupBoxHLayout->addWidget(pushButtonKillIdleThreads);
   groupBoxHLayout->addStretch(1);
   buttonGroup->setLayout(groupBoxHLayout);
   mainLayout->addWidget(buttonGroup);
@@ -135,11 +139,38 @@ void ProcessList::retranslateUi()
   buttonGroup->setTitle(tr("Actions"));
   pushButtonStopRefreshing->setText(tr("Stop refreshing"));
   killThread->setText(tr("Kill thread"));
+  pushButtonKillIdleThreads->setText(tr("Kill idle threads"));
 }
 
 void ProcessList::killThreadSlot()
 {
-  serverConnection->runQuery(QString("KILL CONNECTION %1").arg(killThread->text().split(": ").at(1)));
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    serverConnection->runQuery(QString("KILL CONNECTION %1").arg(killThread->text().split(": ").at(1)));
+    break;
+  case StaticFunctions::PostgreSQL:
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+}
+
+void ProcessList::pushButtonKillIdleThreadsSlot()
+{
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    result = serverConnection->runQuery("SELECT `ID` FROM `information_schema`.`PROCESSLIST` WHERE `TIME` >  30 AND `COMMAND` NOT IN ('Daemon', 'Binlog Dump') AND `INFO` IS NULL");
+    result->removeLast();
+    for (int row = 0; row < result->count(); row++)
+      serverConnection->runQuery(QString("KILL CONNECTION %1").arg(result->at(row).at(0)));
+    break;
+  case StaticFunctions::PostgreSQL:
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
 }
 
 void ProcessList::reloadData()
