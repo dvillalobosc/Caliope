@@ -146,10 +146,10 @@ void ProcessList::reloadData()
 {
   switch(qApp->property("DBMSType").toInt()) {
   case StaticFunctions::MySQL:
-    result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, `INFO` FROM `information_schema`.`PROCESSLIST`");
+    result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' ') FROM `information_schema`.`PROCESSLIST`");
     break;
   case StaticFunctions::MariaDB:
-    result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, `INFO`, `TIME_MS`, `STAGE`, `MAX_STAGE`, `PROGRESS`, `MEMORY_USED`, `EXAMINED_ROWS`, `QUERY_ID` FROM `information_schema`.`PROCESSLIST`");
+    result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' '), `TIME_MS`, `STAGE`, `MAX_STAGE`, `PROGRESS`, `MEMORY_USED`, `EXAMINED_ROWS`, `QUERY_ID` FROM `information_schema`.`PROCESSLIST`");
     break;
   case StaticFunctions::PostgreSQL:
     result = serverConnection->runQuery("SELECT '', datid, datname, procpid, usename, current_query, waiting, xact_start, query_start, backend_start, client_addr, client_port FROM pg_stat_activity");
