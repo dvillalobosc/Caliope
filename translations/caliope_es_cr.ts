@@ -2712,7 +2712,7 @@ Total progess: %5.</source>
 <context>
     <name>ProcessList</name>
     <message>
-        <location filename="../processlist.cpp" line="132"/>
+        <location filename="../processlist.cpp" line="136"/>
         <source>Process List</source>
         <translation>Lista de Procesos</translation>
     </message>
@@ -2855,22 +2855,27 @@ Total progess: %5.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="135"/>
+        <location filename="../processlist.cpp" line="139"/>
         <source>Actions</source>
         <translation>Acciones</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="136"/>
+        <location filename="../processlist.cpp" line="140"/>
         <source>Stop refreshing</source>
         <translation>Detener refrescado</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="137"/>
+        <location filename="../processlist.cpp" line="141"/>
         <source>Kill thread</source>
         <translation>Matar hilo</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="170"/>
+        <location filename="../processlist.cpp" line="142"/>
+        <source>Kill idle threads</source>
+        <translation>Matar hilos inactivos</translation>
+    </message>
+    <message>
+        <location filename="../processlist.cpp" line="201"/>
         <source>Kill thread: %1</source>
         <translation>Matar hilo: %1</translation>
     </message>
