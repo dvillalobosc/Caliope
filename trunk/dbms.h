@@ -73,7 +73,7 @@ public:
   void killThread(long long int thread);
 
 public slots:
-  void KillIdleThreads();
+  void killIdleThreads(unsigned int limit);
 
 private:
   DBMS *serverConnection;

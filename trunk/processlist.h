@@ -29,6 +29,7 @@ class DTableView;
 class QGroupBox;
 class DTitleLabel;
 class QPushButton;
+class QSpinBox;
 
 class ProcessList : public DMdiSubWindow
 {
@@ -51,10 +52,13 @@ private:
   QGroupBox *buttonGroup;
   DTitleLabel *dTitleLabel;
   QPushButton *pushButtonKillIdleThreads;
+  QSpinBox *spinBoxTimeLimit;
+  QSettings settings;
 
 private slots:
   void reloadData();
   void killThreadSlot();
+  void killIdleThreadsSlot();
 
 protected:
   void contextMenuEvent(QContextMenuEvent *event);
