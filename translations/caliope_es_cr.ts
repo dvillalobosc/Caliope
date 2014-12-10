@@ -2712,180 +2712,194 @@ Total progess: %5.</source>
 <context>
     <name>ProcessList</name>
     <message>
-        <location filename="../processlist.cpp" line="136"/>
+        <location filename="../processlist.cpp" line="144"/>
         <source>Process List</source>
         <translation>Lista de Procesos</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="50"/>
-        <location filename="../processlist.cpp" line="60"/>
+        <location filename="../processlist.cpp" line="51"/>
+        <location filename="../processlist.cpp" line="61"/>
         <source>Id</source>
         <translation>Id</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="51"/>
-        <location filename="../processlist.cpp" line="61"/>
+        <location filename="../processlist.cpp" line="52"/>
+        <location filename="../processlist.cpp" line="62"/>
         <source>User</source>
         <translation>Usuario</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="52"/>
-        <location filename="../processlist.cpp" line="62"/>
+        <location filename="../processlist.cpp" line="53"/>
+        <location filename="../processlist.cpp" line="63"/>
         <source>Host</source>
         <translation>Huésped</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="53"/>
-        <location filename="../processlist.cpp" line="63"/>
+        <location filename="../processlist.cpp" line="54"/>
+        <location filename="../processlist.cpp" line="64"/>
         <source>Database</source>
         <translation>Base de Datos</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="54"/>
-        <location filename="../processlist.cpp" line="64"/>
+        <location filename="../processlist.cpp" line="55"/>
+        <location filename="../processlist.cpp" line="65"/>
         <source>Command</source>
         <translation>Comando</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="55"/>
-        <location filename="../processlist.cpp" line="65"/>
+        <location filename="../processlist.cpp" line="56"/>
+        <location filename="../processlist.cpp" line="66"/>
         <source>Time</source>
         <translation>Tiempo</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="56"/>
-        <location filename="../processlist.cpp" line="66"/>
+        <location filename="../processlist.cpp" line="57"/>
+        <location filename="../processlist.cpp" line="67"/>
         <source>State</source>
         <translation>Estado</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="57"/>
-        <location filename="../processlist.cpp" line="67"/>
+        <location filename="../processlist.cpp" line="58"/>
+        <location filename="../processlist.cpp" line="68"/>
         <source>Info</source>
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="68"/>
+        <location filename="../processlist.cpp" line="69"/>
         <source>Milliseconds</source>
         <translation>Milisegundos</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="69"/>
+        <location filename="../processlist.cpp" line="70"/>
         <source>Stage</source>
         <translation>Etapa</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="70"/>
+        <location filename="../processlist.cpp" line="71"/>
         <source>Max Stage</source>
         <translation>Máxima Etapa</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="71"/>
+        <location filename="../processlist.cpp" line="72"/>
         <source>Progress</source>
         <translation>Progreso</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="72"/>
+        <location filename="../processlist.cpp" line="73"/>
         <source>Memory</source>
         <translation>Memoria</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="73"/>
+        <location filename="../processlist.cpp" line="74"/>
         <source>Examined Rows</source>
         <translation>Filas Examinadas</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="74"/>
+        <location filename="../processlist.cpp" line="75"/>
         <source>Query Id</source>
         <translation>Consulta Id</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="77"/>
+        <location filename="../processlist.cpp" line="78"/>
         <source>DatId</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="78"/>
+        <location filename="../processlist.cpp" line="79"/>
         <source>DatName</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="79"/>
+        <location filename="../processlist.cpp" line="80"/>
         <source>ProcPid</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="80"/>
+        <location filename="../processlist.cpp" line="81"/>
         <source>UseName</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="81"/>
+        <location filename="../processlist.cpp" line="82"/>
         <source>Current Query</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="82"/>
+        <location filename="../processlist.cpp" line="83"/>
         <source>Waiting</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="83"/>
+        <location filename="../processlist.cpp" line="84"/>
         <source>Xact Start</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="84"/>
+        <location filename="../processlist.cpp" line="85"/>
         <source>Query Start</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="85"/>
+        <location filename="../processlist.cpp" line="86"/>
         <source>Backend Start</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="86"/>
+        <location filename="../processlist.cpp" line="87"/>
         <source>Client Addr</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="87"/>
+        <location filename="../processlist.cpp" line="88"/>
         <source>Client Port</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="139"/>
+        <location filename="../processlist.cpp" line="121"/>
+        <source>seconds</source>
+        <translation>segundos</translation>
+    </message>
+    <message>
+        <location filename="../processlist.cpp" line="147"/>
         <source>Actions</source>
         <translation>Acciones</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="140"/>
+        <location filename="../processlist.cpp" line="148"/>
         <source>Stop refreshing</source>
         <translation>Detener refrescado</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="141"/>
+        <location filename="../processlist.cpp" line="149"/>
         <source>Kill thread</source>
         <translation>Matar hilo</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="142"/>
+        <location filename="../processlist.cpp" line="150"/>
         <source>Kills the given thread.</source>
         <translation>Mata el proceso dado.</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="143"/>
+        <location filename="../processlist.cpp" line="151"/>
         <source>Kill idle threads</source>
         <translation>Matar hilos inactivos</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="144"/>
-        <source>Kills thread exeding 30 seconds inactive.</source>
-        <translation>Mata los hilos que exceden 30 inactivos.</translation>
+        <location filename="../processlist.cpp" line="152"/>
+        <source>Kills thread exeding the given seconds inactive.</source>
+        <translation>Mata los hilos que exedan el tiempo dado en segundos de inactividad.</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="189"/>
+        <location filename="../processlist.cpp" line="153"/>
+        <source>Time to kill threads.</source>
+        <translation>Tiempo para matar los hios.</translation>
+    </message>
+    <message>
+        <source>Kills thread exeding 30 seconds inactive.</source>
+        <translation type="obsolete">Mata los hilos que exceden 30 inactivos.</translation>
+    </message>
+    <message>
+        <location filename="../processlist.cpp" line="177"/>
         <source>Kill thread: %1</source>
         <translation>Matar hilo: %1</translation>
     </message>

@@ -28,6 +28,7 @@
 #include <QGroupBox>
 #include <QPushButton>
 #include <QPushButton>
+#include <QSpinBox>
 
 #include "processlist.h"
 #include "dtitlelabel.h"
@@ -112,8 +113,13 @@ ProcessList::ProcessList(DBMS *serverConnection)
   groupBoxHLayout->addWidget(pushButtonStopRefreshing);
   pushButtonKillIdleThreads = new QPushButton(this);
   pushButtonKillIdleThreads->setIcon(QIcon::fromTheme("user-trash", QIcon(":/images/svg/user-trash.svg")));
-  connect(pushButtonKillIdleThreads, SIGNAL(clicked()), serverConnection->processes(), SLOT(KillIdleThreads()));
+  connect(pushButtonKillIdleThreads, SIGNAL(clicked()), this, SLOT(killIdleThreadsSlot()));
   groupBoxHLayout->addWidget(pushButtonKillIdleThreads);
+  spinBoxTimeLimit = new QSpinBox;
+  spinBoxTimeLimit->setRange(0, 2147483647);
+  spinBoxTimeLimit->setSuffix(" " + tr("seconds"));
+  groupBoxHLayout->addWidget(spinBoxTimeLimit);
+  spinBoxTimeLimit->setValue(settings.value("Processes/TimeToKillThreads", 30).toUInt());
   groupBoxHLayout->addStretch(1);
   buttonGroup->setLayout(groupBoxHLayout);
   mainLayout->addWidget(buttonGroup);
@@ -141,12 +147,19 @@ void ProcessList::retranslateUi()
   killThread->setText(tr("Kill thread"));
   killThread->setToolTip(tr("Kills the given thread."));
   pushButtonKillIdleThreads->setText(tr("Kill idle threads"));
-  pushButtonKillIdleThreads->setToolTip(tr("Kills thread exeding 30 seconds inactive."));
+  pushButtonKillIdleThreads->setToolTip(tr("Kills thread exeding the given seconds inactive."));
+  spinBoxTimeLimit->setToolTip(tr("Time to kill threads."));
 }
 
 void ProcessList::killThreadSlot()
 {
   serverConnection->processes()->killThread(killThread->text().split(": ").at(1).toLongLong());
+}
+
+void ProcessList::killIdleThreadsSlot()
+{
+  settings.setValue("Processes/TimeToKillThreads", spinBoxTimeLimit->value());
+  serverConnection->processes()->killIdleThreads(spinBoxTimeLimit->value());
 }
 
 void ProcessList::reloadData()
