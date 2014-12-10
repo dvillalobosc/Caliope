@@ -2011,7 +2011,7 @@ void Processes::killIdleThreads(unsigned int limit)
   switch(qApp->property("DBMSType").toInt()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
-    result = serverConnection->runQuery(QString("SELECT `ID` FROM `information_schema`.`PROCESSLIST` WHERE `TIME` >  %1 AND `COMMAND` NOT IN ('Daemon', 'Binlog Dump') AND `INFO` IS NULL").arg(limit));
+    result = serverConnection->runQuery(QString("SELECT `ID` FROM `information_schema`.`PROCESSLIST` WHERE `TIME` >  %1 AND `COMMAND` NOT IN ('Daemon', 'Binlog Dump') AND `INFO` IS NULL AND `USER` <> 'federated'").arg(limit));
     result->removeLast();
     for (int row = 0; row < result->count(); row++)
       serverConnection->runQuery(QString("KILL CONNECTION %1").arg(result->at(row).at(0)));
