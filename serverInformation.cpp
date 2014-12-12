@@ -125,6 +125,22 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
   groupBoxHLayout->addWidget(pushButtonSkip1Error);
   groupBoxHLayout->addWidget(pushButtonSkip10Error);
   groupBoxHLayout->addWidget(pushButtonSkip100Error);
+
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
+    break;
+  case StaticFunctions::MariaDB:
+    lineEditConnectioName = new DLineEdit(QIcon(":/images/svg/server-database.svg"), false);
+    connect(lineEditConnectioName, SIGNAL(returnPressed(QString)), serverConnection->replication(), SLOT(changeDefaultMasterConnection(QString)));
+    connect(lineEditConnectioName, SIGNAL(clicked()), this, SLOT(lineEditConnectioNameClicked()));
+    groupBoxHLayout->addWidget(lineEditConnectioName);
+    break;
+  case StaticFunctions::PostgreSQL:
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+
   groupBoxHLayout->addStretch(1);
   buttonGroupReplication->setLayout(groupBoxHLayout);
   replicationVLayout->addWidget(buttonGroupReplication);
@@ -359,6 +375,8 @@ void ServerInformation::retranslateUi()
   labelFilter->setText(tr("Filter:"));
   lineEditFilter->setPlaceholderText(tr("Three characters at least"));
   pushButtonServerGraphicsFullScreen->setText(tr("Full screen"));
+  lineEditConnectioName->setPlaceholderText(tr("Enter the default connection name and press Enter."));
+  lineEditConnectioName->setToolTip(lineEditConnectioName->placeholderText());
 }
 
 void ServerInformation::setCurrentTab(unsigned int tabNumber)
@@ -409,9 +427,7 @@ QString ServerInformation::serverGraphsDataTxtMariaDB()
 
 void ServerInformation::skipReplicationErrors(unsigned int count)
 {
-  serverConnection->executeQuery(QString("STOP SLAVE"));
-  serverConnection->executeQuery(QString("SET GLOBAL SQL_SLAVE_SKIP_COUNTER = %1").arg(count));
-  serverConnection->executeQuery(QString("START SLAVE;"));
+  serverConnection->replication()->skipErrors(count);
 }
 
 void ServerInformation::showInformation(int tabIndex)
@@ -482,7 +498,7 @@ void ServerInformation::serverGraphsData()
 
 void ServerInformation::replicationStatusTxt()
 {
-  replicationStatus->setPlainText(serverConnection->getReplicationStatus());
+  replicationStatus->setPlainText(serverConnection->replication()->getStatus());
   if (pushButtonStopRefreshingReplicator->isChecked())
     timerReplicationStatusTxt->stop();
 }
@@ -644,6 +660,12 @@ void ServerInformation::pushButtonServerGraphicsFullScreenSlot(bool checked)
     serverInformationTab->insertTab(4, widgetServerGraphs2, QIcon(":/images/svg/view-statistics.svg"), tr("Server Graphics"));
     serverInformationTab->setCurrentIndex(4);
   }
+}
+
+void ServerInformation::lineEditConnectioNameClicked()
+{
+  pushButtonStopRefreshingReplicator->setChecked(true);
+  timerReplicationStatusTxt->stop();
 }
 
 /****************************************************/

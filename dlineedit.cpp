@@ -20,6 +20,8 @@
 
 #include <QToolButton>
 #include <QStyle>
+#include <QMouseEvent>
+#include <QEvent>
 
 #include "dlineedit.h"
 
@@ -43,11 +45,19 @@ DLineEdit::DLineEdit(QIcon icon, bool autoHideIcon)
                  qMax(msz.height(), actionButton->sizeHint().height() + frameWidth * 2 + 2));
 }
 
-void DLineEdit::resizeEvent(QResizeEvent *)
+void DLineEdit::resizeEvent(QResizeEvent *event)
 {
   QSize sz = actionButton->sizeHint();
   int frameWidth = style()->pixelMetric(QStyle::PM_DefaultFrameWidth);
   actionButton->move(rect().right() - frameWidth - sz.width(), (rect().bottom() + 1 - sz.height())/2);
+  QLineEdit::resizeEvent(event);
+}
+
+void DLineEdit::mousePressEvent(QMouseEvent *event)
+{
+  if (event->type() == QEvent::MouseButtonPress)
+    emit clicked();
+  QLineEdit::mousePressEvent(event);
 }
 
 void DLineEdit::showHideActionButton(const QString& text)

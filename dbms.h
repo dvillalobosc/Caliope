@@ -63,6 +63,28 @@ class QErrorMessage;
 class QSqlTableModel;
 class QSqlQueryModel;
 
+class Replication : public QObject
+{
+  Q_OBJECT
+
+public:
+  Replication(DBMS *serverConnection);
+
+public slots:
+  QString getStatus();
+  void changeDefaultMasterConnection(QString masterConnectionName);
+  void skipErrors(unsigned int count);
+  void stopSlave();
+  void startSlave();
+  void rebootSlave();
+  void resetSlave();
+  void purgeBinaryLogs();
+  void flushRelayLogs();
+
+private:
+  DBMS *serverConnection;
+};
+
 class Processes : public QObject
 {
   Q_OBJECT
@@ -235,16 +257,10 @@ public:
   bool shutdown();
   QString getStatus();
   bool executeQuery(QString queryToExecute);
-  void stopReplicationSlave();
-  void startReplicationSlave();
-  void rebootReplicationSlave();
   void flushPrivileges();
-  void purgeBinaryLogs();
   QString getTitle();
   QString getStringType();
   QString replaceReturnsAndTabs(QString string);
-  void resetSlave();
-  void flushRelayLogs();
   QString getConnectionString();
   QString getfailedQueries();
   QSqlDatabase dbSQLite;
@@ -263,6 +279,7 @@ public:
   Database *database(QString databaseName = QString());
   Event *event(QString eventName, QString database = QString());
   Processes *processes();
+  Replication *replication();
 
 signals:
   void errorOccurred();
