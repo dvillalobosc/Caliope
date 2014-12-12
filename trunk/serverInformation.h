@@ -140,6 +140,7 @@ private:
   QPushButton *pushButtonServerGraphicsFullScreen;
   QPushButton *pushButtonShowSlowQueries;
   QLabel *labelServerStatus;
+  DLineEdit *lineEditConnectioName;
 
 public slots:
   void showInformation(int tabIndex);
@@ -162,6 +163,7 @@ private slots:
   void pushButtonShowSessionVariablesSlot();
   void lineEditFilterTextChangedSlot(QString filter);
   void pushButtonServerGraphicsFullScreenSlot(bool checked = false);
+  void lineEditConnectioNameClicked();
 };
 
 #endif // SERVERINFORMATION_H

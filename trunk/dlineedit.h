@@ -38,7 +38,8 @@ private:
   QToolButton *actionButton;
 
 protected:
-  void resizeEvent(QResizeEvent *);
+  void resizeEvent(QResizeEvent *event);
+  void mousePressEvent(QMouseEvent *event);
 
 private slots:
   void showHideActionButton(const QString &text);

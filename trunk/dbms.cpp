@@ -1097,33 +1097,6 @@ QString DBMS::getGlobalVariables(QString filter)
   return QString();
 }
 
-QString DBMS::getReplicationStatus()
-{
-  if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
-    case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB:
-      return outputAsTable("SHOW MASTER STATUS") + "\n" + outputAsG("SHOW SLAVE STATUS");
-      break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return "N/A";
-#endif
-      break;
-    case StaticFunctions::Undefined:
-    default:
-      break;
-    }
-  //  return QString("%1").arg(mysql_get_host_info(mysqlConnection));
-  //  return QString("%1").arg(mysql_get_client_version());
-  //  return QString("%1").arg(mysql_get_client_info());
-  //  return QString("%1").arg(mysql_get_character_set_info(mysqlConnection, &QString("utf8").toUtf8()));
-  //  return QString("%1").arg(mysql_get_proto_info(mysqlConnection));
-  //  return QString("%1").arg(mysql_get_server_version(mysqlConnection));
-  //  return QString("%1").arg(mysql_info(mysqlConnection));
-  return QString();
-}
-
 QString DBMS::getStatus()
 {
   if (isOpened())
@@ -1152,55 +1125,6 @@ bool DBMS::executeQuery(QString queryToExecute)
     return false;
 }
 
-void DBMS::stopReplicationSlave()
-{
-  if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
-    case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB:
-      query("STOP SLAVE");
-      break;
-    case StaticFunctions::PostgreSQL:
-      break;
-    case StaticFunctions::Undefined:
-    default:
-      break;
-    }
-}
-
-void DBMS::startReplicationSlave()
-{
-  if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
-    case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB:
-      query("START SLAVE");
-      break;
-    case StaticFunctions::PostgreSQL:
-      break;
-    case StaticFunctions::Undefined:
-    default:
-      break;
-    }
-}
-
-void DBMS::rebootReplicationSlave()
-{
-  if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
-    case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB:
-      query("STOP SLAVE");
-      query("START SLAVE");
-      break;
-    case StaticFunctions::PostgreSQL:
-      break;
-    case StaticFunctions::Undefined:
-    default:
-      break;
-    }
-}
-
 void DBMS::flushPrivileges()
 {
   if (isOpened())
@@ -1208,22 +1132,6 @@ void DBMS::flushPrivileges()
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       query("FLUSH PRIVILEGES");
-      break;
-    case StaticFunctions::PostgreSQL:
-      break;
-    case StaticFunctions::Undefined:
-    default:
-      break;
-    }
-}
-
-void DBMS::purgeBinaryLogs()
-{
-  if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
-    case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB:
-      query("PURGE BINARY LOGS BEFORE NOW()");
       break;
     case StaticFunctions::PostgreSQL:
       break;
@@ -1260,38 +1168,6 @@ QString DBMS::getStringType()
 QString DBMS::replaceReturnsAndTabs(QString string)
 {
   return QString::fromUtf8(string.toUtf8()).replace(QRegExp("(\\r|\\n|\\t)"), " ");
-}
-
-void DBMS::resetSlave()
-{
-  if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
-    case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB:
-      query("RESET SLAVE");
-      break;
-    case StaticFunctions::PostgreSQL:
-      break;
-    case StaticFunctions::Undefined:
-    default:
-      break;
-    }
-}
-
-void DBMS::flushRelayLogs()
-{
-  if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
-    case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB:
-      query("FLUSH REALY LOGS");
-      break;
-    case StaticFunctions::PostgreSQL:
-      break;
-    case StaticFunctions::Undefined:
-    default:
-      break;
-    }
 }
 
 QString DBMS::getConnectionString()
@@ -1717,6 +1593,11 @@ Processes *DBMS::processes()
   return new Processes(this);
 }
 
+Replication *DBMS::replication()
+{
+  return new Replication(this);
+}
+
 void DBMS::errorMessageAcceptedSlot()
 {
   emit errorMessageAccepted();
@@ -2021,4 +1902,163 @@ void Processes::killIdleThreads(unsigned int limit)
   default:
     break;
   }
+}
+
+/***************************************************************************************************************/
+
+Replication::Replication(DBMS *serverConnection)
+{
+  this->serverConnection = serverConnection;
+}
+
+void Replication::changeDefaultMasterConnection(QString masterConnectionName)
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+      break;
+    case StaticFunctions::MariaDB:
+      serverConnection->runQuery("SET `default_master_connection` := '" + masterConnectionName + "'");
+      break;
+    case StaticFunctions::PostgreSQL:
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+}
+
+QString Replication::getStatus()
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      return serverConnection->outputAsTable("SHOW MASTER STATUS") + "\n" + serverConnection->outputAsG("SHOW SLAVE STATUS");
+      break;
+    case StaticFunctions::PostgreSQL:
+#if USEPOSTGRES == 1
+      return "N/A";
+#endif
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+  return QString();
+}
+
+void Replication::skipErrors(unsigned int count)
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      serverConnection->executeQuery(QString("STOP SLAVE"));
+      serverConnection->executeQuery(QString("SET GLOBAL SQL_SLAVE_SKIP_COUNTER = %1").arg(count));
+      serverConnection->executeQuery(QString("START SLAVE;"));
+      break;
+    case StaticFunctions::PostgreSQL:
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+}
+
+void Replication::stopSlave()
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      serverConnection->executeQuery("STOP SLAVE");
+      break;
+    case StaticFunctions::PostgreSQL:
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+}
+
+void Replication::startSlave()
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      serverConnection->executeQuery("START SLAVE");
+      break;
+    case StaticFunctions::PostgreSQL:
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+}
+
+void Replication::rebootSlave()
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      serverConnection->executeQuery("STOP SLAVE");
+      serverConnection->executeQuery("START SLAVE");
+      break;
+    case StaticFunctions::PostgreSQL:
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+}
+
+void Replication::resetSlave()
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      serverConnection->executeQuery("RESET SLAVE");
+      break;
+    case StaticFunctions::PostgreSQL:
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+}
+
+void Replication::purgeBinaryLogs()
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      serverConnection->executeQuery("PURGE BINARY LOGS BEFORE NOW()");
+      break;
+    case StaticFunctions::PostgreSQL:
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+}
+
+void Replication::flushRelayLogs()
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      serverConnection->executeQuery("FLUSH REALY LOGS");
+      break;
+    case StaticFunctions::PostgreSQL:
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
 }

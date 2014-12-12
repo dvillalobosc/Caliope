@@ -789,19 +789,19 @@ void MainWindow::textEditorActionTriggered()
 
 void MainWindow::stopReplicationSlaveActionTriggered()
 {
-  serverConnection->stopReplicationSlave();
+  serverConnection->replication()->stopSlave();
   statusBarMessage(tr("The replication slave has been stoped."));
 }
 
 void MainWindow::startReplicationSlaveActionTriggered()
 {
-  serverConnection->startReplicationSlave();
+  serverConnection->replication()->startSlave();
   statusBarMessage(tr("The replication slave has been started."));
 }
 
 void MainWindow::rebootReplicationSlaveActionTriggered()
 {
-  serverConnection->rebootReplicationSlave();
+  serverConnection->replication()->rebootSlave();
   statusBarMessage(tr("The replication slave has been rebooted."));
 }
 
@@ -819,7 +819,7 @@ void MainWindow::maintenanceFlushPrivilegesActionTriggered()
 
 void MainWindow::maintenancePurgeBinaryLogsActionTriggered()
 {
-  serverConnection->purgeBinaryLogs();
+  serverConnection->replication()->purgeBinaryLogs();
   statusBarMessage(tr("Logs purged."));
 }
 
@@ -914,13 +914,13 @@ void MainWindow::clearRecentURLsActionTriggered()
 
 void MainWindow::maintenanceResetSlaveActionTriggered()
 {
-  serverConnection->resetSlave();
+  serverConnection->replication()->resetSlave();
   statusBarMessage(tr("The slave has been reset."));
 }
 
 void MainWindow::maintenanceFlushRelayLogsActionTriggered()
 {
-  serverConnection->flushRelayLogs();
+  serverConnection->replication()->flushRelayLogs();
   statusBarMessage(tr("Logs flushed."));
 }
 
