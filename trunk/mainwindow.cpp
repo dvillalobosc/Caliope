@@ -628,6 +628,14 @@ void MainWindow::createActions()
 
   tellUsYourCommentsAction = new QAction(this);
   connect(tellUsYourCommentsAction, SIGNAL(triggered()), this, SLOT(tellUsYourCommentsActionTriggered()));
+
+  stopAllReplicationSlavesAction = new QAction(this);
+  stopAllReplicationSlavesAction->setIcon(QIcon::fromTheme("process-stop", QIcon(":/images/svg/process-stop-7.svg")));
+  connect(stopAllReplicationSlavesAction, SIGNAL(triggered()), this, SLOT(stopAllReplicationSlavesActionTriggered()));
+
+  startAllReplicationSlavesAction = new QAction(this);
+  startAllReplicationSlavesAction->setIcon(QIcon::fromTheme("start-here", QIcon(":/images/svg/start-here.svg")));
+  connect(startAllReplicationSlavesAction, SIGNAL(triggered()), this, SLOT(startAllReplicationSlavesActionTriggered()));
 }
 
 void MainWindow::objectsDiagramActionTriggered()
@@ -1288,6 +1296,18 @@ void MainWindow::tellUsYourCommentsActionTriggered()
   QDesktopServices::openUrl(QUrl("mailto:david.villalobos.c@gmail.com?subject=Comments on Calíope&body=Comments", QUrl::TolerantMode));
 }
 
+void MainWindow::stopAllReplicationSlavesActionTriggered()
+{
+  serverConnection->replication()->stopAllSlaves();
+  statusBarMessage(tr("All the replication slaves have been started."));
+}
+
+void MainWindow::startAllReplicationSlavesActionTriggered()
+{
+  serverConnection->replication()->startAllSlaves();
+  statusBarMessage(tr("All the replication slaves hava been stoped."));
+}
+
 void MainWindow::finishedDatabaseMigrationSlot(int exitCode)
 {
   if (exitCode == QProcess::NormalExit && processMariaDBDump->exitCode() == QProcess::NormalExit) {
@@ -1463,19 +1483,19 @@ void MainWindow::retranslateUi()
   textEditorAction->setStatusTip(textEditorAction->text());
 
   stopReplicationSlaveAction->setText(tr("Stop Slave"));
-  stopReplicationSlaveAction->setStatusTip(textEditorAction->text());
+  stopReplicationSlaveAction->setStatusTip(stopReplicationSlaveAction->text());
 
   resetSlaveAction->setText(tr("Reset Slave"));
   resetSlaveAction->setStatusTip(resetSlaveAction->text());
 
   startReplicationSlaveAction->setText(tr("Start Slave"));
-  startReplicationSlaveAction->setStatusTip(textEditorAction->text());
+  startReplicationSlaveAction->setStatusTip(startReplicationSlaveAction->text());
 
   rebootReplicationSlaveAction->setText(tr("Restart Slave"));
-  rebootReplicationSlaveAction->setStatusTip(textEditorAction->text());
+  rebootReplicationSlaveAction->setStatusTip(rebootReplicationSlaveAction->text());
 
   replicationInformationAction->setText(tr("Replication Information"));
-  replicationInformationAction->setStatusTip(textEditorAction->text());
+  replicationInformationAction->setStatusTip(replicationInformationAction->text());
 
   maintenanceFlushPrivilegesAction->setStatusTip(maintenanceFlushPrivilegesAction->text());
 
@@ -1575,6 +1595,12 @@ void MainWindow::retranslateUi()
 
   tellUsYourCommentsAction->setText(tr("Tell us your comments"));
   tellUsYourCommentsAction->setStatusTip(tellUsYourCommentsAction->text());
+
+  stopAllReplicationSlavesAction->setText(tr("Stop all Slaves"));
+  stopAllReplicationSlavesAction->setStatusTip(stopAllReplicationSlavesAction->text());
+
+  startAllReplicationSlavesAction->setText(tr("Start all Slaves"));
+  startAllReplicationSlavesAction->setStatusTip(startAllReplicationSlavesAction->text());
 }
 
 void MainWindow::createInitialSettings()
@@ -2104,6 +2130,8 @@ void MainWindow::createMenus()
   replicationMenu->setDisabled(true);
   replicationMenu->addAction(startReplicationSlaveAction);
   replicationMenu->addAction(stopReplicationSlaveAction);
+  replicationMenu->addAction(startAllReplicationSlavesAction);
+  replicationMenu->addAction(stopAllReplicationSlavesAction);
   replicationMenu->addAction(resetSlaveAction);
   replicationMenu->addAction(rebootReplicationSlaveAction);
   replicationMenu->addAction(replicationInformationAction);
