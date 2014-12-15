@@ -11,4 +11,3 @@ To Do list:
 ** Make F7 Works with formal names.
 ** Make TextEditor inherit from QWidget.
 ** Document Keyword shortcuts BaseTextEditor::keyPressEvent(QKeyEvent *event)
-** Implement the Replicaction improvements for MariaDB 10

@@ -80,6 +80,9 @@ public slots:
   void resetSlave();
   void purgeBinaryLogs();
   void flushRelayLogs();
+  void stopAllSlaves();
+  void startAllSlaves();
+  QString getStatus(QString connectionName);
 
 private:
   DBMS *serverConnection;

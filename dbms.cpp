@@ -1933,8 +1933,10 @@ QString Replication::getStatus()
   if (serverConnection->isOpened())
     switch(qApp->property("DBMSType").toInt()) {
     case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB:
       return serverConnection->outputAsTable("SHOW MASTER STATUS") + "\n" + serverConnection->outputAsG("SHOW SLAVE STATUS");
+      break;
+    case StaticFunctions::MariaDB:
+      return serverConnection->outputAsTable("SHOW MASTER STATUS") + "\n" + serverConnection->outputAsG("SHOW ALL SLAVES STATUS");
       break;
     case StaticFunctions::PostgreSQL:
 #if USEPOSTGRES == 1
@@ -2061,4 +2063,58 @@ void Replication::flushRelayLogs()
     default:
       break;
     }
+}
+
+void Replication::stopAllSlaves()
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      serverConnection->executeQuery("STOP ALL SLAVES");
+      break;
+    case StaticFunctions::PostgreSQL:
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+}
+
+void Replication::startAllSlaves()
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      serverConnection->executeQuery("START ALL SLAVES");
+      break;
+    case StaticFunctions::PostgreSQL:
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+}
+
+QString Replication::getStatus(QString connectionName)
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+      return "N/A";
+      break;
+    case StaticFunctions::MariaDB:
+      return serverConnection->outputAsTable("SHOW MASTER STATUS") + "\n" + serverConnection->outputAsG("SHOW SLAVE " + connectionName + "STATUS");
+      break;
+    case StaticFunctions::PostgreSQL:
+#if USEPOSTGRES == 1
+      return "N/A";
+#endif
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+  return QString();
 }
