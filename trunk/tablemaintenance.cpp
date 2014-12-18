@@ -81,6 +81,14 @@ TableMaintenance::TableMaintenance(DBMS *serverConnection)
   thirdLayout->addWidget(optionEXTENDED);
   thirdLayout->addWidget(optionCHANGED);
   thirdLayout->addWidget(optionUSE_FRM);
+
+  QFrame* sepatatorFrame = new QFrame();
+  sepatatorFrame->setFrameShape(QFrame::HLine);
+  thirdLayout->addWidget(sepatatorFrame);
+  clearSelectionPushButton = new QPushButton;
+  connect(clearSelectionPushButton, SIGNAL(clicked()), this, SLOT(clearSelectionPushButtonSlot()));
+  thirdLayout->addWidget(clearSelectionPushButton);
+
   thirdLayout->addStretch();
   groupBoxAction->setLayout(thirdLayout);
   QHBoxLayout *secondLayout = new QHBoxLayout;
@@ -113,6 +121,7 @@ void TableMaintenance::retranslateUi()
   repairPushButton->setText(tr("Repair"));
   tablesListWidget->setWindowTitle(tr("Databases"));
   tablesListWidget->setHeaderLabel(tablesListWidget->windowTitle());
+  clearSelectionPushButton->setText(tr("Clear selection"));
 }
 
 QString TableMaintenance::tableList()
@@ -231,6 +240,43 @@ void TableMaintenance::itemActivatedSlot(QTreeWidgetItem *item, int column)
       }
     QApplication::restoreOverrideCursor();
   }
+}
+
+void TableMaintenance::clearSelectionPushButtonSlot()
+{
+//  foreach (QTreeWidgetItem *item, tables)
+//    if (item->isSelected())
+//      item->setSelected(false);
+
+  /**
+    The code above does not clear the selection, so, I fill it againg.
+    */
+  fillTablesSlot();
+  optionLOCAL->setChecked(false);
+
+  optionFORUPGRADE->setAutoExclusive(false);
+  optionQUICK->setAutoExclusive(false);
+  optionFAST->setAutoExclusive(false);
+  optionMEDIUM->setAutoExclusive(false);
+  optionEXTENDED->setAutoExclusive(false);
+  optionCHANGED->setAutoExclusive(false);
+  optionUSE_FRM->setAutoExclusive(false);
+
+  optionFORUPGRADE->setChecked(false);
+  optionQUICK->setChecked(false);
+  optionFAST->setChecked(false);
+  optionMEDIUM->setChecked(false);
+  optionEXTENDED->setChecked(false);
+  optionCHANGED->setChecked(false);
+  optionUSE_FRM->setChecked(false);
+
+  optionFORUPGRADE->setAutoExclusive(true);
+  optionQUICK->setAutoExclusive(true);
+  optionFAST->setAutoExclusive(true);
+  optionMEDIUM->setAutoExclusive(true);
+  optionEXTENDED->setAutoExclusive(true);
+  optionCHANGED->setAutoExclusive(true);
+  optionUSE_FRM->setAutoExclusive(true);
 }
 
 //TableMaintenanceWizard::TableMaintenanceWizard()
