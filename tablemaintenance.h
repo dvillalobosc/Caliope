@@ -65,6 +65,7 @@ private:
   QRadioButton *optionUSE_FRM;
   DTitleLabel *dTitleLabel;
   QGroupBox *groupBoxAction;
+  QPushButton *clearSelectionPushButton;
 
 private:
   QString tableList();
@@ -78,6 +79,7 @@ private slots:
   void optimizePushButtonSlot();
   void repairPushButtonSlot();
   void itemActivatedSlot(QTreeWidgetItem *item, int column);
+  void clearSelectionPushButtonSlot();
 };
 
 //class IntroPageTableMaintenance : public QWizardPage
