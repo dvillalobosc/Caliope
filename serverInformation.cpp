@@ -375,8 +375,18 @@ void ServerInformation::retranslateUi()
   labelFilter->setText(tr("Filter:"));
   lineEditFilter->setPlaceholderText(tr("Three characters at least"));
   pushButtonServerGraphicsFullScreen->setText(tr("Full screen"));
-  lineEditConnectioName->setPlaceholderText(tr("Enter the default connection name and press Enter."));
-  lineEditConnectioName->setToolTip(lineEditConnectioName->placeholderText());
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
+    break;
+  case StaticFunctions::MariaDB:
+    lineEditConnectioName->setPlaceholderText(tr("Enter the default connection name and press Enter."));
+    lineEditConnectioName->setToolTip(lineEditConnectioName->placeholderText());
+    break;
+  case StaticFunctions::PostgreSQL:
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
 }
 
 void ServerInformation::setCurrentTab(unsigned int tabNumber)
