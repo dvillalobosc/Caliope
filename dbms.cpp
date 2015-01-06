@@ -823,15 +823,15 @@ QString DBMS::outputAsV(QString queryToExecute, bool printRowsInSet, bool saveTo
       //Print the data
       if (replaceReturns) {
         for (row = 0; row < rows->count() - 1; row++) {
-          output += "\n";
           for (row2 = 0; row2 < rows->at(row).count(); row2++)
             output +=  replaceReturnsAndTabs(rows->at(row).at(row2)) + "\t";
+          output += "\n";
         }
       } else {
         for (row = 0; row < rows->count() - 1; row++) {
-          output += "\n";
           for (row2 = 0; row2 < rows->at(row).count(); row2++)
             output +=  QString::fromUtf8(rows->at(row).at(row2).toUtf8()) + "\t";
+          output += "\n";
         }
       }
       if (printRowsInSet)
