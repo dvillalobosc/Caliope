@@ -77,6 +77,10 @@ Preferences::Preferences(DBMS *serverConnection)
   connect(checkBoxEnableQueryLog, SIGNAL(stateChanged(int)), this, SLOT(checkBoxEnableQueryLogValueChanged(int)));
   styleFLayout->addRow(checkBoxEnableQueryLog);
   styleFLayout->addRow(checkBoxSaveQueryBeforeExecution);
+  checkBoxAutoreconnect = new QCheckBox;
+  checkBoxAutoreconnect->setCheckState(settings.value("DBMS/Reconnect", 1).toBool() ? Qt::Checked : Qt::Unchecked);
+  connect(checkBoxAutoreconnect, SIGNAL(stateChanged(int)), this, SLOT(checkBoxAutoreconnectValueChanged(int)));
+  styleFLayout->addRow(checkBoxAutoreconnect);
   styleGroupBox= new QGroupBox;
   styleGroupBox->setLayout(styleFLayout);
   fileSelectorBackgroundImage = new FileSelector(FileSelectorContexts::Image);
@@ -227,6 +231,7 @@ void Preferences::retranslateUi()
   networkSettings->retranslateUi();
   fileAssociations->retranslateUi();
   phpPHPCommand->setText(tr("PHP CLI Command:"));
+  checkBoxAutoreconnect->setText(tr("Use automatic reconnection"));
 }
 
 void Preferences::checkBoxCleanwhiteSpacesValueChanged(int value)
@@ -287,6 +292,11 @@ void Preferences::checkBoxEnableQueryLogValueChanged(int value)
 void Preferences::fileSelectorBackgroundImageSlot()
 {
   settings.setValue("General/BackgroundImage", fileSelectorBackgroundImage->getFileName());
+}
+
+void Preferences::checkBoxAutoreconnectValueChanged(int value)
+{
+  settings.setValue("DBMS/Reconnect", value);
 }
 
 void Preferences::checkBoxAutomaticIndentationValueChanged(int value)

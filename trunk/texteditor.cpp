@@ -2002,11 +2002,12 @@ bool TextEditor::event(QEvent *event)
   return QMdiSubWindow::event(event);
 }
 
-void TextEditor::showEvent(QShowEvent *event)
-{
-  textEditor->setFocus();
-  QWidget::showEvent(event);
-}
+//void TextEditor::showEvent(QShowEvent *event)
+//{
+//  textEditor->setFocus();
+//  //QWidget::showEvent(event);
+//  QMdiSubWindow::event(event);
+//}
 
 void TextEditor::closeEvent(QCloseEvent *event)
 {

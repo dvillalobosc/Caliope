@@ -80,7 +80,7 @@ protected:
   void contextMenuEvent(QContextMenuEvent *event);
   void wheelEvent(QWheelEvent *e);
   bool event(QEvent *event);
-  void showEvent(QShowEvent *event);
+//  void showEvent(QShowEvent *event);
 //  void closeEvent(QCloseEvent *event);
   void closeEvent(QCloseEvent *event);
 
