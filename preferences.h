@@ -76,6 +76,7 @@ private:
   QCheckBox *checkBoxEnableQueryLog;
   ApplicationTheme *applicationTheme;
   FileSelector *fileSelectorBackgroundImage;
+  QCheckBox *checkBoxAutoreconnect;
 
 protected:
   void retranslateUi();
@@ -93,6 +94,7 @@ private slots:
   //void checkBoxShowTabsAndSpacesValueChanged(int value);
   void checkBoxEnableQueryLogValueChanged(int value);
   void fileSelectorBackgroundImageSlot();
+  void checkBoxAutoreconnectValueChanged(int value);
 };
 
 #endif // PREFERENCES_H

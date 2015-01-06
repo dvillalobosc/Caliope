@@ -101,7 +101,7 @@ bool DBMS::open()
   switch(qApp->property("DBMSType").toInt()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB: {
-    my_bool reconnect = 1;
+    my_bool reconnect = settings.value("DBMS/Reconnect", 1).toInt();
     mysql_library_init(0, NULL, NULL);
     mariadbConnection = mysql_init(NULL);
     mysql_options(mariadbConnection, MYSQL_OPT_LOCAL_INFILE, 0);
