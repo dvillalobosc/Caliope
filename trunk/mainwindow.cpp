@@ -1057,6 +1057,7 @@ void MainWindow::openRecentConnectionMenuAboutToShowSlot()
   settings.beginGroup("ServerConnections");
   QStringList connections = settings.allKeys();
   connections.removeAt(connections.indexOf("StorePassword"));
+  connections.removeAt(connections.indexOf("SortConnectionList"));
   connections.sort();
   foreach (QString connection, connections)
    if (!connection.isEmpty())
