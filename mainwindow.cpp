@@ -290,6 +290,20 @@ void MainWindow::showWelcomeMessage()
   dStatusBar->showFancyMessage(texts[(int) qrand() % texts.size()]);
 }
 
+void MainWindow::newConnectionPerformed()
+{
+  statusBarMessage(tr("Connected successfully to: %1").arg(serverConnection->getHostName()));
+  enabledDisableConnectionMenus(true);
+  setTitle();
+  sqlWindowCounter = 0;
+  mysqlQueryWindowCounter = 0;
+  htmlWindowCounter = 0;
+  phpWindowCounter = 0;
+  cssWindowCounter = 0;
+  javascriptWindowCounter = 0;
+  textWindowCounter = 0;
+}
+
 bool MainWindow::okToClose()
 {
   foreach (QMdiSubWindow *subWindow, mdiMain->subWindowList()) {
@@ -1078,6 +1092,7 @@ void MainWindow::openRecentConnectionActionGroupTriggered(QAction *action)
   //5 - Conexion count -- No parsed but keeped the space.
   //6 - Collation
   //7 - Password
+  qDebug() << params.at(1) << params.at(2) << params.at(7) << params.at(4) << params.at(3) << params.at(6);
   serverConnection->setUserName(params.at(1));
   serverConnection->setHostName(params.at(2));
   serverConnection->setPassword(params.at(7));
@@ -1087,11 +1102,8 @@ void MainWindow::openRecentConnectionActionGroupTriggered(QAction *action)
   serverConnection->setCollation(params.at(6).split("|").at(1));
   if (!serverConnection->open())
     QMessageBox::critical(this, tr("Cannot connect to the server"), serverConnection->lastError());
-  if (serverConnection->isOpened()) {
-    statusBarMessage(tr("Connected successfully to: %1").arg(serverConnection->getHostName()));
-    enabledDisableConnectionMenus(true);
-    setTitle();
-  }
+  if (serverConnection->isOpened())
+    newConnectionPerformed();
 }
 
 void MainWindow::viewQueryLogActionSlot()
@@ -1838,18 +1850,8 @@ void MainWindow::connectToServerActionTriggered()
         QMessageBox::critical(this, tr("Cannot connect to the server"), serverConnection->lastError());
     }
   }
-  if (serverConnection->isOpened()) {
-    statusBarMessage(tr("Connected successfully to: %1").arg(serverConnection->getHostName()));
-    enabledDisableConnectionMenus(true);
-    setTitle();
-    sqlWindowCounter = 0;
-    mysqlQueryWindowCounter = 0;
-    htmlWindowCounter = 0;
-    phpWindowCounter = 0;
-    cssWindowCounter = 0;
-    javascriptWindowCounter = 0;
-    textWindowCounter = 0;
-  }
+  if (serverConnection->isOpened())
+    newConnectionPerformed();
 }
 
 void MainWindow::tableMaintenanceActionTriggered()
