@@ -355,6 +355,7 @@ private:
   void createToolBar();
   void fillWindowMenu();
   void showWelcomeMessage();
+  void newConnectionPerformed();
 };
 
 #endif // MAINWINDOW_H
