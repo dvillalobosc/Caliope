@@ -2016,7 +2016,7 @@ QHash<QString, QString> StaticFunctions::phpFunctionsComplete()
 //  data.insert("array_intersect_ukey", QString("<u>array_intersect_ukey</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("array_key_exists", QString("<u>array_key_exists</u>(<b></b>) <br />%1").arg(tr("")));
   data.insert("array_keys", QString("array <u>array_keys</u>(<b>array $input [, mixed $search_value = NULL [, bool $strict = false ]]</b>) <br />%1").arg(tr("Returns the keys, numeric and string, from the input array.")));
-//  data.insert("array_map", QString("<u>array_map</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("array_map", QString("array <u>array_map</u>(<b>callable $callback, array $array1 [, array $... ]</b>) <br />%1").arg(tr("Applies the callback to the elements of the given arrays.")));
   data.insert("array_merge", QString("array <u>array_merge</u>(<b>array $array1 [, array $...]</b>) <br />%1").arg(tr("Merge one or more arrays.")));
 //  data.insert("array_merge_recursive", QString("<u>array_merge_recursive</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("array_multisort", QString("<u>array_multisort</u>(<b></b>) <br />%1").arg(tr("")));
