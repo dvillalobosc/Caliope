@@ -280,6 +280,7 @@ QList<QString> ConnectDialog::getValues()
   listValues.append(lineEditPassword->text());
   //listValues.append(comboConnectionType->currentText());
 
+  //Using the ServerConnections
   settings.setValue(comboConnectionName->currentText()
                     , QString("%1:%2@%3:%4/%5 Count:%6 Collation:%7 Password:%8")
                     .arg(comboConnectionType->currentText())

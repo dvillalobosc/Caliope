@@ -59,7 +59,7 @@ DBMS::DBMS(bool enableQueryLog)
   errorMessage->setWindowTitle(tr("Error"));
   connect(errorMessage, SIGNAL(accepted()), this, SLOT(errorMessageAcceptedSlot()));
 
-  if (settings.value("EnableQueryLog", false).toBool() && enableQueryLog) {
+  if (settings.value("General/EnableQueryLog", false).toBool() && enableQueryLog) {
     QFileInfo fileInfo(settings.fileName());
     dbSQLite = QSqlDatabase::addDatabase("QSQLITE");
     qApp->setProperty("LocalDatabase", fileInfo.path() + "/" + QCoreApplication::applicationName() + ".sqlite");
@@ -682,7 +682,7 @@ QString DBMS::outputAsTable(QString queryToExecute, bool printExtraInfo, bool sa
   }
 
   if (saveToFile) {
-    saveOutputToFile(output, "Text Files (*.txt)", settings.value("LastTextFile", "").toString());
+    saveOutputToFile(output, "Text Files (*.txt)", settings.value("General/LastTextFile", "").toString());
     return "";
   }
   return output;
@@ -692,11 +692,11 @@ void DBMS::saveOutputToFile(QString contents, QString filter, QString fileName)
 {
   fileName = QFileDialog::getSaveFileName(0, tr("Select a file"), fileName, filter);
   if (fileName.startsWith("HTML"))
-    settings.value("LastHTMLFile", fileName);
+    settings.value("General/LastHTMLFile", fileName);
   if (fileName.startsWith("XML"))
-    settings.value("LastXMLFile", fileName);
+    settings.value("General/LastXMLFile", fileName);
   if (fileName.startsWith("Text"))
-    settings.value("LastTextLFile", fileName);
+    settings.value("General/LastTextLFile", fileName);
   QFile file(fileName);
   if (!file.open(QFile::WriteOnly | QFile::Text))
     emit statusBarMessage(tr("Cannot write file %1:\n%2.").arg(fileName).arg(file.errorString()));
@@ -751,7 +751,7 @@ QString DBMS::outputAsHTML(QString queryToExecute, bool saveToFile, bool replace
   }
   output += "</BODY>\n</HTML>\n";
   if (saveToFile) {
-    saveOutputToFile(output, "HTML Files (*.html)", settings.value("LastHTMLFile", "").toString());
+    saveOutputToFile(output, "HTML Files (*.html)", settings.value("General/LastHTMLFile", "").toString());
     return "";
   } else {
     return output;
@@ -795,7 +795,7 @@ QString DBMS::outputAsXML(QString queryToExecute, bool saveToFile, bool replaceR
     }
   }
   if (saveToFile) {
-    saveOutputToFile(output, "XML Files (*.xml)", settings.value("LastXMLFile", "").toString());
+    saveOutputToFile(output, "XML Files (*.xml)", settings.value("General/LastXMLFile", "").toString());
     return "";
   } else {
     return output;
@@ -840,7 +840,7 @@ QString DBMS::outputAsV(QString queryToExecute, bool printRowsInSet, bool saveTo
   }
 
   if (saveToFile) {
-    saveOutputToFile(output, "Text Files (*.txt)", settings.value("LastTextFile", "").toString());
+    saveOutputToFile(output, "Text Files (*.txt)", settings.value("General/LastTextFile", "").toString());
     return "";
   } else {
     return output;
@@ -890,7 +890,7 @@ QString DBMS::outputAsG(QString queryToExecute, bool saveToFile, bool replaceRet
     }
   }
   if (saveToFile) {
-    saveOutputToFile(output, "Text Files (*.txt)", settings.value("LastTextFile", "").toString());
+    saveOutputToFile(output, "Text Files (*.txt)", settings.value("General/LastTextFile", "").toString());
     return "";
   } else {
     return output;
@@ -1235,7 +1235,7 @@ void DBMS::logStatement(QString statement)
 QSqlTableModel *DBMS::sqliteTableModel()
 {
   QSqlTableModel *sqliteModel = new QSqlTableModel;
-  if (settings.value("EnableQueryLog", false).toBool()) {
+  if (settings.value("General/EnableQueryLog", false).toBool()) {
     sqliteModel->setTable("executedqueries");
     sqliteModel->setEditStrategy(QSqlTableModel::OnFieldChange);
     sqliteModel->select();
@@ -1251,14 +1251,14 @@ QSqlTableModel *DBMS::sqliteTableModel()
 QSqlQueryModel *DBMS::sqliteFilterQueryModel()
 {
   QSqlQueryModel *sqlQuery = new QSqlQueryModel;
-  if (settings.value("EnableQueryLog", false).toBool())
+  if (settings.value("General/EnableQueryLog", false).toBool())
     sqlQuery->setQuery("SELECT DISTINCT sessionid FROM executedqueries ORDER BY date DESC");
   return sqlQuery;
 }
 
 void DBMS::clearSQLiteQueryLog()
 {
-  if (settings.value("EnableQueryLog", false).toBool())
+  if (settings.value("General/EnableQueryLog", false).toBool())
     if (dbSQLite.open()) {
       dateTime = QDateTime::currentDateTime();
       QSqlQuery querySQLite;
@@ -1284,7 +1284,7 @@ void DBMS::setCollation(QString charset, QString collation)
 
 void DBMS::logExecutedQueries(QString query)
 {
-  if (settings.value("EnableQueryLog", false).toBool())
+  if (settings.value("General/EnableQueryLog", false).toBool())
     if (!dbSQLite.isOpen())
       dbSQLite.open();
     if (dbSQLite.isOpen()) {

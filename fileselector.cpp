@@ -112,7 +112,7 @@ void FileSelector::selectFileSlot()
     lineEditFile->setText(QFileDialog::getSaveFileName(this, tr("Open a file"), "", title));
   else
     lineEditFile->setText(QFileDialog::getOpenFileName(this, tr("Open a file"), "", title));
-  if (settings.value("OpenLastFile", false).toBool())
+  if (settings.value("General/OpenLastFile", false).toBool())
     settings.setValue(setting, lineEditFile->text());
 }
 
