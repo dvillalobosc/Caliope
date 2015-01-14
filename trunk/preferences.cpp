@@ -58,22 +58,22 @@ Preferences::Preferences(DBMS *serverConnection)
   styleFLayout = new QFormLayout;
   stylesCombo = new QComboBox;
   stylesCombo->addItems(QStyleFactory::keys());
-  stylesCombo->setCurrentIndex(stylesCombo->findText(settings.value("Style", QApplication::style()->objectName()).toString(), Qt::MatchFixedString));
+  stylesCombo->setCurrentIndex(stylesCombo->findText(settings.value("General/Style", QApplication::style()->objectName()).toString(), Qt::MatchFixedString));
   connect(stylesCombo, SIGNAL(currentIndexChanged(QString)), this, SLOT(stylesComboCurrentIndexChanged(QString)));
   styleFLayout->addRow(" ", stylesCombo);
   checkBoxRememberWindows = new QCheckBox;
-  checkBoxRememberWindows->setCheckState(settings.value("RememberOpenedWindows", false).toBool() ? Qt::Checked : Qt::Unchecked);
+  checkBoxRememberWindows->setCheckState(settings.value("General/RememberOpenedWindows", false).toBool() ? Qt::Checked : Qt::Unchecked);
   connect(checkBoxRememberWindows, SIGNAL(stateChanged(int)), this, SLOT(checkBoxRememberWindowsStateChanged()));
   styleFLayout->addRow(checkBoxRememberWindows);
   checkBoxOpenLastFile = new QCheckBox;
-  checkBoxOpenLastFile->setCheckState(settings.value("OpenLastFile", false).toBool() ? Qt::Checked : Qt::Unchecked);
+  checkBoxOpenLastFile->setCheckState(settings.value("General/OpenLastFile", false).toBool() ? Qt::Checked : Qt::Unchecked);
   connect(checkBoxOpenLastFile, SIGNAL(stateChanged(int)), this, SLOT(checkBoxOpenLastFileStateChanged()));
   styleFLayout->addRow(checkBoxOpenLastFile);
   checkBoxSaveQueryBeforeExecution = new QCheckBox;
-  checkBoxSaveQueryBeforeExecution->setCheckState(settings.value("SaveQueriesBeforeExecution", true).toBool() ? Qt::Checked : Qt::Unchecked);
+  checkBoxSaveQueryBeforeExecution->setCheckState(settings.value("General/SaveQueriesBeforeExecution", true).toBool() ? Qt::Checked : Qt::Unchecked);
   connect(checkBoxSaveQueryBeforeExecution, SIGNAL(stateChanged(int)), this, SLOT(checkBoxSaveQueryBeforeExecutionStateChanged()));
   checkBoxEnableQueryLog = new QCheckBox;
-  checkBoxEnableQueryLog->setCheckState(settings.value("EnableQueryLog", false).toBool() ? Qt::Checked : Qt::Unchecked);
+  checkBoxEnableQueryLog->setCheckState(settings.value("General/EnableQueryLog", false).toBool() ? Qt::Checked : Qt::Unchecked);
   connect(checkBoxEnableQueryLog, SIGNAL(stateChanged(int)), this, SLOT(checkBoxEnableQueryLogValueChanged(int)));
   styleFLayout->addRow(checkBoxEnableQueryLog);
   styleFLayout->addRow(checkBoxSaveQueryBeforeExecution);
@@ -286,7 +286,7 @@ void Preferences::checkBoxSaveQueryBeforeExecutionStateChanged()
 
 void Preferences::checkBoxEnableQueryLogValueChanged(int value)
 {
-  settings.setValue("EnableQueryLog", value);
+  settings.setValue("General/EnableQueryLog", value);
 }
 
 void Preferences::fileSelectorBackgroundImageSlot()
@@ -311,22 +311,20 @@ void Preferences::tabSizeSpinBoxValueChanged(int value)
 
 void Preferences::checkBoxOpenLastFileStateChanged()
 {
-  settings.setValue("OpenLastFile", checkBoxOpenLastFile->isChecked());
+  settings.setValue("General/OpenLastFile", checkBoxOpenLastFile->isChecked());
   if (!checkBoxOpenLastFile->isChecked()) {
-    settings.setValue("LastMariaDBFile", "");
-    settings.setValue("LastPHPFile", "");
+    settings.setValue("General/LastMariaDBFile", "");
+    settings.setValue("General/LastPHPFile", "");
   }
 }
 
 void Preferences::checkBoxRememberWindowsStateChanged()
 {
-  settings.setValue("RememberOpenedWindows", checkBoxRememberWindows->isChecked());
-  if (!checkBoxRememberWindows->isChecked())
-    settings.setValue("OpenedWindows", "");
+  settings.setValue("General/RememberOpenedWindows", checkBoxRememberWindows->isChecked());
 }
 
 void Preferences::stylesComboCurrentIndexChanged(const QString &text)
 {
   qApp->setStyle(text);
-  settings.setValue("Style", text);
+  settings.setValue("General/Style", text);
 }

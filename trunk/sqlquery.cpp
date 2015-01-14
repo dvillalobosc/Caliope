@@ -225,12 +225,12 @@ void SQLQuery::createActions()
   showNewLinesAction->setIcon(QIcon(":/images/svg/document-export-4.svg"));
   showNewLinesAction->setShortcut(QKeySequence(Qt::Key_F8));
   showNewLinesAction->setCheckable(true);
-  showNewLinesAction->setChecked(settings.value("ReplaceNewLines", true).toBool() ? Qt::Checked : Qt::Unchecked);
+  showNewLinesAction->setChecked(settings.value("SQLQuery/ReplaceNewLines", true).toBool() ? Qt::Checked : Qt::Unchecked);
   connect(showNewLinesAction, SIGNAL(triggered(bool)), this, SLOT(showNewLinesActionTriggered(bool)));
   splitAction = new QAction(this);
   splitAction->setIcon(QIcon::fromTheme("edit-cut", QIcon(":/images/svg/edit-cut-6.svg")));
   splitAction->setCheckable(true);
-  splitAction->setChecked(settings.value("SplitQueries", true).toBool() ? Qt::Checked : Qt::Unchecked);
+  splitAction->setChecked(settings.value("SQLQuery/SplitQueries", true).toBool() ? Qt::Checked : Qt::Unchecked);
   connect(splitAction, SIGNAL(triggered(bool)), this, SLOT(splitActionTriggered(bool)));
   startSQLPlayerAction = new QAction(this);
   startSQLPlayerAction->setIcon(QIcon::fromTheme("media-playback-start", QIcon(":/images/svg/media-playback-start-8.svg")));
@@ -275,7 +275,7 @@ void SQLQuery::createActions()
   safeStatementsAction = new QAction(this);
   safeStatementsAction->setIcon(QIcon::fromTheme("system-lock-screen", QIcon(":/images/svg/system-lock-screen-5.svg")));
   safeStatementsAction->setCheckable(true);
-  safeStatementsAction->setChecked(settings.value("ExecuteSafeStatements-" + qApp->property("ConnectionName").toString(), true).toBool() ? Qt::Checked : Qt::Unchecked);
+  safeStatementsAction->setChecked(settings.value("SQLQuery/ExecuteSafeStatements-" + qApp->property("ConnectionName").toString(), true).toBool() ? Qt::Checked : Qt::Unchecked);
   connect(safeStatementsAction, SIGNAL(triggered(bool)), this, SLOT(safeStatementsActionTriggered(bool)));
   explainUpdateAction = new QAction(this);
   explainUpdateAction->setIcon(QIcon(":/images/svg/application-x-executable.svg"));
@@ -325,12 +325,12 @@ void SQLQuery::viewHistoryActionTriggered()
 
 void SQLQuery::showNewLinesActionTriggered(bool triggered)
 {
-  settings.setValue("ReplaceNewLines", triggered);
+  settings.setValue("SQLQuery/ReplaceNewLines", triggered);
 }
 
 void SQLQuery::splitActionTriggered(bool triggered)
 {
-  settings.setValue("SplitQueries", triggered);
+  settings.setValue("SQLQuerySplitQueries", triggered);
 }
 
 void SQLQuery::startSQLPlayerActionTriggered()
@@ -444,8 +444,8 @@ void SQLQuery::executeStatement(QString statement)
     if (logStatements) //Use a variable here because is faster
       serverConnection->logStatement(statement);
     serverConnection->executedQueries->append(statement);
-    if (settings.value("SaveQueriesBeforeExecution", true).toBool())
-      settings.setValue("LastQuery-" + qApp->property("ConnectionName").toString() + "-" + windowTitle(), scriptEditor->textEditor->toPlainText().trimmed());
+    if (settings.value("General/SaveQueriesBeforeExecution", true).toBool())
+      settings.setValue("General/LastQuery-" + qApp->property("ConnectionName").toString() + "-" + windowTitle(), scriptEditor->textEditor->toPlainText().trimmed());
     if (!concatenateOutputAction->isChecked())
       resutlEditor->clear();
     if (radioT->isChecked())
@@ -485,8 +485,8 @@ void SQLQuery::executeStatement(QString statement)
       QApplication::setOverrideCursor(Qt::WaitCursor);
       QFileDialog fileDialog;
       fileDialog.setDirectory(QDir::home());
-      QString file = fileDialog.getSaveFileName(this, tr("Save to Pdf"), settings.value("LastFilePdf", QDir::home().absolutePath()).toString(), tr("Pdf & Ps files (*.pdf *.ps)"));
-      settings.setValue("LastFilePdf", fileDialog.directory().filePath(file));
+      QString file = fileDialog.getSaveFileName(this, tr("Save to Pdf"), settings.value("General/LastFilePdf", QDir::home().absolutePath()).toString(), tr("Pdf & Ps files (*.pdf *.ps)"));
+      settings.setValue("General/LastFilePdf", fileDialog.directory().filePath(file));
       QPrinter printer(QPrinter::HighResolution);
       printer.setOutputFileName(file);
       printer.setOutputFormat(file.endsWith(".pdf") ? QPrinter::PdfFormat : QPrinter::NativeFormat);
@@ -571,7 +571,7 @@ void SQLQuery::exportTableDataForInsertActionTriggered()
       rowTMP = "";
     }
     if (radioTXT->isChecked()) {
-      QString fileName = QFileDialog::getSaveFileName(this, tr("Select a file"), settings.value("LastSQLFile", "").toString(), "SQL Files (*.sql)");
+      QString fileName = QFileDialog::getSaveFileName(this, tr("Select a file"), settings.value("General/LastSQLFile", "").toString(), "SQL Files (*.sql)");
       QFile file(fileName);
       if (!file.open(QFile::WriteOnly | QFile::Text))
         emit statusBarMessage(tr("Cannot write file %1:\n%2.").arg(fileName).arg(file.errorString()));
@@ -625,7 +625,7 @@ void SQLQuery::explainInsertActionTriggered()
 
 void SQLQuery::safeStatementsActionTriggered(bool triggered)
 {
-  settings.setValue("ExecuteSafeStatements-" + qApp->property("ConnectionName").toString(), triggered);
+  settings.setValue("SQLQuery/ExecuteSafeStatements-" + qApp->property("ConnectionName").toString(), triggered);
 }
 
 void SQLQuery::incrementSeconds()
@@ -724,7 +724,7 @@ void SQLQuery::wordWrapOnResultActionToggled()
 
 void SQLQuery::loadLastQuery()
 {
-  scriptEditor->textEditor->setPlainText(settings.value("LastQuery-" + qApp->property("ConnectionName").toString() + "-" + windowTitle(), "").toString());
+  scriptEditor->textEditor->setPlainText(settings.value("SQLQuery/LastQuery-" + qApp->property("ConnectionName").toString() + "-" + windowTitle(), "").toString());
 }
 
 void SQLQuery::logStatementsActionToggled()

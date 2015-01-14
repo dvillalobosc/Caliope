@@ -455,22 +455,22 @@ void TextEditor::fillMariaDBSymbolsActionSlot()
 void TextEditor::openLastOpenedFile()
 {
   QSettings settings;
-  if (settings.value("OpenLastFile", false).toBool()) {
+  if (settings.value("General/OpenLastFile", false).toBool()) {
     switch(editorType) {
     case EditorTypes::SQLQuery:
-      openFile(settings.value("LastMariaDBFile", "").toString());
+      openFile(settings.value("General/LastMariaDBFile", "").toString());
       break;
     case EditorTypes::PHP:
-      openFile(settings.value("LastPHPFile", "").toString());
+      openFile(settings.value("General/LastPHPFile", "").toString());
       break;
     case EditorTypes::CSS:
-      openFile(settings.value("LastCSSFile", "").toString());
+      openFile(settings.value("General/LastCSSFile", "").toString());
       break;
     case EditorTypes::HTML:
-      openFile(settings.value("LastHTMLFile", "").toString());
+      openFile(settings.value("General/LastHTMLFile", "").toString());
       break;
     case EditorTypes::JavaScript:
-      openFile(settings.value("LastJavaScriptFile", "").toString());
+      openFile(settings.value("General/LastJavaScriptFile", "").toString());
       break;
     case EditorTypes::Diff:
     case EditorTypes::Commit:
@@ -917,22 +917,22 @@ void TextEditor::updateRecentFiles(QString fileToSave)
   if (fileList.indexOf(fileToSave) == -1)
     fileList.append(fileToSave);
   settings.setValue(setting, fileList);
-  if (settings.value("OpenLastFile", false).toBool()) {
+  if (settings.value("General/OpenLastFile", false).toBool()) {
     switch(editorType) {
     case EditorTypes::SQLQuery:
-      settings.setValue("LastMariaDBFile", fileToSave);
+      settings.setValue("General/LastMariaDBFile", fileToSave);
       break;
     case EditorTypes::PHP:
-      settings.setValue("LastPHPFile", fileToSave);
+      settings.setValue("General/LastPHPFile", fileToSave);
       break;
     case EditorTypes::CSS:
-      settings.setValue("LastCSSFile", fileToSave);
+      settings.setValue("General/LastCSSFile", fileToSave);
       break;
     case EditorTypes::HTML:
-      settings.setValue("LastHTMLFile", fileToSave);
+      settings.setValue("General/LastHTMLFile", fileToSave);
       break;
     case EditorTypes::JavaScript:
-      settings.setValue("LastJavaScriptFile", fileToSave);
+      settings.setValue("General/LastJavaScriptFile", fileToSave);
       break;
     case EditorTypes::Diff:
     case EditorTypes::Commit:
@@ -1261,7 +1261,7 @@ bool TextEditor::okToClose()
     QMessageBox msgBox;
     switch(editorType) {
     case EditorTypes::SQLQuery:
-      settings.setValue("LastQuery-" + qApp->property("ConnectionName").toString(), textEditor->toPlainText());
+      settings.setValue("SQLQuery/LastQuery-" + qApp->property("ConnectionName").toString(), textEditor->toPlainText());
       msgBox.setWindowTitle(tr("SQL Query: Save file..."));
       break;
     case EditorTypes::PHP:
@@ -1330,19 +1330,19 @@ void TextEditor::clearRecentFilesActionTriggered()
   QSettings settings;
   switch(editorType) {
   case EditorTypes::SQLQuery:
-    settings.remove("RecentMariaDBFiles");
+    settings.remove("General/RecentMariaDBFiles");
     break;
   case EditorTypes::PHP:
-    settings.remove("RecentPHPFiles");
+    settings.remove("General/RecentPHPFiles");
     break;
   case EditorTypes::CSS:
-    settings.remove("RecentCSSFiles");
+    settings.remove("General/RecentCSSFiles");
     break;
   case EditorTypes::HTML:
-    settings.remove("RecentHTMLFiles");
+    settings.remove("General/RecentHTMLFiles");
     break;
   case EditorTypes::JavaScript:
-    settings.remove("RecentJavaScriptFiles");
+    settings.remove("General/RecentJavaScriptFiles");
     break;
   case EditorTypes::Diff:
   case EditorTypes::Commit:
@@ -1491,8 +1491,8 @@ void TextEditor::openFile(QString file)
   if (file.isEmpty()) {
     QFileDialog fileDialog;
     fileDialog.setDirectory(QDir::home());
-    fileName = fileDialog.getOpenFileName(this, tr("Open a file"), settings.value("LastPath", QDir::home().absolutePath()).toString(), fileExtention());
-    settings.setValue("LastPath", fileDialog.directory().filePath(fileName));
+    fileName = fileDialog.getOpenFileName(this, tr("Open a file"), settings.value("General/LastPath", QDir::home().absolutePath()).toString(), fileExtention());
+    settings.setValue("General/LastPath", fileDialog.directory().filePath(fileName));
   } else {
     fileName = file;
   }
@@ -1805,8 +1805,8 @@ void TextEditor::exportoToPdfOrPsActionTriggerd()
   QApplication::setOverrideCursor(Qt::WaitCursor);
   QFileDialog fileDialog;
   fileDialog.setDirectory(QDir::home());
-  QString file = fileDialog.getSaveFileName(this, tr("Save to Pdf"), settings.value("LastFilePdf", QDir::home().absolutePath()).toString(), tr("Pdf & Ps files (*.pdf *.ps)"));
-  settings.setValue("LastFilePdf", fileDialog.directory().filePath(file));
+  QString file = fileDialog.getSaveFileName(this, tr("Save to Pdf"), settings.value("General/LastFilePdf", QDir::home().absolutePath()).toString(), tr("Pdf & Ps files (*.pdf *.ps)"));
+  settings.setValue("General/LastFilePdf", fileDialog.directory().filePath(file));
   QPrinter printer(QPrinter::HighResolution);
   printer.setOutputFileName(file);
   printer.setOutputFormat(file.endsWith(".pdf") ? QPrinter::PdfFormat : QPrinter::NativeFormat);
@@ -1820,8 +1820,8 @@ void TextEditor::exportoToOdtActionTriggerd()
   QApplication::setOverrideCursor(Qt::WaitCursor);
   QFileDialog fileDialog;
   fileDialog.setDirectory(QDir::home());
-  QString file = fileDialog.getSaveFileName(this, tr("Save to Odt"), settings.value("LastFileOdt", QDir::home().absolutePath()).toString(), tr("Odt files (*.odt)"));
-  settings.setValue("LastFileOdt", fileDialog.directory().filePath(file));
+  QString file = fileDialog.getSaveFileName(this, tr("Save to Odt"), settings.value("General/LastFileOdt", QDir::home().absolutePath()).toString(), tr("Odt files (*.odt)"));
+  settings.setValue("General/LastFileOdt", fileDialog.directory().filePath(file));
   QTextDocumentWriter writer(file);
   writer.write(textEditor->document());
   QApplication::restoreOverrideCursor();
@@ -1833,8 +1833,8 @@ void TextEditor::exportoToHtmlActionTriggerd()
   QApplication::setOverrideCursor(Qt::WaitCursor);
   QFileDialog fileDialog;
   fileDialog.setDirectory(QDir::home());
-  QString file = fileDialog.getSaveFileName(this, tr("Save to Html"), settings.value("LastFileHtml", QDir::home().absolutePath()).toString(), tr("Html files (*.html *.htm)"));
-  settings.setValue("LastFileHtml", fileDialog.directory().filePath(file));
+  QString file = fileDialog.getSaveFileName(this, tr("Save to Html"), settings.value("General/LastFileHtml", QDir::home().absolutePath()).toString(), tr("Html files (*.html *.htm)"));
+  settings.setValue("General/LastFileHtml", fileDialog.directory().filePath(file));
   QFile fileOut(file);
   if (!fileOut.open(QIODevice::WriteOnly|QIODevice::Text))
     emit statusBarMessage(tr("Cannot write file %1:\n%2.").arg(file).arg(fileOut.errorString()), QSystemTrayIcon::Critical);
@@ -1851,8 +1851,8 @@ void TextEditor::exportoToSvgActionTriggerd()
   QApplication::setOverrideCursor(Qt::WaitCursor);
   QFileDialog fileDialog;
   fileDialog.setDirectory(QDir::home());
-  QString file = fileDialog.getSaveFileName(this, tr("Save to Svg"), settings.value("LastFileSvg", QDir::home().absolutePath()).toString(), tr("Svg files (*.svg)"));
-  settings.setValue("LastFileSvg", fileDialog.directory().filePath(file));
+  QString file = fileDialog.getSaveFileName(this, tr("Save to Svg"), settings.value("General/LastFileSvg", QDir::home().absolutePath()).toString(), tr("Svg files (*.svg)"));
+  settings.setValue("General/LastFileSvg", fileDialog.directory().filePath(file));
   QSvgGenerator svg;
   svg.setFileName(file);
   QTextDocument *doc = textEditor->document()->clone();
@@ -1873,8 +1873,8 @@ void TextEditor::exportoToImgActionTriggerd()
   QString imageFormats;
   foreach(QString format, QImageWriter::supportedImageFormats())
     imageFormats += "*." + format + " ";
-  QString file = fileDialog.getSaveFileName(this, tr("Save to Image"), settings.value("LastFileImg", QDir::home().absolutePath()).toString(), tr("Image files (%1)").arg(imageFormats));
-  settings.setValue("LastFileImg", fileDialog.directory().filePath(file));
+  QString file = fileDialog.getSaveFileName(this, tr("Save to Image"), settings.value("General/LastFileImg", QDir::home().absolutePath()).toString(), tr("Image files (%1)").arg(imageFormats));
+  settings.setValue("General/LastFileImg", fileDialog.directory().filePath(file));
   QTextDocument *doc = textEditor->document()->clone();
   QImage image(QRect(0, 0, (int) doc->size().width(), (int) doc->size().height()).size(), QImage::Format_ARGB32);
   QPainter painter(&image);

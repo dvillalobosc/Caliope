@@ -112,7 +112,7 @@ MainWindow::MainWindow()
   if (!styleFile.open(QFile::ReadOnly | QFile::Text))
     statusBarMessage(tr("Cannot read file %1:\n%2.").arg(":/styles/mainStyle.css").arg(styleFile.errorString()), QSystemTrayIcon::Critical);
   QSettings settings;
-  qApp->setStyle(settings.value("Style", QApplication::style()->objectName()).toString());
+  qApp->setStyle(settings.value("General/Style", QApplication::style()->objectName()).toString());
   qApp->setStyleSheet(QString::fromUtf8(styleFile.readAll()));
   styleFile.close();
   setGeometry(settings.value("MainWindow/Geometry", QRect(100, 100, 600, 400)).toRect());
@@ -168,9 +168,9 @@ MainWindow::MainWindow()
 
   showWelcomeMessage();
 
-  if (settings.value("RememberOpenedWindows", false).toBool()) {
+  if (settings.value("General/RememberOpenedWindows", false).toBool()) {
     QApplication::setOverrideCursor(Qt::WaitCursor);
-    foreach (QString window, settings.value("OpenedWindows", QStringList()).toStringList()) {
+    foreach (QString window, settings.value("General/OpenedWindows-" + qApp->property("ConnectionName").toString(), QStringList()).toStringList()) {
       if (window == tr("Server Information"))
         serverInformationActionTriggered();
       if (window == tr("User Administration"))
@@ -322,11 +322,11 @@ void MainWindow::closeEvent(QCloseEvent *event)
     QSettings settings;
     settings.setValue("MainWindow/Geometry", geometry());
     settings.setValue("MainWindow/Maximized", isMaximized());
-    if (settings.value("RememberOpenedWindows", false).toBool()) {
+    if (settings.value("General/RememberOpenedWindows", false).toBool()) {
       QStringList list;
       foreach (QMdiSubWindow *window, mdiMain->subWindowList(QMdiArea::ActivationHistoryOrder))
         list.append(window->windowTitle());
-      settings.setValue("OpenedWindows", list);
+      settings.setValue("General/OpenedWindows-" + qApp->property("ConnectionName").toString(), list);
     }
     settings.sync();
     serverConnection->close();
@@ -1060,7 +1060,7 @@ void MainWindow::connectionMenuAboutToShowSlot()
     menuReports->setEnabled(true);
   }
   QSettings settings;
-  viewQueryLogAction->setEnabled(settings.value("EnableQueryLog", false).toBool());
+  viewQueryLogAction->setEnabled(settings.value("General/EnableQueryLog", false).toBool());
 }
 
 void MainWindow::openRecentConnectionMenuAboutToShowSlot()
@@ -1145,8 +1145,8 @@ void MainWindow::takeASnapShotActionTriggered()
   QString imageFormats;
   foreach(QString format, QImageWriter::supportedImageFormats())
     imageFormats += "*." + format + " ";
-  QString file = fileDialog.getSaveFileName(this, tr("Save to Image"), settings.value("LastFileImg", QDir::home().absolutePath()).toString(), tr("Image files (%1)").arg(imageFormats));
-  settings.setValue("LastFileImg", fileDialog.directory().filePath(file));
+  QString file = fileDialog.getSaveFileName(this, tr("Save to Image"), settings.value("General/LastFileImg", QDir::home().absolutePath()).toString(), tr("Image files (%1)").arg(imageFormats));
+  settings.setValue("General/LastFileImg", fileDialog.directory().filePath(file));
   QPixmap pixmap(this->size());
   this->render(&pixmap);
   pixmap.save(file, "PNG", 5);
