@@ -30,13 +30,7 @@
 #include <QSettings>
 #include <QMessageBox>
 #include <QInputDialog>
-#if QT_VERSION > 0x040801
-  #include <QtPrintSupport/QPrinter>
-  #include <QtPrintSupport/QPrintDialog>
-#else
-  #include <QPrinter>
-  #include <QPrintDialog>
-#endif
+#include <QPrinter>
 #include <QToolTip>
 #include <QTextDocumentWriter>
 #include <QtSvg/QSvgGenerator>
@@ -49,6 +43,7 @@
 #include <QLabel>
 #include <QProcess>
 #include <QWhatsThis>
+#include <QPrintDialog>
 
 #include "texteditor.h"
 #include "editortypes.h"

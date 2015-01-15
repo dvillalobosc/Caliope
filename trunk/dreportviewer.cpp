@@ -5,11 +5,7 @@
 #include <QFileDialog>
 #include <QApplication>
 #include <QSettings>
-#if QT_VERSION > 0x040801
-  #include <QtPrintSupport/QPrinter>
-#else
-  #include <QPrinter>
-#endif
+#include <QPrinter>
 #include <QImageWriter>
 #include <QDialogButtonBox>
 #include <QComboBox>
