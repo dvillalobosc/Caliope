@@ -50,9 +50,7 @@ ProjectFindReplace::ProjectFindReplace(Projects *project)
   }
   completer = new QCompleter(settings.value("Projects/SearchedValues", QStringList()).toStringList());
   completer->setCaseSensitivity(Qt::CaseInsensitive);
-#if QT_VERSION > 0x040801
   completer->setFilterMode(Qt::MatchContains);
-#endif
 
   QVBoxLayout *mainVLayout = new QVBoxLayout;
   lineEditTextToFind = new QLineEdit;

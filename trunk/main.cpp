@@ -19,9 +19,6 @@
 *****************************************************************************/
 
 #include <QApplication>
-#if QT_VERSION == 0x040801
-  #include <QTextCodec>
-#endif
 
 #include "mainwindow.h"
 
@@ -49,12 +46,7 @@ int main(int argc, char *argv[])
   Q_INIT_RESOURCE(icons);
   Q_INIT_RESOURCE(translations);
   Q_INIT_RESOURCE(styles);
-#if QT_VERSION > 0x040801
   qInstallMessageHandler(myMessageOutput);
-#else
-  QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
-  QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
-#endif
   QApplication app(argc, argv);
   MainWindow *mainWindow = new MainWindow;
   mainWindow->show();

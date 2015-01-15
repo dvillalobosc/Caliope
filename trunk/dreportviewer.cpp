@@ -111,9 +111,7 @@ void DReportViewer::addCustomReport()
     comboReportName->addItem(report);
 
   completer = new QCompleter(reports, comboReportName);
-#if QT_VERSION > 0x040801
-    completer->setFilterMode(Qt::MatchContains);
-#endif
+  completer->setFilterMode(Qt::MatchContains);
   completer->setCaseSensitivity(Qt::CaseInsensitive);
   comboReportName->setCompleter(completer);
 

@@ -49,9 +49,7 @@ FindReplace::FindReplace(TextEditor *document)
   addWidget(findLineEdit);
   completer = new QCompleter(settings.value("General/SearchedValues", QStringList()).toStringList());
   completer->setCaseSensitivity(Qt::CaseInsensitive);
-#if QT_VERSION > 0x040801
   completer->setFilterMode(Qt::MatchContains);
-#endif
   findLineEdit->setCompleter(completer);
   QAction *findNextAction = new QAction(QIcon::fromTheme("go-next", QIcon(":/images/svg/go-next-7.svg")), tr("Find next"), this);
   findNextAction->setToolTip(findNextAction->text());

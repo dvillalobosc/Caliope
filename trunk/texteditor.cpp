@@ -79,9 +79,7 @@ TextEditor::TextEditor(Projects *project, DBMS *serverConnection, EditorTypes::E
   completer->setModel(model);
   completer->setModelSorting(QCompleter::CaseInsensitivelySortedModel);
   completer->setCaseSensitivity(Qt::CaseInsensitive);
-#if QT_VERSION > 0x040801
   completer->setFilterMode(Qt::MatchContains);
-#endif
   completer->setWrapAround(true);
   connect(completer, SIGNAL(activated(const QString&)), this, SLOT(insertCompletion(const QString&)));
 
@@ -92,9 +90,7 @@ TextEditor::TextEditor(Projects *project, DBMS *serverConnection, EditorTypes::E
   completerForPeriodCompeltion->setModel(modelForPeriodCompeltion);
   completerForPeriodCompeltion->setModelSorting(QCompleter::CaseInsensitivelySortedModel);
   completerForPeriodCompeltion->setCaseSensitivity(Qt::CaseInsensitive);
-#if QT_VERSION > 0x040801
   completerForPeriodCompeltion->setFilterMode(Qt::MatchContains);
-#endif
   completerForPeriodCompeltion->setWrapAround(true);
   connect(completerForPeriodCompeltion, SIGNAL(activated(const QString&)), this, SLOT(insertCompletionForPeriodCompeltion(const QString&)));
 
