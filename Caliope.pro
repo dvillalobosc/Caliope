@@ -116,8 +116,8 @@ UsePostgreSQL = 0
 #Linux
 unix:LIBS += -L/usr/lib64 -lmysqlclient
 #Windows
-win32:LIBS += -Lc:/mysql/lib -lmysqlclient
-win32:INCLUDEPATH += $$quote(c:/mysql/include)
+win32:LIBS += -Lc:/mariadb/lib -llibmariadb
+win32:INCLUDEPATH += $$quote(c:/mariadb/include)
 win32:DEFINES += __LCC__
 
 contains(UsePostgreSQL, 1) {
