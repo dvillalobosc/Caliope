@@ -29,11 +29,7 @@
 #include <QMdiSubWindow>
 #include <QSignalMapper>
 #include <QCoreApplication>
-#if QT_VERSION > 0x040801
-  #include <QtWebKitWidgets/QWebView>
-#else
-  #include <QtWebKit/QWebView>
-#endif
+#include <QWebView>
 #include <QTranslator>
 #include <QFile>
 #include <QApplication>
