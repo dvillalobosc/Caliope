@@ -18,11 +18,7 @@
 *
 *****************************************************************************/
 
-#if QT_VERSION > 0x040801
-  #include <QtWebKitWidgets/QWebView>
-#else
-  #include <QtWebKit/QWebView>
-#endif
+#include <QWebView>
 #include <QVBoxLayout>
 #include <QCompleter>
 #include <QLineEdit>

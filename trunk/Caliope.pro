@@ -136,17 +136,12 @@ OTHER_FILES += \
 
 TARGET = Caliope
 
-contains(QT_VERSION, 5.2.0) {
-    QT += webkitwidgets
-}
-contains(QT_VERSION, 4.8.1) {
-    QT += webkit
-}
 QT += declarative
 QT += network
 QT += svg
 QT += sql
 QT += printsupport
+QT += webkitwidgets
 
 #cd html; for file in *; do echo "/html/"$file >> ../filelist.txt; done; cd search; for file in *; do echo "/html/search/"$file >> ../../filelist.txt; done; cd ..; cd ..;
 #!contains(QT_MAJOR_VERSION, 4)
