@@ -67,9 +67,7 @@ ConnectDialog::ConnectDialog(DBMS *serverConnection)
   }
 
   completer = new QCompleter(connections, comboConnectionName);
-#if QT_VERSION > 0x040801
-    completer->setFilterMode(Qt::MatchContains);
-#endif
+  completer->setFilterMode(Qt::MatchContains);
   completer->setCaseSensitivity(Qt::CaseInsensitive);
   comboConnectionName->setCompleter(completer);
 

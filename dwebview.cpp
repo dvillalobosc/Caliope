@@ -50,9 +50,7 @@ DWebView::DWebView(QString title, QUrl url)
   connect(urlLineEdit, SIGNAL(returnPressed()), SLOT(urlLineEditReturnPressed()));
 
   urlCompleter = new QCompleter(settings.value("Internet/VisitedURLs", QStringList()).toStringList(), urlLineEdit);
-#if QT_VERSION > 0x040801
-    urlCompleter->setFilterMode(Qt::MatchContains);
-#endif
+  urlCompleter->setFilterMode(Qt::MatchContains);
   urlCompleter->setCaseSensitivity(Qt::CaseInsensitive);
   urlLineEdit->setCompleter(urlCompleter);
 
