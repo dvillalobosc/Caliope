@@ -23,12 +23,7 @@
 
 #include <QSettings>
 #include <QSystemTrayIcon>
-
-#if QT_VERSION > 0x040801
-  #include <QtPrintSupport/QPrinter>
-#else
-  #include <QPrinter>
-#endif
+#include <QPrinter>
 
 #include "editortypes.h"
 #include "dmdisubwindow.h"
