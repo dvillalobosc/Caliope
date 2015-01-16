@@ -508,7 +508,10 @@ void ServerInformation::serverGraphsData()
 
 void ServerInformation::replicationStatusTxt()
 {
-  replicationStatus->setPlainText(serverConnection->replication()->getStatus());
+  if (lineEditConnectioName->text().isEmpty())
+    replicationStatus->setPlainText(serverConnection->replication()->getStatus());
+  else
+    replicationStatus->setPlainText(serverConnection->replication()->getStatus(lineEditConnectioName->text()));
   if (pushButtonStopRefreshingReplicator->isChecked())
     timerReplicationStatusTxt->stop();
 }
