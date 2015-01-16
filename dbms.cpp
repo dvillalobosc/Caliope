@@ -2105,7 +2105,7 @@ QString Replication::getStatus(QString connectionName)
       return "N/A";
       break;
     case StaticFunctions::MariaDB:
-      return serverConnection->outputAsTable("SHOW MASTER STATUS") + "\n" + serverConnection->outputAsG("SHOW SLAVE " + connectionName + "STATUS");
+      return serverConnection->outputAsTable("SHOW MASTER STATUS") + "\n" + serverConnection->outputAsG("SHOW SLAVE '" + connectionName + "' STATUS");
       break;
     case StaticFunctions::PostgreSQL:
 #if USEPOSTGRES == 1
