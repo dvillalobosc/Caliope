@@ -445,7 +445,7 @@ void SQLQuery::executeStatement(QString statement)
       serverConnection->logStatement(statement);
     serverConnection->executedQueries->append(statement);
     if (settings.value("General/SaveQueriesBeforeExecution", true).toBool())
-      settings.setValue("General/LastQuery-" + qApp->property("ConnectionName").toString() + "-" + windowTitle(), scriptEditor->textEditor->toPlainText().trimmed());
+      settings.setValue("SQLQuery/LastQuery-" + qApp->property("ConnectionName").toString(), scriptEditor->textEditor->toPlainText().trimmed());
     if (!concatenateOutputAction->isChecked())
       resutlEditor->clear();
     if (radioT->isChecked())
@@ -724,7 +724,7 @@ void SQLQuery::wordWrapOnResultActionToggled()
 
 void SQLQuery::loadLastQuery()
 {
-  scriptEditor->textEditor->setPlainText(settings.value("SQLQuery/LastQuery-" + qApp->property("ConnectionName").toString() + "-" + windowTitle(), "").toString());
+  scriptEditor->textEditor->setPlainText(settings.value("SQLQuery/LastQuery-" + qApp->property("ConnectionName").toString(), "").toString());
 }
 
 void SQLQuery::logStatementsActionToggled()
