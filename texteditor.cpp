@@ -1252,7 +1252,7 @@ bool TextEditor::okToClose()
     QMessageBox msgBox;
     switch(editorType) {
     case EditorTypes::SQLQuery:
-      settings.setValue("SQLQuery/LastQuery-" + qApp->property("ConnectionName").toString() +  + windowTitle(), textEditor->toPlainText());
+      settings.setValue("SQLQuery/LastQuery-" + qApp->property("ConnectionName").toString() +  windowTitle(), textEditor->toPlainText());
       msgBox.setWindowTitle(tr("SQL Query: Save file..."));
       break;
     case EditorTypes::PHP:
