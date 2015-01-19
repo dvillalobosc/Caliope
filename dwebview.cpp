@@ -24,7 +24,7 @@
 #include <QLineEdit>
 #include <QToolBar>
 #include <QAction>
-//#include <QWebFrame>
+#include <QWebFrame>
 #include <QDesktopServices>
 
 #include "dwebview.h"
@@ -157,9 +157,7 @@ void DWebView::statusBarProgressMessageSlot(const QString &message, const unsign
 
 void DWebView::showSourceCodeTriggered()
 {
-  //qDebug() << webView->page()->currentFrame()->toHtml();
-  //emit returnPagesource(webView->page()->currentFrame()->toHtml());
-  emit showPagesource("asdf");
+  emit showPagesource(webView->page()->currentFrame()->toHtml());
 }
 
 void DWebView::openInExternalBrowserTriggered()
