@@ -868,22 +868,12 @@ void MainWindow::showSlowLogActionTriggered()
 
 void MainWindow::postgresqlOnLineHelpActionTriggered()
 {
-//  if (optionsDock->isVisible())
-//    optionsDock->hide();
-  dWebView = new DWebView(tr("PostgreSQL On-Line Help"), QUrl("http://www.postgresql.org/docs/manuals/"));
-  connect(dWebView, SIGNAL(statusBarProgressMessage(QString,uint,double)), this, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
-  connect(dWebView, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
-  addSubWindow(dWebView);
+  addSubWindow(newDWebView(tr("PostgreSQL On-Line Help"), QUrl("http://www.postgresql.org/docs/manuals/")));
 }
 
 void MainWindow::mariadbOnLineHelpActionTriggered()
 {
-//  if (optionsDock->isVisible())
-//    optionsDock->hide();
-  dWebView = new DWebView(tr("MariaDB On-Line Help"), QUrl("https://kb.askmonty.org"));
-  connect(dWebView, SIGNAL(statusBarProgressMessage(QString,uint,double)), this, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
-  connect(dWebView, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
-  addSubWindow(dWebView);
+  addSubWindow(newDWebView(tr("MariaDB On-Line Help"), QUrl("https://kb.askmonty.org")));
 }
 
 void MainWindow::catalogsReadOnlyActionSlot(bool readOnly)
@@ -904,10 +894,7 @@ void MainWindow::viewRecentFilesActionTriggered()
 
 void MainWindow::recentURLsActionGroupTriggered(QAction *action)
 {
-  dWebView = new DWebView(tr("External Web Page"), QUrl(action->text()));
-  connect(dWebView, SIGNAL(statusBarProgressMessage(QString,uint,double)), this, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
-  connect(dWebView, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
-  addSubWindow(dWebView);
+  addSubWindow(newDWebView(tr("External Web Page"), QUrl(action->text())));
 }
 
 void MainWindow::openRecentURLsMenuAboutToShowSlot()
@@ -1152,6 +1139,7 @@ void MainWindow::takeASnapShotActionTriggered()
 
 void MainWindow::caliopeSourceDocumentationActionTriggered()
 {
+  qDebug() << "asdasdfasfasfasfasfasfasfsfsdfsd";
   QApplication::setOverrideCursor(Qt::WaitCursor);
   QDir tempDir(QDir::tempPath() + "/html");
   tempDir.removeRecursively();
@@ -1178,11 +1166,7 @@ void MainWindow::caliopeSourceDocumentationActionTriggered()
         qDebug() << fileName << fileToOpen.error();
     }
   }
-  dWebView = new DWebView(tr("Calíope source documentation"), QUrl("file:///tmp/html/index.html"));
-  connect(dWebView, SIGNAL(statusBarProgressMessage(QString,uint,double)), this, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
-  connect(dWebView, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
-  connect(dWebView, SIGNAL(showPagesource(QString)), this, SLOT(viewDWebViewPageSource(QString)));
-  addSubWindow(dWebView);
+  addSubWindow(newDWebView(tr("Calíope source documentation"), QUrl("file:///tmp/html/index.html")));
   QApplication::restoreOverrideCursor();
 }
 
@@ -1722,26 +1706,17 @@ void MainWindow::phpScriptActionTriggered()
 
 void MainWindow::externalWebPageActionTriggered()
 {
-  dWebView = new DWebView(tr("External Web page"));
-  connect(dWebView, SIGNAL(statusBarProgressMessage(QString,uint,double)), this, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
-  connect(dWebView, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
-  addSubWindow(dWebView);
+  addSubWindow(newDWebView(tr("External Web page")));
 }
 
 void MainWindow::phpOnLineHelpActionTriggered()
 {
-  dWebView = new DWebView(tr("PHP On-Line Help"), QUrl("http://php.net/search.php"));
-  connect(dWebView, SIGNAL(statusBarProgressMessage(QString,uint,double)), this, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
-  connect(dWebView, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
-  addSubWindow(dWebView);
+  addSubWindow(newDWebView(tr("PHP On-Line Help"), QUrl("http://php.net/search.php")));
 }
 
 void MainWindow::mysqlOnLineHelpActionTriggered()
 {
-  dWebView = new DWebView(tr("MySQL On-Line Help"), QUrl("http://dev.mysql.com/doc/refman/5.5/en/"));
-  connect(dWebView, SIGNAL(statusBarProgressMessage(QString,uint,double)), this, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
-  connect(dWebView, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
-  addSubWindow(dWebView);
+  addSubWindow(newDWebView(tr("MySQL On-Line Help"), QUrl("http://dev.mysql.com/doc/refman/5.5/en/")));
 }
 
 void MainWindow::processActionTriggered()
@@ -1909,6 +1884,15 @@ bool MainWindow::changeDatabase(QString database)
     return true;
   }
   return false;
+}
+
+DWebView *MainWindow::newDWebView(QString title, QUrl url)
+{
+  dWebView = new DWebView(title, url);
+  connect(dWebView, SIGNAL(statusBarProgressMessage(QString,uint,double)), this, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
+  connect(dWebView, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
+  connect(dWebView, SIGNAL(showPagesource(QString)), this, SLOT(viewDWebViewPageSource(QString)));
+  return dWebView;
 }
 
 //void MainWindow::optionsTreeViewItemClicked(QTreeWidgetItem *item, int column)
