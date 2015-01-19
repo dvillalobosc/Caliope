@@ -126,8 +126,8 @@ contains(UsePostgreSQL, 1) {
     unix:LIBS += -L/usr/lib64 -lpq
 }
 #Mac
-unix:LIBS += -L/opt/local/lib/mysql5/mysql -lmysqlclient
-unix:INCLUDEPATH += /opt/local/include/mysql5/mysql
+#unix:LIBS += -L/opt/local/lib/mysql5/mysql -lmysqlclient
+#unix:INCLUDEPATH += /opt/local/include/mysql5/mysql
 
 OTHER_FILES += \
     TODO.txt \
