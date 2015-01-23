@@ -348,6 +348,7 @@ private:
   QAction *stopAllReplicationSlavesAction;
   QAction *startAllReplicationSlavesAction;
   DWebView *newDWebView(QString title, QUrl url = QUrl());
+  void addSubWindow(QWidget *window);
 
   /*! \brief This is the code executed when aboutMySQLGUIAction is triggered.
    *

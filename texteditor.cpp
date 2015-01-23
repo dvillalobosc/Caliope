@@ -162,9 +162,10 @@ TextEditor::TextEditor(Projects *project, DBMS *serverConnection, EditorTypes::E
   contextualMenu->addAction(sortSymbols);
   retranslateUi();
 
-  QWidget *widMain = new QWidget;
-  widMain->setLayout(mainVLayout);
-  setWidget(widMain);
+  //QWidget *widMain = new QWidget;
+  //widMain->setLayout(mainVLayout);
+  //setWidget(widMain);
+  setLayout(mainVLayout);
 }
 
 void TextEditor::setTitle(QString title)
@@ -1990,7 +1991,8 @@ bool TextEditor::event(QEvent *event)
   default:
     break;
   }
-  return QMdiSubWindow::event(event);
+  //return QMdiSubWindow::event(event);
+  return QWidget::event(event);
 }
 
 //void TextEditor::showEvent(QShowEvent *event)
