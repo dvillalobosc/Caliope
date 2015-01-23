@@ -508,10 +508,21 @@ void ServerInformation::serverGraphsData()
 
 void ServerInformation::replicationStatusTxt()
 {
-  if (lineEditConnectioName->text().isEmpty())
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
     replicationStatus->setPlainText(serverConnection->replication()->getStatus());
-  else
-    replicationStatus->setPlainText(serverConnection->replication()->getStatus(lineEditConnectioName->text()));
+    break;
+  case StaticFunctions::MariaDB:
+    if (lineEditConnectioName->text().isEmpty())
+      replicationStatus->setPlainText(serverConnection->replication()->getStatus());
+    else
+      replicationStatus->setPlainText(serverConnection->replication()->getStatus(lineEditConnectioName->text()));
+    break;
+  case StaticFunctions::PostgreSQL:
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
   if (pushButtonStopRefreshingReplicator->isChecked())
     timerReplicationStatusTxt->stop();
 }

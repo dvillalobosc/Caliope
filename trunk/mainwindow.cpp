@@ -251,6 +251,13 @@ void MainWindow::addSubWindow(DMdiSubWindow *window)
   dStatusBar->resetStatusBar();
 }
 
+void MainWindow::addSubWindow(QWidget *window)
+{
+  mdiMain->addSubWindow(window);
+  window->showMaximized();
+  dStatusBar->resetStatusBar();
+}
+
 //void MainWindow::openFile(QString fileName, unsigned int line)
 //{
 //}

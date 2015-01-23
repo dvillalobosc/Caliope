@@ -24,9 +24,10 @@
 #include <QSettings>
 #include <QSystemTrayIcon>
 #include <QPrinter>
+#include <QWidget>
 
 #include "editortypes.h"
-#include "dmdisubwindow.h"
+//#include "dmdisubwindow.h"
 
 class QCompleter;
 class QStandardItemModel;
@@ -52,7 +53,7 @@ class DTitleLabel;
 class DBMS;
 class QTextDocument;
 
-class TextEditor : public DMdiSubWindow
+class TextEditor : public QWidget
 {
   Q_OBJECT
 
