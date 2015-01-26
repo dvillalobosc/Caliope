@@ -543,11 +543,7 @@ void TextEditor::insertCompletion(const QString &completion)
     cursor.insertText(completion + sufix);
     break;
   case EditorTypes::SQLQuery:
-    if (StaticFunctions::mariadbFunctions().contains(completion) || StaticFunctions::postgresqlFunctions().contains(completion)) {
-      sufix = "()";
-      cursor.insertText(completion + sufix);
-      cursor.movePosition(QTextCursor::PreviousCharacter, QTextCursor::MoveAnchor);
-    } else if (databaseSymbols.contains(completion)) {
+    if (databaseSymbols.contains(completion)) {
       cursor.insertText("`" + completion + "`");
     } else {
       cursor.insertText(completion + sufix);

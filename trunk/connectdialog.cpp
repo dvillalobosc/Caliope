@@ -176,8 +176,6 @@ void ConnectDialog::comboConnectionTypeSlot(const QString &text)
     spinBoxPort->setValue(0);
   if (text == "MySQL" || text == "MariaDB")
     spinBoxPort->setValue(3306);
-  if (text == "PostgreSQL")
-    spinBoxPort->setValue(5432);
 }
 
 void ConnectDialog::databasesMenuSlot()
@@ -253,8 +251,6 @@ void ConnectDialog::setDBMS()
     qApp->setProperty("DBMSType", StaticFunctions::MySQL);
   if (comboConnectionType->currentText() == "MariaDB")
     qApp->setProperty("DBMSType", StaticFunctions::MariaDB);
-  if (comboConnectionType->currentText() == "PostgreSQL")
-    qApp->setProperty("DBMSType", StaticFunctions::PostgreSQL);
 }
 
 QList<QString> ConnectDialog::getValues()
