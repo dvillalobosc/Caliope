@@ -120,6 +120,8 @@ MainWindow::MainWindow()
   setAttribute(Qt::WA_CustomWhatsThis);
   setWindowIcon(QIcon(":/images/svg/server-database.svg"));
 
+  qApp->setProperty("ApplicationLanguage", settings.value("General/Language", "en/US"));
+
   mdiMain = new QMdiArea;
   mdiMain->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
   mdiMain->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
