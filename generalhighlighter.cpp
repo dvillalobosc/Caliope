@@ -608,35 +608,6 @@ void GeneralHighlighter::sqlHighlightRules()
     rule.pattern = QRegExp("`[A-Za-z_\\d%\\- ]*`");
     secondHighlightingRules.append(rule);
     break;
-  case StaticFunctions::PostgreSQL:
-    //Functions
-    rule.format.setForeground(Qt::darkCyan);
-    for (int i = 0; i < StaticFunctions::postgresqlFunctions().count(); i++) {
-      rule.pattern = QRegExp(QString("\\b%1\\b").arg(StaticFunctions::postgresqlFunctions().at(i)), Qt::CaseInsensitive);
-      secondHighlightingRules.append(rule);
-    }
-
-    //Keywords
-    rule.format.setForeground(Qt::blue);
-    for (int i = 0; i < StaticFunctions::postgresqlKeywords().count(); i++) {
-      rule.pattern = QRegExp(QString("\\b%1\\b").arg(StaticFunctions::postgresqlKeywords().at(i)), Qt::CaseInsensitive);
-      secondHighlightingRules.append(rule);
-    }
-
-    //Datatypes
-    rule.format.setForeground(Qt::darkRed);
-    for (int i = 0; i < StaticFunctions::postgresqlDatatypes().count(); i++) {
-      rule.pattern = QRegExp(QString("\\b%1\\b").arg(StaticFunctions::postgresqlDatatypes().at(i)), Qt::CaseInsensitive);
-      secondHighlightingRules.append(rule);
-    }
-
-    //Charsets
-    rule.format.setForeground(QBrush(QColor(0, 195, 195)));
-    for (int i = 0; i < StaticFunctions::postgresqlCharsets().count(); i++) {
-      rule.pattern = QRegExp(QString("\\b%1\\b").arg(StaticFunctions::postgresqlCharsets().at(i)), Qt::CaseInsensitive);
-      secondHighlightingRules.append(rule);
-    }
-    break;
   case StaticFunctions::Undefined:
   default:
     break;

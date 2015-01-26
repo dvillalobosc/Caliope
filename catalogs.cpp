@@ -425,9 +425,6 @@ void Catalogs::deleteDatabaseActionTriggered()
     case StaticFunctions::MariaDB:
       serverConnection->changeDatabase("mysql");
       break;
-    case StaticFunctions::PostgreSQL:
-      serverConnection->changeDatabase("postgres");
-      break;
     case StaticFunctions::Undefined:
     default:
       break;

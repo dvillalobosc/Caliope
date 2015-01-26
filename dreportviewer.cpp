@@ -169,7 +169,6 @@ void DReportViewer::showReportData()
       for (int counter = 0; counter < result->count(); counter++)
         dPieChart->addEntry(result->at(counter).at(0), result->at(counter).at(1).toDouble());
       break;
-    case StaticFunctions::PostgreSQL:
     case StaticFunctions::Undefined:
     default:
       break;

@@ -748,9 +748,6 @@ void TextEditor::performCompletion()
             messageText = data.at(0);
         }
         break;
-      case StaticFunctions::PostgreSQL:
-        messageText = StaticFunctions::postgresqlFunctionsComplete().value(text);
-        break;
       case StaticFunctions::Undefined:
       default:
         break;
@@ -821,18 +818,6 @@ void TextEditor::populateModel(const QString &completionPrefix)
       if (showMariaDBHelperAction->isChecked())
         foreach (QString item, StaticFunctions::mariadbHelper().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
           model->appendRow(new QStandardItem(QIcon(":/images/svg/application-pgp-keys.svg"), item));
-      break;
-    case StaticFunctions::PostgreSQL:
-      foreach (QString item, StaticFunctions::postgresqlKeywords().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
-        model->appendRow(new QStandardItem(QIcon(":/images/svg/application-pgp-keys.svg"), item));
-      foreach (QString item, StaticFunctions::postgresqlFunctions().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
-        model->appendRow(new QStandardItem(QIcon(":/images/svg/server-database.svg"), item));
-      foreach (QString item, StaticFunctions::postgresqlDatatypes().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
-        model->appendRow(new QStandardItem(QIcon(":/images/svg/server-database.svg"), item));
-      foreach (QString item, StaticFunctions::postgresqlCharsets().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
-        model->appendRow(new QStandardItem(QIcon(":/images/svg/character-set.svg"), item));
-      foreach (QString item, databaseSymbols.filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
-        model->appendRow(new QStandardItem(QIcon(":/images/svg/server-database.svg"), item));
       break;
     case StaticFunctions::Undefined:
     default:
@@ -1898,9 +1883,6 @@ bool TextEditor::event(QEvent *event)
         matchedValue = StaticFunctions::mariadbFunctionsComplete().value(cursor.selectedText().toUpper());
         url = "https://mariadb.com/kb/en/" + cursor.selectedText().toLower() + "/";
         break;
-      case StaticFunctions::PostgreSQL:
-        matchedValue = StaticFunctions::postgresqlFunctionsComplete().value(cursor.selectedText().toLower());
-        break;
       case StaticFunctions::Undefined:
       default:
         break;
@@ -1953,9 +1935,6 @@ bool TextEditor::event(QEvent *event)
       case StaticFunctions::MySQL:
       case StaticFunctions::MariaDB:
         matchedValue = StaticFunctions::mariadbFunctionsComplete().value(cursor.selectedText().toUpper());
-        break;
-      case StaticFunctions::PostgreSQL:
-        matchedValue = StaticFunctions::postgresqlFunctionsComplete().value(cursor.selectedText().toLower());
         break;
       case StaticFunctions::Undefined:
       default:

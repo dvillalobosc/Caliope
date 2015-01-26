@@ -1017,7 +1017,6 @@ void MainWindow::migrateDatabaseActionTriggered()
       }
     }
     break;
-  case StaticFunctions::PostgreSQL:
   case StaticFunctions::Undefined:
   default:
     QMessageBox::information(this, tr("Database migration"), tr("Database migration is only aviable for MariaDB and MySQL."));

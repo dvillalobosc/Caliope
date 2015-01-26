@@ -111,8 +111,6 @@ RESOURCES += icons.qrc \
 TRANSLATIONS += translations/caliope_es_cr.ts
 SUBDIRS += images
 
-UsePostgreSQL = 0
-
 #Linux
 unix:LIBS += -L/usr/lib64 -lmysqlclient
 #Windows
@@ -120,11 +118,6 @@ win32:LIBS += -Lc:/mariadb/lib -llibmariadb
 win32:INCLUDEPATH += $$quote(c:/mariadb/include)
 win32:DEFINES += __LCC__
 
-contains(UsePostgreSQL, 1) {
-    win32:LIBS += -Lc:/PostgreSQL/bin -lpq
-    win32:INCLUDEPATH += $$quote(c:/PostgreSQL/include)
-    unix:LIBS += -L/usr/lib64 -lpq
-}
 #Mac
 #unix:LIBS += -L/opt/local/lib/mysql5/mysql -lmysqlclient
 #unix:INCLUDEPATH += /opt/local/include/mysql5/mysql
