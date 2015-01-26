@@ -9044,7 +9044,17 @@ QString StaticFunctions::serverInformationQuery()
         " UNION"
         " SELECT '" + tr("Used connections") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("Max number of connections ever open at the same time.") + "', 'MAX_USED_CONNECTIONS' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'MAX_USED_CONNECTIONS'"
         " UNION"
+        " SELECT '" + tr("DELETE commands executed") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("Number of DELETE commands executed.") + "', 'COM_DELETE' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'COM_DELETE'"
+        " UNION"
+        " SELECT '" + tr("INSERT commands executed") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("Number of INSERT commands executed.") + "', 'COM_INSERT' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'COM_INSERT'"
+        " UNION"
+        " SELECT '" + tr("UPDATE commands executed") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("Number of UPDATE commands executed.") + "', 'COM_UPDATE' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'COM_UPDATE'"
+        " UNION"
+        " SELECT '" + tr("SELECT commands executed") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("Number of SELECT commands executed.") + "', 'COM_SELECT' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'COM_SELECT'"
+        " UNION"
         " SELECT '" + tr("Requests of the first index row") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("Number of requests to read the first row from an index. A high value indicates many full index scans.") + "', 'HANDLER_READ_FIRST' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'HANDLER_READ_FIRST'"
+        " UNION"
+        " SELECT '" + tr("Rate of SELECTs per full index scans") + "', LPAD(FORMAT((SELECT `VARIABLE_VALUE` * 100 FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'HANDLER_READ_FIRST') / (SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'COM_SELECT'), 0), 12, ' '), '" + tr("Rate of SELECTs per full index scans. A value higher than 100 means you do more table scan than SELECTs.") + "', '-'"
         ;
     break;
   case StaticFunctions::Undefined:
