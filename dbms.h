@@ -27,30 +27,12 @@
 #include <QtSql/QSqlDatabase>
 #include <QDateTime>
 
-#define USEDBMS 1
-#define USEMARIADB 1
-#define USEPOSTGRES 0
-
-#if USEDBMS == 1
-  #if defined(Q_OS_WIN)
-    #if USEMARIADB == 1
-      #include "mysql.h"
-    #endif
-    #if USEPOSTGRES == 1
-      #include "libpq-fe.h"
-    #endif
-  #elif defined(Q_OS_LINUX)
-    #if USEMARIADB == 1
-      #include "mysql/mysql.h"
-    #endif
-    #if USEPOSTGRES == 1
-      #include "libpq-fe.h"
-    #endif
-  #elif defined(Q_OS_MAC)
-    #if USEMARIADB == 1
-      #include "mysql.h"
-    #endif
-  #endif
+#if defined(Q_OS_WIN)
+  #include "mysql.h"
+#elif defined(Q_OS_LINUX)
+  #include "mysql/mysql.h"
+#elif defined(Q_OS_MAC)
+  #include "mysql.h"
 #endif
 
 #include "stdio.h"
@@ -295,10 +277,6 @@ private slots:
 
 private:
   MYSQL *mariadbConnection;
-#if USEPOSTGRES == 1
-  PGconn *postgresqlConnection;
-  PGresult *postgresqlResults;
-#endif
   MYSQL_RES *mariadbResults;
   MYSQL_FIELD *field;
   MYSQL_ROW record;

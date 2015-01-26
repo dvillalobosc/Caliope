@@ -73,11 +73,6 @@ public:
   static QString DBMSDateTimeFormat();
   static QString DBMSDateFormat();
   static QString DBMSDefaultDatabase();
-  static QStringList postgresqlKeywords();
-  static QStringList postgresqlDatatypes();
-  static QStringList postgresqlCharsets();
-  static QHash<QString, QString> postgresqlFunctionsComplete();
-  static QStringList postgresqlFunctions();
   static QHash<QString, QString> htmlTagsComplete();
   static QStringList explodeConnectionString(QString connectionName);
   static QString randomString(unsigned int length = 1);
