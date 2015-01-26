@@ -3,11 +3,10 @@ To Do list:
 [General]
 * Review gramatical errors in the entire project.
 * Enable session storing.
-** Show query result as is is processed.
+** Show query result as it is processed.
 ** Enable the Scheme Color in Preferences, so we can change the color of the wigets.
 ** Check why sqlHighlightRules() is called twice.
 ** Fix bug in MainWindow::openURLSlot(QString url), I think it is a Qt thing.
 ** Make F7 Works with formal names.
-** Make TextEditor inherit from QWidget.
 ** Document Keyword shortcuts BaseTextEditor::keyPressEvent(QKeyEvent *event).
 ** MainWindow::openRecentConnectionActionGroupTriggered(QAction *action) is not working.

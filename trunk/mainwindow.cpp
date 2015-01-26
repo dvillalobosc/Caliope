@@ -1082,10 +1082,10 @@ void MainWindow::openRecentConnectionActionGroupTriggered(QAction *action)
   //5 - Conexion count -- No parsed but keeped the space.
   //6 - Collation
   //7 - Password
-  qDebug() << params.at(1) << params.at(2) << params.at(7) << params.at(4) << params.at(3) << params.at(6);
+  //qDebug() << params.at(1) << params.at(2) << params.at(7) << params.at(4) << params.at(3) << params.at(6);
   serverConnection->setUserName(params.at(1));
   serverConnection->setHostName(params.at(2));
-  serverConnection->setPassword(params.at(7));
+  serverConnection->setPassword(StaticFunctions::password(params.at(7)));
   serverConnection->setDatabase(params.at(4));
   serverConnection->setPort(params.at(3).toUInt());
   serverConnection->setCharacterSet(params.at(6).split("|").at(0));
@@ -1522,7 +1522,7 @@ void MainWindow::retranslateUi()
   fileMenu->setTitle(tr("&File"));
   openRecentFilesMenu->setTitle(tr("Recent files"));
   projectMenu->setTitle(tr("&Projects"));
-  connectionMenu->setTitle(tr("&Conecction"));
+  connectionMenu->setTitle(tr("&Connection"));
   changeCharsetMenu->setTitle(tr("Change character set"));
   changeDatabaseMenu->setTitle(tr("Change database"));
   replicationMenu->setTitle(tr("Replication"));
