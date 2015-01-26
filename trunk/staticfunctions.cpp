@@ -41,7 +41,6 @@ QString StaticFunctions::DBMSDateTimeFormat() {
   switch(qApp->property("DBMSType").toInt()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
-  case StaticFunctions::PostgreSQL:
   case StaticFunctions::Undefined:
   default:
     return "yyyy-MM-dd hh:mm:ss";
@@ -54,7 +53,6 @@ QString StaticFunctions::DBMSDateFormat() {
   switch(qApp->property("DBMSType").toInt()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
-  case StaticFunctions::PostgreSQL:
   case StaticFunctions::Undefined:
   default:
     return "yyyy-MM-dd";
@@ -69,9 +67,6 @@ QString StaticFunctions::DBMSDefaultDatabase()
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     return "mysql";
-    break;
-  case StaticFunctions::PostgreSQL:
-    return "postgres";
     break;
   case StaticFunctions::Undefined:
   default:
@@ -1192,7 +1187,6 @@ QString StaticFunctions::quoteSymbol(QString text)
   case StaticFunctions::MariaDB:
     return (text.startsWith("`") ? "" : "`") + text + (text.endsWith("`") ? "" : "`");
     break;
-  case StaticFunctions::PostgreSQL:
   case StaticFunctions::Undefined:
   default:
     break;
@@ -9053,8 +9047,6 @@ QString StaticFunctions::serverInformationQuery()
         " SELECT '" + tr("Requests of the first index row") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 12, ' '), '" + tr("Number of requests to read the first row from an index. A high value indicates many full index scans.") + "', 'HANDLER_READ_FIRST' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'HANDLER_READ_FIRST'"
         ;
     break;
-  case StaticFunctions::PostgreSQL:
-    break;
   case StaticFunctions::Undefined:
   default:
     break;
@@ -9072,8 +9064,6 @@ QString StaticFunctions::slowQueriesQuery()
         " (SELECT UNIX_TIMESTAMP(CURRENT_TIMESTAMP()))"
         " - (SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'UPTIME')))"
         " GROUP BY DATE(`start_time`)";
-    break;
-  case StaticFunctions::PostgreSQL:
     break;
   case StaticFunctions::Undefined:
   default:

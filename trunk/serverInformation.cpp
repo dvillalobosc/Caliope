@@ -135,7 +135,6 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
     connect(lineEditConnectioName, SIGNAL(clicked()), this, SLOT(lineEditConnectioNameClicked()));
     groupBoxHLayout->addWidget(lineEditConnectioName);
     break;
-  case StaticFunctions::PostgreSQL:
   case StaticFunctions::Undefined:
   default:
     break;
@@ -240,7 +239,6 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
     graphicsWidget = new DBarChartWidget;
     serverGraphs2VLayout->addWidget(graphicsWidget, Qt::Vertical);
     break;
-  case StaticFunctions::PostgreSQL:
   case StaticFunctions::Undefined:
   default:
     serverGraphs2VLayout->addStretch(1);
@@ -308,10 +306,6 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
   case StaticFunctions::MariaDB:
     kbSentGraph1 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'BYTES_SENT'")->at(0).at(0).toDouble();
     executedQueriesGraph1 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'QUERIES'")->at(0).at(0).toDouble();
-    break;
-  case StaticFunctions::PostgreSQL:
-    kbSentGraph1 = 0;
-    executedQueriesGraph1 = 0;
     break;
   case StaticFunctions::Undefined:
   default:
@@ -382,7 +376,6 @@ void ServerInformation::retranslateUi()
     lineEditConnectioName->setPlaceholderText(tr("Enter the default connection name and press Enter."));
     lineEditConnectioName->setToolTip(lineEditConnectioName->placeholderText());
     break;
-  case StaticFunctions::PostgreSQL:
   case StaticFunctions::Undefined:
   default:
     break;
@@ -472,9 +465,6 @@ void ServerInformation::serverGraphsDataTxt()
   case StaticFunctions::MariaDB:
     serverGraphs->setPlainText(serverGraphsDataTxtMariaDB());
     break;
-  case StaticFunctions::PostgreSQL:
-    serverGraphs->setPlainText("Pending");
-    break;
   case StaticFunctions::Undefined:
   default:
     break;
@@ -494,9 +484,6 @@ void ServerInformation::serverGraphsData()
     executedQueriesGraph1 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'QUERIES'")->at(0).at(0).toDouble();
     graphicsWidget->addPoints(serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'THREADS_CONNECTED'")->at(0).at(0).toDouble()
                              , (kbSentGraph1 - kbSentGraph2) / 1024, executedQueriesGraph1 - executedQueriesGraph2);
-    break;
-  case StaticFunctions::PostgreSQL:
-    serverGraphs->setPlainText("Pending");
     break;
   case StaticFunctions::Undefined:
   default:
@@ -518,7 +505,6 @@ void ServerInformation::replicationStatusTxt()
     else
       replicationStatus->setPlainText(serverConnection->replication()->getStatus(lineEditConnectioName->text()));
     break;
-  case StaticFunctions::PostgreSQL:
   case StaticFunctions::Undefined:
   default:
     break;
@@ -555,9 +541,6 @@ void ServerInformation::hddUsageData()
                                                             + " ORDER BY `TABLE_SCHEMA`, `TABLE_NAME`");
     hddUsage->setPlainText(output);
     break;
-  case StaticFunctions::PostgreSQL:
-    hddUsage->setPlainText(tr("Pending."));
-    break;
   case StaticFunctions::Undefined:
   default:
     hddUsage->setPlainText(tr("There was an error determinating the DBMS type."));
@@ -576,10 +559,6 @@ void ServerInformation::serverStatusTxt()
     output += serverConnection->outputAsTable(StaticFunctions::serverInformationQuery());
     output += "\n" + tr("Average of slow queries per day since server started.") + "\n";
     output += serverConnection->outputAsTable(StaticFunctions::slowQueriesQuery());
-    serverStatus->setPlainText(output);
-    break;
-  case StaticFunctions::PostgreSQL:
-    output += serverConnection->outputAsTable("SELECT '" + tr("Uptime in hours") + "' AS " + tr("Variable") + ",  (NOW() - PG_POSTMASTER_START_TIME()) AS " + tr("Value"));
     serverStatus->setPlainText(output);
     break;
   case StaticFunctions::Undefined:
@@ -603,8 +582,6 @@ void ServerInformation::serverSlowQueriesTxt()
                                                             " (SELECT UNIX_TIMESTAMP(CURRENT_TIMESTAMP()))"
                                                             " - (SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'UPTIME')))");
     serverStatus->setPlainText(output);
-    break;
-  case StaticFunctions::PostgreSQL:
     break;
   case StaticFunctions::Undefined:
   default:

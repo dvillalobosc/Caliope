@@ -76,7 +76,6 @@ Backup::Backup(DBMS *serverConnection)
             item->setChecked(true);
         }
     break;
-  case StaticFunctions::PostgreSQL:
   case StaticFunctions::Undefined:
   default:
     QMessageBox::information(this, tr("Cannot backup this kind of database"), tr("Cannot backup this kind of database"));

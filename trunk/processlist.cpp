@@ -74,19 +74,6 @@ ProcessList::ProcessList(DBMS *serverConnection)
     headers->append(QStringList() << tr("Examined Rows") << "NoDelegate"  << "" << "Left");
     headers->append(QStringList() << tr("Query Id") << "NoDelegate"  << "" << "Left");
     break;
-  case StaticFunctions::PostgreSQL:
-    headers->append(QStringList() << tr("DatId") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("DatName") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("ProcPid") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("UseName") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Current Query") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Waiting") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Xact Start") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Query Start") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Backend Start") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Client Addr") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Client Port") << "NoDelegate"  << "" << "Left");
-    break;
   case StaticFunctions::Undefined:
   default:
     break;

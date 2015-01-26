@@ -41,8 +41,6 @@
 //case StaticFunctions::MySQL:
 //case StaticFunctions::MariaDB:
 //  break;
-//case StaticFunctions::PostgreSQL:
-//  break;
 //case StaticFunctions::Undefined:
 //default:
 //  break;
@@ -85,8 +83,6 @@ bool DBMS::shutdown()
       return true;
     }
     break;
-  case StaticFunctions::PostgreSQL:
-    break;
   case StaticFunctions::Undefined:
   default:
     break;
@@ -108,8 +104,6 @@ bool DBMS::open()
     mysql_options(mariadbConnection, MYSQL_OPT_RECONNECT, &reconnect);
     break;
   }
-  case StaticFunctions::PostgreSQL:
-    break;
   case StaticFunctions::Undefined:
   default:
     break;
@@ -125,22 +119,6 @@ bool DBMS::open()
     opened = mysql_real_connect(mariadbConnection, hostName.toUtf8().data(), p_userName.toUtf8().data()
                                 , password.toUtf8().data(), p_database.toUtf8().data(), port, NULL, CLIENT_MULTI_STATEMENTS | CLIENT_PROGRESS);
     break;
-  case StaticFunctions::PostgreSQL: {
-#if USEPOSTGRES == 1
-    QString connectionString = QString("hostaddr = '%1' port = '%2' dbname = '%3' user = '%4' password = '%5' connect_timeout = '10'")
-        .arg(hostName)
-        .arg(port == 0 ? "" : QString("%1").arg(port))
-        .arg(p_database)
-        .arg(p_userName)
-        .arg(password);
-    postgresqlConnection = PQconnectdb(connectionString.toUtf8());
-    if (PQstatus(postgresqlConnection) == CONNECTION_OK)
-      opened = true;
-    else
-      opened = false;
-#endif
-    break;
-  }
   case StaticFunctions::Undefined:
   default:
     opened = false;
@@ -163,8 +141,6 @@ bool DBMS::open()
       setCharacterSet(getCharacterSet());
       setCollation(getCharacterSet(), getCollation());
     }
-  case StaticFunctions::PostgreSQL:
-    break;
   case StaticFunctions::Undefined:
   default:
     break;
@@ -214,11 +190,6 @@ void DBMS::close()
     case StaticFunctions::MariaDB:
       mysql_close(mariadbConnection);
       mysql_library_end();
-      break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      PQfinish(postgresqlConnection);
-#endif
       break;
     case StaticFunctions::Undefined:
     default:
@@ -290,11 +261,6 @@ QStringList DBMS::getDatabases()
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn("SHOW DATABASES");
       break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return runQuerySingleColumn("SELECT datname FROM pg_catalog.pg_database");
-#endif
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -310,9 +276,6 @@ QStringList DBMS::getUsers()
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn("SELECT DISTINCT(`User`) FROM `mysql`.`user`");
       break;
-    case StaticFunctions::PostgreSQL:
-      break;
-    case StaticFunctions::Undefined:
     default:
       break;
     }
@@ -326,8 +289,6 @@ QStringList DBMS::getUserHosts(QString user)
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn(QString("SELECT `Host` FROM `mysql`.`user` WHERE `User` = '%1'").arg(user));
-      break;
-    case StaticFunctions::PostgreSQL:
       break;
     case StaticFunctions::Undefined:
     default:
@@ -356,17 +317,6 @@ QStringList DBMS::runQuerySingleColumn(QString queryToExecute, bool addHeaders)
       while((record = mysql_fetch_row(mariadbResults)))
         rows.append(record[0]);
       mysql_free_result(mariadbResults);
-      break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      if (!postgresqlResults)
-        return QStringList();
-      if (addHeaders)
-        for (int counter = 0; counter < PQnfields(postgresqlResults); counter++)
-          rows.append(PQfname(postgresqlResults, counter));
-      for (int counter = 0; counter < PQntuples(postgresqlResults); counter++)
-        rows.append(PQgetvalue(postgresqlResults, counter, 0));
-#endif
       break;
     case StaticFunctions::Undefined:
     default:
@@ -431,33 +381,6 @@ QList<QStringList>* DBMS::runQuery(QString queryToExecute, bool addHeaders)
         rows->append(QStringList() << tr("Rows in set: %1. Elapsed time: %2 seconds.").arg(0).arg(0));
       }
       break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      query("BEGIN");
-      query("DECLARE mycursor CURSOR FOR " + queryToExecute);
-      query("FETCH ALL IN mycursor");
-      if (PQnfields(postgresqlResults) == 0) {
-        rows->append(QStringList() << errorOnExecution(lastError()));
-        rows->append(QStringList() << tr("Rows in set: %1").arg(0));
-      }
-      if (addHeaders) {
-        for (int counter = 0; counter < PQnfields(postgresqlResults); counter++)
-          row.append(PQfname(postgresqlResults, counter));
-        rows->append(row);
-        row.clear();
-      }
-      for (int counter = 0; counter < PQntuples(postgresqlResults); counter++) {
-        for (int column = 0; column < PQnfields(postgresqlResults); column++)
-          row.append(PQgetvalue(postgresqlResults, counter, column));
-        rows->append(row);
-        row.clear();
-      }
-      rows->append(QStringList() << tr("Rows in set: %1").arg(PQntuples(postgresqlResults)));
-      query("CLOSE mycursor");
-      query("END");
-      PQclear(postgresqlResults);
-#endif
-      break;
     case StaticFunctions::Undefined:
     default:
       rows->append(QStringList() << tr("Undefined Database driver.") << "-");
@@ -520,33 +443,6 @@ QList<QStringList>* DBMS::runQuerySimpleResult(QString queryToExecute)
         //      rows->append(QStringList() << tr("Rows in set") << "0");
       }
       break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      query("BEGIN");
-      query("DECLARE mycursor CURSOR FOR " + queryToExecute);
-      query("FETCH ALL IN mycursor");
-      if (PQnfields(postgresqlResults) == 0) {
-        rows->append(QStringList() << errorOnExecution(lastError()));
-        //      rows->append(QStringList() << tr("Rows in set") << "0");
-      }
-      //    if (addHeaders) {
-      //      for (int counter = 0; counter < PQnfields(postgresqlResults); counter++)
-      //        row.append(PQfname(postgresqlResults, counter));
-      //      rows->append(row);
-      //      row.clear();
-      //    }
-      for (int counter = 0; counter < PQntuples(postgresqlResults); counter++) {
-        for (int column = 0; column < PQnfields(postgresqlResults); column++)
-          row.append(PQgetvalue(postgresqlResults, counter, column));
-        rows->append(row);
-        row.clear();
-      }
-      //    rows->append(QStringList() << tr("Rows in set") << QString("%1").arg(PQntuples(postgresqlResults)));
-      query("CLOSE mycursor");
-      query("END");
-      PQclear(postgresqlResults);
-#endif
-      break;
     case StaticFunctions::Undefined:
     default:
       rows->append(QStringList() << tr("Undefined Database driver.") << "-");
@@ -568,12 +464,6 @@ QString DBMS::lastError()
       errorText = QString("%1 %2 %3").arg(tr("Error:")).arg(mysql_errno(mariadbConnection)).arg(mysql_error(mariadbConnection));
       qDebug() << errorText;
       return errorText;
-      break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      //    return QString("%1 %2 %3").arg(tr("Error:")).arg(mysql_errno(mysqlConnection)).arg(PQerrorMessage(postgresqlConnection));
-      return QString("%1 %2").arg(tr("Error:")).arg(PQerrorMessage(postgresqlConnection));
-#endif
       break;
     case StaticFunctions::Undefined:
     default:
@@ -598,17 +488,6 @@ int DBMS::query(QString queryToExecute)
       if (valueToReturn != 0)
         failedQueries->insert(1, QStringList() << QString("%1").arg(failedQueries->count()) << queryToExecute << lastError());
       return valueToReturn;
-      break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      postgresqlResults = PQexec(postgresqlConnection, queryToExecute.toUtf8());
-      if (PQresultStatus(postgresqlResults) != PGRES_COMMAND_OK) {
-        return PQntuples(postgresqlResults);
-      } else {
-        lastError();
-        return valueToReturn;
-      }
-#endif
       break;
     case StaticFunctions::Undefined:
     default:
@@ -923,11 +802,6 @@ int DBMS::getConnectionId()
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn("SELECT CONNECTION_ID()").at(0).toInt();
       break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return runQuerySingleColumn("SELECT PG_BACKEND_PID()").at(0).toInt();
-#endif
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -942,11 +816,6 @@ QString DBMS::getSocket()
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn("SELECT `VARIABLE_VALUE` FROM `information_schema`.`SESSION_VARIABLES` WHERE `VARIABLE_NAME` = 'SOCKET'").at(0).at(0);
-      break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return "N/A";
-#endif
       break;
     case StaticFunctions::Undefined:
     default:
@@ -968,11 +837,6 @@ QString DBMS::getFullUserName()
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn("SELECT USER()").at(0);
       break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return runQuerySingleColumn("SELECT USER").at(0);
-#endif
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -993,11 +857,6 @@ QString DBMS::getHostName()
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'HOSTNAME'").at(0);
       break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return hostName;
-#endif
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -1015,11 +874,6 @@ QString DBMS::getSessionStatus(QString filter)
         return outputAsTable("SELECT * FROM `information_schema`.`SESSION_STATUS` WHERE `VARIABLE_NAME` LIKE '%" + filter + "%' ORDER BY `VARIABLE_NAME`");
       else
         return outputAsTable("SELECT * FROM `information_schema`.`SESSION_STATUS` ORDER BY `VARIABLE_NAME`");
-      break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return "N/A";
-#endif
       break;
     case StaticFunctions::Undefined:
     default:
@@ -1039,11 +893,6 @@ QString DBMS::getSessionlVariables(QString filter)
       else
         return outputAsTable("SELECT * FROM `information_schema`.`SESSION_VARIABLES` ORDER BY `VARIABLE_NAME`");
       break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return "N/A";
-#endif
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -1061,11 +910,6 @@ QString DBMS::getGlobalStatus(QString filter)
         return outputAsTable("SELECT * FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` LIKE '%" + filter + "%' ORDER BY `VARIABLE_NAME`");
       else
         return outputAsTable("SELECT * FROM `information_schema`.`GLOBAL_STATUS` ORDER BY `VARIABLE_NAME`");
-      break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return "N/A";
-#endif
       break;
     case StaticFunctions::Undefined:
     default:
@@ -1085,11 +929,6 @@ QString DBMS::getGlobalVariables(QString filter)
       else
         return outputAsTable("SELECT * FROM `information_schema`.`GLOBAL_VARIABLES` ORDER BY `VARIABLE_NAME`");
       break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return outputAsTable("SELECT * FROM pg_catalog.pg_settings");
-#endif
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -1104,11 +943,6 @@ QString DBMS::getStatus()
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return QString("%1").arg(mysql_stat(mariadbConnection));
-      break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return "N/A";
-#endif
       break;
     case StaticFunctions::Undefined:
     default:
@@ -1133,8 +967,6 @@ void DBMS::flushPrivileges()
     case StaticFunctions::MariaDB:
       query("FLUSH PRIVILEGES");
       break;
-    case StaticFunctions::PostgreSQL:
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -1153,9 +985,6 @@ QString DBMS::getStringType()
     return "MySQL";
   case StaticFunctions::MariaDB:
     return "MariaDB";
-    break;
-  case StaticFunctions::PostgreSQL:
-    return "PostgreSQL";
     break;
   case StaticFunctions::Undefined:
     return "--";
@@ -1274,8 +1103,6 @@ void DBMS::setCollation(QString charset, QString collation)
   case StaticFunctions::MariaDB:
     query("SET NAMES " + charset + " COLLATE " + collation);
     break;
-  case StaticFunctions::PostgreSQL:
-    break;
   case StaticFunctions::Undefined:
   default:
     break;
@@ -1308,11 +1135,6 @@ QString DBMS::getVersion()
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn("SELECT VERSION()").at(0);
       break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return runQuerySingleColumn("SELECT VERSION()").at(0);
-#endif
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -1326,9 +1148,6 @@ QString DBMS::getVersion()
 //  case StaticFunctions::MySQL:
 //  case StaticFunctions::MariaDB:
 //    return runQuerySingleColumn("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'VERSION_COMMENT'").at(0);
-//    break;
-//  case StaticFunctions::PostgreSQL:
-//    return runQuerySingleColumn("SELECT VERSION()").at(0);
 //    break;
 //  case StaticFunctions::Undefined:
 //  default:
@@ -1345,11 +1164,6 @@ int DBMS::getMayorVersion()
     case StaticFunctions::MariaDB:
       return QString(runQuerySingleColumn("SELECT LEFT(VERSION(), 1)").at(0)).toInt();
       break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return QString(runQuerySingleColumn("SELECT SUBSTRING(VERSION() FROM '\\d'))").at(0)).toInt();
-#endif
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -1365,11 +1179,6 @@ int DBMS::getMinorVersion()
     case StaticFunctions::MariaDB:
       return QString(runQuerySingleColumn("SELECT MID(VERSION(), 3, 1)").at(0)).toInt();
       break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return QString(runQuerySingleColumn("SELECT SUBSTRING(SUBSTRING(VERSION() FROM '\\.\\d\\.') FROM '\\d')").at(0)).toInt();
-#endif
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -1384,9 +1193,6 @@ int DBMS::getMinorVersion()
 //  case StaticFunctions::MariaDB:
 //    return QString(runQuerySingleColumn("SELECT SUBSTRING(VERSION(), 5)").at(0)).toInt();
 //    break;
-//  case StaticFunctions::PostgreSQL:
-//    break;
-//  case StaticFunctions::Undefined:
 //  default:
 //    break;
 //  }
@@ -1411,16 +1217,6 @@ bool DBMS::changeDatabase(QString database)
         return false;
       }
       break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      if (QMessageBox::question(this, tr("Restarting connection"), tr("This acction will restart your database connection"),
-                                QMessageBox::Ok | QMessageBox::Cancel, QMessageBox::Cancel) == QMessageBox::Ok) {
-        close();
-        setDatabase(database);
-        open();
-      }
-#endif
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -1439,8 +1235,6 @@ QString DBMS::getTriggeredefinition(QString trigger, QString database)
     case StaticFunctions::MariaDB:
       return runQuery("SHOW CREATE TRIGGER " + StaticFunctions::quoteSymbol(database) + "." + StaticFunctions::quoteSymbol(trigger))->at(0).at(2);
       break;
-    case StaticFunctions::PostgreSQL:
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -1456,8 +1250,6 @@ QStringList DBMS::getEngines()
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn("SELECT `ENGINE` FROM `information_schema`.`ENGINES` ORDER BY `ENGINE`");
       break;
-    case StaticFunctions::PostgreSQL:
-      //PostgreSQL does not use Table Engines
     case StaticFunctions::Undefined:
     default:
       break;
@@ -1473,11 +1265,6 @@ QStringList DBMS::getCollations()
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn("SELECT `COLLATION_NAME` FROM `information_schema`.`COLLATIONS` ORDER BY `COLLATION_NAME`");
       break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return runQuerySingleColumn("SELECT COLLATION_NAME FROM information_schema.COLLATIONS ORDER BY COLLATION_NAME");
-#endif
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -1492,11 +1279,6 @@ QList<QStringList> *DBMS::getCollationsApplicability()
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return runQuery("SELECT `COLLATION_NAME`, CHARACTER_SET_NAME FROM `information_schema`.`COLLATIONS` ORDER BY `COLLATION_NAME`");
-      break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return runQuery("SELECT COLLATION_NAME FROM information_schema.COLLATIONS ORDER BY COLLATION_NAME");
-#endif
       break;
     case StaticFunctions::Undefined:
     default:
@@ -1514,11 +1296,6 @@ QList<QStringList> *DBMS::getCharacterSets()
     case StaticFunctions::MariaDB:
       rows = runQuery("SELECT `CHARACTER_SET_NAME`, `DESCRIPTION` FROM `information_schema`.`CHARACTER_SETS` ORDER BY `CHARACTER_SET_NAME`");
       break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      rows = runQuery("SELECT CHARACTER_SET_NAME, CHARACTER_SET_NAME FROM information_schema.CHARACTER_SETS ORDER BY CHARACTER_SET_NAME");
-#endif
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -1534,11 +1311,6 @@ QString DBMS::getCharacterSet()
 //    case StaticFunctions::MySQL:
 //    case StaticFunctions::MariaDB:
 //      return QString(mysql_character_set_name(mariadbConnection));
-//      break;
-//    case StaticFunctions::PostgreSQL:
-//#if USEPOSTGRES == 1
-//      return pg_encoding_to_char(PQclientEncoding(postgresqlConnection));
-//#endif
 //      break;
 //    case StaticFunctions::Undefined:
 //    default:
@@ -1558,13 +1330,6 @@ void DBMS::setCharacterSet(QString charset)
         errorOnExecution(tr("Could not change character set to: %1").arg(charset));
       settings.setValue("DBMS/CharacterSet", charset);
       //query("SET NAMES 'utf8' COLLATE 'utf8_spanish_ci'");
-      break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      if (PQsetClientEncoding(postgresqlConnection, charset.toUtf8()) == -1)
-        errorOnExecution(tr("Could not change character set to: %1").arg(charset));
-      settings.setValue("DBMS/CharacterSet", charset);
-#endif
       break;
     case StaticFunctions::Undefined:
     default:
@@ -1648,11 +1413,6 @@ QStringList Database::getTables()
   case StaticFunctions::MariaDB:
     return serverConnection->runQuerySingleColumn("SELECT `TABLE_NAME` FROM `information_schema`.`TABLES` WHERE `TABLE_TYPE` = 'BASE TABLE' AND `TABLE_SCHEMA` = '" + databaseName + "'");
     break;
-  case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-    return serverConnection->runQuerySingleColumn("SELECT DISTINCT(\"table_schema\") FROM \"information_schema\".\"tables\" WHERE \"table_catalog\" = '" + formalName() + "'");
-#endif
-    break;
   case StaticFunctions::Undefined:
   default:
     break;
@@ -1666,8 +1426,6 @@ unsigned long Database::tableCount()
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     return serverConnection->runQuery("SELECT COUNT(*) FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '" + databaseName + "'")->at(0).at(0).toULong();
-    break;
-  case StaticFunctions::PostgreSQL:
     break;
   case StaticFunctions::Undefined:
   default:
@@ -1862,9 +1620,6 @@ QList<QStringList> *Processes::getProcessList()
   case StaticFunctions::MariaDB:
     result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' '), `TIME_MS`, `STAGE`, `MAX_STAGE`, `PROGRESS`, `MEMORY_USED`, `EXAMINED_ROWS`, `QUERY_ID` FROM `information_schema`.`PROCESSLIST`");
     break;
-  case StaticFunctions::PostgreSQL:
-    result = serverConnection->runQuery("SELECT '', datid, datname, procpid, usename, current_query, waiting, xact_start, query_start, backend_start, client_addr, client_port FROM pg_stat_activity");
-    break;
   case StaticFunctions::Undefined:
   default:
     break;
@@ -1880,7 +1635,6 @@ void Processes::killThread(long long thread)
   case StaticFunctions::MariaDB:
     serverConnection->runQuery(QString("KILL CONNECTION %1").arg(thread));
     break;
-  case StaticFunctions::PostgreSQL:
   case StaticFunctions::Undefined:
   default:
     break;
@@ -1897,7 +1651,6 @@ void Processes::killIdleThreads(unsigned int limit)
     for (int row = 0; row < result->count(); row++)
       serverConnection->runQuery(QString("KILL CONNECTION %1").arg(result->at(row).at(0)));
     break;
-  case StaticFunctions::PostgreSQL:
   case StaticFunctions::Undefined:
   default:
     break;
@@ -1920,8 +1673,6 @@ void Replication::changeDefaultMasterConnection(QString masterConnectionName)
     case StaticFunctions::MariaDB:
       serverConnection->runQuery("SET `default_master_connection` := '" + masterConnectionName + "'");
       break;
-    case StaticFunctions::PostgreSQL:
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -1937,11 +1688,6 @@ QString Replication::getStatus()
       break;
     case StaticFunctions::MariaDB:
       return serverConnection->outputAsTable("SHOW MASTER STATUS") + "\n" + serverConnection->outputAsG("SHOW ALL SLAVES STATUS");
-      break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return "N/A";
-#endif
       break;
     case StaticFunctions::Undefined:
     default:
@@ -1960,8 +1706,6 @@ void Replication::skipErrors(unsigned int count)
       serverConnection->executeQuery(QString("SET GLOBAL SQL_SLAVE_SKIP_COUNTER = %1").arg(count));
       serverConnection->executeQuery(QString("START SLAVE;"));
       break;
-    case StaticFunctions::PostgreSQL:
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -1976,8 +1720,6 @@ void Replication::stopSlave()
     case StaticFunctions::MariaDB:
       serverConnection->executeQuery("STOP SLAVE");
       break;
-    case StaticFunctions::PostgreSQL:
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -1991,8 +1733,6 @@ void Replication::startSlave()
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       serverConnection->executeQuery("START SLAVE");
-      break;
-    case StaticFunctions::PostgreSQL:
       break;
     case StaticFunctions::Undefined:
     default:
@@ -2009,8 +1749,6 @@ void Replication::rebootSlave()
       serverConnection->executeQuery("STOP SLAVE");
       serverConnection->executeQuery("START SLAVE");
       break;
-    case StaticFunctions::PostgreSQL:
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -2024,8 +1762,6 @@ void Replication::resetSlave()
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       serverConnection->executeQuery("RESET SLAVE");
-      break;
-    case StaticFunctions::PostgreSQL:
       break;
     case StaticFunctions::Undefined:
     default:
@@ -2041,8 +1777,6 @@ void Replication::purgeBinaryLogs()
     case StaticFunctions::MariaDB:
       serverConnection->executeQuery("PURGE BINARY LOGS BEFORE NOW()");
       break;
-    case StaticFunctions::PostgreSQL:
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -2056,8 +1790,6 @@ void Replication::flushRelayLogs()
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       serverConnection->executeQuery("FLUSH REALY LOGS");
-      break;
-    case StaticFunctions::PostgreSQL:
       break;
     case StaticFunctions::Undefined:
     default:
@@ -2073,8 +1805,6 @@ void Replication::stopAllSlaves()
     case StaticFunctions::MariaDB:
       serverConnection->executeQuery("STOP ALL SLAVES");
       break;
-    case StaticFunctions::PostgreSQL:
-      break;
     case StaticFunctions::Undefined:
     default:
       break;
@@ -2088,8 +1818,6 @@ void Replication::startAllSlaves()
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       serverConnection->executeQuery("START ALL SLAVES");
-      break;
-    case StaticFunctions::PostgreSQL:
       break;
     case StaticFunctions::Undefined:
     default:
@@ -2106,11 +1834,6 @@ QString Replication::getStatus(QString connectionName)
       break;
     case StaticFunctions::MariaDB:
       return serverConnection->outputAsTable("SHOW MASTER STATUS") + "\n" + serverConnection->outputAsG("SHOW SLAVE '" + connectionName + "' STATUS");
-      break;
-    case StaticFunctions::PostgreSQL:
-#if USEPOSTGRES == 1
-      return "N/A";
-#endif
       break;
     case StaticFunctions::Undefined:
     default:
