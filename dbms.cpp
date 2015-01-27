@@ -852,16 +852,16 @@ QString DBMS::getPassword()
 
 QString DBMS::getHostName()
 {
-  if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
-    case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB:
-      return runQuerySingleColumn("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'HOSTNAME'").at(0);
-      break;
-    case StaticFunctions::Undefined:
-    default:
-      break;
-    }
+//  if (isOpened())
+//    switch(qApp->property("DBMSType").toInt()) {
+//    case StaticFunctions::MySQL:
+//    case StaticFunctions::MariaDB:
+//      return runQuerySingleColumn("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'HOSTNAME'").at(0);
+//      break;
+//    case StaticFunctions::Undefined:
+//    default:
+//      break;
+//    }
   return hostName;
 }
 
