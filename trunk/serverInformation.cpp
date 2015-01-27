@@ -313,7 +313,6 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
   }
   kbSentGraph2 = kbSentGraph1;
   executedQueriesGraph2 = executedQueriesGraph1;
-  timerServerGraphsData->start();
 }
 
 void ServerInformation::retranslateUi()
@@ -435,6 +434,7 @@ void ServerInformation::skipReplicationErrors(unsigned int count)
 
 void ServerInformation::showInformation(int tabIndex)
 {
+  timerServerGraphsData->stop();
   switch (tabIndex) {
   case 0:
     serverStatusTxt();
@@ -449,6 +449,7 @@ void ServerInformation::showInformation(int tabIndex)
     serverGraphsDataTxt();
     break;
   case 4:
+    timerServerGraphsData->start();
     serverGraphsData();
     break;
   case 5:
