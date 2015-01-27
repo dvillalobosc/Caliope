@@ -474,6 +474,7 @@ QString DBMS::lastError()
 
 int DBMS::query(QString queryToExecute)
 {
+  //qDebug() << queryToExecute;
   int valueToReturn = 0;
 
   //QSqlQuery querySQLite;
