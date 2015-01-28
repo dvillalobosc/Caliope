@@ -145,6 +145,8 @@ private:
 
 class Database : public QObject
 {
+  Q_OBJECT
+
 public:
   Database(DBMS *serverConnection, QString databaseName);
   bool drop();
@@ -257,6 +259,9 @@ public:
   void clearSQLiteQueryLog();
   void setCollation(QString charset, QString collation);
   QList<QStringList> *getCollationsApplicability();
+  void setKeyFile(QString keyFile);
+  void setCertFile(QString certFile);
+  void setUseSSL(bool useSSL);
 
   Table *table(QString tableName, QString database = QString());
   View *view(QString viewName, QString database = QString());
@@ -302,6 +307,9 @@ private:
   QString millisecondsToTime(unsigned int milliseconds);
   QString p_collation;
   QString p_charset;
+  bool p_useSSL;
+  QString p_clientKey;
+  QString p_clientCert;
 };
 
 #endif // DBMS_H

@@ -38,6 +38,8 @@ class DLineEdit;
 
 class DBarChartWidget : public QWidget
 {
+  Q_OBJECT
+
 public:
   DBarChartWidget();
   void addPoints(double point, double point2, double point3);

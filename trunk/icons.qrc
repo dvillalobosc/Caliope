@@ -122,5 +122,6 @@
         <file>images/png/64/server-database.png</file>
         <file>images/svg/preferences-desktop-theme-5.svg</file>
         <file>images/svg/checkbox.svg</file>
+        <file>images/svg/application-x-pem-key.svg</file>
     </qresource>
 </RCC>

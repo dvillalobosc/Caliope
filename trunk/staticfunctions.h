@@ -33,6 +33,8 @@ class QFont;
 
 class StaticFunctions : public QObject
 {
+  Q_OBJECT
+
 public:
   static QFont fixedWidthFont();
   static QStringList mariadbKeywords();

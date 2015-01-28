@@ -23,6 +23,7 @@
 
 #include <QWidget>
 #include <QSettings>
+#include <QIcon>
 
 class DLineEdit;
 class QDir;
@@ -31,7 +32,7 @@ class QLabel;
 class FileSelectorContexts
 {
 public:
-  enum FileSelectorContext {BackupFile = 1, LicenseFile, ProjectFile, PHPExecutable, Image};
+  enum FileSelectorContext {BackupFile = 1, LicenseFile, ProjectFile, PHPExecutable, Image, PEMFile};
 };
 
 class FileSelector : public QWidget
@@ -42,7 +43,7 @@ signals:
   void changed();
 
 public:
-  FileSelector(FileSelectorContexts::FileSelectorContext context, QString label = QString(), bool showSaveDialog = false);
+  FileSelector(FileSelectorContexts::FileSelectorContext context, QString label = QString(), bool showSaveDialog = false, QIcon icon = QIcon::fromTheme("folder", QIcon(":/images/svg/folder.svg")));
   bool isEmpty();
   QString getFileName();
   QDir fileDir();

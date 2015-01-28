@@ -93,21 +93,14 @@ bool DBMS::shutdown()
 bool DBMS::open()
 {
   //last_progress_report_length = 0;
+  my_bool reconnect = settings.value("DBMS/Reconnect", 1).toInt();
+  mysql_library_init(0, NULL, NULL);
+  mariadbConnection = mysql_init(NULL);
+  mysql_options(mariadbConnection, MYSQL_OPT_LOCAL_INFILE, 0);
+  mysql_options(mariadbConnection, MYSQL_OPT_RECONNECT, &reconnect);
 
-  switch(qApp->property("DBMSType").toInt()) {
-  case StaticFunctions::MySQL:
-  case StaticFunctions::MariaDB: {
-    my_bool reconnect = settings.value("DBMS/Reconnect", 1).toInt();
-    mysql_library_init(0, NULL, NULL);
-    mariadbConnection = mysql_init(NULL);
-    mysql_options(mariadbConnection, MYSQL_OPT_LOCAL_INFILE, 0);
-    mysql_options(mariadbConnection, MYSQL_OPT_RECONNECT, &reconnect);
-    break;
-  }
-  case StaticFunctions::Undefined:
-  default:
-    break;
-  }
+  if (p_useSSL && !p_clientCert.isEmpty() && !p_clientKey.isEmpty())
+    mysql_ssl_set(mariadbConnection, p_clientKey.toUtf8().data(), p_clientCert.toUtf8().data(), NULL, NULL, NULL);
 
   switch(qApp->property("DBMSType").toInt()) {
   case StaticFunctions::MySQL:
@@ -1286,6 +1279,21 @@ QList<QStringList> *DBMS::getCollationsApplicability()
       break;
     }
   return new QList<QStringList>();
+}
+
+void DBMS::setKeyFile(QString keyFile)
+{
+  this->p_clientKey = keyFile;
+}
+
+void DBMS::setCertFile(QString certFile)
+{
+  this->p_clientCert = certFile;
+}
+
+void DBMS::setUseSSL(bool useSSL)
+{
+  this->p_useSSL = useSSL;
 }
 
 QList<QStringList> *DBMS::getCharacterSets()
