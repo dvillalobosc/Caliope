@@ -35,6 +35,7 @@
 #include "connectdialog.h"
 #include "dtitlelabel.h"
 #include "staticfunctions.h"
+#include "fileselector.h"
 
 #include "QDebug"
 
@@ -74,7 +75,6 @@ ConnectDialog::ConnectDialog(DBMS *serverConnection)
   comboConnectionType = new QComboBox();
   comboConnectionType->insertItems(0, StaticFunctions::dbmsEnabled());
   connect(comboConnectionType, SIGNAL(activated(QString)), this, SLOT(comboConnectionTypeSlot(QString)));
-
 
   lineEditServer = new QLineEdit;
   connect(lineEditServer, SIGNAL(textChanged(QString)), this, SLOT(validateInputs()));
@@ -118,6 +118,14 @@ ConnectDialog::ConnectDialog(DBMS *serverConnection)
   collationsMapper = new QSignalMapper(this);
   connect(collationsMapper, SIGNAL(mapped(QString)), this, SLOT(changeCollationSlot(QString)));
 
+  useASSLConnection = new QCheckBox(tr("Use a SSL connection"));
+  useASSLConnection->setCheckState(settings.value("SSLConnection", "false") == "true" ? Qt::Checked : Qt::Unchecked);
+  connect(useASSLConnection, SIGNAL(stateChanged(int)), this, SLOT(useASSLConnectionStateChanged(int)));
+
+  fileSelectorClientKey = new FileSelector(FileSelectorContexts::PEMFile, tr("SSL Client Key file:"), false, QIcon(":/images/svg/application-x-pem-key.svg"));
+  fileSelectorClientCert = new FileSelector(FileSelectorContexts::PEMFile, tr("SSL Client Cert file:"), false, QIcon(":/images/svg/application-x-pem-key.svg"));
+  useASSLConnectionStateChanged(settings.value("SSLConnection", 0).toInt());
+
   QFormLayout *formLayout = new QFormLayout;
   formLayout->addRow(tr("&Connection Name:"), comboConnectionName);
   formLayout->addRow(sortConnectionList);
@@ -129,6 +137,9 @@ ConnectDialog::ConnectDialog(DBMS *serverConnection)
   formLayout->addRow(tr("Database:"), databaseHlLayout);
   formLayout->addRow(tr("Collation:"), collationHlLayout);
   formLayout->addRow(storePasswords);
+  formLayout->addRow(useASSLConnection);
+  formLayout->addRow(fileSelectorClientKey);
+  formLayout->addRow(fileSelectorClientCert);
   QGroupBox *mainGroupBox = new QGroupBox(windowTitle());
   mainGroupBox->setLayout(formLayout);
 
@@ -156,17 +167,23 @@ void ConnectDialog::fillLineEdits(const QString &text)
   //4 - Database
   //5 - Conexion count
   //6 - Collation
-  //7 - Password
+  //7 - UseSSL
+  //8 - KeyFile
+  //9 - CertFile
+  //10 - Password
   comboConnectionType->setCurrentIndex(comboConnectionType->findText(params.at(0)));
   lineEditUser->setText(params.at(1));
   lineEditServer->setText(params.at(2));
   spinBoxPort->setValue(params.at(3).toUInt());
   lineEditDatabase->setText(params.at(4));
   if (storePasswords->isChecked())
-    lineEditPassword->setText(StaticFunctions::password(params.at(7)));
+    lineEditPassword->setText(StaticFunctions::password(params.at(10)));
   setDBMS();
   count = params.at(5).toInt();
   lineEditCollation->setText(params.at(6));
+  useASSLConnection->setCheckState(params.at(7) == "1" ? Qt::Checked : Qt::Unchecked);
+  fileSelectorClientKey->setFileName(params.at(8));
+  fileSelectorClientCert->setFileName(params.at(9));
 }
 
 void ConnectDialog::comboConnectionTypeSlot(const QString &text)
@@ -190,6 +207,9 @@ void ConnectDialog::databasesMenuSlot()
     serverConnection->setPort(spinBoxPort->value());
     serverConnection->setCharacterSet(lineEditCollation->text().split("|").at(0));
     serverConnection->setCollation(lineEditCollation->text().split("|").at(1));
+    serverConnection->setUseSSL(useASSLConnection->isChecked());
+    serverConnection->setKeyFile(fileSelectorClientKey->getFileName());
+    serverConnection->setCertFile(fileSelectorClientCert->getFileName());
     serverConnection->open();
     connectionPerformed = true;
   }
@@ -222,6 +242,9 @@ void ConnectDialog::collatoinsMenuSlot()
     serverConnection->setPort(spinBoxPort->value());
     serverConnection->setCharacterSet(lineEditCollation->text().split("|").at(0));
     serverConnection->setCollation(lineEditCollation->text().split("|").at(1));
+    serverConnection->setUseSSL(useASSLConnection->isChecked());
+    serverConnection->setKeyFile(fileSelectorClientKey->getFileName());
+    serverConnection->setCertFile(fileSelectorClientCert->getFileName());
     serverConnection->open();
     connectionPerformed = true;
   }
@@ -241,6 +264,12 @@ void ConnectDialog::changeCollationSlot(QString collation)
   lineEditCollation->setText(collation);
   serverConnection->setCollation(collation.split("|").at(0), collation.split("|").at(1));
   getValues();
+}
+
+void ConnectDialog::useASSLConnectionStateChanged(int state)
+{
+  fileSelectorClientKey->setEnabled(state);
+  fileSelectorClientCert->setEnabled(state);
 }
 
 void ConnectDialog::setDBMS()
@@ -263,7 +292,10 @@ QList<QString> ConnectDialog::getValues()
   //4 - Database
   //5 - Conexion count -- No parsed but keeped the space.
   //6 - Collation
-  //7 - Password
+  //7 - UseSSL
+  //8 - KeyFile
+  //9 - CertFile
+  //10 - Password
   listValues.append(comboConnectionName->currentText());
   listValues.append(lineEditUser->text());
   listValues.append(lineEditServer->text());
@@ -271,12 +303,15 @@ QList<QString> ConnectDialog::getValues()
   listValues.append(lineEditDatabase->text());
   listValues.append("");
   listValues.append(lineEditCollation->text());
+  listValues.append(QString("%1").arg(useASSLConnection->isChecked()));
+  listValues.append(fileSelectorClientKey->getFileName().isEmpty() ? "-" : fileSelectorClientKey->getFileName());
+  listValues.append(fileSelectorClientCert->getFileName().isEmpty() ? "-" : fileSelectorClientCert->getFileName());
   listValues.append(lineEditPassword->text());
   //listValues.append(comboConnectionType->currentText());
 
   //Using the ServerConnections
   settings.setValue(comboConnectionName->currentText()
-                    , QString("%1:%2@%3:%4/%5 Count:%6 Collation:%7 Password:%8")
+                    , QString("%1:%2@%3:%4/%5 Count:%6 Collation:%7 UseSSL:%8 KeyFile:%9 CertFile:%10 Password:%11")
                     .arg(comboConnectionType->currentText())
                     .arg(lineEditUser->text())
                     .arg(lineEditServer->text())
@@ -284,6 +319,9 @@ QList<QString> ConnectDialog::getValues()
                     .arg(lineEditDatabase->text())
                     .arg(++count)
                     .arg(lineEditCollation->text())
+                    .arg(useASSLConnection->isChecked())
+                    .arg(fileSelectorClientKey->getFileName().isEmpty() ? "-" : fileSelectorClientKey->getFileName())
+                    .arg(fileSelectorClientCert->getFileName().isEmpty() ? "-" : fileSelectorClientCert->getFileName())
                     .arg(storePasswords->isChecked() ? StaticFunctions::password(lineEditPassword->text(), true) : "")
                     );
   settings.setValue("StorePassword", storePasswords->isChecked());

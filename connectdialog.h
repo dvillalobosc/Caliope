@@ -34,6 +34,7 @@ class QCheckBox;
 class QMenu;
 class QSignalMapper;
 class QCompleter;
+class FileSelector;
 
 class ConnectDialog : public QDialog
 {
@@ -52,6 +53,7 @@ private slots:
   void changeDatabaseSlot(QString database);
   void collatoinsMenuSlot();
   void changeCollationSlot(QString collation);
+  void useASSLConnectionStateChanged(int state);
 
 private:
   QDialogButtonBox *buttonBox;
@@ -77,6 +79,9 @@ private:
   QLineEdit *lineEditCollation;
   QPushButton *collationPushButton;
   QSignalMapper *collationsMapper;
+  QCheckBox *useASSLConnection;
+  FileSelector *fileSelectorClientKey;
+  FileSelector *fileSelectorClientCert;
 };
 
 #endif // CONNECTDIALOG_H

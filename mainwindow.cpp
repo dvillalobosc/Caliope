@@ -992,17 +992,22 @@ void MainWindow::migrateDatabaseActionTriggered()
         //2 - Host
         //3 - Port
         //4 - Database
-        //5 - Conexion count -- No parsed but keeped the space.
+        //5 - Conexion count
         //6 - Collation
-        //7 - Password
+        //7 - UseSSL
+        //8 - KeyFile
+        //9 - CertFile
+        //10 - Password
         secondaryServerConnection->setUserName(connectFrom->getValues().at(1));
         secondaryServerConnection->setHostName(connectFrom->getValues().at(2));
-        secondaryServerConnection->setPassword(connectFrom->getValues().at(7));
+        secondaryServerConnection->setPassword(connectFrom->getValues().at(10));
         secondaryServerConnection->setDatabase(connectFrom->getValues().at(4));
         secondaryServerConnection->setPort(connectFrom->getValues().at(3).toUInt());
         secondaryServerConnection->setCharacterSet(connectFrom->getValues().at(6).split("|").at(0));
         secondaryServerConnection->setCollation(connectFrom->getValues().at(6).split("|").at(1));
-
+        secondaryServerConnection->setUseSSL(connectFrom->getValues().at(7).toInt());
+        secondaryServerConnection->setKeyFile(connectFrom->getValues().at(8));
+        secondaryServerConnection->setCertFile(connectFrom->getValues().at(9));
         timerTableCount = new QTimer(this);
         timerTableCount->setInterval(2000);
         connect(timerTableCount, SIGNAL(timeout()), this, SLOT(tableCountSlot()));
@@ -1082,15 +1087,21 @@ void MainWindow::openRecentConnectionActionGroupTriggered(QAction *action)
   //4 - Database
   //5 - Conexion count -- No parsed but keeped the space.
   //6 - Collation
-  //7 - Password
+  //7 - UseSSL
+  //8 - KeyFile
+  //9 - CertFile
+  //10 - Password
   //qDebug() << params.at(1) << params.at(2) << params.at(7) << params.at(4) << params.at(3) << params.at(6);
   serverConnection->setUserName(params.at(1));
   serverConnection->setHostName(params.at(2));
-  serverConnection->setPassword(StaticFunctions::password(params.at(7)));
+  serverConnection->setPassword(StaticFunctions::password(params.at(10)));
   serverConnection->setDatabase(params.at(4));
   serverConnection->setPort(params.at(3).toUInt());
   serverConnection->setCharacterSet(params.at(6).split("|").at(0));
   serverConnection->setCollation(params.at(6).split("|").at(1));
+  serverConnection->setUseSSL(params.at(7).toInt());
+  serverConnection->setKeyFile(params.at(8));
+  serverConnection->setCertFile(params.at(9));
   if (!serverConnection->open())
     QMessageBox::critical(this, tr("Cannot connect to the server"), serverConnection->lastError());
   if (serverConnection->isOpened())
@@ -1817,14 +1828,20 @@ void MainWindow::connectToServerActionTriggered()
       //4 - Database
       //5 - Conexion count -- No parsed but keeped the space.
       //6 - Collation
-      //7 - Password
+      //7 - UseSSL
+      //8 - KeyFile
+      //9 - CertFile
+      //10 - Password
       serverConnection->setUserName(params.at(1));
       serverConnection->setHostName(params.at(2));
-      serverConnection->setPassword(params.at(7));
+      serverConnection->setPassword(params.at(10));
       serverConnection->setDatabase(params.at(4));
       serverConnection->setPort(params.at(3).toUInt());
       serverConnection->setCharacterSet(params.at(6).split("|").at(0));
       serverConnection->setCollation(params.at(6).split("|").at(1));
+      serverConnection->setUseSSL(params.at(7).toInt());
+      serverConnection->setKeyFile(params.at(8));
+      serverConnection->setCertFile(params.at(9));
       if (!serverConnection->open())
         QMessageBox::critical(this, tr("Cannot connect to the server"), serverConnection->lastError());
     }

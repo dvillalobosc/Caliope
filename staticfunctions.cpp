@@ -8186,7 +8186,19 @@ QStringList StaticFunctions::explodeConnectionString(QString connectionName)
   params.append(connection.mid(startIndex, endIndex).split(":").at(1));
   startIndex += ++endIndex;
   endIndex = connection.indexOf(" ", startIndex) - startIndex;
-  //7 - Password
+  //7 - UseSSL
+  params.append(connection.mid(startIndex, endIndex).split(":").at(1));
+  startIndex += ++endIndex;
+  endIndex = connection.indexOf(" ", startIndex) - startIndex;
+  //8 - KeyFile
+  params.append(connection.mid(startIndex, endIndex).split(":").at(1));
+  startIndex += ++endIndex;
+  endIndex = connection.indexOf(" ", startIndex) - startIndex;
+  //9 - CertFile
+  params.append(connection.mid(startIndex, endIndex).split(":").at(1));
+  startIndex += ++endIndex;
+  endIndex = connection.indexOf(" ", startIndex) - startIndex;
+  //10 - Password
   params.append(connection.mid(startIndex, endIndex).mid(9));
   startIndex += ++endIndex;
   endIndex = connection.indexOf(" ", startIndex) - startIndex;

@@ -25,6 +25,8 @@
 
 class BaseDiffFile : public QWidget
 {
+  Q_OBJECT
+
 public:
   BaseDiffFile(QString file);
 };

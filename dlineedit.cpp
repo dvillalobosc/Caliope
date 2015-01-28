@@ -38,18 +38,15 @@ DLineEdit::DLineEdit(QIcon icon, bool autoHideIcon)
   }
   connect(actionButton, SIGNAL(clicked()), this, SLOT(emitTextChangedSignal()));
   connect(this, SIGNAL(returnPressed()), this, SLOT(returnPressedSlot()));
-  int frameWidth = style()->pixelMetric(QStyle::PM_DefaultFrameWidth);
-  setStyleSheet(QString("QLineEdit { padding-right: %1px; } ").arg(actionButton->sizeHint().width() + frameWidth + 1));
-  QSize msz = minimumSizeHint();
-  setMinimumSize(qMax(msz.width(), actionButton->sizeHint().height() + frameWidth * 2 + 2),
-                 qMax(msz.height(), actionButton->sizeHint().height() + frameWidth * 2 + 2));
+  //int frameWidth = style()->pixelMetric(QStyle::PM_DefaultFrameWidth);
+  //setStyleSheet(QString("QLineEdit { padding-right: %1px; } ").arg(actionButton->sizeHint().width() + frameWidth + 1));
+  //QSize msz = minimumSizeHint();
+  //setMinimumSize(qMax(msz.width(), actionButton->sizeHint().height() + frameWidth), qMax(msz.height(), actionButton->sizeHint().height() + frameWidth));
 }
 
 void DLineEdit::resizeEvent(QResizeEvent *event)
 {
-  QSize sz = actionButton->sizeHint();
-  int frameWidth = style()->pixelMetric(QStyle::PM_DefaultFrameWidth);
-  actionButton->move(rect().right() - frameWidth - sz.width(), (rect().bottom() + 1 - sz.height())/2);
+  actionButton->move(rect().right() - style()->pixelMetric(QStyle::PM_DefaultFrameWidth) - actionButton->sizeHint().width(), (rect().bottom() + 1 - actionButton->sizeHint().height()) / 2);
   QLineEdit::resizeEvent(event);
 }
 

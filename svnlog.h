@@ -28,6 +28,8 @@ class DTitleLabel;
 
 class SVNLog : public DMdiSubWindow
 {
+  Q_OBJECT
+
 public:
   SVNLog(QString file);
 

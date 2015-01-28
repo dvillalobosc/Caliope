@@ -27,7 +27,7 @@
 #include "fileselector.h"
 #include "dlineedit.h"
 
-FileSelector::FileSelector(FileSelectorContexts::FileSelectorContext context, QString label, bool showSaveDialog)
+FileSelector::FileSelector(FileSelectorContexts::FileSelectorContext context, QString label, bool showSaveDialog, QIcon icon)
 {
   this->showSaveDialog = showSaveDialog;
   this->context = context;
@@ -46,21 +46,23 @@ FileSelector::FileSelector(FileSelectorContexts::FileSelectorContext context, QS
   case FileSelectorContexts::Image:
     setting = "LastFileImg";
     break;
+  case FileSelectorContexts::PEMFile:
+    setting = "LastPEMFile";
+    break;
   // default: Q_ASSERT(false);
   }
   QHBoxLayout *fileLayout = new QHBoxLayout;
-  fileLabel = new QLabel;
-  setText(label);
-  //fileLabel->setMargin(5);
-  lineEditFile = new DLineEdit(QIcon::fromTheme("folder", QIcon(":/images/svg/folder.svg")));
-//  lineEditFile->setText(settings.value(setting, "").toString());
+  lineEditFile = new DLineEdit(icon);
   connect(lineEditFile, SIGNAL(textChanged(QString)), this, SLOT(emitChanged()));
   connect(lineEditFile, SIGNAL(clicked()), this, SLOT(selectFileSlot()));
+  fileLabel = new QLabel;
+  setText(label);
   fileLabel->setBuddy(lineEditFile);
   fileLayout->addWidget(fileLabel);
   fileLayout->addWidget(lineEditFile);
-  retranslateUi();
+  fileLayout->setContentsMargins(0, 0, 0, 0);
   setLayout(fileLayout);
+  retranslateUi();
 }
 
 void FileSelector::retranslateUi()
@@ -80,6 +82,9 @@ void FileSelector::retranslateUi()
     break;
   case FileSelectorContexts::Image:
     title = tr("Image files (*.png *.jpg *.bmp)");
+    break;
+  case FileSelectorContexts::PEMFile:
+    title = tr("PEM files (*.pem)");
     break;
   // default: Q_ASSERT(false);
   }

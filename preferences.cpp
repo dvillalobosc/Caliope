@@ -142,9 +142,12 @@ Preferences::Preferences(DBMS *serverConnection)
   //2 - Host
   //3 - Port
   //4 - Database
-  //5 - Conexion count
+  //5 - Conexion count -- No parsed but keeped the space.
   //6 - Collation
-  //7 - Password
+  //7 - UseSSL
+  //8 - KeyFile
+  //9 - CertFile
+  //10 - Password
 
   QString collationsJoined;
   QList<QStringList> *collations = serverConnection->getCollationsApplicability();
@@ -160,6 +163,9 @@ Preferences::Preferences(DBMS *serverConnection)
   connectionsDTableViewHeaders->append(QStringList() << tr("Database") << NoDelegate << "" << "Left");
   connectionsDTableViewHeaders->append(QStringList() << tr("Count") << StaticFunctions::DelegateTypeNumber() << "" << "Left");
   connectionsDTableViewHeaders->append(QStringList() << tr("Collation") << (StaticFunctions::DelegateTypeEnum() + "(" + collationsJoined + ")") << "" << "Left");
+  connectionsDTableViewHeaders->append(QStringList() << tr("Use SSL") << NoDelegate << "" << "Left");
+  connectionsDTableViewHeaders->append(QStringList() << tr("Client Key File") << NoDelegate << "" << "Left");
+  connectionsDTableViewHeaders->append(QStringList() << tr("Client Cert File") << NoDelegate << "" << "Left");
   connectionsDTableViewHeaders->append(QStringList() << tr("Password") << StaticFunctions::DelegateTypePassword() << "" << "Left");
   listConnections = new DTableView(connectionsDTableViewHeaders);
 //  connect(listConnections, SIGNAL(loadStarted(QString,uint,double)), parentWidget, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
@@ -251,15 +257,18 @@ void Preferences::connectioItemChangedSlot(QStandardItem *item)
   //2 - Host
   //3 - Port
   //4 - Database
-  //5 - Conexion count
+  //5 - Conexion count -- No parsed but keeped the space.
   //6 - Collation
-  //7 - Password
+  //7 - UseSSL
+  //8 - KeyFile
+  //9 - CertFile
+  //10 - Password
 
   settings.beginGroup("ServerConnections");
 //  if ((item->data(Qt::UserRole).toString() != item->data(Qt::DisplayRole).toString()) && (item->column() == 0))
 //    settings.remove(item->data(Qt::UserRole).toString());
   settings.setValue(listConnections->indexData(item->row(), 0, Qt::EditRole).toString()
-                    , QString("%1:%2@%3:%4/%5 Count:%6 Collation:%7 Password:%8")
+                    , QString("%1:%2@%3:%4/%5 Count:%6 Collation:%7 UseSSL:%8 KeyFile:%9 CertFile:%10 Password:%11")
                     .arg(listConnections->indexData(item->row(), 1, Qt::EditRole).toString())
                     .arg(listConnections->indexData(item->row(), 2, Qt::EditRole).toString())
                     .arg(listConnections->indexData(item->row(), 3, Qt::EditRole).toString())
@@ -267,7 +276,10 @@ void Preferences::connectioItemChangedSlot(QStandardItem *item)
                     .arg(listConnections->indexData(item->row(), 5, Qt::EditRole).toString())
                     .arg(listConnections->indexData(item->row(), 6, Qt::EditRole).toString())
                     .arg(listConnections->indexData(item->row(), 7, Qt::EditRole).toString())
-                    .arg(StaticFunctions::password(listConnections->indexData(item->row(), 8, Qt::EditRole).toString(), true))
+                    .arg(listConnections->indexData(item->row(), 8, Qt::EditRole).toString())
+                    .arg(listConnections->indexData(item->row(), 9, Qt::EditRole).toString())
+                    .arg(listConnections->indexData(item->row(), 10, Qt::EditRole).toString())
+                    .arg(StaticFunctions::password(listConnections->indexData(item->row(), 11, Qt::EditRole).toString(), true))
                     );
   settings.endGroup();
   fillModelData();

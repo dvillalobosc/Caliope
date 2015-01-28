@@ -28,6 +28,8 @@ class DTitleLabel;
 
 class DiffFile : public DMdiSubWindow
 {
+  Q_OBJECT
+
 public:
   DiffFile(QString file);
 
