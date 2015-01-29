@@ -71,6 +71,11 @@ DBMS::DBMS(bool enableQueryLog)
     }
   }
   queryExecutionTime.start();
+
+  timerCheckIfReconnected = new QTimer(this);
+  timerCheckIfReconnected->setInterval(600000);
+  connect(timerCheckIfReconnected, SIGNAL(timeout()), this, SLOT(checkIfReconnected()));
+  timerCheckIfReconnected->start();
 }
 
 bool DBMS::shutdown()
@@ -138,6 +143,7 @@ bool DBMS::open()
   default:
     break;
   }
+  p_connectionId = runQuerySingleColumn("SELECT CONNECTION_ID()").at(0).toULong();
   return opened;
 }
 
@@ -1375,6 +1381,13 @@ Replication *DBMS::replication()
 void DBMS::errorMessageAcceptedSlot()
 {
   emit errorMessageAccepted();
+}
+
+void DBMS::checkIfReconnected()
+{
+  if (isOpened())
+    if (p_connectionId != runQuerySingleColumn("SELECT CONNECTION_ID()").at(0).toULong())
+      emit reconnectionPerformed();
 }
 
 View *DBMS::view(QString viewName, QString database)
