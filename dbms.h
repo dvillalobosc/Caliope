@@ -276,9 +276,11 @@ signals:
   void databaseChanged();
   void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 2000);
   void errorMessageAccepted();
+  void reconnectionPerformed();
 
 private slots:
   void errorMessageAcceptedSlot();
+  void checkIfReconnected();
 
 private:
   MYSQL *mariadbConnection;
@@ -310,6 +312,8 @@ private:
   bool p_useSSL;
   QString p_clientKey;
   QString p_clientCert;
+  QTimer *timerCheckIfReconnected;
+  ulong p_connectionId;
 };
 
 #endif // DBMS_H

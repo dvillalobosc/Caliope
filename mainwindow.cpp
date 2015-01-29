@@ -88,6 +88,7 @@ MainWindow::MainWindow()
   connect(serverConnection, SIGNAL(databaseChanged()), this, SLOT(changeDatabaseSlot()));
   connect(serverConnection, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   connect(serverConnection, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
+  connect(serverConnection, SIGNAL(reconnectionPerformed()), this, SLOT(reconnectionPerformedSlot()));
 
   projects = new Projects;
   connect(projects, SIGNAL(updateTitle()), this, SLOT(setTitle()));
@@ -1318,6 +1319,12 @@ void MainWindow::startAllReplicationSlavesActionTriggered()
 {
   serverConnection->replication()->startAllSlaves();
   statusBarMessage(tr("All the replication slaves hava been stoped."));
+}
+
+void MainWindow::reconnectionPerformedSlot()
+{
+  qDebug() << "Reconnection performed at: " << QTime::currentTime();
+  changeDatabase(serverConnection->getDatabase());
 }
 
 void MainWindow::finishedDatabaseMigrationSlot(int exitCode)

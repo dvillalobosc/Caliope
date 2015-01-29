@@ -179,6 +179,7 @@ private slots:
   void tellUsYourCommentsActionTriggered();
   void stopAllReplicationSlavesActionTriggered();
   void startAllReplicationSlavesActionTriggered();
+  void reconnectionPerformedSlot();
 
 public slots:
   void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 2000);
