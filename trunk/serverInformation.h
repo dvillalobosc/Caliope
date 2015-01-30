@@ -32,6 +32,7 @@ class QFormLayout;
 class QGroupBox;
 class DTitleLabel;
 class DLineEdit;
+class DTableView;
 
 #include "dmdisubwindow.h"
 #include "dbms.h"
@@ -143,6 +144,8 @@ private:
   QPushButton *pushButtonShowSlowQueries;
   QLabel *labelServerStatus;
   DLineEdit *lineEditConnectioName;
+  DTableView *slowQueriesDTableView;
+  QList<QStringList> *result;
 
 public slots:
   void showInformation(int tabIndex);

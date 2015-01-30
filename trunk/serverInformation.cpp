@@ -35,6 +35,7 @@
 #include "dtitlelabel.h"
 #include "staticfunctions.h"
 #include "dlineedit.h"
+#include "dtableview.h"
 
 #include "QDebug"
 
@@ -87,10 +88,20 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
   groupServer->setLayout(groupServerVLayout);
   informationVLayout->addWidget(groupServer);
   groupServerVLayout->addWidget(serverStatus);
+
+  QString NoDelegate = StaticFunctions::DelegateTypeNoDelegate();
+  QList<QStringList> *slowQueriesDTableViewHeaders = new QList<QStringList>;
+  slowQueriesDTableViewHeaders->append(QStringList() << tr("Start time") << NoDelegate  << "" << "Left");
+  slowQueriesDTableViewHeaders->append(QStringList() << tr("User") << NoDelegate  << "" << "Left");
+  slowQueriesDTableViewHeaders->append(QStringList() << tr("Time") << NoDelegate  << "" << "Left");
+  slowQueriesDTableViewHeaders->append(QStringList() << tr("SQL Text") << NoDelegate  << "" << "Left");
+  slowQueriesDTableView = new DTableView(slowQueriesDTableViewHeaders);
+  slowQueriesDTableView->setVisible(false);
+  groupServerVLayout->addWidget(slowQueriesDTableView);
+
   QWidget *widgetInformation = new QWidget;
   widgetInformation->setLayout(informationVLayout);
   serverInformationTab->addTab(widgetInformation, windowIcon(), " ");
-//   serverStatusTxt();
 
   //case 1
   timerReplicationStatusTxt = new QTimer(this);
@@ -553,6 +564,8 @@ void ServerInformation::hddUsageData()
 void ServerInformation::serverStatusTxt()
 {
   QApplication::setOverrideCursor(Qt::WaitCursor);
+  serverStatus->setVisible(true);
+  slowQueriesDTableView->setVisible(false);
   QString output(tr("Main server data.") + "\n");
   switch(qApp->property("DBMSType").toInt()) {
   case StaticFunctions::MySQL:
@@ -573,16 +586,14 @@ void ServerInformation::serverStatusTxt()
 void ServerInformation::serverSlowQueriesTxt()
 {
   QApplication::setOverrideCursor(Qt::WaitCursor);
-  QString output;
   switch(qApp->property("DBMSType").toInt()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
-    output = serverStatus->toPlainText();
-    output += "\n" + tr("Slow queries since server started.") + "\n";
-    output += serverConnection->outputAsTable("SELECT `start_time`, `user_host`, `query_time`, `sql_text` FROM `mysql`.`slow_log` WHERE `start_time` >= (SELECT FROM_UNIXTIME("
-                                                            " (SELECT UNIX_TIMESTAMP(CURRENT_TIMESTAMP()))"
-                                                            " - (SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'UPTIME')))");
-    serverStatus->setPlainText(output);
+    serverStatus->setVisible(false);
+    slowQueriesDTableView->setVisible(true);
+    result = serverConnection->runQuery("SELECT '', `start_time`, `user_host`, `query_time`, `sql_text` FROM `mysql`.`slow_log` WHERE `start_time` >= (SELECT FROM_UNIXTIME((SELECT UNIX_TIMESTAMP(CURRENT_TIMESTAMP())) - (SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'UPTIME')))");
+    result->takeLast(); //Remove the "Affected rows" line.
+    slowQueriesDTableView->setModelData(result);
     break;
   case StaticFunctions::Undefined:
   default:
