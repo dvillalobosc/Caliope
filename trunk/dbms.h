@@ -231,7 +231,7 @@ public:
   QStringList getCollations();
   QList<QStringList>* getCharacterSets();
   QString outputAsTable(QString queryToExecute, bool printExtraInfo = false, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true);
-  QString outputAsV(QString queryToExecute, bool printRowsInSet = false, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true);
+  QString outputAsV(QString queryToExecute, bool printRowsInSet = false, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true, bool removeHeaders = false);
   QString outputAsVV(QString queryToExecute, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true);
   QString outputAsHTML(QString queryToExecute, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true);
   QString outputAsXML(QString queryToExecute, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true);
@@ -247,7 +247,7 @@ public:
   void flushPrivileges();
   QString getTitle();
   QString getStringType();
-  QString replaceReturnsAndTabs(QString string);
+  inline QString replaceReturnsAndTabs(QString string);
   QString getConnectionString();
   QString getfailedQueries();
   QSqlDatabase dbSQLite;
