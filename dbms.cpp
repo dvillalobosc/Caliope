@@ -681,7 +681,7 @@ QString DBMS::outputAsXML(QString queryToExecute, bool saveToFile, bool replaceR
   }
 }
 
-QString DBMS::outputAsV(QString queryToExecute, bool printRowsInSet, bool saveToFile, bool replaceReturns, bool splitQuery)
+QString DBMS::outputAsV(QString queryToExecute, bool printRowsInSet, bool saveToFile, bool replaceReturns, bool splitQuery, bool removeHeaders)
 {
   int row = 0;
   int row2 = 0;
@@ -698,6 +698,9 @@ QString DBMS::outputAsV(QString queryToExecute, bool printRowsInSet, bool saveTo
 
       if (printRowsInSet)
         output += "--------------\n" + statement + "\n--------------\n";
+
+      if (removeHeaders)
+        rows->removeAt(0);
 
       //Print the data
       if (replaceReturns) {

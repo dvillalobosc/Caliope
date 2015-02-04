@@ -64,6 +64,7 @@ private:
   QString statement();
 
   QRadioButton *radioT;
+  QRadioButton *radioX;
   QRadioButton *radioV;
   QRadioButton *radioVV;
   QRadioButton *radioVVV;

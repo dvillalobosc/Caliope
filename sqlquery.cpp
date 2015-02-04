@@ -65,6 +65,7 @@ SQLQuery::SQLQuery(Projects *project, DBMS *serverConnection, unsigned int windo
   createActions();
   radioT = new QRadioButton("-t");
   radioT->setChecked(true);
+  radioX = new QRadioButton("-X");
   radioV = new QRadioButton("-v");
   radioVV = new QRadioButton("-vv");
   radioVVV = new QRadioButton("-vvv");
@@ -85,6 +86,7 @@ SQLQuery::SQLQuery(Projects *project, DBMS *serverConnection, unsigned int windo
   queryToolBar->addWidget(radioTXT);
   queryToolBar->addWidget(radioXML);
   queryToolBar->addWidget(radioG);
+  queryToolBar->addWidget(radioX);
   queryToolBar->addWidget(radioV);
   queryToolBar->addWidget(radioVV);
   queryToolBar->addWidget(radioVVV);
@@ -203,6 +205,17 @@ void SQLQuery::retranslateUi()
   trimColumnsAction->setToolTip(trimColumnsAction->text());
   checkTablesAction->setText(tr("Check tables status"));
   checkTablesAction->setToolTip(checkTablesAction->text());
+
+  radioT->setToolTip(tr("Output as table."));
+  radioX->setToolTip(tr("Same output as -v but with no headers."));
+  radioV->setToolTip(tr("Same output as -vv but with no query."));
+  radioVV->setToolTip(tr("Output TAB separated with the query."));
+  radioVVV->setToolTip(tr("Same output as -t but with the query."));
+  radioHTML->setToolTip(tr("Output as HTML."));
+  radioTXT->setToolTip(tr("Output as text."));
+  radioXML->setToolTip(tr("Output as XML."));
+  radioPDF->setToolTip(tr("Output in PDF."));
+  radioG->setToolTip(tr("Outputs columns as rows."));
 
   scriptEditor->retranslateUi();
   resutlEditor->retranslateUi();
@@ -434,7 +447,7 @@ QString SQLQuery::statement()
 void SQLQuery::executeStatement(QString statement)
 {
   if (!statement.isEmpty()) {
-    if (statement.contains(QRegExp("(ALTER|CREATE|DELETE|DROP|GRANT|LOAD|RENAME|TRUNCATE|UPDATE)", Qt::CaseInsensitive))
+    if (statement.contains(QRegExp("(ALTER|CHANGE|CREATE|DELETE|DROP|GRANT|LOAD|RENAME|START|STOP|TRUNCATE|UPDATE)", Qt::CaseInsensitive))
         && safeStatementsAction->isChecked()) {
       QString message(tr("Could not execute statement on safe mode."));
       QMessageBox::warning(this, tr("Safe mode"), message);
@@ -451,6 +464,10 @@ void SQLQuery::executeStatement(QString statement)
     if (radioT->isChecked())
       resutlEditor->setPlainText(serverConnection->outputAsTable(statement, false, exportAction->isChecked()
                                                                  , showNewLinesAction->isChecked(), splitAction->isChecked())
+                                 , concatenateOutputAction->isChecked());
+    if (radioX->isChecked())
+      resutlEditor->setPlainText(serverConnection->outputAsV(statement, false, exportAction->isChecked()
+                                                             , showNewLinesAction->isChecked(), splitAction->isChecked(), true)
                                  , concatenateOutputAction->isChecked());
     if (radioV->isChecked())
       resutlEditor->setPlainText(serverConnection->outputAsV(statement, false, exportAction->isChecked()
