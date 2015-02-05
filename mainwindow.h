@@ -180,6 +180,13 @@ private slots:
   void stopAllReplicationSlavesActionTriggered();
   void startAllReplicationSlavesActionTriggered();
   void reconnectionPerformedSlot();
+  void decrementSQLWindowCounter();
+  void decrementHTMLWindowCounter();
+  void decrementPHPWindowCounter();
+  void decrementCSSWindowCounter();
+  void decrementJavascriptWindowCounter();
+  void decrementSQLQueryWindowCounter();
+  void decrementTextWindowCounter();
 
 public slots:
   void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 2000);
@@ -277,7 +284,7 @@ private:
   int phpWindowCounter;
   int cssWindowCounter;
   int javascriptWindowCounter;
-  int mysqlQueryWindowCounter;
+  int sqlQueryWindowCounter;
   int textWindowCounter;
   QAction *toggleFullScreenAction;
   QAction *openFileAction;

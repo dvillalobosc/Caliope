@@ -302,7 +302,7 @@ void MainWindow::newConnectionPerformed()
   enabledDisableConnectionMenus(true);
   setTitle();
   sqlWindowCounter = 0;
-  mysqlQueryWindowCounter = 0;
+  sqlQueryWindowCounter = 0;
   htmlWindowCounter = 0;
   phpWindowCounter = 0;
   cssWindowCounter = 0;
@@ -790,6 +790,7 @@ void MainWindow::javasctiptEditorActionTriggered()
   connect(javascriptEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   connect(javascriptEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
   connect(javascriptEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
+  connect(javascriptEditor, SIGNAL(windowClosed()), this, SLOT(decrementJavascriptWindowCounter()));
   addSubWindow(javascriptEditor);
 }
 
@@ -801,6 +802,7 @@ void MainWindow::htmlEditorActionTriggered()
   connect(htmlEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   connect(htmlEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
   connect(htmlEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
+  connect(htmlEditor, SIGNAL(windowClosed()), this, SLOT(decrementHTMLWindowCounter()));
   addSubWindow(htmlEditor);
 }
 
@@ -812,6 +814,7 @@ void MainWindow::textEditorActionTriggered()
   connect(textEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   connect(textEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
   connect(textEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
+  connect(textEditor, SIGNAL(windowClosed()), this, SLOT(decrementTextWindowCounter()));
   addSubWindow(textEditor);
 }
 
@@ -1197,6 +1200,7 @@ void MainWindow::viewDWebViewPageSource(QString pageSource)
   connect(htmlEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   connect(htmlEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
   connect(htmlEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
+  connect(htmlEditor, SIGNAL(windowClosed()), this, SLOT(decrementHTMLWindowCounter()));
   addSubWindow(htmlEditor);
   htmlEditor->textEditor->setPlainText(pageSource);
   QApplication::restoreOverrideCursor();
@@ -1327,6 +1331,41 @@ void MainWindow::reconnectionPerformedSlot()
   changeDatabase(serverConnection->getDatabase());
 }
 
+void MainWindow::decrementSQLWindowCounter()
+{
+  --sqlWindowCounter;
+}
+
+void MainWindow::decrementHTMLWindowCounter()
+{
+  --htmlWindowCounter;
+}
+
+void MainWindow::decrementPHPWindowCounter()
+{
+  --phpWindowCounter;
+}
+
+void MainWindow::decrementCSSWindowCounter()
+{
+   --cssWindowCounter;
+}
+
+void MainWindow::decrementJavascriptWindowCounter()
+{
+  --javascriptWindowCounter;
+}
+
+void MainWindow::decrementSQLQueryWindowCounter()
+{
+  --sqlQueryWindowCounter;
+}
+
+void MainWindow::decrementTextWindowCounter()
+{
+  --textWindowCounter;
+}
+
 void MainWindow::finishedDatabaseMigrationSlot(int exitCode)
 {
   if (exitCode == QProcess::NormalExit && processMariaDBDump->exitCode() == QProcess::NormalExit) {
@@ -1375,6 +1414,7 @@ void MainWindow::cssEditorActionTriggered()
   connect(cssEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   connect(cssEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
   connect(cssEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
+  connect(cssEditor, SIGNAL(windowClosed()), this, SLOT(decrementCSSWindowCounter()));
   addSubWindow(cssEditor);
 }
 
@@ -1718,6 +1758,7 @@ void MainWindow::sqlScriptActionTriggered()
   connect(sqlEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   connect(sqlEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
   connect(sqlEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
+  connect(sqlEditor, SIGNAL(windowClosed()), this, SLOT(decrementSQLWindowCounter()));
   addSubWindow(sqlEditor);
 }
 
@@ -1727,6 +1768,7 @@ void MainWindow::phpScriptActionTriggered()
   connect(phpEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   connect(phpEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
   connect(phpEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
+  connect(phpEditor, SIGNAL(windowClosed()), this, SLOT(decrementPHPWindowCounter()));
   addSubWindow(phpEditor);
 }
 
@@ -1772,7 +1814,7 @@ void MainWindow::mysqlHelpActionTriggered()
 void MainWindow::queryActionTriggered()
 {
   if (serverConnection->testOpened()) {
-    query = new SQLQuery(projects, this->serverConnection, ++mysqlQueryWindowCounter);
+    query = new SQLQuery(projects, this->serverConnection, ++sqlQueryWindowCounter);
     addSubWindow(query);
     connect(query, SIGNAL(executionStarted(double)), this, SLOT(setProgressBarProgressSlot(double)));
     connect(query, SIGNAL(executionProgress(double)), this, SLOT(setProgressBarProgressSlot(double)));
@@ -1780,6 +1822,7 @@ void MainWindow::queryActionTriggered()
     connect(query, SIGNAL(showResultTab(QString,QString,QString)), this, SLOT(showResultTab(QString,QString,QString)));
     connect(query, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
     connect(query, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
+    connect(query, SIGNAL(windowClosed()), this, SLOT(decrementSQLQueryWindowCounter()));
   }
 }
 
