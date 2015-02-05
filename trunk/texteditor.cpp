@@ -1983,6 +1983,8 @@ void TextEditor::closeEvent(QCloseEvent *event)
     event->accept();
   else
     event->ignore();
+  QWidget::closeEvent(event);
+  emit windowClosed();
 }
 
 ///*! \brief Try to close the widgets and set the focus

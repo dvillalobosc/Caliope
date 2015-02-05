@@ -27,9 +27,13 @@ class DMdiSubWindow : public QMdiSubWindow
 {
   Q_OBJECT
 
+signals:
+  void windowClosed();
+
 public:
   DMdiSubWindow();
   virtual void retranslateUi() {}
+  virtual void closeEvent(QCloseEvent *closeEvent);
 };
 
 #endif // DMDISUBWINDOW_H

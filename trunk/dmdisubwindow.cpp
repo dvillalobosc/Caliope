@@ -24,3 +24,9 @@ DMdiSubWindow::DMdiSubWindow()
 {
   setAttribute(Qt::WA_DeleteOnClose);
 }
+
+void DMdiSubWindow::closeEvent(QCloseEvent *closeEvent)
+{
+  QMdiSubWindow::closeEvent(closeEvent);
+  emit windowClosed();
+}
