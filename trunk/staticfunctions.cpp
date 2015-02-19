@@ -5978,7 +5978,7 @@ QHash<QString, QString> StaticFunctions::phpFunctionsComplete()
 //  data.insert("sem_release", QString("<u>sem_release</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("sem_remove", QString("<u>sem_remove</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("serializable", QString("<u>serializable</u>(<b></b>) <br />%1").arg(tr("")));
-  data.insert("serialize", QString("string<u>serialize</u>(<b>mixed $value</b>) <br />%1").arg(tr("Generates a storable representation of a value.")));
+  data.insert("serialize", QString("string <u>serialize</u>(<b>mixed $value</b>) <br />%1").arg(tr("Generates a storable representation of a value.")));
 //  data.insert("session_cache_expire", QString("<u>session_cache_expire</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("session_cache_limiter", QString("<u>session_cache_limiter</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("session_commit", QString("<u>session_commit</u>(<b></b>) <br />%1").arg(tr("")));
@@ -6834,7 +6834,7 @@ QHash<QString, QString> StaticFunctions::phpFunctionsComplete()
 //  data.insert("unlink", QString("<u>unlink</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("unpack", QString("<u>unpack</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("unregister_tick_function", QString("<u>unregister_tick_function</u>(<b></b>) <br />%1").arg(tr("")));
-  data.insert("unserialize", QString("mixed<u>unserialize</u>(<b>string $str</b>) <br />%1").arg(tr("Creates a PHP value from a stored representation.")));
+  data.insert("unserialize", QString("mixed <u>unserialize</u>(<b>string $str</b>) <br />%1").arg(tr("Creates a PHP value from a stored representation.")));
   data.insert("unset", QString("void <u>unset</u>(<b>mixed $var [, mixed $... ]</b>) <br />%1").arg(tr("Unset a given variable")));
 //  data.insert("urldecode", QString("<u>urldecode</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("urlencode", QString("<u>urlencode</u>(<b></b>) <br />%1").arg(tr("")));
