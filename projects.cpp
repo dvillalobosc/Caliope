@@ -32,6 +32,9 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QInputDialog>
+#include <QDomDocument>
+#include <QXmlStreamReader>
+#include <QXmlStreamWriter>
 
 #include "projects.h"
 #include "dtitlelabel.h"
@@ -373,6 +376,61 @@ void Projects::openProjectActionSlot(QString file)
   emit updateTitle();
   enableMenuOption(true);
   subversionedFile->fileName = getProjectPath();
+
+//  QFile files(fileName + ".xml");
+//  if(files.open(QIODevice::WriteOnly | QIODevice::Text)) {
+//    QXmlStreamWriter xmlStreamWriter(&files);
+//    xmlStreamWriter.setAutoFormatting(true);
+//    xmlStreamWriter.writeStartDocument();
+
+//    xmlStreamWriter.writeStartElement("Project");
+
+//    xmlStreamWriter.writeStartElement("Information");
+//    xmlStreamWriter.writeTextElement("Name", name());
+//    xmlStreamWriter.writeTextElement("Path", getProjectPath());
+//    xmlStreamWriter.writeEndElement(); // Information
+
+//    xmlStreamWriter.writeStartElement("Files");
+//    foreach (QString fileName, getProjectFileList())
+//      xmlStreamWriter.writeTextElement("File", fileName);
+//    xmlStreamWriter.writeEndElement(); // Files
+
+
+//    xmlStreamWriter.writeStartElement("DockMarks");
+//    foreach (QString projectFile, getProjectFileList()) {
+//      QString dockMarks(getFileSettings(projectFile)->join(","));
+//      if (!dockMarks.isEmpty()) {
+//        xmlStreamWriter.writeStartElement("DockMark");
+//        xmlStreamWriter.writeAttribute("FileName", projectFile);
+//        foreach (QString mark, dockMarks.split(","))
+//          xmlStreamWriter.writeTextElement("Value", mark);
+//        xmlStreamWriter.writeEndElement(); // Files
+//      }
+//    }
+//    xmlStreamWriter.writeEndElement(); // DockMarks
+
+//    xmlStreamWriter.writeEndElement(); // Project
+//    xmlStreamWriter.writeEndDocument();
+//    files.close();
+//  } else {
+//    emit statusBarMessage(tr("Cannot write file %1:\n%2.").arg(fileName).arg(files.errorString()));
+//  }
+
+//  QFile files(fileName + ".xml");
+//  if(files.open(QIODevice::ReadOnly | QIODevice::Text)) {
+//    QXmlStreamReader xmlStreamReader(&files);
+//    while (!xmlStreamReader.atEnd()) {
+//      xmlStreamReader.readNext();
+//      if (xmlStreamReader.error())
+//        emit statusBarMessage(tr("Cannot read file %1:\n%2.").arg(fileName).arg(xmlStreamReader.errorString()));
+//      else
+//        if (!xmlStreamReader.text().toString().trimmed().isEmpty())
+//          qDebug() << xmlStreamReader.name() << xmlStreamReader.text().toString().trimmed();
+//    }
+//    files.close();
+//  } else {
+//    emit statusBarMessage(tr("Cannot read file %1:\n%2.").arg(fileName).arg(files.errorString()));
+//  }
 }
 
 void Projects::newProjectActionSlot()
