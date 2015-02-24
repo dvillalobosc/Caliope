@@ -1302,7 +1302,7 @@ QHash<QString, QString> StaticFunctions::phpFunctionsComplete()
 //  data.insert("atanh", QString("<u>atanh</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("badfunctioncallexception", QString("<u>badfunctioncallexception</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("badmethodcallexception", QString("<u>badmethodcallexception</u>(<b></b>) <br />%1").arg(tr("")));
-//  data.insert("base64_decode", QString("<u>base64_decode</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("base64_decode", QString("string <u>base64_decode</u>(<b>string $data [, bool $strict = false ]</b>) <br />%1").arg(tr("Decodes data encoded with MIME base64.")));
   data.insert("base64_encode", QString("string <u>base64_encode</u>(<b>string $data</b>) <br />%1").arg(tr("Encodes data with MIME base64")));
 //  data.insert("base_convert", QString("<u>base_convert</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("basename", QString("<u>basename</u>(<b></b>) <br />%1").arg(tr("")));
