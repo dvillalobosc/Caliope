@@ -975,19 +975,19 @@ void MainWindow::migrateDatabaseActionTriggered()
     processMariaDBDump->setStandardOutputProcess(processMariaDB);
     if (connectFrom->exec() == QDialog::Accepted) {
       params = connectFrom->getValues();
-      argumentsProcess1 << "--user=" + params.at(3);
-      argumentsProcess1 << "--host=" + params.at(1);
-      argumentsProcess1 << "--password=" + params.at(4);
-      argumentsProcess1 << "--port=" + params.at(2);
-      argumentsProcess1 << params.at(5);
+      argumentsProcess1 << "--user=" + params.at(1);
+      argumentsProcess1 << "--host=" + params.at(2);
+      argumentsProcess1 << "--password=" + params.at(10);
+      argumentsProcess1 << "--port=" + params.at(3);
+      argumentsProcess1 << params.at(4);
       connectFrom = new ConnectDialog(secondaryServerConnection);
       if (connectFrom->exec() == QDialog::Accepted) {
         params = connectFrom->getValues();
-        argumentsProcess2 << "--user=" + params.at(3);
-        argumentsProcess2 << "--host=" + params.at(1);
-        argumentsProcess2 << "--password=" + params.at(4);
-        argumentsProcess2 << "--port=" + params.at(2);
-        argumentsProcess2 << params.at(5);
+        argumentsProcess2 << "--user=" + params.at(1);
+        argumentsProcess2 << "--host=" + params.at(2);
+        argumentsProcess2 << "--password=" + params.at(10);
+        argumentsProcess2 << "--port=" + params.at(3);
+        argumentsProcess2 << params.at(4);
         if (secondaryServerConnection->isOpened())
           secondaryServerConnection->close();
         params = connectFrom->getValues();
