@@ -664,6 +664,10 @@ void MainWindow::createActions()
   importSettingsAction = new QAction(this);
   //importSettingsAction->setIcon(QIcon(":/images/svg/document-export-4.svg"));
   connect(importSettingsAction, SIGNAL(triggered()), this, SLOT(importSettingsActionTriggered()));
+
+  saveAllAction = new QAction(this);
+  saveAllAction->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_S));
+  connect(saveAllAction, SIGNAL(triggered()), this, SLOT(saveAllActionTriggered()));
 }
 
 void MainWindow::objectsDiagramActionTriggered()
@@ -1390,6 +1394,18 @@ void MainWindow::importSettingsActionTriggered()
   statusBarMessage(tr("File saved at: %1").arg(settings.fileName()), QSystemTrayIcon::Information);
 }
 
+void MainWindow::saveAllActionTriggered()
+{
+  qDebug() << "asdfasdf";
+//  foreach (QMdiSubWindow *subWindow, mdiMain->subWindowList()) {
+//    //qDebug() << subWindow->metaObject()->className();
+//    //qDebug() << subWindow->inherits("TextEditor");
+//    DMdiSubWindow *wid = qobject_cast<DMdiSubWindow *>(subWindow);
+//    if (wid)
+//      wid->save();
+//  }
+}
+
 void MainWindow::finishedDatabaseMigrationSlot(int exitCode)
 {
   if (exitCode == QProcess::NormalExit && processMariaDBDump->exitCode() == QProcess::NormalExit) {
@@ -1690,6 +1706,9 @@ void MainWindow::retranslateUi()
 
   importSettingsAction->setText(tr("Import settings file"));
   importSettingsAction->setStatusTip(importSettingsAction->text());
+
+  saveAllAction->setText(tr("Save all"));
+  saveAllAction->setStatusTip(saveAllAction->text());
 }
 
 void MainWindow::createInitialSettings()
@@ -2164,6 +2183,8 @@ void MainWindow::createMenus()
   connect(openRecentFilesMenu, SIGNAL(aboutToShow()), this, SLOT(openRecentFilesMenuAboutToShowSlot()));
   fileMenu->addMenu(openRecentFilesMenu);
   fileMenu->addAction(viewRecentFilesAction);
+  fileMenu->addSeparator();
+  fileMenu->addAction(saveAllAction);
   fileMenu->addSeparator();
   fileMenu->addAction(exportSettingsAction);
   fileMenu->addAction(importSettingsAction);
