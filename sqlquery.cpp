@@ -530,10 +530,24 @@ void SQLQuery::explainSELECT(bool withAlias)
   if (cursor.hasSelection() && cursor.selectedText() == "*") {
     QTextDocument *doc = scriptEditor->textEditor->document();
     QTextBlock block = doc->findBlock(qMin(cursor.anchor(), cursor.position()));
-    QRegExp expression("`[A-Za-z_\\d%]*`");
+    QString database;
+    //Check for formal name
+    QRegExp expression("`[A-Za-z_\\d%]*`\\.`[A-Za-z_\\d%]*`");
     expression.indexIn(block.text());
     QString symbolName = expression.capturedTexts().at(0);
-    QString queryString("SELECT `COLUMN_NAME` FROM `information_schema`.`COLUMNS` WHERE `TABLE_SCHEMA` = '" + serverConnection->getDatabase() + "' AND `TABLE_NAME` = '" + symbolName.mid(1, symbolName.length() - 2) + "'");
+    if (!symbolName.isEmpty()) {
+      database = symbolName.split(".").at(0);
+      database = database.mid(1, database.length() - 2);
+      symbolName = symbolName.split(".").at(1);
+      symbolName = symbolName.mid(1, symbolName.length() - 2);
+    } else {
+      database = serverConnection->getDatabase();
+      QRegExp expression("`[A-Za-z_\\d%]*`");
+      expression.indexIn(block.text());
+      symbolName = expression.capturedTexts().at(0);
+      symbolName = symbolName.mid(1, symbolName.length() - 2);
+    }
+    QString queryString("SELECT `COLUMN_NAME` FROM `information_schema`.`COLUMNS` WHERE `TABLE_SCHEMA` = '" + database + "' AND `TABLE_NAME` = '" + symbolName + "'");
     QString outPut;
     foreach (QString column, serverConnection->runQuerySingleColumn(queryString))
       outPut += (withAlias ? "`a`.`" : "`") + column + "`, ";
