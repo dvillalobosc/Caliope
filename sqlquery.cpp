@@ -100,6 +100,7 @@ SQLQuery::SQLQuery(Projects *project, DBMS *serverConnection, unsigned int windo
   queryToolBar->setIconSize(QSize(24, 24));
   queryToolBar->addSeparator();
   queryToolBar->addAction(explainSelectAction);
+  queryToolBar->addAction(explainSelectActionWithAliasAction);
   queryToolBar->addAction(explainInsertAction);
   queryToolBar->addAction(exportTableDataForInsertAction);
   queryToolBar->addAction(explainUpdateAction);
@@ -205,6 +206,8 @@ void SQLQuery::retranslateUi()
   trimColumnsAction->setToolTip(trimColumnsAction->text());
   checkTablesAction->setText(tr("Check tables status"));
   checkTablesAction->setToolTip(checkTablesAction->text());
+  explainSelectActionWithAliasAction->setText(tr("Explain SELECT with Alias"));
+  explainSelectActionWithAliasAction->setToolTip(explainSelectActionWithAliasAction->text());
 
   radioT->setToolTip(tr("Output as table."));
   radioX->setToolTip(tr("Same output as -v but with no headers."));
@@ -316,6 +319,11 @@ void SQLQuery::createActions()
   checkTablesAction->setIcon(QIcon(":/images/svg/checkbox.svg"));
   connect(checkTablesAction, SIGNAL(triggered()), this, SLOT(checkTablesActionTriggered()));
 
+  explainSelectActionWithAliasAction = new QAction(this);
+  explainSelectActionWithAliasAction->setIcon(QIcon(":/images/svg/application-x-executable.svg"));
+  explainSelectActionWithAliasAction->setShortcut(QKeySequence(Qt::SHIFT + Qt::Key_F7));
+  connect(explainSelectActionWithAliasAction, SIGNAL(triggered()), this, SLOT(explainSelectActionWithAliasActionTriggered()));
+
   queryPlayerToolBar = new QToolBar();
   queryPlayerToolBar->addAction(queryPlayerRunFirstQueryAction);
   queryPlayerToolBar->addAction(queryPlayerRunPreviousQueryAction);
@@ -326,6 +334,7 @@ void SQLQuery::createActions()
   queryPlayerToolBar->addAction(queryPlayerStopAction);
   queryPlayerToolBar->addSeparator();
   queryPlayerToolBar->addAction(explainSelectAction);
+  queryPlayerToolBar->addAction(explainSelectActionWithAliasAction);
   queryPlayerToolBar->addAction(explainInsertAction);
   queryPlayerToolBar->addAction(explainUpdateAction);
   queryPlayerToolBar->addAction(concatenateOutputAction);
@@ -515,6 +524,25 @@ void SQLQuery::executeStatement(QString statement)
   }
 }
 
+void SQLQuery::explainSELECT(bool withAlias)
+{
+  QTextCursor cursor = scriptEditor->textEditor->textCursor();
+  if (cursor.hasSelection() && cursor.selectedText() == "*") {
+    QTextDocument *doc = scriptEditor->textEditor->document();
+    QTextBlock block = doc->findBlock(qMin(cursor.anchor(), cursor.position()));
+    QRegExp expression("`[A-Za-z_\\d%]*`");
+    expression.indexIn(block.text());
+    QString symbolName = expression.capturedTexts().at(0);
+    QString queryString("SELECT `COLUMN_NAME` FROM `information_schema`.`COLUMNS` WHERE `TABLE_SCHEMA` = '" + serverConnection->getDatabase() + "' AND `TABLE_NAME` = '" + symbolName.mid(1, symbolName.length() - 2) + "'");
+    QString outPut;
+    foreach (QString column, serverConnection->runQuerySingleColumn(queryString))
+      outPut += (withAlias ? "`a`.`" : "`") + column + "`, ";
+    cursor.insertText(outPut.mid(0, outPut.length() - 2));
+  } else {
+    resutlEditor->setPlainText(tr("Incorrect use of the EXPLAIN SELECT Option. Example: SELECT * FROM `columns_pri`, it only works for the current database, the asterisk must be selected."));
+  }
+}
+
 void SQLQuery::executeActionTriggered()
 {
   if (statement().startsWith("EDIT ", Qt::CaseInsensitive)) {
@@ -605,21 +633,7 @@ void SQLQuery::exportTableDataForInsertActionTriggered()
 
 void SQLQuery::explainSelectActionTriggered()
 {
-  QTextCursor cursor = scriptEditor->textEditor->textCursor();
-  if (cursor.hasSelection() && cursor.selectedText() == "*") {
-    QTextDocument *doc = scriptEditor->textEditor->document();
-    QTextBlock block = doc->findBlock(qMin(cursor.anchor(), cursor.position()));
-    QRegExp expression("`[A-Za-z_\\d%]*`");
-    expression.indexIn(block.text());
-    QString symbolName = expression.capturedTexts().at(0);
-    QString queryString("SELECT `COLUMN_NAME` FROM `information_schema`.`COLUMNS` WHERE `TABLE_SCHEMA` = '" + serverConnection->getDatabase() + "' AND `TABLE_NAME` = '" + symbolName.mid(1, symbolName.length() - 2) + "'");
-    QString outPut;
-    foreach (QString column, serverConnection->runQuerySingleColumn(queryString))
-      outPut += "`" + column + "`, ";
-    cursor.insertText(outPut.mid(0, outPut.length() - 2));
-  } else {
-    resutlEditor->setPlainText(tr("Incorrect use of the EXPLAIN SELECT Option. Example: SELECT * FROM `columns_pri`, it only works for the current database, the asterisk must be selected."));
-  }
+  explainSELECT(false);
 }
 
 void SQLQuery::explainInsertActionTriggered()
@@ -790,4 +804,9 @@ void SQLQuery::checkTablesActionTriggered()
   foreach (QString table, serverConnection->database()->getTables())
     queriesToBePlayed->append("SELECT * FROM `" + table + "` LIMIT 1");
   emit enableDisableAction();
+}
+
+void SQLQuery::explainSelectActionWithAliasActionTriggered()
+{
+  explainSELECT(true);
 }
