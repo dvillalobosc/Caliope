@@ -203,6 +203,7 @@ public slots:
 
 signals:
   void databaseChanged();
+  void save();
 
 private:
   bool okToClose();

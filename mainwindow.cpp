@@ -803,6 +803,7 @@ void MainWindow::javasctiptEditorActionTriggered()
   connect(javascriptEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
   connect(javascriptEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
   connect(javascriptEditor, SIGNAL(windowClosed()), this, SLOT(decrementJavascriptWindowCounter()));
+  connect(this, SIGNAL(save()), javascriptEditor, SLOT(saveFileActionTriggered()));
   addSubWindow(javascriptEditor);
 }
 
@@ -815,6 +816,7 @@ void MainWindow::htmlEditorActionTriggered()
   connect(htmlEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
   connect(htmlEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
   connect(htmlEditor, SIGNAL(windowClosed()), this, SLOT(decrementHTMLWindowCounter()));
+  connect(this, SIGNAL(save()), htmlEditor, SLOT(saveFileActionTriggered()));
   addSubWindow(htmlEditor);
 }
 
@@ -827,6 +829,7 @@ void MainWindow::textEditorActionTriggered()
   connect(textEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
   connect(textEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
   connect(textEditor, SIGNAL(windowClosed()), this, SLOT(decrementTextWindowCounter()));
+  connect(this, SIGNAL(save()), textEditor, SLOT(saveFileActionTriggered()));
   addSubWindow(textEditor);
 }
 
@@ -1213,6 +1216,7 @@ void MainWindow::viewDWebViewPageSource(QString pageSource)
   connect(htmlEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
   connect(htmlEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
   connect(htmlEditor, SIGNAL(windowClosed()), this, SLOT(decrementHTMLWindowCounter()));
+  connect(this, SIGNAL(save()), htmlEditor, SLOT(saveFileActionTriggered()));
   addSubWindow(htmlEditor);
   htmlEditor->textEditor->setPlainText(pageSource);
   QApplication::restoreOverrideCursor();
@@ -1396,14 +1400,8 @@ void MainWindow::importSettingsActionTriggered()
 
 void MainWindow::saveAllActionTriggered()
 {
-  qDebug() << "asdfasdf";
-//  foreach (QMdiSubWindow *subWindow, mdiMain->subWindowList()) {
-//    //qDebug() << subWindow->metaObject()->className();
-//    //qDebug() << subWindow->inherits("TextEditor");
-//    DMdiSubWindow *wid = qobject_cast<DMdiSubWindow *>(subWindow);
-//    if (wid)
-//      wid->save();
-//  }
+  emit save();
+  statusBarMessage(tr("All editors saved"), QSystemTrayIcon::Information);
 }
 
 void MainWindow::finishedDatabaseMigrationSlot(int exitCode)
@@ -1455,6 +1453,7 @@ void MainWindow::cssEditorActionTriggered()
   connect(cssEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
   connect(cssEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
   connect(cssEditor, SIGNAL(windowClosed()), this, SLOT(decrementCSSWindowCounter()));
+  connect(this, SIGNAL(save()), cssEditor, SLOT(saveFileActionTriggered()));
   addSubWindow(cssEditor);
 }
 
@@ -1808,6 +1807,7 @@ void MainWindow::sqlScriptActionTriggered()
   connect(sqlEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
   connect(sqlEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
   connect(sqlEditor, SIGNAL(windowClosed()), this, SLOT(decrementSQLWindowCounter()));
+  connect(this, SIGNAL(save()), sqlEditor, SLOT(saveFileActionTriggered()));
   addSubWindow(sqlEditor);
 }
 
@@ -1818,6 +1818,7 @@ void MainWindow::phpScriptActionTriggered()
   connect(phpEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
   connect(phpEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
   connect(phpEditor, SIGNAL(windowClosed()), this, SLOT(decrementPHPWindowCounter()));
+  connect(this, SIGNAL(save()), phpEditor, SLOT(saveFileActionTriggered()));
   addSubWindow(phpEditor);
 }
 

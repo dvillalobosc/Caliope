@@ -1697,9 +1697,9 @@ Total progess: %5.</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="173"/>
-        <location filename="../mainwindow.cpp" line="1237"/>
+        <location filename="../mainwindow.cpp" line="1241"/>
         <location filename="../mainwindow.cpp" line="1481"/>
-        <location filename="../mainwindow.cpp" line="1880"/>
+        <location filename="../mainwindow.cpp" line="1882"/>
         <source>Server Information</source>
         <translation>Información del Servidor</translation>
     </message>
@@ -1730,14 +1730,14 @@ Total progess: %5.</source>
         <location filename="../mainwindow.cpp" line="181"/>
         <location filename="../mainwindow.cpp" line="275"/>
         <location filename="../mainwindow.cpp" line="1493"/>
-        <location filename="../mainwindow.cpp" line="1892"/>
+        <location filename="../mainwindow.cpp" line="1894"/>
         <source>Catalogs</source>
         <translation>Catálogos</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="183"/>
         <location filename="../mainwindow.cpp" line="1499"/>
-        <location filename="../mainwindow.cpp" line="1964"/>
+        <location filename="../mainwindow.cpp" line="1966"/>
         <source>Table Maintenance</source>
         <translation>Mantenimiento de Tablas</translation>
     </message>
@@ -1747,7 +1747,7 @@ Total progess: %5.</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="185"/>
-        <location filename="../mainwindow.cpp" line="1841"/>
+        <location filename="../mainwindow.cpp" line="1843"/>
         <source>Process List</source>
         <translation>Lista de Procesos</translation>
     </message>
@@ -1799,7 +1799,7 @@ Total progess: %5.</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1475"/>
-        <location filename="../mainwindow.cpp" line="2368"/>
+        <location filename="../mainwindow.cpp" line="2370"/>
         <source>About CalÃ­ope</source>
         <translation>Acerca de Calíope</translation>
     </message>
@@ -1851,34 +1851,34 @@ Total progess: %5.</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="197"/>
-        <location filename="../mainwindow.cpp" line="960"/>
+        <location filename="../mainwindow.cpp" line="963"/>
         <source>Database Comparision</source>
         <translation>Comparación de Bases de Datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="896"/>
+        <location filename="../mainwindow.cpp" line="899"/>
         <location filename="../mainwindow.cpp" line="1610"/>
         <source>PostgreSQL On-Line Help</source>
         <translation>Ayuda en Línea de PostgreSQL</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="901"/>
+        <location filename="../mainwindow.cpp" line="904"/>
         <location filename="../mainwindow.cpp" line="1613"/>
         <source>MariaDB On-Line Help</source>
         <translation>Ayuda en Línea de MariaDB</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="922"/>
+        <location filename="../mainwindow.cpp" line="925"/>
         <source>External Web Page</source>
         <translation>Página Web Externa</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="930"/>
+        <location filename="../mainwindow.cpp" line="933"/>
         <source>Visited sites</source>
         <translation>Sitios visitados</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="948"/>
+        <location filename="../mainwindow.cpp" line="951"/>
         <source>The slave has been reset.</source>
         <translation>El esclavo ha sido reestablecido.</translation>
     </message>
@@ -1887,116 +1887,121 @@ Total progess: %5.</source>
         <translation type="obsolete">Comparación de Bases de Datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1032"/>
+        <location filename="../mainwindow.cpp" line="1035"/>
         <source>Migrating data</source>
         <translation>Migrando datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1032"/>
+        <location filename="../mainwindow.cpp" line="1035"/>
         <source>Abort</source>
         <translation>Abortar</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1045"/>
-        <location filename="../mainwindow.cpp" line="1414"/>
-        <location filename="../mainwindow.cpp" line="1421"/>
-        <location filename="../mainwindow.cpp" line="1431"/>
+        <location filename="../mainwindow.cpp" line="1048"/>
+        <location filename="../mainwindow.cpp" line="1413"/>
+        <location filename="../mainwindow.cpp" line="1420"/>
+        <location filename="../mainwindow.cpp" line="1430"/>
         <source>Database migration</source>
         <translation>Migración de bases de datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1045"/>
+        <location filename="../mainwindow.cpp" line="1048"/>
         <source>Database migration is only aviable for MariaDB and MySQL.</source>
         <translation>La migración de bases de datos solo está dispobible para MariaDB y MySQL.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1052"/>
+        <location filename="../mainwindow.cpp" line="1055"/>
         <source>Table count: %1</source>
         <translation>Conteo de tablas: %1</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="187"/>
-        <location filename="../mainwindow.cpp" line="1129"/>
+        <location filename="../mainwindow.cpp" line="1132"/>
         <source>Query Log</source>
         <translation>Log de Sentencias</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1155"/>
+        <location filename="../mainwindow.cpp" line="1158"/>
         <location filename="../mainwindow.cpp" line="1633"/>
         <source>Database information</source>
         <translation>Información de la base de datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1166"/>
+        <location filename="../mainwindow.cpp" line="1169"/>
         <source>Save to Image</source>
         <translation>Guardar en Imagen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1166"/>
+        <location filename="../mainwindow.cpp" line="1169"/>
         <source>Image files (%1)</source>
         <translation>Archivos de imagen (%1)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1172"/>
-        <location filename="../mainwindow.cpp" line="1386"/>
-        <location filename="../mainwindow.cpp" line="1394"/>
+        <location filename="../mainwindow.cpp" line="1175"/>
+        <location filename="../mainwindow.cpp" line="1390"/>
+        <location filename="../mainwindow.cpp" line="1398"/>
         <source>File saved at: %1</source>
         <translation>Archivo guardado en: %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1246"/>
+        <location filename="../mainwindow.cpp" line="1250"/>
         <location filename="../mainwindow.cpp" line="1679"/>
         <source>HDD Usage Graphics</source>
         <translation>Gráfico de uso de HDD</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1255"/>
+        <location filename="../mainwindow.cpp" line="1259"/>
         <location filename="../mainwindow.cpp" line="1682"/>
         <source>Executed Queries</source>
         <translation>Consultas Ejecutadas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1264"/>
+        <location filename="../mainwindow.cpp" line="1268"/>
         <location filename="../mainwindow.cpp" line="1685"/>
         <source>Data Sent/Received</source>
         <translation>Datos Enviados/Recibidos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1273"/>
-        <location filename="../mainwindow.cpp" line="1285"/>
+        <location filename="../mainwindow.cpp" line="1277"/>
+        <location filename="../mainwindow.cpp" line="1289"/>
         <source>Custom reports</source>
         <translation>Reportes personalizados</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1316"/>
+        <location filename="../mainwindow.cpp" line="1320"/>
         <location filename="../mainwindow.cpp" line="1691"/>
         <source>Slow Queries</source>
         <translation>Consultas lentas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1331"/>
+        <location filename="../mainwindow.cpp" line="1335"/>
         <source>All the replication slaves have been started.</source>
         <translation>Todos los esclavos de replicación han sido iniciados.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1337"/>
+        <location filename="../mainwindow.cpp" line="1341"/>
         <source>All the replication slaves hava been stoped.</source>
         <translation>Todos los esclavos de replicación han sido detenidos.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1384"/>
-        <location filename="../mainwindow.cpp" line="1392"/>
+        <location filename="../mainwindow.cpp" line="1388"/>
+        <location filename="../mainwindow.cpp" line="1396"/>
         <source>Save file</source>
         <translation>Guardar archivo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1384"/>
-        <location filename="../mainwindow.cpp" line="1392"/>
+        <location filename="../mainwindow.cpp" line="1388"/>
+        <location filename="../mainwindow.cpp" line="1396"/>
         <source>Settings files (*)</source>
         <translation>Archivos de configuración (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1414"/>
+        <location filename="../mainwindow.cpp" line="1404"/>
+        <source>All editors saved</source>
+        <translation>Todos los editores guardados</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1413"/>
         <source>Migration done.</source>
         <translation>Migración realizada.</translation>
     </message>
@@ -2042,14 +2047,14 @@ Total progess: %5.</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1517"/>
-        <location filename="../mainwindow.cpp" line="1835"/>
-        <location filename="../mainwindow.cpp" line="1853"/>
+        <location filename="../mainwindow.cpp" line="1837"/>
+        <location filename="../mainwindow.cpp" line="1855"/>
         <source>MySQL On-Line Help</source>
         <translation>Ayuda en Línea de MySQL</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1520"/>
-        <location filename="../mainwindow.cpp" line="1830"/>
+        <location filename="../mainwindow.cpp" line="1832"/>
         <source>PHP On-Line Help</source>
         <translation>Ayuda en Línea de PHP</translation>
     </message>
@@ -2179,18 +2184,18 @@ Total progess: %5.</source>
         <translation>Tomar una instantánea</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1204"/>
+        <location filename="../mainwindow.cpp" line="1207"/>
         <location filename="../mainwindow.cpp" line="1673"/>
         <source>CalÃ­ope source documentation</source>
         <translation>Documentación fuente de Calíope</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2345"/>
+        <location filename="../mainwindow.cpp" line="2347"/>
         <source>Cannot load the translation.</source>
         <translation>No es posible cargar la traducción.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="871"/>
+        <location filename="../mainwindow.cpp" line="874"/>
         <location filename="../mainwindow.cpp" line="1604"/>
         <source>Time Difference</source>
         <translation>Diferencia de Tiempo</translation>
@@ -2211,42 +2216,42 @@ Total progess: %5.</source>
         <translation>Abrir un archivo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="836"/>
+        <location filename="../mainwindow.cpp" line="839"/>
         <source>The replication slave has been stoped.</source>
         <translation>El esclavo de replicación ha sido detenido.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="842"/>
+        <location filename="../mainwindow.cpp" line="845"/>
         <source>The replication slave has been started.</source>
         <translation>El esclavo de replicación ha sido iniciado.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="848"/>
+        <location filename="../mainwindow.cpp" line="851"/>
         <source>The replication slave has been rebooted.</source>
         <translation>El esclavo de replicación ha sido reiniciado.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="860"/>
+        <location filename="../mainwindow.cpp" line="863"/>
         <source>Privileges flushed.</source>
         <translation>Privilegios refrescados.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="866"/>
+        <location filename="../mainwindow.cpp" line="869"/>
         <source>Logs purged.</source>
         <translation>Logs purgados.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="872"/>
+        <location filename="../mainwindow.cpp" line="875"/>
         <source>Seconds of difference: %1</source>
         <translation>Segundos de diferencia: %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="880"/>
+        <location filename="../mainwindow.cpp" line="883"/>
         <source>Select a date</source>
         <translation>Seleccione una fecha</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="954"/>
+        <location filename="../mainwindow.cpp" line="957"/>
         <source>Logs flushed.</source>
         <translation>Registros limpiados.</translation>
     </message>
@@ -2313,7 +2318,7 @@ Total progess: %5.</source>
         <translation>Usuarios</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1825"/>
+        <location filename="../mainwindow.cpp" line="1827"/>
         <source>External Web page</source>
         <translation>Página Web externa</translation>
     </message>
@@ -2323,7 +2328,7 @@ Total progess: %5.</source>
         <translation>Conectado satisfactoriamente a: %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1976"/>
+        <location filename="../mainwindow.cpp" line="1978"/>
         <source>Result</source>
         <translation>Resultado</translation>
     </message>
@@ -2349,7 +2354,7 @@ Total progess: %5.</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1620"/>
-        <location filename="../mainwindow.cpp" line="2174"/>
+        <location filename="../mainwindow.cpp" line="2176"/>
         <source>&amp;File</source>
         <translation>&amp;Archivo</translation>
     </message>
@@ -2379,7 +2384,7 @@ Total progess: %5.</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1626"/>
-        <location filename="../mainwindow.cpp" line="2259"/>
+        <location filename="../mainwindow.cpp" line="2261"/>
         <source>Replication</source>
         <translation>Replicación</translation>
     </message>
@@ -2424,8 +2429,8 @@ Total progess: %5.</source>
         <translation>Migrar base de datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1122"/>
-        <location filename="../mainwindow.cpp" line="1944"/>
+        <location filename="../mainwindow.cpp" line="1125"/>
+        <location filename="../mainwindow.cpp" line="1946"/>
         <source>Cannot connect to the server</source>
         <translation>No es posible conectarse al servidor</translation>
     </message>
@@ -2470,27 +2475,27 @@ Total progess: %5.</source>
         <translation>Guardar todo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2256"/>
+        <location filename="../mainwindow.cpp" line="2258"/>
         <source>General</source>
         <translation>General</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2262"/>
+        <location filename="../mainwindow.cpp" line="2264"/>
         <source>Logs</source>
         <translation>Registros</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2395"/>
+        <location filename="../mainwindow.cpp" line="2397"/>
         <source>Windows</source>
         <translation>Ventanas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2406"/>
+        <location filename="../mainwindow.cpp" line="2408"/>
         <source>Windows options</source>
         <translation>Opciones de ventanas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2465"/>
+        <location filename="../mainwindow.cpp" line="2467"/>
         <source>Character set changed to: %1</source>
         <translation>Conjunto de caracteres cambiado a: %1</translation>
     </message>
@@ -7175,23 +7180,23 @@ Total of queries: %5, remaining: %6.</source>
         <translation>Símbolos</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="496"/>
+        <location filename="../texteditor.cpp" line="491"/>
         <source>Print Script</source>
         <translation>Imprimir Script</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="534"/>
+        <location filename="../texteditor.cpp" line="529"/>
         <source>Clean</source>
         <translation>Limpiar</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="935"/>
-        <location filename="../texteditor.cpp" line="939"/>
+        <location filename="../texteditor.cpp" line="930"/>
+        <location filename="../texteditor.cpp" line="934"/>
         <source>Save file</source>
         <translation>Guardar archivo</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="935"/>
+        <location filename="../texteditor.cpp" line="930"/>
         <source>Cannot save empty files.</source>
         <translation>No es posible guardar archivos en blanco.</translation>
     </message>
@@ -7250,38 +7255,38 @@ Total of queries: %5, remaining: %6.</source>
         <translation>Hacer minúsculas las palabras clave</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1243"/>
+        <location filename="../texteditor.cpp" line="1238"/>
         <source>SQL Query: Save file...</source>
         <translation>Consulta SQL: Guardar archivo...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1246"/>
+        <location filename="../texteditor.cpp" line="1241"/>
         <source>PHP Script: Save file...</source>
         <translation>Script PHP: Guardar archivo...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1249"/>
+        <location filename="../texteditor.cpp" line="1244"/>
         <source>CSS File: Save file...</source>
         <translation>Archivo CSS: Guardar archivo...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1252"/>
+        <location filename="../texteditor.cpp" line="1247"/>
         <source>HTML File: Save file...</source>
         <translation>Archivo HTML: Guardar archivo...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1255"/>
+        <location filename="../texteditor.cpp" line="1250"/>
         <source>JavaScript Script: Save file...</source>
         <translation>Script JavaScript: Guardar archivo...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1449"/>
+        <location filename="../texteditor.cpp" line="1444"/>
         <source>PHP files (*.php *.inc *.module)</source>
         <translation>Archivos PHP (*.php *.inc *.module)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="949"/>
-        <location filename="../texteditor.cpp" line="1818"/>
+        <location filename="../texteditor.cpp" line="944"/>
+        <location filename="../texteditor.cpp" line="1813"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>No es posible escribir en el archivo %1:
@@ -7303,12 +7308,12 @@ Total of queries: %5, remaining: %6.</source>
         <translation>Ordenar por nombre</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="964"/>
-        <location filename="../texteditor.cpp" line="1793"/>
-        <location filename="../texteditor.cpp" line="1806"/>
-        <location filename="../texteditor.cpp" line="1824"/>
-        <location filename="../texteditor.cpp" line="1843"/>
-        <location filename="../texteditor.cpp" line="1866"/>
+        <location filename="../texteditor.cpp" line="959"/>
+        <location filename="../texteditor.cpp" line="1788"/>
+        <location filename="../texteditor.cpp" line="1801"/>
+        <location filename="../texteditor.cpp" line="1819"/>
+        <location filename="../texteditor.cpp" line="1838"/>
+        <location filename="../texteditor.cpp" line="1861"/>
         <source>File saved at: %1</source>
         <translation>Archivo guardado en: %1</translation>
     </message>
@@ -7491,62 +7496,62 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Insertar plantilla de licencia</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1446"/>
+        <location filename="../texteditor.cpp" line="1441"/>
         <source>SQL files (*.sql)</source>
         <translation>Archivos SQL (*.sql)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1499"/>
+        <location filename="../texteditor.cpp" line="1494"/>
         <source>Zoom</source>
         <translation>Enfocar</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1786"/>
+        <location filename="../texteditor.cpp" line="1781"/>
         <source>Save to Pdf</source>
         <translation>Guardar en Pdf</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1786"/>
+        <location filename="../texteditor.cpp" line="1781"/>
         <source>Pdf &amp; Ps files (*.pdf *.ps)</source>
         <translation>Archivos Pdf &amp; Ps (*.pdf *.ps)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1801"/>
+        <location filename="../texteditor.cpp" line="1796"/>
         <source>Save to Odt</source>
         <translation>Guardar en Odt</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1801"/>
+        <location filename="../texteditor.cpp" line="1796"/>
         <source>Odt files (*.odt)</source>
         <translation>Archivos Odt (*.odt)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1814"/>
+        <location filename="../texteditor.cpp" line="1809"/>
         <source>Save to Html</source>
         <translation>Guardar en Html</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1814"/>
+        <location filename="../texteditor.cpp" line="1809"/>
         <source>Html files (*.html *.htm)</source>
         <translation>Archivos Html (*.html *.htm)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1832"/>
+        <location filename="../texteditor.cpp" line="1827"/>
         <source>Save to Svg</source>
         <translation>Guardar en Svg</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1832"/>
+        <location filename="../texteditor.cpp" line="1827"/>
         <source>Svg files (*.svg)</source>
         <translation>Archivos Svg (*.svg)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1854"/>
+        <location filename="../texteditor.cpp" line="1849"/>
         <source>Save to Image</source>
         <translation>Guardar en Imagen</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1854"/>
+        <location filename="../texteditor.cpp" line="1849"/>
         <source>Image files (%1)</source>
         <translation>Archivos de imagen (%1)</translation>
     </message>
@@ -7585,47 +7590,47 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Barra de herramientas</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1265"/>
+        <location filename="../texteditor.cpp" line="1260"/>
         <source>The document has been modified.</source>
         <translation>El documento ha sido modificado.</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1266"/>
+        <location filename="../texteditor.cpp" line="1261"/>
         <source>Do you want to save the changes?</source>
         <translation>¿Desea guardar los cambios?</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1342"/>
+        <location filename="../texteditor.cpp" line="1337"/>
         <source>Go To Line...</source>
         <translation>Ir a la Línea...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1342"/>
+        <location filename="../texteditor.cpp" line="1337"/>
         <source>Line number</source>
         <translation>Número de línea</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1452"/>
+        <location filename="../texteditor.cpp" line="1447"/>
         <source>CSS files (*.css)</source>
         <translation>Archivos CSS (*.css)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1455"/>
+        <location filename="../texteditor.cpp" line="1450"/>
         <source>HTML files (*.html *.htm)</source>
         <translation>Archivos HTML (*.html *.htm)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1458"/>
+        <location filename="../texteditor.cpp" line="1453"/>
         <source>JavaScript files (*.js)</source>
         <translation>Archivos JavaScript (*.js)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1472"/>
+        <location filename="../texteditor.cpp" line="1467"/>
         <source>Open a file</source>
         <translation>Abrir un archivo</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1480"/>
+        <location filename="../texteditor.cpp" line="1475"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation>No es posible leer el archivo %1: %2.</translation>
