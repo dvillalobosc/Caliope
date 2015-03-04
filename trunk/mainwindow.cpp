@@ -656,6 +656,14 @@ void MainWindow::createActions()
   startAllReplicationSlavesAction = new QAction(this);
   startAllReplicationSlavesAction->setIcon(QIcon::fromTheme("start-here", QIcon(":/images/svg/start-here.svg")));
   connect(startAllReplicationSlavesAction, SIGNAL(triggered()), this, SLOT(startAllReplicationSlavesActionTriggered()));
+
+  exportSettingsAction = new QAction(this);
+  exportSettingsAction->setIcon(QIcon(":/images/svg/document-export-4.svg"));
+  connect(exportSettingsAction, SIGNAL(triggered()), this, SLOT(exportSettingsActionTriggered()));
+
+  importSettingsAction = new QAction(this);
+  //importSettingsAction->setIcon(QIcon(":/images/svg/document-export-4.svg"));
+  connect(importSettingsAction, SIGNAL(triggered()), this, SLOT(importSettingsActionTriggered()));
 }
 
 void MainWindow::objectsDiagramActionTriggered()
@@ -1366,6 +1374,22 @@ void MainWindow::decrementTextWindowCounter()
   --textWindowCounter;
 }
 
+void MainWindow::exportSettingsActionTriggered()
+{
+  QSettings settings;
+  QString fileName(QFileDialog::getSaveFileName(this, tr("Save file"), QDir::home().absolutePath(), tr("Settings files (*)")));
+  QFile::copy(settings.fileName(), fileName);
+  statusBarMessage(tr("File saved at: %1").arg(fileName), QSystemTrayIcon::Information);
+}
+
+void MainWindow::importSettingsActionTriggered()
+{
+  QSettings settings;
+  QString fileName(QFileDialog::getSaveFileName(this, tr("Save file"), QDir::home().absolutePath(), tr("Settings files (*)")));
+  QFile::copy(fileName, settings.fileName());
+  statusBarMessage(tr("File saved at: %1").arg(settings.fileName()), QSystemTrayIcon::Information);
+}
+
 void MainWindow::finishedDatabaseMigrationSlot(int exitCode)
 {
   if (exitCode == QProcess::NormalExit && processMariaDBDump->exitCode() == QProcess::NormalExit) {
@@ -1660,6 +1684,12 @@ void MainWindow::retranslateUi()
 
   startAllReplicationSlavesAction->setText(tr("Start all Slaves"));
   startAllReplicationSlavesAction->setStatusTip(startAllReplicationSlavesAction->text());
+
+  exportSettingsAction->setText(tr("Export settings file"));
+  exportSettingsAction->setStatusTip(exportSettingsAction->text());
+
+  importSettingsAction->setText(tr("Import settings file"));
+  importSettingsAction->setStatusTip(importSettingsAction->text());
 }
 
 void MainWindow::createInitialSettings()
@@ -2134,6 +2164,9 @@ void MainWindow::createMenus()
   connect(openRecentFilesMenu, SIGNAL(aboutToShow()), this, SLOT(openRecentFilesMenuAboutToShowSlot()));
   fileMenu->addMenu(openRecentFilesMenu);
   fileMenu->addAction(viewRecentFilesAction);
+  fileMenu->addSeparator();
+  fileMenu->addAction(exportSettingsAction);
+  fileMenu->addAction(importSettingsAction);
   fileMenu->addSeparator();
   fileMenu->addAction(serverInformationAction);
 //  fileMenu->addAction(userAdministrationAction);

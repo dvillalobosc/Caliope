@@ -187,6 +187,8 @@ private slots:
   void decrementJavascriptWindowCounter();
   void decrementSQLQueryWindowCounter();
   void decrementTextWindowCounter();
+  void exportSettingsActionTriggered();
+  void importSettingsActionTriggered();
 
 public slots:
   void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 2000);
@@ -357,6 +359,8 @@ private:
   QAction *startAllReplicationSlavesAction;
   DWebView *newDWebView(QString title, QUrl url = QUrl());
   void addSubWindow(QWidget *window);
+  QAction *exportSettingsAction;
+  QAction *importSettingsAction;
 
   /*! \brief This is the code executed when aboutMySQLGUIAction is triggered.
    *
