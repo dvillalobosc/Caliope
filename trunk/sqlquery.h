@@ -116,6 +116,8 @@ private:
   bool logStatements;
   QAction *trimColumnsAction;
   QAction *checkTablesAction;
+  QAction *explainSelectActionWithAliasAction;
+  void explainSELECT(bool withAlias = false);
 
 signals:
   void enableDisableAction();
@@ -158,6 +160,7 @@ private slots:
   void trimColumnsActionTriggered();
   void openURLSlot(QString url);
   void checkTablesActionTriggered();
+  void explainSelectActionWithAliasActionTriggered();
 
 protected:
   /*! \brief Reilplements the closeEvent.
