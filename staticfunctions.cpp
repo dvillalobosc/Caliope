@@ -213,7 +213,7 @@ QHash<QString, QString> StaticFunctions::mariadbFunctionsComplete()
   //  data.insert("ATAN2", QString("<u>ATAN2</u>(<b></b>) <br />%1").arg(tr("")));
   data.insert("AVG", QString("<u>AVG</u>(<b>[DISTINCT] expr)</b>) <br />%1").arg(tr("Returns the average value of expr.<br />The DISTINCT option can be used as of MySQL 5.0.3 to return the average of the distinct values of expr.")));
   //  data.insert("BENCHMARK", QString("<u>BENCHMARK</u>(<b></b>) <br />%1").arg(tr("")));
-  //  data.insert("BIN", QString("<u>BIN</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("BIN", QString("<u>BIN</u>(<b>N</b>) <br />%1").arg(tr("Returns a string representation of the binary value of N.")));
   //  data.insert("BIT_AND", QString("<u>BIT_AND</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("BIT_COUNT", QString("<u>BIT_COUNT</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("BIT_LENGTH", QString("<u>BIT_LENGTH</u>(<b></b>) <br />%1").arg(tr("")));
@@ -285,7 +285,7 @@ QHash<QString, QString> StaticFunctions::mariadbFunctionsComplete()
   //  data.insert("HOUR_SECOND", QString("<u>HOUR_SECOND</u>(<b></b>) <br />%1").arg(tr("")));
   data.insert("IFNULL", QString("<u>IFNULL</u>(<b>expr1, expr2</b>) <br />%1").arg(tr("If expr1 is not NULL, IFNULL() returns expr1; otherwise it returns expr2.<br />IFNULL() returns a numeric or string value, depending on the context in which it is used.")));
   data.insert("INET_ATON", QString("<u>INET_ATON</u>(<b>expr</b>) <br />%1").arg(tr("Given the dotted-quad representation of an IPv4 network address as a string, returns an integer that represents the numeric value of the address in network byte order (big endian).")));
-  //  data.insert("INET_NTOA", QString("<u>INET_NTOA</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("INET_NTOA", QString("<u>INET_NTOA</u>(<b>expr</b>) <br />%1").arg(tr("Given a numeric IPv4 network address in network byte order, returns the dotted-quad representation of the address as a binary string.")));
   data.insert("INSTR", QString("<u>INSTR</u>(<b>str, substr</b>) <br />%1").arg(tr("Returns the position of the first occurrence of substring substr in string str.")));
   //  data.insert("INTERVAL", QString("<u>INTERVAL</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("IS_FREE_LOCK", QString("<u>IS_FREE_LOCK</u>(<b></b>) <br />%1").arg(tr("")));
