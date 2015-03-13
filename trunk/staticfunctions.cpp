@@ -5563,12 +5563,12 @@ QHash<QString, QString> StaticFunctions::phpFunctionsComplete()
   data.insert("preg_match", QString("int <u>preg_match</u>(<b>string $pattern, string $subject [, array &$matches [, int $flags = 0 [, int $offset = 0 ]]]</b>) <br />%1").arg(tr("Searches subject for a match to the regular expression given in pattern.")));
 //  data.insert("preg_match_all", QString("<u>preg_match_all</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("preg_quote", QString("<u>preg_quote</u>(<b></b>) <br />%1").arg(tr("")));
-  data.insert("preg_replace", QString("mixed <u>preg_replace</u>(<b>mixed $pattern, mixed $replacement, mixed $subject [, int $limit = -1 [, int &$count ]]</b>) <br />%1").arg(tr("Perform a regular expression search and replace")));
+  data.insert("preg_replace", QString("mixed <u>preg_replace</u>(<b>mixed $pattern, mixed $replacement, mixed $subject [, int $limit = -1 [, int &$count ]]</b>) <br />%1").arg(tr("Perform a regular expression search and replace.")));
 //  data.insert("preg_replace_callback", QString("<u>preg_replace_callback</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("preg_split", QString("<u>preg_split</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("prev", QString("<u>prev</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("print", QString("<u>print</u>(<b></b>) <br />%1").arg(tr("")));
-  data.insert("print_r", QString("mixed <u>print_r</u>(<b>mixed $expression [, bool $return = false ]</b>) <br />%1").arg(tr("Prints human-readable information about a variable")));
+  data.insert("print_r", QString("mixed <u>print_r</u>(<b>mixed $expression [, bool $return = false ]</b>) <br />%1").arg(tr("Prints human-readable information about a variable.")));
 //  data.insert("printer_abort", QString("<u>printer_abort</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("printer_close", QString("<u>printer_close</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("printer_create_brush", QString("<u>printer_create_brush</u>(<b></b>) <br />%1").arg(tr("")));
