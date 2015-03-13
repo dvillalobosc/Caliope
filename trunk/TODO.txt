@@ -9,3 +9,4 @@ To Do list:
 ** Make F7 Works with formal names.
 ** Document Keyword shortcuts BaseTextEditor::keyPressEvent(QKeyEvent *event).
 ** Make deployment tests: http://doc.qt.io/qt-5/deployment.html
+
