@@ -24,6 +24,8 @@
 #include <QUrl>
 #include <QSettings>
 #include <QSystemTrayIcon>
+#include <QWebPage>
+#include <QSslError>
 
 class QWebView;
 class QLineEdit;
@@ -38,6 +40,7 @@ class DWebView : public DMdiSubWindow
 
 public:
   DWebView(QString title, QUrl url = QUrl());
+  QWebPage *page();
 
 private:
   QWebView *webView;
@@ -51,6 +54,9 @@ private:
 
 protected:
   void retranslateUi();
+
+public slots:
+  void sslErrors(QNetworkReply * reply, const QList<QSslError> & errors);
 
 signals:
   void loadStarted(QString message, unsigned int timeout, double progress);
