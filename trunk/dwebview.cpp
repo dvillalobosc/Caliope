@@ -26,6 +26,7 @@
 #include <QAction>
 #include <QWebFrame>
 #include <QDesktopServices>
+#include <QNetworkReply>
 
 #include "dwebview.h"
 
@@ -92,12 +93,27 @@ DWebView::DWebView(QString title, QUrl url)
   webView->load(url);
 }
 
+QWebPage *DWebView::page()
+{
+  return webView->page();
+}
+
 void DWebView::retranslateUi()
 {
   setWindowTitle(title);
   setObjectName(windowTitle());
   showSourceCode->setText(tr("Show page source"));
   openInExternalBrowser->setText(tr("Open in external browser"));
+}
+
+void DWebView::sslErrors(QNetworkReply *reply, const QList<QSslError> &errors)
+{
+  qDebug() << "handleSslErrors: ";
+  foreach (QSslError e, errors)
+  {
+    qDebug() << "ssl error: " << e;
+  }
+  reply->ignoreSslErrors();
 }
 
 void DWebView::loadStartedSlot()

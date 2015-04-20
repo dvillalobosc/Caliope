@@ -2017,6 +2017,7 @@ DWebView *MainWindow::newDWebView(QString title, QUrl url)
   connect(dWebView, SIGNAL(statusBarProgressMessage(QString,uint,double)), this, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
   connect(dWebView, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
   connect(dWebView, SIGNAL(showPagesource(QString)), this, SLOT(viewDWebViewPageSource(QString)));
+  connect(dWebView->page()->networkAccessManager(), SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)) , dWebView, SLOT(sslErrors(QNetworkReply*,QList<QSslError>)));
   return dWebView;
 }
 
