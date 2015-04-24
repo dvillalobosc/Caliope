@@ -400,6 +400,13 @@ void BaseTextEditor::retranslateUi()
   visualizeSpacesAction->setToolTip(visualizeSpacesAction->text());
 }
 
+QStringList BaseTextEditor::wordList()
+{
+  QStringList words = toPlainText().split(QRegExp("\\W+"));
+  words.removeDuplicates();
+  return words;
+}
+
 void BaseTextEditor::insertLicenceTemplateSlot()
 {
   QTextCursor cursor = textCursor();
