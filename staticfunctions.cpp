@@ -8322,6 +8322,8 @@ QString StaticFunctions::serverInformationQuery()
         " SELECT '" + tr("Rate of SELECTs per full index scans") + "', LPAD(FORMAT((SELECT `VARIABLE_VALUE` * 100 FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'HANDLER_READ_FIRST') / (SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'COM_SELECT'), 0), 15, ' '), '" + tr("Rate of SELECTs per full index scans. A value higher than 100 means you do more table scan than SELECTs.") + "', '-'"
         " UNION"
         " SELECT '" + tr("Read requests based on an index value") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 15, ' '), '" + tr("Number of row read requests based on an index value. A high value indicates indexes are regularly being used.") + "', 'HANDLER_READ_KEY' FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'HANDLER_READ_KEY'"
+        " UNION"
+        " SELECT '" + tr("Wait timeout") + "', LPAD(FORMAT(`VARIABLE_VALUE`, 0), 15, ' '), '" + tr("Time in seconds that the server waits for a connection to become active before closing it.") + "', 'WAIT_TIMEOUT' FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'WAIT_TIMEOUT'"
         ;
     break;
   case StaticFunctions::Undefined:

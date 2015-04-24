@@ -854,7 +854,7 @@ void TextEditor::populateModel(const QString &completionPrefix)
   // default: Q_ASSERT(false);
   }
   foreach (QString item, textEditor->wordList().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
-    model->appendRow(new QStandardItem(QIcon(":/images/svg/application-pgp-keys.svg"), item));
+    model->appendRow(new QStandardItem(QIcon(":/images/svg/accessories-text-editor-7.svg"), item));
   model->sort(0);
 }
 
