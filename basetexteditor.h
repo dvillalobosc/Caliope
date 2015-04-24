@@ -47,6 +47,7 @@ public:
   QAction *insertLicenceTamplateAction;
   QList<unsigned int> *foldRowList;
   QAction *visualizeSpacesAction;
+  QStringList wordList();
 
 protected:
   void resizeEvent(QResizeEvent *event);
