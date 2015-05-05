@@ -54,6 +54,7 @@ private slots:
   void collatoinsMenuSlot();
   void changeCollationSlot(QString collation);
   void useASSLConnectionStateChanged(int state);
+  void maskPasswordToggled(bool checked);
 
 private:
   QDialogButtonBox *buttonBox;
@@ -82,6 +83,7 @@ private:
   QCheckBox *useASSLConnection;
   FileSelector *fileSelectorClientKey;
   FileSelector *fileSelectorClientCert;
+  QPushButton *maskPassword;
 };
 
 #endif // CONNECTDIALOG_H
