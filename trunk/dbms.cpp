@@ -143,7 +143,8 @@ bool DBMS::open()
   default:
     break;
   }
-  p_connectionId = runQuerySingleColumn("SELECT CONNECTION_ID()").at(0).toULong();
+  if (opened)
+    p_connectionId = runQuerySingleColumn("SELECT CONNECTION_ID()").at(0).toULong();
   return opened;
 }
 

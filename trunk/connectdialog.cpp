@@ -88,6 +88,12 @@ ConnectDialog::ConnectDialog(DBMS *serverConnection)
   lineEditPassword = new QLineEdit;
   lineEditPassword->setEchoMode(QLineEdit::Password);
   connect(lineEditPassword, SIGNAL(textChanged(QString)), this, SLOT(validateInputs()));
+  QHBoxLayout *passwordHlLayout = new QHBoxLayout;
+  passwordHlLayout->addWidget(lineEditPassword);
+  maskPassword = new QPushButton(QIcon(":/images/svg/object-locked-2.svg"), "", this);
+  maskPassword->setCheckable(true);
+  connect(maskPassword, SIGNAL(toggled(bool)), this, SLOT(maskPasswordToggled(bool)));
+  passwordHlLayout->addWidget(maskPassword);
 
   databasesMenu = new QMenu(this);
   databasesMenu->setIcon(QIcon(":/images/svg/server-database.svg"));
@@ -133,7 +139,7 @@ ConnectDialog::ConnectDialog(DBMS *serverConnection)
   formLayout->addRow(tr("&Server:"), lineEditServer);
   formLayout->addRow(tr("&Port:"), spinBoxPort);
   formLayout->addRow(tr("&User:"), lineEditUser);
-  formLayout->addRow(tr("&Password:"), lineEditPassword);
+  formLayout->addRow(tr("Password:"), passwordHlLayout);
   formLayout->addRow(tr("Database:"), databaseHlLayout);
   formLayout->addRow(tr("Collation:"), collationHlLayout);
   formLayout->addRow(storePasswords);
@@ -270,6 +276,12 @@ void ConnectDialog::useASSLConnectionStateChanged(int state)
 {
   fileSelectorClientKey->setEnabled(state);
   fileSelectorClientCert->setEnabled(state);
+}
+
+void ConnectDialog::maskPasswordToggled(bool checked)
+{
+  lineEditPassword->setEchoMode(checked ? QLineEdit::Normal : QLineEdit::Password);
+  maskPassword->setIcon(checked ? QIcon(":/images/svg/object-unlocked-2.svg") : QIcon(":/images/svg/object-locked-2.svg"));
 }
 
 void ConnectDialog::setDBMS()

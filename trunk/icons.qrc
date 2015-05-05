@@ -123,5 +123,7 @@
         <file>images/svg/preferences-desktop-theme-5.svg</file>
         <file>images/svg/checkbox.svg</file>
         <file>images/svg/application-x-pem-key.svg</file>
+        <file>images/svg/object-locked-2.svg</file>
+        <file>images/svg/object-unlocked-2.svg</file>
     </qresource>
 </RCC>
