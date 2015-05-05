@@ -156,3 +156,15 @@ QList<QAction *> SubversionedFile::getActions()
   actionsList.append(svnLogAction);
   return actionsList;
 }
+
+QString SubversionedFile::svnAdd(QString filePath)
+{
+  QProcess *process = new QProcess;
+  process->start("svn", QStringList() << "add" << filePath);
+  process->waitForFinished();
+  QByteArray output = process->readAll();
+  QString result;
+  for (int counter = 0; counter < output.size(); ++counter)
+    result += output.at(counter);
+  return result;
+}

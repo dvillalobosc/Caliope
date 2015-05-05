@@ -239,6 +239,7 @@ private:
   void changeTextCase(bool uppercse = true);
   QStandardItemModel *modelForPeriodCompeltion;
   QCompleter *completerForPeriodCompeltion;
+  QMenu *versionControlMenu;
 };
 
 #endif // TEXTEDITOR_H

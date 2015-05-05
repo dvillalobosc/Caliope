@@ -3011,27 +3011,27 @@ Total progess: %5.</source>
 <context>
     <name>Projects</name>
     <message>
-        <location filename="../projects.cpp" line="339"/>
+        <location filename="../projects.cpp" line="341"/>
         <source>New Project...</source>
         <translation>Nuevo Proyecto...</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="341"/>
+        <location filename="../projects.cpp" line="343"/>
         <source>Open Project...</source>
         <translation>Abrir Proyecto...</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="343"/>
+        <location filename="../projects.cpp" line="345"/>
         <source>Recent files</source>
         <translation>Archivos recientes</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="345"/>
+        <location filename="../projects.cpp" line="347"/>
         <source>Clear recent files</source>
         <translation>Limpiar archivos recientes</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="347"/>
+        <location filename="../projects.cpp" line="349"/>
         <source>Close current project</source>
         <translation>Cerrar el proyecto actual</translation>
     </message>
@@ -3040,104 +3040,116 @@ Total progess: %5.</source>
         <translation type="obsolete">Encontrar en el proyecto actual</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="349"/>
+        <location filename="../projects.cpp" line="351"/>
         <source>Find in project</source>
         <translation>Encontrar en el proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="351"/>
+        <location filename="../projects.cpp" line="353"/>
         <source>Project files</source>
         <translation>Archivos de proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="352"/>
+        <location filename="../projects.cpp" line="354"/>
         <source>Subversion</source>
         <translation>Subversion</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="353"/>
+        <location filename="../projects.cpp" line="355"/>
         <source>Add new file to project</source>
         <translation>Agregar un archivo nuevo al proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="355"/>
+        <location filename="../projects.cpp" line="357"/>
         <source>Add existing file to project</source>
         <translation>Agregar un archivo existente al proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="117"/>
+        <location filename="../projects.cpp" line="119"/>
         <source>Clean</source>
         <translation>Limpiar</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="148"/>
+        <location filename="../projects.cpp" line="150"/>
         <source>No projet</source>
         <translation>Sin proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="365"/>
+        <location filename="../projects.cpp" line="359"/>
+        <source>Version &amp;control</source>
+        <translation>Control de &amp;versiones</translation>
+    </message>
+    <message>
+        <location filename="../projects.cpp" line="368"/>
         <source>Open a project</source>
         <translation>Abrir proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="365"/>
+        <location filename="../projects.cpp" line="368"/>
         <source>Project files (*.pro)</source>
         <translation>Archivos de Proyecto (*.pro)</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="439"/>
+        <location filename="../projects.cpp" line="442"/>
         <source>New project...</source>
         <translation>Nuevo proyecto...</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="448"/>
+        <location filename="../projects.cpp" line="451"/>
         <source>&amp;Name:</source>
         <translation>&amp;Nombre:</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="449"/>
+        <location filename="../projects.cpp" line="452"/>
         <source>Destination:</source>
         <translation>Destino:</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="451"/>
+        <location filename="../projects.cpp" line="454"/>
         <source>Poject information</source>
         <translation>Información del proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="455"/>
+        <location filename="../projects.cpp" line="458"/>
         <source>Load files</source>
         <translation>Cargar archivos</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="467"/>
+        <location filename="../projects.cpp" line="470"/>
         <source>Poject files</source>
         <translation>Archivos de proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="475"/>
+        <location filename="../projects.cpp" line="478"/>
         <source>Create new Project</source>
         <translation>Crear un nuevo Proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="488"/>
-        <location filename="../projects.cpp" line="577"/>
-        <location filename="../projects.cpp" line="583"/>
+        <location filename="../projects.cpp" line="491"/>
+        <location filename="../projects.cpp" line="582"/>
+        <location filename="../projects.cpp" line="593"/>
         <source>Info saved.</source>
         <translation>Información guardada.</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="544"/>
+        <location filename="../projects.cpp" line="548"/>
         <source>Select files</source>
         <translation>Seleccionar archivos</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="576"/>
+        <location filename="../projects.cpp" line="580"/>
         <source>File name</source>
         <translation>Nombre del archivo</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="582"/>
+        <location filename="../projects.cpp" line="585"/>
+        <source>Cannot write file %1:
+%2.</source>
+        <translation>No es posible escribir en el archivo %1:
+%2.</translation>
+    </message>
+    <message>
+        <location filename="../projects.cpp" line="592"/>
         <source>Select a file</source>
         <translation>Seleccione un archivo</translation>
     </message>
@@ -7204,23 +7216,23 @@ Total of queries: %5, remaining: %6.</source>
         <translation>Símbolos</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="491"/>
+        <location filename="../texteditor.cpp" line="492"/>
         <source>Print Script</source>
         <translation>Imprimir Script</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="529"/>
+        <location filename="../texteditor.cpp" line="530"/>
         <source>Clean</source>
         <translation>Limpiar</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="932"/>
-        <location filename="../texteditor.cpp" line="936"/>
+        <location filename="../texteditor.cpp" line="933"/>
+        <location filename="../texteditor.cpp" line="937"/>
         <source>Save file</source>
         <translation>Guardar archivo</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="932"/>
+        <location filename="../texteditor.cpp" line="933"/>
         <source>Cannot save empty files.</source>
         <translation>No es posible guardar archivos en blanco.</translation>
     </message>
@@ -7234,83 +7246,83 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Explicar SELECT</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="292"/>
+        <location filename="../texteditor.cpp" line="293"/>
         <source>Show SQL Helpers in the completion</source>
         <translation>Mostar Ayudas de SQL en el completado</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="294"/>
+        <location filename="../texteditor.cpp" line="295"/>
         <source>Export to Pdf</source>
         <translation>Exportar a Pdf</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="295"/>
+        <location filename="../texteditor.cpp" line="296"/>
         <source>Export to Odt</source>
         <translation>Exportar a Odt</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="296"/>
+        <location filename="../texteditor.cpp" line="297"/>
         <source>Export to Html</source>
         <translation>Exportar a Html</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="297"/>
+        <location filename="../texteditor.cpp" line="298"/>
         <source>Export to Svg</source>
         <translation>Exportar a Svg</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="298"/>
+        <location filename="../texteditor.cpp" line="299"/>
         <source>Export to Image</source>
         <translation>Exportar a Imagen</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="299"/>
+        <location filename="../texteditor.cpp" line="300"/>
         <source>Toggle Comment</source>
         <translation>Intercambiar Comentarios</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="308"/>
+        <location filename="../texteditor.cpp" line="309"/>
         <source>Uppercase keywords</source>
         <translation>Hacer mayúsculas las palabras clave</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="309"/>
+        <location filename="../texteditor.cpp" line="310"/>
         <source>Lowercase keywords</source>
         <translation>Hacer minúsculas las palabras clave</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1240"/>
+        <location filename="../texteditor.cpp" line="1241"/>
         <source>SQL Query: Save file...</source>
         <translation>Consulta SQL: Guardar archivo...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1243"/>
+        <location filename="../texteditor.cpp" line="1244"/>
         <source>PHP Script: Save file...</source>
         <translation>Script PHP: Guardar archivo...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1246"/>
+        <location filename="../texteditor.cpp" line="1247"/>
         <source>CSS File: Save file...</source>
         <translation>Archivo CSS: Guardar archivo...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1249"/>
+        <location filename="../texteditor.cpp" line="1250"/>
         <source>HTML File: Save file...</source>
         <translation>Archivo HTML: Guardar archivo...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1252"/>
+        <location filename="../texteditor.cpp" line="1253"/>
         <source>JavaScript Script: Save file...</source>
         <translation>Script JavaScript: Guardar archivo...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1446"/>
+        <location filename="../texteditor.cpp" line="1447"/>
         <source>PHP files (*.php *.inc *.module)</source>
         <translation>Archivos PHP (*.php *.inc *.module)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="946"/>
-        <location filename="../texteditor.cpp" line="1815"/>
+        <location filename="../texteditor.cpp" line="947"/>
+        <location filename="../texteditor.cpp" line="1816"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>No es posible escribir en el archivo %1:
@@ -7332,12 +7344,12 @@ Total of queries: %5, remaining: %6.</source>
         <translation>Ordenar por nombre</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="961"/>
-        <location filename="../texteditor.cpp" line="1790"/>
-        <location filename="../texteditor.cpp" line="1803"/>
-        <location filename="../texteditor.cpp" line="1821"/>
-        <location filename="../texteditor.cpp" line="1840"/>
-        <location filename="../texteditor.cpp" line="1863"/>
+        <location filename="../texteditor.cpp" line="962"/>
+        <location filename="../texteditor.cpp" line="1791"/>
+        <location filename="../texteditor.cpp" line="1804"/>
+        <location filename="../texteditor.cpp" line="1822"/>
+        <location filename="../texteditor.cpp" line="1841"/>
+        <location filename="../texteditor.cpp" line="1864"/>
         <source>File saved at: %1</source>
         <translation>Archivo guardado en: %1</translation>
     </message>
@@ -7442,12 +7454,17 @@ Total of queries: %5, remaining: %6.</source>
         <translation>Mostrar/Ocultar números de línea</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="265"/>
+        <location filename="../texteditor.cpp" line="262"/>
+        <source>Version &amp;control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../texteditor.cpp" line="266"/>
         <source>SQL Query %1</source>
         <translation>Consulta SQL %1</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="266"/>
+        <location filename="../texteditor.cpp" line="267"/>
         <source>Fill MariaDB Symbols</source>
         <translation>Llenar símbolos de MariaDB</translation>
     </message>
@@ -7456,62 +7473,62 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Explicar INSERT</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="269"/>
+        <location filename="../texteditor.cpp" line="270"/>
         <source>Run PHP Script</source>
         <translation>Correr Script PHP</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="270"/>
+        <location filename="../texteditor.cpp" line="271"/>
         <source>PHP Script %1</source>
         <translation>Script PHP %1</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="273"/>
+        <location filename="../texteditor.cpp" line="274"/>
         <source>CSS Script %1</source>
         <translation>Script CSS %1</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="276"/>
+        <location filename="../texteditor.cpp" line="277"/>
         <source>HTML Script %1</source>
         <translation>Script HTML %1</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="279"/>
+        <location filename="../texteditor.cpp" line="280"/>
         <source>JavaScript Script %1</source>
         <translation>Script JavaScript %1</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="282"/>
+        <location filename="../texteditor.cpp" line="283"/>
         <source>Text File %1</source>
         <translation>Archivo de Texto %1</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="300"/>
+        <location filename="../texteditor.cpp" line="301"/>
         <source>Highlight current line</source>
         <translation>Resaltar la línea actual</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="301"/>
+        <location filename="../texteditor.cpp" line="302"/>
         <source>Normal</source>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="302"/>
+        <location filename="../texteditor.cpp" line="303"/>
         <source>Vertical</source>
         <translation>Vertical</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="303"/>
+        <location filename="../texteditor.cpp" line="304"/>
         <source>Horizontal</source>
         <translation>Horizontal</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="304"/>
+        <location filename="../texteditor.cpp" line="305"/>
         <source>&amp;Show Symols</source>
         <translation>&amp;Mostrar Símbolos</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="305"/>
+        <location filename="../texteditor.cpp" line="306"/>
         <source>&amp;Normalize text</source>
         <translation>&amp;Normalizar texto</translation>
     </message>
@@ -7520,62 +7537,62 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Insertar plantilla de licencia</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1443"/>
+        <location filename="../texteditor.cpp" line="1444"/>
         <source>SQL files (*.sql)</source>
         <translation>Archivos SQL (*.sql)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1496"/>
+        <location filename="../texteditor.cpp" line="1497"/>
         <source>Zoom</source>
         <translation>Enfocar</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1783"/>
+        <location filename="../texteditor.cpp" line="1784"/>
         <source>Save to Pdf</source>
         <translation>Guardar en Pdf</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1783"/>
+        <location filename="../texteditor.cpp" line="1784"/>
         <source>Pdf &amp; Ps files (*.pdf *.ps)</source>
         <translation>Archivos Pdf &amp; Ps (*.pdf *.ps)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1798"/>
+        <location filename="../texteditor.cpp" line="1799"/>
         <source>Save to Odt</source>
         <translation>Guardar en Odt</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1798"/>
+        <location filename="../texteditor.cpp" line="1799"/>
         <source>Odt files (*.odt)</source>
         <translation>Archivos Odt (*.odt)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1811"/>
+        <location filename="../texteditor.cpp" line="1812"/>
         <source>Save to Html</source>
         <translation>Guardar en Html</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1811"/>
+        <location filename="../texteditor.cpp" line="1812"/>
         <source>Html files (*.html *.htm)</source>
         <translation>Archivos Html (*.html *.htm)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1829"/>
+        <location filename="../texteditor.cpp" line="1830"/>
         <source>Save to Svg</source>
         <translation>Guardar en Svg</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1829"/>
+        <location filename="../texteditor.cpp" line="1830"/>
         <source>Svg files (*.svg)</source>
         <translation>Archivos Svg (*.svg)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1851"/>
+        <location filename="../texteditor.cpp" line="1852"/>
         <source>Save to Image</source>
         <translation>Guardar en Imagen</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1851"/>
+        <location filename="../texteditor.cpp" line="1852"/>
         <source>Image files (%1)</source>
         <translation>Archivos de imagen (%1)</translation>
     </message>
@@ -7614,47 +7631,47 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Barra de herramientas</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1262"/>
+        <location filename="../texteditor.cpp" line="1263"/>
         <source>The document has been modified.</source>
         <translation>El documento ha sido modificado.</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1263"/>
+        <location filename="../texteditor.cpp" line="1264"/>
         <source>Do you want to save the changes?</source>
         <translation>¿Desea guardar los cambios?</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1339"/>
+        <location filename="../texteditor.cpp" line="1340"/>
         <source>Go To Line...</source>
         <translation>Ir a la Línea...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1339"/>
+        <location filename="../texteditor.cpp" line="1340"/>
         <source>Line number</source>
         <translation>Número de línea</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1449"/>
+        <location filename="../texteditor.cpp" line="1450"/>
         <source>CSS files (*.css)</source>
         <translation>Archivos CSS (*.css)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1452"/>
+        <location filename="../texteditor.cpp" line="1453"/>
         <source>HTML files (*.html *.htm)</source>
         <translation>Archivos HTML (*.html *.htm)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1455"/>
+        <location filename="../texteditor.cpp" line="1456"/>
         <source>JavaScript files (*.js)</source>
         <translation>Archivos JavaScript (*.js)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1469"/>
+        <location filename="../texteditor.cpp" line="1470"/>
         <source>Open a file</source>
         <translation>Abrir un archivo</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1477"/>
+        <location filename="../texteditor.cpp" line="1478"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation>No es posible leer el archivo %1: %2.</translation>
