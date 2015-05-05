@@ -83,6 +83,7 @@ private:
   SubversionedFile *subversionedFile;
   QAction *addFileToProjectAction;
   QAction *addExistingFileToProjectAction;
+  QMenu *versionControlMenu;
 
 private slots:
   void openProjectActionSlot(QString file = QString());

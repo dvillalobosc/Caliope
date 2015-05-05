@@ -37,6 +37,7 @@ public:
   SubversionedFile(QString file);
   QList<QAction *> getActions();
   QString fileName;
+  static QString svnAdd(QString filePath);
 
 private:
   bool validateVersionedFile();

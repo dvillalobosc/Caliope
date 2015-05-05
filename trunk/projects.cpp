@@ -74,8 +74,10 @@ Projects::Projects()
   projectFilesMenu = new QMenu();
   projectFilesMenu->setIcon(QIcon::fromTheme("accessories-text-editor", QIcon(":/images/svg/accessories-text-editor-7.svg")));
   connect(projectFilesMenu, SIGNAL(aboutToShow()), this, SLOT(projectFilesSlot()));
+  versionControlMenu = new QMenu;
   subversionMenu = new QMenu();
-  subversionMenu->setIcon(QIcon(":/images/svg/server-database.svg"));
+  versionControlMenu->addMenu(subversionMenu);
+  subversionMenu->setIcon(QIcon(":/images/svg/subversion_logo.svg"));
 //  subversionDiffRepository = new QAction(QIcon(":/images/svg/server-database.svg"), tr("Diff repository"), this);
 //  subversionDiffRepository->setToolTip(subversionDiffRepository->text());
 //  connect(subversionDiffRepository, SIGNAL(triggered()), this, SLOT(subversionDiffRepositoryActionTriggered()));
@@ -175,7 +177,7 @@ void Projects::buildMenu(QMenu *menu)
   menu->addSeparator();
   menu->addMenu(projectFilesMenu);
   menu->addSeparator();
-  menu->addMenu(subversionMenu);
+  menu->addMenu(versionControlMenu);
 }
 
 bool Projects::openedProject()
@@ -354,6 +356,7 @@ void Projects::retranslateUi()
   addFileToProjectAction->setToolTip(addFileToProjectAction->text());
   addExistingFileToProjectAction->setText(tr("Add existing file to project"));
   addExistingFileToProjectAction->setToolTip(addExistingFileToProjectAction->text());
+  versionControlMenu->setTitle(tr("Version &control"));
 }
 
 void Projects::openProjectActionSlot(QString file)
@@ -535,6 +538,7 @@ void Projects::enableMenuOption(bool enable)
   findInProjectAction->setEnabled(enable);
   projectFilesMenu->setEnabled(enable);
   subversionMenu->setEnabled(enable);
+  versionControlMenu->setEnabled(enable);
   addFileToProjectAction->setEnabled(enable);
   addExistingFileToProjectAction->setEnabled(enable);
 }
@@ -573,8 +577,14 @@ void Projects::projectFilesSlot()
 
 void Projects::addFileToProjectActionTriggered()
 {
-  saveProjectFile(loadProjectFile() << "File=" + getProjectPath() + "/" + QInputDialog::getText(0, tr("File name"), tr("File name")).trimmed());
+  QString fileName = getProjectPath() + "/" + QInputDialog::getText(0, tr("File name"), tr("File name")).trimmed();
+  saveProjectFile(loadProjectFile() << "File=" + fileName);
   emit statusBarMessage(tr("Info saved."));
+  QFile file(fileName);
+  if (!file.open(QFile::ReadWrite | QFile::Text))
+    emit statusBarMessage(tr("Cannot write file %1:\n%2.").arg(fileName).arg(file.errorString()));
+  file.close();
+  emit statusBarMessage(SubversionedFile::svnAdd(fileName));
 }
 
 void Projects::addExistingFileToProjectActionTriggered()

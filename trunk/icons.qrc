@@ -125,5 +125,6 @@
         <file>images/svg/application-x-pem-key.svg</file>
         <file>images/svg/object-locked-2.svg</file>
         <file>images/svg/object-unlocked-2.svg</file>
+        <file>images/svg/subversion_logo.svg</file>
     </qresource>
 </RCC>

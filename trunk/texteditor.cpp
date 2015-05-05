@@ -259,6 +259,7 @@ void TextEditor::retranslateUi()
   disableCompletionAction->setText(tr("Disable completion"));
   showHideLineNumbersAction->setText(tr("Show/Hide line numbers"));
   cutLineAction->setText(tr("Cut line"));
+  versionControlMenu->setTitle(tr("Version &control"));
 
   switch(editorType) {
   case EditorTypes::SQLQuery:
@@ -2045,9 +2046,12 @@ void TextEditor::createMenu()
   // default: Q_ASSERT(false);
   }
 
+  versionControlMenu = new QMenu;
   subversionMenu = new QMenu;
-  menuBar->addMenu(subversionMenu);
+  subversionMenu->setIcon(QIcon(":/images/svg/subversion_logo.svg"));
+  menuBar->addMenu(versionControlMenu);
   subversionMenu->addActions(subversionedFile->getActions());
+  versionControlMenu->addMenu(subversionMenu);
 
   viewMenu = new QMenu;
   menuBar->addMenu(viewMenu);
