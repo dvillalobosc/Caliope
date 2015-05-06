@@ -223,6 +223,29 @@ void TextEditor::insertCompletionForPeriodCompeltion(const QString &completion)
   textEditor->setTextCursor(cursor);
 }
 
+void TextEditor::checkPHPSyntaxActionSlot()
+{
+  proc = new QProcess;
+  connect(proc, SIGNAL(readyReadStandardOutput()), this, SLOT(readyReadStandardOutputSlot()));
+  connect(proc, SIGNAL(readyReadStandardError()), this, SLOT(readyReadStandardErrorSlot()));
+//  connect(proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(finishedSlot(int)));
+  QStringList arguments;
+  arguments << "--syntax-check";
+  arguments << fileName;
+  procOutput->clear();
+  saveFileActionTriggered();
+  QApplication::setOverrideCursor(Qt::WaitCursor);
+  procOutput->show();
+  proc->start(settings.value("PHP/Executable", "/usr/bin/php").toString(), arguments);
+  proc->waitForFinished();
+  QApplication::restoreOverrideCursor();
+}
+
+void TextEditor::readyReadStandardErrorSlot()
+{
+  procOutput->insertPlainText(proc->readAllStandardError());
+}
+
 void TextEditor::retranslateUi()
 {
   openRecentFilesMenu->setTitle(tr("Recent files"));
@@ -268,6 +291,7 @@ void TextEditor::retranslateUi()
     break;
   case EditorTypes::PHP:
     executePHPScriptAction->setText(tr("Run PHP Script"));
+    checkPHPSyntaxAction->setText(tr("Check PHP Syntax"));
     setWindowTitle(tr("PHP Script %1").arg(windowCount));
     break;
   case EditorTypes::CSS:
@@ -1082,6 +1106,10 @@ void TextEditor::createActions()
     connect(executePHPScriptAction, SIGNAL(triggered()), this, SLOT(executePHPScriptActionSlot()));
     procOutput = new BaseTextEditor(EditorTypes::HTML);
     procOutput->resize(400, 400);
+    checkPHPSyntaxAction = new QAction(this);
+    checkPHPSyntaxAction->setIcon(QIcon(":/images/svg/system-run-5.svg"));
+    //checkPHPSyntaxAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key));
+    connect(checkPHPSyntaxAction, SIGNAL(triggered()), this, SLOT(checkPHPSyntaxActionSlot()));
     break;
   case EditorTypes::Diff:
   case EditorTypes::Commit:
@@ -2034,6 +2062,7 @@ void TextEditor::createMenu()
   case EditorTypes::PHP:
     optionsMenu->addSeparator();
     optionsMenu->addAction(executePHPScriptAction);
+    optionsMenu->addAction(checkPHPSyntaxAction);
     break;
   case EditorTypes::Diff:
   case EditorTypes::Commit:
