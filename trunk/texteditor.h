@@ -135,6 +135,8 @@ private slots:
   void lowercaseKeywordsActionSlot();
   void performPeriodCompletion(const QString &completionPrefix);
   void insertCompletionForPeriodCompeltion(const QString &completion);
+  void checkPHPSyntaxActionSlot();
+  void readyReadStandardErrorSlot();
 
 private:
   DBMS *serverConnection;
@@ -240,6 +242,7 @@ private:
   QStandardItemModel *modelForPeriodCompeltion;
   QCompleter *completerForPeriodCompeltion;
   QMenu *versionControlMenu;
+  QAction *checkPHPSyntaxAction;
 };
 
 #endif // TEXTEDITOR_H
