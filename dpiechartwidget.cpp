@@ -28,6 +28,11 @@ QString DPieChartWidget::getUnit()
   return unit;
 }
 
+void DPieChartWidget::repaintWidget()
+{
+  paintEvent(0);
+}
+
 void DPieChartWidget::paintEvent(QPaintEvent *event)
 {
   Q_UNUSED(event);
