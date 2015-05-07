@@ -13,6 +13,7 @@ public:
   void clear();
   void setUnit(QString unit);
   QString getUnit();
+  void repaintWidget();
 
 protected:
   void paintEvent(QPaintEvent *event);

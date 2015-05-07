@@ -168,6 +168,7 @@ void DReportViewer::showReportData()
       result->takeLast(); //Remove the "Affected rows" line.
       for (int counter = 0; counter < result->count(); counter++)
         dPieChart->addEntry(result->at(counter).at(0), result->at(counter).at(1).toDouble());
+      dPieChart->repaint();
       break;
     case StaticFunctions::Undefined:
     default:
