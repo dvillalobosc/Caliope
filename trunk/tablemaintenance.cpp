@@ -156,7 +156,7 @@ void TableMaintenance::fillTablesSlot()
 //    }
 //  }
   tables.clear();
-  foreach (QString database, serverConnection->getDatabases()) {
+  foreach (QString database, serverConnection->getDatabases(true)) {
     QTreeWidgetItem *item = new QTreeWidgetItem((QTreeWidget*)0, QStringList(database), ItemTypes::Database);
     item->setIcon(0, QIcon(":/images/svg/server-database.svg"));
     item->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
@@ -232,7 +232,7 @@ void TableMaintenance::itemActivatedSlot(QTreeWidgetItem *item, int column)
         tableItem->setCheckState(column, item->checkState(column));
     if (item->childCount() == 0)
       foreach (QString table, serverConnection->database(item->text(0))->getTables()) {
-        QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(item->text(0) + "." + table), ItemTypes::Table);
+        QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList("`" + item->text(0) + "`.`" + table + "`"), ItemTypes::Table);
         itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         itemChild->setIcon(0, QIcon(":/images/svg/table.svg"));
         itemChild->setCheckState(0, Qt::Unchecked);

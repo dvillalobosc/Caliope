@@ -253,13 +253,16 @@ QString DBMS::getCollation()
   return p_collation;
 }
 
-QStringList DBMS::getDatabases()
+QStringList DBMS::getDatabases(bool skipMetaDatabases)
 {
   if (isOpened())
     switch(qApp->property("DBMSType").toInt()) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
-      return runQuerySingleColumn("SHOW DATABASES");
+      if (skipMetaDatabases)
+        return runQuerySingleColumn("SELECT `SCHEMA_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME` NOT IN ('information_schema', 'performance_schema')");
+      else
+        return runQuerySingleColumn("SELECT `SCHEMA_NAME` FROM `information_schema`.`SCHEMATA`");
       break;
     case StaticFunctions::Undefined:
     default:
