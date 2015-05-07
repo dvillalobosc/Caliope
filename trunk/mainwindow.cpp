@@ -1121,6 +1121,12 @@ void MainWindow::openRecentConnectionActionGroupTriggered(QAction *action)
   serverConnection->setUseSSL(params.at(7).toInt());
   serverConnection->setKeyFile(params.at(8));
   serverConnection->setCertFile(params.at(9));
+  if (params.at(0) == "--")
+    qApp->setProperty("DBMSType", StaticFunctions::Undefined);
+  if (params.at(0) == "MySQL")
+    qApp->setProperty("DBMSType", StaticFunctions::MySQL);
+  if (params.at(0) == "MariaDB")
+    qApp->setProperty("DBMSType", StaticFunctions::MariaDB);
   if (!serverConnection->open())
     QMessageBox::critical(this, tr("Cannot connect to the server"), serverConnection->lastError());
   if (serverConnection->isOpened())
@@ -1942,6 +1948,13 @@ void MainWindow::connectToServerActionTriggered()
       serverConnection->setUseSSL(params.at(7).toInt());
       serverConnection->setKeyFile(params.at(8));
       serverConnection->setCertFile(params.at(9));
+      if (params.at(0) == "--")
+        qApp->setProperty("DBMSType", StaticFunctions::Undefined);
+      if (params.at(0) == "MySQL")
+        qApp->setProperty("DBMSType", StaticFunctions::MySQL);
+      if (params.at(0) == "MariaDB")
+        qApp->setProperty("DBMSType", StaticFunctions::MariaDB);
+
       if (!serverConnection->open())
         QMessageBox::critical(this, tr("Cannot connect to the server"), serverConnection->lastError());
     }
