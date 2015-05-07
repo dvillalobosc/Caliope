@@ -220,7 +220,7 @@ public:
   QList<QStringList>* runQuery(QString queryToExecute, bool addHeaders = false);
   QList<QStringList>* runQuerySimpleResult(QString queryToExecute);
   QStringList runQuerySingleColumn(QString queryToExecute, bool addHeaders = false);
-  QStringList getDatabases();
+  QStringList getDatabases(bool skipMetaDatabases = false);
   QStringList getUserHosts(QString user);
   QStringList getUsers();
   QString lastError();
