@@ -456,7 +456,7 @@ QString SQLQuery::statement()
 void SQLQuery::executeStatement(QString statement)
 {
   if (!statement.isEmpty()) {
-    if (statement.contains(QRegExp("(ALTER|CHANGE|CREATE|DELETE|DROP|GRANT|LOAD|RENAME|START|STOP|TRUNCATE|UPDATE)", Qt::CaseInsensitive))
+    if (statement.contains(QRegExp("(ALTER|CHANGE|CREATE|DELETE|DROP|GRANT|LOAD|RENAME|SET|START|STOP|TRUNCATE|UPDATE)", Qt::CaseInsensitive))
         && safeStatementsAction->isChecked()) {
       QString message(tr("Could not execute statement on safe mode."));
       QMessageBox::warning(this, tr("Safe mode"), message);
