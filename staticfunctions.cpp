@@ -796,6 +796,7 @@ QStringList StaticFunctions::mariadbKeywords()
       << "SUPER"
       << "TABLE"
       << "TABLES"
+      << "TABLESPACE"
       << "TEMPORARY"
       << "TERMINATED"
       << "THAN"
