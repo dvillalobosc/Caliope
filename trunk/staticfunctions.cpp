@@ -900,6 +900,7 @@ QStringList StaticFunctions::mariadbHelper()
       << "SELECT SQL_CACHE"
       << "SELECT SQL_NO_CACHE"
       << "SET GLOBAL"
+      << "SET PASSWORD FOR 'user'@'host' = PASSWORD('cleartext password');"
       << "SHOW ALL SLAVES STATUS"
       << "SHOW AUTHORS"
       << "SHOW BINARY LOGS"
