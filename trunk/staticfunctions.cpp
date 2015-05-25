@@ -894,7 +894,7 @@ QStringList StaticFunctions::mariadbHelper()
       << "ORDER BY"
       << "PROCEDURE ANALYSE()"
       << "PURGE BINARY LOGS BEFORE NOW();"
-      << "RESET SLAVE"
+      << "RESET SLAVE ['connection_name'] [ALL]"
       << "SELECT * FOR UPDATE"
       << "SELECT * FROM"
       << "SELECT * LOCK IN SHARE MODE"
