@@ -682,6 +682,7 @@ QStringList StaticFunctions::mariadbKeywords()
       << "NEW"
       << "NO_WRITE_TO_BINLOG"
       << "NO"
+      << "NONE"
       << "NOT"
       << "NULL"
       << "OFFSET"
