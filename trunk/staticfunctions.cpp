@@ -5230,7 +5230,7 @@ QHash<QString, QString> StaticFunctions::phpFunctionsComplete()
 //  data.insert("parse_ini_file", QString("<u>parse_ini_file</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("parse_ini_string", QString("<u>parse_ini_string</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("parse_str", QString("<u>parse_str</u>(<b></b>) <br />%1").arg(tr("")));
-//  data.insert("parse_url", QString("<u>parse_url</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("parse_url", QString("mixed <u>parse_url</u>(<b>string $url [, int $component = -1 ]</b>) <br />%1").arg(tr("Parse a URL and return its components.")));
 //  data.insert("parsekit_compile_file", QString("<u>parsekit_compile_file</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("parsekit_compile_string", QString("<u>parsekit_compile_string</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("parsekit_func_arginfo", QString("<u>parsekit_func_arginfo</u>(<b></b>) <br />%1").arg(tr("")));
