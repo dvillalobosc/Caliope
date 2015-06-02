@@ -291,7 +291,8 @@ void MainWindow::showWelcomeMessage()
         << tr("MariaDB is great!!!")
         << tr("Qt is great!!!")
         << tr("Open space has more fresh air than closed Windows")
-        << tr("Microsoft gives you \"Windows\", Linux a \"home\"!");
+        << tr("Microsoft gives you \"Windows\", Linux a \"home\"!")
+        << tr("I'd rather be at $HOME");
   qsrand(QTime::currentTime().second());
   dStatusBar->showFancyMessage(texts[(int) qrand() % texts.size()]);
 }
