@@ -663,7 +663,7 @@ void MainWindow::createActions()
   connect(exportSettingsAction, SIGNAL(triggered()), this, SLOT(exportSettingsActionTriggered()));
 
   importSettingsAction = new QAction(this);
-  //importSettingsAction->setIcon(QIcon(":/images/svg/document-export-4.svg"));
+  importSettingsAction->setIcon(QIcon(":/images/svg/document-import-2.svg"));
   connect(importSettingsAction, SIGNAL(triggered()), this, SLOT(importSettingsActionTriggered()));
 
   saveAllAction = new QAction(this);
