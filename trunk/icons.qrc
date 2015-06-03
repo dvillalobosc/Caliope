@@ -126,5 +126,6 @@
         <file>images/svg/object-locked-2.svg</file>
         <file>images/svg/object-unlocked-2.svg</file>
         <file>images/svg/subversion_logo.svg</file>
+        <file>images/svg/document-import-2.svg</file>
     </qresource>
 </RCC>
