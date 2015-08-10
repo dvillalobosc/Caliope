@@ -190,6 +190,7 @@ private slots:
   void exportSettingsActionTriggered();
   void importSettingsActionTriggered();
   void saveAllActionTriggered();
+  void migrateTableActionTriggered();
 
 public slots:
   void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 2000);
@@ -364,6 +365,7 @@ private:
   QAction *exportSettingsAction;
   QAction *importSettingsAction;
   QAction *saveAllAction;
+  QAction *migrateTableAction;
 
   /*! \brief This is the code executed when aboutMySQLGUIAction is triggered.
    *
