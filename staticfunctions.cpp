@@ -4530,7 +4530,7 @@ QHash<QString, QString> StaticFunctions::phpFunctionsComplete()
 //  data.insert("mssql_rows_affected", QString("<u>mssql_rows_affected</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("mssql_select_db", QString("<u>mssql_select_db</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("mt_getrandmax", QString("<u>mt_getrandmax</u>(<b></b>) <br />%1").arg(tr("")));
-//  data.insert("mt_rand", QString("<u>mt_rand</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("mt_rand", QString("int <u>mt_rand</u>(<b>[void | int $min, int $max]</b>) <br />%1").arg(tr("Generate a better random value")));
 //  data.insert("mt_srand", QString("<u>mt_srand</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("multipleiterator", QString("<u>multipleiterator</u>(<b></b>) <br />%1").arg(tr("")));
   data.insert("mysql_affected_rows", QString("<u>mysql_affected_rows</u>(<b></b>) <br />%1").arg(tr("")));
