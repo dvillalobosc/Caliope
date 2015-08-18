@@ -6447,13 +6447,13 @@ QHash<QString, QString> StaticFunctions::phpFunctionsComplete()
 //  data.insert("strtok", QString("<u>strtok</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("strtolower", QString("<u>strtolower</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("strtotime", QString("<u>strtotime</u>(<b></b>) <br />%1").arg(tr("")));
-//  data.insert("strtoupper", QString("<u>strtoupper</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("strtoupper", QString("string <u>strtoupper</u>(<b>string $string</b>) <br />%1").arg(tr("Make a string uppercase.")));
 //  data.insert("strtr", QString("<u>strtr</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("strval", QString("<u>strval</u>(<b></b>) <br />%1").arg(tr("")));
   data.insert("substr", QString("string <u>substr</u>(<b>string $string, int $start [, int $length ]</b>) <br />%1").arg(tr("Return part of a string")));
 //  data.insert("substr_compare", QString("<u>substr_compare</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("substr_count", QString("<u>substr_count</u>(<b></b>) <br />%1").arg(tr("")));
-//  data.insert("substr_replace", QString("<u>substr_replace</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("substr_replace", QString("mixed <u>substr_replace</u>(<b>mixed $string, mixed $replacement, mixed $start [, mixed $length ]</b>) <br />%1").arg(tr("Replace text within a portion of a string.")));
 //  data.insert("svm", QString("<u>svm</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("svmmodel", QString("<u>svmmodel</u>(<b></b>) <br />%1").arg(tr("")));
 //  data.insert("svn_add", QString("<u>svn_add</u>(<b></b>) <br />%1").arg(tr("")));
