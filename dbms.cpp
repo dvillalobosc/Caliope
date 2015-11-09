@@ -613,7 +613,7 @@ QString DBMS::outputAsHTML(QString queryToExecute, bool saveToFile, bool replace
 
       //Print the data
       if (replaceReturns) {
-        for (row = 1; row < rows->count(); row++) {
+        for (row = 1; row < (rows->count() - 1); row++) {
           output += "    <TR>\n";
           for (row2 = 0; row2 < rows->at(row).count(); row2++)
             output +=  "      <TD>" + (QString(rows->at(row).at(row2)).length() == 0 ? "&nbsp;" : replaceReturnsAndTabs(rows->at(row).at(row2)))
@@ -621,7 +621,7 @@ QString DBMS::outputAsHTML(QString queryToExecute, bool saveToFile, bool replace
           output += "    </TR>\n";
         }
       } else {
-        for (row = 1; row < rows->count(); row++) {
+        for (row = 1; row < (rows->count() - 1); row++) {
           output += "    <TR>\n";
           for (row2 = 0; row2 < rows->at(row).count(); row2++)
             output +=  "      <TD>" + (QString(rows->at(row).at(row2)).length() == 0 ? "&nbsp;" : rows->at(row).at(row2))
@@ -629,7 +629,7 @@ QString DBMS::outputAsHTML(QString queryToExecute, bool saveToFile, bool replace
           output += "    </TR>\n";
         }
       }
-      output += "  </TABLE>\n  <P>" + rows->last().at(0) + ": " + rows->last().at(1) + "</P>\n";
+      output += "  </TABLE>\n  <P>" + rows->last().at(0) + "</P>\n";
     }
   }
   output += "</BODY>\n</HTML>\n";
