@@ -554,6 +554,10 @@ void MainWindow::createActions()
   maintenanceFlushRelayLogsAction = new QAction(QIcon(":/images/svg/system-run-5.svg"), "FLUSH RELAY LOGS", this);
   connect(maintenanceFlushRelayLogsAction, SIGNAL(triggered()), this, SLOT(maintenanceFlushRelayLogsActionTriggered()));
 
+  databaseMetadataAction = new QAction(this);
+  databaseMetadataAction->setIcon(QIcon(":/images/svg/application-pdf.svg"));
+  connect(databaseMetadataAction, SIGNAL(triggered()), this, SLOT(databaseMetadataActionTriggered()));
+
   maintenanceTimeDifferenceAction = new QAction(this);
   maintenanceTimeDifferenceAction->setIcon(QIcon(":/images/svg/view-calendar-time-spent.svg"));
   connect(maintenanceTimeDifferenceAction, SIGNAL(triggered()), this, SLOT(maintenanceTimeDifferenceActionTriggered()));
@@ -1502,6 +1506,25 @@ void MainWindow::migrateTableActionTriggered()
     }
 }
 
+void MainWindow::databaseMetadataActionTriggered()
+{
+  QApplication::setOverrideCursor(Qt::WaitCursor);
+  QFileDialog fileDialog;
+  fileDialog.setDirectory(QDir::home());
+  QString file = fileDialog.getSaveFileName(this, tr("Save to Pdf"), settings.value("General/LastFilePdf", QDir::home().absolutePath()).toString(), tr("Pdf & Ps files (*.pdf *.ps)"));
+  settings.setValue("General/LastFilePdf", fileDialog.directory().filePath(file));
+  QPrinter printer(QPrinter::HighResolution);
+  printer.setOutputFileName(file);
+  printer.setOutputFormat(file.endsWith(".pdf") ? QPrinter::PdfFormat : QPrinter::NativeFormat);
+
+  QTextDocument doc;
+  doc.setHtml(serverConnection->outputAsHTML("SELECT `a`.`TABLE_SCHEMA` AS `TABLE_SCHEMA`, `a`.`TABLE_NAME` AS `TABLE_NAME`, `a`.`COLUMN_NAME` AS `COLUMN_NAME`, `a`.`ORDINAL_POSITION` AS `ORDINAL_POSITION`, `a`.`COLUMN_DEFAULT` AS `COLUMN_DEFAULT`, `a`.`IS_NULLABLE` AS `IS_NULLABLE`, `a`.`COLLATION_NAME` AS `COLLATION_NAME`, `a`.`COLUMN_TYPE` AS `COLUMN_TYPE`, `a`.`COLUMN_KEY` AS `COLUMN_KEY`, `a`.`EXTRA` AS `EXTRA`, `a`.`COLUMN_COMMENT` AS `COLUMN_COMMENT` FROM `information_schema`.`COLUMNS` `a`, `information_schema`.`TABLES` `b` WHERE `a`.`TABLE_SCHEMA` = `b`.`TABLE_SCHEMA` AND `a`.`TABLE_NAME` = `b`.`TABLE_NAME` AND `b`.`TABLE_TYPE` = 'BASE TABLE' AND `b`.`TABLE_NAME` LIKE 'SEVRI%' ORDER BY `a`.`TABLE_SCHEMA`, `a`.`TABLE_NAME`,`a`.`ORDINAL_POSITION`"));
+  doc.print(&printer);
+
+  QApplication::restoreOverrideCursor();
+  emit statusBarMessage(tr("File saved at: %1").arg(file));
+}
+
 void MainWindow::finishedDatabaseMigrationSlot(int exitCode)
 {
   if (exitCode == QProcess::NormalExit && processMariaDBDump->exitCode() == QProcess::NormalExit) {
@@ -1810,6 +1833,8 @@ void MainWindow::retranslateUi()
   migrateTableAction->setText(tr("Migrate table"));
   migrateTableAction->setStatusTip(migrateTableAction->text());
 
+  databaseMetadataAction->setText(tr("Database metadata"));
+  databaseMetadataAction->setStatusTip(databaseMetadataAction->text());
 }
 
 void MainWindow::createInitialSettings()
@@ -2387,6 +2412,9 @@ void MainWindow::createMenus()
   menuReports->setDisabled(true);
   connectionMenu->addSeparator();
   connectionMenu->addMenu(menuReports);
+
+  connectionMenu->addSeparator();
+  connectionMenu->addAction(databaseMetadataAction);
 
   viewMenu = menuBar()->addMenu("");
   viewMenu->addAction(toggleFullScreenAction);
