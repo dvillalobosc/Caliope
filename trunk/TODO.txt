@@ -10,3 +10,4 @@ To Do list:
 ** Document Keyword shortcuts BaseTextEditor::keyPressEvent(QKeyEvent *event).
 ** Make deployment tests: http://doc.qt.io/qt-5/deployment.html
 
+** Review: https://www.stack.nl/~dimitri/doxygen/manual/faq.html
