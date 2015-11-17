@@ -292,7 +292,7 @@ QHash<QString, QString> StaticFunctions::mariadbFunctionsComplete()
   //  data.insert("IS_USED_LOCK", QString("<u>IS_USED_LOCK</u>(<b></b>) <br />%1").arg(tr("")));
   data.insert("ISNULL", QString("<u>ISNULL</u>(<b>expr</b>) <br />%1").arg(tr("If expr is NULL, ISNULL() returns 1, otherwise it returns 0.")));
   //  data.insert("LAST_DAY", QString("<u>LAST_DAY</u>(<b></b>) <br />%1").arg(tr("")));
-  //  data.insert("LAST_INSERT_ID", QString("<u>LAST_INSERT_ID</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("LAST_INSERT_ID", QString("<u>LAST_INSERT_ID</u>(<b>expr</b>) <br />%1").arg(tr("Returns a value representing the first automatically generated value successfully inserted for an AUTO_INCREMENT column as a result of the most recently executed INSERT statement.")));
   data.insert("LCASE", QString("<u>LCASE</u>(<b>str</b>) <br />%1").arg(tr("Returns the string str with all characters changed to lowercase according to the current character set mapping.")));
   //  data.insert("LEAST", QString("<u>LEAST</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("LEFT", QString("<u>LEFT</u>(<b></b>) <br />%1").arg(tr("")));
