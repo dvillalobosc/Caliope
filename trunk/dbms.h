@@ -152,6 +152,7 @@ public:
   bool drop();
   bool create(QString collation = QString());
   QStringList getTables();
+  QStringList getViews();
   unsigned long tableCount();
   QStringList info();
 

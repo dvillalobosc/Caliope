@@ -27,6 +27,7 @@
 #include <QPushButton>
 #include <QCheckBox>
 #include <QRadioButton>
+#include <QTreeWidgetItemIterator>
 
 #include "tablemaintenance.h"
 #include "dtitlelabel.h"
@@ -89,6 +90,10 @@ TableMaintenance::TableMaintenance(DBMS *serverConnection)
   connect(clearSelectionPushButton, SIGNAL(clicked()), this, SLOT(clearSelectionPushButtonSlot()));
   thirdLayout->addWidget(clearSelectionPushButton);
 
+  selectAllTAblesPushButton = new QPushButton;
+  connect(selectAllTAblesPushButton, SIGNAL(clicked()), this, SLOT(selectAllTAblesPushButtonSlot()));
+  thirdLayout->addWidget(selectAllTAblesPushButton);
+
   thirdLayout->addStretch();
   groupBoxAction->setLayout(thirdLayout);
   QHBoxLayout *secondLayout = new QHBoxLayout;
@@ -105,7 +110,7 @@ TableMaintenance::TableMaintenance(DBMS *serverConnection)
   retranslateUi();
   widMain->setLayout(mainVLayout);
   setWidget(widMain);
-  QTimer::singleShot(0, this, SLOT(fillTablesSlot()));
+  QTimer::singleShot(0, this, SLOT(fillDatabasesSlot()));
 }
 
 void TableMaintenance::retranslateUi()
@@ -122,6 +127,7 @@ void TableMaintenance::retranslateUi()
   tablesListWidget->setWindowTitle(tr("Databases"));
   tablesListWidget->setHeaderLabel(tablesListWidget->windowTitle());
   clearSelectionPushButton->setText(tr("Clear selection"));
+  selectAllTAblesPushButton->setText(tr("Select all"));
 }
 
 QString TableMaintenance::tableList()
@@ -140,7 +146,7 @@ void TableMaintenance::executeStatement(const QString statement)
   QApplication::restoreOverrideCursor();
 }
 
-void TableMaintenance::fillTablesSlot()
+void TableMaintenance::fillDatabasesSlot()
 {
   QApplication::setOverrideCursor(Qt::WaitCursor);
 //  foreach (QString database, serverConnection->getDatabases()) {
@@ -235,7 +241,7 @@ void TableMaintenance::itemActivatedSlot(QTreeWidgetItem *item, int column)
         QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList("`" + item->text(0) + "`.`" + table + "`"), ItemTypes::Table);
         itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         itemChild->setIcon(0, QIcon(":/images/svg/table.svg"));
-        itemChild->setCheckState(0, Qt::Unchecked);
+        itemChild->setCheckState(0, Qt::Checked);
         tables.append(itemChild);
       }
     QApplication::restoreOverrideCursor();
@@ -251,7 +257,7 @@ void TableMaintenance::clearSelectionPushButtonSlot()
   /**
     The code above does not clear the selection, so, I fill it againg.
     */
-  fillTablesSlot();
+  fillDatabasesSlot();
   optionLOCAL->setChecked(false);
 
   optionFORUPGRADE->setAutoExclusive(false);
@@ -277,6 +283,16 @@ void TableMaintenance::clearSelectionPushButtonSlot()
   optionEXTENDED->setAutoExclusive(true);
   optionCHANGED->setAutoExclusive(true);
   optionUSE_FRM->setAutoExclusive(true);
+}
+
+void TableMaintenance::selectAllTAblesPushButtonSlot()
+{
+  QTreeWidgetItemIterator it(tablesListWidget);
+  while (*it) {
+    if ((*it)->type() == ItemTypes::Database)
+      (*it)->setCheckState(0, Qt::Checked);
+    ++it;
+  }
 }
 
 //TableMaintenanceWizard::TableMaintenanceWizard()

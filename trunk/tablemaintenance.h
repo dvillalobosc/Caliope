@@ -66,13 +66,14 @@ private:
   DTitleLabel *dTitleLabel;
   QGroupBox *groupBoxAction;
   QPushButton *clearSelectionPushButton;
+  QPushButton *selectAllTAblesPushButton;
 
 private:
   QString tableList();
   void executeStatement(const QString statement);
 
 private slots:
-  void fillTablesSlot();
+  void fillDatabasesSlot();
   void analyzePushButtonSlot();
   void checkPushButtonSlot();
   void checksumPushButtonSlot();
@@ -80,6 +81,7 @@ private slots:
   void repairPushButtonSlot();
   void itemActivatedSlot(QTreeWidgetItem *item, int column);
   void clearSelectionPushButtonSlot();
+  void selectAllTAblesPushButtonSlot();
 };
 
 //class IntroPageTableMaintenance : public QWizardPage
