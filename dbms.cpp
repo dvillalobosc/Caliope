@@ -1449,6 +1449,20 @@ QStringList Database::getTables()
   return QStringList();
 }
 
+QStringList Database::getViews()
+{
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    return serverConnection->runQuerySingleColumn("SELECT `TABLE_NAME` FROM `information_schema`.`TABLES` WHERE `TABLE_TYPE` = 'VIEW' AND `TABLE_SCHEMA` = '" + databaseName + "'");
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QStringList();
+}
+
 unsigned long Database::tableCount()
 {
   switch(qApp->property("DBMSType").toInt()) {
