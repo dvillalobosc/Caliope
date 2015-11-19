@@ -26,12 +26,12 @@
 #include <QTextEdit>
 #include <QSettings>
 
-#include "mysqlhelp.h"
+#include "mariadbhelp.h"
 #include "dtitlelabel.h"
 #include "staticfunctions.h"
 #include "dlineedit.h"
 
-MySQLHelp::MySQLHelp(DBMS *serverConnection)
+MariaDBHelp::MariaDBHelp(DBMS *serverConnection)
 {
   this->serverConnection = serverConnection;
   setWindowIcon(QIcon(":/images/svg/server-database.svg"));
@@ -76,16 +76,16 @@ MySQLHelp::MySQLHelp(DBMS *serverConnection)
   setWidget(widMain);
 }
 
-void MySQLHelp::retranslateUi()
+void MariaDBHelp::retranslateUi()
 {
-  setWindowTitle(tr("MySQL Help"));
+  setWindowTitle(tr("MariaDB Help"));
   setObjectName(windowTitle());
   dTitleLabel->setText(windowTitle());
   helpTreeWidget->setHeaderLabel(tr("Topics"));
   lineEditFilter->setPlaceholderText(tr("Enter a Keyword"));
 }
 
-void MySQLHelp::fillHelpTreeWidget(QString filter)
+void MariaDBHelp::fillHelpTreeWidget(QString filter)
 {
   helpTreeWidget->clear();
   QList<QTreeWidgetItem *> items;
@@ -113,7 +113,7 @@ void MySQLHelp::fillHelpTreeWidget(QString filter)
   helpTreeWidget->insertTopLevelItems(0, items);
 }
 
-void MySQLHelp::showTopicSlot(QTreeWidgetItem *item, int column)
+void MariaDBHelp::showTopicSlot(QTreeWidgetItem *item, int column)
 {
   rows = serverConnection->runQuery("SELECT `description`, `example`, `url` FROM `mysql`.`help_topic` WHERE `name` = '" + item->text(column) + "'");
   rows->takeLast(); //Remove the "Affected rows" line.
@@ -125,7 +125,7 @@ void MySQLHelp::showTopicSlot(QTreeWidgetItem *item, int column)
                       + "<A href='" + rows->at(0).at(2) + "'>" + rows->at(0).at(2) + "</A>");
 }
 
-void MySQLHelp::saveSizesSlot(int pos, int index)
+void MariaDBHelp::saveSizesSlot(int pos, int index)
 {
   Q_UNUSED(index);
   QSettings settings;

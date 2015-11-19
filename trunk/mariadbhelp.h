@@ -18,8 +18,8 @@
 *
 *****************************************************************************/
 
-#ifndef MYSQLHELP_H
-#define MYSQLHELP_H
+#ifndef MARIADBHELP_H
+#define MARIADBHELP_H
 
 #include <QTreeWidget>
 
@@ -32,12 +32,12 @@ class QSplitter;
 class DLineEdit;
 class DTitleLabel;
 
-class MySQLHelp : public DMdiSubWindow
+class MariaDBHelp : public DMdiSubWindow
 {
   Q_OBJECT
 
 public:
-  MySQLHelp(DBMS *serverConnection);
+  MariaDBHelp(DBMS *serverConnection);
 
 protected:
   void retranslateUi();
@@ -57,4 +57,4 @@ private slots:
   void fillHelpTreeWidget(QString filter = QString());
 };
 
-#endif // MYSQLHELP_H
+#endif // MARIADBHELP_H

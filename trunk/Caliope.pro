@@ -3,7 +3,6 @@ HEADERS += \
     serverInformation.h \
     catalogs.h \
     dstatusbar.h \
-    mysqlhelp.h \
     processlist.h \
     dtitlelabel.h \
     staticfunctions.h \
@@ -48,14 +47,14 @@ HEADERS += \
     dquerylog.h \
     applicationtheme.h \
     dreportviewer.h \
-    dpiechartwidget.h
+    dpiechartwidget.h \
+    mariadbhelp.h
 SOURCES += \
     main.cpp \
     connectdialog.cpp \
     serverInformation.cpp \
     catalogs.cpp \
     dstatusbar.cpp \
-    mysqlhelp.cpp \
     processlist.cpp \
     dtitlelabel.cpp \
     staticfunctions.cpp \
@@ -100,7 +99,8 @@ SOURCES += \
     dquerylog.cpp \
     applicationtheme.cpp \
     dreportviewer.cpp \
-    dpiechartwidget.cpp
+    dpiechartwidget.cpp \
+    mariadbhelp.cpp
 FORMS +=
 RESOURCES += icons.qrc \
     styles.qrc \

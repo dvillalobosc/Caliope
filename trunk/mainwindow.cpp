@@ -56,7 +56,7 @@
 #include "serverInformation.h"
 #include "catalogs.h"
 #include "dstatusbar.h"
-#include "mysqlhelp.h"
+#include "mariadbhelp.h"
 #include "processlist.h"
 #include "sqlquery.h"
 #include "tablemaintenance.h"
@@ -422,9 +422,9 @@ void MainWindow::createActions()
   mariaDBGUIHelpAction->setIcon(QIcon(":/images/svg/server-database.svg"));
   connect(mariaDBGUIHelpAction, SIGNAL(triggered()), this, SLOT(mariaDBGUIHelpActionTriggered()));
 
-  mysqlHelpAction = new QAction(this);
-  mysqlHelpAction->setIcon(QIcon(":/images/svg/mysql.svg"));
-  connect(mysqlHelpAction, SIGNAL(triggered()), this, SLOT(mysqlHelpActionTriggered()));
+  mariadbHelpAction = new QAction(this);
+  mariadbHelpAction->setIcon(QIcon(":/images/svg/MariaDB-seal.svg"));
+  connect(mariadbHelpAction, SIGNAL(triggered()), this, SLOT(mysqlHelpActionTriggered()));
 
   viewQueryLogAction = new QAction(this);
   viewQueryLogAction->setIcon(QIcon(":/images/svg/utilities-log-viewer-2.svg"));
@@ -1629,8 +1629,8 @@ void MainWindow::retranslateUi()
   mariaDBGUIHelpAction->setText(tr("Calíope"));
   mariaDBGUIHelpAction->setStatusTip(mariaDBGUIHelpAction->text());
 
-  mysqlHelpAction->setText(tr("MySQL Help"));
-  mysqlHelpAction->setStatusTip(mysqlHelpAction->text());
+  mariadbHelpAction->setText(tr("MariaDB Help"));
+  mariadbHelpAction->setStatusTip(mariadbHelpAction->text());
 
   viewQueryLogAction->setText(tr("View query log"));
   viewQueryLogAction->setStatusTip(viewQueryLogAction->text());
@@ -1979,12 +1979,12 @@ void MainWindow::processActionTriggered()
 void MainWindow::mysqlHelpActionTriggered()
 {
   if (serverConnection->testOpened()) {
-    mysqlHelp = mdiMain->findChild<MySQLHelp *>(tr("MySQL On-Line Help"));
-    if (!mysqlHelp) {
-      mysqlHelp = new MySQLHelp(this->serverConnection);
-      addSubWindow(mysqlHelp);
+    mariadbHelp = mdiMain->findChild<MariaDBHelp *>(tr("MySQL On-Line Help"));
+    if (!mariadbHelp) {
+      mariadbHelp = new MariaDBHelp(this->serverConnection);
+      addSubWindow(mariadbHelp);
     }
-    mdiMain->setActiveSubWindow(mysqlHelp);
+    mdiMain->setActiveSubWindow(mariadbHelp);
   }
 }
 
@@ -2447,8 +2447,8 @@ void MainWindow::createMenus()
   helpMenu->addAction(mariaDBGUIHelpAction);
   helpMenu->addSeparator();
   helpMenu->addAction(mariadbOnLineHelpAction);
+  helpMenu->addAction(mariadbHelpAction);
   helpMenu->addSeparator();
-  helpMenu->addAction(mysqlHelpAction);
   helpMenu->addAction(mysqlOnLineHelpAction);
   helpMenu->addSeparator();
   helpMenu->addAction(postgresqlOnLineHelpAction);
