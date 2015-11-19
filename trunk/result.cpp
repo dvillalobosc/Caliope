@@ -151,8 +151,10 @@ void Result::discardStatementsActionTriggered()
 void Result::applyStatementsActionTriggered()
 {
   QString output;
-  for (int row = 0; row < statements->count(); row++)
+  for (int row = 0; row < statements->count(); row++) {
+    serverConnection->logStatement(statements->at(row));
     output += serverConnection->outputAsTable(statements->at(row), true) + "\n";
+  }
   emit statusBarMessagePopup(output);
   discardStatementsActionTriggered();
 }
