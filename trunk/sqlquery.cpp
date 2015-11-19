@@ -463,6 +463,8 @@ void SQLQuery::executeStatement(QString statement)
       resutlEditor->setPlainText(message + "\n" + statement);
       return;
     }
+    QSettings settings;
+    settings.sync();
     if (logStatements) //Use a variable here because is faster
       serverConnection->logStatement(statement);
     serverConnection->executedQueries->append(statement);
