@@ -77,6 +77,9 @@ private:
   ApplicationTheme *applicationTheme;
   FileSelector *fileSelectorBackgroundImage;
   QCheckBox *checkBoxAutoreconnect;
+  QLineEdit *phpOnlineHelpURLLineEdit;
+  QLineEdit *mysqlOnlineHelpURLLineEdit;
+  QLineEdit *mariadbOnlineHelpURLLineEdit;
 
 protected:
   void retranslateUi();
@@ -95,6 +98,9 @@ private slots:
   void checkBoxEnableQueryLogValueChanged(int value);
   void fileSelectorBackgroundImageSlot();
   void checkBoxAutoreconnectValueChanged(int value);
+  void phpOnlineHelpURLLineEdittextChangedSlot(const QString &text);
+  void mysqlOnlineHelpURLLineEdittextChangedSlot(const QString &text);
+  void mariadbOnlineHelpURLLineEdittextChangedSlot(const QString &text);
 };
 
 #endif // PREFERENCES_H

@@ -81,6 +81,18 @@ Preferences::Preferences(DBMS *serverConnection)
   checkBoxAutoreconnect->setCheckState(settings.value("DBMS/Reconnect", 1).toBool() ? Qt::Checked : Qt::Unchecked);
   connect(checkBoxAutoreconnect, SIGNAL(stateChanged(int)), this, SLOT(checkBoxAutoreconnectValueChanged(int)));
   styleFLayout->addRow(checkBoxAutoreconnect);
+  phpOnlineHelpURLLineEdit = new QLineEdit;
+  styleFLayout->addRow(" ", phpOnlineHelpURLLineEdit);
+  phpOnlineHelpURLLineEdit->setText(settings.value("General/HelpPage-PHP", qApp->property("HelpPage-PHP").toString()).toString());
+  connect(phpOnlineHelpURLLineEdit, SIGNAL(textChanged(QString)), this, SLOT(phpOnlineHelpURLLineEdittextChangedSlot(QString)));
+  mysqlOnlineHelpURLLineEdit = new QLineEdit;
+  styleFLayout->addRow(" ", mysqlOnlineHelpURLLineEdit);
+  mysqlOnlineHelpURLLineEdit->setText(settings.value("General/HelpPage-MySQL", qApp->property("HelpPage-MySQL").toString()).toString());
+  connect(mysqlOnlineHelpURLLineEdit, SIGNAL(textChanged(QString)), this, SLOT(mysqlOnlineHelpURLLineEdittextChangedSlot(QString)));
+  mariadbOnlineHelpURLLineEdit = new QLineEdit;
+  styleFLayout->addRow(" ", mariadbOnlineHelpURLLineEdit);
+  mariadbOnlineHelpURLLineEdit->setText(settings.value("General/HelpPage-MariaDB", qApp->property("HelpPage-MariaDB").toString()).toString());
+  connect(mariadbOnlineHelpURLLineEdit, SIGNAL(textChanged(QString)), this, SLOT(mariadbOnlineHelpURLLineEdittextChangedSlot(QString)));
   styleGroupBox= new QGroupBox;
   styleGroupBox->setLayout(styleFLayout);
   fileSelectorBackgroundImage = new FileSelector(FileSelectorContexts::Image);
@@ -238,6 +250,12 @@ void Preferences::retranslateUi()
   fileAssociations->retranslateUi();
   phpPHPCommand->setText(tr("PHP CLI Command:"));
   checkBoxAutoreconnect->setText(tr("Use automatic reconnection"));
+  label = qobject_cast<QLabel *>(styleFLayout->labelForField(phpOnlineHelpURLLineEdit));
+  label->setText(tr("PHP On-Line Help:"));
+  label = qobject_cast<QLabel *>(styleFLayout->labelForField(mysqlOnlineHelpURLLineEdit));
+  label->setText(tr("MySQL On-Line Help:"));
+  label = qobject_cast<QLabel *>(styleFLayout->labelForField(mariadbOnlineHelpURLLineEdit));
+  label->setText(tr("MariaDB On-Line Help:"));
 }
 
 void Preferences::checkBoxCleanwhiteSpacesValueChanged(int value)
@@ -309,6 +327,21 @@ void Preferences::fileSelectorBackgroundImageSlot()
 void Preferences::checkBoxAutoreconnectValueChanged(int value)
 {
   settings.setValue("DBMS/Reconnect", value);
+}
+
+void Preferences::phpOnlineHelpURLLineEdittextChangedSlot(const QString &text)
+{
+  settings.setValue("General/HelpPage-PHP", text);
+}
+
+void Preferences::mysqlOnlineHelpURLLineEdittextChangedSlot(const QString &text)
+{
+  settings.setValue("General/HelpPage-MySQL", text);
+}
+
+void Preferences::mariadbOnlineHelpURLLineEdittextChangedSlot(const QString &text)
+{
+  settings.setValue("General/HelpPage-MariaDB", text);
 }
 
 void Preferences::checkBoxAutomaticIndentationValueChanged(int value)
