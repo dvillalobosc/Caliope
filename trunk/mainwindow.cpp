@@ -85,6 +85,10 @@ MainWindow::MainWindow()
   QCoreApplication::setApplicationName("Calíope");
   QCoreApplication::setOrganizationName("DVC Software");
   qApp->setProperty("SessionId", StaticFunctions::randomString(10));
+  qApp->setProperty("HelpPage-PHP", "http://php.net/search.php/");
+  qApp->setProperty("HelpPage-MySQL", "http://dev.mysql.com/doc/refman/5.5/en/");
+  qApp->setProperty("HelpPage-MariaDB", "https://mariadb.com/kb/en/");
+
   serverConnection = new DBMS;
   connect(serverConnection, SIGNAL(databaseChanged()), this, SLOT(changeDatabaseSlot()));
   connect(serverConnection, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
@@ -899,11 +903,6 @@ void MainWindow::showSlowLogActionTriggered()
   dialog->setLayout(mainVLayout);
   if (dialog->exec() == QDialog::Accepted)
     showResultTab("slow_log", "mysql", "`start_time` >= '" + dateTimeEdit->dateTime().toString("yyyy-MM-dd hh:mm:ss") + "'");
-}
-
-void MainWindow::mariadbOnLineHelpActionTriggered()
-{
-  addSubWindow(newDWebView(tr("MariaDB On-Line Help"), QUrl("https://kb.askmonty.org")));
 }
 
 void MainWindow::catalogsReadOnlyActionSlot(bool readOnly)
@@ -1944,12 +1943,20 @@ void MainWindow::externalWebPageActionTriggered()
 
 void MainWindow::phpOnLineHelpActionTriggered()
 {
-  addSubWindow(newDWebView(tr("PHP On-Line Help"), QUrl("http://php.net/search.php")));
+  QSettings settings;
+  addSubWindow(newDWebView(tr("PHP On-Line Help"), QUrl(settings.value("General/HelpPage-PHP", qApp->property("HelpPage-PHP").toString()).toString())));
 }
 
 void MainWindow::mysqlOnLineHelpActionTriggered()
 {
-  addSubWindow(newDWebView(tr("MySQL On-Line Help"), QUrl("http://dev.mysql.com/doc/refman/5.5/en/")));
+  QSettings settings;
+  addSubWindow(newDWebView(tr("MySQL On-Line Help"), QUrl(settings.value("General/HelpPage-MySQL", qApp->property("HelpPage-MySQL").toString()).toString())));
+}
+
+void MainWindow::mariadbOnLineHelpActionTriggered()
+{
+  QSettings settings;
+  addSubWindow(newDWebView(tr("MariaDB On-Line Help"), QUrl(settings.value("General/HelpPage-MariaDB", qApp->property("HelpPage-MariaDB").toString()).toString())));
 }
 
 void MainWindow::processActionTriggered()
