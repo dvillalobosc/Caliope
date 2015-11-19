@@ -38,7 +38,7 @@ class QTreeWidgetItem;
 class SQLQuery;
 class QSignalMapper;
 class DWebView;
-class MySQLHelp;
+class MariaDBHelp;
 class ProcessList;
 class TableMaintenance;
 class Result;
@@ -215,7 +215,7 @@ private:
   Catalogs *catalogs;
   SQLQuery *query;
   DWebView *dWebView;
-  MySQLHelp *mysqlHelp;
+  MariaDBHelp *mariadbHelp;
   ProcessList *processList;
   TextEditor *sqlEditor;
   TableMaintenance *tableMaintenance;
@@ -239,7 +239,7 @@ private:
   QAction *mysqlScriptAction;
   QAction *phpScriptAction;
   QAction *mariaDBGUIHelpAction;
-  QAction *mysqlHelpAction;
+  QAction *mariadbHelpAction;
   QAction *mysqlOnLineHelpAction;
   QAction *phpOnLineHelpAction;
   QAction *mariadbOnLineHelpAction;

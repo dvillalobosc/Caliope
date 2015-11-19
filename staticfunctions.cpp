@@ -870,6 +870,7 @@ QStringList StaticFunctions::mariadbHelper()
       << "DROP VIEW IF EXISTS"
       << "DROP VIEW"
       << "EXPORT DATA FOR INSERT"
+      << "HELP 'Topic'"
       << "FLUSH DES_KEY_FILE"
       << "FLUSH HOSTS"
       << "FLUSH LOGS"
