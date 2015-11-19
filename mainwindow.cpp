@@ -566,10 +566,6 @@ void MainWindow::createActions()
   showSlowLogAction->setIcon(QIcon(":/images/svg/system-run-5.svg"));
   connect(showSlowLogAction, SIGNAL(triggered()), this, SLOT(showSlowLogActionTriggered()));
 
-  postgresqlOnLineHelpAction = new QAction(this);
-  postgresqlOnLineHelpAction->setIcon(QIcon(":/images/svg/postgresql.svg"));
-  connect(postgresqlOnLineHelpAction, SIGNAL(triggered()), this, SLOT(postgresqlOnLineHelpActionTriggered()));
-
   mariadbOnLineHelpAction = new QAction(this);
   mariadbOnLineHelpAction->setIcon(QIcon(":/images/svg/MariaDB-seal.svg"));
   connect(mariadbOnLineHelpAction, SIGNAL(triggered()), this, SLOT(mariadbOnLineHelpActionTriggered()));
@@ -903,11 +899,6 @@ void MainWindow::showSlowLogActionTriggered()
   dialog->setLayout(mainVLayout);
   if (dialog->exec() == QDialog::Accepted)
     showResultTab("slow_log", "mysql", "`start_time` >= '" + dateTimeEdit->dateTime().toString("yyyy-MM-dd hh:mm:ss") + "'");
-}
-
-void MainWindow::postgresqlOnLineHelpActionTriggered()
-{
-  addSubWindow(newDWebView(tr("PostgreSQL On-Line Help"), QUrl("http://www.postgresql.org/docs/manuals/")));
 }
 
 void MainWindow::mariadbOnLineHelpActionTriggered()
@@ -1728,9 +1719,6 @@ void MainWindow::retranslateUi()
   showSlowLogAction->setText(tr("Show the Slow Log"));
   showSlowLogAction->setStatusTip(showSlowLogAction->text());
 
-  postgresqlOnLineHelpAction->setText(tr("PostgreSQL On-Line Help"));
-  postgresqlOnLineHelpAction->setStatusTip(postgresqlOnLineHelpAction->text());
-
   mariadbOnLineHelpAction->setText(tr("MariaDB On-Line Help"));
   mariadbOnLineHelpAction->setStatusTip(mariadbOnLineHelpAction->text());
 
@@ -2450,8 +2438,6 @@ void MainWindow::createMenus()
   helpMenu->addAction(mariadbHelpAction);
   helpMenu->addSeparator();
   helpMenu->addAction(mysqlOnLineHelpAction);
-  helpMenu->addSeparator();
-  helpMenu->addAction(postgresqlOnLineHelpAction);
   helpMenu->addSeparator();
   helpMenu->addAction(phpOnLineHelpAction);
   helpMenu->addSeparator();

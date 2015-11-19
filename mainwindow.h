@@ -141,7 +141,6 @@ private slots:
   void maintenancePurgeBinaryLogsActionTriggered();
   void maintenanceTimeDifferenceActionTriggered();
   void showSlowLogActionTriggered();
-  void postgresqlOnLineHelpActionTriggered();
   void mariadbOnLineHelpActionTriggered();
   void catalogsReadOnlyActionSlot(bool readOnly);
   void viewRecentFilesActionTriggered();
@@ -243,7 +242,6 @@ private:
   QAction *mysqlOnLineHelpAction;
   QAction *phpOnLineHelpAction;
   QAction *mariadbOnLineHelpAction;
-  QAction *postgresqlOnLineHelpAction;
   QAction *preferencesAction;
   QAction *processAction;
   QAction *showFileToolBarAction;
