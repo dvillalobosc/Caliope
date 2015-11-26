@@ -614,6 +614,7 @@ QStringList StaticFunctions::mariadbKeywords()
       << "INOUT"
       << "INSENSITIVE"
       << "INSERT"
+      << "INSTALL"
       << "INTERVAL"
       << "INTO"
       << "INVOKER"
@@ -706,6 +707,7 @@ QStringList StaticFunctions::mariadbKeywords()
       << "PASSWORD"
       << "PERFORMANCE_SCHEMA"
       << "PERSISTENT"
+      << "PLUGIN"
       << "PLUGINS"
       << "PORT"
       << "PRECISION"
@@ -768,14 +770,13 @@ QStringList StaticFunctions::mariadbKeywords()
       << "SERVER"
       << "SESSION"
       << "SET"
-      << "SET AUTOCOMMIT:= 0; SET FOREIGN_KEY_CHECKS := 0; SET UNIQUE_CHECKS := 0;"
-      << "COMMIT; SET AUTOCOMMIT:= 0; SET FOREIGN_KEY_CHECKS := 0; SET UNIQUE_CHECKS := 0;"
       << "SHARE"
       << "SHOW"
       << "SHUTDOWN"
       << "SLAVE"
       << "SLAVES"
       << "SNAPSHOT"
+      << "SONAME"
       << "SPATIAL"
       << "SPECIFIC"
       << "SQL_CACHE"
@@ -852,6 +853,7 @@ QStringList StaticFunctions::mariadbKeywords()
 
 QStringList StaticFunctions::mariadbHelper()
 {
+
   return QStringList()
       << "ALTER TABLE"
       << "ANALYZE [NO_WRITE_TO_BINLOG | LOCAL] TABLE tbl_name [, tbl_name]"
@@ -859,6 +861,7 @@ QStringList StaticFunctions::mariadbHelper()
       << "CHECK TABLE tbl_name [, tbl_name] {FOR UPGRADE | QUICK | FAST | MEDIUM | EXTENDED | CHANGED}"
       << "CHECKSUM TABLE tbl_name [, tbl_name] [QUICK | EXTENDED]"
       << "CREATE DATABASE `DatabaseName` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;"
+      << "COMMIT; SET AUTOCOMMIT:= 0; SET FOREIGN_KEY_CHECKS := 0; SET UNIQUE_CHECKS := 0;"
       << "DELETE FROM"
       << "DROP DATABASE IF EXISTS"
       << "DROP DATABASE"
@@ -884,6 +887,7 @@ QStringList StaticFunctions::mariadbHelper()
       << "FLUSH TABLES"
       << "FLUSH USER_RESOURCES"
       << "INSERT INTO"
+      << "INSTALL PLUGIN Plugin_Name SONAME 'Plugin_Name.SO'"
       << "IS NULL"
       << "LIMIT 10"
       << "LIMIT 100"
@@ -903,6 +907,7 @@ QStringList StaticFunctions::mariadbHelper()
       << "SELECT COUNT(*) FROM"
       << "SELECT SQL_CACHE"
       << "SELECT SQL_NO_CACHE"
+      << "SET AUTOCOMMIT:= 0; SET FOREIGN_KEY_CHECKS := 0; SET UNIQUE_CHECKS := 0;"
       << "SET GLOBAL"
       << "SET PASSWORD FOR 'user'@'host' = PASSWORD('cleartext password');"
       << "SHOW ALL SLAVES STATUS"
