@@ -230,7 +230,7 @@ QHash<QString, QString> StaticFunctions::mariadbFunctionsComplete()
   //  data.insert("COMPRESS", QString("<u>COMPRESS</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("CONCAT_WS", QString("<u>CONCAT_WS</u>(<b></b>) <br />%1").arg(tr("")));
   data.insert("CONCAT", QString("<u>CONCAT</u>(str1, str2, ...)) <br />%1").arg(tr("Returns the string that results from concatenating the arguments.")));
-  //  data.insert("CONNECTION_ID", QString("<u>CONNECTION_ID</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("CONNECTION_ID", QString("<u>CONNECTION_ID</u>(<b></b>) <br />%1").arg(tr("Returns the connection ID (thread ID) for the connection.")));
   //  data.insert("CONV", QString("<u>CONV</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("CONVERT_TZ", QString("<u>CONVERT_TZ</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("COS", QString("<u>COS</u>(<b></b>) <br />%1").arg(tr("")));
@@ -341,7 +341,7 @@ QHash<QString, QString> StaticFunctions::mariadbFunctionsComplete()
   //  data.insert("RELEASE_LOCK", QString("<u>RELEASE_LOCK</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("REVERSE", QString("<u>REVERSE</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("RIGHT", QString("<u>RIGHT</u>(<b></b>) <br />%1").arg(tr("")));
-  //  data.insert("ROUND", QString("<u>ROUND</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("ROUND", QString("<u>ROUND</u>(<b>X [, D]</b>) <br />%1").arg(tr("Rounds the argument X to D decimal places.")));
   data.insert("ROW_COUNT", QString("<u>ROW_COUNT</u>() <br />%1").arg(tr("Returns the number of rows changed, deleted, or inserted by the last statement.")));
   data.insert("RPAD", QString("<u>RPAD</u>(<b>str, len, padstr</b>) <br />%1").arg(tr("Returns the string str, right-padded with the string padstr to a length of len characters.<br />If str is longer than len, the return value is shortened to len characters.")));
   //  data.insert("RTRIM", QString("<u>RTRIM</u>(<b></b>) <br />%1").arg(tr("")));
@@ -503,6 +503,7 @@ QStringList StaticFunctions::mariadbKeywords()
       << "CHECKSUM"
       << "CLIENT"
       << "CLOSE"
+      << "COALESCE"
       << "CODE"
       << "COLLATE"
       << "COLLATION"
