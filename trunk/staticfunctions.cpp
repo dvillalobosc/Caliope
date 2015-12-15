@@ -228,7 +228,7 @@ QHash<QString, QString> StaticFunctions::mariadbFunctionsComplete()
   //  data.insert("COERCIBILITY", QString("<u>COERCIBILITY</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("COLLATION", QString("<u>COLLATION</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("COMPRESS", QString("<u>COMPRESS</u>(<b></b>) <br />%1").arg(tr("")));
-  //  data.insert("CONCAT_WS", QString("<u>CONCAT_WS</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("CONCAT_WS", QString("string <u>CONCAT_WS</u>(<b>separator, str1[,str2,...])</b>) <br />%1").arg(tr("Concatenate the strings with the given separator.")));
   data.insert("CONCAT", QString("<u>CONCAT</u>(str1, str2, ...)) <br />%1").arg(tr("Returns the string that results from concatenating the arguments.")));
   data.insert("CONNECTION_ID", QString("<u>CONNECTION_ID</u>(<b></b>) <br />%1").arg(tr("Returns the connection ID (thread ID) for the connection.")));
   //  data.insert("CONV", QString("<u>CONV</u>(<b></b>) <br />%1").arg(tr("")));
@@ -609,6 +609,7 @@ QStringList StaticFunctions::mariadbKeywords()
       << "IGNORE_SERVER_IDS"
       << "IN"
       << "INDEX"
+      << "INDEXES"
       << "INFILE"
       << "INNER"
       << "INNODB"
@@ -704,6 +705,7 @@ QStringList StaticFunctions::mariadbKeywords()
       << "OUTER"
       << "OUTFILE"
       << "PARTITION"
+      << "PARTITIONING"
       << "PARTITIONS"
       << "PASSWORD"
       << "PERFORMANCE_SCHEMA"
@@ -739,7 +741,9 @@ QStringList StaticFunctions::mariadbKeywords()
       << "RELAY_LOG_POS"
       << "RELEASE"
       << "RELOAD"
+      << "REMOVE"
       << "RENAME"
+      << "REORGANIZE"
       << "REPAIR"
       << "REPEAT"
       << "REPEATABLE"
@@ -941,6 +945,7 @@ QStringList StaticFunctions::mariadbHelper()
       << "SHOW FUNCTION STATUS"
       << "SHOW GRANTS"
       << "SHOW INDEX"
+      << "SHOW INDEXES"
       << "SHOW MASTER STATUS"
       << "SHOW OPEN TABLES"
       << "SHOW PLUGINS"
