@@ -90,9 +90,13 @@ TableMaintenance::TableMaintenance(DBMS *serverConnection)
   connect(clearSelectionPushButton, SIGNAL(clicked()), this, SLOT(clearSelectionPushButtonSlot()));
   thirdLayout->addWidget(clearSelectionPushButton);
 
-  selectAllTAblesPushButton = new QPushButton;
-  connect(selectAllTAblesPushButton, SIGNAL(clicked()), this, SLOT(selectAllTAblesPushButtonSlot()));
-  thirdLayout->addWidget(selectAllTAblesPushButton);
+  selectAllTablesPushButton = new QPushButton;
+  connect(selectAllTablesPushButton, SIGNAL(clicked()), this, SLOT(selectAllTablesPushButtonSlot()));
+  thirdLayout->addWidget(selectAllTablesPushButton);
+
+  selectAllLocalTablesPushButton = new QPushButton;
+  connect(selectAllLocalTablesPushButton, SIGNAL(clicked()), this, SLOT(selectAllLocalTablesPushButtonSlot()));
+  thirdLayout->addWidget(selectAllLocalTablesPushButton);
 
   thirdLayout->addStretch();
   groupBoxAction->setLayout(thirdLayout);
@@ -127,7 +131,8 @@ void TableMaintenance::retranslateUi()
   tablesListWidget->setWindowTitle(tr("Databases"));
   tablesListWidget->setHeaderLabel(tablesListWidget->windowTitle());
   clearSelectionPushButton->setText(tr("Clear selection"));
-  selectAllTAblesPushButton->setText(tr("Select all"));
+  selectAllTablesPushButton->setText(tr("Select all"));
+  selectAllLocalTablesPushButton->setText(tr("Select local tables"));
 }
 
 QString TableMaintenance::tableList()
@@ -236,14 +241,20 @@ void TableMaintenance::itemActivatedSlot(QTreeWidgetItem *item, int column)
     foreach (QTreeWidgetItem *tableItem, tables)
       if (tableItem->parent() == item)
         tableItem->setCheckState(column, item->checkState(column));
-    if (item->childCount() == 0)
-      foreach (QString table, serverConnection->database(item->text(0))->getTables()) {
+    if (item->childCount() == 0) {
+      QStringList databaseTables;
+      if (selectAllLocalTables)
+        databaseTables = serverConnection->database(item->text(0))->getLocalTables();
+      else
+        databaseTables = serverConnection->database(item->text(0))->getTables();
+      foreach (QString table, databaseTables) {
         QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList("`" + item->text(0) + "`.`" + table + "`"), ItemTypes::Table);
         itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         itemChild->setIcon(0, QIcon(":/images/svg/table.svg"));
         itemChild->setCheckState(0, Qt::Checked);
         tables.append(itemChild);
       }
+    }
     QApplication::restoreOverrideCursor();
   }
 }
@@ -285,7 +296,7 @@ void TableMaintenance::clearSelectionPushButtonSlot()
   optionUSE_FRM->setAutoExclusive(true);
 }
 
-void TableMaintenance::selectAllTAblesPushButtonSlot()
+void TableMaintenance::selectAllTablesPushButtonSlot()
 {
   QTreeWidgetItemIterator it(tablesListWidget);
   while (*it) {
@@ -293,6 +304,13 @@ void TableMaintenance::selectAllTAblesPushButtonSlot()
       (*it)->setCheckState(0, Qt::Checked);
     ++it;
   }
+}
+
+void TableMaintenance::selectAllLocalTablesPushButtonSlot()
+{
+  selectAllLocalTables = true;
+  selectAllTablesPushButtonSlot();
+  selectAllLocalTables = false;
 }
 
 //TableMaintenanceWizard::TableMaintenanceWizard()

@@ -1491,6 +1491,20 @@ QStringList Database::info()
          ;
 }
 
+QStringList Database::getLocalTables()
+{
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    return serverConnection->runQuerySingleColumn("SELECT `TABLE_NAME` FROM `information_schema`.`TABLES` WHERE `TABLE_TYPE` = 'BASE TABLE' AND `ENGINE` NOT IN ('FEDERATED') AND `TABLE_SCHEMA` = '" + databaseName + "'");
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QStringList();
+}
+
 /***************************************************************************************************************/
 
 Table::Table(DBMS *serverConnection, QString tableName, QString database)
