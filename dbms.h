@@ -155,6 +155,7 @@ public:
   QStringList getViews();
   unsigned long tableCount();
   QStringList info();
+  QStringList getLocalTables();
 
 private:
   DBMS *serverConnection;
