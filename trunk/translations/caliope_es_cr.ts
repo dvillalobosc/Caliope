@@ -1466,48 +1466,62 @@ Total progess: %5.</source>
     </message>
     <message>
         <location filename="../databasecomparision.cpp" line="190"/>
-        <location filename="../databasecomparision.cpp" line="194"/>
-        <location filename="../databasecomparision.cpp" line="198"/>
-        <location filename="../databasecomparision.cpp" line="207"/>
-        <location filename="../databasecomparision.cpp" line="211"/>
+        <location filename="../databasecomparision.cpp" line="199"/>
+        <location filename="../databasecomparision.cpp" line="204"/>
+        <location filename="../databasecomparision.cpp" line="215"/>
+        <location filename="../databasecomparision.cpp" line="221"/>
         <source>Server</source>
         <translation>Servidor</translation>
     </message>
     <message>
         <location filename="../databasecomparision.cpp" line="190"/>
-        <location filename="../databasecomparision.cpp" line="194"/>
-        <location filename="../databasecomparision.cpp" line="198"/>
-        <location filename="../databasecomparision.cpp" line="207"/>
-        <location filename="../databasecomparision.cpp" line="211"/>
+        <location filename="../databasecomparision.cpp" line="199"/>
+        <location filename="../databasecomparision.cpp" line="204"/>
+        <location filename="../databasecomparision.cpp" line="215"/>
+        <location filename="../databasecomparision.cpp" line="221"/>
         <source>Database</source>
         <translation>Base de Datos</translation>
     </message>
     <message>
         <location filename="../databasecomparision.cpp" line="190"/>
-        <location filename="../databasecomparision.cpp" line="194"/>
-        <location filename="../databasecomparision.cpp" line="198"/>
-        <location filename="../databasecomparision.cpp" line="207"/>
-        <location filename="../databasecomparision.cpp" line="211"/>
+        <location filename="../databasecomparision.cpp" line="199"/>
+        <location filename="../databasecomparision.cpp" line="204"/>
+        <location filename="../databasecomparision.cpp" line="215"/>
+        <location filename="../databasecomparision.cpp" line="221"/>
         <source>Table</source>
         <translation>Tabla</translation>
     </message>
     <message>
         <location filename="../databasecomparision.cpp" line="190"/>
-        <location filename="../databasecomparision.cpp" line="194"/>
-        <location filename="../databasecomparision.cpp" line="198"/>
-        <location filename="../databasecomparision.cpp" line="207"/>
-        <location filename="../databasecomparision.cpp" line="211"/>
+        <location filename="../databasecomparision.cpp" line="199"/>
+        <location filename="../databasecomparision.cpp" line="204"/>
+        <location filename="../databasecomparision.cpp" line="215"/>
+        <location filename="../databasecomparision.cpp" line="221"/>
         <source>Data length</source>
         <translation>Tamaño de los datos</translation>
     </message>
     <message>
         <location filename="../databasecomparision.cpp" line="190"/>
-        <location filename="../databasecomparision.cpp" line="194"/>
-        <location filename="../databasecomparision.cpp" line="198"/>
-        <location filename="../databasecomparision.cpp" line="207"/>
-        <location filename="../databasecomparision.cpp" line="211"/>
+        <location filename="../databasecomparision.cpp" line="199"/>
+        <location filename="../databasecomparision.cpp" line="204"/>
+        <location filename="../databasecomparision.cpp" line="215"/>
+        <location filename="../databasecomparision.cpp" line="221"/>
         <source>Row count</source>
         <translation>Conteo de filas</translation>
+    </message>
+    <message>
+        <location filename="../databasecomparision.cpp" line="190"/>
+        <location filename="../databasecomparision.cpp" line="199"/>
+        <location filename="../databasecomparision.cpp" line="204"/>
+        <location filename="../databasecomparision.cpp" line="215"/>
+        <location filename="../databasecomparision.cpp" line="221"/>
+        <source>Checksum</source>
+        <translation>Checksum</translation>
+    </message>
+    <message>
+        <location filename="../databasecomparision.cpp" line="273"/>
+        <source>Table does not exist.</source>
+        <translation>La tabla no existe.</translation>
     </message>
 </context>
 <context>

@@ -130,7 +130,7 @@ void DatabaseComparision::fillTablesSlot()
       //2 - Host
       //3 - Port
       //4 - Database
-      //5 - Conexion count -- No parsed but keeped the space.
+      //5 - Conexion count
       //6 - Collation
       //7 - UseSSL
       //8 - KeyFile
@@ -138,7 +138,7 @@ void DatabaseComparision::fillTablesSlot()
       //10 - Password
       secondaryServerConnection->setUserName(connectFrom->getValues().at(1));
       secondaryServerConnection->setHostName(connectFrom->getValues().at(2));
-      secondaryServerConnection->setPassword(connectFrom->getValues().at(7));
+      secondaryServerConnection->setPassword(connectFrom->getValues().at(10));
       secondaryServerConnection->setDatabase(connectFrom->getValues().at(4));
       secondaryServerConnection->setPort(connectFrom->getValues().at(3).toUInt());
       secondaryServerConnection->setCharacterSet(connectFrom->getValues().at(6).split("|").at(0));
@@ -187,15 +187,22 @@ void DatabaseComparision::comparision(bool primary)
   QApplication::setOverrideCursor(Qt::WaitCursor);
   QList<QStringList> *data = new QList<QStringList>();
   QList<QStringList> *rows = new QList<QStringList>();
-  rows->append(QStringList() << tr("Server") << tr("Database") << tr("Table") << tr("Data length") << tr("Row count"));
+  rows->append(QStringList() << tr("Server") << tr("Database") << tr("Table") << tr("Data length") << tr("Row count") << tr("Checksum"));
+  QString database;
+  QString table;
+  QString statement;
   if (primary)
     foreach (QTreeWidgetItem *item, tables) {
       if (item->checkState(0) == Qt::Checked && item->parent()) {
-        data = serverConnection->runQuerySimpleResult(QString("SELECT '%1' AS `" + tr("Server") + "`, `TABLE_SCHEMA` AS `" + tr("Database") + "`, `TABLE_NAME` AS `" + tr("Table") + "`, FORMAT(`DATA_LENGTH`, 0) AS `" + tr("Data length") + "`, (SELECT COUNT(*) FROM %2) AS `" + tr("Row count") + "` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '%3' AND `TABLE_NAME` = '%4'").arg(serverConnection->getHostName()).arg(item->text(0)).arg(item->text(0).split(".").at(0)).arg(item->text(0).split(".").at(1)));
+        database = item->text(0).split(".").at(0);
+        table = item->text(0).split(".").at(1);
+        statement = QString("SELECT '%1' AS `" + tr("Server") + "`, `TABLE_SCHEMA` AS `" + tr("Database") + "`, `TABLE_NAME` AS `" + tr("Table") + "`, FORMAT(`DATA_LENGTH`, 0) AS `" + tr("Data length") + "`, (SELECT COUNT(*) FROM %2) AS `" + tr("Row count") + "`, FORMAT(%3, 0) AS `" + tr("Checksum") + "` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '%4' AND `TABLE_NAME` = '%5'").arg(serverConnection->getHostName()).arg(item->text(0)).arg(serverConnection->database(database)->tableChecksum(table)).arg(database).arg(table);
+        data = serverConnection->runQuerySimpleResult(statement);
         for (int counter = 0; counter < data->size(); counter++) {
           rows->append(data->at(counter));
         }
-        data = secondaryServerConnection->runQuerySimpleResult(QString("SELECT '%1' AS `" + tr("Server") + "`, `TABLE_SCHEMA` AS `" + tr("Database") + "`, `TABLE_NAME` AS `" + tr("Table") + "`, FORMAT(`DATA_LENGTH`, 0) AS `" + tr("Data length") + "`, (SELECT COUNT(*) FROM %2) AS `" + tr("Row count") + "` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '%3' AND `TABLE_NAME` = '%4'").arg(secondaryServerConnection->getHostName()).arg(item->text(0)).arg(item->text(0).split(".").at(0)).arg(item->text(0).split(".").at(1)));
+        statement = QString("SELECT '%1' AS `" + tr("Server") + "`, `TABLE_SCHEMA` AS `" + tr("Database") + "`, `TABLE_NAME` AS `" + tr("Table") + "`, FORMAT(`DATA_LENGTH`, 0) AS `" + tr("Data length") + "`, (SELECT COUNT(*) FROM %2) AS `" + tr("Row count") + "`, FORMAT(%3, 0) AS `" + tr("Checksum") + "` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '%4' AND `TABLE_NAME` = '%5'").arg(secondaryServerConnection->getHostName()).arg(item->text(0)).arg(secondaryServerConnection->database(database)->tableChecksum(table)).arg(database).arg(table);
+        data = secondaryServerConnection->runQuerySimpleResult(statement);
         for (int counter = 0; counter < data->size(); counter++) {
           rows->append(data->at(counter));
         }
@@ -203,12 +210,16 @@ void DatabaseComparision::comparision(bool primary)
     }
   else
     foreach (QTreeWidgetItem *item, secondaryTables) {
+      database = item->text(0).split(".").at(0);
+      table = item->text(0).split(".").at(1);
+      statement = QString("SELECT '%1' AS `" + tr("Server") + "`, `TABLE_SCHEMA` AS `" + tr("Database") + "`, `TABLE_NAME` AS `" + tr("Table") + "`, FORMAT(`DATA_LENGTH`, 0) AS `" + tr("Data length") + "`, (SELECT COUNT(*) FROM %2) AS `" + tr("Row count") + "`, FORMAT(%3, 0) AS `" + tr("Checksum") + "` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '%4' AND `TABLE_NAME` = '%5'").arg(serverConnection->getHostName()).arg(item->text(0)).arg(serverConnection->database(database)->tableChecksum(table)).arg(database).arg(table);
       if (item->checkState(0) == Qt::Checked && item->parent()) {
-        data = serverConnection->runQuerySimpleResult(QString("SELECT '%1' AS `" + tr("Server") + "`, `TABLE_SCHEMA` AS `" + tr("Database") + "`, `TABLE_NAME` AS `" + tr("Table") + "`, FORMAT(`DATA_LENGTH`, 0) AS `" + tr("Data length") + "`, (SELECT COUNT(*) FROM %2) AS `" + tr("Row count") + "` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '%3' AND `TABLE_NAME` = '%4'").arg(serverConnection->getHostName()).arg(item->text(0)).arg(item->text(0).split(".").at(0)).arg(item->text(0).split(".").at(1)));
+        data = serverConnection->runQuerySimpleResult(statement);
         for (int counter = 0; counter < data->size(); counter++) {
           rows->append(data->at(counter));
         }
-        data = secondaryServerConnection->runQuerySimpleResult(QString("SELECT '%1' AS `" + tr("Server") + "`, `TABLE_SCHEMA` AS `" + tr("Database") + "`, `TABLE_NAME` AS `" + tr("Table") + "`, FORMAT(`DATA_LENGTH`, 0) AS `" + tr("Data length") + "`, (SELECT COUNT(*) FROM %2) AS `" + tr("Row count") + "` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '%3' AND `TABLE_NAME` = '%4'").arg(secondaryServerConnection->getHostName()).arg(item->text(0)).arg(item->text(0).split(".").at(0)).arg(item->text(0).split(".").at(1)));
+        statement = QString("SELECT '%1' AS `" + tr("Server") + "`, `TABLE_SCHEMA` AS `" + tr("Database") + "`, `TABLE_NAME` AS `" + tr("Table") + "`, FORMAT(`DATA_LENGTH`, 0) AS `" + tr("Data length") + "`, (SELECT COUNT(*) FROM %2) AS `" + tr("Row count") + "`, FORMAT(%3, 0) AS `" + tr("Checksum") + "` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '%4' AND `TABLE_NAME` = '%5'").arg(secondaryServerConnection->getHostName()).arg(item->text(0)).arg(secondaryServerConnection->database(database)->tableChecksum(table)).arg(database).arg(table);
+        data = secondaryServerConnection->runQuerySimpleResult(statement);
         for (int counter = 0; counter < data->size(); counter++) {
           rows->append(data->at(counter));
         }
@@ -258,7 +269,9 @@ void DatabaseComparision::comparision(bool primary)
 
 QString DatabaseComparision::highlightError(QList<QStringList> *rows, int row)
 {
-  if(rows->at(row).at(4) != rows->at(row + 1).at(4))
+  if (rows->at(row + 1).count() == 1)
+    return tr("Table does not exist.");
+  if((rows->at(row).at(4) != rows->at(row + 1).at(4)) || (rows->at(row).at(5) != rows->at(row + 1).at(5)))
     return "*";
   return "";
 }

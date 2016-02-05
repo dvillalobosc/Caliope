@@ -156,6 +156,7 @@ public:
   unsigned long tableCount();
   QStringList info();
   QStringList getLocalTables();
+  QString tableChecksum(QString table = QString());
 
 private:
   DBMS *serverConnection;
