@@ -1496,13 +1496,27 @@ QStringList Database::getLocalTables()
   switch(qApp->property("DBMSType").toInt()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
-    return serverConnection->runQuerySingleColumn("SELECT `TABLE_NAME` FROM `information_schema`.`TABLES` WHERE `TABLE_TYPE` = 'BASE TABLE' AND `ENGINE` NOT IN ('FEDERATED') AND `TABLE_SCHEMA` = '" + databaseName + "'");
+    return serverConnection->runQuerySingleColumn("SELECT `TABLE_NAME` FROM `information_schema`.`TABLES` WHERE `TABLE_TYPE` = 'BASE TABLE' AND `ENGINE` NOT IN ('FEDERATED', 'MEMORY') AND `TABLE_SCHEMA` = '" + databaseName + "'");
     break;
   case StaticFunctions::Undefined:
   default:
     break;
   }
   return QStringList();
+}
+
+QString Database::tableChecksum(QString table)
+{
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    return serverConnection->runQuery("CHECKSUM TABLE `" + databaseName + "`.`" + table + "`")->at(0).at(1);
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QString();
 }
 
 /***************************************************************************************************************/
