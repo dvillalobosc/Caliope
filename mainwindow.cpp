@@ -2490,7 +2490,7 @@ void MainWindow::statusBarMessage(const QString &message, QSystemTrayIcon::Messa
     return;
   dStatusBar->showFancyMessage(message, timeout);
   if (trayIconEnabled)
-    trayIcon->showMessage(QCoreApplication::applicationName(), message, icon, timeout * 2);
+    trayIcon->showMessage(QCoreApplication::applicationName(), message, icon, (timeout == 0 ? 2000 : 0) * 2);
 }
 
 void MainWindow::statusBarMessagePopup(const QString &message, int timeout)

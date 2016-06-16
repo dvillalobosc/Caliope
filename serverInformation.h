@@ -33,6 +33,7 @@ class QGroupBox;
 class DTitleLabel;
 class DLineEdit;
 class DTableView;
+class QComboBox;
 
 #include "dmdisubwindow.h"
 #include "dbms.h"
@@ -143,9 +144,10 @@ private:
   QPushButton *pushButtonServerGraphicsFullScreen;
   QPushButton *pushButtonShowSlowQueries;
   QLabel *labelServerStatus;
-  DLineEdit *lineEditConnectioName;
+  //DLineEdit *lineEditConnectioName;
   DTableView *slowQueriesDTableView;
   QList<QStringList> *result;
+  QComboBox *slavesListComboBox;
 
 public slots:
   void showInformation(int tabIndex);
@@ -168,7 +170,7 @@ private slots:
   void pushButtonShowSessionVariablesSlot();
   void lineEditFilterTextChangedSlot(QString filter);
   void pushButtonServerGraphicsFullScreenSlot(bool checked = false);
-  void lineEditConnectioNameClicked();
+  //void lineEditConnectioNameClicked();
 };
 
 #endif // SERVERINFORMATION_H
