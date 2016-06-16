@@ -62,19 +62,19 @@ signals:
   void loadStarted(QString message, unsigned int timeout, double progress);
   void loadFinished(QString message, unsigned int timeout, double progress);
   void loadProgress(QString message, unsigned int timeout, double progress);
-  void statusBarProgressMessage(const QString &message, const unsigned int timeout = 2000, const double progress = 0);
-  void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 2000);
+  void statusBarProgressMessage(const QString &message, const unsigned int timeout = 0, const double progress = 0);
+  void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 0);
   void showPagesource(const QString pageSource);
 
 private slots:
 //  void statusBarMessage(const QString &message1, const QString &message2, const QString &message3, const int timeout = 2000);
-  void statusBarMessageSlot(const QString &message, const int timeout = 2000);
+  void statusBarMessageSlot(const QString &message, const int timeout = 0);
   void loadFinishedSlot(const bool state);
   void loadStartedSlot();
   void loadProgressSlot(const int progress);
   void urlChangedSlot(const QUrl &url);
   void urlLineEditReturnPressed();
-  void statusBarProgressMessageSlot(const QString &message, const unsigned int timeout = 2000, const double progress = 0);
+  void statusBarProgressMessageSlot(const QString &message, const unsigned int timeout = 0, const double progress = 0);
   void showSourceCodeTriggered();
   void openInExternalBrowserTriggered();
 };

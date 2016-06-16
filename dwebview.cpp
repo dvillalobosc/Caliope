@@ -118,15 +118,15 @@ void DWebView::sslErrors(QNetworkReply *reply, const QList<QSslError> &errors)
 
 void DWebView::loadStartedSlot()
 {
-  emit loadStarted(tr("Loading page..."), 2000, 0);
+  emit loadStarted(tr("Loading page..."), 0, 0);
 }
 
 void DWebView::loadFinishedSlot(const bool state)
 {
   if (state)
-    emit loadFinished(tr("Page loaded."), 2000, 100);
+    emit loadFinished(tr("Page loaded."), 0, 100);
   else
-    emit loadProgress(tr("Could not load page."), 2000, 0);
+    emit loadProgress(tr("Could not load page."), 0, 0);
 }
 
 void DWebView::statusBarMessageSlot(const QString &message, const int timeout)
@@ -143,7 +143,7 @@ void DWebView::statusBarMessageSlot(const QString &message, const int timeout)
 
 void DWebView::loadProgressSlot(const int progress)
 {
-  emit loadProgress(tr("Loading page..."), 2000, progress);
+  emit loadProgress(tr("Loading page..."), 0, progress);
 }
 
 void DWebView::urlChangedSlot(const QUrl &url)

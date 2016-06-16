@@ -82,7 +82,7 @@ protected:
 
 signals:
   void changeTitle(QString title);
-  void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 2000);
+  void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 0);
   void updatePrositionViewer(const int x, const int y);
   void openURL(QString url);
   void windowClosed();

@@ -273,11 +273,12 @@ public:
   Event *event(QString eventName, QString database = QString());
   Processes *processes();
   Replication *replication();
+  void saveOutputToFile(QString contents, QString filter, QString fileName = QString());
 
 signals:
   void errorOccurred();
   void databaseChanged();
-  void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 2000);
+  void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 0);
   void errorMessageAccepted();
   void reconnectionPerformed();
 
@@ -297,7 +298,6 @@ private:
   QString p_database;
   bool opened;
   int query(QString queryToExecute);
-  void saveOutputToFile(QString contents, QString filter, QString fileName = QString());
 //  QString outputAsTable(MYSQL_RES *result, QString query, bool replaceReturns);
 //  QString outputAsTable(PGresult *result, QString query, bool replaceReturns);
   QString errorOnExecution(const QString message);
@@ -317,6 +317,7 @@ private:
   QString p_clientCert;
   QTimer *timerCheckIfReconnected;
   ulong p_connectionId;
+
 };
 
 #endif // DBMS_H

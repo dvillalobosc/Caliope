@@ -1995,6 +1995,7 @@ void MainWindow::queryActionTriggered()
     connect(query, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
     connect(query, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
     connect(query, SIGNAL(windowClosed()), this, SLOT(decrementSQLQueryWindowCounter()));
+    connect(query, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
   }
 }
 
