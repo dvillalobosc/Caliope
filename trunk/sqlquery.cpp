@@ -115,6 +115,7 @@ SQLQuery::SQLQuery(Projects *project, DBMS *serverConnection, unsigned int windo
   mainVLayout->addWidget(separatorFrame);
   scriptEditor = new TextEditor(project, serverConnection, EditorTypes::SQLQuery, 0, true);
   connect(scriptEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
+  connect(scriptEditor, SIGNAL(updatePrositionViewer(int,int)), this, SLOT(emitUpdatePrositionViewer(int,int)));
   ///connect(scriptEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), project, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   mainSplitter->addWidget(scriptEditor);
   resutlEditor = new BaseTextEditor(EditorTypes::NoEditor);
@@ -604,47 +605,60 @@ QToolBar *SQLQuery::getToolBar()
 
 void SQLQuery::exportTableDataForInsertActionTriggered()
 {
-  QTextCursor cursor = scriptEditor->textEditor->textCursor();
-  QTextDocument *doc = scriptEditor->textEditor->document();
-  QTextBlock block = doc->findBlock(qMin(cursor.anchor(), cursor.position()));
+  //QTextCursor cursor = scriptEditor->textEditor->textCursor();
+  //QTextDocument *doc = scriptEditor->textEditor->document();
+  //QTextBlock block = doc->findBlock(qMin(cursor.anchor(), cursor.position()));
   QString outPut;
   QString fields;
   QString table;
-  if (block.text().startsWith("EXPORT DATA FOR INSERT `")) {
-    QRegExp expression("`[A-Za-z_\\d%]*`");
-    expression.indexIn(block.text());
-    table = expression.capturedTexts().at(0).mid(1, expression.capturedTexts().at(0).length() - 2);
-    QString queryString("SELECT `COLUMN_NAME` FROM `information_schema`.`COLUMNS` WHERE `TABLE_SCHEMA` = '" + serverConnection->getDatabase() + "' AND `TABLE_NAME` = '" + table + "'");
-    foreach (QString column, serverConnection->runQuerySingleColumn(queryString))
-      fields += "`" + column + "`, ";
-    fields = fields.mid(0, fields.length() - 2);
-    QString rowData("INSERT INTO `" + table + "` (" + fields + ") VALUES (");
-    QString rowTMP;
-    QRegExp expressionWHERE(" WHERE `[A-Za-z_\\d%]*.*");
-    expressionWHERE.indexIn(block.text());
-    QList<QStringList> *rows = serverConnection->runQuery("SELECT * FROM `" + table + "`" + expressionWHERE.capturedTexts().at(0));
 
-    for (int row = 0; row < rows->count() - 1; row++) {
-      for (int row2 = 0; row2 < rows->at(row).count(); row2++) {
-        rowTMP += "'" + rows->at(row).at(row2) + "', ";
+  QApplication::setOverrideCursor(Qt::WaitCursor);
+  foreach (QString statement, scriptEditor->textEditor->textCursor().selection().toPlainText().split(QRegExp(";\\s+"), QString::SkipEmptyParts)) {
+    if (logStatements) //Use a variable here because is faster
+      serverConnection->logStatement(statement);
+    outPut = QString();
+    fields = QString();
+    table = QString();
+    if (statement.startsWith("EXPORT DATA FOR INSERT `")) {
+      QRegExp expression("`[A-Za-z_\\d%]*`");
+      expression.indexIn(statement);
+      table = expression.capturedTexts().at(0).mid(1, expression.capturedTexts().at(0).length() - 2);
+      QString queryString("SELECT `COLUMN_NAME` FROM `information_schema`.`COLUMNS` WHERE `TABLE_SCHEMA` = '" + serverConnection->getDatabase() + "' AND `TABLE_NAME` = '" + table + "'");
+      foreach (QString column, serverConnection->runQuerySingleColumn(queryString))
+        fields += "`" + column + "`, ";
+      fields = fields.mid(0, fields.length() - 2);
+      QString rowData("INSERT INTO `" + table + "` (" + fields + ") VALUES (");
+      QString rowTMP;
+      QRegExp expressionWHERE(" WHERE `[A-Za-z_\\d%]*.*");
+      expressionWHERE.indexIn(statement);
+      QList<QStringList> *rows = serverConnection->runQuery("SELECT * FROM `" + table + "`" + expressionWHERE.capturedTexts().at(0));
+
+      for (int row = 0; row < rows->count() - 1; row++) {
+        for (int row2 = 0; row2 < rows->at(row).count(); row2++) {
+          rowTMP += "'" + rows->at(row).at(row2) + "', ";
+        }
+        outPut += rowData + rowTMP.mid(0, rowTMP.length() - 2) + ");\n";
+        rowTMP = "";
       }
-      outPut += rowData + rowTMP.mid(0, rowTMP.length() - 2) + ");\n";
-      rowTMP = "";
-    }
-    if (radioTXT->isChecked()) {
-      QString fileName = QFileDialog::getSaveFileName(this, tr("Select a file"), settings.value("General/LastSQLFile", "").toString(), "SQL Files (*.sql)");
-      QFile file(fileName);
-      if (!file.open(QFile::WriteOnly | QFile::Text))
-        emit statusBarMessage(tr("Cannot write file %1:\n%2.").arg(fileName).arg(file.errorString()));
-      QTextStream out(&file);
-      out << outPut.toUtf8();
-      file.close();
+      if (radioTXT->isChecked()) {
+        QString fileName = QFileDialog::getSaveFileName(this, tr("Select a file"), settings.value("General/LastSQLFile", "").toString(), "SQL Files (*.sql)");
+        QFile file(fileName);
+        if (!file.open(QFile::WriteOnly | QFile::Text))
+          emit statusBarMessage(tr("Cannot write file %1:\n%2.").arg(fileName).arg(file.errorString()));
+        QTextStream out(&file);
+        out << outPut.toUtf8();
+        file.close();
+      } else {
+        resutlEditor->setPlainText(resutlEditor->toPlainText() + "\n" + outPut);
+      }
     } else {
-      resutlEditor->setPlainText(outPut);
+      resutlEditor->setPlainText(tr("Incorrect use of the EXPORT DATA FOR INSERT Option. Example: EXPORT DATA FOR INSERT `columns_pri`, it only works for the current database."));
     }
-  } else {
-    resutlEditor->setPlainText(tr("Incorrect use of the EXPORT DATA FOR INSERT Option. Example: EXPORT DATA FOR INSERT `columns_pri`, it only works for the current database."));
   }
+  if (exportAction->isChecked()) {
+    serverConnection->saveOutputToFile(resutlEditor->toPlainText(), "Text Files (*.txt)", settings.value("General/LastTextFile", "").toString());
+  }
+  QApplication::restoreOverrideCursor();
 }
 
 void SQLQuery::explainSelectActionTriggered()
@@ -825,4 +839,9 @@ void SQLQuery::checkTablesActionTriggered()
 void SQLQuery::explainSelectActionWithAliasActionTriggered()
 {
   explainSELECT(true);
+}
+
+void SQLQuery::emitUpdatePrositionViewer(const int x, const int y)
+{
+  emit updatePrositionViewer(x, y);
 }

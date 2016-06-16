@@ -443,7 +443,7 @@ void Catalogs::populateTableActionTriggered()
 {
   if (!tablesDTableView->indexData(tablesDTableView->currentIndex().row(), 0).toString().isEmpty()) {
     int count = QInputDialog::getInt(this, tr("Rows to be inserted"), tr("Rows to be inserted"));
-    emit loadStarted(tr("Inserting records..."), 2000, 0);
+    emit loadStarted(tr("Inserting records..."), 0, 0);
     result = serverConnection->runQuery("SELECT `COLUMN_NAME`, `DATA_TYPE`"
                                                       ", IF(`CHARACTER_MAXIMUM_LENGTH` IS NOT NULL, `CHARACTER_MAXIMUM_LENGTH`, `NUMERIC_PRECISION`)"
                                                       " FROM `information_schema`.`COLUMNS` WHERE `TABLE_SCHEMA` = '" + serverConnection->getDatabase()
@@ -464,9 +464,9 @@ void Catalogs::populateTableActionTriggered()
           .arg(fields.mid(0, fields.length() - 2))
           .arg(values.mid(0, values.length() - 2));
       serverConnection->runQuery(query);
-      emit loadProgress(tr("Inserting records..."), 2000, rows * 100 / count);
+      emit loadProgress(tr("Inserting records..."), 0, rows * 100 / count);
     }
-    emit loadStarted(tr("Records inserted."), 2000, 100);
+    emit loadStarted(tr("Records inserted."), 0, 100);
   }
 }
 

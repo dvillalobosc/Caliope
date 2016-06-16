@@ -76,7 +76,7 @@ void DTableView::setModelData(QList<QStringList> *modelData, bool readOnly, unsi
   QApplication::setOverrideCursor(Qt::WaitCursor);
   this->readOnly = readOnly;
   setHeaders();
-  emit loadStarted(tr("Loading records..."), 2000, 0);
+  emit loadStarted(tr("Loading records..."), 0, 0);
   itemModel = new QStandardItemModel(modelData->count(), headersList->count());
   itemModel->blockSignals(true);
   connect(itemModel, SIGNAL(itemChanged(QStandardItem*)), this, SLOT(itemChangedSlot(QStandardItem*)));
@@ -98,7 +98,7 @@ void DTableView::setModelData(QList<QStringList> *modelData, bool readOnly, unsi
       if (!this->readOnly)
         itemModel->setData(itemModel->index(row, column, QModelIndex()), modelData->at(row).at(column + 1), Qt::UserRole);
     }
-    emit loadProgress(tr("Loading records..."), 2000, row * 100 / modelData->count());
+    emit loadProgress(tr("Loading records..."), 0, row * 100 / modelData->count());
   }
   QItemSelectionModel *oldModel = selectionModel();
   setModel(itemModel);
@@ -108,7 +108,7 @@ void DTableView::setModelData(QList<QStringList> *modelData, bool readOnly, unsi
   setSortingEnabled(true);
   sortByColumn(orderColumn, Qt::AscendingOrder);
   itemModel->blockSignals(false);
-  emit loadStarted(tr("Records loaded."), 2000, 100);
+  emit loadStarted(tr("Records loaded."), 0, 100);
   QApplication::restoreOverrideCursor();
 }
 

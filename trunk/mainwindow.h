@@ -193,9 +193,9 @@ private slots:
   void databaseMetadataActionTriggered();
 
 public slots:
-  void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 2000);
-  void statusBarProgressMessageSlot(const QString &message, const unsigned int timeout = 2000, const double progress = 0);
-  void statusBarMessagePopup(const QString &message, const int timeout = 2000);
+  void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 0);
+  void statusBarProgressMessageSlot(const QString &message, const unsigned int timeout = 0, const double progress = 0);
+  void statusBarMessagePopup(const QString &message, const int timeout = 0);
   void addSubWindow(DMdiSubWindow *window);
   void openFile(QString fileName = QString(), unsigned int line = 1);
   void setProgressBarProgressSlot(const double progress);

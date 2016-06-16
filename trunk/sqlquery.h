@@ -127,6 +127,7 @@ signals:
   void showResultTab(QString table, QString database, QString where);
   void statusBarMessage(QString message);
   void openURL(QString url);
+  void updatePrositionViewer(const int x, const int y);
 
 private slots:
   void executeActionTriggered();
@@ -161,6 +162,7 @@ private slots:
   void openURLSlot(QString url);
   void checkTablesActionTriggered();
   void explainSelectActionWithAliasActionTriggered();
+  void emitUpdatePrositionViewer(const int x, const int y);
 
 protected:
   /*! \brief Reilplements the closeEvent.

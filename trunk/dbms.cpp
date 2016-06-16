@@ -392,6 +392,7 @@ QList<QStringList>* DBMS::runQuery(QString queryToExecute, bool addHeaders)
     //  for (int counter = 0; counter < rows->count(); counter++)
     //    qDebug() << "*" << rows->at(counter);
   }
+  emit statusBarMessage(rows->last().at(0));
   return rows;
 }
 
@@ -785,7 +786,7 @@ QString DBMS::outputAsG(QString queryToExecute, bool saveToFile, bool replaceRet
 
 QString DBMS::errorOnExecution(const QString message)
 {
-  emit statusBarMessage(message, QSystemTrayIcon::Critical, 2000);
+  emit statusBarMessage(message, QSystemTrayIcon::Critical, 0);
   emit errorOccurred();
   errorMessage->showMessage(message);
   return tr("Could not execute statement. ") + message;
