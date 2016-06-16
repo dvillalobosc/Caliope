@@ -30,6 +30,7 @@
 #include <QGroupBox>
 #include <QPushButton>
 #include <QSpinBox>
+#include <QComboBox>
 
 #include "serverInformation.h"
 #include "dtitlelabel.h"
@@ -141,10 +142,13 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
   case StaticFunctions::MySQL:
     break;
   case StaticFunctions::MariaDB:
-    lineEditConnectioName = new DLineEdit(QIcon(":/images/svg/server-database.svg"), false);
-    connect(lineEditConnectioName, SIGNAL(returnPressed(QString)), serverConnection->replication(), SLOT(changeDefaultMasterConnection(QString)));
-    connect(lineEditConnectioName, SIGNAL(clicked()), this, SLOT(lineEditConnectioNameClicked()));
-    groupBoxHLayout->addWidget(lineEditConnectioName);
+    slavesListComboBox = new QComboBox();
+    slavesListComboBox->insertItems(0, QStringList() << tr("All"));
+    slavesListComboBox->insertItems(0, serverConnection->replication()->getSlavesNames());
+    connect(slavesListComboBox, SIGNAL(currentIndexChanged(QString)), serverConnection->replication(), SLOT(changeDefaultMasterConnection(QString)));
+//    connect(lineEditConnectioName, SIGNAL(clicked()), this, SLOT(lineEditConnectioNameClicked()));
+    groupBoxHLayout->addWidget(new QLabel(tr("List of available connections")));
+    groupBoxHLayout->addWidget(slavesListComboBox);
     break;
   case StaticFunctions::Undefined:
   default:
@@ -379,17 +383,6 @@ void ServerInformation::retranslateUi()
   labelFilter->setText(tr("Filter:"));
   lineEditFilter->setPlaceholderText(tr("Three characters at least"));
   pushButtonServerGraphicsFullScreen->setText(tr("Full screen"));
-  switch(qApp->property("DBMSType").toInt()) {
-  case StaticFunctions::MySQL:
-    break;
-  case StaticFunctions::MariaDB:
-    lineEditConnectioName->setPlaceholderText(tr("Enter the default connection name and press Enter."));
-    lineEditConnectioName->setToolTip(lineEditConnectioName->placeholderText());
-    break;
-  case StaticFunctions::Undefined:
-  default:
-    break;
-  }
 }
 
 void ServerInformation::setCurrentTab(unsigned int tabNumber)
@@ -512,10 +505,10 @@ void ServerInformation::replicationStatusTxt()
     replicationStatus->setPlainText(serverConnection->replication()->getStatus());
     break;
   case StaticFunctions::MariaDB:
-    if (lineEditConnectioName->text().isEmpty())
+    if (slavesListComboBox->currentText() == tr("All"))
       replicationStatus->setPlainText(serverConnection->replication()->getStatus());
     else
-      replicationStatus->setPlainText(serverConnection->replication()->getStatus(lineEditConnectioName->text()));
+      replicationStatus->setPlainText(serverConnection->replication()->getStatus(slavesListComboBox->currentText()));
     break;
   case StaticFunctions::Undefined:
   default:
@@ -675,11 +668,11 @@ void ServerInformation::pushButtonServerGraphicsFullScreenSlot(bool checked)
   }
 }
 
-void ServerInformation::lineEditConnectioNameClicked()
-{
-  pushButtonStopRefreshingReplicator->setChecked(true);
-  timerReplicationStatusTxt->stop();
-}
+//void ServerInformation::lineEditConnectioNameClicked()
+//{
+//  pushButtonStopRefreshingReplicator->setChecked(true);
+//  timerReplicationStatusTxt->stop();
+//}
 
 /****************************************************/
 

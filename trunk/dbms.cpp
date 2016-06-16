@@ -1913,3 +1913,20 @@ QString Replication::getStatus(QString connectionName)
     }
   return QString();
 }
+
+QStringList Replication::getSlavesNames()
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+      return QStringList();
+      break;
+    case StaticFunctions::MariaDB:
+      return serverConnection->runQuerySingleColumn("SHOW ALL SLAVES STATUS", false);
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+  return QStringList();
+}
