@@ -706,32 +706,40 @@ void MainWindow::openRecentFilesMenuAboutToShowSlot()
   setting = "RecentMariaDBFiles/Files";
   QStringList fileList = settings.value(setting, QStringList()).toStringList();
   fileList.sort();
+
+  int fileCount = 0;
+  const int limit = 5;
+
   foreach (QString file, fileList)
-    if (!file.isEmpty())
+    if (!file.isEmpty() && fileCount++ < limit)
       recentFilesActionGroup->addAction(openRecentFilesMenu->addAction(StaticFunctions::iconFromFileName(file), file));
   setting = "RecentPHPFiles/Files";
   fileList = settings.value(setting, QStringList()).toStringList();
   fileList.sort();
+  fileCount = 0;
   foreach (QString file, fileList)
-    if (!file.isEmpty())
+    if (!file.isEmpty() && fileCount++ < limit)
       recentFilesActionGroup->addAction(openRecentFilesMenu->addAction(StaticFunctions::iconFromFileName(file), file));
   setting = "RecentCSSFiles/Files";
   fileList = settings.value(setting, QStringList()).toStringList();
   fileList.sort();
+  fileCount = 0;
   foreach (QString file, fileList)
-    if (!file.isEmpty())
+    if (!file.isEmpty() && fileCount++ < limit)
       recentFilesActionGroup->addAction(openRecentFilesMenu->addAction(StaticFunctions::iconFromFileName(file), file));
   setting = "RecentHTMLFiles/Files";
   fileList = settings.value(setting, QStringList()).toStringList();
   fileList.sort();
+  fileCount = 0;
   foreach (QString file, fileList)
-    if (!file.isEmpty())
+    if (!file.isEmpty() && fileCount++ < limit)
       recentFilesActionGroup->addAction(openRecentFilesMenu->addAction(StaticFunctions::iconFromFileName(file), file));
   setting = "RecentJavaScriptFiles/Files";
   fileList = settings.value(setting, QStringList()).toStringList();
   fileList.sort();
+  fileCount = 0;
   foreach (QString file, fileList)
-    if (!file.isEmpty())
+    if (!file.isEmpty() && fileCount++ < limit)
       recentFilesActionGroup->addAction(openRecentFilesMenu->addAction(StaticFunctions::iconFromFileName(file), file));
 }
 

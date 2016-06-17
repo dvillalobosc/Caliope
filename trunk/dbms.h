@@ -266,6 +266,7 @@ public:
   void setKeyFile(QString keyFile);
   void setCertFile(QString certFile);
   void setUseSSL(bool useSSL);
+  int ping();
 
   Table *table(QString tableName, QString database = QString());
   View *view(QString viewName, QString database = QString());
