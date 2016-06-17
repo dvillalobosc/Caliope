@@ -30,6 +30,7 @@
 #include <QtSql/QSqlTableModel>
 #include <QtSql/QSqlQueryModel>
 #include <QTimer>
+#include <QTextCodec>
 
 #include "dbms.h"
 #include "mainwindow.h"
@@ -176,6 +177,16 @@ QString DBMS::millisecondsToTime(unsigned int milliseconds)
   if (seconds >= 3600)
     return tr("%1 hours").arg(seconds / 3600);
   return "0 seconds";
+}
+
+QByteArray DBMS::fromUnicode(QTextCodec *tc, const QString &str)
+{
+#ifdef QT_NO_TEXTCODEC
+    Q_UNUSED(tc);
+    return str.toLatin1();
+#else
+    return tc->fromUnicode(str);
+#endif
 }
 
 void DBMS::close()
@@ -485,11 +496,19 @@ int DBMS::query(QString queryToExecute)
   //dateTime = QDateTime::currentDateTime();
   //querySQLite.exec(QString("INSERT INTO executedqueries VALUES ('%1', '%2', '%3')").arg(dateTime.toString(Qt::ISODate)).arg(queryToExecute).arg(getConnectionString()));
 
+  QTextCodec *tc;
+#ifndef QT_NO_TEXTCODEC
+    tc = QTextCodec::codecForLocale();
+#else
+    tc = 0;
+#endif
+  const QByteArray encQuery(fromUnicode(tc, queryToExecute));
   if (isOpened())
     switch(qApp->property("DBMSType").toInt()) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
-      valueToReturn = mysql_real_query(mariadbConnection, queryToExecute.toUtf8().constData(), queryToExecute.length());
+      valueToReturn = mysql_real_query(mariadbConnection, encQuery.data(), encQuery.length());
+      //valueToReturn = mysql_real_query(mariadbConnection, queryToExecute.toUtf8().constData(), queryToExecute.length());
       if (valueToReturn != 0)
         failedQueries->insert(1, QStringList() << QString("%1").arg(failedQueries->count()) << queryToExecute << lastError());
       return valueToReturn;
