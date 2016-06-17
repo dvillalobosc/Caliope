@@ -1310,6 +1310,21 @@ void DBMS::setUseSSL(bool useSSL)
   this->p_useSSL = useSSL;
 }
 
+int DBMS::ping()
+{
+  if (isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      return mysql_ping(mariadbConnection);
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+  return -1;
+}
+
 QList<QStringList> *DBMS::getCharacterSets()
 {
   QList<QStringList> *rows = new QList<QStringList>();

@@ -35,6 +35,7 @@ class QMenu;
 class QSignalMapper;
 class QCompleter;
 class FileSelector;
+class QAbstractButton;
 
 class ConnectDialog : public QDialog
 {
@@ -55,6 +56,7 @@ private slots:
   void changeCollationSlot(QString collation);
   void useASSLConnectionStateChanged(int state);
   void maskPasswordToggled(bool checked);
+  void actionRoleSlot(QAbstractButton *button);
 
 private:
   QDialogButtonBox *buttonBox;

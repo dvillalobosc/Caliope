@@ -31,6 +31,7 @@
 #include <QMenu>
 #include <QSignalMapper>
 #include <QCompleter>
+#include <QMessageBox>
 
 #include "connectdialog.h"
 #include "dtitlelabel.h"
@@ -150,8 +151,10 @@ ConnectDialog::ConnectDialog(DBMS *serverConnection)
   mainGroupBox->setLayout(formLayout);
 
   buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+  buttonBox->addButton(tr("Ping"), QDialogButtonBox::ActionRole);
   connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
   connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  connect(buttonBox, SIGNAL(clicked(QAbstractButton*)), this, SLOT(actionRoleSlot(QAbstractButton*)));
 
   QVBoxLayout *verticalLayout = new QVBoxLayout;
   verticalLayout->addWidget(new DTitleLabel(windowTitle()));
@@ -282,6 +285,28 @@ void ConnectDialog::maskPasswordToggled(bool checked)
 {
   lineEditPassword->setEchoMode(checked ? QLineEdit::Normal : QLineEdit::Password);
   maskPassword->setIcon(checked ? QIcon(":/images/svg/object-unlocked-2.svg") : QIcon(":/images/svg/object-locked-2.svg"));
+}
+
+void ConnectDialog::actionRoleSlot(QAbstractButton *button)
+{
+  if (button->text() == tr("Ping")) {
+    if (!serverConnection->isOpened()) {
+      serverConnection->setUserName(lineEditUser->text());
+      serverConnection->setHostName(lineEditServer->text());
+      serverConnection->setPassword(lineEditPassword->text());
+      serverConnection->setDatabase(StaticFunctions::DBMSDefaultDatabase());
+      serverConnection->setPort(spinBoxPort->value());
+      serverConnection->setCharacterSet(lineEditCollation->text().split("|").at(0));
+      serverConnection->setCollation(lineEditCollation->text().split("|").at(1));
+      serverConnection->setUseSSL(useASSLConnection->isChecked());
+      serverConnection->setKeyFile(fileSelectorClientKey->getFileName());
+      serverConnection->setCertFile(fileSelectorClientCert->getFileName());
+      serverConnection->open();
+      connectionPerformed = true;
+    }
+    if (serverConnection->ping() == 0)
+      QMessageBox::information(this, tr("Ping successful to: %1").arg(serverConnection->getHostName()), tr("Ping successful"));
+  }
 }
 
 void ConnectDialog::setDBMS()
