@@ -319,6 +319,7 @@ private:
   QString p_clientCert;
   QTimer *timerCheckIfReconnected;
   ulong p_connectionId;
+  static inline QByteArray fromUnicode(QTextCodec *tc, const QString &str);
 
 };
 
