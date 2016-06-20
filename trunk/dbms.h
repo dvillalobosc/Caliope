@@ -232,14 +232,15 @@ public:
   void setDatabase(QString name);
   QString getSocket();
   QString getReplicationStatus();
-  QString getVersion();
 //  QString getVersionComment();
   QString getGlobalStatus(QString filter = QString());
   QString getGlobalVariables(QString filter = QString());
   QString getSessionStatus(QString filter = QString());
   QString getSessionlVariables(QString filter = QString());
-  int getMayorVersion();
-  int getMinorVersion();
+  QString getVersion();
+  int unsigned getMayorVersion();
+  int unsigned getMinorVersion();
+  int unsigned getMicroVersion();
 //  int getRelease();
   void close();
   bool open();
