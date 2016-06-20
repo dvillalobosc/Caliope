@@ -1823,8 +1823,9 @@ void Replication::stopSlave()
   if (serverConnection->isOpened())
     switch(qApp->property("DBMSType").toInt()) {
     case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB:
       serverConnection->executeQuery("STOP SLAVE");
+      break;
+    case StaticFunctions::MariaDB:
       break;
     case StaticFunctions::Undefined:
     default:
@@ -1837,8 +1838,9 @@ void Replication::startSlave()
   if (serverConnection->isOpened())
     switch(qApp->property("DBMSType").toInt()) {
     case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB:
       serverConnection->executeQuery("START SLAVE");
+      break;
+    case StaticFunctions::MariaDB:
       break;
     case StaticFunctions::Undefined:
     default:
@@ -1851,9 +1853,10 @@ void Replication::rebootSlave()
   if (serverConnection->isOpened())
     switch(qApp->property("DBMSType").toInt()) {
     case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB:
       serverConnection->executeQuery("STOP SLAVE");
       serverConnection->executeQuery("START SLAVE");
+      break;
+    case StaticFunctions::MariaDB:
       break;
     case StaticFunctions::Undefined:
     default:
@@ -1866,8 +1869,9 @@ void Replication::resetSlave()
   if (serverConnection->isOpened())
     switch(qApp->property("DBMSType").toInt()) {
     case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB:
       serverConnection->executeQuery("RESET SLAVE");
+      break;
+    case StaticFunctions::MariaDB:
       break;
     case StaticFunctions::Undefined:
     default:
@@ -1908,6 +1912,7 @@ void Replication::stopAllSlaves()
   if (serverConnection->isOpened())
     switch(qApp->property("DBMSType").toInt()) {
     case StaticFunctions::MySQL:
+      break;
     case StaticFunctions::MariaDB:
       serverConnection->executeQuery("STOP ALL SLAVES");
       break;
@@ -1922,6 +1927,7 @@ void Replication::startAllSlaves()
   if (serverConnection->isOpened())
     switch(qApp->property("DBMSType").toInt()) {
     case StaticFunctions::MySQL:
+      break;
     case StaticFunctions::MariaDB:
       serverConnection->executeQuery("START ALL SLAVES");
       break;
@@ -1936,7 +1942,6 @@ QString Replication::getStatus(QString connectionName)
   if (serverConnection->isOpened())
     switch(qApp->property("DBMSType").toInt()) {
     case StaticFunctions::MySQL:
-      return "N/A";
       break;
     case StaticFunctions::MariaDB:
       return serverConnection->outputAsTable("SHOW MASTER STATUS") + "\n" + serverConnection->outputAsG("SHOW SLAVE '" + connectionName + "' STATUS");
@@ -1963,4 +1968,65 @@ QStringList Replication::getSlavesNames()
       break;
     }
   return QStringList();
+}
+
+void Replication::stopSlave(QString connectionName)
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+      break;
+    case StaticFunctions::MariaDB:
+      serverConnection->executeQuery("STOP SLAVE '" + connectionName + "'");
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+}
+
+void Replication::startSlave(QString connectionName)
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+      break;
+    case StaticFunctions::MariaDB:
+      serverConnection->executeQuery("START SLAVE '" + connectionName + "'");
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+}
+
+void Replication::rebootSlave(QString connectionName)
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+      break;
+    case StaticFunctions::MariaDB:
+      serverConnection->executeQuery("STOP SLAVE '" + connectionName + "'");
+      serverConnection->executeQuery("START SLAVE '" + connectionName + "'");
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+}
+
+void Replication::resetSlave(QString connectionName)
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+      break;
+    case StaticFunctions::MariaDB:
+      serverConnection->executeQuery("RESET SLAVE '" + connectionName + "'");
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
 }

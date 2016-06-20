@@ -171,6 +171,7 @@ private slots:
   void lineEditFilterTextChangedSlot(QString filter);
   void pushButtonServerGraphicsFullScreenSlot(bool checked = false);
   //void lineEditConnectioNameClicked();
+  void changeDefaultMasterConnection(QString masterConnectionName);
 };
 
 #endif // SERVERINFORMATION_H
