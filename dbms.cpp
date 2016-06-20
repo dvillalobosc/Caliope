@@ -1183,13 +1183,13 @@ QString DBMS::getVersion()
 //  return QString();
 //}
 
-int DBMS::getMayorVersion()
+int unsigned DBMS::getMayorVersion()
 {
   if (isOpened())
     switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
-      return QString(runQuerySingleColumn("SELECT LEFT(VERSION(), 1)").at(0)).toInt();
+      return QString(runQuerySingleColumn("SELECT SUBSTRING_INDEX(VERSION(), '.', 1)").at(0)).toInt();
       break;
     case StaticFunctions::Undefined:
     default:
@@ -1198,13 +1198,28 @@ int DBMS::getMayorVersion()
   return 0;
 }
 
-int DBMS::getMinorVersion()
+int unsigned DBMS::getMinorVersion()
 {
   if (isOpened())
     switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
-      return QString(runQuerySingleColumn("SELECT MID(VERSION(), 3, 1)").at(0)).toInt();
+      return QString(runQuerySingleColumn("SELECT SUBSTRING_INDEX(VERSION(), '.', 2)").at(0)).toInt();
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+  return 0;
+}
+
+int unsigned DBMS::getMicroVersion()
+{
+  if (isOpened())
+    switch(p_DBMSType) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      return QString(runQuerySingleColumn("SELECT SUBSTRING_INDEX(VERSION(), '.', 3)").at(0)).toInt();
       break;
     case StaticFunctions::Undefined:
     default:
@@ -1755,7 +1770,10 @@ QList<QStringList> *Processes::getProcessList()
     result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' ') FROM `information_schema`.`PROCESSLIST`");
     break;
   case StaticFunctions::MariaDB:
-    result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' '), `TIME_MS`, `STAGE`, `MAX_STAGE`, `PROGRESS`, `MEMORY_USED`, `EXAMINED_ROWS`, `QUERY_ID` FROM `information_schema`.`PROCESSLIST`");
+    if (serverConnection->getMayorVersion() == 10 && serverConnection->getMinorVersion() == 1 && serverConnection->getMicroVersion() >= 5)
+      result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' '), `TIME_MS`, `STAGE`, `MAX_STAGE`, `PROGRESS`, `MEMORY_USED`, `EXAMINED_ROWS`, `QUERY_ID`, `INFO_BINARY` FROM `information_schema`.`PROCESSLIST`");
+    else
+      result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' '), `TIME_MS`, `STAGE`, `MAX_STAGE`, `PROGRESS`, `MEMORY_USED`, `EXAMINED_ROWS`, `QUERY_ID`, '' FROM `information_schema`.`PROCESSLIST`");
     break;
   case StaticFunctions::Undefined:
   default:

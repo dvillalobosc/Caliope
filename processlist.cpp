@@ -73,6 +73,7 @@ ProcessList::ProcessList(DBMS *serverConnection)
     headers->append(QStringList() << tr("Memory") << "NoDelegate"  << "" << "Left");
     headers->append(QStringList() << tr("Examined Rows") << "NoDelegate"  << "" << "Left");
     headers->append(QStringList() << tr("Query Id") << "NoDelegate"  << "" << "Left");
+    headers->append(QStringList() << tr("Binary data information") << "NoDelegate"  << "" << "Left");
     break;
   case StaticFunctions::Undefined:
   default:
