@@ -66,6 +66,10 @@ public slots:
   void startAllSlaves();
   QString getStatus(QString connectionName);
   QStringList getSlavesNames();
+  void stopSlave(QString connectionName);
+  void startSlave(QString connectionName);
+  void rebootSlave(QString connectionName);
+  void resetSlave(QString connectionName);
 
 private:
   DBMS *serverConnection;

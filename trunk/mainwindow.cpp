@@ -153,6 +153,14 @@ MainWindow::MainWindow()
   customReportMapper = new QSignalMapper(this);
   connect(customReportMapper, SIGNAL(mapped(QString)), this, SLOT(openCustomReport(QString)));
 
+  replicationStartMapper = new QSignalMapper(this);
+  connect(replicationStartMapper, SIGNAL(mapped(QString)), this, SLOT(replicationStartConnection(QString)));
+  replicationStopMapper = new QSignalMapper(this);
+  connect(replicationStopMapper, SIGNAL(mapped(QString)), this, SLOT(replicationStopConnection(QString)));
+  replicationResetMapper = new QSignalMapper(this);
+  connect(replicationResetMapper, SIGNAL(mapped(QString)), this, SLOT(replicationResetConnection(QString)));
+  replicationRestartMapper = new QSignalMapper(this);
+  connect(replicationRestartMapper, SIGNAL(mapped(QString)), this, SLOT(replicationRestartConnection(QString)));
 
   connect(showFileToolBarAction, SIGNAL(triggered(bool)), fileToolbar, SLOT(setVisible(bool)));
 
@@ -655,6 +663,7 @@ void MainWindow::createActions()
   tellUsYourCommentsAction = new QAction(this);
   connect(tellUsYourCommentsAction, SIGNAL(triggered()), this, SLOT(tellUsYourCommentsActionTriggered()));
 
+  // Ww have to create Multimaster replication actions although they won't be used, otherwise we have to change the translation logic
   stopAllReplicationSlavesAction = new QAction(this);
   stopAllReplicationSlavesAction->setIcon(QIcon::fromTheme("process-stop", QIcon(":/images/svg/process-stop-7.svg")));
   connect(stopAllReplicationSlavesAction, SIGNAL(triggered()), this, SLOT(stopAllReplicationSlavesActionTriggered()));
@@ -1523,6 +1532,75 @@ void MainWindow::databaseMetadataActionTriggered()
   emit statusBarMessage(tr("File saved at: %1").arg(file));
 }
 
+void MainWindow::replicationMenuAboutToShowSlot()
+{
+  replicationMenu->clear();
+  switch(qApp->property("DBMSType").toInt()) {
+  case StaticFunctions::MySQL:
+    replicationMenu->addAction(startReplicationSlaveAction);
+    replicationMenu->addAction(stopReplicationSlaveAction);
+    replicationMenu->addAction(resetSlaveAction);
+    replicationMenu->addAction(rebootReplicationSlaveAction);
+    break;
+  case StaticFunctions::MariaDB:
+    foreach (QString masterConnection, serverConnection->replication()->getSlavesNames()) {
+      if (!masterConnection.isEmpty()) {
+        replicationMenu->addSeparator()->setText(masterConnection);
+        QAction *actionStop = replicationMenu->addAction(tr("Stop %1").arg(masterConnection));
+        actionStop->setIcon(QIcon::fromTheme("process-stop", QIcon(":/images/svg/process-stop-7.svg")));
+        connect(actionStop, SIGNAL(triggered()), replicationStopMapper, SLOT(map()));
+        replicationStopMapper->setMapping(actionStop, masterConnection);
+
+        QAction *actionStart = replicationMenu->addAction(tr("Start %1").arg(masterConnection));
+        actionStart->setIcon(QIcon::fromTheme("start-here", QIcon(":/images/svg/start-here.svg")));
+        connect(actionStart, SIGNAL(triggered()), replicationStartMapper, SLOT(map()));
+        replicationStartMapper->setMapping(actionStart, masterConnection);
+
+        QAction *actionReset = replicationMenu->addAction(tr("Reset %1").arg(masterConnection));
+        actionReset->setIcon(QIcon::fromTheme("system-reboot", QIcon(":/images/svg/system-reboot-2.svg")));
+        connect(actionReset, SIGNAL(triggered()), replicationResetMapper, SLOT(map()));
+        replicationResetMapper->setMapping(actionReset, masterConnection);
+
+        QAction *actionRestart = replicationMenu->addAction(tr("Restart %1").arg(masterConnection));
+        actionRestart->setIcon(QIcon::fromTheme("system-reboot", QIcon(":/images/svg/system-reboot-2.svg")));
+        connect(actionRestart, SIGNAL(triggered()), replicationStartMapper, SLOT(map()));
+        replicationStartMapper->setMapping(actionRestart, masterConnection);
+      }
+    }
+    replicationMenu->addSeparator()->setText(tr("All connections"));
+    replicationMenu->addAction(startAllReplicationSlavesAction);
+    replicationMenu->addAction(stopAllReplicationSlavesAction);
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  replicationMenu->addSeparator();
+  replicationMenu->addAction(replicationInformationAction);
+  replicationMenu->addAction(maintenancePurgeBinaryLogsAction);
+  replicationMenu->addAction(maintenanceFlushRelayLogsAction);
+}
+
+void MainWindow::replicationStartConnection(QString connectionName)
+{
+  serverConnection->replication()->startSlave(connectionName);
+}
+
+void MainWindow::replicationStopConnection(QString connectionName)
+{
+  serverConnection->replication()->stopSlave(connectionName);
+}
+
+void MainWindow::replicationRestartConnection(QString connectionName)
+{
+  serverConnection->replication()->rebootSlave(connectionName);
+}
+
+void MainWindow::replicationResetConnection(QString connectionName)
+{
+  serverConnection->replication()->resetSlave(connectionName);
+}
+
 void MainWindow::finishedDatabaseMigrationSlot(int exitCode)
 {
   if (exitCode == QProcess::NormalExit && processMariaDBDump->exitCode() == QProcess::NormalExit) {
@@ -2381,15 +2459,7 @@ void MainWindow::createMenus()
   replicationMenu = new QMenu(this);
   replicationMenu->setIcon(QIcon(":/images/svg/network-server-database.svg"));
   replicationMenu->setDisabled(true);
-  replicationMenu->addAction(startReplicationSlaveAction);
-  replicationMenu->addAction(stopReplicationSlaveAction);
-  replicationMenu->addAction(startAllReplicationSlavesAction);
-  replicationMenu->addAction(stopAllReplicationSlavesAction);
-  replicationMenu->addAction(resetSlaveAction);
-  replicationMenu->addAction(rebootReplicationSlaveAction);
-  replicationMenu->addAction(replicationInformationAction);
-  replicationMenu->addAction(maintenancePurgeBinaryLogsAction);
-  replicationMenu->addAction(maintenanceFlushRelayLogsAction);
+  connect(replicationMenu, SIGNAL(aboutToShow()), this, SLOT(replicationMenuAboutToShowSlot()));
   connectionMenu->addMenu(replicationMenu);
 
   maintenanceMenu = new QMenu(this);

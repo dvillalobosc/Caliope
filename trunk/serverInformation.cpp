@@ -144,8 +144,9 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
   case StaticFunctions::MariaDB:
     slavesListComboBox = new QComboBox();
     slavesListComboBox->insertItems(0, QStringList() << tr("All"));
-    slavesListComboBox->insertItems(0, serverConnection->replication()->getSlavesNames());
-    connect(slavesListComboBox, SIGNAL(currentIndexChanged(QString)), serverConnection->replication(), SLOT(changeDefaultMasterConnection(QString)));
+    slavesListComboBox->insertItems(1, serverConnection->replication()->getSlavesNames());
+    slavesListComboBox->setCurrentIndex(slavesListComboBox->findText(settings.value("Replication/LastMasterConnection", tr("All")).toString()));
+    connect(slavesListComboBox, SIGNAL(currentIndexChanged(QString)), this, SLOT(changeDefaultMasterConnection(QString)));
 //    connect(lineEditConnectioName, SIGNAL(clicked()), this, SLOT(lineEditConnectioNameClicked()));
     groupBoxHLayout->addWidget(new QLabel(tr("List of available connections")));
     groupBoxHLayout->addWidget(slavesListComboBox);
@@ -434,6 +435,12 @@ QString ServerInformation::serverGraphsDataTxtMariaDB()
 void ServerInformation::skipReplicationErrors(unsigned int count)
 {
   serverConnection->replication()->skipErrors(count);
+}
+
+void ServerInformation::changeDefaultMasterConnection(QString masterConnectionName)
+{
+  serverConnection->replication()->changeDefaultMasterConnection(masterConnectionName);
+  settings.setValue("Replication/LastMasterConnection", masterConnectionName);
 }
 
 void ServerInformation::showInformation(int tabIndex)
