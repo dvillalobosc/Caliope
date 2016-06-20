@@ -75,6 +75,10 @@ SQLQuery::SQLQuery(Projects *project, DBMS *serverConnection, unsigned int windo
   radioPDF = new QRadioButton("PDF");
   radioG = new QRadioButton("G");
   queryToolBar = new QToolBar;
+  queryToolBar->addAction(beginTransacctionAction);
+  queryToolBar->addAction(rollbackTransacctionAction);
+  queryToolBar->addAction(commitTransacctionAction);
+  queryToolBar->addSeparator();
   queryToolBar->addAction(safeStatementsAction);
   queryToolBar->addAction(executeAction);
   queryToolBar->addAction(exportAction);
@@ -221,6 +225,13 @@ void SQLQuery::retranslateUi()
   radioPDF->setToolTip(tr("Output in PDF."));
   radioG->setToolTip(tr("Outputs columns as rows."));
 
+  beginTransacctionAction->setText(tr("Begin transaction"));
+  beginTransacctionAction->setToolTip(beginTransacctionAction->text());
+  rollbackTransacctionAction->setText(tr("Rollback transaction"));
+  rollbackTransacctionAction->setToolTip(rollbackTransacctionAction->text());
+  commitTransacctionAction->setText(tr("Commit transaction"));
+  commitTransacctionAction->setToolTip(commitTransacctionAction->text());
+
   scriptEditor->retranslateUi();
   resutlEditor->retranslateUi();
 }
@@ -339,6 +350,23 @@ void SQLQuery::createActions()
   queryPlayerToolBar->addAction(explainInsertAction);
   queryPlayerToolBar->addAction(explainUpdateAction);
   queryPlayerToolBar->addAction(concatenateOutputAction);
+
+  checkTablesAction = new QAction(this);
+  checkTablesAction->setIcon(QIcon(":/images/svg/checkbox.svg"));
+  connect(checkTablesAction, SIGNAL(triggered()), this, SLOT(checkTablesActionTriggered()));
+
+  beginTransacctionAction = new QAction(this);
+  beginTransacctionAction->setIcon(QIcon(":/images/svg/server-database.svg"));
+  beginTransacctionAction->setCheckable(true);
+  connect(beginTransacctionAction, SIGNAL(triggered()), this, SLOT(beginTransacctionActionTriggered()));
+  commitTransacctionAction = new QAction(this);
+  commitTransacctionAction->setIcon(QIcon(":/images/svg/svn-update.svg"));
+  commitTransacctionAction->setEnabled(false);
+  connect(commitTransacctionAction, SIGNAL(triggered()), this, SLOT(commitTransacctionActionTriggered()));
+  rollbackTransacctionAction = new QAction(this);
+  rollbackTransacctionAction->setIcon(QIcon::fromTheme("document-revert", QIcon(":/images/svg/document-revert-5.svg")));
+  rollbackTransacctionAction->setEnabled(false);
+  connect(rollbackTransacctionAction, SIGNAL(triggered()), this, SLOT(rollbackTransacctionActionTriggered()));
 }
 
 void SQLQuery::viewHistoryActionTriggered()
@@ -844,4 +872,39 @@ void SQLQuery::explainSelectActionWithAliasActionTriggered()
 void SQLQuery::emitUpdatePrositionViewer(const int x, const int y)
 {
   emit updatePrositionViewer(x, y);
+}
+
+void SQLQuery::beginTransacctionActionTriggered()
+{
+  serverConnection->transaction()->beginTransacction();
+  beginTransacctionAction->setChecked(true);
+  beginTransacctionAction->setEnabled(false);
+  commitTransacctionAction->setEnabled(true);
+  rollbackTransacctionAction->setEnabled(true);
+}
+
+void SQLQuery::commitTransacctionActionTriggered()
+{
+  if (QMessageBox::question(this, tr("Commit transacction"), tr("Do you really want to commint changes?")
+                            , QMessageBox::Ok | QMessageBox::Cancel, QMessageBox::Cancel) == QMessageBox::Ok)
+  {
+    serverConnection->transaction()->commitTransacction();
+    beginTransacctionAction->setChecked(false);
+    beginTransacctionAction->setEnabled(true);
+    commitTransacctionAction->setEnabled(false);
+    rollbackTransacctionAction->setEnabled(false);
+  }
+}
+
+void SQLQuery::rollbackTransacctionActionTriggered()
+{
+  if (QMessageBox::question(this, tr("Rollback transacction"), tr("Do you really want to rollback changes?")
+                            , QMessageBox::Ok | QMessageBox::Cancel, QMessageBox::Cancel) == QMessageBox::Ok)
+  {
+    serverConnection->transaction()->rollbackTransacction();
+    beginTransacctionAction->setChecked(false);
+    beginTransacctionAction->setEnabled(true);
+    commitTransacctionAction->setEnabled(false);
+    rollbackTransacctionAction->setEnabled(false);
+  }
 }

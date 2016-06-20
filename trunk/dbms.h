@@ -45,6 +45,23 @@ class QErrorMessage;
 class QSqlTableModel;
 class QSqlQueryModel;
 
+class Transaction : public QObject
+{
+  Q_OBJECT
+
+public:
+  Transaction(DBMS *serverConnection);
+
+private:
+  DBMS *serverConnection;
+
+public slots:
+  void beginTransacction();
+  void commitTransacction();
+  void rollbackTransacction();
+
+};
+
 class Replication : public QObject
 {
   Q_OBJECT
@@ -280,6 +297,8 @@ public:
   Processes *processes();
   Replication *replication();
   void saveOutputToFile(QString contents, QString filter, QString fileName = QString());
+  Transaction *transaction();
+  QString lastErrorNumber();
 
 signals:
   void errorOccurred();
@@ -306,7 +325,7 @@ private:
   int query(QString queryToExecute);
 //  QString outputAsTable(MYSQL_RES *result, QString query, bool replaceReturns);
 //  QString outputAsTable(PGresult *result, QString query, bool replaceReturns);
-  QString errorOnExecution(const QString message);
+  QString errorOnExecution(const QString message, const QString type);
   QString processOutput;
 //  QProcess *proc;
   QSettings settings;
