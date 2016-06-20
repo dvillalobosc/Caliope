@@ -68,7 +68,7 @@ DBMS::DBMS(bool enableQueryLog)
     if (dbSQLite.open()) {
       QSqlQuery querySQLite;
       if (!querySQLite.exec("CREATE TABLE IF NOT EXISTS executedqueries (LineNumber INTEGER, SessionId TEXT, Date TEXT, Connection TEXT, Query TEXT, PRIMARY KEY(LineNumber DESC))"))
-        errorMessage->showMessage(querySQLite.lastError().text());
+        errorMessage->showMessage(querySQLite.lastError().text(), "LogExecutedQueries");
     }
   }
   queryExecutionTime.start();
@@ -218,7 +218,7 @@ bool DBMS::testOpened()
 {
   if (!isOpened()) {
     emit statusBarMessage(tr("Connection is not opened."));
-    errorMessage->showMessage(tr("Connection is not opened."));
+    errorMessage->showMessage(tr("Connection is not opened."), "Connection");
     return false;
   }
   return true;
@@ -324,7 +324,7 @@ QStringList DBMS::runQuerySingleColumn(QString queryToExecute, bool addHeaders)
       if (!mariadbResults)
         return QStringList();      
       if (mysql_field_count(mariadbConnection) == 0)
-        errorOnExecution(lastError());
+        errorOnExecution(lastError(), lastErrorNumber());
       if (addHeaders)
         while((field = mysql_fetch_field(mariadbResults)))
           rows.append(field->name);
@@ -378,19 +378,19 @@ QList<QStringList>* DBMS::runQuery(QString queryToExecute, bool addHeaders)
               //rows->append(QStringList() <<tr("Rows in set: %1").arg(mysql_affected_rows(mariadbConnection)));
               rows->append(QStringList() << tr("Rows in set: %1. Elapsed time: %2.").arg(mysql_affected_rows(mariadbConnection)).arg(millisecondsToTime(queryExecutionTime.elapsed())));
             } else { /* some error occurred */
-              rows->append(QStringList() << errorOnExecution(lastError()));
+              rows->append(QStringList() << errorOnExecution(lastError(), lastErrorNumber()));
               break;
             }
           }
           /* more results? -1 = no, >0 = error, 0 = yes (keep looping) */
           if ((status = mysql_next_result(mariadbConnection)) > 0) {
-            rows->append(QStringList() << errorOnExecution(lastError()));
+            rows->append(QStringList() << errorOnExecution(lastError(), lastErrorNumber()));
             //rows->append(QStringList() << tr("Rows in set: %1").arg(0)); //Implement this for PSQL
             rows->append(QStringList() << tr("Rows in set: %1. Elapsed time: %2 seconds.").arg(0).arg(0)); //Implement this for PSQL
           }
         } while (status == 0);
       } else {
-        rows->append(QStringList() << errorOnExecution(lastError()));
+        rows->append(QStringList() << errorOnExecution(lastError(), lastErrorNumber()));
         //rows->append(QStringList() << tr("Rows in set: %1").arg(0));
         rows->append(QStringList() << tr("Rows in set: %1. Elapsed time: %2 seconds.").arg(0).arg(0));
       }
@@ -443,18 +443,18 @@ QList<QStringList>* DBMS::runQuerySimpleResult(QString queryToExecute)
             if (mysql_field_count(mariadbConnection) != 0) {
               //            rows->append(QStringList() << tr("Rows in set") << QString("%1").arg(mysql_affected_rows(mariadbConnection)));
               //          } else { /* some error occurred */
-              rows->append(QStringList() << errorOnExecution(lastError()));
+              rows->append(QStringList() << errorOnExecution(lastError(), lastErrorNumber()));
               break;
             }
           }
           /* more results? -1 = no, >0 = error, 0 = yes (keep looping) */
           if ((status = mysql_next_result(mariadbConnection)) > 0) {
-            rows->append(QStringList() << errorOnExecution(lastError()));
+            rows->append(QStringList() << errorOnExecution(lastError(), lastErrorNumber()));
             //          rows->append(QStringList() << tr("Rows in set") << "0"); //Implement this for PSQL
           }
         } while (status == 0);
       } else {
-        rows->append(QStringList() << errorOnExecution(lastError()));
+        rows->append(QStringList() << errorOnExecution(lastError(), lastErrorNumber()));
         //      rows->append(QStringList() << tr("Rows in set") << "0");
       }
       break;
@@ -803,11 +803,11 @@ QString DBMS::outputAsG(QString queryToExecute, bool saveToFile, bool replaceRet
   }
 }
 
-QString DBMS::errorOnExecution(const QString message)
+QString DBMS::errorOnExecution(const QString message, const QString type)
 {
   emit statusBarMessage(message, QSystemTrayIcon::Critical, 0);
   emit errorOccurred();
-  errorMessage->showMessage(message);
+  errorMessage->showMessage(message, type);
   return tr("Could not execute statement. ") + message;
 }
 
@@ -1119,7 +1119,7 @@ void DBMS::clearSQLiteQueryLog()
       dateTime = QDateTime::currentDateTime();
       QSqlQuery querySQLite;
       if (!querySQLite.exec("DELETE FROM executedqueries"))
-        errorMessage->showMessage(querySQLite.lastError().text());
+        errorMessage->showMessage(querySQLite.lastError().text(), "LogExecutedQueries");
     }
 }
 
@@ -1150,7 +1150,7 @@ void DBMS::logExecutedQueries(QString query)
       querySQLite.bindValue(":connection", getConnectionString());
       querySQLite.bindValue(":query", query);
       if (!querySQLite.exec())
-        errorMessage->showMessage(querySQLite.lastError().text());
+        errorMessage->showMessage(querySQLite.lastError().text(), "LogExecutedQueries");
     }
 }
 
@@ -1384,7 +1384,7 @@ void DBMS::setCharacterSet(QString charset)
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       if (mysql_set_character_set(mariadbConnection, charset.toUtf8()) != 0)
-        errorOnExecution(tr("Could not change character set to: %1").arg(charset));
+        errorOnExecution(tr("Could not change character set to: %1").arg(charset), "SetCharacterSet");
       settings.setValue("DBMS/CharacterSet", charset);
       //query("SET NAMES 'utf8' COLLATE 'utf8_spanish_ci'");
       break;
@@ -1440,6 +1440,26 @@ View *DBMS::view(QString viewName, QString database)
 Routine *DBMS::routine(QString routineName, QString database)
 {
   return new Routine(this, routineName, database);
+}
+
+Transaction *DBMS::transaction()
+{
+  return new Transaction(this);
+}
+
+QString DBMS::lastErrorNumber()
+{
+  if (isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      return QString("%1").arg(mysql_errno(mariadbConnection));
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+  return tr("No error code provided.");
 }
 
 /***************************************************************************************************************/
@@ -2024,6 +2044,58 @@ void Replication::resetSlave(QString connectionName)
       break;
     case StaticFunctions::MariaDB:
       serverConnection->executeQuery("RESET SLAVE '" + connectionName + "'");
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+}
+
+/***************************************************************************************************************/
+
+Transaction::Transaction(DBMS *serverConnection)
+{
+  this->serverConnection = serverConnection;
+}
+
+void Transaction::beginTransacction()
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      serverConnection->executeQuery("START TRANSACTION");
+      emit serverConnection->statusBarMessage(tr("Transaction started"), QSystemTrayIcon::Information, 0);
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+}
+
+void Transaction::commitTransacction()
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      serverConnection->executeQuery("COMMIT");
+      emit serverConnection->statusBarMessage(tr("Transaction commited"), QSystemTrayIcon::Information, 0);
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+}
+
+void Transaction::rollbackTransacction()
+{
+  if (serverConnection->isOpened())
+    switch(qApp->property("DBMSType").toInt()) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      serverConnection->executeQuery("ROLLBACK");
+      emit serverConnection->statusBarMessage(tr("Transaction rollbacked"), QSystemTrayIcon::Information, 0);
       break;
     case StaticFunctions::Undefined:
     default:

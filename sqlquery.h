@@ -118,6 +118,9 @@ private:
   QAction *checkTablesAction;
   QAction *explainSelectActionWithAliasAction;
   void explainSELECT(bool withAlias = false);
+  QAction *beginTransacctionAction;
+  QAction *commitTransacctionAction;
+  QAction *rollbackTransacctionAction;
 
 signals:
   void enableDisableAction();
@@ -163,6 +166,9 @@ private slots:
   void checkTablesActionTriggered();
   void explainSelectActionWithAliasActionTriggered();
   void emitUpdatePrositionViewer(const int x, const int y);
+  void beginTransacctionActionTriggered();
+  void commitTransacctionActionTriggered();
+  void rollbackTransacctionActionTriggered();
 
 protected:
   /*! \brief Reilplements the closeEvent.
