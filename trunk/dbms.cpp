@@ -100,10 +100,12 @@ bool DBMS::open()
 {
   //last_progress_report_length = 0;
   my_bool reconnect = settings.value("DBMS/Reconnect", 1).toInt();
+  int arg = 1;
   mysql_library_init(0, NULL, NULL);
   mariadbConnection = mysql_init(NULL);
   mysql_options(mariadbConnection, MYSQL_OPT_LOCAL_INFILE, 0);
   mysql_options(mariadbConnection, MYSQL_OPT_RECONNECT, &reconnect);
+  mysql_options(mariadbConnection, MYSQL_OPT_CAN_HANDLE_EXPIRED_PASSWORDS, &arg);
 
   if (p_useSSL && !p_clientCert.isEmpty() && !p_clientKey.isEmpty())
     mysql_ssl_set(mariadbConnection, p_clientKey.toUtf8().data(), p_clientCert.toUtf8().data(), NULL, NULL, NULL);
