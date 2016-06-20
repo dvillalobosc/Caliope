@@ -982,6 +982,7 @@ void MainWindow::databaseComparisionActionTriggered()
     if (!databaseComparision) {
       databaseComparision = new DatabaseComparision(this->serverConnection);
       connect(databaseComparision, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
+      connect(databaseComparision, SIGNAL(statusBarProgressMessage(QString,uint,double)), this, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
       addSubWindow(databaseComparision);
     }
     mdiMain->setActiveSubWindow(databaseComparision);

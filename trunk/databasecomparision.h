@@ -66,6 +66,7 @@ private slots:
 
 signals:
   void statusBarMessage(QString message);
+  void statusBarProgressMessage(const QString &message, const unsigned int timeout = 0, const double progress = 0);
 };
 
 #endif // DatabaseComparision_H
