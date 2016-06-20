@@ -160,7 +160,7 @@ void DReportViewer::showReportData()
     break;
   case ReportTypes::PieChart: {
     QApplication::setOverrideCursor(Qt::WaitCursor);
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       dPieChart->clear();

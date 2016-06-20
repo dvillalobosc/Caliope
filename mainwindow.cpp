@@ -999,7 +999,7 @@ void MainWindow::migrateDatabaseActionTriggered()
   connect(secondaryServerConnection, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
   processMariaDBDump = new QProcess;
   processMariaDB = new QProcess;
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     connect(processMariaDBDump, SIGNAL(readyReadStandardError()), this, SLOT(readyReadStandardErrorDatabaseMigrationDumpSlot()));
@@ -1140,11 +1140,11 @@ void MainWindow::openRecentConnectionActionGroupTriggered(QAction *action)
   serverConnection->setKeyFile(params.at(8));
   serverConnection->setCertFile(params.at(9));
   if (params.at(0) == "--")
-    qApp->setProperty("DBMSType", StaticFunctions::Undefined);
+    serverConnection->setDBMSType(StaticFunctions::Undefined);
   if (params.at(0) == "MySQL")
-    qApp->setProperty("DBMSType", StaticFunctions::MySQL);
+    serverConnection->setDBMSType(StaticFunctions::MySQL);
   if (params.at(0) == "MariaDB")
-    qApp->setProperty("DBMSType", StaticFunctions::MariaDB);
+    serverConnection->setDBMSType(StaticFunctions::MariaDB);
   if (!serverConnection->open())
     QMessageBox::critical(this, tr("Cannot connect to the server"), serverConnection->lastError());
   if (serverConnection->isOpened())
@@ -1439,7 +1439,7 @@ void MainWindow::migrateTableActionTriggered()
     connect(secondaryServerConnection, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
     processMariaDBDump = new QProcess;
     processMariaDB = new QProcess;
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       connect(processMariaDBDump, SIGNAL(readyReadStandardError()), this, SLOT(readyReadStandardErrorDatabaseMigrationDumpSlot()));
@@ -1535,7 +1535,7 @@ void MainWindow::databaseMetadataActionTriggered()
 void MainWindow::replicationMenuAboutToShowSlot()
 {
   replicationMenu->clear();
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
     replicationMenu->addAction(startReplicationSlaveAction);
     replicationMenu->addAction(stopReplicationSlaveAction);
@@ -2152,11 +2152,11 @@ void MainWindow::connectToServerActionTriggered()
       serverConnection->setKeyFile(params.at(8));
       serverConnection->setCertFile(params.at(9));
       if (params.at(0) == "--")
-        qApp->setProperty("DBMSType", StaticFunctions::Undefined);
+        serverConnection->setDBMSType(StaticFunctions::Undefined);
       if (params.at(0) == "MySQL")
-        qApp->setProperty("DBMSType", StaticFunctions::MySQL);
+        serverConnection->setDBMSType(StaticFunctions::MySQL);
       if (params.at(0) == "MariaDB")
-        qApp->setProperty("DBMSType", StaticFunctions::MariaDB);
+        serverConnection->setDBMSType(StaticFunctions::MariaDB);
 
       if (!serverConnection->open())
         QMessageBox::critical(this, tr("Cannot connect to the server"), serverConnection->lastError());

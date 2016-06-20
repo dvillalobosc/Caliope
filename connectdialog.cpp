@@ -312,11 +312,11 @@ void ConnectDialog::actionRoleSlot(QAbstractButton *button)
 void ConnectDialog::setDBMS()
 {
   if (comboConnectionType->currentText() == "--")
-    qApp->setProperty("DBMSType", StaticFunctions::Undefined);
+    serverConnection->setDBMSType(StaticFunctions::Undefined);
   if (comboConnectionType->currentText() == "MySQL")
-    qApp->setProperty("DBMSType", StaticFunctions::MySQL);
+    serverConnection->setDBMSType(StaticFunctions::MySQL);
   if (comboConnectionType->currentText() == "MariaDB")
-    qApp->setProperty("DBMSType", StaticFunctions::MariaDB);
+    serverConnection->setDBMSType(StaticFunctions::MariaDB);
 }
 
 QList<QString> ConnectDialog::getValues()

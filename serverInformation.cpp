@@ -138,7 +138,7 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
   groupBoxHLayout->addWidget(pushButtonSkip10Error);
   groupBoxHLayout->addWidget(pushButtonSkip100Error);
 
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
     break;
   case StaticFunctions::MariaDB:
@@ -249,7 +249,7 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
   groupBoxHLayoutServerGraphics2->addStretch(1);
   buttonGroupServerGraphics->setLayout(groupBoxHLayoutServerGraphics2);
   serverGraphs2VLayout->addWidget(buttonGroupServerGraphics);
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     graphicsWidget = new DBarChartWidget;
@@ -317,7 +317,7 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
   tBytesReceived5 = 0;
   rateBytesReceived = 0;
 
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     kbSentGraph1 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'BYTES_SENT'")->at(0).at(0).toDouble();
@@ -472,7 +472,7 @@ void ServerInformation::showInformation(int tabIndex)
 
 void ServerInformation::serverGraphsDataTxt()
 {
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     serverGraphs->setPlainText(serverGraphsDataTxtMariaDB());
@@ -487,7 +487,7 @@ void ServerInformation::serverGraphsDataTxt()
 
 void ServerInformation::serverGraphsData()
 {
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     kbSentGraph2 = kbSentGraph1;
@@ -507,7 +507,7 @@ void ServerInformation::serverGraphsData()
 
 void ServerInformation::replicationStatusTxt()
 {
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
     replicationStatus->setPlainText(serverConnection->replication()->getStatus());
     break;
@@ -529,7 +529,7 @@ void ServerInformation::hddUsageData()
 {
   QApplication::setOverrideCursor(Qt::WaitCursor);
   QString output(tr("Database sizes description.") + "\n");
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     output += serverConnection->outputAsTable("SELECT `TABLE_SCHEMA` AS `" + tr("Database") + "`"
@@ -567,7 +567,7 @@ void ServerInformation::serverStatusTxt()
   serverStatus->setVisible(true);
   slowQueriesDTableView->setVisible(false);
   QString output(tr("Main server data.") + "\n");
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     output += serverConnection->outputAsTable(StaticFunctions::serverInformationQuery());
@@ -586,7 +586,7 @@ void ServerInformation::serverStatusTxt()
 void ServerInformation::serverSlowQueriesTxt()
 {
   QApplication::setOverrideCursor(Qt::WaitCursor);
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     serverStatus->setVisible(false);
