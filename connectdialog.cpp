@@ -152,6 +152,7 @@ ConnectDialog::ConnectDialog(DBMS *serverConnection)
 
   buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
   buttonBox->addButton(tr("Ping"), QDialogButtonBox::ActionRole);
+  buttonBox->addButton(tr("New connection"), QDialogButtonBox::ActionRole);
   connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
   connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
   connect(buttonBox, SIGNAL(clicked(QAbstractButton*)), this, SLOT(actionRoleSlot(QAbstractButton*)));
@@ -306,6 +307,18 @@ void ConnectDialog::actionRoleSlot(QAbstractButton *button)
     }
     if (serverConnection->ping() == 0)
       QMessageBox::information(this, tr("Ping successful to: %1").arg(serverConnection->getHostName()), tr("Ping successful"));
+  } else if (button->text() == tr("New connection")) {
+    comboConnectionName->setCurrentText("");
+    comboConnectionType->setCurrentIndex(0);
+    lineEditUser->clear();
+    lineEditServer->clear();
+    spinBoxPort->setValue(3306);
+    lineEditDatabase->clear();
+    lineEditCollation->clear();
+    useASSLConnection->setCheckState(Qt::Checked);
+    fileSelectorClientKey->setFileName("");
+    fileSelectorClientCert->setFileName("");
+    lineEditPassword->clear();
   }
 }
 
