@@ -1143,7 +1143,7 @@ void TextEditor::createActions()
   exportoToImgAction->setIcon(QIcon::fromTheme("image-x-generic", QIcon(":/images/svg/image-png.svg")));
   connect(exportoToImgAction, SIGNAL(triggered()), this, SLOT(exportoToImgActionTriggerd()));
   toggleCommentAction = new QAction(this);
-  toggleCommentAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Slash));
+  toggleCommentAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_D));
   connect(toggleCommentAction, SIGNAL(triggered()), this, SLOT(toggleCommentActionTriggerd()));
   highlightCurrentLineAction = new QAction(this);
   highlightCurrentLineAction->setCheckable(true);
