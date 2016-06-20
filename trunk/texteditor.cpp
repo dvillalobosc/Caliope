@@ -759,7 +759,7 @@ void TextEditor::performCompletion()
     QStringList data;
     switch(editorType) {
     case EditorTypes::SQLQuery:
-      switch(qApp->property("DBMSType").toInt()) {
+      switch(serverConnection->getDBMSType()) {
       case StaticFunctions::MySQL:
       case StaticFunctions::MariaDB:
         messageText = StaticFunctions::mariadbFunctionsComplete().value(text);
@@ -823,7 +823,7 @@ void TextEditor::populateModel(const QString &completionPrefix)
   model->clear();
   switch(editorType) {
   case EditorTypes::SQLQuery:
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       foreach (QString item, StaticFunctions::mariadbKeywords().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
@@ -1904,7 +1904,7 @@ bool TextEditor::event(QEvent *event)
     QString url = QString();
     switch(editorType) {
     case EditorTypes::SQLQuery:
-      switch(qApp->property("DBMSType").toInt()) {
+      switch(serverConnection->getDBMSType()) {
       case StaticFunctions::MySQL:
       case StaticFunctions::MariaDB:
         matchedValue = StaticFunctions::mariadbFunctionsComplete().value(cursor.selectedText().toUpper());
@@ -1958,7 +1958,7 @@ bool TextEditor::event(QEvent *event)
     QString matchedValue = QString();
     switch(editorType) {
     case EditorTypes::SQLQuery:
-      switch(qApp->property("DBMSType").toInt()) {
+      switch(serverConnection->getDBMSType()) {
       case StaticFunctions::MySQL:
       case StaticFunctions::MariaDB:
         matchedValue = StaticFunctions::mariadbFunctionsComplete().value(cursor.selectedText().toUpper());

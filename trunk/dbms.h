@@ -36,6 +36,7 @@
 #endif
 
 #include "stdio.h"
+#include "staticfunctions.h"
 
 class QStringList;
 class QVariant;
@@ -208,6 +209,7 @@ class DBMS : public QObject
   Q_PROPERTY(QString characterSet READ getCharacterSet WRITE setCharacterSet)
   Q_PROPERTY(QString database READ getDatabase WRITE setDatabase)
   Q_PROPERTY(QString collation READ getCollation WRITE setCollation)
+  Q_PROPERTY(StaticFunctions::dbmsTypes DBMSType READ getDBMSType WRITE setDBMSType)
 
 public:
   DBMS(bool enableQueryLog = true);
@@ -288,6 +290,9 @@ public:
   void setCertFile(QString certFile);
   void setUseSSL(bool useSSL);
   int ping();
+  StaticFunctions::dbmsTypes getDBMSType();
+  void setDBMSType(StaticFunctions::dbmsTypes type);
+  StaticFunctions::dbmsTypes p_DBMSType;
 
   Table *table(QString tableName, QString database = QString());
   View *view(QString viewName, QString database = QString());

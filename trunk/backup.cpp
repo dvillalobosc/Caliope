@@ -64,7 +64,7 @@ Backup::Backup(DBMS *serverConnection)
       for (int counter = 0; counter < databasesListWidget->count(); counter++)
         if (databasesListWidget->item(counter)->text() == option)
           databasesListWidget->item(counter)->setCheckState(Qt::Checked);
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     createCheckBoxesMariaDB();

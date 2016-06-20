@@ -38,7 +38,7 @@
 
 #include "QDebug"
 
-//switch(qApp->property("DBMSType").toInt()) {
+//switch(p_DBMSType) {
 //case StaticFunctions::MySQL:
 //case StaticFunctions::MariaDB:
 //  break;
@@ -81,7 +81,7 @@ DBMS::DBMS(bool enableQueryLog)
 
 bool DBMS::shutdown()
 {
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(p_DBMSType) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     if (mysql_shutdown(mariadbConnection, SHUTDOWN_DEFAULT) == 0) {
@@ -108,7 +108,7 @@ bool DBMS::open()
   if (p_useSSL && !p_clientCert.isEmpty() && !p_clientKey.isEmpty())
     mysql_ssl_set(mariadbConnection, p_clientKey.toUtf8().data(), p_clientCert.toUtf8().data(), NULL, NULL, NULL);
 
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(p_DBMSType) {
   case StaticFunctions::MySQL:
     opened = mysql_real_connect(mariadbConnection, hostName.toUtf8().data(), p_userName.toUtf8().data()
                                 , password.toUtf8().data(), p_database.toUtf8().data(), port, NULL, CLIENT_MULTI_STATEMENTS);
@@ -123,7 +123,7 @@ bool DBMS::open()
     opened = false;
   }
 
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(p_DBMSType) {
   case StaticFunctions::MySQL:
     if (opened) {
       //setCharacterSet(settings.value("DBMS/CharacterSet", "utf8").toString());
@@ -196,7 +196,7 @@ void DBMS::close()
 
   if (isOpened()) {
     opened = false;
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       mysql_close(mariadbConnection);
@@ -267,7 +267,7 @@ QString DBMS::getCollation()
 QStringList DBMS::getDatabases(bool skipMetaDatabases)
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       if (skipMetaDatabases)
@@ -285,7 +285,7 @@ QStringList DBMS::getDatabases(bool skipMetaDatabases)
 QStringList DBMS::getUsers()
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn("SELECT DISTINCT(`User`) FROM `mysql`.`user`");
@@ -299,7 +299,7 @@ QStringList DBMS::getUsers()
 QStringList DBMS::getUserHosts(QString user)
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn(QString("SELECT `Host` FROM `mysql`.`user` WHERE `User` = '%1'").arg(user));
@@ -317,7 +317,7 @@ QStringList DBMS::runQuerySingleColumn(QString queryToExecute, bool addHeaders)
 
   if (isOpened()) {
     query(queryToExecute);
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       mariadbResults = mysql_store_result(mariadbConnection);
@@ -350,7 +350,7 @@ QList<QStringList>* DBMS::runQuery(QString queryToExecute, bool addHeaders)
   //  qDebug() << queryToExecute;
 
   if (isOpened()) {
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       if (query(queryToExecute) == 0) {
@@ -416,7 +416,7 @@ QList<QStringList>* DBMS::runQuerySimpleResult(QString queryToExecute)
   //  qDebug() << queryToExecute;
 
   if (isOpened()) {
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       if (query(queryToExecute) == 0) {
@@ -473,7 +473,7 @@ QString DBMS::lastError()
 {
   QString errorText;
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       errorText = QString("%1 %2 %3").arg(tr("Error:")).arg(mysql_errno(mariadbConnection)).arg(mysql_error(mariadbConnection));
@@ -504,7 +504,7 @@ int DBMS::query(QString queryToExecute)
 #endif
   const QByteArray encQuery(fromUnicode(tc, queryToExecute));
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       valueToReturn = mysql_real_query(mariadbConnection, encQuery.data(), encQuery.length());
@@ -824,7 +824,7 @@ int DBMS::getPort()
 int DBMS::getConnectionId()
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn("SELECT CONNECTION_ID()").at(0).toInt();
@@ -839,7 +839,7 @@ int DBMS::getConnectionId()
 QString DBMS::getSocket()
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn("SELECT `VARIABLE_VALUE` FROM `information_schema`.`SESSION_VARIABLES` WHERE `VARIABLE_NAME` = 'SOCKET'").at(0).at(0);
@@ -859,7 +859,7 @@ QString DBMS::getUserName()
 QString DBMS::getFullUserName()
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn("SELECT USER()").at(0);
@@ -879,7 +879,7 @@ QString DBMS::getPassword()
 QString DBMS::getHostName()
 {
 //  if (isOpened())
-//    switch(qApp->property("DBMSType").toInt()) {
+//    switch(p_DBMSType) {
 //    case StaticFunctions::MySQL:
 //    case StaticFunctions::MariaDB:
 //      return runQuerySingleColumn("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'HOSTNAME'").at(0);
@@ -894,7 +894,7 @@ QString DBMS::getHostName()
 QString DBMS::getSessionStatus(QString filter)
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       if (!filter.isEmpty())
@@ -912,7 +912,7 @@ QString DBMS::getSessionStatus(QString filter)
 QString DBMS::getSessionlVariables(QString filter)
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       if (!filter.isEmpty())
@@ -930,7 +930,7 @@ QString DBMS::getSessionlVariables(QString filter)
 QString DBMS::getGlobalStatus(QString filter)
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       if (!filter.isEmpty())
@@ -948,7 +948,7 @@ QString DBMS::getGlobalStatus(QString filter)
 QString DBMS::getGlobalVariables(QString filter)
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       if (!filter.isEmpty())
@@ -966,7 +966,7 @@ QString DBMS::getGlobalVariables(QString filter)
 QString DBMS::getStatus()
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return QString("%1").arg(mysql_stat(mariadbConnection));
@@ -989,7 +989,7 @@ bool DBMS::executeQuery(QString queryToExecute)
 void DBMS::flushPrivileges()
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       query("FLUSH PRIVILEGES");
@@ -1007,7 +1007,7 @@ QString DBMS::getTitle()
 
 QString DBMS::getStringType()
 {
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(p_DBMSType) {
   case StaticFunctions::MySQL:
     return "MySQL";
   case StaticFunctions::MariaDB:
@@ -1125,7 +1125,7 @@ void DBMS::clearSQLiteQueryLog()
 
 void DBMS::setCollation(QString charset, QString collation)
 {
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(p_DBMSType) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     query("SET NAMES " + charset + " COLLATE " + collation);
@@ -1157,7 +1157,7 @@ void DBMS::logExecutedQueries(QString query)
 QString DBMS::getVersion()
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn("SELECT VERSION()").at(0);
@@ -1171,7 +1171,7 @@ QString DBMS::getVersion()
 
 //QString DBMS::getVersionComment()
 //{
-//  switch(qApp->property("DBMSType").toInt()) {
+//  switch(p_DBMSType) {
 //  case StaticFunctions::MySQL:
 //  case StaticFunctions::MariaDB:
 //    return runQuerySingleColumn("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'VERSION_COMMENT'").at(0);
@@ -1186,7 +1186,7 @@ QString DBMS::getVersion()
 int DBMS::getMayorVersion()
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return QString(runQuerySingleColumn("SELECT LEFT(VERSION(), 1)").at(0)).toInt();
@@ -1201,7 +1201,7 @@ int DBMS::getMayorVersion()
 int DBMS::getMinorVersion()
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return QString(runQuerySingleColumn("SELECT MID(VERSION(), 3, 1)").at(0)).toInt();
@@ -1215,7 +1215,7 @@ int DBMS::getMinorVersion()
 
 //int DBMS::getRelease()
 //{
-//  switch(qApp->property("DBMSType").toInt()) {
+//  switch(p_DBMSType) {
 //  case StaticFunctions::MySQL:
 //  case StaticFunctions::MariaDB:
 //    return QString(runQuerySingleColumn("SELECT SUBSTRING(VERSION(), 5)").at(0)).toInt();
@@ -1234,7 +1234,7 @@ QString DBMS::getDatabase()
 bool DBMS::changeDatabase(QString database)
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       if (query(QString("USE " + StaticFunctions::quoteSymbol(database))) == 0) {
@@ -1257,7 +1257,7 @@ QString DBMS::getTriggeredefinition(QString trigger, QString database)
   if (database.isEmpty())
     database = getDatabase();
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return runQuery("SHOW CREATE TRIGGER " + StaticFunctions::quoteSymbol(database) + "." + StaticFunctions::quoteSymbol(trigger))->at(0).at(2);
@@ -1272,7 +1272,7 @@ QString DBMS::getTriggeredefinition(QString trigger, QString database)
 QStringList DBMS::getEngines()
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn("SELECT `ENGINE` FROM `information_schema`.`ENGINES` ORDER BY `ENGINE`");
@@ -1287,7 +1287,7 @@ QStringList DBMS::getEngines()
 QStringList DBMS::getCollations()
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return runQuerySingleColumn("SELECT `COLLATION_NAME` FROM `information_schema`.`COLLATIONS` ORDER BY `COLLATION_NAME`");
@@ -1302,7 +1302,7 @@ QStringList DBMS::getCollations()
 QList<QStringList> *DBMS::getCollationsApplicability()
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return runQuery("SELECT `COLLATION_NAME`, CHARACTER_SET_NAME FROM `information_schema`.`COLLATIONS` ORDER BY `COLLATION_NAME`");
@@ -1332,7 +1332,7 @@ void DBMS::setUseSSL(bool useSSL)
 int DBMS::ping()
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return mysql_ping(mariadbConnection);
@@ -1344,11 +1344,22 @@ int DBMS::ping()
   return -1;
 }
 
+StaticFunctions::dbmsTypes DBMS::getDBMSType()
+{
+  return p_DBMSType;
+}
+
+void DBMS::setDBMSType(StaticFunctions::dbmsTypes type)
+{
+  qApp->setProperty("DBMSType", type);
+  p_DBMSType = type;
+}
+
 QList<QStringList> *DBMS::getCharacterSets()
 {
   QList<QStringList> *rows = new QList<QStringList>();
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       rows = runQuery("SELECT `CHARACTER_SET_NAME`, `DESCRIPTION` FROM `information_schema`.`CHARACTER_SETS` ORDER BY `CHARACTER_SET_NAME`");
@@ -1364,7 +1375,7 @@ QList<QStringList> *DBMS::getCharacterSets()
 QString DBMS::getCharacterSet()
 {
 //  if (isOpened())
-//    switch(qApp->property("DBMSType").toInt()) {
+//    switch(p_DBMSType) {
 //    case StaticFunctions::MySQL:
 //    case StaticFunctions::MariaDB:
 //      return QString(mysql_character_set_name(mariadbConnection));
@@ -1380,7 +1391,7 @@ QString DBMS::getCharacterSet()
 void DBMS::setCharacterSet(QString charset)
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       if (mysql_set_character_set(mariadbConnection, charset.toUtf8()) != 0)
@@ -1450,7 +1461,7 @@ Transaction *DBMS::transaction()
 QString DBMS::lastErrorNumber()
 {
   if (isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       return QString("%1").arg(mysql_errno(mariadbConnection));
@@ -1482,7 +1493,7 @@ bool Database::create(QString collation)
 
 QString Database::formalName()
 {
-  return StaticFunctions::quoteSymbol(databaseName);;
+  return StaticFunctions::quoteSymbol(databaseName);
 }
 
 bool Database::drop()
@@ -1492,7 +1503,7 @@ bool Database::drop()
 
 QStringList Database::getTables()
 {
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     return serverConnection->runQuerySingleColumn("SELECT `TABLE_NAME` FROM `information_schema`.`TABLES` WHERE `TABLE_TYPE` = 'BASE TABLE' AND `TABLE_SCHEMA` = '" + databaseName + "'");
@@ -1506,7 +1517,7 @@ QStringList Database::getTables()
 
 QStringList Database::getViews()
 {
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     return serverConnection->runQuerySingleColumn("SELECT `TABLE_NAME` FROM `information_schema`.`TABLES` WHERE `TABLE_TYPE` = 'VIEW' AND `TABLE_SCHEMA` = '" + databaseName + "'");
@@ -1520,7 +1531,7 @@ QStringList Database::getViews()
 
 unsigned long Database::tableCount()
 {
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     return serverConnection->runQuery("SELECT COUNT(*) FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '" + databaseName + "'")->at(0).at(0).toULong();
@@ -1548,7 +1559,7 @@ QStringList Database::info()
 
 QStringList Database::getLocalTables()
 {
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     return serverConnection->runQuerySingleColumn("SELECT `TABLE_NAME` FROM `information_schema`.`TABLES` WHERE `TABLE_TYPE` = 'BASE TABLE' AND `ENGINE` NOT IN ('FEDERATED', 'MEMORY') AND `TABLE_SCHEMA` = '" + databaseName + "'");
@@ -1562,7 +1573,7 @@ QStringList Database::getLocalTables()
 
 QString Database::tableChecksum(QString table)
 {
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     return serverConnection->runQuery("CHECKSUM TABLE `" + databaseName + "`.`" + table + "`")->at(0).at(1);
@@ -1739,7 +1750,7 @@ Processes::Processes(DBMS *serverConnection)
 
 QList<QStringList> *Processes::getProcessList()
 {
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
     result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' ') FROM `information_schema`.`PROCESSLIST`");
     break;
@@ -1756,7 +1767,7 @@ QList<QStringList> *Processes::getProcessList()
 
 void Processes::killThread(long long thread)
 {
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     serverConnection->runQuery(QString("KILL CONNECTION %1").arg(thread));
@@ -1769,7 +1780,7 @@ void Processes::killThread(long long thread)
 
 void Processes::killIdleThreads(unsigned int limit)
 {
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     result = serverConnection->runQuery(QString("SELECT `ID` FROM `information_schema`.`PROCESSLIST` WHERE `TIME` >  %1 AND `COMMAND` NOT IN ('Daemon', 'Binlog Dump') AND `INFO` IS NULL AND `USER` <> 'federated'").arg(limit));
@@ -1793,7 +1804,7 @@ Replication::Replication(DBMS *serverConnection)
 void Replication::changeDefaultMasterConnection(QString masterConnectionName)
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
       break;
     case StaticFunctions::MariaDB:
@@ -1808,7 +1819,7 @@ void Replication::changeDefaultMasterConnection(QString masterConnectionName)
 QString Replication::getStatus()
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
       return serverConnection->outputAsTable("SHOW MASTER STATUS") + "\n" + serverConnection->outputAsG("SHOW SLAVE STATUS");
       break;
@@ -1825,7 +1836,7 @@ QString Replication::getStatus()
 void Replication::skipErrors(unsigned int count)
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       serverConnection->executeQuery(QString("STOP SLAVE"));
@@ -1841,7 +1852,7 @@ void Replication::skipErrors(unsigned int count)
 void Replication::stopSlave()
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
       serverConnection->executeQuery("STOP SLAVE");
       break;
@@ -1856,7 +1867,7 @@ void Replication::stopSlave()
 void Replication::startSlave()
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
       serverConnection->executeQuery("START SLAVE");
       break;
@@ -1871,7 +1882,7 @@ void Replication::startSlave()
 void Replication::rebootSlave()
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
       serverConnection->executeQuery("STOP SLAVE");
       serverConnection->executeQuery("START SLAVE");
@@ -1887,7 +1898,7 @@ void Replication::rebootSlave()
 void Replication::resetSlave()
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
       serverConnection->executeQuery("RESET SLAVE");
       break;
@@ -1902,7 +1913,7 @@ void Replication::resetSlave()
 void Replication::purgeBinaryLogs()
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       serverConnection->executeQuery("PURGE BINARY LOGS BEFORE NOW()");
@@ -1916,7 +1927,7 @@ void Replication::purgeBinaryLogs()
 void Replication::flushRelayLogs()
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       serverConnection->executeQuery("FLUSH REALY LOGS");
@@ -1930,7 +1941,7 @@ void Replication::flushRelayLogs()
 void Replication::stopAllSlaves()
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
       break;
     case StaticFunctions::MariaDB:
@@ -1945,7 +1956,7 @@ void Replication::stopAllSlaves()
 void Replication::startAllSlaves()
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
       break;
     case StaticFunctions::MariaDB:
@@ -1960,7 +1971,7 @@ void Replication::startAllSlaves()
 QString Replication::getStatus(QString connectionName)
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
       break;
     case StaticFunctions::MariaDB:
@@ -1976,7 +1987,7 @@ QString Replication::getStatus(QString connectionName)
 QStringList Replication::getSlavesNames()
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
       return QStringList();
       break;
@@ -1993,7 +2004,7 @@ QStringList Replication::getSlavesNames()
 void Replication::stopSlave(QString connectionName)
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
       break;
     case StaticFunctions::MariaDB:
@@ -2008,7 +2019,7 @@ void Replication::stopSlave(QString connectionName)
 void Replication::startSlave(QString connectionName)
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
       break;
     case StaticFunctions::MariaDB:
@@ -2023,7 +2034,7 @@ void Replication::startSlave(QString connectionName)
 void Replication::rebootSlave(QString connectionName)
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
       break;
     case StaticFunctions::MariaDB:
@@ -2039,7 +2050,7 @@ void Replication::rebootSlave(QString connectionName)
 void Replication::resetSlave(QString connectionName)
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
       break;
     case StaticFunctions::MariaDB:
@@ -2061,7 +2072,7 @@ Transaction::Transaction(DBMS *serverConnection)
 void Transaction::beginTransacction()
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       serverConnection->executeQuery("START TRANSACTION");
@@ -2076,7 +2087,7 @@ void Transaction::beginTransacction()
 void Transaction::commitTransacction()
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       serverConnection->executeQuery("COMMIT");
@@ -2091,7 +2102,7 @@ void Transaction::commitTransacction()
 void Transaction::rollbackTransacction()
 {
   if (serverConnection->isOpened())
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       serverConnection->executeQuery("ROLLBACK");

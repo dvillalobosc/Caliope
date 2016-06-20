@@ -420,7 +420,7 @@ void Catalogs::deleteDatabaseActionTriggered()
                                                                    , serverConnection->getDatabases()
                                                                    .indexOf(QRegExp("^" + serverConnection->getDatabase() + "$"))
                                                                    , false))->drop();
-    switch(qApp->property("DBMSType").toInt()) {
+    switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       serverConnection->changeDatabase("mysql");

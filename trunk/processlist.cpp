@@ -46,7 +46,7 @@ ProcessList::ProcessList(DBMS *serverConnection)
   * Pending translation
   */
   QList<QStringList> *headers = new QList<QStringList>;
-  switch(qApp->property("DBMSType").toInt()) {
+  switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
     headers->append(QStringList() << tr("Id") << "NoDelegate"  << "" << "Left");
     headers->append(QStringList() << tr("User") << "NoDelegate"  << "" << "Left");
