@@ -191,6 +191,7 @@ void DatabaseComparision::comparision(bool primary)
   QString database;
   QString table;
   QString statement;
+  int unsigned itemProcessed = 0;
   if (primary)
     foreach (QTreeWidgetItem *item, tables) {
       if (item->checkState(0) == Qt::Checked && item->parent()) {
@@ -207,6 +208,7 @@ void DatabaseComparision::comparision(bool primary)
           rows->append(data->at(counter));
         }
       }
+      emit statusBarProgressMessage(item->text(0), 0, (++itemProcessed * 100 / tables.count()));
     }
   else
     foreach (QTreeWidgetItem *item, secondaryTables) {
@@ -224,6 +226,7 @@ void DatabaseComparision::comparision(bool primary)
           rows->append(data->at(counter));
         }
       }
+      emit statusBarProgressMessage(item->text(0), 0, (++itemProcessed * 100 / secondaryTables.count()));
     }
 
 
