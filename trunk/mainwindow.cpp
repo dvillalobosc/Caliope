@@ -201,11 +201,11 @@ MainWindow::MainWindow()
         viewQueryLogActionSlot();
         continue;
       }
-      if (window.startsWith(tr("SQL Query")))
+      if (window.startsWith(tr("SQL Query")) || window.endsWith(".sql", Qt::CaseInsensitive))
         sqlScriptActionTriggered();
       if (window.startsWith(tr("Query")))
         queryActionTriggered();
-      if (window.startsWith(tr("PHP")))
+      if (window.startsWith(tr("PHP")) || window.endsWith(".php", Qt::CaseInsensitive))
         phpScriptActionTriggered();
       if (window == tr("Database Comparision"))
         databaseComparisionActionTriggered();
@@ -712,19 +712,19 @@ void MainWindow::openRecentFilesMenuAboutToShowSlot()
   QSettings settings;
   QString setting;
   openRecentFilesMenu->clear();
+  const int limit = 5;
   setting = "RecentMariaDBFiles/Files";
   QStringList fileList = settings.value(setting, QStringList()).toStringList();
   fileList.sort();
-
+  for(int counter = 0; counter < (fileList.size() / 2); counter++) fileList.swap(counter,fileList.size() - (1 + counter));
   int fileCount = 0;
-  const int limit = 5;
-
   foreach (QString file, fileList)
     if (!file.isEmpty() && fileCount++ < limit)
       recentFilesActionGroup->addAction(openRecentFilesMenu->addAction(StaticFunctions::iconFromFileName(file), file));
   setting = "RecentPHPFiles/Files";
   fileList = settings.value(setting, QStringList()).toStringList();
   fileList.sort();
+  for(int counter = 0; counter < (fileList.size() / 2); counter++) fileList.swap(counter,fileList.size() - (1 + counter));
   fileCount = 0;
   foreach (QString file, fileList)
     if (!file.isEmpty() && fileCount++ < limit)
@@ -732,6 +732,7 @@ void MainWindow::openRecentFilesMenuAboutToShowSlot()
   setting = "RecentCSSFiles/Files";
   fileList = settings.value(setting, QStringList()).toStringList();
   fileList.sort();
+  for(int counter = 0; counter < (fileList.size() / 2); counter++) fileList.swap(counter,fileList.size() - (1 + counter));
   fileCount = 0;
   foreach (QString file, fileList)
     if (!file.isEmpty() && fileCount++ < limit)
@@ -739,6 +740,7 @@ void MainWindow::openRecentFilesMenuAboutToShowSlot()
   setting = "RecentHTMLFiles/Files";
   fileList = settings.value(setting, QStringList()).toStringList();
   fileList.sort();
+  for(int counter = 0; counter < (fileList.size() / 2); counter++) fileList.swap(counter,fileList.size() - (1 + counter));
   fileCount = 0;
   foreach (QString file, fileList)
     if (!file.isEmpty() && fileCount++ < limit)
@@ -746,6 +748,7 @@ void MainWindow::openRecentFilesMenuAboutToShowSlot()
   setting = "RecentJavaScriptFiles/Files";
   fileList = settings.value(setting, QStringList()).toStringList();
   fileList.sort();
+  for(int counter = 0; counter < (fileList.size() / 2); counter++) fileList.swap(counter,fileList.size() - (1 + counter));
   fileCount = 0;
   foreach (QString file, fileList)
     if (!file.isEmpty() && fileCount++ < limit)

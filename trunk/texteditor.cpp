@@ -154,7 +154,6 @@ TextEditor::TextEditor(Projects *project, DBMS *serverConnection, EditorTypes::E
   mainVLayout->addWidget(mainSplitter);
   mainVLayout->addWidget(findReplace);
 
-  openLastOpenedFile();
   sortSymbols = new QAction(this);
   sortSymbols->setIcon(QIcon::fromTheme("view-sort-ascending", QIcon(":/images/svg/view-sort-ascending-2.svg")));
   connect(sortSymbols, SIGNAL(triggered()), this, SLOT(sortSymbolsSlot()));
@@ -166,6 +165,7 @@ TextEditor::TextEditor(Projects *project, DBMS *serverConnection, EditorTypes::E
   //widMain->setLayout(mainVLayout);
   //setWidget(widMain);
   setLayout(mainVLayout);
+  openLastOpenedFile();
 }
 
 void TextEditor::setTitle(QString title)
