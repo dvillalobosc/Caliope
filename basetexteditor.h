@@ -118,6 +118,7 @@ public:
 protected:
   void paintEvent(QPaintEvent *event);
   void mouseDoubleClickEvent(QMouseEvent *event);
+  void mousePressEvent(QMouseEvent *event);
 
 private:
   BaseTextEditor *codeEditor;
