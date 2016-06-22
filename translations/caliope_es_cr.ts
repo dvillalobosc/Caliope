@@ -2772,117 +2772,122 @@ Total progess: %5.</source>
 <context>
     <name>Preferences</name>
     <message>
-        <location filename="../preferences.cpp" line="231"/>
+        <location filename="../preferences.cpp" line="236"/>
         <source>Preferences</source>
         <translation>Preferencias</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="235"/>
+        <location filename="../preferences.cpp" line="240"/>
         <source>Select a style:</source>
         <translation>Seleccione un estilo:</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="236"/>
+        <location filename="../preferences.cpp" line="241"/>
         <source>Remember opened windows</source>
         <translation>Recordar ventanas abiertas</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="237"/>
+        <location filename="../preferences.cpp" line="242"/>
         <source>Open last file used in the modules</source>
         <translation>Abrir el último archivo usado en los módulos</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="238"/>
+        <location filename="../preferences.cpp" line="243"/>
         <source>Save Queries before execution?</source>
         <translation>¿Guardar Consultas antes de la ejecución?</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="239"/>
+        <location filename="../preferences.cpp" line="244"/>
         <source>Appilcation Style</source>
         <translation>Estilo de la Aplicación</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="109"/>
+        <location filename="../preferences.cpp" line="110"/>
         <source>General</source>
         <translation>General</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="101"/>
+        <location filename="../preferences.cpp" line="102"/>
         <source>Change default background image</source>
         <translation>Cambiar la imagen de fondo predeterminada</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="176"/>
+        <location filename="../preferences.cpp" line="177"/>
         <source>Count</source>
         <translation>Contador</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="177"/>
+        <location filename="../preferences.cpp" line="178"/>
         <source>Collation</source>
         <translation>Colación</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="178"/>
+        <location filename="../preferences.cpp" line="179"/>
         <source>Use SSL</source>
         <translation>Usar SSL</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="179"/>
+        <location filename="../preferences.cpp" line="180"/>
         <source>Client Key File</source>
         <translation>Archivo SSL Llave del cliente</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="180"/>
+        <location filename="../preferences.cpp" line="181"/>
         <source>Client Cert File</source>
         <translation>Archivo SSL Cert del cliente</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="208"/>
+        <location filename="../preferences.cpp" line="209"/>
         <source>Application Theme</source>
         <translation>Tema de la Aplicación</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="240"/>
+        <location filename="../preferences.cpp" line="213"/>
+        <source>Code Snippets</source>
+        <translation>Fragmentos de código</translation>
+    </message>
+    <message>
+        <location filename="../preferences.cpp" line="245"/>
         <source>Spaces</source>
         <translation>Espacios</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="242"/>
+        <location filename="../preferences.cpp" line="247"/>
         <source>Tab size:</source>
         <translation>Tamaño del tabulador:</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="243"/>
+        <location filename="../preferences.cpp" line="248"/>
         <source>Enable automatic indentation.</source>
         <translation>Habilitar indentación automática.</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="244"/>
+        <location filename="../preferences.cpp" line="249"/>
         <source>Clean white spaces at the end of the line.</source>
         <translation>Limpiar espacios en blanco al final de la línea.</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="245"/>
+        <location filename="../preferences.cpp" line="250"/>
         <source>Save a backup copy before save a file.</source>
         <translation>Guardar una copia de seguridad antes de guardar el archivo.</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="252"/>
+        <location filename="../preferences.cpp" line="257"/>
         <source>Use automatic reconnection</source>
         <translation>Usar reconexión automática</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="254"/>
+        <location filename="../preferences.cpp" line="259"/>
         <source>PHP On-Line Help:</source>
         <translation>Ayuda en Línea de PHP:</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="256"/>
+        <location filename="../preferences.cpp" line="261"/>
         <source>MySQL On-Line Help:</source>
         <translation>Ayuda en Línea de MySQL:</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="258"/>
+        <location filename="../preferences.cpp" line="263"/>
         <source>MariaDB On-Line Help:</source>
         <translation>Ayuda en Línea de MariaDB:</translation>
     </message>
@@ -2891,77 +2896,77 @@ Total progess: %5.</source>
         <translation type="obsolete">Mostar Tabulaciones y Espacios.</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="136"/>
+        <location filename="../preferences.cpp" line="137"/>
         <source>Text Editor</source>
         <translation>Editor de Texto</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="140"/>
+        <location filename="../preferences.cpp" line="141"/>
         <source>License Template</source>
         <translation>Plantilla de Licencia</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="144"/>
+        <location filename="../preferences.cpp" line="145"/>
         <source>Network Settings</source>
         <translation>Configuración de la red</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="170"/>
+        <location filename="../preferences.cpp" line="171"/>
         <source>Name</source>
         <translation>Nombre</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="173"/>
+        <location filename="../preferences.cpp" line="174"/>
         <source>Server</source>
         <translation>Servidor</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="174"/>
+        <location filename="../preferences.cpp" line="175"/>
         <source>Port</source>
         <translation>Puerto</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="172"/>
+        <location filename="../preferences.cpp" line="173"/>
         <source>User</source>
         <translation>Usuario</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="181"/>
+        <location filename="../preferences.cpp" line="182"/>
         <source>Password</source>
         <translation>Contraseña</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="175"/>
+        <location filename="../preferences.cpp" line="176"/>
         <source>Database</source>
         <translation>Base de Datos</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="171"/>
+        <location filename="../preferences.cpp" line="172"/>
         <source>Type</source>
         <translation>Tipo</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="190"/>
+        <location filename="../preferences.cpp" line="191"/>
         <source>Connections Settings</source>
         <translation>Configuración de las Conexiones</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="194"/>
+        <location filename="../preferences.cpp" line="195"/>
         <source>File Associations</source>
         <translation>Asociaciones de Archivo</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="247"/>
+        <location filename="../preferences.cpp" line="252"/>
         <source>Enable query log</source>
         <translation>Habilitar el log de sentencias</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="251"/>
+        <location filename="../preferences.cpp" line="256"/>
         <source>PHP CLI Command:</source>
         <translation>Comando PHP CLI:</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="204"/>
+        <location filename="../preferences.cpp" line="205"/>
         <source>PHP</source>
         <translation></translation>
     </message>
@@ -7482,39 +7487,39 @@ Total of queries: %5, remaining: %6.</source>
 <context>
     <name>TextEditor</name>
     <message>
-        <location filename="../texteditor.cpp" line="251"/>
+        <location filename="../texteditor.cpp" line="288"/>
         <source>Recent files</source>
         <translation>Archivos recientes</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="252"/>
-        <location filename="../texteditor.cpp" line="263"/>
+        <location filename="../texteditor.cpp" line="289"/>
+        <location filename="../texteditor.cpp" line="300"/>
         <source>Symbols</source>
         <translation>Símbolos</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="516"/>
+        <location filename="../texteditor.cpp" line="553"/>
         <source>Print Script</source>
         <translation>Imprimir Script</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="554"/>
+        <location filename="../texteditor.cpp" line="591"/>
         <source>Clean</source>
         <translation>Limpiar</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="957"/>
-        <location filename="../texteditor.cpp" line="961"/>
+        <location filename="../texteditor.cpp" line="994"/>
+        <location filename="../texteditor.cpp" line="998"/>
         <source>Save file</source>
         <translation>Guardar archivo</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="957"/>
+        <location filename="../texteditor.cpp" line="994"/>
         <source>Cannot save empty files.</source>
         <translation>No es posible guardar archivos en blanco.</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="284"/>
+        <location filename="../texteditor.cpp" line="321"/>
         <source>Cut line</source>
         <translation>Cortar línea</translation>
     </message>
@@ -7523,225 +7528,225 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Explicar SELECT</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="317"/>
+        <location filename="../texteditor.cpp" line="354"/>
         <source>Show SQL Helpers in the completion</source>
         <translation>Mostar Ayudas de SQL en el completado</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="319"/>
+        <location filename="../texteditor.cpp" line="356"/>
         <source>Export to Pdf</source>
         <translation>Exportar a Pdf</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="320"/>
+        <location filename="../texteditor.cpp" line="357"/>
         <source>Export to Odt</source>
         <translation>Exportar a Odt</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="321"/>
+        <location filename="../texteditor.cpp" line="358"/>
         <source>Export to Html</source>
         <translation>Exportar a Html</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="322"/>
+        <location filename="../texteditor.cpp" line="359"/>
         <source>Export to Svg</source>
         <translation>Exportar a Svg</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="323"/>
+        <location filename="../texteditor.cpp" line="360"/>
         <source>Export to Image</source>
         <translation>Exportar a Imagen</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="324"/>
+        <location filename="../texteditor.cpp" line="361"/>
         <source>Toggle Comment</source>
         <translation>Intercambiar Comentarios</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="333"/>
+        <location filename="../texteditor.cpp" line="370"/>
         <source>Uppercase keywords</source>
         <translation>Hacer mayúsculas las palabras clave</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="334"/>
+        <location filename="../texteditor.cpp" line="371"/>
         <source>Lowercase keywords</source>
         <translation>Hacer minúsculas las palabras clave</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1269"/>
+        <location filename="../texteditor.cpp" line="1306"/>
         <source>SQL Query: Save file...</source>
         <translation>Consulta SQL: Guardar archivo...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1272"/>
+        <location filename="../texteditor.cpp" line="1309"/>
         <source>PHP Script: Save file...</source>
         <translation>Script PHP: Guardar archivo...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1275"/>
+        <location filename="../texteditor.cpp" line="1312"/>
         <source>CSS File: Save file...</source>
         <translation>Archivo CSS: Guardar archivo...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1278"/>
+        <location filename="../texteditor.cpp" line="1315"/>
         <source>HTML File: Save file...</source>
         <translation>Archivo HTML: Guardar archivo...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1281"/>
+        <location filename="../texteditor.cpp" line="1318"/>
         <source>JavaScript Script: Save file...</source>
         <translation>Script JavaScript: Guardar archivo...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1475"/>
+        <location filename="../texteditor.cpp" line="1512"/>
         <source>PHP files (*.php *.inc *.module)</source>
         <translation>Archivos PHP (*.php *.inc *.module)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="971"/>
-        <location filename="../texteditor.cpp" line="1844"/>
+        <location filename="../texteditor.cpp" line="1008"/>
+        <location filename="../texteditor.cpp" line="1881"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>No es posible escribir en el archivo %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="255"/>
+        <location filename="../texteditor.cpp" line="292"/>
         <source>Edit Menu</source>
         <translation>Menú Editar</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="256"/>
+        <location filename="../texteditor.cpp" line="293"/>
         <source>&amp;Export</source>
         <translation>&amp;Exportar</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="253"/>
+        <location filename="../texteditor.cpp" line="290"/>
         <source>Sort by name</source>
         <translation>Ordenar por nombre</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="986"/>
-        <location filename="../texteditor.cpp" line="1819"/>
-        <location filename="../texteditor.cpp" line="1832"/>
-        <location filename="../texteditor.cpp" line="1850"/>
+        <location filename="../texteditor.cpp" line="1023"/>
+        <location filename="../texteditor.cpp" line="1856"/>
         <location filename="../texteditor.cpp" line="1869"/>
-        <location filename="../texteditor.cpp" line="1892"/>
+        <location filename="../texteditor.cpp" line="1887"/>
+        <location filename="../texteditor.cpp" line="1906"/>
+        <location filename="../texteditor.cpp" line="1929"/>
         <source>File saved at: %1</source>
         <translation>Archivo guardado en: %1</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="264"/>
+        <location filename="../texteditor.cpp" line="301"/>
         <source>Clear</source>
         <translation>Limpiar</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="265"/>
+        <location filename="../texteditor.cpp" line="302"/>
         <source>Open</source>
         <translation>Abrir</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="266"/>
+        <location filename="../texteditor.cpp" line="303"/>
         <source>Save</source>
         <translation>Guardar</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="267"/>
+        <location filename="../texteditor.cpp" line="304"/>
         <source>Save as...</source>
         <translation>Guardar como...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="268"/>
+        <location filename="../texteditor.cpp" line="305"/>
         <source>Copy</source>
         <translation>Copiar</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="269"/>
+        <location filename="../texteditor.cpp" line="306"/>
         <source>Cut</source>
         <translation>Cortar</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="270"/>
+        <location filename="../texteditor.cpp" line="307"/>
         <source>Paste</source>
         <translation>Pegar</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="271"/>
+        <location filename="../texteditor.cpp" line="308"/>
         <source>Undo</source>
         <translation>Deshacer</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="272"/>
+        <location filename="../texteditor.cpp" line="309"/>
         <source>Redo</source>
         <translation>Rehacer</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="273"/>
+        <location filename="../texteditor.cpp" line="310"/>
         <source>Word wrap</source>
         <translation>Ajuste de línea</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="274"/>
+        <location filename="../texteditor.cpp" line="311"/>
         <source>In</source>
         <translation>Acercar</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="275"/>
+        <location filename="../texteditor.cpp" line="312"/>
         <source>Out</source>
         <translation>Aleajr</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="276"/>
+        <location filename="../texteditor.cpp" line="313"/>
         <source>Restore</source>
         <translation>Restaurar</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="277"/>
+        <location filename="../texteditor.cpp" line="314"/>
         <source>Line...</source>
         <translation>Línea...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="278"/>
+        <location filename="../texteditor.cpp" line="315"/>
         <source>Select all</source>
         <translation>Seleccionar todo</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="279"/>
+        <location filename="../texteditor.cpp" line="316"/>
         <source>Clear recent files</source>
         <translation>Limpiar archivos recientes</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="280"/>
+        <location filename="../texteditor.cpp" line="317"/>
         <source>Print...</source>
         <translation>Imprimir...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="281"/>
+        <location filename="../texteditor.cpp" line="318"/>
         <source>Reload file</source>
         <translation>Recargar archivo</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="282"/>
+        <location filename="../texteditor.cpp" line="319"/>
         <source>Disable completion</source>
         <translation>Deshabilitar completado</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="283"/>
+        <location filename="../texteditor.cpp" line="320"/>
         <source>Show/Hide line numbers</source>
         <translation>Mostrar/Ocultar números de línea</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="285"/>
+        <location filename="../texteditor.cpp" line="322"/>
         <source>Version &amp;control</source>
         <translation>Control de &amp;versiones</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="289"/>
+        <location filename="../texteditor.cpp" line="326"/>
         <source>SQL Query %1</source>
         <translation>Consulta SQL %1</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="290"/>
+        <location filename="../texteditor.cpp" line="327"/>
         <source>Fill MariaDB Symbols</source>
         <translation>Llenar símbolos de MariaDB</translation>
     </message>
@@ -7750,67 +7755,67 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Explicar INSERT</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="293"/>
+        <location filename="../texteditor.cpp" line="330"/>
         <source>Run PHP Script</source>
         <translation>Correr Script PHP</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="294"/>
+        <location filename="../texteditor.cpp" line="331"/>
         <source>Check PHP Syntax</source>
         <translation>Revisión de sintaxis PHP</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="295"/>
+        <location filename="../texteditor.cpp" line="332"/>
         <source>PHP Script %1</source>
         <translation>Script PHP %1</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="298"/>
+        <location filename="../texteditor.cpp" line="335"/>
         <source>CSS Script %1</source>
         <translation>Script CSS %1</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="301"/>
+        <location filename="../texteditor.cpp" line="338"/>
         <source>HTML Script %1</source>
         <translation>Script HTML %1</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="304"/>
+        <location filename="../texteditor.cpp" line="341"/>
         <source>JavaScript Script %1</source>
         <translation>Script JavaScript %1</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="307"/>
+        <location filename="../texteditor.cpp" line="344"/>
         <source>Text File %1</source>
         <translation>Archivo de Texto %1</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="325"/>
+        <location filename="../texteditor.cpp" line="362"/>
         <source>Highlight current line</source>
         <translation>Resaltar la línea actual</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="326"/>
+        <location filename="../texteditor.cpp" line="363"/>
         <source>Normal</source>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="327"/>
+        <location filename="../texteditor.cpp" line="364"/>
         <source>Vertical</source>
         <translation>Vertical</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="328"/>
+        <location filename="../texteditor.cpp" line="365"/>
         <source>Horizontal</source>
         <translation>Horizontal</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="329"/>
+        <location filename="../texteditor.cpp" line="366"/>
         <source>&amp;Show Symols</source>
         <translation>&amp;Mostrar Símbolos</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="330"/>
+        <location filename="../texteditor.cpp" line="367"/>
         <source>&amp;Normalize text</source>
         <translation>&amp;Normalizar texto</translation>
     </message>
@@ -7819,92 +7824,92 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Insertar plantilla de licencia</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1472"/>
+        <location filename="../texteditor.cpp" line="1509"/>
         <source>SQL files (*.sql)</source>
         <translation>Archivos SQL (*.sql)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1525"/>
+        <location filename="../texteditor.cpp" line="1562"/>
         <source>Zoom</source>
         <translation>Enfocar</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1812"/>
+        <location filename="../texteditor.cpp" line="1849"/>
         <source>Save to Pdf</source>
         <translation>Guardar en Pdf</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1812"/>
+        <location filename="../texteditor.cpp" line="1849"/>
         <source>Pdf &amp; Ps files (*.pdf *.ps)</source>
         <translation>Archivos Pdf &amp; Ps (*.pdf *.ps)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1827"/>
+        <location filename="../texteditor.cpp" line="1864"/>
         <source>Save to Odt</source>
         <translation>Guardar en Odt</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1827"/>
+        <location filename="../texteditor.cpp" line="1864"/>
         <source>Odt files (*.odt)</source>
         <translation>Archivos Odt (*.odt)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1840"/>
+        <location filename="../texteditor.cpp" line="1877"/>
         <source>Save to Html</source>
         <translation>Guardar en Html</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1840"/>
+        <location filename="../texteditor.cpp" line="1877"/>
         <source>Html files (*.html *.htm)</source>
         <translation>Archivos Html (*.html *.htm)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1858"/>
+        <location filename="../texteditor.cpp" line="1895"/>
         <source>Save to Svg</source>
         <translation>Guardar en Svg</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1858"/>
+        <location filename="../texteditor.cpp" line="1895"/>
         <source>Svg files (*.svg)</source>
         <translation>Archivos Svg (*.svg)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1880"/>
+        <location filename="../texteditor.cpp" line="1917"/>
         <source>Save to Image</source>
         <translation>Guardar en Imagen</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1880"/>
+        <location filename="../texteditor.cpp" line="1917"/>
         <source>Image files (%1)</source>
         <translation>Archivos de imagen (%1)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="257"/>
+        <location filename="../texteditor.cpp" line="294"/>
         <source>&amp;File</source>
         <translation>&amp;Archivo</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="258"/>
+        <location filename="../texteditor.cpp" line="295"/>
         <source>&amp;Edit</source>
         <translation>&amp;Editar</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="259"/>
+        <location filename="../texteditor.cpp" line="296"/>
         <source>&amp;Options</source>
         <translation>&amp;Opciones</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="260"/>
+        <location filename="../texteditor.cpp" line="297"/>
         <source>&amp;Subversion</source>
         <translation>&amp;Subversion</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="261"/>
+        <location filename="../texteditor.cpp" line="298"/>
         <source>&amp;View</source>
         <translation>&amp;Ver</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="262"/>
+        <location filename="../texteditor.cpp" line="299"/>
         <source>View</source>
         <translation>Ver</translation>
     </message>
@@ -7913,47 +7918,47 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Barra de herramientas</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1291"/>
+        <location filename="../texteditor.cpp" line="1328"/>
         <source>The document has been modified.</source>
         <translation>El documento ha sido modificado.</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1292"/>
+        <location filename="../texteditor.cpp" line="1329"/>
         <source>Do you want to save the changes?</source>
         <translation>¿Desea guardar los cambios?</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1368"/>
+        <location filename="../texteditor.cpp" line="1405"/>
         <source>Go To Line...</source>
         <translation>Ir a la Línea...</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1368"/>
+        <location filename="../texteditor.cpp" line="1405"/>
         <source>Line number</source>
         <translation>Número de línea</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1478"/>
+        <location filename="../texteditor.cpp" line="1515"/>
         <source>CSS files (*.css)</source>
         <translation>Archivos CSS (*.css)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1481"/>
+        <location filename="../texteditor.cpp" line="1518"/>
         <source>HTML files (*.html *.htm)</source>
         <translation>Archivos HTML (*.html *.htm)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1484"/>
+        <location filename="../texteditor.cpp" line="1521"/>
         <source>JavaScript files (*.js)</source>
         <translation>Archivos JavaScript (*.js)</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1498"/>
+        <location filename="../texteditor.cpp" line="1535"/>
         <source>Open a file</source>
         <translation>Abrir un archivo</translation>
     </message>
     <message>
-        <location filename="../texteditor.cpp" line="1506"/>
+        <location filename="../texteditor.cpp" line="1543"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation>No es posible leer el archivo %1: %2.</translation>

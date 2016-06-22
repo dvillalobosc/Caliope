@@ -56,6 +56,7 @@
 #include "projects.h"
 #include "dtitlelabel.h"
 #include "dbms.h"
+#include "codesnippets.h"
 
 #include "QDebug"
 
@@ -95,6 +96,19 @@ TextEditor::TextEditor(Projects *project, DBMS *serverConnection, EditorTypes::E
   connect(completerForPeriodCompeltion, SIGNAL(activated(const QString&)), this, SLOT(insertCompletionForPeriodCompeltion(const QString&)));
 
   (void) new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Space), this, SLOT(performCompletion()));
+
+  modelCodeSnippet = new QStandardItemModel(this);
+  codeSnippetCompleter = new QCompleter(this);
+  codeSnippetCompleter->setWidget(this);
+  codeSnippetCompleter->setCompletionMode(QCompleter::PopupCompletion);
+  codeSnippetCompleter->setModel(modelCodeSnippet);
+  codeSnippetCompleter->setModelSorting(QCompleter::CaseInsensitivelySortedModel);
+  codeSnippetCompleter->setCaseSensitivity(Qt::CaseInsensitive);
+  codeSnippetCompleter->setFilterMode(Qt::MatchContains);
+  codeSnippetCompleter->setWrapAround(true);
+  connect(codeSnippetCompleter, SIGNAL(activated(const QString&)), this, SLOT(insertCompletionCodeSnippet(const QString&)));
+  (void) new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_AltGr), this, SLOT(performCodeSnippetCompletion()));
+
   findReplace = new FindReplace(this);
   createActions();
   openRecentFilesMenu = new QMenu(this);
@@ -244,6 +258,29 @@ void TextEditor::checkPHPSyntaxActionSlot()
 void TextEditor::readyReadStandardErrorSlot()
 {
   procOutput->insertPlainText(proc->readAllStandardError());
+}
+
+void TextEditor::performCodeSnippetCompletion()
+{
+  CodeSnippets *codeSnippets = new CodeSnippets;
+  modelCodeSnippet->clear();
+  foreach (QString item, codeSnippets->getCodeSnippets())
+    modelCodeSnippet->appendRow(new QStandardItem(QIcon(":/images/svg/accessories-text-editor-7.svg"), item));
+  modelCodeSnippet->sort(0);
+  codeSnippetCompleter->complete(QRect(textEditor->cursorRect().x() + 5
+                            , textEditor->cursorRect().y() + (dTitleLabel->isVisible() ? (dTitleLabel->height() + 5) : 0)
+                            , codeSnippetCompleter->popup()->sizeHintForColumn(0) + codeSnippetCompleter->popup()->verticalScrollBar()->sizeHint().width()
+                                       , 40));
+}
+
+void TextEditor::insertCompletionCodeSnippet(const QString &completion)
+{
+  CodeSnippets *codeSnippets = new CodeSnippets;
+  QTextCursor cursor = textEditor->textCursor();
+  cursor.setPosition(cursor.position() - completerForPeriodCompeltion->completionPrefix().length());
+  cursor.movePosition(QTextCursor::EndOfWord, QTextCursor::KeepAnchor);
+  cursor.insertText(codeSnippets->getCodeSnippet(completion) + "\n");
+  textEditor->setTextCursor(cursor);
 }
 
 void TextEditor::retranslateUi()

@@ -38,6 +38,7 @@ class LicenseTemplate;
 class NetworkSettings;
 class DStackedWidget;
 class ApplicationTheme;
+class CodeSnippets;
 
 #include "dmdisubwindow.h"
 #include "dbms.h"
@@ -80,6 +81,7 @@ private:
   QLineEdit *phpOnlineHelpURLLineEdit;
   QLineEdit *mysqlOnlineHelpURLLineEdit;
   QLineEdit *mariadbOnlineHelpURLLineEdit;
+  CodeSnippets *codeSnippets;
 
 protected:
   void retranslateUi();

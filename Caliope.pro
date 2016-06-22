@@ -48,7 +48,8 @@ HEADERS += \
     applicationtheme.h \
     dreportviewer.h \
     dpiechartwidget.h \
-    mariadbhelp.h
+    mariadbhelp.h \
+    codesnippets.h
 SOURCES += \
     main.cpp \
     connectdialog.cpp \
@@ -100,7 +101,8 @@ SOURCES += \
     applicationtheme.cpp \
     dreportviewer.cpp \
     dpiechartwidget.cpp \
-    mariadbhelp.cpp
+    mariadbhelp.cpp \
+    codesnippets.cpp
 FORMS +=
 RESOURCES += icons.qrc \
     styles.qrc \
