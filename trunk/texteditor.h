@@ -137,6 +137,8 @@ private slots:
   void insertCompletionForPeriodCompeltion(const QString &completion);
   void checkPHPSyntaxActionSlot();
   void readyReadStandardErrorSlot();
+  void performCodeSnippetCompletion();
+  void insertCompletionCodeSnippet(const QString &completion);
 
 private:
   DBMS *serverConnection;
@@ -243,6 +245,8 @@ private:
   QCompleter *completerForPeriodCompeltion;
   QMenu *versionControlMenu;
   QAction *checkPHPSyntaxAction;
+  QCompleter *codeSnippetCompleter;
+  QStandardItemModel *modelCodeSnippet;
 };
 
 #endif // TEXTEDITOR_H

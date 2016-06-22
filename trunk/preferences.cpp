@@ -40,6 +40,7 @@
 #include "fileselector.h"
 #include "dstackedwidget.h"
 #include "applicationtheme.h"
+#include "codesnippets.h"
 
 #include "QDebug"
 
@@ -206,6 +207,10 @@ Preferences::Preferences(DBMS *serverConnection)
   //Application Theme
   applicationTheme = new ApplicationTheme;
   dStackedWidget->addWidget(applicationTheme, QIcon(":/images/svg/preferences-desktop-theme-5.svg"), tr("Application Theme"));
+
+  //Code Snippets
+  codeSnippets = new CodeSnippets;
+  dStackedWidget->addWidget(codeSnippets, QIcon(":/images/svg/server-database.svg"), tr("Code Snippets"));
 
   mainVLayout->addWidget(dStackedWidget);
   QWidget *widMain = new QWidget;
