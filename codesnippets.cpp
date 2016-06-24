@@ -30,7 +30,7 @@ CodeSnippets::CodeSnippets()
 {
   QVBoxLayout *codeSnippetsVLayout = new QVBoxLayout;
   codeSnippetsPlainTextEdit = new QPlainTextEdit;
-  codeSnippetsPlainTextEdit->setPlainText(settings.value("CodeSnippets/Snippets", "").toString());
+  codeSnippetsPlainTextEdit->setPlainText(loadCodeSnippets());
   codeSnippetsVLayout->addWidget(codeSnippetsPlainTextEdit);
   buttonBox = new QDialogButtonBox(QDialogButtonBox::Save | QDialogButtonBox::Help);
   connect(buttonBox, SIGNAL(accepted()), this, SLOT(saveCodeSnippets()));
@@ -61,6 +61,19 @@ QString CodeSnippets::getCodeSnippet(const QString key)
   return settings.value("CodeSnippets/" + key, "").toString();
 }
 
+QString CodeSnippets::loadCodeSnippets()
+{
+  QString out;
+  settings.beginGroup("CodeSnippets");
+  QStringList codeSnippets = settings.allKeys();
+  codeSnippets.removeAt(codeSnippets.indexOf("Snippets"));
+  settings.endGroup();
+  foreach (QString snippet, codeSnippets)
+    out += "###" + snippet + "$$$" + getCodeSnippet(snippet) + "\n\n";
+  settings.endGroup();
+  return out.trimmed();
+}
+
 void CodeSnippets::helpCodeSnippets()
 {
   codeSnippetsPlainTextEdit->setPlainText(
@@ -86,9 +99,11 @@ void CodeSnippets::helpCodeSnippets()
 void CodeSnippets::saveCodeSnippets()
 {
   QStringList data;
-  settings.value("CodeSnippets").clear();
+  settings.beginGroup("CodeSnippets");
+  settings.group().clear();
   foreach (QString snippet, codeSnippetsPlainTextEdit->toPlainText().split("###", QString::SkipEmptyParts)) {
     data = snippet.split("$$$", QString::SkipEmptyParts);
-    settings.setValue("CodeSnippets/" + data.at(0), data.at(1));
+    settings.setValue(data.at(0), data.at(1).trimmed());
   }
+  settings.endGroup();
 }
