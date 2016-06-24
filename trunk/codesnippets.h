@@ -21,6 +21,7 @@ private:
   QSettings settings;
   QPlainTextEdit *codeSnippetsPlainTextEdit;
   QDialogButtonBox *buttonBox;
+  QString loadCodeSnippets();
 
 private slots:
   void helpCodeSnippets();
