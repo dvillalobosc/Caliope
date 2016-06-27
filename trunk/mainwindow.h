@@ -62,6 +62,7 @@ class QProgressDialog;
 class DMdiSubWindow;
 class DQueryLog;
 class DReportViewer;
+class ObjectMigration;
 
 /*! \brief This class represents the main class.
  *
@@ -196,6 +197,7 @@ private slots:
   void replicationStopConnection(QString connectionName);
   void replicationRestartConnection(QString connectionName);
   void replicationResetConnection(QString connectionName);
+  void objectMigrationActionTriggered();
 
 public slots:
   void statusBarMessage(const QString &message, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information, int timeout = 0);
@@ -375,6 +377,8 @@ private:
   QSignalMapper *replicationStopMapper;
   QSignalMapper *replicationResetMapper;
   QSignalMapper *replicationRestartMapper;
+  QAction *objectMigrationAction;
+  ObjectMigration *objectMigration;
 
   /*! \brief This is the code executed when aboutMySQLGUIAction is triggered.
    *

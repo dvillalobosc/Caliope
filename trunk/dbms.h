@@ -46,6 +46,19 @@ class QErrorMessage;
 class QSqlTableModel;
 class QSqlQueryModel;
 
+class Trigger : public QObject
+{
+  Q_OBJECT
+
+public:
+  Trigger(DBMS *serverConnection);
+  QStringList list(QString databaseName = QString());
+
+private:
+  DBMS *serverConnection;
+
+};
+
 class Transaction : public QObject
 {
   Q_OBJECT
@@ -130,6 +143,7 @@ public:
   QStringList getFields();
   bool dropIndex(QString indexName);
   QList<QStringList>* getIndexes();
+  QStringList list(QString databaseName = QString());
 
 private:
   DBMS *serverConnection;
@@ -144,6 +158,7 @@ public:
   bool drop();
   QString formalName();
   QString getDefinition();
+  QStringList list(QString databaseName = QString());
 
 private:
   DBMS *serverConnection;
@@ -159,6 +174,7 @@ public:
   QString formalName();
   QString routineType();
   QString getDefinition();
+  QStringList list(QString databaseName = QString());
 
 private:
   DBMS *serverConnection;
@@ -194,6 +210,7 @@ public:
   bool drop();
   QString formalName();
   QString getDefinition();
+  QStringList list(QString databaseName = QString());
 
 private:
   DBMS *serverConnection;
@@ -305,6 +322,7 @@ public:
   void saveOutputToFile(QString contents, QString filter, QString fileName = QString());
   Transaction *transaction();
   QString lastErrorNumber();
+  Trigger *trigger();
 
 signals:
   void errorOccurred();

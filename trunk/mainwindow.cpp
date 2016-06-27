@@ -77,6 +77,7 @@
 #include "dquerylog.h"
 #include "basetexteditor.h"
 #include "dreportviewer.h"
+#include "objectmigration.h"
 
 #include "QDebug"
 
@@ -201,6 +202,8 @@ MainWindow::MainWindow()
         viewQueryLogActionSlot();
         continue;
       }
+      if (window == tr("Object Migration"))
+        objectMigrationActionTriggered();
       if (window.startsWith(tr("SQL Query")) || window.endsWith(".sql", Qt::CaseInsensitive))
         sqlScriptActionTriggered();
       if (window.startsWith(tr("Query")))
@@ -688,6 +691,11 @@ void MainWindow::createActions()
   migrateTableAction->setIcon(QIcon(":/images/svg/table.svg"));
   migrateTableAction->setShortcut(QKeySequence(Qt::CTRL + Qt::ALT + Qt::Key_T));
   connect(migrateTableAction, SIGNAL(triggered()), this, SLOT(migrateTableActionTriggered()));
+
+  objectMigrationAction = new QAction(this);
+  objectMigrationAction->setIcon(QIcon::fromTheme("find-next", QIcon(":/images/svg/go-next-view.svg")));
+  objectMigrationAction->setShortcut(QKeySequence(Qt::CTRL + Qt::ALT + Qt::Key_B));
+  connect(objectMigrationAction, SIGNAL(triggered()), this, SLOT(objectMigrationActionTriggered()));
 }
 
 void MainWindow::objectsDiagramActionTriggered()
@@ -1605,6 +1613,18 @@ void MainWindow::replicationResetConnection(QString connectionName)
   serverConnection->replication()->resetSlave(connectionName);
 }
 
+void MainWindow::objectMigrationActionTriggered()
+{
+  if (serverConnection->testOpened()) {
+    objectMigration = mdiMain->findChild<ObjectMigration *>(tr("Object Migration"));
+    if (!objectMigration) {
+      objectMigration = new ObjectMigration(this->serverConnection);
+      addSubWindow(objectMigration);
+    }
+    mdiMain->setActiveSubWindow(objectMigration);
+  }
+}
+
 void MainWindow::finishedDatabaseMigrationSlot(int exitCode)
 {
   if (exitCode == QProcess::NormalExit && processMariaDBDump->exitCode() == QProcess::NormalExit) {
@@ -1912,6 +1932,10 @@ void MainWindow::retranslateUi()
 
   databaseMetadataAction->setText(tr("Database metadata"));
   databaseMetadataAction->setStatusTip(databaseMetadataAction->text());
+
+  objectMigrationAction->setText(tr("Object Migration"));
+  objectMigrationAction->setStatusTip(objectMigrationAction->text());
+
 }
 
 void MainWindow::createInitialSettings()
@@ -2423,6 +2447,7 @@ void MainWindow::createMenus()
   fileMenu->addAction(migrateTableAction);
   fileMenu->addAction(preferencesAction);
   fileMenu->addAction(processAction);
+  fileMenu->addAction(objectMigrationAction);
 //  fileMenu->addAction(objectsDiagramAction);
   fileMenu->addSeparator();
   fileMenu->addAction(exitAction);
