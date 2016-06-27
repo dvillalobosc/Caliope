@@ -69,8 +69,7 @@ QString CodeSnippets::loadCodeSnippets()
   codeSnippets.removeAt(codeSnippets.indexOf("Snippets"));
   settings.endGroup();
   foreach (QString snippet, codeSnippets)
-    out += "###" + snippet + "$$$" + getCodeSnippet(snippet) + "\n\n";
-  settings.endGroup();
+    out += "###" + snippet + "$$$\n" + getCodeSnippet(snippet) + "\n\n";
   return out.trimmed();
 }
 
