@@ -46,17 +46,66 @@ class QErrorMessage;
 class QSqlTableModel;
 class QSqlQueryModel;
 
-class Trigger : public QObject
+class Routines : public QObject
 {
   Q_OBJECT
 
 public:
-  Trigger(DBMS *serverConnection);
+  Routines(DBMS *serverConnection);
   QStringList list(QString databaseName = QString());
 
 private:
   DBMS *serverConnection;
+};
 
+class Events : public QObject
+{
+  Q_OBJECT
+
+public:
+  Events(DBMS *serverConnection);
+  QStringList list(QString databaseName = QString());
+
+private:
+  DBMS *serverConnection;
+};
+
+class Views : public QObject
+{
+  Q_OBJECT
+
+public:
+  Views(DBMS *serverConnection);
+  QStringList list(QString databaseName = QString());
+  QString getDefinition(QString formalViewName);
+
+private:
+  DBMS *serverConnection;
+};
+
+class Tables : public QObject
+{
+  Q_OBJECT
+
+public:
+  Tables(DBMS *serverConnection);
+  QStringList list(QString databaseName = QString());
+  QString getDefinition(QString formalTableName);
+
+private:
+  DBMS *serverConnection;
+};
+
+class Triggers : public QObject
+{
+  Q_OBJECT
+
+public:
+  Triggers(DBMS *serverConnection);
+  QStringList list(QString databaseName = QString());
+
+private:
+  DBMS *serverConnection;
 };
 
 class Transaction : public QObject
@@ -126,7 +175,7 @@ private:
 class ItemTypes
 {
 public:
-  enum ItemType {Database = 1001, Table, User, UserHost, CatalogsTab, UsersTab};
+  enum ItemType {Database = 1001, Table, User, UserHost, CatalogsTab, UsersTab, Trigger, View, Routine, Event};
 };
 
 class Table
@@ -143,7 +192,6 @@ public:
   QStringList getFields();
   bool dropIndex(QString indexName);
   QList<QStringList>* getIndexes();
-  QStringList list(QString databaseName = QString());
 
 private:
   DBMS *serverConnection;
@@ -158,7 +206,6 @@ public:
   bool drop();
   QString formalName();
   QString getDefinition();
-  QStringList list(QString databaseName = QString());
 
 private:
   DBMS *serverConnection;
@@ -174,7 +221,6 @@ public:
   QString formalName();
   QString routineType();
   QString getDefinition();
-  QStringList list(QString databaseName = QString());
 
 private:
   DBMS *serverConnection;
@@ -210,7 +256,6 @@ public:
   bool drop();
   QString formalName();
   QString getDefinition();
-  QStringList list(QString databaseName = QString());
 
 private:
   DBMS *serverConnection;
@@ -270,7 +315,7 @@ public:
   QStringList getUsers();
   QString lastError();
   bool changeDatabase(QString database);
-  QString getTriggeredefinition(QString trigger, QString database = QString());
+  QString getTriggeredefinition(QString triggers, QString database = QString());
   QString getEventDefinition(QString event, QString database = QString());
   QStringList getEngines();
   QStringList getCollations();
@@ -322,7 +367,11 @@ public:
   void saveOutputToFile(QString contents, QString filter, QString fileName = QString());
   Transaction *transaction();
   QString lastErrorNumber();
-  Trigger *trigger();
+  Triggers *triggers();
+  Tables *tables();
+  Views *views();
+  Events *events();
+  Routines *routines();
 
 signals:
   void errorOccurred();

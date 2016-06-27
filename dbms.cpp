@@ -1490,9 +1490,29 @@ QString DBMS::lastErrorNumber()
   return tr("No error code provided.");
 }
 
-Trigger *DBMS::trigger()
+Triggers *DBMS::triggers()
 {
-  return new Trigger(this);
+  return new Triggers(this);
+}
+
+Tables *DBMS::tables()
+{
+  return new Tables(this);
+}
+
+Views *DBMS::views()
+{
+  return new Views(this);
+}
+
+Events *DBMS::events()
+{
+  return new Events(this);
+}
+
+Routines *DBMS::routines()
+{
+  return new Routines(this);
 }
 
 /***************************************************************************************************************/
@@ -1671,22 +1691,6 @@ QList<QStringList>* Table::getIndexes()
   return serverConnection->runQuery("SHOW INDEX FROM " + formalName());
 }
 
-QStringList Table::list(QString databaseName)
-{
-  switch(serverConnection->getDBMSType()) {
-  case StaticFunctions::MySQL:
-  case StaticFunctions::MariaDB:
-    if (databaseName.isEmpty())
-      databaseName = serverConnection->getDatabase();
-    return serverConnection->runQuerySingleColumn("SELECT CONCAT('`', `TABLE_SCHEMA`, '`.`', `TABLE_NAME`, '`') FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '" + databaseName + "'");
-    break;
-  case StaticFunctions::Undefined:
-  default:
-    break;
-  }
-  return QStringList();
-}
-
 /***************************************************************************************************************/
 
 View::View(DBMS *serverConnection, QString viewName, QString database)
@@ -1712,22 +1716,6 @@ QString View::formalName()
 QString View::getDefinition()
 {
   return serverConnection->runQuery("SHOW CREATE VIEW " + formalName())->at(0).at(1);
-}
-
-QStringList View::list(QString databaseName)
-{
-  switch(serverConnection->getDBMSType()) {
-  case StaticFunctions::MySQL:
-  case StaticFunctions::MariaDB:
-    if (databaseName.isEmpty())
-      databaseName = serverConnection->getDatabase();
-    return serverConnection->runQuerySingleColumn("SELECT CONCAT('`', `TABLE_SCHEMA`, '`.`', `TABLE_NAME`, '`') FROM `information_schema`.`VIEWS` WHERE `TABLE_SCHEMA` = '" + databaseName + "'");
-    break;
-  case StaticFunctions::Undefined:
-  default:
-    break;
-  }
-  return QStringList();
 }
 
 /***************************************************************************************************************/
@@ -1767,22 +1755,6 @@ QString Routine::getDefinition()
   return serverConnection->runQuery("SHOW CREATE " + routineType() + " " + formalName())->at(0).at(2);
 }
 
-QStringList Routine::list(QString databaseName)
-{
-  switch(serverConnection->getDBMSType()) {
-  case StaticFunctions::MySQL:
-  case StaticFunctions::MariaDB:
-    if (databaseName.isEmpty())
-      databaseName = serverConnection->getDatabase();
-    return serverConnection->runQuerySingleColumn("SELECT CONCAT('`', `ROUTINE_SCHEMA`, '`.`', `ROUTINE_NAME`, '`') FROM `information_schema`.`ROUTINES` WHERE `ROUTINE_SCHEMA` = '" + databaseName + "'");
-    break;
-  case StaticFunctions::Undefined:
-  default:
-    break;
-  }
-  return QStringList();
-}
-
 /***************************************************************************************************************/
 
 Event::Event(DBMS *serverConnection, QString eventName, QString database)
@@ -1808,22 +1780,6 @@ QString Event::formalName()
 QString Event::getDefinition()
 {
   return serverConnection->runQuery("SHOW CREATE EVENT " + formalName())->at(0).at(3);
-}
-
-QStringList Event::list(QString databaseName)
-{
-  switch(serverConnection->getDBMSType()) {
-  case StaticFunctions::MySQL:
-  case StaticFunctions::MariaDB:
-    if (databaseName.isEmpty())
-      databaseName = serverConnection->getDatabase();
-    return serverConnection->runQuerySingleColumn("SELECT CONCAT('`', `EVENT_SCHEMA`, '`.`', `EVENT_NAME`, '`') FROM `information_schema`.`EVENTS` WHERE `EVENT_SCHEMA` = '" + databaseName + "'");
-    break;
-  case StaticFunctions::Undefined:
-  default:
-    break;
-  }
-  return QStringList();
 }
 
 /***************************************************************************************************************/
@@ -2204,12 +2160,12 @@ void Transaction::rollbackTransacction()
 
 /*******************************************************************************************/
 
-Trigger::Trigger(DBMS *serverConnection)
+Triggers::Triggers(DBMS *serverConnection)
 {
   this->serverConnection = serverConnection;
 }
 
-QStringList Trigger::list(QString databaseName)
+QStringList Triggers::list(QString databaseName)
 {
   switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
@@ -2217,6 +2173,126 @@ QStringList Trigger::list(QString databaseName)
     if (databaseName.isEmpty())
       databaseName = serverConnection->getDatabase();
     return serverConnection->runQuerySingleColumn("SELECT CONCAT('`', `TRIGGER_SCHEMA`, '`.`', `TRIGGER_NAME`, '`')  FROM `information_schema`.`TRIGGERS` WHERE `TRIGGER_SCHEMA` = '" + databaseName + "'");
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QStringList();
+}
+
+/*******************************************************************************************/
+
+Tables::Tables(DBMS *serverConnection)
+{
+  this->serverConnection = serverConnection;
+}
+
+QStringList Tables::list(QString databaseName)
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    if (databaseName.isEmpty())
+      databaseName = serverConnection->getDatabase();
+    return serverConnection->runQuerySingleColumn("SELECT CONCAT('`', `TABLE_SCHEMA`, '`.`', `TABLE_NAME`, '`') FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '" + databaseName + "' AND `TABLE_TYPE` = 'BASE TABLE'");
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QStringList();
+}
+
+QString Tables::getDefinition(QString formalTableName)
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    return serverConnection->runQuery("SHOW CREATE TABLE  " + formalTableName)->at(0).at(1);
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QString();
+}
+
+/*******************************************************************************************/
+
+Views::Views(DBMS *serverConnection)
+{
+  this->serverConnection = serverConnection;
+}
+
+QStringList Views::list(QString databaseName)
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    if (databaseName.isEmpty())
+      databaseName = serverConnection->getDatabase();
+    return serverConnection->runQuerySingleColumn("SELECT CONCAT('`', `TABLE_SCHEMA`, '`.`', `TABLE_NAME`, '`') FROM `information_schema`.`VIEWS` WHERE `TABLE_SCHEMA` = '" + databaseName + "'");
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QStringList();
+}
+
+QString Views::getDefinition(QString formalViewName)
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    return serverConnection->runQuery("SHOW CREATE VIEW  " + formalViewName)->at(0).at(1);
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QString();
+}
+
+/*******************************************************************************************/
+
+Events::Events(DBMS *serverConnection)
+{
+  this->serverConnection = serverConnection;
+}
+
+QStringList Events::list(QString databaseName)
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    if (databaseName.isEmpty())
+      databaseName = serverConnection->getDatabase();
+    return serverConnection->runQuerySingleColumn("SELECT CONCAT('`', `EVENT_SCHEMA`, '`.`', `EVENT_NAME`, '`') FROM `information_schema`.`EVENTS` WHERE `EVENT_SCHEMA` = '" + databaseName + "'");
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QStringList();
+}
+
+/*******************************************************************************************/
+
+Routines::Routines(DBMS *serverConnection)
+{
+  this->serverConnection = serverConnection;
+}
+
+QStringList Routines::list(QString databaseName)
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    if (databaseName.isEmpty())
+      databaseName = serverConnection->getDatabase();
+    return serverConnection->runQuerySingleColumn("SELECT CONCAT('`', `ROUTINE_SCHEMA`, '`.`', `ROUTINE_NAME`, '`') FROM `information_schema`.`ROUTINES` WHERE `ROUTINE_SCHEMA` = '" + databaseName + "'");
     break;
   case StaticFunctions::Undefined:
   default:
