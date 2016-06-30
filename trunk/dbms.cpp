@@ -1520,6 +1520,11 @@ Procedures *DBMS::procedures()
   return new Procedures(this);
 }
 
+Databases *DBMS::databases()
+{
+  return new Databases(this);
+}
+
 /***************************************************************************************************************/
 
 Database::Database(DBMS *serverConnection, QString databaseName)
@@ -2377,6 +2382,41 @@ QString Procedures::getDefinition(QString formalEventName)
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     return serverConnection->runQuery("SHOW CREATE PROCEDURE  " + formalEventName)->at(0).at(2);
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QString();
+}
+
+/*******************************************************************************************/
+
+Databases::Databases(DBMS *serverConnection)
+{
+  this->serverConnection = serverConnection;
+}
+
+QStringList Databases::list()
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    return serverConnection->runQuerySingleColumn("SHOW DATABASES");
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QStringList();
+}
+
+QString Databases::getDefinition(QString formalEventName)
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    return serverConnection->runQuery("SHOW CREATE DATABASE  " + formalEventName)->at(0).at(1);
     break;
   case StaticFunctions::Undefined:
   default:
