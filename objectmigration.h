@@ -25,6 +25,7 @@ protected:
 
 private:
   DBMS *serverConnection;
+  DBMS *secondaryServerConnection;
   DTitleLabel *dTitleLabel;
   QTreeWidget *objectsListWidget;
   BaseTextEditor *resutlEditor;
@@ -35,6 +36,7 @@ private:
   QCheckBox *optionExportData;
   QStringList *statementsToExecute;
   int counter;
+  QCheckBox *optionFOREIGN_KEY_CHECKS;
 
 private slots:
   void fillDatabasesSlot();

@@ -46,6 +46,19 @@ class QErrorMessage;
 class QSqlTableModel;
 class QSqlQueryModel;
 
+class Databases : public QObject
+{
+  Q_OBJECT
+
+public:
+  Databases(DBMS *serverConnection);
+  QStringList list();
+  QString getDefinition(QString formalDatabaseName);
+
+private:
+  DBMS *serverConnection;
+};
+
 class Procedures : public QObject
 {
   Q_OBJECT
@@ -389,6 +402,7 @@ public:
   Events *events();
   Fucntions *functions();
   Procedures *procedures();
+  Databases *databases();
 
 signals:
   void errorOccurred();

@@ -1405,42 +1405,42 @@ Total progess: %5.</source>
 <context>
     <name>Database</name>
     <message>
-        <location filename="../dbms.cpp" line="1596"/>
+        <location filename="../dbms.cpp" line="1601"/>
         <source>Database: %1</source>
         <translation>Base de Datos: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1597"/>
+        <location filename="../dbms.cpp" line="1602"/>
         <source>Total of tables: %1</source>
         <translation>Total de tablas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1598"/>
+        <location filename="../dbms.cpp" line="1603"/>
         <source>Total of views: %1</source>
         <translation>Total de vistas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1599"/>
+        <location filename="../dbms.cpp" line="1604"/>
         <source>Total of triggers: %1</source>
         <translation>Total de disparadores: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1600"/>
+        <location filename="../dbms.cpp" line="1605"/>
         <source>Total of rutines: %1</source>
         <translation>Total de rutinas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1601"/>
+        <location filename="../dbms.cpp" line="1606"/>
         <source>Total of events: %1</source>
         <translation>Total de eventos: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1602"/>
+        <location filename="../dbms.cpp" line="1607"/>
         <source>Tables size: %1</source>
         <translation>Tamaño total de las tablas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1603"/>
+        <location filename="../dbms.cpp" line="1608"/>
         <source>Idexes: %1</source>
         <translation>Tamaño total de los índices: %1</translation>
     </message>
@@ -2764,34 +2764,44 @@ Total progess: %5.</source>
 <context>
     <name>ObjectMigration</name>
     <message>
-        <location filename="../objectmigration.cpp" line="59"/>
+        <location filename="../objectmigration.cpp" line="68"/>
         <source>Object Migration</source>
         <translation>Migración de Objetos</translation>
     </message>
     <message>
-        <location filename="../objectmigration.cpp" line="62"/>
+        <location filename="../objectmigration.cpp" line="71"/>
         <source>Options</source>
         <translation>Opciones</translation>
     </message>
     <message>
-        <location filename="../objectmigration.cpp" line="63"/>
+        <location filename="../objectmigration.cpp" line="72"/>
         <source>Objects</source>
         <translation>Objetos</translation>
     </message>
     <message>
-        <location filename="../objectmigration.cpp" line="65"/>
+        <location filename="../objectmigration.cpp" line="74"/>
         <source>Replace on destination</source>
         <translation>Reemplazar en el destino</translation>
     </message>
     <message>
-        <location filename="../objectmigration.cpp" line="66"/>
+        <location filename="../objectmigration.cpp" line="75"/>
         <source>Migrate</source>
         <translation>Migrar</translation>
     </message>
     <message>
-        <location filename="../objectmigration.cpp" line="67"/>
+        <location filename="../objectmigration.cpp" line="76"/>
         <source>Export data</source>
         <translation>Exportar datos</translation>
+    </message>
+    <message>
+        <location filename="../objectmigration.cpp" line="77"/>
+        <source>Skip Foreign Key checks</source>
+        <translation>Saltar la revisión de llaves foráneas</translation>
+    </message>
+    <message>
+        <location filename="../objectmigration.cpp" line="248"/>
+        <source>Cannot connect to the server</source>
+        <translation>No es posible conectarse al servidor</translation>
     </message>
 </context>
 <context>
@@ -8007,17 +8017,17 @@ Total of queries: %5, remaining: %6.</source>
 <context>
     <name>Transaction</name>
     <message>
-        <location filename="../dbms.cpp" line="2128"/>
+        <location filename="../dbms.cpp" line="2133"/>
         <source>Transaction started</source>
         <translation>Transacción iniciada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="2143"/>
+        <location filename="../dbms.cpp" line="2148"/>
         <source>Transaction commited</source>
         <translation>Transacción guardada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="2158"/>
+        <location filename="../dbms.cpp" line="2163"/>
         <source>Transaction rollbacked</source>
         <translation>Transacción revertida</translation>
     </message>
