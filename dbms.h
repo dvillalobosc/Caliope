@@ -46,13 +46,27 @@ class QErrorMessage;
 class QSqlTableModel;
 class QSqlQueryModel;
 
-class Routines : public QObject
+class Procedures : public QObject
 {
   Q_OBJECT
 
 public:
-  Routines(DBMS *serverConnection);
+  Procedures(DBMS *serverConnection);
   QStringList list(QString databaseName = QString());
+  QString getDefinition(QString formalProcedureName);
+
+private:
+  DBMS *serverConnection;
+};
+
+class Fucntions : public QObject
+{
+  Q_OBJECT
+
+public:
+  Fucntions(DBMS *serverConnection);
+  QStringList list(QString databaseName = QString());
+  QString getDefinition(QString formalFunctionName);
 
 private:
   DBMS *serverConnection;
@@ -65,6 +79,7 @@ class Events : public QObject
 public:
   Events(DBMS *serverConnection);
   QStringList list(QString databaseName = QString());
+  QString getDefinition(QString formalEventName);
 
 private:
   DBMS *serverConnection;
@@ -103,6 +118,7 @@ class Triggers : public QObject
 public:
   Triggers(DBMS *serverConnection);
   QStringList list(QString databaseName = QString());
+  QString getDefinition(QString formalTriggerName);
 
 private:
   DBMS *serverConnection;
@@ -175,7 +191,7 @@ private:
 class ItemTypes
 {
 public:
-  enum ItemType {Database = 1001, Table, User, UserHost, CatalogsTab, UsersTab, Trigger, View, Routine, Event};
+  enum ItemType {Database = 1001, Table, User, UserHost, CatalogsTab, UsersTab, Trigger, View, Procedure, Function, Event};
 };
 
 class Table
@@ -371,7 +387,8 @@ public:
   Tables *tables();
   Views *views();
   Events *events();
-  Routines *routines();
+  Fucntions *functions();
+  Procedures *procedures();
 
 signals:
   void errorOccurred();

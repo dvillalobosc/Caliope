@@ -1619,6 +1619,7 @@ void MainWindow::objectMigrationActionTriggered()
     objectMigration = mdiMain->findChild<ObjectMigration *>(tr("Object Migration"));
     if (!objectMigration) {
       objectMigration = new ObjectMigration(this->serverConnection);
+      connect(objectMigration, SIGNAL(loadProgress(int)), dStatusBar, SLOT(setProgress(int)));
       addSubWindow(objectMigration);
     }
     mdiMain->setActiveSubWindow(objectMigration);
