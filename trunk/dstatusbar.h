@@ -34,12 +34,12 @@ class DStatusBar : public QStatusBar
 public:
   DStatusBar();
   void showMessagePopup(const QString &message, int timeout = 0);
-  void setProgress(const int progress = 0);
   void resetStatusBar();
   void showFancyMessage(const QString &text, int timeout = 0);
 
 public slots:
   void setPrositionViewer(const int x, const int y);
+  void setProgress(const int progress = 0);
 
 private:
   QProgressBar *progressBar;

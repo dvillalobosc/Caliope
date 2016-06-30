@@ -1510,9 +1510,14 @@ Events *DBMS::events()
   return new Events(this);
 }
 
-Routines *DBMS::routines()
+Fucntions *DBMS::functions()
 {
-  return new Routines(this);
+  return new Fucntions(this);
+}
+
+Procedures *DBMS::procedures()
+{
+  return new Procedures(this);
 }
 
 /***************************************************************************************************************/
@@ -2181,6 +2186,20 @@ QStringList Triggers::list(QString databaseName)
   return QStringList();
 }
 
+QString Triggers::getDefinition(QString formalTriggerName)
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    return serverConnection->runQuery("SHOW CREATE TRIGGER  " + formalTriggerName)->at(0).at(2);
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QString();
+}
+
 /*******************************************************************************************/
 
 Tables::Tables(DBMS *serverConnection)
@@ -2278,25 +2297,90 @@ QStringList Events::list(QString databaseName)
   return QStringList();
 }
 
+QString Events::getDefinition(QString formalEventName)
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    return serverConnection->runQuery("SHOW CREATE EVENT  " + formalEventName)->at(0).at(3);
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QString();
+}
+
 /*******************************************************************************************/
 
-Routines::Routines(DBMS *serverConnection)
+Fucntions::Fucntions(DBMS *serverConnection)
 {
   this->serverConnection = serverConnection;
 }
 
-QStringList Routines::list(QString databaseName)
+QStringList Fucntions::list(QString databaseName)
 {
   switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     if (databaseName.isEmpty())
       databaseName = serverConnection->getDatabase();
-    return serverConnection->runQuerySingleColumn("SELECT CONCAT('`', `ROUTINE_SCHEMA`, '`.`', `ROUTINE_NAME`, '`') FROM `information_schema`.`ROUTINES` WHERE `ROUTINE_SCHEMA` = '" + databaseName + "'");
+    return serverConnection->runQuerySingleColumn("SELECT CONCAT('`', `ROUTINE_SCHEMA`, '`.`', `ROUTINE_NAME`, '`') FROM `information_schema`.`ROUTINES` WHERE `ROUTINE_SCHEMA` = '" + databaseName + "' AND `ROUTINE_TYPE` = 'FUNCTION'");
     break;
   case StaticFunctions::Undefined:
   default:
     break;
   }
   return QStringList();
+}
+
+QString Fucntions::getDefinition(QString formalEventName)
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    return serverConnection->runQuery("SHOW CREATE FUNCTION  " + formalEventName)->at(0).at(2);
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QString();
+}
+
+/*******************************************************************************************/
+
+Procedures::Procedures(DBMS *serverConnection)
+{
+  this->serverConnection = serverConnection;
+}
+
+QStringList Procedures::list(QString databaseName)
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    if (databaseName.isEmpty())
+      databaseName = serverConnection->getDatabase();
+    return serverConnection->runQuerySingleColumn("SELECT CONCAT('`', `ROUTINE_SCHEMA`, '`.`', `ROUTINE_NAME`, '`') FROM `information_schema`.`ROUTINES` WHERE `ROUTINE_SCHEMA` = '" + databaseName + "' AND `ROUTINE_TYPE` = 'PROCEDURE'");
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QStringList();
+}
+
+QString Procedures::getDefinition(QString formalEventName)
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    return serverConnection->runQuery("SHOW CREATE PROCEDURE  " + formalEventName)->at(0).at(2);
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QString();
 }

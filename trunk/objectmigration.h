@@ -32,11 +32,18 @@ private:
   QList<QTreeWidgetItem *> databases;
   QCheckBox *optionDROP;
   QGroupBox *groupBoxAction;
+  QCheckBox *optionExportData;
+  QStringList *statementsToExecute;
+  int counter;
 
 private slots:
   void fillDatabasesSlot();
   void itemActivatedSlot(QTreeWidgetItem *item, int column);
   void migratePushButtonSlot();
+  void statementsToExecuteSlot();
+
+signals:
+  void loadProgress(const int progress);
 };
 
 #endif // OBJECTMIGRATION_H
