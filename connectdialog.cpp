@@ -272,7 +272,7 @@ void ConnectDialog::collatoinsMenuSlot()
 void ConnectDialog::changeCollationSlot(QString collation)
 {
   lineEditCollation->setText(collation);
-  serverConnection->setCollation(collation.split("|").at(0), collation.split("|").at(1));
+  serverConnection->setCharsetAndCollation(collation.split("|").at(0), collation.split("|").at(1));
   getValues();
 }
 

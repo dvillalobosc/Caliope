@@ -253,7 +253,7 @@ void ObjectMigration::migratePushButtonSlot()
         QMessageBox::critical(this, tr("Cannot connect to the server"), secondaryServerConnection->lastError());
     }
   }
-  if (secondaryServerConnection->open())
+  if (secondaryServerConnection->isOpened())
     QTimer::singleShot(0, this, SLOT(statementsToExecuteSlot()));
 }
 

@@ -377,7 +377,7 @@ public:
   QSqlTableModel *sqliteTableModel();
   QSqlQueryModel *sqliteFilterQueryModel();
   void clearSQLiteQueryLog();
-  void setCollation(QString charset, QString collation);
+  void setCharsetAndCollation(QString charset, QString collation);
   QList<QStringList> *getCollationsApplicability();
   void setKeyFile(QString keyFile);
   void setCertFile(QString certFile);
