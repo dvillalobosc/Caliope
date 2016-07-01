@@ -39,7 +39,6 @@ ObjectMigration::ObjectMigration(DBMS *serverConnection)
   optionDROP = new QCheckBox;
   thirdLayout->addWidget(optionDROP);
   optionExportData = new QCheckBox;
-  optionExportData->setEnabled(false);
   thirdLayout->addWidget(optionExportData);
   optionFOREIGN_KEY_CHECKS = new QCheckBox;
   thirdLayout->addWidget(optionFOREIGN_KEY_CHECKS);
@@ -96,14 +95,16 @@ void ObjectMigration::fillDatabasesSlot()
 
 void ObjectMigration::itemActivatedSlot(QTreeWidgetItem *item, int column)
 {
+  QTreeWidgetItem *itemChild;
   if (item->type() == ItemTypes::Database) {
     QApplication::setOverrideCursor(Qt::WaitCursor);
+    emit loadProgress(0);
     foreach (QTreeWidgetItem *tableItem, databases)
       if (tableItem->parent() == item)
         tableItem->setCheckState(column, item->checkState(column));
     if (item->childCount() == 0) {
       foreach (QString tables, serverConnection->tables()->list(item->text(0))) {
-        QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(tables), ItemTypes::Table);
+        itemChild = new QTreeWidgetItem(item, QStringList(tables), ItemTypes::Table);
         itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         itemChild->setIcon(0, QIcon(":/images/svg/table.svg"));
         itemChild->setCheckState(0, Qt::Checked);
@@ -111,7 +112,7 @@ void ObjectMigration::itemActivatedSlot(QTreeWidgetItem *item, int column)
       }
       emit loadProgress(16);
       foreach (QString tables, serverConnection->views()->list(item->text(0))) {
-        QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(tables), ItemTypes::View);
+        itemChild = new QTreeWidgetItem(item, QStringList(tables), ItemTypes::View);
         itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         itemChild->setIcon(0, QIcon(":/images/svg/view.svg"));
         itemChild->setCheckState(0, Qt::Checked);
@@ -119,7 +120,7 @@ void ObjectMigration::itemActivatedSlot(QTreeWidgetItem *item, int column)
       }
       emit loadProgress(32);
       foreach (QString tables, serverConnection->events()->list(item->text(0))) {
-        QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(tables), ItemTypes::Event);
+        itemChild = new QTreeWidgetItem(item, QStringList(tables), ItemTypes::Event);
         itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         itemChild->setIcon(0, QIcon::fromTheme("x-office-calendar", QIcon(":/images/svg/view-calendar-upcoming-events.svg")));
         itemChild->setCheckState(0, Qt::Checked);
@@ -127,7 +128,7 @@ void ObjectMigration::itemActivatedSlot(QTreeWidgetItem *item, int column)
       }
       emit loadProgress(48);
       foreach (QString tables, serverConnection->functions()->list(item->text(0))) {
-        QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(tables), ItemTypes::Function);
+        itemChild = new QTreeWidgetItem(item, QStringList(tables), ItemTypes::Function);
         itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         itemChild->setIcon(0, QIcon(":/images/svg/system-run-5.svg"));
         itemChild->setCheckState(0, Qt::Checked);
@@ -135,7 +136,7 @@ void ObjectMigration::itemActivatedSlot(QTreeWidgetItem *item, int column)
       }
       emit loadProgress(64);
       foreach (QString tables, serverConnection->procedures()->list(item->text(0))) {
-        QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(tables), ItemTypes::Procedure);
+        itemChild = new QTreeWidgetItem(item, QStringList(tables), ItemTypes::Procedure);
         itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         itemChild->setIcon(0, QIcon(":/images/svg/system-run-5.svg"));
         itemChild->setCheckState(0, Qt::Checked);
@@ -143,7 +144,7 @@ void ObjectMigration::itemActivatedSlot(QTreeWidgetItem *item, int column)
       }
       emit loadProgress(80);
       foreach (QString tables, serverConnection->triggers()->list(item->text(0))) {
-        QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(tables), ItemTypes::Trigger);
+        itemChild = new QTreeWidgetItem(item, QStringList(tables), ItemTypes::Trigger);
         itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         itemChild->setIcon(0, QIcon(":/images/svg/server-database.svg"));
         itemChild->setCheckState(0, Qt::Checked);
@@ -177,6 +178,8 @@ void ObjectMigration::migratePushButtonSlot()
           statementsToExecute->append("DROP TABLE IF EXISTS " + item->text(0));
         statementsToExecute->append("USE " + item->text(0).split(".").at(0));
         statementsToExecute->append(serverConnection->tables()->getDefinition(item->text(0)));
+        if (optionExportData->isChecked())
+          statementsToExecute->append(serverConnection->tables()->getTableDataToInsert(item->text(0)));
         break;
       case ItemTypes::View:
         if (optionDROP->isChecked())

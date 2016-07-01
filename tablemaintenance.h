@@ -74,6 +74,9 @@ private:
   QString tableList();
   void executeStatement(const QString statement);
 
+signals:
+  void loadProgress(const int progress);
+
 private slots:
   void fillDatabasesSlot();
   void analyzePushButtonSlot();

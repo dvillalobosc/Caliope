@@ -2242,6 +2242,45 @@ QString Tables::getDefinition(QString formalTableName)
   return QString();
 }
 
+QStringList Tables::getTableDataToInsert(QString formalTableName)
+{
+  QStringList output;
+  QStringList tableFormalName =  formalTableName.split(".");
+  QString table = tableFormalName.at(1);
+  table = table.mid(1, table.length() - 2);
+  QString database = tableFormalName.at(0);
+  database = database.mid(1, database.length() - 2);
+  QString fields;
+  QList<QStringList> *rows;
+  QString rowTMP;
+  QString queryString;
+  QString rowData;
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    queryString = QString("SELECT `COLUMN_NAME` FROM `information_schema`.`COLUMNS` WHERE `TABLE_SCHEMA` = '" + database + "' AND `TABLE_NAME` = '" + table + "'");
+    foreach (QString column, serverConnection->runQuerySingleColumn(queryString))
+      fields += "`" + column + "`, ";
+    fields = fields.mid(0, fields.length() - 2);
+    rowData = QString("INSERT INTO " + formalTableName + " (" + fields + ") VALUES (");
+    rows = serverConnection->runQuery("SELECT * FROM " + formalTableName);
+
+    for (int row = 0; row < rows->count() - 1; row++) {
+      for (int row2 = 0; row2 < rows->at(row).count(); row2++) {
+        rowTMP += "'" + rows->at(row).at(row2) + "', ";
+      }
+      output.append(rowData + rowTMP.mid(0, rowTMP.length() - 2) + ")");
+      rowTMP = "";
+    }
+    return output;
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QStringList();
+}
+
 /*******************************************************************************************/
 
 Views::Views(DBMS *serverConnection)
