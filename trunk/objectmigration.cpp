@@ -158,6 +158,7 @@ void ObjectMigration::itemActivatedSlot(QTreeWidgetItem *item, int column)
 void ObjectMigration::migratePushButtonSlot()
 {
   QApplication::setOverrideCursor(Qt::WaitCursor);
+  emit loadProgress(0);
   statementsToExecute->clear();
   counter = 0;
   int counter2 = 0;
@@ -216,6 +217,7 @@ void ObjectMigration::migratePushButtonSlot()
   }
   if (optionFOREIGN_KEY_CHECKS->isChecked())
     statementsToExecute->append("SET FOREIGN_KEY_CHECKS := 1");
+  emit loadProgress(100);
   QApplication::restoreOverrideCursor();
 
   ConnectDialog *connectFrom = new ConnectDialog(secondaryServerConnection);
@@ -259,7 +261,7 @@ void ObjectMigration::statementsToExecuteSlot()
     //resutlEditor->appendPlainText(secondaryServerConnection->outputAsTable(statementsToExecute->at(counter), true, false, false, false) + "\n");
     emit loadProgress((int) (counter * 100 / statementsToExecute->count()));
     counter++;
-    QTimer::singleShot(300, this, SLOT(statementsToExecuteSlot()));
+    QTimer::singleShot(100, this, SLOT(statementsToExecuteSlot()));
   } else {
     emit loadProgress(100);
   }
