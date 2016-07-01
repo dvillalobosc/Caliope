@@ -256,7 +256,7 @@ void ObjectMigration::statementsToExecuteSlot()
 {
   if (statementsToExecute->count() > counter) {
     resutlEditor->appendPlainText(statementsToExecute->at(counter) + "\n");
-    //resutlEditor->appendPlainText(secondaryServerConnection->outputAsVV(statementsToExecute->at(counter)) + "\n");
+    //resutlEditor->appendPlainText(secondaryServerConnection->outputAsTable(statementsToExecute->at(counter), true, false, false, false) + "\n");
     emit loadProgress((int) (counter * 100 / statementsToExecute->count()));
     counter++;
     QTimer::singleShot(300, this, SLOT(statementsToExecuteSlot()));
