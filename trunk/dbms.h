@@ -119,6 +119,7 @@ public:
   Tables(DBMS *serverConnection);
   QStringList list(QString databaseName = QString());
   QString getDefinition(QString formalTableName);
+  QStringList getTableDataToInsert(QString formalTableName);
 
 private:
   DBMS *serverConnection;

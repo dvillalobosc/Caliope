@@ -2211,6 +2211,7 @@ void MainWindow::tableMaintenanceActionTriggered()
     tableMaintenance = mdiMain->findChild<TableMaintenance *>(tr("Table Maintenance"));
     if (!tableMaintenance) {
       tableMaintenance = new TableMaintenance(this->serverConnection);
+      connect(tableMaintenance, SIGNAL(loadProgress(int)), dStatusBar, SLOT(setProgress(int)));
       addSubWindow(tableMaintenance);
     }
     mdiMain->setActiveSubWindow(tableMaintenance);
