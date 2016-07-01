@@ -129,8 +129,8 @@ bool DBMS::open()
   case StaticFunctions::MySQL:
     if (opened) {
       //setCharacterSet(settings.value("DBMS/CharacterSet", "utf8").toString());
-      setCharacterSet(p_charset);
-      setCollation(getCharacterSet(), getCollation());
+      //setCharacterSet(p_charset);
+      setCharsetAndCollation(getCharacterSet(), getCollation());
       if (getMinorVersion() < 1 || getMayorVersion() < 5) {
         oldVersion = true;
         QMessageBox::warning(0, tr("MySQL Version"), tr("Your version of MySQL seems to be less than 5.1."));
@@ -139,8 +139,8 @@ bool DBMS::open()
     break;
   case StaticFunctions::MariaDB:
     if (opened) {
-      setCharacterSet(getCharacterSet());
-      setCollation(getCharacterSet(), getCollation());
+      //setCharacterSet(getCharacterSet());
+      setCharsetAndCollation(getCharacterSet(), getCollation());
     }
   case StaticFunctions::Undefined:
   default:
@@ -1125,7 +1125,7 @@ void DBMS::clearSQLiteQueryLog()
     }
 }
 
-void DBMS::setCollation(QString charset, QString collation)
+void DBMS::setCharsetAndCollation(QString charset, QString collation)
 {
   switch(p_DBMSType) {
   case StaticFunctions::MySQL:
