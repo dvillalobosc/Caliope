@@ -825,6 +825,7 @@ QStringList StaticFunctions::mariadbKeywords()
       << "UNCOMMITTED"
       << "UNDEFINED"
       << "UNDO"
+      << "UNINSTALL"
       << "UNION"
       << "UNIQUE_CHECKS"
       << "UNIQUE"
