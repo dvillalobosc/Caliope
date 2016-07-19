@@ -238,9 +238,9 @@ Catalogs::Catalogs(DBMS *serverConnection)
   retranslateUi();
   setWidget(widMain);
   QTimer::singleShot(0, this, SLOT(tablesInfo()));
-  QTimer::singleShot(0, this, SLOT(viewsInfo()));
-  QTimer::singleShot(0, this, SLOT(routinesInfo()));
-  QTimer::singleShot(0, this, SLOT(eventsInfo()));
+//  QTimer::singleShot(0, this, SLOT(viewsInfo()));
+//  QTimer::singleShot(0, this, SLOT(routinesInfo()));
+//  QTimer::singleShot(0, this, SLOT(eventsInfo()));
 }
 
 void Catalogs::retranslateUi()
