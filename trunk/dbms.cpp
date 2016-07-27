@@ -101,6 +101,7 @@ bool DBMS::open()
   //last_progress_report_length = 0;
   my_bool reconnect = settings.value("DBMS/Reconnect", 1).toInt();
   int arg = 1;
+  int arg2 = 1;
   mysql_library_init(0, NULL, NULL);
   mariadbConnection = mysql_init(NULL);
   mysql_options(mariadbConnection, MYSQL_OPT_LOCAL_INFILE, 0);
@@ -113,12 +114,12 @@ bool DBMS::open()
   switch(p_DBMSType) {
   case StaticFunctions::MySQL:
     opened = mysql_real_connect(mariadbConnection, hostName.toUtf8().data(), p_userName.toUtf8().data()
-                                , password.toUtf8().data(), p_database.toUtf8().data(), port, NULL, CLIENT_MULTI_STATEMENTS);
+                                , password.toUtf8().data(), p_database.toUtf8().data(), port, NULL, CLIENT_MULTI_STATEMENTS | CLIENT_INTERACTIVE);
     break;
   case StaticFunctions::MariaDB:
     mysql_options(mariadbConnection, MYSQL_PROGRESS_CALLBACK, (void*) printQueryProgress);
     opened = mysql_real_connect(mariadbConnection, hostName.toUtf8().data(), p_userName.toUtf8().data()
-                                , password.toUtf8().data(), p_database.toUtf8().data(), port, NULL, CLIENT_MULTI_STATEMENTS | CLIENT_PROGRESS);
+                                , password.toUtf8().data(), p_database.toUtf8().data(), port, NULL, CLIENT_MULTI_STATEMENTS | CLIENT_INTERACTIVE | CLIENT_PROGRESS);
     break;
   case StaticFunctions::Undefined:
   default:
