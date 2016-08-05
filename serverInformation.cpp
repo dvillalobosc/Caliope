@@ -150,6 +150,7 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
 //    connect(lineEditConnectioName, SIGNAL(clicked()), this, SLOT(lineEditConnectioNameClicked()));
     groupBoxHLayout->addWidget(new QLabel(tr("List of available connections")));
     groupBoxHLayout->addWidget(slavesListComboBox);
+    this->serverConnection->replication()->changeDefaultMasterConnection(settings.value("Replication/LastMasterConnection", QString()).toString());
     break;
   case StaticFunctions::Undefined:
   default:
