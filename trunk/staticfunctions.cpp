@@ -371,7 +371,7 @@ QHash<QString, QString> StaticFunctions::mariadbFunctionsComplete()
   //  data.insert("SYSDATE", QString("<u>SYSDATE</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("SYSTEM_USER", QString("<u>SYSTEM_USER</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("TAN", QString("<u>TAN</u>(<b></b>) <br />%1").arg(tr("")));
-  //  data.insert("TIME_FORMAT", QString("<u>TIME_FORMAT</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("TIME_FORMAT", QString("<u>TIME_FORMAT</u>(<b>time, format</b>) <br />%1").arg(tr("Returns a string containing the time in the specified format.")));
   data.insert("TIME_TO_SEC", QString("<u>TIME_TO_SEC</u>(<b>time</b>) <br />%1").arg(tr("Returns the time argument, converted to seconds.")));
   data.insert("TIMEDIFF", QString("<u>TIMEDIFF</u>(<b>expr1, expr2</b>) <br />%1").arg(tr("Returns expr1 - expr2 expressed as a time value.<br />expr1 and expr2 are time or date-and-time expressions, but both must be of the same type.")));
   //  data.insert("TIMESTAMPADD", QString("<u>TIMESTAMPADD</u>(<b></b>) <br />%1").arg(tr("")));
