@@ -351,7 +351,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
         list.append(window->windowTitle());
       settings.setValue("General/OpenedWindows-" + qApp->property("ConnectionName").toString(), list);
     }
-    settings.sync();
+    QFile file(settings.fileName());
+    if (!file.copy(settings.fileName() + ".back"))
+      statusBarMessage(tr("Error on saving application settings backup file."));
     serverConnection->close();
     event->accept();
   } else {

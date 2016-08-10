@@ -225,9 +225,11 @@ void DReportViewer::pushButtonExportToImageClicked()
 void DReportViewer::fillCustomReportwidgets(QString reportName)
 {
   QStringList data = settings.value(reportName).toString().split("#", QString::SkipEmptyParts);
-  lineEditUnit->setText(data.at(0).split(":").at(1));
-  comboReportType->setCurrentIndex(comboReportType->findData(data.at(1).split(":").at(1).toInt()));
-  baseTextEditor->setPlainText(data.at(2).split(":").at(1));
+  if (data.count() > 0) {
+    lineEditUnit->setText(data.at(0).split(":").at(1));
+    comboReportType->setCurrentIndex(comboReportType->findData(data.at(1).split(":").at(1).toInt()));
+    baseTextEditor->setPlainText(data.at(2).split(":").at(1));
+  }
 }
 
 void DReportViewer::discardReportSlot()
