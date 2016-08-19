@@ -2644,8 +2644,9 @@ void MainWindow::updateWindowMenu()
     action->setCheckable(true);
     // The following line was commented because there are moments when
     // mdiMain->currentSubWindow() == 0, so, windowTitle() cannot be reached
-    // It happends on SQLQuery Windows
-    action->setChecked(action->text() == mdiMain->currentSubWindow()->windowTitle());
+    // It happends on SQLQuery Windowsz
+    if (mdiMain->currentSubWindow() != 0)
+      action->setChecked(action->text() == mdiMain->currentSubWindow()->windowTitle());
     connect(action, SIGNAL(triggered()), windowMapper, SLOT(map()));
     windowMapper->setMapping(action, subWindow);
   }
