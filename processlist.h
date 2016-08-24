@@ -54,11 +54,15 @@ private:
   QPushButton *pushButtonKillIdleThreads;
   QSpinBox *spinBoxTimeLimit;
   QSettings settings;
+  QSpinBox *spinBoxRefreshRate;
+  QAction *killQuery;
 
 private slots:
   void reloadData();
   void killThreadSlot();
   void killIdleThreadsSlot();
+  void refreshRateSlot(const int value);
+  void killQuerySlot();
 
 protected:
   void contextMenuEvent(QContextMenuEvent *event);

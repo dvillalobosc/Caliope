@@ -1833,6 +1833,19 @@ void Processes::killThread(long long thread)
   }
 }
 
+void Processes::killQuery(long long thread)
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    serverConnection->runQuery(QString("KILL QUERY %1").arg(thread));
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+}
+
 void Processes::killIdleThreads(unsigned int limit)
 {
   switch(serverConnection->getDBMSType()) {

@@ -108,6 +108,13 @@ ProcessList::ProcessList(DBMS *serverConnection)
   spinBoxTimeLimit->setSuffix(" " + tr("seconds"));
   groupBoxHLayout->addWidget(spinBoxTimeLimit);
   spinBoxTimeLimit->setValue(settings.value("Processes/TimeToKillThreads", 30).toUInt());
+  spinBoxRefreshRate = new QSpinBox;
+  spinBoxRefreshRate->setRange(0, 2147483647);
+  spinBoxRefreshRate->setPrefix(tr("Refresh rate:") + " ");
+  spinBoxRefreshRate->setSuffix(" " + tr("seconds"));
+  groupBoxHLayout->addWidget(spinBoxRefreshRate);
+  spinBoxRefreshRate->setValue(settings.value("Processes/RefreshRate", 1).toUInt());
+  connect(spinBoxRefreshRate, SIGNAL(valueChanged(int)), this, SLOT(refreshRateSlot(int)));
   groupBoxHLayout->addStretch(1);
   buttonGroup->setLayout(groupBoxHLayout);
   mainLayout->addWidget(buttonGroup);
@@ -120,6 +127,10 @@ ProcessList::ProcessList(DBMS *serverConnection)
   connect(killThread, SIGNAL(triggered()), this, SLOT(killThreadSlot()));
   menu = new QMenu(this);
   menu->addAction(killThread);
+  killQuery = new QAction(this);
+  killQuery->setIcon(QIcon::fromTheme("dialog-close", QIcon(":/images/svg/document-close-4.svg")));
+  connect(killQuery, SIGNAL(triggered()), this, SLOT(killQuerySlot()));
+  menu->addAction(killQuery);
   timerRefresh->start();
   retranslateUi();
   setWidget(widMain);
@@ -137,6 +148,9 @@ void ProcessList::retranslateUi()
   pushButtonKillIdleThreads->setText(tr("Kill idle threads"));
   pushButtonKillIdleThreads->setToolTip(tr("Kills thread exeding the given seconds inactive."));
   spinBoxTimeLimit->setToolTip(tr("Time to kill threads."));
+  spinBoxRefreshRate->setToolTip(tr("Refresh rate."));
+  killQuery->setText(tr("Kill query"));
+  killQuery->setToolTip(tr("Kills the given query."));
 }
 
 void ProcessList::killThreadSlot()
@@ -148,6 +162,17 @@ void ProcessList::killIdleThreadsSlot()
 {
   settings.setValue("Processes/TimeToKillThreads", spinBoxTimeLimit->value());
   serverConnection->processes()->killIdleThreads(spinBoxTimeLimit->value());
+}
+
+void ProcessList::refreshRateSlot(const int value)
+{
+  timerRefresh->setInterval(1000 * value);
+  settings.setValue("Processes/RefreshRate", value);
+}
+
+void ProcessList::killQuerySlot()
+{
+  serverConnection->processes()->killQuery(killQuery->text().split(": ").at(1).toLongLong());
 }
 
 void ProcessList::reloadData()
@@ -162,5 +187,6 @@ void ProcessList::reloadData()
 void ProcessList::contextMenuEvent(QContextMenuEvent *event)
 {
   killThread->setText(tr("Kill thread: %1").arg(processTable->indexData(processTable->currentIndexItem().row(), 0, Qt::DisplayRole).toString()));
+  killQuery->setText(tr("Kill query: %1").arg(processTable->indexData(processTable->currentIndexItem().row(), 0, Qt::DisplayRole).toString()));
   menu->exec(event->globalPos());
 }
