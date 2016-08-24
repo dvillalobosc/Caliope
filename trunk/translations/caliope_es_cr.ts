@@ -2262,7 +2262,7 @@ Total progess: %5.</source>
     <message>
         <location filename="../mainwindow.cpp" line="356"/>
         <source>Error on saving application settings backup file.</source>
-        <translation type="unfinished">Error al guardar el archivo de respaldo de las configuraciones de la aplicación.</translation>
+        <translation>Error al guardar el archivo de respaldo de las configuraciones de la aplicación.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="784"/>
@@ -2626,12 +2626,12 @@ Total progess: %5.</source>
         <translation>Ventanas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2652"/>
+        <location filename="../mainwindow.cpp" line="2653"/>
         <source>Windows options</source>
         <translation>Opciones de ventanas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2711"/>
+        <location filename="../mainwindow.cpp" line="2712"/>
         <source>Character set changed to: %1</source>
         <translation>Conjunto de caracteres cambiado a: %1</translation>
     </message>
@@ -3029,7 +3029,7 @@ Total progess: %5.</source>
 <context>
     <name>ProcessList</name>
     <message>
-        <location filename="../processlist.cpp" line="130"/>
+        <location filename="../processlist.cpp" line="141"/>
         <source>Process List</source>
         <translation>Lista de Procesos</translation>
     </message>
@@ -3123,50 +3123,76 @@ Total progess: %5.</source>
     </message>
     <message>
         <location filename="../processlist.cpp" line="108"/>
+        <location filename="../processlist.cpp" line="114"/>
         <source>seconds</source>
         <translation>segundos</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="133"/>
+        <location filename="../processlist.cpp" line="113"/>
+        <source>Refresh rate:</source>
+        <translation>Taza de refrescado:</translation>
+    </message>
+    <message>
+        <location filename="../processlist.cpp" line="144"/>
         <source>Actions</source>
         <translation>Acciones</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="134"/>
+        <location filename="../processlist.cpp" line="145"/>
         <source>Stop refreshing</source>
         <translation>Detener refrescado</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="135"/>
+        <location filename="../processlist.cpp" line="146"/>
         <source>Kill thread</source>
         <translation>Matar hilo</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="136"/>
+        <location filename="../processlist.cpp" line="147"/>
         <source>Kills the given thread.</source>
         <translation>Mata el proceso dado.</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="137"/>
+        <location filename="../processlist.cpp" line="148"/>
         <source>Kill idle threads</source>
         <translation>Matar hilos inactivos</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="138"/>
+        <location filename="../processlist.cpp" line="149"/>
         <source>Kills thread exeding the given seconds inactive.</source>
         <translation>Mata los hilos que exedan el tiempo dado en segundos de inactividad.</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="139"/>
+        <location filename="../processlist.cpp" line="150"/>
         <source>Time to kill threads.</source>
         <translation>Tiempo para matar los hios.</translation>
+    </message>
+    <message>
+        <location filename="../processlist.cpp" line="151"/>
+        <source>Refresh rate.</source>
+        <translation>Taza de refrescado.</translation>
+    </message>
+    <message>
+        <location filename="../processlist.cpp" line="152"/>
+        <source>Kill query</source>
+        <translation>Matar consulta</translation>
+    </message>
+    <message>
+        <location filename="../processlist.cpp" line="153"/>
+        <source>Kills the given query.</source>
+        <translation>Mata la consulta dada.</translation>
+    </message>
+    <message>
+        <location filename="../processlist.cpp" line="190"/>
+        <source>Kill query: %1</source>
+        <translation>Matar consulta %1</translation>
     </message>
     <message>
         <source>Kills thread exeding 30 seconds inactive.</source>
         <translation type="obsolete">Mata los hilos que exceden 30 inactivos.</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="164"/>
+        <location filename="../processlist.cpp" line="189"/>
         <source>Kill thread: %1</source>
         <translation>Matar hilo: %1</translation>
     </message>
@@ -8027,17 +8053,17 @@ Total of queries: %5, remaining: %6.</source>
 <context>
     <name>Transaction</name>
     <message>
-        <location filename="../dbms.cpp" line="2134"/>
+        <location filename="../dbms.cpp" line="2147"/>
         <source>Transaction started</source>
         <translation>Transacción iniciada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="2149"/>
+        <location filename="../dbms.cpp" line="2162"/>
         <source>Transaction commited</source>
         <translation>Transacción guardada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="2164"/>
+        <location filename="../dbms.cpp" line="2177"/>
         <source>Transaction rollbacked</source>
         <translation>Transacción revertida</translation>
     </message>

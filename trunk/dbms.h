@@ -193,6 +193,7 @@ public:
   Processes(DBMS *serverConnection);
   QList<QStringList>* getProcessList();
   void killThread(long long int thread);
+  void killQuery(long long int thread);
 
 public slots:
   void killIdleThreads(unsigned int limit);
