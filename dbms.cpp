@@ -217,6 +217,21 @@ DBMS::~DBMS()
   close();
 }
 
+bool DBMS::operator==(DBMS *serverConnection)
+{
+  //A DBMS is considerated equal to DBMS is the Host, Port and Database are the same
+  if (this->getHostName() == serverConnection->getHostName())
+    if (this->getPort() == serverConnection->getPort())
+      if (this->getDatabase() == serverConnection->getDatabase())
+        return true;
+  return false;
+}
+
+bool DBMS::operator!=(DBMS *serverConnection)
+{
+  return !operator==(serverConnection);
+}
+
 bool DBMS::testOpened()
 {
   if (!isOpened()) {

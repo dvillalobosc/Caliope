@@ -307,6 +307,8 @@ class DBMS : public QObject
 public:
   DBMS(bool enableQueryLog = true);
   ~DBMS();
+  bool operator==(DBMS *serverConnection);
+  bool operator!=(DBMS *serverConnection);
 
   QString getUserName();
   void setUserName(QString name);
