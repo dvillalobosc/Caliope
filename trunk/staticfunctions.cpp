@@ -353,7 +353,6 @@ QHash<QString, QString> StaticFunctions::mariadbFunctionsComplete()
   //  data.insert("SIN", QString("<u>SIN</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("SLEEP", QString("<u>SLEEP</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("SOUNDEX", QString("<u>SOUNDEX</u>(<b></b>) <br />%1").arg(tr("")));
-  //  data.insert("SOUNDS", QString("<u>SOUNDS</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("SPACE", QString("<u>SPACE</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("SQL_CALC_FOUND_ROWS", QString("<u>SQL_CALC_FOUND_ROWS</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("SQR", QString("<u>SQR</u>(<b></b>) <br />%1").arg(tr("")));
@@ -783,6 +782,7 @@ QStringList StaticFunctions::mariadbKeywords()
       << "SLAVES"
       << "SNAPSHOT"
       << "SONAME"
+      << "SOUNDS"
       << "SPATIAL"
       << "SPECIFIC"
       << "SQL_CACHE"

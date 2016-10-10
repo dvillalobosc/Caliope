@@ -1215,7 +1215,6 @@ void MainWindow::takeASnapShotActionTriggered()
 
 void MainWindow::caliopeSourceDocumentationActionTriggered()
 {
-  qDebug() << "asdasdfasfasfasfasfasfasfsfsdfsd";
   QApplication::setOverrideCursor(Qt::WaitCursor);
   QDir tempDir(QDir::tempPath() + "/html");
   tempDir.removeRecursively();
@@ -1444,70 +1443,70 @@ void MainWindow::saveAllActionTriggered()
 
 void MainWindow::migrateTableActionTriggered()
 {
-    ConnectDialog *connectFrom = new ConnectDialog(this->serverConnection);
-    QStringList argumentsProcess1;
-    QStringList argumentsProcess2;
-    QStringList params;
-    secondaryServerConnection = new DBMS(false);
-    connect(secondaryServerConnection, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
-    connect(secondaryServerConnection, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
-    processMariaDBDump = new QProcess;
-    processMariaDB = new QProcess;
-    switch(serverConnection->getDBMSType()) {
-    case StaticFunctions::MySQL:
-    case StaticFunctions::MariaDB:
-      connect(processMariaDBDump, SIGNAL(readyReadStandardError()), this, SLOT(readyReadStandardErrorDatabaseMigrationDumpSlot()));
-      connect(processMariaDB, SIGNAL(readyReadStandardError()), this, SLOT(readyReadStandardErrorDatabaseMigrationMariaDBSlot()));
-      connect(processMariaDB, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(finishedDatabaseMigrationSlot(int)));
-      processMariaDBDump->setStandardOutputProcess(processMariaDB);
-      if (connectFrom->exec() == QDialog::Accepted) {
-        params = connectFrom->getValues();
-        argumentsProcess1 << "--user=" + params.at(1);
-        argumentsProcess1 << "--host=" + params.at(2);
-        argumentsProcess1 << "--password=" + params.at(10);
-        argumentsProcess1 << "--port=" + params.at(3);
-        argumentsProcess1 << params.at(4);
-        bool ok;
-        argumentsProcess1 << QInputDialog::getItem(this, tr("Select a table"), tr("Table:"), serverConnection->database()->getTables(), 0, false, &ok);
-        qDebug() << argumentsProcess1;
-        if (ok) {
-          connectFrom = new ConnectDialog(secondaryServerConnection);
-          if (connectFrom->exec() == QDialog::Accepted) {
-            params = connectFrom->getValues();
-            argumentsProcess2 << "--user=" + params.at(1);
-            argumentsProcess2 << "--host=" + params.at(2);
-            argumentsProcess2 << "--password=" + params.at(10);
-            argumentsProcess2 << "--port=" + params.at(3);
-            argumentsProcess2 << params.at(4);
-            if (secondaryServerConnection->isOpened())
-              secondaryServerConnection->close();
-            params = connectFrom->getValues();
-            //0 - Connection name
-            //1 - User
-            //2 - Host
-            //3 - Port
-            //4 - Database
-            //5 - Conexion count
-            //6 - Collation
-            //7 - UseSSL
-            //8 - KeyFile
-            //9 - CertFile
-            //10 - Password
-            secondaryServerConnection->setUserName(connectFrom->getValues().at(1));
-            secondaryServerConnection->setHostName(connectFrom->getValues().at(2));
-            secondaryServerConnection->setPassword(connectFrom->getValues().at(10));
-            secondaryServerConnection->setDatabase(connectFrom->getValues().at(4));
-            secondaryServerConnection->setPort(connectFrom->getValues().at(3).toUInt());
-            secondaryServerConnection->setCharacterSet(connectFrom->getValues().at(6).split("|").at(0));
-            secondaryServerConnection->setCollation(connectFrom->getValues().at(6).split("|").at(1));
-            secondaryServerConnection->setUseSSL(connectFrom->getValues().at(7).toInt());
-            secondaryServerConnection->setKeyFile(connectFrom->getValues().at(8));
-            secondaryServerConnection->setCertFile(connectFrom->getValues().at(9));
-            timerTableCount = new QTimer(this);
-            timerTableCount->setInterval(2000);
-            connect(timerTableCount, SIGNAL(timeout()), this, SLOT(tableCountSlot()));
-            if (secondaryServerConnection->open()) {
-              //      timerTableCount->start();
+  ConnectDialog *connectFrom = new ConnectDialog(this->serverConnection);
+  QStringList argumentsProcess1;
+  QStringList argumentsProcess2;
+  QStringList params;
+  secondaryServerConnection = new DBMS(false);
+  connect(secondaryServerConnection, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
+  connect(secondaryServerConnection, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
+  processMariaDBDump = new QProcess;
+  processMariaDB = new QProcess;
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    connect(processMariaDBDump, SIGNAL(readyReadStandardError()), this, SLOT(readyReadStandardErrorDatabaseMigrationDumpSlot()));
+    connect(processMariaDB, SIGNAL(readyReadStandardError()), this, SLOT(readyReadStandardErrorDatabaseMigrationMariaDBSlot()));
+    connect(processMariaDB, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(finishedDatabaseMigrationSlot(int)));
+    processMariaDBDump->setStandardOutputProcess(processMariaDB);
+    if (connectFrom->exec() == QDialog::Accepted) {
+      params = connectFrom->getValues();
+      argumentsProcess1 << "--user=" + params.at(1);
+      argumentsProcess1 << "--host=" + params.at(2);
+      argumentsProcess1 << "--password=" + params.at(10);
+      argumentsProcess1 << "--port=" + params.at(3);
+      argumentsProcess1 << params.at(4);
+      bool ok;
+      argumentsProcess1 << QInputDialog::getItem(this, tr("Select a table"), tr("Table:"), serverConnection->database()->getTables(), 0, false, &ok);
+      if (ok) {
+        connectFrom = new ConnectDialog(secondaryServerConnection);
+        if (connectFrom->exec() == QDialog::Accepted) {
+          params = connectFrom->getValues();
+          argumentsProcess2 << "--user=" + params.at(1);
+          argumentsProcess2 << "--host=" + params.at(2);
+          argumentsProcess2 << "--password=" + params.at(10);
+          argumentsProcess2 << "--port=" + params.at(3);
+          argumentsProcess2 << params.at(4);
+          if (secondaryServerConnection->isOpened())
+            secondaryServerConnection->close();
+          params = connectFrom->getValues();
+          //0 - Connection name
+          //1 - User
+          //2 - Host
+          //3 - Port
+          //4 - Database
+          //5 - Conexion count
+          //6 - Collation
+          //7 - UseSSL
+          //8 - KeyFile
+          //9 - CertFile
+          //10 - Password
+          secondaryServerConnection->setUserName(connectFrom->getValues().at(1));
+          secondaryServerConnection->setHostName(connectFrom->getValues().at(2));
+          secondaryServerConnection->setPassword(connectFrom->getValues().at(10));
+          secondaryServerConnection->setDatabase(connectFrom->getValues().at(4));
+          secondaryServerConnection->setPort(connectFrom->getValues().at(3).toUInt());
+          secondaryServerConnection->setCharacterSet(connectFrom->getValues().at(6).split("|").at(0));
+          secondaryServerConnection->setCollation(connectFrom->getValues().at(6).split("|").at(1));
+          secondaryServerConnection->setUseSSL(connectFrom->getValues().at(7).toInt());
+          secondaryServerConnection->setKeyFile(connectFrom->getValues().at(8));
+          secondaryServerConnection->setCertFile(connectFrom->getValues().at(9));
+          timerTableCount = new QTimer(this);
+          timerTableCount->setInterval(2000);
+          connect(timerTableCount, SIGNAL(timeout()), this, SLOT(tableCountSlot()));
+          if (secondaryServerConnection->open()) {
+            //      timerTableCount->start();
+            if (serverConnection->operator !=(secondaryServerConnection)) {
               migrationProgressDialog = new QProgressDialog(tr("Migrating data"), tr("Abort"), 0, 0, this);
               migrationProgressDialog->setWindowModality(Qt::WindowModal);
               connect(migrationProgressDialog, SIGNAL(canceled()), this, SLOT(cancelDatabaseMigrationSlot()));
@@ -1519,12 +1518,13 @@ void MainWindow::migrateTableActionTriggered()
           }
         }
       }
-      break;
-    case StaticFunctions::Undefined:
-    default:
-      QMessageBox::information(this, tr("Database migration"), tr("Database migration is only aviable for MariaDB and MySQL."));
-      break;
     }
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    QMessageBox::information(this, tr("Database migration"), tr("Database migration is only aviable for MariaDB and MySQL."));
+    break;
+  }
 }
 
 void MainWindow::databaseMetadataActionTriggered()

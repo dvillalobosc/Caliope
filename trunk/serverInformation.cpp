@@ -762,7 +762,7 @@ QRect DBarChartWidget::drawGraphicArea(QPainter &painter, QRect rect, const QStr
   for (int step = 1; step < points.count(); step++)
     painter.drawLine(QPointF(rect.left() + ((step - 1) * stepSeparator), calculateYPosition(rect.height(), points.at(step - 1), maximun) + rect.y())
                      , QPointF(rect.left() + (step * stepSeparator), calculateYPosition(rect.height(), points.at(step), maximun) + rect.y()));
-  rect = drawWrapText(painter, QRect(rect.left(), rect.y() + rect.height() + 10, 0, 0), tr("Current: %1").arg(points.last()));
+  rect = drawWrapText(painter, QRect(rect.left(), rect.y() + rect.height() + 10, 0, 0), tr("Current: %1").arg((points.count() == 0 ? 0 : points.last())));
   rect = drawWrapText(painter, rect, tr("Max: %1").arg(maximun));
   rect = drawWrapText(painter, rect, tr("Min: %1").arg(minimun));
   return QRect(margin, rect.y() + rect.height() + widgetSeparator1 + widgetSeparator2, graphAreaWidth, graphAreaHeight);
