@@ -991,8 +991,8 @@
         <translation type="obsolete">Su versión de MariaDB parece ser mejor a 5.1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="223"/>
-        <location filename="../dbms.cpp" line="224"/>
+        <location filename="../dbms.cpp" line="240"/>
+        <location filename="../dbms.cpp" line="241"/>
         <source>Connection is not opened.</source>
         <translation>La conexión no está abierta.</translation>
     </message>
@@ -1009,36 +1009,36 @@
         <translation type="obsolete">Filas en el resultado: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="403"/>
-        <location filename="../dbms.cpp" line="466"/>
+        <location filename="../dbms.cpp" line="420"/>
+        <location filename="../dbms.cpp" line="483"/>
         <source>Undefined Database driver.</source>
         <translation>Controlador de Base de datos indefinido.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="482"/>
+        <location filename="../dbms.cpp" line="499"/>
         <source>Error:</source>
         <translation>Error:</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="490"/>
-        <location filename="../dbms.cpp" line="1491"/>
+        <location filename="../dbms.cpp" line="507"/>
+        <location filename="../dbms.cpp" line="1508"/>
         <source>No error code provided.</source>
         <translation>No hay código de error proporcionado.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="599"/>
+        <location filename="../dbms.cpp" line="616"/>
         <source>Select a file</source>
         <translation>Seleccione un archivo</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="608"/>
+        <location filename="../dbms.cpp" line="625"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>No es posible escribir en el archivo %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="612"/>
+        <location filename="../dbms.cpp" line="629"/>
         <source>Data exported to %1</source>
         <translation>Datos exportados a %1</translation>
     </message>
@@ -1054,7 +1054,7 @@
     </message>
     <message>
         <location filename="../dbms.cpp" line="55"/>
-        <location filename="../dbms.cpp" line="1105"/>
+        <location filename="../dbms.cpp" line="1122"/>
         <source>Query</source>
         <translation>Consulta</translation>
     </message>
@@ -1091,63 +1091,68 @@ Total progess: %5.</source>
     </message>
     <message>
         <location filename="../dbms.cpp" line="177"/>
+        <source>%1 milliseconds</source>
+        <translation>%1 milisegundos</translation>
+    </message>
+    <message>
+        <location filename="../dbms.cpp" line="179"/>
         <source>%1 seconds</source>
         <translation>%1 segundos</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="179"/>
+        <location filename="../dbms.cpp" line="181"/>
         <source>%1 minutes</source>
         <translation>%1 minutos</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="181"/>
+        <location filename="../dbms.cpp" line="183"/>
         <source>%1 hours</source>
         <translation>%1 horas</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="198"/>
+        <location filename="../dbms.cpp" line="200"/>
         <source>Application closed</source>
         <translation>Aplicación cerrada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="377"/>
-        <location filename="../dbms.cpp" line="382"/>
+        <location filename="../dbms.cpp" line="394"/>
+        <location filename="../dbms.cpp" line="399"/>
         <source>Rows in set: %1. Elapsed time: %2.</source>
         <translation>Filas en el resultado: %1. Tiempo transcurrido: %2.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="392"/>
-        <location filename="../dbms.cpp" line="398"/>
+        <location filename="../dbms.cpp" line="409"/>
+        <location filename="../dbms.cpp" line="415"/>
         <source>Rows in set: %1. Elapsed time: %2 seconds.</source>
         <translation>Filas en el resultado: %1. Tiempo transcurrido: %2.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="814"/>
+        <location filename="../dbms.cpp" line="831"/>
         <source>Could not execute statement. </source>
         <translation>No se puede ejecutar la sentencia. </translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1086"/>
+        <location filename="../dbms.cpp" line="1103"/>
         <source>Application started</source>
         <translation>Aplicación iniciada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1101"/>
+        <location filename="../dbms.cpp" line="1118"/>
         <source>Line Number</source>
         <translation>Número de línea</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1102"/>
+        <location filename="../dbms.cpp" line="1119"/>
         <source>Session Id</source>
         <translation>Id de Sesión</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1103"/>
+        <location filename="../dbms.cpp" line="1120"/>
         <source>Date</source>
         <translation>Fecha</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1104"/>
+        <location filename="../dbms.cpp" line="1121"/>
         <source>Connection</source>
         <translation>Conexión</translation>
     </message>
@@ -1160,7 +1165,7 @@ Total progess: %5.</source>
         <translation type="obsolete">Esta acción reiniciará su conexión a base de datos</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1416"/>
+        <location filename="../dbms.cpp" line="1433"/>
         <source>Could not change character set to: %1</source>
         <translation>No se puede cambiar el juego de caracteres a: %1</translation>
     </message>
@@ -1405,42 +1410,42 @@ Total progess: %5.</source>
 <context>
     <name>Database</name>
     <message>
-        <location filename="../dbms.cpp" line="1602"/>
+        <location filename="../dbms.cpp" line="1619"/>
         <source>Database: %1</source>
         <translation>Base de Datos: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1603"/>
+        <location filename="../dbms.cpp" line="1620"/>
         <source>Total of tables: %1</source>
         <translation>Total de tablas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1604"/>
+        <location filename="../dbms.cpp" line="1621"/>
         <source>Total of views: %1</source>
         <translation>Total de vistas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1605"/>
+        <location filename="../dbms.cpp" line="1622"/>
         <source>Total of triggers: %1</source>
         <translation>Total de disparadores: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1606"/>
+        <location filename="../dbms.cpp" line="1623"/>
         <source>Total of rutines: %1</source>
         <translation>Total de rutinas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1607"/>
+        <location filename="../dbms.cpp" line="1624"/>
         <source>Total of events: %1</source>
         <translation>Total de eventos: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1608"/>
+        <location filename="../dbms.cpp" line="1625"/>
         <source>Tables size: %1</source>
         <translation>Tamaño total de las tablas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1609"/>
+        <location filename="../dbms.cpp" line="1626"/>
         <source>Idexes: %1</source>
         <translation>Tamaño total de los índices: %1</translation>
     </message>
@@ -1738,7 +1743,7 @@ Total progess: %5.</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="187"/>
-        <location filename="../mainwindow.cpp" line="1279"/>
+        <location filename="../mainwindow.cpp" line="1278"/>
         <location filename="../mainwindow.cpp" line="1705"/>
         <location filename="../mainwindow.cpp" line="2122"/>
         <source>Server Information</source>
@@ -1925,13 +1930,13 @@ Total progess: %5.</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1067"/>
-        <location filename="../mainwindow.cpp" line="1511"/>
+        <location filename="../mainwindow.cpp" line="1510"/>
         <source>Migrating data</source>
         <translation>Migrando datos</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1067"/>
-        <location filename="../mainwindow.cpp" line="1511"/>
+        <location filename="../mainwindow.cpp" line="1510"/>
         <source>Abort</source>
         <translation>Abortar</translation>
     </message>
@@ -1979,66 +1984,66 @@ Total progess: %5.</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1213"/>
-        <location filename="../mainwindow.cpp" line="1428"/>
-        <location filename="../mainwindow.cpp" line="1436"/>
+        <location filename="../mainwindow.cpp" line="1427"/>
+        <location filename="../mainwindow.cpp" line="1435"/>
         <location filename="../mainwindow.cpp" line="1546"/>
         <source>File saved at: %1</source>
         <translation>Archivo guardado en: %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1288"/>
+        <location filename="../mainwindow.cpp" line="1287"/>
         <location filename="../mainwindow.cpp" line="1900"/>
         <source>HDD Usage Graphics</source>
         <translation>Gráfico de uso de HDD</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1297"/>
+        <location filename="../mainwindow.cpp" line="1296"/>
         <location filename="../mainwindow.cpp" line="1903"/>
         <source>Executed Queries</source>
         <translation>Consultas Ejecutadas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1306"/>
+        <location filename="../mainwindow.cpp" line="1305"/>
         <location filename="../mainwindow.cpp" line="1906"/>
         <source>Data Sent/Received</source>
         <translation>Datos Enviados/Recibidos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1315"/>
-        <location filename="../mainwindow.cpp" line="1327"/>
+        <location filename="../mainwindow.cpp" line="1314"/>
+        <location filename="../mainwindow.cpp" line="1326"/>
         <source>Custom reports</source>
         <translation>Reportes personalizados</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1358"/>
+        <location filename="../mainwindow.cpp" line="1357"/>
         <location filename="../mainwindow.cpp" line="1912"/>
         <source>Slow Queries</source>
         <translation>Consultas lentas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1373"/>
+        <location filename="../mainwindow.cpp" line="1372"/>
         <source>All the replication slaves have been started.</source>
         <translation>Todos los esclavos de replicación han sido iniciados.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1379"/>
+        <location filename="../mainwindow.cpp" line="1378"/>
         <source>All the replication slaves hava been stoped.</source>
         <translation>Todos los esclavos de replicación han sido detenidos.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1426"/>
-        <location filename="../mainwindow.cpp" line="1434"/>
+        <location filename="../mainwindow.cpp" line="1425"/>
+        <location filename="../mainwindow.cpp" line="1433"/>
         <source>Save file</source>
         <translation>Guardar archivo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1426"/>
-        <location filename="../mainwindow.cpp" line="1434"/>
+        <location filename="../mainwindow.cpp" line="1425"/>
+        <location filename="../mainwindow.cpp" line="1433"/>
         <source>Settings files (*)</source>
         <translation>Archivos de configuración (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1442"/>
+        <location filename="../mainwindow.cpp" line="1441"/>
         <source>All editors saved</source>
         <translation>Todos los editores guardados</translation>
     </message>
@@ -2310,18 +2315,18 @@ Total progess: %5.</source>
         <translation>Registros limpiados.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1245"/>
+        <location filename="../mainwindow.cpp" line="1244"/>
         <location filename="../mainwindow.cpp" line="1894"/>
         <source>Calíope source documentation</source>
         <translation>Documentación del código fuente de Calíope</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1471"/>
+        <location filename="../mainwindow.cpp" line="1470"/>
         <source>Select a table</source>
         <translation>Seleccione una tabla</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1471"/>
+        <location filename="../mainwindow.cpp" line="1470"/>
         <source>Table:</source>
         <translation>Tabla:</translation>
     </message>
@@ -4681,8 +4686,8 @@ Total of queries: %5, remaining: %6.</source>
     </message>
     <message>
         <location filename="../staticfunctions.cpp" line="317"/>
-        <location filename="../staticfunctions.cpp" line="367"/>
-        <location filename="../staticfunctions.cpp" line="369"/>
+        <location filename="../staticfunctions.cpp" line="366"/>
+        <location filename="../staticfunctions.cpp" line="368"/>
         <source>The forms without a len argument return a substring from string str starting at position pos. &lt;br /&gt;The forms with a len argument return a substring len characters long from string str, starting at position pos.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4722,7 +4727,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="368"/>
+        <location filename="../staticfunctions.cpp" line="367"/>
         <source>Returns the substring from string str before count occurrences of the delimiter delim. &lt;br /&gt;If count is positive, everything to the left of the final delimiter (counting from the left) is returned. &lt;br /&gt;If count is negative, everything to the right of the final delimiter (counting from the right) is returned.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4753,67 +4758,67 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="370"/>
+        <location filename="../staticfunctions.cpp" line="369"/>
         <source>Returns expr1 – expr2 expressed as a value in the same format as expr1.&lt;br /&gt;expr1 is a time or datetime expression, and expr2 is a time expression.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="374"/>
+        <location filename="../staticfunctions.cpp" line="373"/>
         <source>Returns a string containing the time in the specified format.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="375"/>
+        <location filename="../staticfunctions.cpp" line="374"/>
         <source>Returns the time argument, converted to seconds.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="376"/>
+        <location filename="../staticfunctions.cpp" line="375"/>
         <source>Returns expr1 - expr2 expressed as a time value.&lt;br /&gt;expr1 and expr2 are time or date-and-time expressions, but both must be of the same type.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="378"/>
+        <location filename="../staticfunctions.cpp" line="377"/>
         <source>Returns datetime_expr2 - datetime_expr1, where datetime_expr1 and datetime_expr2 are date or datetime expressions.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="379"/>
+        <location filename="../staticfunctions.cpp" line="378"/>
         <source>Returns a day number (the number of days since year 0).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="380"/>
+        <location filename="../staticfunctions.cpp" line="379"/>
         <source>Returns the string str with all remstr prefixes or suffixes removed.&lt;br /&gt;If none of the specifiers BOTH, LEADING, or TRAILING is given, BOTH is assumed. remstr is optional and, if not specified, spaces are removed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="381"/>
+        <location filename="../staticfunctions.cpp" line="380"/>
         <source>Returns the number X, truncated to D decimal places.&lt;br /&gt;If D is 0, the result has no decimal point or fractional part.&lt;br /&gt;D can be negative to cause D digits left of the decimal point of the value X to become zero.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="382"/>
+        <location filename="../staticfunctions.cpp" line="381"/>
         <source>Returns the string str with all characters changed to uppercase according to the current character set mapping.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="386"/>
+        <location filename="../staticfunctions.cpp" line="385"/>
         <source>If called with no argument, returns a Unix timestamp (seconds since &apos;1970-01-01 00:00:00&apos; UTC) as an unsigned integer.&lt;br /&gt;If UNIX_TIMESTAMP() is called with a date argument, it returns the value of the argument as seconds since &apos;1970-01-01 00:00:00&apos; UTC.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="389"/>
+        <location filename="../staticfunctions.cpp" line="388"/>
         <source>Returns the current MySQL user name and host name.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="397"/>
+        <location filename="../staticfunctions.cpp" line="396"/>
         <source>Returns a string that indicates the MySQL server version.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="404"/>
+        <location filename="../staticfunctions.cpp" line="403"/>
         <source>If expr is greater than or equal to min and expr is less than or equal to max, BETWEEN returns 1, otherwise it returns 0.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8053,17 +8058,17 @@ Total of queries: %5, remaining: %6.</source>
 <context>
     <name>Transaction</name>
     <message>
-        <location filename="../dbms.cpp" line="2147"/>
+        <location filename="../dbms.cpp" line="2164"/>
         <source>Transaction started</source>
         <translation>Transacción iniciada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="2162"/>
+        <location filename="../dbms.cpp" line="2179"/>
         <source>Transaction commited</source>
         <translation>Transacción guardada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="2177"/>
+        <location filename="../dbms.cpp" line="2194"/>
         <source>Transaction rollbacked</source>
         <translation>Transacción revertida</translation>
     </message>

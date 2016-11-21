@@ -173,6 +173,8 @@ void DBMS::printQueryProgress(const MYSQL *mysql, uint stage, uint max_stage, do
 QString DBMS::millisecondsToTime(unsigned int milliseconds)
 {
   float seconds = (float) (milliseconds / 1000);
+  if (milliseconds < 1000)
+    return tr("%1 milliseconds").arg(milliseconds);
   if (seconds <= 60)
     return tr("%1 seconds").arg(seconds);
   if (seconds > 60 && seconds < 3600)
