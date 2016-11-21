@@ -351,7 +351,7 @@ QHash<QString, QString> StaticFunctions::mariadbFunctionsComplete()
   //  data.insert("SHA1", QString("<u>SHA1</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("SIGN", QString("<u>SIGN</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("SIN", QString("<u>SIN</u>(<b></b>) <br />%1").arg(tr("")));
-  //  data.insert("SLEEP", QString("<u>SLEEP</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("SLEEP", QString("0 <u>SLEEP</u>(<b>duration</b>) <br />%1").arg(tr("Sleeps (pauses) for the number of seconds given by the duration argument, then returns 0.")));
   //  data.insert("SOUNDEX", QString("<u>SOUNDEX</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("SPACE", QString("<u>SPACE</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("SQL_CALC_FOUND_ROWS", QString("<u>SQL_CALC_FOUND_ROWS</u>(<b></b>) <br />%1").arg(tr("")));
