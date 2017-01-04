@@ -121,6 +121,7 @@ private:
   QAction *beginTransacctionAction;
   QAction *commitTransacctionAction;
   QAction *rollbackTransacctionAction;
+  QAction *exportResultDataForInsertAction;
 
 signals:
   void enableDisableAction();
@@ -148,6 +149,7 @@ private slots:
   void queryPlayerRunFirstQueryActionTriggered();
   void queryPlayerRunLastQueryActionTriggered();
   void exportTableDataForInsertActionTriggered();
+  void exportResultDataForInsertActionTriggered();
   void explainSelectActionTriggered();
   void explainInsertActionTriggered();
   void safeStatementsActionTriggered(bool triggered);

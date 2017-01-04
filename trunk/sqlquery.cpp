@@ -107,6 +107,7 @@ SQLQuery::SQLQuery(Projects *project, DBMS *serverConnection, unsigned int windo
   queryToolBar->addAction(explainSelectActionWithAliasAction);
   queryToolBar->addAction(explainInsertAction);
   queryToolBar->addAction(exportTableDataForInsertAction);
+  queryToolBar->addAction(exportResultDataForInsertAction);
   queryToolBar->addAction(explainUpdateAction);
   queryToolBar->addAction(repeatQueryExecutionAction);
   queryToolBar->addAction(wordWrapOnResultAction);
@@ -192,6 +193,8 @@ void SQLQuery::retranslateUi()
   concatenateOutputAction->setToolTip(concatenateOutputAction->text());
   exportTableDataForInsertAction->setText(tr("Export table data for INSERT"));
   exportTableDataForInsertAction->setToolTip(exportTableDataForInsertAction->text());
+  exportResultDataForInsertAction->setText(tr("Export result data for INSERT"));
+  exportResultDataForInsertAction->setToolTip(exportResultDataForInsertAction->text());
   explainSelectAction->setText(tr("Explain SELECT"));
   explainSelectAction->setToolTip(explainSelectAction->text());
   explainInsertAction->setText(tr("Explain INSERT"));
@@ -292,6 +295,9 @@ void SQLQuery::createActions()
   exportTableDataForInsertAction = new QAction(this);
   exportTableDataForInsertAction->setIcon(QIcon(":/images/svg/application-x-executable.svg"));
   connect(exportTableDataForInsertAction, SIGNAL(triggered()), this, SLOT(exportTableDataForInsertActionTriggered()));
+  exportResultDataForInsertAction = new QAction(this);
+  exportResultDataForInsertAction->setIcon(QIcon(":/images/svg/application-x-executable.svg"));
+  connect(exportResultDataForInsertAction, SIGNAL(triggered()), this, SLOT(exportResultDataForInsertActionTriggered()));
   explainSelectAction = new QAction(this);
   explainSelectAction->setIcon(QIcon(":/images/svg/application-x-executable.svg"));
   explainSelectAction->setShortcut(QKeySequence(Qt::Key_F7));
@@ -681,6 +687,61 @@ void SQLQuery::exportTableDataForInsertActionTriggered()
       }
     } else {
       resutlEditor->setPlainText(tr("Incorrect use of the EXPORT DATA FOR INSERT Option. Example: EXPORT DATA FOR INSERT `columns_pri`, it only works for the current database."));
+    }
+  }
+  if (exportAction->isChecked()) {
+    serverConnection->saveOutputToFile(resutlEditor->toPlainText(), "Text Files (*.txt)", settings.value("General/LastTextFile", "").toString());
+  }
+  QApplication::restoreOverrideCursor();
+}
+
+void SQLQuery::exportResultDataForInsertActionTriggered()
+{
+  QString outPut;
+  QString fields;
+  QString table;
+
+  QApplication::setOverrideCursor(Qt::WaitCursor);
+  foreach (QString statement, scriptEditor->textEditor->textCursor().selection().toPlainText().split(QRegExp(";\\s+"), QString::SkipEmptyParts)) {
+    if (logStatements) //Use a variable here because is faster
+      serverConnection->logStatement(statement);
+    outPut = QString();
+    fields = QString();
+    table = QString();
+    if (statement.startsWith("EXPORT RESULT SELECT * FROM `")) {
+      QRegExp expression("`[A-Za-z_\\d%]*`");
+      expression.indexIn(statement);
+      table = expression.capturedTexts().at(0).mid(1, expression.capturedTexts().at(0).length() - 2);
+      QString queryString("SELECT `COLUMN_NAME` FROM `information_schema`.`COLUMNS` WHERE `TABLE_SCHEMA` = '" + serverConnection->getDatabase() + "' AND `TABLE_NAME` = '" + table + "'");
+      foreach (QString column, serverConnection->runQuerySingleColumn(queryString))
+        fields += "`" + column + "`, ";
+      fields = fields.mid(0, fields.length() - 2);
+      QString rowData("INSERT INTO `" + table + "` (" + fields + ") VALUES (");
+      QString rowTMP;
+      QRegExp expressionWHERE(" WHERE `[A-Za-z_\\d%]*.*");
+      expressionWHERE.indexIn(statement);
+      QList<QStringList> *rows = serverConnection->runQuery(statement.mid(14, statement.length() - 1));
+
+      for (int row = 0; row < rows->count() - 1; row++) {
+        for (int row2 = 0; row2 < rows->at(row).count(); row2++) {
+          rowTMP += "'" + rows->at(row).at(row2) + "', ";
+        }
+        outPut += rowData + rowTMP.mid(0, rowTMP.length() - 2) + ");\n";
+        rowTMP = "";
+      }
+      if (radioTXT->isChecked()) {
+        QString fileName = QFileDialog::getSaveFileName(this, tr("Select a file"), settings.value("General/LastSQLFile", "").toString(), "SQL Files (*.sql)");
+        QFile file(fileName);
+        if (!file.open(QFile::WriteOnly | QFile::Text))
+          emit statusBarMessage(tr("Cannot write file %1:\n%2.").arg(fileName).arg(file.errorString()));
+        QTextStream out(&file);
+        out << outPut.toUtf8();
+        file.close();
+      } else {
+        resutlEditor->setPlainText(resutlEditor->toPlainText() + "\n" + outPut);
+      }
+    } else {
+      resutlEditor->setPlainText(tr("Incorrect use of the EXPORT RESULT FOR INSERT Option. Example: EXPORT RESULT SELECT * FROM `PartitionedTale` PARTITION (`Partition1`), it only works for the current database and on SELECT *."));
     }
   }
   if (exportAction->isChecked()) {
