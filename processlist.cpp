@@ -105,13 +105,10 @@ ProcessList::ProcessList(DBMS *serverConnection)
   groupBoxHLayout->addWidget(pushButtonKillIdleThreads);
   spinBoxTimeLimit = new QSpinBox;
   spinBoxTimeLimit->setRange(0, 2147483647);
-  spinBoxTimeLimit->setSuffix(" " + tr("seconds"));
   groupBoxHLayout->addWidget(spinBoxTimeLimit);
   spinBoxTimeLimit->setValue(settings.value("Processes/TimeToKillThreads", 30).toUInt());
   spinBoxRefreshRate = new QSpinBox;
   spinBoxRefreshRate->setRange(0, 2147483647);
-  spinBoxRefreshRate->setPrefix(tr("Refresh rate:") + " ");
-  spinBoxRefreshRate->setSuffix(" " + tr("seconds"));
   groupBoxHLayout->addWidget(spinBoxRefreshRate);
   spinBoxRefreshRate->setValue(settings.value("Processes/RefreshRate", 1).toUInt());
   connect(spinBoxRefreshRate, SIGNAL(valueChanged(int)), this, SLOT(refreshRateSlot(int)));
@@ -131,6 +128,7 @@ ProcessList::ProcessList(DBMS *serverConnection)
   killQuery->setIcon(QIcon::fromTheme("dialog-close", QIcon(":/images/svg/document-close-4.svg")));
   connect(killQuery, SIGNAL(triggered()), this, SLOT(killQuerySlot()));
   menu->addAction(killQuery);
+  timerRefresh->setInterval(1000 * settings.value("Processes/RefreshRate", 1).toInt());
   timerRefresh->start();
   retranslateUi();
   setWidget(widMain);
@@ -148,7 +146,10 @@ void ProcessList::retranslateUi()
   pushButtonKillIdleThreads->setText(tr("Kill idle threads"));
   pushButtonKillIdleThreads->setToolTip(tr("Kills thread exeding the given seconds inactive."));
   spinBoxTimeLimit->setToolTip(tr("Time to kill threads."));
+  spinBoxTimeLimit->setSuffix(" " + tr("seconds"));
   spinBoxRefreshRate->setToolTip(tr("Refresh rate."));
+  spinBoxRefreshRate->setPrefix(tr("Refresh rate:") + " ");
+  spinBoxRefreshRate->setSuffix(" " + tr("seconds"));
   killQuery->setText(tr("Kill query"));
   killQuery->setToolTip(tr("Kills the given query."));
 }
