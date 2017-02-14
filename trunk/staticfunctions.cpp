@@ -205,8 +205,8 @@ QHash<QString, QString> StaticFunctions::mariadbFunctionsComplete()
   //  data.insert("ACOS", QString("<u>ACOS</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("ADDDATE", QString("<u>ADDDATE</u>(<b>expr1, expr2</b>) <br />%1").arg(tr("")));
   data.insert("ADDTIME", QString("<u>ADDTIME</u>(<b></b>) <br />%1").arg(tr("Adds expr2 to expr1 and returns the result.<br />expr1 is a time or datetime expression, and expr2 is a time expression.")));
-  //  data.insert("AES_DECRYPT", QString("<u>AES_DECRYPT</u>(<b></b>) <br />%1").arg(tr("")));
-  //  data.insert("AES_ENCRYPT", QString("<u>AES_ENCRYPT</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("AES_DECRYPT", QString("binary <u>AES_DECRYPT</u>(<b>crypt_str, key_str</b>) <br />%1").arg(tr("This function decrypts data using the official AES (Advanced Encryption Standard) algorithm.")));
+  data.insert("AES_ENCRYPT", QString("binary <u>AES_ENCRYPT</u>(<b>crypt_str, key_str</b>) <br />%1").arg(tr("This function encrypts data using the official AES (Advanced Encryption Standard) algorithm.")));
   //  data.insert("ASCII", QString("<u>ASCII</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("ASIN", QString("<u>ASIN</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("ATAN", QString("<u>ATAN</u>(<b></b>) <br />%1").arg(tr("")));
@@ -279,7 +279,7 @@ QHash<QString, QString> StaticFunctions::mariadbFunctionsComplete()
   //  data.insert("GET_LOCK", QString("<u>GET_LOCK</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("GREATEST", QString("<u>GREATEST</u>(<b></b>) <br />%1").arg(tr("")));
   data.insert("GROUP_CONCAT", QString("<u>GROUP_CONCAT</u>(<b>expr</b>) <br />%1").arg(tr("This function returns a string result with the concatenated non-NULL values from a group. It returns NULL if there are no non-NULL values.")));
-  //  data.insert("HEX", QString("<u>HEX</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("HEX", QString("string <u>HEX</u>(<b>str</b>) <br />%1").arg(tr("For a string argument str, HEX() returns a hexadecimal string representation of str where each byte of each character in str is converted to two hexadecimal digits.")));
   //  data.insert("HOUR_MICROSECOND", QString("<u>HOUR_MICROSECOND</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("HOUR_MINUTE", QString("<u>HOUR_MINUTE</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("HOUR_SECOND", QString("<u>HOUR_SECOND</u>(<b></b>) <br />%1").arg(tr("")));
@@ -389,7 +389,7 @@ QHash<QString, QString> StaticFunctions::mariadbFunctionsComplete()
   //  data.insert("UTC_DATE", QString("<u>UTC_DATE</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("UTC_TIME", QString("<u>UTC_TIME</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("UTC_TIMESTAMP", QString("<u>UTC_TIMESTAMP</u>(<b></b>) <br />%1").arg(tr("")));
-  //  data.insert("UUID", QString("<u>UUID</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("UUID", QString("string <u>UUID</u>(<b></b>) <br />%1").arg(tr("Returns a Universal Unique Identifier (UUID) generated according to RFC 4122")));
   //  data.insert("VAR_POP", QString("<u>VAR_POP</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("VAR_SAMP", QString("<u>VAR_SAMP</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("VARIANCE", QString("<u>VARIANCE</u>(<b></b>) <br />%1").arg(tr("")));
