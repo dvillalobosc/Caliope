@@ -212,10 +212,10 @@ void DatabaseComparision::comparision(bool primary)
     }
   else
     foreach (QTreeWidgetItem *item, secondaryTables) {
-      database = item->text(0).split(".").at(0);
-      table = item->text(0).split(".").at(1);
-      statement = QString("SELECT '%1' AS `" + tr("Server") + "`, `TABLE_SCHEMA` AS `" + tr("Database") + "`, `TABLE_NAME` AS `" + tr("Table") + "`, FORMAT(`DATA_LENGTH`, 0) AS `" + tr("Data length") + "`, (SELECT COUNT(*) FROM %2) AS `" + tr("Row count") + "`, FORMAT(%3, 0) AS `" + tr("Checksum") + "` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '%4' AND `TABLE_NAME` = '%5'").arg(serverConnection->getHostName()).arg(item->text(0)).arg(serverConnection->database(database)->tableChecksum(table)).arg(database).arg(table);
       if (item->checkState(0) == Qt::Checked && item->parent()) {
+        database = item->text(0).split(".").at(0);
+        table = item->text(0).split(".").at(1);
+        statement = QString("SELECT '%1' AS `" + tr("Server") + "`, `TABLE_SCHEMA` AS `" + tr("Database") + "`, `TABLE_NAME` AS `" + tr("Table") + "`, FORMAT(`DATA_LENGTH`, 0) AS `" + tr("Data length") + "`, (SELECT COUNT(*) FROM %2) AS `" + tr("Row count") + "`, FORMAT(%3, 0) AS `" + tr("Checksum") + "` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '%4' AND `TABLE_NAME` = '%5'").arg(serverConnection->getHostName()).arg(item->text(0)).arg(serverConnection->database(database)->tableChecksum(table)).arg(database).arg(table);
         data = serverConnection->runQuerySimpleResult(statement);
         for (int counter = 0; counter < data->size(); counter++) {
           rows->append(data->at(counter));
