@@ -185,50 +185,73 @@ void DatabaseComparision::comparePrimarySlot()
 void DatabaseComparision::comparision(bool primary)
 {
   QApplication::setOverrideCursor(Qt::WaitCursor);
-  QList<QStringList> *data = new QList<QStringList>();
   QList<QStringList> *rows = new QList<QStringList>();
-  rows->append(QStringList() << tr("Server") << tr("Database") << tr("Table") << tr("Data length") << tr("Row count") << tr("Checksum"));
+  rows->append(QStringList() << tr("Server") << tr("Database") << tr("Table") << tr("Row count") << tr("Data length") << tr("Checksum")
+               << tr("Row count validation")
+               << tr("Data length validation")
+               << tr("Checksum validation")
+               );
   QString database;
   QString table;
-  QString statement;
+  QList<QTreeWidgetItem *> tablesToCompare;
   int unsigned itemProcessed = 0;
-  if (primary)
-    foreach (QTreeWidgetItem *item, tables) {
-      if (item->checkState(0) == Qt::Checked && item->parent()) {
-        database = item->text(0).split(".").at(0);
-        table = item->text(0).split(".").at(1);
-        statement = QString("SELECT '%1' AS `" + tr("Server") + "`, `TABLE_SCHEMA` AS `" + tr("Database") + "`, `TABLE_NAME` AS `" + tr("Table") + "`, FORMAT(`DATA_LENGTH`, 0) AS `" + tr("Data length") + "`, (SELECT COUNT(*) FROM %2) AS `" + tr("Row count") + "`, FORMAT(%3, 0) AS `" + tr("Checksum") + "` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '%4' AND `TABLE_NAME` = '%5'").arg(serverConnection->getHostName()).arg(item->text(0)).arg(serverConnection->database(database)->tableChecksum(table)).arg(database).arg(table);
-        data = serverConnection->runQuerySimpleResult(statement);
-        for (int counter = 0; counter < data->size(); counter++) {
-          rows->append(data->at(counter));
-        }
-        statement = QString("SELECT '%1' AS `" + tr("Server") + "`, `TABLE_SCHEMA` AS `" + tr("Database") + "`, `TABLE_NAME` AS `" + tr("Table") + "`, FORMAT(`DATA_LENGTH`, 0) AS `" + tr("Data length") + "`, (SELECT COUNT(*) FROM %2) AS `" + tr("Row count") + "`, FORMAT(%3, 0) AS `" + tr("Checksum") + "` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '%4' AND `TABLE_NAME` = '%5'").arg(secondaryServerConnection->getHostName()).arg(item->text(0)).arg(secondaryServerConnection->database(database)->tableChecksum(table)).arg(database).arg(table);
-        data = secondaryServerConnection->runQuerySimpleResult(statement);
-        for (int counter = 0; counter < data->size(); counter++) {
-          rows->append(data->at(counter));
-        }
-      }
-      emit statusBarProgressMessage(item->text(0), 0, (++itemProcessed * 100 / tables.count()));
-    }
-  else
-    foreach (QTreeWidgetItem *item, secondaryTables) {
-      if (item->checkState(0) == Qt::Checked && item->parent()) {
-        database = item->text(0).split(".").at(0);
-        table = item->text(0).split(".").at(1);
-        statement = QString("SELECT '%1' AS `" + tr("Server") + "`, `TABLE_SCHEMA` AS `" + tr("Database") + "`, `TABLE_NAME` AS `" + tr("Table") + "`, FORMAT(`DATA_LENGTH`, 0) AS `" + tr("Data length") + "`, (SELECT COUNT(*) FROM %2) AS `" + tr("Row count") + "`, FORMAT(%3, 0) AS `" + tr("Checksum") + "` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '%4' AND `TABLE_NAME` = '%5'").arg(serverConnection->getHostName()).arg(item->text(0)).arg(serverConnection->database(database)->tableChecksum(table)).arg(database).arg(table);
-        data = serverConnection->runQuerySimpleResult(statement);
-        for (int counter = 0; counter < data->size(); counter++) {
-          rows->append(data->at(counter));
-        }
-        statement = QString("SELECT '%1' AS `" + tr("Server") + "`, `TABLE_SCHEMA` AS `" + tr("Database") + "`, `TABLE_NAME` AS `" + tr("Table") + "`, FORMAT(`DATA_LENGTH`, 0) AS `" + tr("Data length") + "`, (SELECT COUNT(*) FROM %2) AS `" + tr("Row count") + "`, FORMAT(%3, 0) AS `" + tr("Checksum") + "` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '%4' AND `TABLE_NAME` = '%5'").arg(secondaryServerConnection->getHostName()).arg(item->text(0)).arg(secondaryServerConnection->database(database)->tableChecksum(table)).arg(database).arg(table);
-        data = secondaryServerConnection->runQuerySimpleResult(statement);
-        for (int counter = 0; counter < data->size(); counter++) {
-          rows->append(data->at(counter));
-        }
-      }
-      emit statusBarProgressMessage(item->text(0), 0, (++itemProcessed * 100 / secondaryTables.count()));
-    }
+  unsigned long rowCount1 = 0;
+  unsigned long rowCount2 = 0;
+  unsigned long dataLength1 = 0;
+  unsigned long dataLength2 = 0;
+  unsigned long checksum1 = 0;
+  unsigned long checksum2 = 0;
 
+  if (primary)
+    tablesToCompare = tables;
+  else
+    tablesToCompare = secondaryTables;
+
+  foreach (QTreeWidgetItem *item, tables) {
+    if (item->checkState(0) == Qt::Checked && item->parent()) {
+      database = item->text(0).split(".").at(0);
+      table = item->text(0).split(".").at(1);
+      rowCount1 = serverConnection->table(table, database)->getRowCount();
+      rowCount2 = secondaryServerConnection->table(table, database)->getRowCount();
+      dataLength1 = serverConnection->table(table, database)->getDataLength();
+      dataLength2 = secondaryServerConnection->table(table, database)->getDataLength();
+      checksum1 = serverConnection->table(table, database)->getChecksum();
+      checksum2 = secondaryServerConnection->table(table, database)->getChecksum();
+      rows->append(QStringList() << serverConnection->getHostName()
+                   << database
+                   << table
+                   << QString("%1").arg(rowCount1)
+                   << QString("%1").arg(dataLength1)
+                   << QString("%1").arg(checksum1)
+                   << (primary ? (rowCount1 != rowCount2 ? "*" : "") : "")
+                   << (primary ? (dataLength1 != dataLength2 ? "*" : "") : "")
+                   << (primary ? (checksum1 != checksum2 ? "*" : "") : "")
+                   );
+      rows->append(QStringList() << secondaryServerConnection->getHostName()
+                   << database
+                   << table
+                   << QString("%1").arg(rowCount2)
+                   << QString("%1").arg(dataLength2)
+                   << QString("%1").arg(checksum2)
+                   << (primary ? "" : (rowCount1 != rowCount2 ? "*" : ""))
+                   << (primary ? "" : (dataLength1 != dataLength2 ? "*" : ""))
+                   << (primary ? "" : (checksum1 != checksum2 ? "*" : ""))
+                   );
+      rows->append(QStringList() << "***"
+                   << "***"
+                   << "***"
+                   << "***"
+                   << "***"
+                   << "***"
+                   << "***"
+                   << "***"
+                   << "***"
+                   );
+    }
+    emit statusBarProgressMessage(item->text(0), 0, (++itemProcessed * 100 / tables.count()));
+  }
+  //Remove the last ***
+ rows->takeLast();
 
   int row = 0;
   int row2 = 0;
@@ -256,9 +279,13 @@ void DatabaseComparision::comparision(bool primary)
 
   //Print the data
   for (row = 1; row < rows->count(); row++) {
-    output += "\n|" + ((row % 2 != 0) ? highlightError(rows, row) : "");
+    //output += "\n|" + ((row % 2 != 0) ? highlightError(rows, row) : "");
+    output += "\n|";
     for (row2 = 0; row2 < rows->at(row).count(); row2++)
-      output +=  " " + rows->at(row).at(row2).leftJustified(maxWidthList.at(row2), ' ') + " |";
+      if (rows->at(row).at(row2) == "***")
+        output +=  QString('-').repeated(maxWidthList.at(row2) + 2) + "|";
+      else
+        output +=  " " + rows->at(row).at(row2).leftJustified(maxWidthList.at(row2), ' ') + " |";
   }
 
   //Print the botton border
@@ -268,15 +295,6 @@ void DatabaseComparision::comparision(bool primary)
 
   resutlEditor->setPlainText(output);
   QApplication::restoreOverrideCursor();
-}
-
-QString DatabaseComparision::highlightError(QList<QStringList> *rows, int row)
-{
-  if (rows->at(row + 1).count() == 1)
-    return tr("Table does not exist.");
-  if((rows->at(row).at(4) != rows->at(row + 1).at(4)) || (rows->at(row).at(5) != rows->at(row + 1).at(5)))
-    return "*";
-  return "";
 }
 
 void DatabaseComparision::compareSeconadarySlot()
@@ -292,7 +310,7 @@ void DatabaseComparision::itemActivatedSlot(QTreeWidgetItem *item, int column)
       if (tableItem->parent() == item)
         tableItem->setCheckState(column, item->checkState(column));
     if (item->childCount() == 0)
-      foreach (QString table, serverConnection->database(item->text(0))->getTables()) {
+      foreach (QString table, serverConnection->database(item->text(0))->getLocalTables()) {
         QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(item->text(0) + "." + table), ItemTypes::Table);
         itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         itemChild->setIcon(0, QIcon(":/images/svg/table.svg"));
@@ -311,7 +329,7 @@ void DatabaseComparision::secondaryItemActivatedSlot(QTreeWidgetItem *item, int 
       if (tableItem->parent() == item)
         tableItem->setCheckState(column, item->checkState(column));
     if (item->childCount() == 0)
-      foreach (QString table, secondaryServerConnection->database(item->text(0))->getTables()) {
+      foreach (QString table, secondaryServerConnection->database(item->text(0))->getLocalTables()) {
         QTreeWidgetItem *itemChild = new QTreeWidgetItem(item, QStringList(item->text(0) + "." + table), ItemTypes::Table);
         itemChild->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
         itemChild->setIcon(0, QIcon(":/images/svg/table.svg"));

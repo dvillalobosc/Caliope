@@ -1493,63 +1493,53 @@ Total progess: %5.</source>
         <translation>Conectado satisfactoriamente a: %1</translation>
     </message>
     <message>
-        <location filename="../databasecomparision.cpp" line="190"/>
-        <location filename="../databasecomparision.cpp" line="200"/>
-        <location filename="../databasecomparision.cpp" line="205"/>
-        <location filename="../databasecomparision.cpp" line="217"/>
-        <location filename="../databasecomparision.cpp" line="223"/>
+        <location filename="../databasecomparision.cpp" line="189"/>
         <source>Server</source>
         <translation>Servidor</translation>
     </message>
     <message>
-        <location filename="../databasecomparision.cpp" line="190"/>
-        <location filename="../databasecomparision.cpp" line="200"/>
-        <location filename="../databasecomparision.cpp" line="205"/>
-        <location filename="../databasecomparision.cpp" line="217"/>
-        <location filename="../databasecomparision.cpp" line="223"/>
+        <location filename="../databasecomparision.cpp" line="189"/>
         <source>Database</source>
         <translation>Base de Datos</translation>
     </message>
     <message>
-        <location filename="../databasecomparision.cpp" line="190"/>
-        <location filename="../databasecomparision.cpp" line="200"/>
-        <location filename="../databasecomparision.cpp" line="205"/>
-        <location filename="../databasecomparision.cpp" line="217"/>
-        <location filename="../databasecomparision.cpp" line="223"/>
+        <location filename="../databasecomparision.cpp" line="189"/>
         <source>Table</source>
         <translation>Tabla</translation>
     </message>
     <message>
-        <location filename="../databasecomparision.cpp" line="190"/>
-        <location filename="../databasecomparision.cpp" line="200"/>
-        <location filename="../databasecomparision.cpp" line="205"/>
-        <location filename="../databasecomparision.cpp" line="217"/>
-        <location filename="../databasecomparision.cpp" line="223"/>
+        <location filename="../databasecomparision.cpp" line="189"/>
         <source>Data length</source>
         <translation>Tamaño de los datos</translation>
     </message>
     <message>
-        <location filename="../databasecomparision.cpp" line="190"/>
-        <location filename="../databasecomparision.cpp" line="200"/>
-        <location filename="../databasecomparision.cpp" line="205"/>
-        <location filename="../databasecomparision.cpp" line="217"/>
-        <location filename="../databasecomparision.cpp" line="223"/>
+        <location filename="../databasecomparision.cpp" line="189"/>
         <source>Row count</source>
         <translation>Conteo de filas</translation>
     </message>
     <message>
-        <location filename="../databasecomparision.cpp" line="190"/>
-        <location filename="../databasecomparision.cpp" line="200"/>
-        <location filename="../databasecomparision.cpp" line="205"/>
-        <location filename="../databasecomparision.cpp" line="217"/>
-        <location filename="../databasecomparision.cpp" line="223"/>
+        <location filename="../databasecomparision.cpp" line="189"/>
         <source>Checksum</source>
-        <translation>Checksum</translation>
+        <translation>Suma de comprobación</translation>
     </message>
     <message>
-        <location filename="../databasecomparision.cpp" line="276"/>
+        <location filename="../databasecomparision.cpp" line="190"/>
+        <source>Row count validation</source>
+        <translation>Validación de conteo de filas</translation>
+    </message>
+    <message>
+        <location filename="../databasecomparision.cpp" line="191"/>
+        <source>Data length validation</source>
+        <translation>Validación de tamaño de los datos</translation>
+    </message>
+    <message>
+        <location filename="../databasecomparision.cpp" line="192"/>
+        <source>Checksum validation</source>
+        <translation>Validación de suma de comprobación</translation>
+    </message>
+    <message>
         <source>Table does not exist.</source>
-        <translation>La tabla no existe.</translation>
+        <translation type="vanished">La tabla no existe.</translation>
     </message>
 </context>
 <context>
@@ -3034,7 +3024,7 @@ Total progess: %5.</source>
 <context>
     <name>ProcessList</name>
     <message>
-        <location filename="../processlist.cpp" line="141"/>
+        <location filename="../processlist.cpp" line="139"/>
         <source>Process List</source>
         <translation>Lista de Procesos</translation>
     </message>
@@ -3127,68 +3117,68 @@ Total progess: %5.</source>
         <translation>Información de datos binarios</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="108"/>
-        <location filename="../processlist.cpp" line="114"/>
+        <location filename="../processlist.cpp" line="149"/>
+        <location filename="../processlist.cpp" line="152"/>
         <source>seconds</source>
         <translation>segundos</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="113"/>
+        <location filename="../processlist.cpp" line="151"/>
         <source>Refresh rate:</source>
         <translation>Taza de refrescado:</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="144"/>
+        <location filename="../processlist.cpp" line="142"/>
         <source>Actions</source>
         <translation>Acciones</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="145"/>
+        <location filename="../processlist.cpp" line="143"/>
         <source>Stop refreshing</source>
         <translation>Detener refrescado</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="146"/>
+        <location filename="../processlist.cpp" line="144"/>
         <source>Kill thread</source>
         <translation>Matar hilo</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="147"/>
+        <location filename="../processlist.cpp" line="145"/>
         <source>Kills the given thread.</source>
         <translation>Mata el proceso dado.</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="148"/>
+        <location filename="../processlist.cpp" line="146"/>
         <source>Kill idle threads</source>
         <translation>Matar hilos inactivos</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="149"/>
+        <location filename="../processlist.cpp" line="147"/>
         <source>Kills thread exeding the given seconds inactive.</source>
         <translation>Mata los hilos que exedan el tiempo dado en segundos de inactividad.</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="150"/>
+        <location filename="../processlist.cpp" line="148"/>
         <source>Time to kill threads.</source>
         <translation>Tiempo para matar los hios.</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="151"/>
+        <location filename="../processlist.cpp" line="150"/>
         <source>Refresh rate.</source>
         <translation>Taza de refrescado.</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="152"/>
+        <location filename="../processlist.cpp" line="153"/>
         <source>Kill query</source>
         <translation>Matar consulta</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="153"/>
+        <location filename="../processlist.cpp" line="154"/>
         <source>Kills the given query.</source>
         <translation>Mata la consulta dada.</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="190"/>
+        <location filename="../processlist.cpp" line="191"/>
         <source>Kill query: %1</source>
         <translation>Matar consulta %1</translation>
     </message>
@@ -3197,7 +3187,7 @@ Total progess: %5.</source>
         <translation type="obsolete">Mata los hilos que exceden 30 inactivos.</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="189"/>
+        <location filename="../processlist.cpp" line="190"/>
         <source>Kill thread: %1</source>
         <translation>Matar hilo: %1</translation>
     </message>
@@ -3648,7 +3638,7 @@ Total progess: %5.</source>
     <message>
         <location filename="../sqlquery.cpp" line="196"/>
         <source>Export result data for INSERT</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar datos resultantes para INSERT</translation>
     </message>
     <message>
         <location filename="../sqlquery.cpp" line="198"/>
@@ -3743,7 +3733,7 @@ Total progess: %5.</source>
     <message>
         <location filename="../sqlquery.cpp" line="744"/>
         <source>Incorrect use of the EXPORT RESULT FOR INSERT Option. Example: EXPORT RESULT SELECT * FROM `PartitionedTale` PARTITION (`Partition1`), it only works for the current database and on SELECT *.</source>
-        <translation type="unfinished"></translation>
+        <translation>Uso incorrecto de la Opción EXPORT RESULT FOR INSERT. Ejemplo EXPORT RESULT SELECT * FROM `PartitionedTale` PARTITION (`Partition1`), sólo trabaja en la base de datos actual y con SELECT *.</translation>
     </message>
     <message>
         <location filename="../sqlquery.cpp" line="949"/>
@@ -4750,6 +4740,16 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../staticfunctions.cpp" line="208"/>
+        <source>This function decrypts data using the official AES (Advanced Encryption Standard) algorithm.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../staticfunctions.cpp" line="209"/>
+        <source>This function encrypts data using the official AES (Advanced Encryption Standard) algorithm.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../staticfunctions.cpp" line="231"/>
         <source>Concatenate the strings with the given separator.</source>
         <translation type="unfinished"></translation>
@@ -4757,6 +4757,11 @@ Total of queries: %5, remaining: %6.</source>
     <message>
         <location filename="../staticfunctions.cpp" line="233"/>
         <source>Returns the connection ID (thread ID) for the connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../staticfunctions.cpp" line="282"/>
+        <source>For a string argument str, HEX() returns a hexadecimal string representation of str where each byte of each character in str is converted to two hexadecimal digits.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4827,6 +4832,11 @@ Total of queries: %5, remaining: %6.</source>
     <message>
         <location filename="../staticfunctions.cpp" line="388"/>
         <source>Returns the current MySQL user name and host name.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../staticfunctions.cpp" line="392"/>
+        <source>Returns a Universal Unique Identifier (UUID) generated according to RFC 4122</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -8075,17 +8085,17 @@ Total of queries: %5, remaining: %6.</source>
 <context>
     <name>Transaction</name>
     <message>
-        <location filename="../dbms.cpp" line="2164"/>
+        <location filename="../dbms.cpp" line="2197"/>
         <source>Transaction started</source>
         <translation>Transacción iniciada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="2179"/>
+        <location filename="../dbms.cpp" line="2212"/>
         <source>Transaction commited</source>
         <translation>Transacción guardada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="2194"/>
+        <location filename="../dbms.cpp" line="2227"/>
         <source>Transaction rollbacked</source>
         <translation>Transacción revertida</translation>
     </message>

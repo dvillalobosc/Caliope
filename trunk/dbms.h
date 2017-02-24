@@ -223,6 +223,9 @@ public:
   QStringList getFields();
   bool dropIndex(QString indexName);
   QList<QStringList>* getIndexes();
+  unsigned long getChecksum();
+  unsigned long getRowCount();
+  unsigned long getDataLength();
 
 private:
   DBMS *serverConnection;
@@ -272,7 +275,6 @@ public:
   unsigned long tableCount();
   QStringList info();
   QStringList getLocalTables();
-  QString tableChecksum(QString table = QString());
 
 private:
   DBMS *serverConnection;

@@ -48,7 +48,6 @@ private:
   BaseTextEditor *resutlEditor;
   QPushButton *pushButtonPrimaryCompare;
   QPushButton *pushButtonSecondaryCompare;
-  QString highlightError(QList<QStringList> *rows, int row);
   void comparision(bool primary = true);
   DTitleLabel *dTitleLabel;
   QGroupBox *buttonGroup;
