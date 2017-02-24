@@ -1641,20 +1641,6 @@ QStringList Database::getLocalTables()
   return QStringList();
 }
 
-QString Database::tableChecksum(QString table)
-{
-  switch(serverConnection->getDBMSType()) {
-  case StaticFunctions::MySQL:
-  case StaticFunctions::MariaDB:
-    return serverConnection->runQuery("CHECKSUM TABLE `" + databaseName + "`.`" + table + "`")->at(0).at(1);
-    break;
-  case StaticFunctions::Undefined:
-  default:
-    break;
-  }
-  return QString();
-}
-
 /***************************************************************************************************************/
 
 Table::Table(DBMS *serverConnection, QString tableName, QString database)
@@ -1667,11 +1653,58 @@ Table::Table(DBMS *serverConnection, QString tableName, QString database)
     this->database = StaticFunctions::quoteSymbol(database);
 }
 
+unsigned long Table::getChecksum()
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    return serverConnection->runQuery("CHECKSUM TABLE " + formalName())->at(0).at(1).toULong();
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return 0;
+}
+
+unsigned long Table::getRowCount()
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    return serverConnection->runQuery("SELECT COUNT(*) FROM " + formalName())->at(0).at(0).toULong();
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return 0;
+}
+
+unsigned long Table::getDataLength()
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    return serverConnection->runQuery("SELECT `DATA_LENGTH` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '"
+                                      + StaticFunctions::unquoteSymbol(database)
+                                      + "' AND `TABLE_NAME` = '"
+                                      + StaticFunctions::unquoteSymbol(tableName)
+                                      + "'")->at(0).at(0).toULong();
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return 0;
+}
+
 bool Table::renameTable(QString newName)
 {
   return serverConnection->executeQuery("RENAME TABLE " + formalName()
                                         + " TO " + StaticFunctions::quoteSymbol(database)
                                         + "." + StaticFunctions::quoteSymbol(newName));
+  this->tableName = StaticFunctions::quoteSymbol(newName);
 }
 
 bool Table::changeEngine(QString newEngine)
