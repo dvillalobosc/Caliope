@@ -1,7 +1,7 @@
 /*****************************************************************************
 *
 * This file is part of Calíope Database Administrator.
-* Copyright (c) 2008-2014 David Villalobos Cambronero (dvillalobosc@yahoo.com).
+* Copyright (c) 2008-2018 David Villalobos Cambronero (dvillalobosc@yahoo.com).
 *
 * Calíope is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -37,6 +37,11 @@ DTableView::DTableView(QList<QStringList> *headers, QAbstractItemView::Selection
   setSelectionMode(selectionMode);
   connect(this, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(doubleClickedSlot(QModelIndex)));
   mainMenu = new QMenu(this);
+  sortingColumn = 0;
+  sortOrder = Qt::AscendingOrder;
+  dheaderView = new DheaderView();
+  connect(dheaderView, SIGNAL(sectionClicked(int)), SLOT(sortingColumnSlot(int)));
+  setHorizontalHeader(dheaderView);
 }
 
 void DTableView::setHeaders(QList<QStringList> *headers)
@@ -106,7 +111,9 @@ void DTableView::setModelData(QList<QStringList> *modelData, bool readOnly, unsi
   resizeColumnsToContents();
   resizeRowsToContents();
   setSortingEnabled(true);
-  sortByColumn(orderColumn, Qt::AscendingOrder);
+  if (orderColumn == 0)
+    orderColumn = sortingColumn;
+  sortByColumn(orderColumn, sortOrder);
   itemModel->blockSignals(false);
   emit loadStarted(tr("Records loaded."), 0, 100);
   QApplication::restoreOverrideCursor();
@@ -136,6 +143,15 @@ void DTableView::doubleClickedSlot(const QModelIndex &index)
   for(int column = 0; column <= headersList->count(); column++)
     row.append(itemModel->index(index.row(), column).data());
   emit rowDoubleClicked(row);
+}
+
+void DTableView::sortingColumnSlot(int index)
+{
+  if (sortingColumn == index)
+    sortOrder = Qt::DescendingOrder;
+  else
+    sortOrder = Qt::AscendingOrder;
+  sortingColumn = index;
 }
 
 QModelIndex DTableView::currentIndexItem()

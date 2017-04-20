@@ -1,7 +1,7 @@
 /*****************************************************************************
 *
 * This file is part of Calíope Database Administrator.
-* Copyright (c) 2008-2014 David Villalobos Cambronero (dvillalobosc@yahoo.com).
+* Copyright (c) 2008-2018 David Villalobos Cambronero (dvillalobosc@yahoo.com).
 *
 * Calíope is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -141,6 +141,24 @@ void BaseTextEditor::keyPressEvent(QKeyEvent *event)
   QTextCursor cursor;
   Qt::KeyboardModifiers modifiersControlShift;
   switch (event->key()) {
+  case Qt::Key_AltGr:
+    //Qt does no handle AltGrModifiers
+    //Qt::ALT Qt::AltModifier The normal Alt keys, but not keys like AltGr.
+    //http://doc.qt.io/qt-5/qt.html
+    //Qt::Key_QuoteLeft
+    smartTextInsertion("`", "`");
+    return;
+  case Qt::Key_Backspace:
+    cursor = textCursor();
+    cursor.select(QTextCursor::WordUnderCursor);
+    if (cursor.selectedText() == "()") {
+      setTextCursor(cursor);
+    }
+    if (cursor.selectedText().right(2) == "()" && cursor.selectedText().length() > 2) {
+      cursor.insertText(cursor.selectedText().left(cursor.selectedText().length() - 2).repeated(2));
+      setTextCursor(cursor);
+    }
+    break;
   case Qt::Key_QuoteDbl:
     smartTextInsertion("\"");
     return;

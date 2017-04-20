@@ -1,7 +1,7 @@
 /*****************************************************************************
 *
 * This file is part of Calíope Database Administrator.
-* Copyright (c) 2008-2014 David Villalobos Cambronero (dvillalobosc@yahoo.com).
+* Copyright (c) 2008-2018 David Villalobos Cambronero (dvillalobosc@yahoo.com).
 *
 * Calíope is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -309,7 +309,7 @@ QHash<QString, QString> StaticFunctions::mariadbFunctionsComplete()
   //  data.insert("LTRIM", QString("<u>LTRIM</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("MAKE_SET", QString("<u>MAKE_SET</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("MAKEDATE", QString("<u>MAKEDATE</u>(<b></b>) <br />%1").arg(tr("")));
-  //  data.insert("MAKETIME", QString("<u>MAKETIME</u>(<b></b>) <br />%1").arg(tr("")));
+  data.insert("MAKETIME", QString("<u>MAKETIME</u>(<b>hour, minute, second</b>) <br />%1").arg(tr("Returns a time value calculated from the hour, minute, and second arguments. ")));
   //  data.insert("MASTER_POS_WAIT", QString("<u>MASTER_POS_WAIT</u>(<b></b>) <br />%1").arg(tr("")));
   data.insert("MAX", QString("<u>MAX</u>(<b>[DISTINCT] expr)</b>) <br />%1").arg(tr("Returns the maximum value of expr.")));
   data.insert("MD5", QString("<u>MD5</u>(<b>str</b>) <br />%1").arg(tr("Calculates an MD5 128-bit checksum for the string. The value is returned as a string of 32 hex digits, or NULL if the argument was NULL.")));

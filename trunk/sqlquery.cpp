@@ -1,7 +1,7 @@
 /*****************************************************************************
 *
 * This file is part of Calíope Database Administrator.
-* Copyright (c) 2008-2014 David Villalobos Cambronero (dvillalobosc@yahoo.com).
+* Copyright (c) 2008-2018 David Villalobos Cambronero (dvillalobosc@yahoo.com).
 *
 * Calíope is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -491,6 +491,7 @@ QString SQLQuery::statement()
 void SQLQuery::executeStatement(QString statement)
 {
   if (!statement.isEmpty()) {
+    QApplication::setOverrideCursor(Qt::WaitCursor);
     if (statement.contains(QRegExp("(ALTER|CHANGE|CREATE|DELETE|DROP|GRANT|LOAD|RENAME|SET|START|STOP|TRUNCATE|UPDATE)", Qt::CaseInsensitive))
         && safeStatementsAction->isChecked()) {
       QString message(tr("Could not execute statement on safe mode."));
@@ -545,7 +546,6 @@ void SQLQuery::executeStatement(QString statement)
                                  , concatenateOutputAction->isChecked());
     if (radioPDF->isChecked()) {
       resutlEditor->setPlainText(serverConnection->outputAsTable(statement, false, false, showNewLinesAction->isChecked(), splitAction->isChecked()));
-      QApplication::setOverrideCursor(Qt::WaitCursor);
       QFileDialog fileDialog;
       fileDialog.setDirectory(QDir::home());
       QString file = fileDialog.getSaveFileName(this, tr("Save to Pdf"), settings.value("General/LastFilePdf", QDir::home().absolutePath()).toString(), tr("Pdf & Ps files (*.pdf *.ps)"));
@@ -554,10 +554,10 @@ void SQLQuery::executeStatement(QString statement)
       printer.setOutputFileName(file);
       printer.setOutputFormat(file.endsWith(".pdf") ? QPrinter::PdfFormat : QPrinter::NativeFormat);
       resutlEditor->document()->print(&printer);
-      QApplication::restoreOverrideCursor();
       emit statusBarMessage(tr("File saved at: %1").arg(file));
     }
     //resutlEditor->setPlainText(statement);
+    QApplication::restoreOverrideCursor();
   }
 }
 

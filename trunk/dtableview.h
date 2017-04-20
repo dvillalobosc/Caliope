@@ -1,7 +1,7 @@
 /*****************************************************************************
 *
 * This file is part of Calíope Database Administrator.
-* Copyright (c) 2008-2014 David Villalobos Cambronero (dvillalobosc@yahoo.com).
+* Copyright (c) 2008-2018 David Villalobos Cambronero (dvillalobosc@yahoo.com).
 *
 * Calíope is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -22,10 +22,28 @@
 #define DTABLEVIEW_H
 
 #include <QTableView>
+#include <QHeaderView>
 
 class QStandardItemModel;
 class QStandardItem;
 class DItemDelegate;
+
+class DheaderView : public QHeaderView
+{
+  Q_OBJECT
+
+public:
+  DheaderView():QHeaderView(Qt::Horizontal) {
+    setSectionsClickable(true);
+    connect(this,SIGNAL(sectionClicked(int)),this,SLOT(sectionClicked(int)));
+  }
+
+//signals:
+  //void clickedSection(int index);
+
+//public slots:
+  //void sectionClicked(int index);
+};
 
 class DTableView : public QTableView
 {
@@ -43,6 +61,8 @@ public:
   void setCurrentItem(QString item, unsigned int column);
   QStandardItem *currentItem();
   QList<QStandardItem *> getRow(int row);
+  int sortingColumn;
+  Qt::SortOrder sortOrder;
 
 private:
   QStandardItemModel *itemModel;
@@ -50,6 +70,7 @@ private:
   bool readOnly;
   QMenu *mainMenu;
   QAction *removeRow;
+  DheaderView *dheaderView;
 
 public slots:
   void addRow();
@@ -57,6 +78,7 @@ public slots:
 private slots:
   void itemChangedSlot(QStandardItem *item);
   void doubleClickedSlot(const QModelIndex &index);
+  void sortingColumnSlot(int index);
 
 signals:
   void loadStarted(QString message, unsigned int timeout, double progress);
