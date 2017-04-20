@@ -1,7 +1,7 @@
 /*****************************************************************************
 *
 * This file is part of Calíope Database Administrator.
-* Copyright (c) 2008-2014 David Villalobos Cambronero (dvillalobosc@yahoo.com).
+* Copyright (c) 2008-2018 David Villalobos Cambronero (dvillalobosc@yahoo.com).
 *
 * Calíope is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -2613,7 +2613,7 @@ void MainWindow::aboutMariaDBGUIActionTriggered()
 {
   QMessageBox::information(0, tr("About Calíope"),
                            "Calíope Database Administrator.\n"
-                           "Copyright (C) 2008-2014  David Villalobos Cambronero.\n\n"
+                           "Copyright (C) 2008-2018  David Villalobos Cambronero.\n\n"
 
                            "This program is free software: you can redistribute it and/or modify"
                            "it under the terms of the GNU General Public License as published by"

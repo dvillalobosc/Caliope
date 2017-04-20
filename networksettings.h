@@ -1,7 +1,7 @@
 /*****************************************************************************
 *
 * This file is part of Calíope Database Administrator.
-* Copyright (c) 2008-2014 David Villalobos Cambronero (dvillalobosc@yahoo.com).
+* Copyright (c) 2008-2018 David Villalobos Cambronero (dvillalobosc@yahoo.com).
 *
 * Calíope is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
