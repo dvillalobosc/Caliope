@@ -391,6 +391,7 @@ public:
   StaticFunctions::dbmsTypes getDBMSType();
   void setDBMSType(StaticFunctions::dbmsTypes type);
   StaticFunctions::dbmsTypes p_DBMSType;
+  QStringList getCharsets();
 
   Table *table(QString tableName, QString database = QString());
   View *view(QString viewName, QString database = QString());

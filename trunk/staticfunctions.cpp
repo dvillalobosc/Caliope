@@ -7372,6 +7372,11 @@ QString StaticFunctions::bytesConvertor(QString bytes)
   return "Not known";
 }
 
+QString StaticFunctions::bytesConvertor(qulonglong bytes)
+{
+  return StaticFunctions::bytesConvertor(QString("%1").arg(bytes));
+}
+
 QHash<QString, QString> StaticFunctions::cssPropertiesComplete()
 {
   QHash<QString, QString> data;

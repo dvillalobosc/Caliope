@@ -77,23 +77,23 @@ private:
   QPlainTextEdit *serverGraphs;
   QPlainTextEdit *hddUsage;
   QString statementServerGraphs;
-  double tBytesSent0;
-  double tBytesSent1;
-  double tBytesSent2;
-  double tBytesSent3;
-  double tBytesSent4;
-  double tBytesSent5;
-  double rateBytesSent;
+  qulonglong tBytesSent0;
+  qulonglong tBytesSent1;
+  qulonglong tBytesSent2;
+  qulonglong tBytesSent3;
+  qulonglong tBytesSent4;
+  qulonglong tBytesSent5;
+  qulonglong rateBytesSent;
   DBarChartWidget *graphicsWidget;
   QTabWidget *serverInformationTab;
 
-  double tBytesReceived0;
-  double tBytesReceived1;
-  double tBytesReceived2;
-  double tBytesReceived3;
-  double tBytesReceived4;
-  double tBytesReceived5;
-  double rateBytesReceived;
+  qulonglong tBytesReceived0;
+  qulonglong tBytesReceived1;
+  qulonglong tBytesReceived2;
+  qulonglong tBytesReceived3;
+  qulonglong tBytesReceived4;
+  qulonglong tBytesReceived5;
+  qulonglong rateBytesReceived;
 
   double kbSentGraph1;
   double kbSentGraph2;

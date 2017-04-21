@@ -869,7 +869,7 @@ void TextEditor::populateModel(const QString &completionPrefix)
         model->appendRow(new QStandardItem(QIcon(":/images/svg/server-database.svg"), item));
       foreach (QString item, StaticFunctions::mariadbDatatypes().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
         model->appendRow(new QStandardItem(QIcon(":/images/svg/server-database.svg"), item));
-      foreach (QString item, StaticFunctions::mariadbCharsets().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
+      foreach (QString item, serverConnection->getCharsets().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
         model->appendRow(new QStandardItem(QIcon(":/images/svg/character-set.svg"), item));
       foreach (QString item, databaseSymbols.filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
         model->appendRow(new QStandardItem(QIcon(":/images/svg/server-database.svg"), item));

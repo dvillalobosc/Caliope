@@ -101,7 +101,7 @@ bool DBMS::open()
   //last_progress_report_length = 0;
   my_bool reconnect = settings.value("DBMS/Reconnect", 1).toInt();
   int arg = 1;
-  int arg2 = 1;
+  //int arg2 = 1;
   mysql_library_init(0, NULL, NULL);
   mariadbConnection = mysql_init(NULL);
   mysql_options(mariadbConnection, MYSQL_OPT_LOCAL_INFILE, 0);
@@ -125,7 +125,6 @@ bool DBMS::open()
   default:
     opened = false;
   }
-
   switch(p_DBMSType) {
   case StaticFunctions::MySQL:
     if (opened) {
@@ -1145,15 +1144,16 @@ void DBMS::clearSQLiteQueryLog()
 
 void DBMS::setCharsetAndCollation(QString charset, QString collation)
 {
-  switch(p_DBMSType) {
-  case StaticFunctions::MySQL:
-  case StaticFunctions::MariaDB:
-    query("SET NAMES " + charset + " COLLATE " + collation);
-    break;
-  case StaticFunctions::Undefined:
-  default:
-    break;
-  }
+  if (isOpened())
+    switch(p_DBMSType) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      query("SET NAMES " + charset + " COLLATE " + collation);
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
 }
 
 void DBMS::logExecutedQueries(QString query)
@@ -1325,7 +1325,7 @@ QStringList DBMS::getCollations()
     switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
-      return runQuerySingleColumn("SELECT `COLLATION_NAME` FROM `information_schema`.`COLLATIONS` ORDER BY `COLLATION_NAME`");
+      return runQuerySingleColumn("SELECT DISTINCT `COLLATION_NAME` FROM `information_schema`.`COLLATIONS` ORDER BY `COLLATION_NAME`");
       break;
     case StaticFunctions::Undefined:
     default:
@@ -1388,6 +1388,21 @@ void DBMS::setDBMSType(StaticFunctions::dbmsTypes type)
 {
   qApp->setProperty("DBMSType", type);
   p_DBMSType = type;
+}
+
+QStringList DBMS::getCharsets()
+{
+  if (isOpened())
+    switch(p_DBMSType) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      return runQuerySingleColumn("SELECT DISTINCT `CHARACTER_SET_NAME` FROM `information_schema`.`COLLATIONS` ORDER BY `CHARACTER_SET_NAME`");
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+  return QStringList();
 }
 
 QList<QStringList> *DBMS::getCharacterSets()

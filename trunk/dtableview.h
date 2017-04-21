@@ -35,7 +35,7 @@ class DheaderView : public QHeaderView
 public:
   DheaderView():QHeaderView(Qt::Horizontal) {
     setSectionsClickable(true);
-    connect(this,SIGNAL(sectionClicked(int)),this,SLOT(sectionClicked(int)));
+    //connect(this, SIGNAL(sectionClicked(int)), this, SLOT(sectionClicked(int)));
   }
 
 //signals:
