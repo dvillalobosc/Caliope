@@ -51,6 +51,7 @@ public:
   static QStringList javascriptKeywords();
   static QStringList javascriptFunctions();
   static QString bytesConvertor(QString bytes);
+  static QString bytesConvertor(qulonglong bytes);
   static QString quoteSymbol(QString text);
   static QString unquoteSymbol(QString text);
   static QString password(QString pass = QString(), bool encrypt = false);

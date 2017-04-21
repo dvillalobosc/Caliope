@@ -401,28 +401,38 @@ QString ServerInformation::serverGraphsDataTxtMariaDB()
   tBytesSent4 = tBytesSent3;
   tBytesSent3 = tBytesSent2;
   tBytesSent2 = tBytesSent1;
-  tBytesSent1 = tBytesSent0 / 1024;
+  tBytesSent1 = tBytesSent0;
   rateBytesSent = tBytesSent0;
-  tBytesSent0 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` / 1024 FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'BYTES_SENT'")->at(0).at(0).toDouble();
-  statementServerGraphs = QString("SELECT FORMAT(%1, 2) AS `T`, FORMAT(%2, 2) AS `T-1`, FORMAT(%3, 2) AS `T-2`, FORMAT(%4, 2) AS `T-3`, FORMAT(%5, 2) AS `T-4`, FORMAT(%6, 2) AS `T-5`")
-      .arg(tBytesSent0 / 1024).arg(tBytesSent1).arg(tBytesSent2).arg(tBytesSent3).arg(tBytesSent4).arg(tBytesSent5);
-  out += tr("Data sent in MB.");
+  tBytesSent0 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'BYTES_SENT'")->at(0).at(0).toULongLong();
+  statementServerGraphs = QString("SELECT '%1' AS `T`, '%2' AS `T-1`, '%3' AS `T-2`, '%4' AS `T-3`, '%5' AS `T-4`, '%6' AS `T-5`")
+      .arg(StaticFunctions::bytesConvertor(tBytesSent0))
+      .arg(StaticFunctions::bytesConvertor(tBytesSent1))
+      .arg(StaticFunctions::bytesConvertor(tBytesSent2))
+      .arg(StaticFunctions::bytesConvertor(tBytesSent3))
+      .arg(StaticFunctions::bytesConvertor(tBytesSent4))
+      .arg(StaticFunctions::bytesConvertor(tBytesSent5));
+  out += tr("Data sent.");
   out += "\n" + serverConnection->outputAsTable(statementServerGraphs);
-  out += tr("Transfer rate: %1 Kb per second.").arg(tBytesSent0 - rateBytesSent);
+  out += tr("Transfer rate: %1 per second.").arg(StaticFunctions::bytesConvertor(tBytesSent0 - rateBytesSent));
 
   //Bytes received
   tBytesReceived5 = tBytesReceived4;
   tBytesReceived4 = tBytesReceived3;
   tBytesReceived3 = tBytesReceived2;
   tBytesReceived2 = tBytesReceived1;
-  tBytesReceived1 = tBytesReceived0 / 1024;
+  tBytesReceived1 = tBytesReceived0;
   rateBytesReceived = tBytesReceived0;
-  tBytesReceived0 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` / 1024 FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'BYTES_RECEIVED'")->at(0).at(0).toDouble();
-  statementServerGraphs = QString("SELECT FORMAT(%1, 2) AS `T`, FORMAT(%2, 2) AS `T-1`, FORMAT(%3, 2) AS `T-2`, FORMAT(%4, 2) AS `T-3`, FORMAT(%5, 2) AS `T-4`, FORMAT(%6, 2) AS `T-5`")
-      .arg(tBytesReceived0 / 1024).arg(tBytesReceived1).arg(tBytesReceived2).arg(tBytesReceived3).arg(tBytesReceived4).arg(tBytesReceived5);
+  tBytesReceived0 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'BYTES_RECEIVED'")->at(0).at(0).toULongLong();
+  statementServerGraphs = QString("SELECT '%1' AS `T`, '%2' AS `T-1`, '%3' AS `T-2`, '%4' AS `T-3`, '%5' AS `T-4`, '%6' AS `T-5`")
+      .arg(StaticFunctions::bytesConvertor(tBytesReceived0))
+      .arg(StaticFunctions::bytesConvertor(tBytesReceived1))
+      .arg(StaticFunctions::bytesConvertor(tBytesReceived2))
+      .arg(StaticFunctions::bytesConvertor(tBytesReceived3))
+      .arg(StaticFunctions::bytesConvertor(tBytesReceived4))
+      .arg(StaticFunctions::bytesConvertor(tBytesReceived5));
   out += "\n\n" + tr("Data received in MB.");
   out += "\n" + serverConnection->outputAsTable(statementServerGraphs);
-  out += tr("Transfer rate: %1 Kb per second.").arg(tBytesReceived0 - rateBytesReceived);
+  out += tr("Transfer rate: %1 per second.").arg(StaticFunctions::bytesConvertor(tBytesReceived0 - rateBytesReceived));
 
   //Misc Values
   out += "\n\n" + tr("Miscellaneous values.");
