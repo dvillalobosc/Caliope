@@ -394,6 +394,7 @@ QHash<QString, QString> StaticFunctions::mariadbFunctionsComplete()
   //  data.insert("VAR_SAMP", QString("<u>VAR_SAMP</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("VARIANCE", QString("<u>VARIANCE</u>(<b></b>) <br />%1").arg(tr("")));
   data.insert("VERSION", QString("<u>VERSION</u>(<b></b>) <br />%1").arg(tr("Returns a string that indicates the MySQL server version.")));
+  data.insert("WEEK", QString("<u>WEEK</u>(<b>date [,mode]</b>) <br />%1").arg(tr("This function returns the week number for date.")));
   //  data.insert("WEEKDAY", QString("<u>WEEKDAY</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("WEEKOFYEAR", QString("<u>WEEKOFYEAR</u>(<b></b>) <br />%1").arg(tr("")));
   //  data.insert("YEAR_MONTH", QString("<u>YEAR_MONTH</u>(<b></b>) <br />%1").arg(tr("")));
@@ -1205,6 +1206,19 @@ QStringList StaticFunctions::mariadbCharsets()
       << "utf8_swedish_ci"
       << "utf8_turkish_ci"
       << "utf8_unicode_ci";
+}
+
+QStringList StaticFunctions::mariadbCodeErrorsNotCommaBothSides()
+{
+  return QStringList() << "AND"
+                       << "FROM"
+                          ;
+}
+
+QStringList StaticFunctions::mariadbCodeErrorsNotCommaOnLeft()
+{
+  return QStringList() << "SELECT"
+                          ;
 }
 
 QHash<QString, QString> StaticFunctions::phpFunctionsComplete()

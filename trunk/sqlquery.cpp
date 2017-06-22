@@ -497,6 +497,7 @@ void SQLQuery::executeStatement(QString statement)
       QString message(tr("Could not execute statement on safe mode."));
       QMessageBox::warning(this, tr("Safe mode"), message);
       resutlEditor->setPlainText(message + "\n" + statement);
+      QApplication::restoreOverrideCursor();
       return;
     }
     QSettings settings;
