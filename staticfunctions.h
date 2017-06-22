@@ -42,6 +42,8 @@ public:
   static QStringList mariadbFunctions();
   static QStringList mariadbDatatypes();
   static QStringList mariadbCharsets();
+  static QStringList mariadbCodeErrorsNotCommaBothSides();
+  static QStringList mariadbCodeErrorsNotCommaOnLeft();
   static QStringList phpKeywords();
   static QStringList phpFunctions();
   static QStringList cssProperties();

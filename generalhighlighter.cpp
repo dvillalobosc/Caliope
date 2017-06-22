@@ -607,6 +607,46 @@ void GeneralHighlighter::sqlHighlightRules()
     rule.format.setForeground(Qt::darkGreen);
     rule.pattern = QRegExp("`[A-Za-z_\\d%\\- ]*`");
     secondHighlightingRules.append(rule);
+
+
+    //Code errors
+    rule.format.setForeground(Qt::red);
+    rule.format.setFontUnderline(true);
+    for (int i = 0; i < StaticFunctions::mariadbCodeErrorsNotCommaBothSides().count(); i++) {
+      rule.pattern = QRegExp(QString(",\\s*%1\\s*,").arg(StaticFunctions::mariadbCodeErrorsNotCommaBothSides().at(i)), Qt::CaseInsensitive);
+      secondHighlightingRules.append(rule);
+      rule.pattern = QRegExp(QString(",\\s*%1").arg(StaticFunctions::mariadbCodeErrorsNotCommaBothSides().at(i)), Qt::CaseInsensitive);
+      secondHighlightingRules.append(rule);
+      rule.pattern = QRegExp(QString("%1\\s*,").arg(StaticFunctions::mariadbCodeErrorsNotCommaBothSides().at(i)), Qt::CaseInsensitive);
+      secondHighlightingRules.append(rule);
+
+      //Pending
+//      rule.pattern = QRegExp(QString(",\\n*%1\\n*,").arg(StaticFunctions::mariadbCodeErrorsNotComma().at(i)), Qt::CaseInsensitive);
+//      secondHighlightingRules.append(rule);
+//      rule.pattern = QRegExp(QString(",\\n*%1").arg(StaticFunctions::mariadbCodeErrorsNotComma().at(i)), Qt::CaseInsensitive);
+//      secondHighlightingRules.append(rule);
+//      rule.pattern = QRegExp(QString("%1\\n*,").arg(StaticFunctions::mariadbCodeErrorsNotComma().at(i)), Qt::CaseInsensitive);
+//      secondHighlightingRules.append(rule);
+
+//      rule.pattern = QRegExp(QString(",\\r*%1\\r*,").arg(StaticFunctions::mariadbCodeErrorsNotComma().at(i)), Qt::CaseInsensitive);
+//      secondHighlightingRules.append(rule);
+//      rule.pattern = QRegExp(QString(",\\r*%1").arg(StaticFunctions::mariadbCodeErrorsNotComma().at(i)), Qt::CaseInsensitive);
+//      secondHighlightingRules.append(rule);
+//      rule.pattern = QRegExp(QString("%1\\r*,").arg(StaticFunctions::mariadbCodeErrorsNotComma().at(i)), Qt::CaseInsensitive);
+//      secondHighlightingRules.append(rule);
+
+//      rule.pattern = QRegExp(QString(",\\t*%1\\t*,").arg(StaticFunctions::mariadbCodeErrorsNotComma().at(i)), Qt::CaseInsensitive);
+//      secondHighlightingRules.append(rule);
+//      rule.pattern = QRegExp(QString(",\\t*%1").arg(StaticFunctions::mariadbCodeErrorsNotComma().at(i)), Qt::CaseInsensitive);
+//      secondHighlightingRules.append(rule);
+//      rule.pattern = QRegExp(QString("%1\\t*,").arg(StaticFunctions::mariadbCodeErrorsNotComma().at(i)), Qt::CaseInsensitive);
+//      secondHighlightingRules.append(rule);
+    }
+    for (int i = 0; i < StaticFunctions::mariadbCodeErrorsNotCommaOnLeft().count(); i++) {
+      rule.pattern = QRegExp(QString("%1\\s*,").arg(StaticFunctions::mariadbCodeErrorsNotCommaOnLeft().at(i)), Qt::CaseInsensitive);
+      secondHighlightingRules.append(rule);
+    }
+
     break;
   case StaticFunctions::Undefined:
   default:
