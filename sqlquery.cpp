@@ -491,18 +491,6 @@ QString SQLQuery::statement()
 void SQLQuery::executeStatement(QString statement)
 {
   if (!statement.isEmpty()) {
-//    QDialog *dialog = new QDialog(this);
-//    QVBoxLayout *mainVLayout = new QVBoxLayout;
-//    mainVLayout->addWidget(new QLabel(tr("There is no text selectect, do you want to execute the hole script?")));
-//    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Cancel | QDialogButtonBox::Ok);
-//    connect(buttonBox, SIGNAL(rejected()), dialog, SLOT(reject()));
-//    connect(buttonBox, SIGNAL(accepted()), dialog, SLOT(accept()));
-//    mainVLayout->addWidget(buttonBox);
-//    dialog->setLayout(mainVLayout);
-//    if (dialog->exec() == QDialog::Rejected) {
-//      QApplication::restoreOverrideCursor();
-//      return;
-//    }
     if (QMessageBox::question(this, tr("Script exectution"),
                                     tr("Do you really want to execute the hole script?"),
                                     QMessageBox::Ok | QMessageBox::Cancel, QMessageBox::Cancel) == QMessageBox::Cancel) {
