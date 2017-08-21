@@ -1173,32 +1173,32 @@ Total progess: %5.</source>
 <context>
     <name>DBarChartWidget</name>
     <message>
-        <location filename="../serverInformation.cpp" line="721"/>
+        <location filename="../serverInformation.cpp" line="746"/>
         <source>Total connections in the last 60 seconds</source>
         <translation>Total de conexiones en los últimos 60 segundos</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="722"/>
+        <location filename="../serverInformation.cpp" line="747"/>
         <source>Kb sent by second</source>
         <translation>Kb enviados por segundo</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="723"/>
+        <location filename="../serverInformation.cpp" line="748"/>
         <source>Executed queries in the last 60 seconds</source>
         <translation>Consultas ejecutadas en los últimos 60 segundos</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="775"/>
+        <location filename="../serverInformation.cpp" line="800"/>
         <source>Current: %1</source>
         <translation>Actual %1</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="776"/>
+        <location filename="../serverInformation.cpp" line="801"/>
         <source>Max: %1</source>
         <translation>Máximo: %1</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="777"/>
+        <location filename="../serverInformation.cpp" line="802"/>
         <source>Min: %1</source>
         <translation>Mínimo: %1</translation>
     </message>
@@ -1376,33 +1376,33 @@ Total progess: %5.</source>
         <translation type="obsolete">URL a cargar</translation>
     </message>
     <message>
-        <location filename="../dwebview.cpp" line="58"/>
+        <location filename="../dwebview.cpp" line="60"/>
         <source>Actions</source>
         <translation>Acciones</translation>
     </message>
     <message>
-        <location filename="../dwebview.cpp" line="105"/>
+        <location filename="../dwebview.cpp" line="107"/>
         <source>Show page source</source>
         <translation>Mostrar el fuente de la página</translation>
     </message>
     <message>
-        <location filename="../dwebview.cpp" line="106"/>
+        <location filename="../dwebview.cpp" line="108"/>
         <source>Open in external browser</source>
         <translation>Abrir en explorador externo</translation>
     </message>
     <message>
-        <location filename="../dwebview.cpp" line="121"/>
-        <location filename="../dwebview.cpp" line="146"/>
+        <location filename="../dwebview.cpp" line="123"/>
+        <location filename="../dwebview.cpp" line="148"/>
         <source>Loading page...</source>
         <translation>Cargando página...</translation>
     </message>
     <message>
-        <location filename="../dwebview.cpp" line="127"/>
+        <location filename="../dwebview.cpp" line="129"/>
         <source>Page loaded.</source>
         <translation>Página cargada.</translation>
     </message>
     <message>
-        <location filename="../dwebview.cpp" line="129"/>
+        <location filename="../dwebview.cpp" line="131"/>
         <source>Could not load page.</source>
         <translation>No se puede cargar la página.</translation>
     </message>
@@ -1721,7 +1721,7 @@ Total progess: %5.</source>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="116"/>
+        <location filename="../mainwindow.cpp" line="114"/>
         <source>Cannot read file %1:
 %2.</source>
         <translation>No es posible leer el archivo %1:
@@ -1732,29 +1732,29 @@ Total progess: %5.</source>
         <translation type="obsolete">Opciones</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="187"/>
-        <location filename="../mainwindow.cpp" line="1278"/>
-        <location filename="../mainwindow.cpp" line="1705"/>
-        <location filename="../mainwindow.cpp" line="2122"/>
+        <location filename="../mainwindow.cpp" line="185"/>
+        <location filename="../mainwindow.cpp" line="1276"/>
+        <location filename="../mainwindow.cpp" line="1703"/>
+        <location filename="../mainwindow.cpp" line="2120"/>
         <source>Server Information</source>
         <translation>Información del Servidor</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="189"/>
-        <location filename="../mainwindow.cpp" line="1708"/>
+        <location filename="../mainwindow.cpp" line="187"/>
+        <location filename="../mainwindow.cpp" line="1706"/>
         <source>User Administration</source>
         <translation>Administración de Usuarios</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="191"/>
-        <location filename="../mainwindow.cpp" line="1711"/>
-        <location filename="../mainwindow.cpp" line="2025"/>
+        <location filename="../mainwindow.cpp" line="189"/>
+        <location filename="../mainwindow.cpp" line="1709"/>
+        <location filename="../mainwindow.cpp" line="2023"/>
         <source>Backup</source>
         <translation>Respaldo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="193"/>
-        <location filename="../mainwindow.cpp" line="2013"/>
+        <location filename="../mainwindow.cpp" line="191"/>
+        <location filename="../mainwindow.cpp" line="2011"/>
         <source>Restore</source>
         <translation>Restaurar</translation>
     </message>
@@ -1763,17 +1763,17 @@ Total progess: %5.</source>
         <translation type="obsolete">Esquemas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="195"/>
-        <location filename="../mainwindow.cpp" line="291"/>
-        <location filename="../mainwindow.cpp" line="1717"/>
-        <location filename="../mainwindow.cpp" line="2134"/>
+        <location filename="../mainwindow.cpp" line="193"/>
+        <location filename="../mainwindow.cpp" line="289"/>
+        <location filename="../mainwindow.cpp" line="1715"/>
+        <location filename="../mainwindow.cpp" line="2132"/>
         <source>Catalogs</source>
         <translation>Catálogos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="197"/>
-        <location filename="../mainwindow.cpp" line="1723"/>
-        <location filename="../mainwindow.cpp" line="2213"/>
+        <location filename="../mainwindow.cpp" line="195"/>
+        <location filename="../mainwindow.cpp" line="1721"/>
+        <location filename="../mainwindow.cpp" line="2211"/>
         <source>Table Maintenance</source>
         <translation>Mantenimiento de Tablas</translation>
     </message>
@@ -1782,54 +1782,54 @@ Total progess: %5.</source>
         <translation type="obsolete">Metadata</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="199"/>
-        <location filename="../mainwindow.cpp" line="2082"/>
+        <location filename="../mainwindow.cpp" line="197"/>
+        <location filename="../mainwindow.cpp" line="2080"/>
         <source>Process List</source>
         <translation>Lista de Procesos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="304"/>
+        <location filename="../mainwindow.cpp" line="302"/>
         <source>In God we trust</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="305"/>
+        <location filename="../mainwindow.cpp" line="303"/>
         <source>In a world without walls and fences, who needs windows and gates?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="306"/>
+        <location filename="../mainwindow.cpp" line="304"/>
         <source>Wellcome!!! Have a nice day.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="307"/>
+        <location filename="../mainwindow.cpp" line="305"/>
         <source>MariaDB is great!!!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="308"/>
+        <location filename="../mainwindow.cpp" line="306"/>
         <source>Qt is great!!!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="309"/>
+        <location filename="../mainwindow.cpp" line="307"/>
         <source>Open space has more fresh air than closed Windows</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="310"/>
+        <location filename="../mainwindow.cpp" line="308"/>
         <source>Microsoft gives you &quot;Windows&quot;, Linux a &quot;home&quot;!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="209"/>
-        <location filename="../mainwindow.cpp" line="1720"/>
+        <location filename="../mainwindow.cpp" line="207"/>
+        <location filename="../mainwindow.cpp" line="1718"/>
         <source>Query</source>
         <translation>Consulta</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1729"/>
+        <location filename="../mainwindow.cpp" line="1727"/>
         <source>PHP Script</source>
         <translation>Script PHP</translation>
     </message>
@@ -1838,54 +1838,54 @@ Total progess: %5.</source>
         <translation type="vanished">Acerca de Calíope</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1714"/>
+        <location filename="../mainwindow.cpp" line="1712"/>
         <source>Restore Backup</source>
         <translation>Restaurar Respaldo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1726"/>
+        <location filename="../mainwindow.cpp" line="1724"/>
         <source>SQL Script</source>
         <translation>Script SQL</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="207"/>
+        <location filename="../mainwindow.cpp" line="205"/>
         <source>SQL Query</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="211"/>
+        <location filename="../mainwindow.cpp" line="209"/>
         <source>PHP</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1864"/>
+        <location filename="../mainwindow.cpp" line="1862"/>
         <source>Refresh</source>
         <translation>Refrescar</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1867"/>
+        <location filename="../mainwindow.cpp" line="1865"/>
         <source>Read only</source>
         <translation>Solo lectura</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1870"/>
+        <location filename="../mainwindow.cpp" line="1868"/>
         <source>Create Database</source>
         <translation>Crear Base de Datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1873"/>
+        <location filename="../mainwindow.cpp" line="1871"/>
         <source>Delete Database</source>
         <translation>Borrar Base de Datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1861"/>
-        <location filename="../mainwindow.cpp" line="1879"/>
+        <location filename="../mainwindow.cpp" line="1859"/>
+        <location filename="../mainwindow.cpp" line="1877"/>
         <source>Select recent file...</source>
         <translation>Seleccionar un archivo reciente...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="213"/>
-        <location filename="../mainwindow.cpp" line="994"/>
+        <location filename="../mainwindow.cpp" line="211"/>
+        <location filename="../mainwindow.cpp" line="992"/>
         <source>Database Comparision</source>
         <translation>Comparación de Bases de Datos</translation>
     </message>
@@ -1894,23 +1894,23 @@ Total progess: %5.</source>
         <translation type="vanished">Ayuda en Línea de PostgreSQL</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1834"/>
-        <location filename="../mainwindow.cpp" line="2076"/>
+        <location filename="../mainwindow.cpp" line="1832"/>
+        <location filename="../mainwindow.cpp" line="2074"/>
         <source>MariaDB On-Line Help</source>
         <translation>Ayuda en Línea de MariaDB</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="956"/>
+        <location filename="../mainwindow.cpp" line="954"/>
         <source>External Web Page</source>
         <translation>Página Web Externa</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="964"/>
+        <location filename="../mainwindow.cpp" line="962"/>
         <source>Visited sites</source>
         <translation>Sitios visitados</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="982"/>
+        <location filename="../mainwindow.cpp" line="980"/>
         <source>The slave has been reset.</source>
         <translation>El esclavo ha sido reestablecido.</translation>
     </message>
@@ -1919,136 +1919,136 @@ Total progess: %5.</source>
         <translation type="obsolete">Comparación de Bases de Datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1067"/>
-        <location filename="../mainwindow.cpp" line="1510"/>
+        <location filename="../mainwindow.cpp" line="1065"/>
+        <location filename="../mainwindow.cpp" line="1508"/>
         <source>Migrating data</source>
         <translation>Migrando datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1067"/>
-        <location filename="../mainwindow.cpp" line="1510"/>
+        <location filename="../mainwindow.cpp" line="1065"/>
+        <location filename="../mainwindow.cpp" line="1508"/>
         <source>Abort</source>
         <translation>Abortar</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1080"/>
-        <location filename="../mainwindow.cpp" line="1525"/>
-        <location filename="../mainwindow.cpp" line="1637"/>
-        <location filename="../mainwindow.cpp" line="1644"/>
-        <location filename="../mainwindow.cpp" line="1654"/>
+        <location filename="../mainwindow.cpp" line="1078"/>
+        <location filename="../mainwindow.cpp" line="1523"/>
+        <location filename="../mainwindow.cpp" line="1635"/>
+        <location filename="../mainwindow.cpp" line="1642"/>
+        <location filename="../mainwindow.cpp" line="1652"/>
         <source>Database migration</source>
         <translation>Migración de bases de datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1080"/>
-        <location filename="../mainwindow.cpp" line="1525"/>
+        <location filename="../mainwindow.cpp" line="1078"/>
+        <location filename="../mainwindow.cpp" line="1523"/>
         <source>Database migration is only aviable for MariaDB and MySQL.</source>
         <translation>La migración de bases de datos solo está dispobible para MariaDB y MySQL.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1087"/>
+        <location filename="../mainwindow.cpp" line="1085"/>
         <source>Table count: %1</source>
         <translation>Conteo de tablas: %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="201"/>
-        <location filename="../mainwindow.cpp" line="1170"/>
+        <location filename="../mainwindow.cpp" line="199"/>
+        <location filename="../mainwindow.cpp" line="1168"/>
         <source>Query Log</source>
         <translation>Log de Sentencias</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1196"/>
-        <location filename="../mainwindow.cpp" line="1854"/>
+        <location filename="../mainwindow.cpp" line="1194"/>
+        <location filename="../mainwindow.cpp" line="1852"/>
         <source>Database information</source>
         <translation>Información de la base de datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1207"/>
+        <location filename="../mainwindow.cpp" line="1205"/>
         <source>Save to Image</source>
         <translation>Guardar en Imagen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1207"/>
+        <location filename="../mainwindow.cpp" line="1205"/>
         <source>Image files (%1)</source>
         <translation>Archivos de imagen (%1)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1213"/>
-        <location filename="../mainwindow.cpp" line="1427"/>
-        <location filename="../mainwindow.cpp" line="1435"/>
-        <location filename="../mainwindow.cpp" line="1546"/>
+        <location filename="../mainwindow.cpp" line="1211"/>
+        <location filename="../mainwindow.cpp" line="1425"/>
+        <location filename="../mainwindow.cpp" line="1433"/>
+        <location filename="../mainwindow.cpp" line="1544"/>
         <source>File saved at: %1</source>
         <translation>Archivo guardado en: %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1287"/>
-        <location filename="../mainwindow.cpp" line="1900"/>
+        <location filename="../mainwindow.cpp" line="1285"/>
+        <location filename="../mainwindow.cpp" line="1898"/>
         <source>HDD Usage Graphics</source>
         <translation>Gráfico de uso de HDD</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1296"/>
-        <location filename="../mainwindow.cpp" line="1903"/>
+        <location filename="../mainwindow.cpp" line="1294"/>
+        <location filename="../mainwindow.cpp" line="1901"/>
         <source>Executed Queries</source>
         <translation>Consultas Ejecutadas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1305"/>
-        <location filename="../mainwindow.cpp" line="1906"/>
+        <location filename="../mainwindow.cpp" line="1303"/>
+        <location filename="../mainwindow.cpp" line="1904"/>
         <source>Data Sent/Received</source>
         <translation>Datos Enviados/Recibidos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1314"/>
-        <location filename="../mainwindow.cpp" line="1326"/>
+        <location filename="../mainwindow.cpp" line="1312"/>
+        <location filename="../mainwindow.cpp" line="1324"/>
         <source>Custom reports</source>
         <translation>Reportes personalizados</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1357"/>
-        <location filename="../mainwindow.cpp" line="1912"/>
+        <location filename="../mainwindow.cpp" line="1355"/>
+        <location filename="../mainwindow.cpp" line="1910"/>
         <source>Slow Queries</source>
         <translation>Consultas lentas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1372"/>
+        <location filename="../mainwindow.cpp" line="1370"/>
         <source>All the replication slaves have been started.</source>
         <translation>Todos los esclavos de replicación han sido iniciados.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1378"/>
+        <location filename="../mainwindow.cpp" line="1376"/>
         <source>All the replication slaves hava been stoped.</source>
         <translation>Todos los esclavos de replicación han sido detenidos.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1425"/>
-        <location filename="../mainwindow.cpp" line="1433"/>
+        <location filename="../mainwindow.cpp" line="1423"/>
+        <location filename="../mainwindow.cpp" line="1431"/>
         <source>Save file</source>
         <translation>Guardar archivo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1425"/>
-        <location filename="../mainwindow.cpp" line="1433"/>
+        <location filename="../mainwindow.cpp" line="1423"/>
+        <location filename="../mainwindow.cpp" line="1431"/>
         <source>Settings files (*)</source>
         <translation>Archivos de configuración (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1441"/>
+        <location filename="../mainwindow.cpp" line="1439"/>
         <source>All editors saved</source>
         <translation>Todos los editores guardados</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1637"/>
+        <location filename="../mainwindow.cpp" line="1635"/>
         <source>Migration done.</source>
         <translation>Migración realizada.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1687"/>
+        <location filename="../mainwindow.cpp" line="1685"/>
         <source>The database server has been shutdown.</source>
         <translation>El servidor de base de datos ha sido apagado.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1697"/>
+        <location filename="../mainwindow.cpp" line="1695"/>
         <source>Shows the About dialog for Qt.</source>
         <translation>Muestra el cuadro de diálogo de Acerda de Qt.</translation>
     </message>
@@ -2057,12 +2057,12 @@ Total progess: %5.</source>
         <translation type="vanished">Muestra el cuadro de diálogo de Acerda de Calíope.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1702"/>
+        <location filename="../mainwindow.cpp" line="1700"/>
         <source>Connect to Server...</source>
         <translation>Conectarse al Servidor...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1703"/>
+        <location filename="../mainwindow.cpp" line="1701"/>
         <source>Connect to a Database Server.</source>
         <translation>Conectarse a un Servidor de Base de Datos.</translation>
     </message>
@@ -2075,71 +2075,71 @@ Total progess: %5.</source>
         <translation type="vanished">Ayuda de MySQL</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1738"/>
+        <location filename="../mainwindow.cpp" line="1736"/>
         <source>View query log</source>
         <translation>Ver el log de consultas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1741"/>
-        <location filename="../mainwindow.cpp" line="2070"/>
-        <location filename="../mainwindow.cpp" line="2094"/>
+        <location filename="../mainwindow.cpp" line="1739"/>
+        <location filename="../mainwindow.cpp" line="2068"/>
+        <location filename="../mainwindow.cpp" line="2092"/>
         <source>MySQL On-Line Help</source>
         <translation>Ayuda en Línea de MySQL</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1744"/>
-        <location filename="../mainwindow.cpp" line="2064"/>
+        <location filename="../mainwindow.cpp" line="1742"/>
+        <location filename="../mainwindow.cpp" line="2062"/>
         <source>PHP On-Line Help</source>
         <translation>Ayuda en Línea de PHP</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1747"/>
-        <location filename="../mainwindow.cpp" line="1990"/>
+        <location filename="../mainwindow.cpp" line="1745"/>
+        <location filename="../mainwindow.cpp" line="1988"/>
         <source>Preferences</source>
         <translation>Preferencias</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1750"/>
+        <location filename="../mainwindow.cpp" line="1748"/>
         <source>Processes</source>
         <translation>Procesos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1752"/>
+        <location filename="../mainwindow.cpp" line="1750"/>
         <source>&amp;File Toolbar</source>
         <translation>Barra de Herramientas de &amp;Archivo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1758"/>
+        <location filename="../mainwindow.cpp" line="1756"/>
         <source>&amp;Close connection</source>
         <translation>&amp;Cerrar conexión</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1759"/>
+        <location filename="../mainwindow.cpp" line="1757"/>
         <source>Close current database connection</source>
         <translation>Cerrar conexión de base de datos actual</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1761"/>
+        <location filename="../mainwindow.cpp" line="1759"/>
         <source>Cascade windows</source>
         <translation>Ventanas en cascada</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1764"/>
+        <location filename="../mainwindow.cpp" line="1762"/>
         <source>Next window</source>
         <translation>Próxima ventana</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1767"/>
+        <location filename="../mainwindow.cpp" line="1765"/>
         <source>Previous window</source>
         <translation>Ventana previa</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1770"/>
+        <location filename="../mainwindow.cpp" line="1768"/>
         <source>Close current window</source>
         <translation>Cerrar ventana actual</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1773"/>
+        <location filename="../mainwindow.cpp" line="1771"/>
         <source>Close all windows</source>
         <translation>Cerrar todas las ventanas</translation>
     </message>
@@ -2148,72 +2148,72 @@ Total progess: %5.</source>
         <translation type="obsolete">Ordenar por título</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1779"/>
+        <location filename="../mainwindow.cpp" line="1777"/>
         <source>Shutdown Database Server</source>
         <translation>Apagar el Servidor de Base de Datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1782"/>
+        <location filename="../mainwindow.cpp" line="1780"/>
         <source>CSS Editor</source>
         <translation>Editor CSS</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1785"/>
+        <location filename="../mainwindow.cpp" line="1783"/>
         <source>HTML Editor</source>
         <translation>Editor HTML</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1788"/>
+        <location filename="../mainwindow.cpp" line="1786"/>
         <source>JavaScript Editor</source>
         <translation>Editor JavaScript</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1791"/>
+        <location filename="../mainwindow.cpp" line="1789"/>
         <source>Web site</source>
         <translation>Sitio web</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1794"/>
+        <location filename="../mainwindow.cpp" line="1792"/>
         <source>Full screen</source>
         <translation>Pantalla completa</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1797"/>
+        <location filename="../mainwindow.cpp" line="1795"/>
         <source>Objects diagram</source>
         <translation>Diagrama de Objetos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1800"/>
+        <location filename="../mainwindow.cpp" line="1798"/>
         <source>Open file</source>
         <translation>Abrir archivo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1804"/>
+        <location filename="../mainwindow.cpp" line="1802"/>
         <source>Text Editor</source>
         <translation>Editor de Texto</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1807"/>
+        <location filename="../mainwindow.cpp" line="1805"/>
         <source>Stop Slave</source>
         <translation>Detener Esclavo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1813"/>
+        <location filename="../mainwindow.cpp" line="1811"/>
         <source>Start Slave</source>
         <translation>Iniciar Esclavo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1816"/>
+        <location filename="../mainwindow.cpp" line="1814"/>
         <source>Restart Slave</source>
         <translation>Reiniciar Esclavo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1819"/>
+        <location filename="../mainwindow.cpp" line="1817"/>
         <source>Replication Information</source>
         <translation>Información de la Replicación</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1891"/>
+        <location filename="../mainwindow.cpp" line="1889"/>
         <source>Take a snapshot</source>
         <translation>Tomar una instantánea</translation>
     </message>
@@ -2222,202 +2222,202 @@ Total progess: %5.</source>
         <translation type="vanished">Documentación fuente de Calíope</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2591"/>
+        <location filename="../mainwindow.cpp" line="2589"/>
         <source>Cannot load the translation.</source>
         <translation>No es posible cargar la traducción.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="915"/>
-        <location filename="../mainwindow.cpp" line="1828"/>
+        <location filename="../mainwindow.cpp" line="913"/>
+        <location filename="../mainwindow.cpp" line="1826"/>
         <source>Time Difference</source>
         <translation>Diferencia de Tiempo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1831"/>
+        <location filename="../mainwindow.cpp" line="1829"/>
         <source>Show the Slow Log</source>
         <translation>Mostrar el Slow Log</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="706"/>
+        <location filename="../mainwindow.cpp" line="704"/>
         <source>Objects Diagram</source>
         <translation>Diagrama de Objetos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="205"/>
-        <location filename="../mainwindow.cpp" line="1621"/>
-        <location filename="../mainwindow.cpp" line="1939"/>
+        <location filename="../mainwindow.cpp" line="203"/>
+        <location filename="../mainwindow.cpp" line="1619"/>
+        <location filename="../mainwindow.cpp" line="1937"/>
         <source>Object Migration</source>
         <translation>Migración de Objetos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="311"/>
+        <location filename="../mainwindow.cpp" line="309"/>
         <source>I&apos;d rather be at $HOME</source>
         <translation>I&apos;d rather be at $HOME</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="356"/>
+        <location filename="../mainwindow.cpp" line="354"/>
         <source>Error on saving application settings backup file.</source>
         <translation>Error al guardar el archivo de respaldo de las configuraciones de la aplicación.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="784"/>
+        <location filename="../mainwindow.cpp" line="782"/>
         <source>Open a file</source>
         <translation>Abrir un archivo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="880"/>
+        <location filename="../mainwindow.cpp" line="878"/>
         <source>The replication slave has been stoped.</source>
         <translation>El esclavo de replicación ha sido detenido.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="886"/>
+        <location filename="../mainwindow.cpp" line="884"/>
         <source>The replication slave has been started.</source>
         <translation>El esclavo de replicación ha sido iniciado.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="892"/>
+        <location filename="../mainwindow.cpp" line="890"/>
         <source>The replication slave has been rebooted.</source>
         <translation>El esclavo de replicación ha sido reiniciado.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="904"/>
+        <location filename="../mainwindow.cpp" line="902"/>
         <source>Privileges flushed.</source>
         <translation>Privilegios refrescados.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="910"/>
+        <location filename="../mainwindow.cpp" line="908"/>
         <source>Logs purged.</source>
         <translation>Logs purgados.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="916"/>
+        <location filename="../mainwindow.cpp" line="914"/>
         <source>Seconds of difference: %1</source>
         <translation>Segundos de diferencia: %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="924"/>
+        <location filename="../mainwindow.cpp" line="922"/>
         <source>Select a date</source>
         <translation>Seleccione una fecha</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="988"/>
+        <location filename="../mainwindow.cpp" line="986"/>
         <source>Logs flushed.</source>
         <translation>Registros limpiados.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1244"/>
-        <location filename="../mainwindow.cpp" line="1894"/>
+        <location filename="../mainwindow.cpp" line="1242"/>
+        <location filename="../mainwindow.cpp" line="1892"/>
         <source>Calíope source documentation</source>
         <translation>Documentación del código fuente de Calíope</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1470"/>
+        <location filename="../mainwindow.cpp" line="1468"/>
         <source>Select a table</source>
         <translation>Seleccione una tabla</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1470"/>
+        <location filename="../mainwindow.cpp" line="1468"/>
         <source>Table:</source>
         <translation>Tabla:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1535"/>
+        <location filename="../mainwindow.cpp" line="1533"/>
         <source>Save to Pdf</source>
         <translation>Guardar en Pdf</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1535"/>
+        <location filename="../mainwindow.cpp" line="1533"/>
         <source>Pdf &amp; Ps files (*.pdf *.ps)</source>
         <translation>Archivos Pdf &amp; Ps (*.pdf *.ps)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1563"/>
+        <location filename="../mainwindow.cpp" line="1561"/>
         <source>Stop %1</source>
         <translation>Detener %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1568"/>
+        <location filename="../mainwindow.cpp" line="1566"/>
         <source>Start %1</source>
         <translation>Iniciar %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1573"/>
+        <location filename="../mainwindow.cpp" line="1571"/>
         <source>Reset %1</source>
         <translation>Restablecer %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1578"/>
+        <location filename="../mainwindow.cpp" line="1576"/>
         <source>Restart %1</source>
         <translation>Reiniciar %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1584"/>
+        <location filename="../mainwindow.cpp" line="1582"/>
         <source>All connections</source>
         <translation>Todas las conexiones</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1693"/>
+        <location filename="../mainwindow.cpp" line="1691"/>
         <source>&amp;Quit</source>
         <translation>&amp;Salir</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1694"/>
+        <location filename="../mainwindow.cpp" line="1692"/>
         <source>Exits the application.</source>
         <translation>Sale de laplicación.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1696"/>
+        <location filename="../mainwindow.cpp" line="1694"/>
         <source>About &amp;Qt</source>
         <translation>Acerca de &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1699"/>
-        <location filename="../mainwindow.cpp" line="2614"/>
+        <location filename="../mainwindow.cpp" line="1697"/>
+        <location filename="../mainwindow.cpp" line="2612"/>
         <source>About Calíope</source>
         <translation>Aceca de Calíope</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1700"/>
+        <location filename="../mainwindow.cpp" line="1698"/>
         <source>Shows the About dialog for Calíope.</source>
         <translation>Muestra el diálogo Acerca de Calíope.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1732"/>
+        <location filename="../mainwindow.cpp" line="1730"/>
         <source>Calíope</source>
         <translation>Calíope</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1735"/>
+        <location filename="../mainwindow.cpp" line="1733"/>
         <source>MariaDB Help</source>
         <translation>Ayuda de MariaDB</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1776"/>
+        <location filename="../mainwindow.cpp" line="1774"/>
         <source>Tile windows</source>
         <translation>Ventanas en mosaico</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1810"/>
+        <location filename="../mainwindow.cpp" line="1808"/>
         <source>Reset Slave</source>
         <translation>Restablecer esclavo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1844"/>
+        <location filename="../mainwindow.cpp" line="1842"/>
         <source>&amp;Connection</source>
         <translation>&amp;Conexión</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1853"/>
+        <location filename="../mainwindow.cpp" line="1851"/>
         <source>Recent connections</source>
         <translation>Conexiones recientes</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1855"/>
+        <location filename="../mainwindow.cpp" line="1853"/>
         <source>Reports</source>
         <translation>Reportes</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1876"/>
+        <location filename="../mainwindow.cpp" line="1874"/>
         <source>Populate table</source>
         <translation>Poblar tabla</translation>
     </message>
@@ -2434,22 +2434,22 @@ Total progess: %5.</source>
         <translation type="obsolete">Aplicación iniciada</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2001"/>
+        <location filename="../mainwindow.cpp" line="1999"/>
         <source>Users</source>
         <translation>Usuarios</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2058"/>
+        <location filename="../mainwindow.cpp" line="2056"/>
         <source>External Web page</source>
         <translation>Página Web externa</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="318"/>
+        <location filename="../mainwindow.cpp" line="316"/>
         <source>Connected successfully to: %1</source>
         <translation>Conectado satisfactoriamente a: %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2226"/>
+        <location filename="../mainwindow.cpp" line="2224"/>
         <source>Result</source>
         <translation>Resultado</translation>
     </message>
@@ -2458,34 +2458,34 @@ Total progess: %5.</source>
         <translation type="obsolete">Bases de Datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1838"/>
-        <location filename="../mainwindow.cpp" line="1858"/>
+        <location filename="../mainwindow.cpp" line="1836"/>
+        <location filename="../mainwindow.cpp" line="1856"/>
         <source>Editors</source>
         <translation>Editores</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1859"/>
+        <location filename="../mainwindow.cpp" line="1857"/>
         <source>Project files</source>
         <translation>Archivos de proyecto</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1840"/>
+        <location filename="../mainwindow.cpp" line="1838"/>
         <source>Open external web page</source>
         <translation>Abrir una página web externa</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1841"/>
-        <location filename="../mainwindow.cpp" line="2425"/>
+        <location filename="../mainwindow.cpp" line="1839"/>
+        <location filename="../mainwindow.cpp" line="2423"/>
         <source>&amp;File</source>
         <translation>&amp;Archivo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1842"/>
+        <location filename="../mainwindow.cpp" line="1840"/>
         <source>Recent files</source>
         <translation>Archivos recientes</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1843"/>
+        <location filename="../mainwindow.cpp" line="1841"/>
         <source>&amp;Projects</source>
         <translation>&amp;Proyectos</translation>
     </message>
@@ -2494,139 +2494,139 @@ Total progess: %5.</source>
         <translation type="obsolete">&amp;Conexión</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1845"/>
+        <location filename="../mainwindow.cpp" line="1843"/>
         <source>Change character set</source>
         <translation>Cambiar conjunto de caracteres</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1846"/>
+        <location filename="../mainwindow.cpp" line="1844"/>
         <source>Change database</source>
         <translation>Cambiar base de datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1847"/>
-        <location filename="../mainwindow.cpp" line="2504"/>
+        <location filename="../mainwindow.cpp" line="1845"/>
+        <location filename="../mainwindow.cpp" line="2502"/>
         <source>Replication</source>
         <translation>Replicación</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1848"/>
+        <location filename="../mainwindow.cpp" line="1846"/>
         <source>Maintenance</source>
         <translation>Mantenimiento</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1849"/>
+        <location filename="../mainwindow.cpp" line="1847"/>
         <source>&amp;View</source>
         <translation>&amp;Ver</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1850"/>
+        <location filename="../mainwindow.cpp" line="1848"/>
         <source>&amp;Languaje</source>
         <translation>&amp;Idioma</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1851"/>
+        <location filename="../mainwindow.cpp" line="1849"/>
         <source>&amp;Window</source>
         <translation>&amp;Ventana</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1852"/>
+        <location filename="../mainwindow.cpp" line="1850"/>
         <source>&amp;Help</source>
         <translation>&amp;Ayuda</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1882"/>
+        <location filename="../mainwindow.cpp" line="1880"/>
         <source>Clear recent files</source>
         <translation>Limpiar archivos recientes</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1885"/>
+        <location filename="../mainwindow.cpp" line="1883"/>
         <source>Database comparation</source>
         <translation>Comparación de Bases de Datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1888"/>
+        <location filename="../mainwindow.cpp" line="1886"/>
         <source>Migrate database</source>
         <translation>Migrar base de datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1163"/>
-        <location filename="../mainwindow.cpp" line="2193"/>
+        <location filename="../mainwindow.cpp" line="1161"/>
+        <location filename="../mainwindow.cpp" line="2191"/>
         <source>Cannot connect to the server</source>
         <translation>No es posible conectarse al servidor</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1897"/>
+        <location filename="../mainwindow.cpp" line="1895"/>
         <source>Server information</source>
         <translation>Información del Servidor</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1909"/>
+        <location filename="../mainwindow.cpp" line="1907"/>
         <source>Create a custom report</source>
         <translation>Crear un reporte personalizado</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1915"/>
+        <location filename="../mainwindow.cpp" line="1913"/>
         <source>Tell us your comments</source>
         <translation>Dígamos sus comentarios</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1918"/>
+        <location filename="../mainwindow.cpp" line="1916"/>
         <source>Stop all Slaves</source>
         <translation>Detener todos los Esclavos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1921"/>
+        <location filename="../mainwindow.cpp" line="1919"/>
         <source>Start all Slaves</source>
         <translation>Iniciar todos los Esclavos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1924"/>
+        <location filename="../mainwindow.cpp" line="1922"/>
         <source>Export settings file</source>
         <translation>Exportar archivo de configuración</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1927"/>
+        <location filename="../mainwindow.cpp" line="1925"/>
         <source>Import settings file</source>
         <translation>Importar archivo de configuración</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1930"/>
+        <location filename="../mainwindow.cpp" line="1928"/>
         <source>Save all</source>
         <translation>Guardar todo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1933"/>
+        <location filename="../mainwindow.cpp" line="1931"/>
         <source>Migrate table</source>
         <translation>Migrar tabla</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1936"/>
+        <location filename="../mainwindow.cpp" line="1934"/>
         <source>Database metadata</source>
         <translation>Metadatos de la base de datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2501"/>
+        <location filename="../mainwindow.cpp" line="2499"/>
         <source>General</source>
         <translation>General</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2507"/>
+        <location filename="../mainwindow.cpp" line="2505"/>
         <source>Logs</source>
         <translation>Registros</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2641"/>
+        <location filename="../mainwindow.cpp" line="2639"/>
         <source>Windows</source>
         <translation>Ventanas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2653"/>
+        <location filename="../mainwindow.cpp" line="2651"/>
         <source>Windows options</source>
         <translation>Opciones de ventanas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2712"/>
+        <location filename="../mainwindow.cpp" line="2710"/>
         <source>Character set changed to: %1</source>
         <translation>Conjunto de caracteres cambiado a: %1</translation>
     </message>
@@ -3731,37 +3731,37 @@ Total progess: %5.</source>
         <translation>Salida en PDF.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="506"/>
+        <location filename="../sqlquery.cpp" line="495"/>
         <source>Script exectution</source>
         <translation>Ejecución de script</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="507"/>
+        <location filename="../sqlquery.cpp" line="496"/>
         <source>Do you really want to execute the hole script?</source>
         <translation>¿Realmente desea ejecutar el script completo?</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="763"/>
+        <location filename="../sqlquery.cpp" line="752"/>
         <source>Incorrect use of the EXPORT RESULT FOR INSERT Option. Example: EXPORT RESULT SELECT * FROM `PartitionedTale` PARTITION (`Partition1`), it only works for the current database and on SELECT *.</source>
         <translation>Uso incorrecto de la Opción EXPORT RESULT FOR INSERT. Ejemplo EXPORT RESULT SELECT * FROM `PartitionedTale` PARTITION (`Partition1`), sólo trabaja en la base de datos actual y con SELECT *.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="968"/>
+        <location filename="../sqlquery.cpp" line="957"/>
         <source>Commit transacction</source>
         <translation>Guardar transacción</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="968"/>
+        <location filename="../sqlquery.cpp" line="957"/>
         <source>Do you really want to commint changes?</source>
         <translation>¿Realmente desea aplicar los cambios?</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="981"/>
+        <location filename="../sqlquery.cpp" line="970"/>
         <source>Do you really want to rollback changes?</source>
         <translation>¿Realmente desea revertir los cambios?</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="981"/>
+        <location filename="../sqlquery.cpp" line="970"/>
         <source>Rollback transacction</source>
         <translation>Revertir transacción</translation>
     </message>
@@ -3796,61 +3796,61 @@ Total progess: %5.</source>
         <translation>Guardar transacción</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="515"/>
+        <location filename="../sqlquery.cpp" line="504"/>
         <source>Could not execute statement on safe mode.</source>
         <translation>No es posible ejecutar esta consulta en modo seguro.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="516"/>
+        <location filename="../sqlquery.cpp" line="505"/>
         <source>Safe mode</source>
         <translation>Modo seguro</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="570"/>
+        <location filename="../sqlquery.cpp" line="559"/>
         <source>Save to Pdf</source>
         <translation>Guardar en Pdf</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="570"/>
+        <location filename="../sqlquery.cpp" line="559"/>
         <source>Pdf &amp; Ps files (*.pdf *.ps)</source>
         <translation>Archivos Pdf &amp; Ps (*.pdf *.ps)</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="576"/>
+        <location filename="../sqlquery.cpp" line="565"/>
         <source>File saved at: %1</source>
         <translation>Archivo guardado en: %1</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="697"/>
-        <location filename="../sqlquery.cpp" line="752"/>
+        <location filename="../sqlquery.cpp" line="686"/>
+        <location filename="../sqlquery.cpp" line="741"/>
         <source>Select a file</source>
         <translation>Seleccione un archivo</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="700"/>
-        <location filename="../sqlquery.cpp" line="755"/>
+        <location filename="../sqlquery.cpp" line="689"/>
+        <location filename="../sqlquery.cpp" line="744"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>No es posible escribir en el archivo %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="708"/>
+        <location filename="../sqlquery.cpp" line="697"/>
         <source>Incorrect use of the EXPORT DATA FOR INSERT Option. Example: EXPORT DATA FOR INSERT `columns_pri`, it only works for the current database.</source>
         <translation>Uso incorrecto de la Opción Exportar los datos de la tabla para INSERT. Ejemplo: EXPORT DATA FOR INSERT `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="612"/>
+        <location filename="../sqlquery.cpp" line="601"/>
         <source>Incorrect use of the EXPLAIN SELECT Option. Example: SELECT * FROM `columns_pri`, it only works for the current database, the asterisk must be selected.</source>
         <translation>Uso incorrecto de la Opción Explicar SELECT. Ejemplo: SELECT * FROM `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="791"/>
+        <location filename="../sqlquery.cpp" line="780"/>
         <source>Incorrect use of the EXPLAIN INSERT Option. Example: INSERT INTO `columns_pri`, it only works for the current database.</source>
         <translation>Uso incorrecto de la Opción Explicar INSERT. Ejemplo: INSERT INTO `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="919"/>
+        <location filename="../sqlquery.cpp" line="908"/>
         <source>Incorrect use of the TRIM columns Option. Example: TRIM COLUMNS IN `columns_pri`, it only works for the current database.</source>
         <translation>Uso incorrecto de la Opción Recortar las columnas. Ejemplo: TRIM COLUMNS IN `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
@@ -3859,30 +3859,30 @@ Total progess: %5.</source>
         <translation type="obsolete">Mal uso de la opción: Exportar los datos de la tabla para INSERT.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="804"/>
+        <location filename="../sqlquery.cpp" line="793"/>
         <source>seconds</source>
         <translation>segundos</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="808"/>
-        <location filename="../sqlquery.cpp" line="813"/>
+        <location filename="../sqlquery.cpp" line="797"/>
+        <location filename="../sqlquery.cpp" line="802"/>
         <source>minutes</source>
         <translation>minutos</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="815"/>
+        <location filename="../sqlquery.cpp" line="804"/>
         <source>Elapsed: %1 %2. Remaining: %3 %4.
 Total of queries: %5, remaining: %6.
 Queries per second: %7.</source>
         <translation>Transcurrido: %1 %2. Restante: %3 %4.\nTotal de sentencias: %5, restantes: %6.\nConsultas por segundo: %7.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="871"/>
+        <location filename="../sqlquery.cpp" line="860"/>
         <source>Incorrect use of the EXPLAIN UPDATE Option. Example: UPDATE `columns_pri`, it only works for the current database.</source>
         <translation>Uso incorrecto de la Opción Explicar UPDATE. Ejemplo: UPDATE `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="880"/>
+        <location filename="../sqlquery.cpp" line="869"/>
         <source>Repeat time in seconds</source>
         <translation>Tiempo de repetición en segundos</translation>
     </message>
@@ -3999,75 +3999,95 @@ Total of queries: %5, remaining: %6.</source>
         <translation>Texto SQL</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="146"/>
-        <location filename="../serverInformation.cpp" line="148"/>
-        <location filename="../serverInformation.cpp" line="526"/>
+        <location filename="../serverInformation.cpp" line="156"/>
+        <location filename="../serverInformation.cpp" line="158"/>
+        <location filename="../serverInformation.cpp" line="546"/>
         <source>All</source>
         <translation>Todas</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="151"/>
+        <location filename="../serverInformation.cpp" line="161"/>
         <source>List of available connections</source>
         <translation>Lista de conexiones disponibles</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="337"/>
+        <location filename="../serverInformation.cpp" line="347"/>
         <source>Server Information</source>
         <translation>Información del Servidor</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="340"/>
+        <location filename="../serverInformation.cpp" line="350"/>
         <source>User:</source>
         <translation>Usuario:</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="342"/>
+        <location filename="../serverInformation.cpp" line="352"/>
         <source>Host:</source>
         <translation>Huésped:</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="344"/>
+        <location filename="../serverInformation.cpp" line="354"/>
         <source>Socket:</source>
         <translation>Socket:</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="346"/>
+        <location filename="../serverInformation.cpp" line="356"/>
         <source>Port:</source>
         <translation>Puerto:</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="348"/>
+        <location filename="../serverInformation.cpp" line="358"/>
         <source>Version:</source>
         <translation>Versión:</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="350"/>
+        <location filename="../serverInformation.cpp" line="360"/>
         <source>Connection id:</source>
         <translation>Id de la conexión:</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="352"/>
+        <location filename="../serverInformation.cpp" line="362"/>
         <source>Server status:</source>
         <translation>Estado del servidor:</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="353"/>
+        <location filename="../serverInformation.cpp" line="363"/>
         <source>Connection</source>
         <translation>Conexión</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="354"/>
+        <location filename="../serverInformation.cpp" line="364"/>
         <source>Status</source>
         <translation>Estado</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="414"/>
+        <location filename="../serverInformation.cpp" line="374"/>
+        <source>Skip 1000</source>
+        <translation>Saltar 1000</translation>
+    </message>
+    <message>
+        <location filename="../serverInformation.cpp" line="399"/>
+        <source>Refresh rate.</source>
+        <translation>Taza de refrescado.</translation>
+    </message>
+    <message>
+        <location filename="../serverInformation.cpp" line="400"/>
+        <source>Refresh rate:</source>
+        <translation>Taza de refrescado:</translation>
+    </message>
+    <message>
+        <location filename="../serverInformation.cpp" line="401"/>
+        <source>seconds</source>
+        <translation>segundos</translation>
+    </message>
+    <message>
+        <location filename="../serverInformation.cpp" line="428"/>
         <source>Data sent.</source>
         <translation>Datos enviados.</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="416"/>
-        <location filename="../serverInformation.cpp" line="435"/>
+        <location filename="../serverInformation.cpp" line="430"/>
+        <location filename="../serverInformation.cpp" line="449"/>
         <source>Transfer rate: %1 per second.</source>
         <translation>Radio de transferencia: %1 por segundo.</translation>
     </message>
@@ -4076,43 +4096,43 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Refrescar</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="358"/>
-        <location filename="../serverInformation.cpp" line="365"/>
+        <location filename="../serverInformation.cpp" line="368"/>
+        <location filename="../serverInformation.cpp" line="376"/>
         <source>Replication Status</source>
         <translation>Estado del Replicador</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="359"/>
-        <location filename="../serverInformation.cpp" line="368"/>
-        <location filename="../serverInformation.cpp" line="373"/>
-        <location filename="../serverInformation.cpp" line="376"/>
+        <location filename="../serverInformation.cpp" line="369"/>
+        <location filename="../serverInformation.cpp" line="379"/>
+        <location filename="../serverInformation.cpp" line="384"/>
+        <location filename="../serverInformation.cpp" line="387"/>
         <source>Actions</source>
         <translation>Acciones</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="360"/>
+        <location filename="../serverInformation.cpp" line="370"/>
         <source>Skip 0</source>
         <translation>Saltar 0</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="361"/>
+        <location filename="../serverInformation.cpp" line="371"/>
         <source>Skip 1</source>
         <translation>Saltar 1</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="362"/>
+        <location filename="../serverInformation.cpp" line="372"/>
         <source>Skip 10</source>
         <translation>Saltar 10</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="363"/>
+        <location filename="../serverInformation.cpp" line="373"/>
         <source>Skip 100</source>
         <translation>Saltar 100</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="364"/>
-        <location filename="../serverInformation.cpp" line="370"/>
-        <location filename="../serverInformation.cpp" line="374"/>
+        <location filename="../serverInformation.cpp" line="375"/>
+        <location filename="../serverInformation.cpp" line="381"/>
+        <location filename="../serverInformation.cpp" line="385"/>
         <source>Stop refreshing</source>
         <translation>Detener refrescado</translation>
     </message>
@@ -4133,53 +4153,53 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Estado de la Sesión</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="366"/>
-        <location filename="../serverInformation.cpp" line="367"/>
+        <location filename="../serverInformation.cpp" line="377"/>
+        <location filename="../serverInformation.cpp" line="378"/>
         <source>Variables</source>
         <translation>Variables</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="369"/>
-        <location filename="../serverInformation.cpp" line="371"/>
-        <location filename="../serverInformation.cpp" line="372"/>
-        <location filename="../serverInformation.cpp" line="375"/>
-        <location filename="../serverInformation.cpp" line="684"/>
+        <location filename="../serverInformation.cpp" line="380"/>
+        <location filename="../serverInformation.cpp" line="382"/>
+        <location filename="../serverInformation.cpp" line="383"/>
+        <location filename="../serverInformation.cpp" line="386"/>
+        <location filename="../serverInformation.cpp" line="709"/>
         <source>Server Graphics</source>
         <translation>Gráficos del Servidor</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="377"/>
-        <location filename="../serverInformation.cpp" line="378"/>
+        <location filename="../serverInformation.cpp" line="388"/>
+        <location filename="../serverInformation.cpp" line="389"/>
         <source>HDD Usage</source>
         <translation>Uso del HDD</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="380"/>
+        <location filename="../serverInformation.cpp" line="391"/>
         <source>Filter</source>
         <translation>Filtro</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="381"/>
+        <location filename="../serverInformation.cpp" line="392"/>
         <source>Show global variables</source>
         <translation>Mostrar variables globales</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="382"/>
+        <location filename="../serverInformation.cpp" line="393"/>
         <source>Show global status</source>
         <translation>Mostrar el estado global</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="383"/>
+        <location filename="../serverInformation.cpp" line="394"/>
         <source>Show session status</source>
         <translation>Mostrar estado de la sessión</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="384"/>
+        <location filename="../serverInformation.cpp" line="395"/>
         <source>Show session variables</source>
         <translation>Mostrar variables de sessión</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="385"/>
+        <location filename="../serverInformation.cpp" line="396"/>
         <source>Filter:</source>
         <translation>Filtro:</translation>
     </message>
@@ -4192,22 +4212,22 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">consultas</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="355"/>
+        <location filename="../serverInformation.cpp" line="365"/>
         <source>Show server status</source>
         <translation>Mostrar estado del servidor</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="356"/>
+        <location filename="../serverInformation.cpp" line="366"/>
         <source>Show slow queries</source>
         <translation>Mostrar las consultas lentas</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="386"/>
+        <location filename="../serverInformation.cpp" line="397"/>
         <source>Three characters at least</source>
         <translation>Tres caracteres como mínimo</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="387"/>
+        <location filename="../serverInformation.cpp" line="398"/>
         <source>Full screen</source>
         <translation>Pantalla completa</translation>
     </message>
@@ -4232,12 +4252,12 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="vanished">Radio de transferencia: %1 Kb por segundo.</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="433"/>
+        <location filename="../serverInformation.cpp" line="447"/>
         <source>Data received in MB.</source>
         <translation>Datos recibidos e MB.</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="438"/>
+        <location filename="../serverInformation.cpp" line="452"/>
         <source>Miscellaneous values.</source>
         <translation>Valores miceláneos.</translation>
     </message>
@@ -4250,52 +4270,52 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="vanished">Ingrese el nombre de la conexión predeterminada y presione Enter.</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="542"/>
+        <location filename="../serverInformation.cpp" line="562"/>
         <source>Database sizes description.</source>
         <translation>Descripción de los tamaños de las bases de datos.</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="546"/>
-        <location filename="../serverInformation.cpp" line="556"/>
+        <location filename="../serverInformation.cpp" line="566"/>
+        <location filename="../serverInformation.cpp" line="576"/>
         <source>Database</source>
         <translation>Base de Datos</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="547"/>
-        <location filename="../serverInformation.cpp" line="557"/>
+        <location filename="../serverInformation.cpp" line="567"/>
+        <location filename="../serverInformation.cpp" line="577"/>
         <source>Total</source>
         <translation>Total</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="548"/>
-        <location filename="../serverInformation.cpp" line="558"/>
+        <location filename="../serverInformation.cpp" line="568"/>
+        <location filename="../serverInformation.cpp" line="578"/>
         <source>Data</source>
         <translation>Datos</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="549"/>
-        <location filename="../serverInformation.cpp" line="559"/>
+        <location filename="../serverInformation.cpp" line="569"/>
+        <location filename="../serverInformation.cpp" line="579"/>
         <source>Indexes</source>
         <translation>Índices</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="550"/>
+        <location filename="../serverInformation.cpp" line="570"/>
         <source>Tables</source>
         <translation>Tablas</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="551"/>
-        <location filename="../serverInformation.cpp" line="560"/>
+        <location filename="../serverInformation.cpp" line="571"/>
+        <location filename="../serverInformation.cpp" line="580"/>
         <source>Rows</source>
         <translation>Filas</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="555"/>
+        <location filename="../serverInformation.cpp" line="575"/>
         <source>Detailed size table description. Table size greater than %1 MB.</source>
         <translation>Descripción detallada del tamaño de las tablas. Tamaño de tablas mayores a %1 MB.</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="556"/>
+        <location filename="../serverInformation.cpp" line="576"/>
         <source>Table name</source>
         <translation>Nombre de la tabla</translation>
     </message>
@@ -4304,13 +4324,13 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Pendiente.</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="569"/>
-        <location filename="../serverInformation.cpp" line="591"/>
+        <location filename="../serverInformation.cpp" line="589"/>
+        <location filename="../serverInformation.cpp" line="611"/>
         <source>There was an error determinating the DBMS type.</source>
         <translation>Hubo un error al determinar el tipo de DBMS.</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="580"/>
+        <location filename="../serverInformation.cpp" line="600"/>
         <source>Main server data.</source>
         <translation>Servidor principal de datos.</translation>
     </message>
@@ -4459,7 +4479,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número máximo de conexiones que han sido utilizadas simultáneamente desde que el servidor se inició.</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="585"/>
+        <location filename="../serverInformation.cpp" line="605"/>
         <source>Average of slow queries per day since server started.</source>
         <translation>Promedio de consultas lentas por día desde que el servidor inició.</translation>
     </message>
@@ -4488,22 +4508,22 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Tiempo encendido en horas</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="666"/>
+        <location filename="../serverInformation.cpp" line="691"/>
         <source>Global status</source>
         <translation>Estado global</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="668"/>
+        <location filename="../serverInformation.cpp" line="693"/>
         <source>Session status</source>
         <translation>Estado de sesión</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="670"/>
+        <location filename="../serverInformation.cpp" line="695"/>
         <source>Global variables</source>
         <translation>Variables globales</translation>
     </message>
     <message>
-        <location filename="../serverInformation.cpp" line="672"/>
+        <location filename="../serverInformation.cpp" line="697"/>
         <source>Session variables</source>
         <translation>Variables de sesión</translation>
     </message>
@@ -4878,2433 +4898,2433 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1235"/>
+        <location filename="../staticfunctions.cpp" line="1239"/>
         <source>Quote string with slashes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1293"/>
+        <location filename="../staticfunctions.cpp" line="1297"/>
         <source>Create an array</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1298"/>
+        <location filename="../staticfunctions.cpp" line="1302"/>
         <source>Compares array1 against array2 and returns the difference.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1303"/>
+        <location filename="../staticfunctions.cpp" line="1307"/>
         <source>Fills an array with num entries of the value of the value parameter, keys starting at the start_index parameter.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1305"/>
+        <location filename="../staticfunctions.cpp" line="1309"/>
         <source>Filters elements of an array using a callback function.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1306"/>
+        <location filename="../staticfunctions.cpp" line="1310"/>
         <source>Exchanges all keys with their associated values in an array.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1313"/>
+        <location filename="../staticfunctions.cpp" line="1317"/>
         <source>Returns the keys, numeric and string, from the input array.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1314"/>
+        <location filename="../staticfunctions.cpp" line="1318"/>
         <source>Applies the callback to the elements of the given arrays.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1315"/>
+        <location filename="../staticfunctions.cpp" line="1319"/>
         <source>Merge one or more arrays.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1319"/>
+        <location filename="../staticfunctions.cpp" line="1323"/>
         <source>Pop the element off the end of array</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1327"/>
+        <location filename="../staticfunctions.cpp" line="1331"/>
         <source>Searches the array for a given value and returns the corresponding key if successful.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1329"/>
+        <location filename="../staticfunctions.cpp" line="1333"/>
         <source>Extract a slice of the array</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1330"/>
+        <location filename="../staticfunctions.cpp" line="1334"/>
         <source>Remove a portion of the array and replace it with something else</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1331"/>
+        <location filename="../staticfunctions.cpp" line="1335"/>
         <source>Calculate the sum of values in an array.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1340"/>
+        <location filename="../staticfunctions.cpp" line="1344"/>
         <source>Return all the values of an array.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1346"/>
+        <location filename="../staticfunctions.cpp" line="1350"/>
         <source>Sort an array in reverse order and maintain index association</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1349"/>
+        <location filename="../staticfunctions.cpp" line="1353"/>
         <source>Sort an array and maintain index association.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1357"/>
+        <location filename="../staticfunctions.cpp" line="1361"/>
         <source>Decodes data encoded with MIME base64.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1358"/>
+        <location filename="../staticfunctions.cpp" line="1362"/>
         <source>Encodes data with MIME base64</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1550"/>
+        <location filename="../staticfunctions.cpp" line="1554"/>
         <source>Calls the callback given by the first parameter and passes the remaining parameters as arguments.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1567"/>
+        <location filename="../staticfunctions.cpp" line="1571"/>
         <source>Split a string into smaller chunks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1581"/>
+        <location filename="../staticfunctions.cpp" line="1585"/>
         <source>Close directory handle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1616"/>
+        <location filename="../staticfunctions.cpp" line="1620"/>
         <source>Counts all elements in an array, or something in an object.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1756"/>
+        <location filename="../staticfunctions.cpp" line="1760"/>
         <source>Format a local time/date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1922"/>
+        <location filename="../staticfunctions.cpp" line="1926"/>
         <source>Generates a backtrace.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1928"/>
+        <location filename="../staticfunctions.cpp" line="1932"/>
         <source>Defines a named constant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1946"/>
+        <location filename="../staticfunctions.cpp" line="1950"/>
         <source>Returns parent directory&apos;s path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="2060"/>
+        <location filename="../staticfunctions.cpp" line="2064"/>
         <source>Output one or more strings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="2117"/>
+        <location filename="../staticfunctions.cpp" line="2121"/>
         <source>Determine whether a variable is empty</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="2145"/>
+        <location filename="../staticfunctions.cpp" line="2149"/>
         <source>Sets which PHP errors are reported.&lt;br /&gt;E_ERROR, E_WARNING, E_PARSE, E_NOTICE, E_CORE_ERROR&lt;br /&gt;, E_CORE_WARNING, E_COMPILE_ERROR, E_COMPILE_WARNING, E_USER_ERROR, E_USER_WARNING&lt;br /&gt;, E_USER_NOTICE, E_STRICT, E_RECOVERABLE_ERROR, E_DEPRECATED, E_USER_DEPRECATED, E_ALL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="2183"/>
+        <location filename="../staticfunctions.cpp" line="2187"/>
         <source>Split a string by string</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="2260"/>
+        <location filename="../staticfunctions.cpp" line="2264"/>
         <source>Closes an open file pointer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="2302"/>
+        <location filename="../staticfunctions.cpp" line="2306"/>
         <source>Reads entire file into an array</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="2303"/>
+        <location filename="../staticfunctions.cpp" line="2307"/>
         <source>Checks whether a file or directory exists</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="2304"/>
+        <location filename="../staticfunctions.cpp" line="2308"/>
         <source>Reads entire file into a string</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="2305"/>
+        <location filename="../staticfunctions.cpp" line="2309"/>
         <source>Write a string to a file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="2320"/>
+        <location filename="../staticfunctions.cpp" line="2324"/>
         <source>Gets file size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="2328"/>
+        <location filename="../staticfunctions.cpp" line="2332"/>
         <source>Filters a variable with a specified filter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="2342"/>
+        <location filename="../staticfunctions.cpp" line="2346"/>
         <source>Opens file or URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="2349"/>
+        <location filename="../staticfunctions.cpp" line="2353"/>
         <source>Binary-safe file read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="2396"/>
+        <location filename="../staticfunctions.cpp" line="2400"/>
         <source>Checks the list of defined functions, both built-in (internal) and user-defined, for function_name.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="2397"/>
+        <location filename="../staticfunctions.cpp" line="2401"/>
         <source>Binary-safe file write.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="2829"/>
+        <location filename="../staticfunctions.cpp" line="2833"/>
         <source>Send a raw HTTP header</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="3917"/>
+        <location filename="../staticfunctions.cpp" line="3921"/>
         <source>Join array elements with a string</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="3919"/>
+        <location filename="../staticfunctions.cpp" line="3923"/>
         <source>Searches haystack for needle using loose Comparision unless strict is set.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="3920"/>
+        <location filename="../staticfunctions.cpp" line="3924"/>
         <source>Includes and evaluates the specified file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="3921"/>
+        <location filename="../staticfunctions.cpp" line="3925"/>
         <source>Includes and evaluates the specified file during the execution of the script</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="3964"/>
+        <location filename="../staticfunctions.cpp" line="3968"/>
         <source>Sets the value of a configuration option.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="3985"/>
+        <location filename="../staticfunctions.cpp" line="3989"/>
         <source>Finds whether a variable is an array.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="3988"/>
+        <location filename="../staticfunctions.cpp" line="3992"/>
         <source>Tells whether the filename is a directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="4000"/>
+        <location filename="../staticfunctions.cpp" line="4004"/>
         <source>Finds whether a variable is NULL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="4001"/>
+        <location filename="../staticfunctions.cpp" line="4005"/>
         <source>Finds whether a variable is a number or a numeric string</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="4022"/>
+        <location filename="../staticfunctions.cpp" line="4026"/>
         <source>Determine if a variable is set and is not NULL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="4044"/>
+        <location filename="../staticfunctions.cpp" line="4048"/>
         <source>Decodes a JSON string</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="4063"/>
+        <location filename="../staticfunctions.cpp" line="4067"/>
         <source>Sort an array by key in reverse order</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="4064"/>
+        <location filename="../staticfunctions.cpp" line="4068"/>
         <source>Sort an array by key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="4186"/>
+        <location filename="../staticfunctions.cpp" line="4190"/>
         <source>Send mail</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="4395"/>
+        <location filename="../staticfunctions.cpp" line="4399"/>
         <source>Calculate the md5 hash of a string</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="4411"/>
+        <location filename="../staticfunctions.cpp" line="4415"/>
         <source> Return current Unix timestamp with microseconds.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="4562"/>
+        <location filename="../staticfunctions.cpp" line="4566"/>
         <source>Generate a better random value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="4960"/>
+        <location filename="../staticfunctions.cpp" line="4964"/>
         <source>Format a number with grouped thousands</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="4973"/>
+        <location filename="../staticfunctions.cpp" line="4977"/>
         <source>Get current buffer contents and delete current output buffer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="4984"/>
+        <location filename="../staticfunctions.cpp" line="4988"/>
         <source>Turn on output buffering.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="5180"/>
+        <location filename="../staticfunctions.cpp" line="5184"/>
         <source>Open directory handle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="5263"/>
+        <location filename="../staticfunctions.cpp" line="5267"/>
         <source>Parse a URL and return its components.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="5570"/>
+        <location filename="../staticfunctions.cpp" line="5574"/>
         <source>Gets the current PHP version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="5615"/>
+        <location filename="../staticfunctions.cpp" line="5619"/>
         <source>Searches subject for a match to the regular expression given in pattern.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="5618"/>
+        <location filename="../staticfunctions.cpp" line="5622"/>
         <source>Perform a regular expression search and replace.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="5623"/>
+        <location filename="../staticfunctions.cpp" line="5627"/>
         <source>Prints human-readable information about a variable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="5830"/>
+        <location filename="../staticfunctions.cpp" line="5834"/>
         <source>Read entry from directory handle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="5831"/>
+        <location filename="../staticfunctions.cpp" line="5835"/>
         <source>Outputs a file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="5878"/>
+        <location filename="../staticfunctions.cpp" line="5882"/>
         <source>Includes and evaluates the specified file. Halt the script whereas include() emits a warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="5879"/>
+        <location filename="../staticfunctions.cpp" line="5883"/>
         <source>Identical to require() except PHP will check if the file has already been included, and if so, not include (require) it again</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="5889"/>
+        <location filename="../staticfunctions.cpp" line="5893"/>
         <source>Rounds a float</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="5912"/>
+        <location filename="../staticfunctions.cpp" line="5916"/>
         <source>Strip whitespace (or other characters) from the end of a string.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6033"/>
+        <location filename="../staticfunctions.cpp" line="6037"/>
         <source>Generates a storable representation of a value.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6068"/>
+        <location filename="../staticfunctions.cpp" line="6072"/>
         <source>Limits the maximum execution time.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6078"/>
+        <location filename="../staticfunctions.cpp" line="6082"/>
         <source>Execute command via shell and return the complete output as a string</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6184"/>
+        <location filename="../staticfunctions.cpp" line="6188"/>
         <source>This function sorts an array. Elements will be arranged from lowest to highest when this function has completed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6400"/>
+        <location filename="../staticfunctions.cpp" line="6404"/>
         <source>Replace all occurrences of the search string with the replacement string</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6462"/>
+        <location filename="../staticfunctions.cpp" line="6466"/>
         <source>Get string length</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6468"/>
+        <location filename="../staticfunctions.cpp" line="6472"/>
         <source>Find the position of the first occurrence of a substring in a string</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6479"/>
+        <location filename="../staticfunctions.cpp" line="6483"/>
         <source>Make a string uppercase.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6482"/>
+        <location filename="../staticfunctions.cpp" line="6486"/>
         <source>Return part of a string</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6485"/>
+        <location filename="../staticfunctions.cpp" line="6489"/>
         <source>Replace text within a portion of a string.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6828"/>
+        <location filename="../staticfunctions.cpp" line="6832"/>
         <source>Return current Unix timestamp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6852"/>
+        <location filename="../staticfunctions.cpp" line="6856"/>
         <source>Strip whitespace (or other characters) from the beginning and end of a string.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6855"/>
+        <location filename="../staticfunctions.cpp" line="6859"/>
         <source>Uppercase the first character of each word in a string.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6884"/>
+        <location filename="../staticfunctions.cpp" line="6888"/>
         <source>Generate a unique ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6889"/>
+        <location filename="../staticfunctions.cpp" line="6893"/>
         <source>Creates a PHP value from a stored representation.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6890"/>
+        <location filename="../staticfunctions.cpp" line="6894"/>
         <source>Unset a given variable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6896"/>
+        <location filename="../staticfunctions.cpp" line="6900"/>
         <source>Sort an array by values using a user-defined Comparision function</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6897"/>
+        <location filename="../staticfunctions.cpp" line="6901"/>
         <source>Converts a string with ISO-8859-1 characters encoded with UTF-8 to single-byte ISO-8859-1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="6901"/>
+        <location filename="../staticfunctions.cpp" line="6905"/>
         <source>Dumps information about a variable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7397"/>
+        <location filename="../staticfunctions.cpp" line="7401"/>
         <source>A rule that allows websites to download and use fonts other than the &apos;web-safe&apos; fonts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7398"/>
+        <location filename="../staticfunctions.cpp" line="7402"/>
         <source>Specifies the animation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7399"/>
+        <location filename="../staticfunctions.cpp" line="7403"/>
         <source>Allows more precise alignment of elements</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7400"/>
+        <location filename="../staticfunctions.cpp" line="7404"/>
         <source>Specifies how an inline-level element is aligned with respect to its parent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7401"/>
+        <location filename="../staticfunctions.cpp" line="7405"/>
         <source>A shorthand property for all the animation properties below, except the animation-play-state property</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7402"/>
+        <location filename="../staticfunctions.cpp" line="7406"/>
         <source>Specifies when the animation will start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7403"/>
+        <location filename="../staticfunctions.cpp" line="7407"/>
         <source>Specifies whether or not the animation should play in reverse on alternate cycles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7404"/>
+        <location filename="../staticfunctions.cpp" line="7408"/>
         <source>Specifies how many seconds or milliseconds an animation takes to complete one cycle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7405"/>
+        <location filename="../staticfunctions.cpp" line="7409"/>
         <source>Specifies the number of times an animation should be played</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7406"/>
+        <location filename="../staticfunctions.cpp" line="7410"/>
         <source>Specifies a name for the @keyframes animation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7407"/>
+        <location filename="../staticfunctions.cpp" line="7411"/>
         <source>Specifies whether the animation is running or paused</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7408"/>
+        <location filename="../staticfunctions.cpp" line="7412"/>
         <source>Specifies the speed curve of the animation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7409"/>
+        <location filename="../staticfunctions.cpp" line="7413"/>
         <source>Allows you to make an element look like a standard user interface element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7410"/>
+        <location filename="../staticfunctions.cpp" line="7414"/>
         <source>Defines whether or not an element should be visible when not facing the screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7411"/>
+        <location filename="../staticfunctions.cpp" line="7415"/>
         <source>Sets all the background properties in one declaration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7412"/>
+        <location filename="../staticfunctions.cpp" line="7416"/>
         <source>Sets whether a background image is fixed or scrolls with the rest of the page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7413"/>
+        <location filename="../staticfunctions.cpp" line="7417"/>
         <source>Specifies the painting area of the background</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7414"/>
+        <location filename="../staticfunctions.cpp" line="7418"/>
         <source>Sets the background color of an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7415"/>
+        <location filename="../staticfunctions.cpp" line="7419"/>
         <source>Sets the background image for an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7416"/>
+        <location filename="../staticfunctions.cpp" line="7420"/>
         <source>Specifies the positioning area of the background images</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7417"/>
+        <location filename="../staticfunctions.cpp" line="7421"/>
         <source>Sets the starting position of a background image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7418"/>
+        <location filename="../staticfunctions.cpp" line="7422"/>
         <source>Sets how a background image will be repeated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7419"/>
+        <location filename="../staticfunctions.cpp" line="7423"/>
         <source>Specifies the size of the background images</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7420"/>
+        <location filename="../staticfunctions.cpp" line="7424"/>
         <source>Allows repositioning of the dominant-baseline relative to the dominant-baseline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7421"/>
+        <location filename="../staticfunctions.cpp" line="7425"/>
         <source>Specifies the label of the bookmark</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7422"/>
+        <location filename="../staticfunctions.cpp" line="7426"/>
         <source>Specifies the level of the bookmark</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7423"/>
+        <location filename="../staticfunctions.cpp" line="7427"/>
         <source>Specifies the target of the bookmark link</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7424"/>
+        <location filename="../staticfunctions.cpp" line="7428"/>
         <source>Sets all the border properties in one declaration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7425"/>
+        <location filename="../staticfunctions.cpp" line="7429"/>
         <source>Sets all the bottom border properties in one declaration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7426"/>
+        <location filename="../staticfunctions.cpp" line="7430"/>
         <source>Sets the color of the bottom border</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7427"/>
+        <location filename="../staticfunctions.cpp" line="7431"/>
         <source>Defines the shape of the border of the bottom-left corner</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7428"/>
+        <location filename="../staticfunctions.cpp" line="7432"/>
         <source>Defines the shape of the border of the bottom-right corner</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7429"/>
+        <location filename="../staticfunctions.cpp" line="7433"/>
         <source>Sets the style of the bottom border</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7430"/>
+        <location filename="../staticfunctions.cpp" line="7434"/>
         <source>Sets the width of the bottom border</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7431"/>
+        <location filename="../staticfunctions.cpp" line="7435"/>
         <source>Specifies whether or not table borders should be collapsed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7432"/>
+        <location filename="../staticfunctions.cpp" line="7436"/>
         <source>Sets the color of the four borders</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7433"/>
+        <location filename="../staticfunctions.cpp" line="7437"/>
         <source>A shorthand property for setting all the border-image-* properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7434"/>
+        <location filename="../staticfunctions.cpp" line="7438"/>
         <source>Specifies the amount by which the border image area extends beyond the border box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7435"/>
+        <location filename="../staticfunctions.cpp" line="7439"/>
         <source>Specifies whether the image-border should be repeated, rounded or stretched</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7436"/>
+        <location filename="../staticfunctions.cpp" line="7440"/>
         <source>Specifies the inward offsets of the image-border</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7437"/>
+        <location filename="../staticfunctions.cpp" line="7441"/>
         <source>Specifies an image to be used as a border</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7438"/>
+        <location filename="../staticfunctions.cpp" line="7442"/>
         <source>Specifies the widths of the image-border</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7439"/>
+        <location filename="../staticfunctions.cpp" line="7443"/>
         <source>Sets all the left border properties in one declaration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7440"/>
+        <location filename="../staticfunctions.cpp" line="7444"/>
         <source>Sets the color of the left border</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7441"/>
+        <location filename="../staticfunctions.cpp" line="7445"/>
         <source>Sets the style of the left border</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7442"/>
+        <location filename="../staticfunctions.cpp" line="7446"/>
         <source>Sets the width of the left border</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7443"/>
+        <location filename="../staticfunctions.cpp" line="7447"/>
         <source>A shorthand property for setting all the four border-*-radius properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7444"/>
+        <location filename="../staticfunctions.cpp" line="7448"/>
         <source>Sets all the right border properties in one declaration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7445"/>
+        <location filename="../staticfunctions.cpp" line="7449"/>
         <source>Sets the color of the right border</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7446"/>
+        <location filename="../staticfunctions.cpp" line="7450"/>
         <source>Sets the style of the right border</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7447"/>
+        <location filename="../staticfunctions.cpp" line="7451"/>
         <source>Sets the width of the right border</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7448"/>
+        <location filename="../staticfunctions.cpp" line="7452"/>
         <source>Specifies the distance between the borders of adjacent cells</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7449"/>
+        <location filename="../staticfunctions.cpp" line="7453"/>
         <source>Sets the style of the four borders</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7450"/>
+        <location filename="../staticfunctions.cpp" line="7454"/>
         <source>Sets all the top border properties in one declaration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7451"/>
+        <location filename="../staticfunctions.cpp" line="7455"/>
         <source>Sets the color of the top border</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7452"/>
+        <location filename="../staticfunctions.cpp" line="7456"/>
         <source>Defines the shape of the border of the top-left corner</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7453"/>
+        <location filename="../staticfunctions.cpp" line="7457"/>
         <source>Defines the shape of the border of the top-right corner</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7454"/>
+        <location filename="../staticfunctions.cpp" line="7458"/>
         <source>Sets the style of the top border</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7455"/>
+        <location filename="../staticfunctions.cpp" line="7459"/>
         <source>Sets the width of the top border</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7456"/>
+        <location filename="../staticfunctions.cpp" line="7460"/>
         <source>Sets the width of the four borders</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7457"/>
+        <location filename="../staticfunctions.cpp" line="7461"/>
         <source>Specifies the bottom position of a positioned element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7458"/>
+        <location filename="../staticfunctions.cpp" line="7462"/>
         <source>Specifies how to align the child elements of a box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7459"/>
-        <location filename="../staticfunctions.cpp" line="7599"/>
-        <location filename="../staticfunctions.cpp" line="7625"/>
+        <location filename="../staticfunctions.cpp" line="7463"/>
+        <location filename="../staticfunctions.cpp" line="7603"/>
+        <location filename="../staticfunctions.cpp" line="7629"/>
         <source> </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7460"/>
+        <location filename="../staticfunctions.cpp" line="7464"/>
         <source>Specifies in which direction the children of a box are displayed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7461"/>
+        <location filename="../staticfunctions.cpp" line="7465"/>
         <source>Specifies whether the children of a box is flexible or inflexible in size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7462"/>
+        <location filename="../staticfunctions.cpp" line="7466"/>
         <source>Assigns flexible elements to flex groups</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7463"/>
+        <location filename="../staticfunctions.cpp" line="7467"/>
         <source>Specifies whether columns will go onto a new line whenever it runs out of space in the parent box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7464"/>
+        <location filename="../staticfunctions.cpp" line="7468"/>
         <source>Specifies the display order of the child elements of a box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7465"/>
+        <location filename="../staticfunctions.cpp" line="7469"/>
         <source>Specifies whether the children of a box should be laid out horizontally or vertically</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7466"/>
+        <location filename="../staticfunctions.cpp" line="7470"/>
         <source>Specifies the horizontal position in horizontal boxes and the vertical position in vertical boxes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7467"/>
+        <location filename="../staticfunctions.cpp" line="7471"/>
         <source>Attaches one or more drop-shadows to the box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7468"/>
+        <location filename="../staticfunctions.cpp" line="7472"/>
         <source>Allows you to define certain elements to fit an area in a certain way</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7469"/>
+        <location filename="../staticfunctions.cpp" line="7473"/>
         <source>Specifies the placement of a table caption</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7470"/>
+        <location filename="../staticfunctions.cpp" line="7474"/>
         <source>Specifies which sides of an element where other floating elements are not allowed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7471"/>
+        <location filename="../staticfunctions.cpp" line="7475"/>
         <source>Clips an absolutely positioned element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7472"/>
+        <location filename="../staticfunctions.cpp" line="7476"/>
         <source>Sets the color of text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7473"/>
+        <location filename="../staticfunctions.cpp" line="7477"/>
         <source>Permits the specification of a source color profile other than the default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7474"/>
+        <location filename="../staticfunctions.cpp" line="7478"/>
         <source>Specifies the number of columns an element should be divided into</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7475"/>
+        <location filename="../staticfunctions.cpp" line="7479"/>
         <source>Specifies how to fill columns</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7476"/>
+        <location filename="../staticfunctions.cpp" line="7480"/>
         <source>Specifies the gap between the columns</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7477"/>
+        <location filename="../staticfunctions.cpp" line="7481"/>
         <source>A shorthand property for setting all the column-rule-* properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7478"/>
+        <location filename="../staticfunctions.cpp" line="7482"/>
         <source>Specifies the color of the rule between columns</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7479"/>
+        <location filename="../staticfunctions.cpp" line="7483"/>
         <source>Specifies the style of the rule between columns</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7480"/>
+        <location filename="../staticfunctions.cpp" line="7484"/>
         <source>Specifies the width of the rule between columns</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7481"/>
+        <location filename="../staticfunctions.cpp" line="7485"/>
         <source>Specifies how many columns an element should span across</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7482"/>
+        <location filename="../staticfunctions.cpp" line="7486"/>
         <source>Specifies the width of the columns</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7483"/>
+        <location filename="../staticfunctions.cpp" line="7487"/>
         <source>A shorthand property for setting column-width and column-count</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7484"/>
+        <location filename="../staticfunctions.cpp" line="7488"/>
         <source>Used with the :before and :after pseudo-elements, to insert generated content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7485"/>
+        <location filename="../staticfunctions.cpp" line="7489"/>
         <source>Increments one or more counters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7486"/>
+        <location filename="../staticfunctions.cpp" line="7490"/>
         <source>Creates or resets one or more counters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7487"/>
+        <location filename="../staticfunctions.cpp" line="7491"/>
         <source>Allows a replaced element to be just a rectangular area of an object, instead of the whole object</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7488"/>
+        <location filename="../staticfunctions.cpp" line="7492"/>
         <source>Specifies the type of cursor to be displayed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7489"/>
+        <location filename="../staticfunctions.cpp" line="7493"/>
         <source>Specifies the text direction/writing direction</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7490"/>
+        <location filename="../staticfunctions.cpp" line="7494"/>
         <source>Specifies how a certain HTML element should be displayed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7491"/>
+        <location filename="../staticfunctions.cpp" line="7495"/>
         <source>Specifies a scaled-baseline-table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7492"/>
+        <location filename="../staticfunctions.cpp" line="7496"/>
         <source>Sets the alignment point of the drop initial for the primary connection point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7493"/>
+        <location filename="../staticfunctions.cpp" line="7497"/>
         <source>Sets which alignment line within the initial line box is used at the primary connection point with the initial letter box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7494"/>
+        <location filename="../staticfunctions.cpp" line="7498"/>
         <source>Sets the alignment point of the drop initial for the secondary connection point</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7495"/>
+        <location filename="../staticfunctions.cpp" line="7499"/>
         <source>Sets which alignment line within the initial line box is used at the secondary connection point with the initial letter box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7496"/>
+        <location filename="../staticfunctions.cpp" line="7500"/>
         <source>Controls the partial sinking of the initial letter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7497"/>
+        <location filename="../staticfunctions.cpp" line="7501"/>
         <source>Activates a drop-initial effect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7498"/>
+        <location filename="../staticfunctions.cpp" line="7502"/>
         <source>Specifies whether or not to display borders and background on empty cells in a table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7499"/>
+        <location filename="../staticfunctions.cpp" line="7503"/>
         <source>Gives a hint for how to scale a replaced element if neither its width nor its height property is auto</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7500"/>
+        <location filename="../staticfunctions.cpp" line="7504"/>
         <source>Determines the alignment of the object inside the box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7501"/>
+        <location filename="../staticfunctions.cpp" line="7505"/>
         <source>Specifies whether or not a box should float</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7502"/>
+        <location filename="../staticfunctions.cpp" line="7506"/>
         <source>Pushes floated elements in the opposite direction of the where they have been floated with float</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7503"/>
+        <location filename="../staticfunctions.cpp" line="7507"/>
         <source>Sets all the font properties in one declaration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7504"/>
+        <location filename="../staticfunctions.cpp" line="7508"/>
         <source>Specifies the font family for text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7505"/>
+        <location filename="../staticfunctions.cpp" line="7509"/>
         <source>Specifies the font size of text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7506"/>
+        <location filename="../staticfunctions.cpp" line="7510"/>
         <source>Preserves the readability of text when font fallback occurs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7507"/>
+        <location filename="../staticfunctions.cpp" line="7511"/>
         <source>Selects a normal, condensed, or expanded face from a font family</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7508"/>
+        <location filename="../staticfunctions.cpp" line="7512"/>
         <source>Specifies the font style for text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7509"/>
+        <location filename="../staticfunctions.cpp" line="7513"/>
         <source>Specifies whether or not a text should be displayed in a small-caps font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7510"/>
+        <location filename="../staticfunctions.cpp" line="7514"/>
         <source>Specifies the weight of a font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7511"/>
+        <location filename="../staticfunctions.cpp" line="7515"/>
         <source>Specifies the width of each column in a grid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7512"/>
+        <location filename="../staticfunctions.cpp" line="7516"/>
         <source>Specifies the height of each column in a grid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7513"/>
+        <location filename="../staticfunctions.cpp" line="7517"/>
         <source>Specifies whether a punctuation character may be placed outside the line box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7514"/>
+        <location filename="../staticfunctions.cpp" line="7518"/>
         <source>Sets the height of an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7515"/>
+        <location filename="../staticfunctions.cpp" line="7519"/>
         <source>Specifies the minimum number of characters in a hyphenated word after the hyphenation character</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7516"/>
+        <location filename="../staticfunctions.cpp" line="7520"/>
         <source>Specifies the minimum number of characters in a hyphenated word before the hyphenation character</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7517"/>
+        <location filename="../staticfunctions.cpp" line="7521"/>
         <source>Specifies a string that is shown when a hyphenate-break occurs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7518"/>
+        <location filename="../staticfunctions.cpp" line="7522"/>
         <source>Indicates the maximum number of successive hyphenated lines in an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7519"/>
+        <location filename="../staticfunctions.cpp" line="7523"/>
         <source>Specifies a comma-separated list of external resources that can help the browser determine hyphenation points</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7520"/>
+        <location filename="../staticfunctions.cpp" line="7524"/>
         <source>Sets how to split words to improve the layout of paragraphs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7521"/>
+        <location filename="../staticfunctions.cpp" line="7525"/>
         <source>Provides the author the ability to style an element with an iconic equivalent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7522"/>
+        <location filename="../staticfunctions.cpp" line="7526"/>
         <source>Specifies a rotation in the right or clockwise direction that a user agent applies to an image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7523"/>
+        <location filename="../staticfunctions.cpp" line="7527"/>
         <source>Specifies the correct resolution of images</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7524"/>
+        <location filename="../staticfunctions.cpp" line="7528"/>
         <source>Sets which line of a multi-line inline block align with the previous and next inline elements within a line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7525"/>
+        <location filename="../staticfunctions.cpp" line="7529"/>
         <source>Specifies the left position of a positioned element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7526"/>
+        <location filename="../staticfunctions.cpp" line="7530"/>
         <source>Increases or decreases the space between characters in a text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7527"/>
+        <location filename="../staticfunctions.cpp" line="7531"/>
         <source>Sets the line height</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7528"/>
+        <location filename="../staticfunctions.cpp" line="7532"/>
         <source>A shorthand property for setting the line-stacking-strategy, line-stacking-ruby, and line-stacking-shift properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7529"/>
+        <location filename="../staticfunctions.cpp" line="7533"/>
         <source>Sets the line stacking method for block elements containing ruby annotation elements</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7530"/>
+        <location filename="../staticfunctions.cpp" line="7534"/>
         <source>Sets the line stacking method for block elements containing elements with base-shift</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7531"/>
+        <location filename="../staticfunctions.cpp" line="7535"/>
         <source>Sets the line stacking strategy for stacked line boxes within a containing block element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7532"/>
+        <location filename="../staticfunctions.cpp" line="7536"/>
         <source>Sets all the properties for a list in one declaration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7533"/>
+        <location filename="../staticfunctions.cpp" line="7537"/>
         <source>Specifies an image as the list-item marker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7534"/>
+        <location filename="../staticfunctions.cpp" line="7538"/>
         <source>Specifies if the list-item markers should appear inside or outside the content flow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7535"/>
+        <location filename="../staticfunctions.cpp" line="7539"/>
         <source>Specifies the type of list-item marker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7536"/>
+        <location filename="../staticfunctions.cpp" line="7540"/>
         <source>Sets all the margin properties in one declaration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7537"/>
+        <location filename="../staticfunctions.cpp" line="7541"/>
         <source>Sets the bottom margin of an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7538"/>
+        <location filename="../staticfunctions.cpp" line="7542"/>
         <source>Sets the left margin of an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7539"/>
+        <location filename="../staticfunctions.cpp" line="7543"/>
         <source>Sets the right margin of an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7540"/>
+        <location filename="../staticfunctions.cpp" line="7544"/>
         <source>Sets the top margin of an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7541"/>
+        <location filename="../staticfunctions.cpp" line="7545"/>
         <source>A shorthand property for setting the mark-before and mark-after properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7542"/>
-        <location filename="../staticfunctions.cpp" line="7543"/>
+        <location filename="../staticfunctions.cpp" line="7546"/>
+        <location filename="../staticfunctions.cpp" line="7547"/>
         <source>Allows named markers to be attached to the audio stream</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7544"/>
+        <location filename="../staticfunctions.cpp" line="7548"/>
         <source>Adds crop and/or cross marks to the document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7545"/>
+        <location filename="../staticfunctions.cpp" line="7549"/>
         <source>Sets the direction of the moving content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7546"/>
+        <location filename="../staticfunctions.cpp" line="7550"/>
         <source>Sets how many times the content move</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7547"/>
+        <location filename="../staticfunctions.cpp" line="7551"/>
         <source>Sets how fast the content scrolls</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7548"/>
+        <location filename="../staticfunctions.cpp" line="7552"/>
         <source>Sets the style of the moving content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7549"/>
+        <location filename="../staticfunctions.cpp" line="7553"/>
         <source>Sets the maximum height of an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7550"/>
+        <location filename="../staticfunctions.cpp" line="7554"/>
         <source>Sets the maximum width of an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7551"/>
+        <location filename="../staticfunctions.cpp" line="7555"/>
         <source>Sets the minimum height of an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7552"/>
+        <location filename="../staticfunctions.cpp" line="7556"/>
         <source>Sets the minimum width of an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7553"/>
+        <location filename="../staticfunctions.cpp" line="7557"/>
         <source>Causes an element to be removed from the flow and reinserted at a later point in the document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7554"/>
+        <location filename="../staticfunctions.cpp" line="7558"/>
         <source>Specifies where to navigate when using the arrow-down navigation key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7555"/>
+        <location filename="../staticfunctions.cpp" line="7559"/>
         <source>Specifies the tabbing order for an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7556"/>
+        <location filename="../staticfunctions.cpp" line="7560"/>
         <source>Specifies where to navigate when using the arrow-left navigation key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7557"/>
+        <location filename="../staticfunctions.cpp" line="7561"/>
         <source>Specifies where to navigate when using the arrow-right navigation key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7558"/>
+        <location filename="../staticfunctions.cpp" line="7562"/>
         <source>Specifies where to navigate when using the arrow-up navigation key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7559"/>
+        <location filename="../staticfunctions.cpp" line="7563"/>
         <source>Sets the opacity level for an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7560"/>
+        <location filename="../staticfunctions.cpp" line="7564"/>
         <source>Sets the minimum number of lines that must be left at the bottom of a page when a page break occurs inside an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7561"/>
+        <location filename="../staticfunctions.cpp" line="7565"/>
         <source>Sets all the outline properties in one declaration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7562"/>
+        <location filename="../staticfunctions.cpp" line="7566"/>
         <source>Sets the color of an outline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7563"/>
+        <location filename="../staticfunctions.cpp" line="7567"/>
         <source>Offsets an outline, and draws it beyond the border edge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7564"/>
+        <location filename="../staticfunctions.cpp" line="7568"/>
         <source>Sets the style of an outline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7565"/>
+        <location filename="../staticfunctions.cpp" line="7569"/>
         <source>Sets the width of an outline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7566"/>
+        <location filename="../staticfunctions.cpp" line="7570"/>
         <source>Specifies what happens if content overflows an element&apos;s box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7567"/>
+        <location filename="../staticfunctions.cpp" line="7571"/>
         <source>Specifies the preferred scrolling method for elements that overflow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7568"/>
+        <location filename="../staticfunctions.cpp" line="7572"/>
         <source>Specifies whether or not to clip the left/right edges of the content, if it overflows the element&apos;s content area</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7569"/>
+        <location filename="../staticfunctions.cpp" line="7573"/>
         <source>Specifies whether or not to clip the top/bottom edges of the content, if it overflows the element&apos;s content area</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7570"/>
+        <location filename="../staticfunctions.cpp" line="7574"/>
         <source>Sets all the padding properties in one declaration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7571"/>
+        <location filename="../staticfunctions.cpp" line="7575"/>
         <source>Sets the bottom padding of an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7572"/>
+        <location filename="../staticfunctions.cpp" line="7576"/>
         <source>Sets the left padding of an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7573"/>
+        <location filename="../staticfunctions.cpp" line="7577"/>
         <source>Sets the right padding of an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7574"/>
+        <location filename="../staticfunctions.cpp" line="7578"/>
         <source>Sets the top padding of an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7575"/>
+        <location filename="../staticfunctions.cpp" line="7579"/>
         <source>Specifies a particular type of page where an element SHOULD be displayed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7576"/>
+        <location filename="../staticfunctions.cpp" line="7580"/>
         <source>Sets the page-breaking behavior after an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7577"/>
+        <location filename="../staticfunctions.cpp" line="7581"/>
         <source>Sets the page-breaking behavior before an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7578"/>
+        <location filename="../staticfunctions.cpp" line="7582"/>
         <source>Sets the page-breaking behavior inside an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7579"/>
+        <location filename="../staticfunctions.cpp" line="7583"/>
         <source>Determines which page-based occurance of a given element is applied to a counter or string value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7580"/>
+        <location filename="../staticfunctions.cpp" line="7584"/>
         <source>Specifies the perspective on how 3D elements are viewed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7581"/>
+        <location filename="../staticfunctions.cpp" line="7585"/>
         <source>Specifies the bottom position of 3D elements</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7582"/>
+        <location filename="../staticfunctions.cpp" line="7586"/>
         <source>Specifies a phonetic pronunciation for the text contained by the corresponding element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7583"/>
+        <location filename="../staticfunctions.cpp" line="7587"/>
         <source>Specifies the type of positioning method used for an element (static, relative, absolute or fixed)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7584"/>
+        <location filename="../staticfunctions.cpp" line="7588"/>
         <source>Specifies whether a punctuation character should be trimmed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7585"/>
+        <location filename="../staticfunctions.cpp" line="7589"/>
         <source>Sets the type of quotation marks for embedded quotations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7586"/>
+        <location filename="../staticfunctions.cpp" line="7590"/>
         <source>Permits the specification of a color profile rendering intent other than the default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7587"/>
+        <location filename="../staticfunctions.cpp" line="7591"/>
         <source>Specifies whether or not an element is resizable by the user</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7588"/>
+        <location filename="../staticfunctions.cpp" line="7592"/>
         <source>A shorthand property for setting the rest-before and rest-after properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7589"/>
+        <location filename="../staticfunctions.cpp" line="7593"/>
         <source>Specifies a rest or prosodic boundary to be observed after speaking an element&apos;s content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7590"/>
+        <location filename="../staticfunctions.cpp" line="7594"/>
         <source>Specifies a rest or prosodic boundary to be observed before speaking an element&apos;s content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7591"/>
+        <location filename="../staticfunctions.cpp" line="7595"/>
         <source>Specifies the right position of a positioned element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7592"/>
+        <location filename="../staticfunctions.cpp" line="7596"/>
         <source>Rotates an element around a given point defined by the rotation-point property</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7593"/>
+        <location filename="../staticfunctions.cpp" line="7597"/>
         <source>Defines a point as an offset from the top left border edge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7594"/>
+        <location filename="../staticfunctions.cpp" line="7598"/>
         <source>Controls the text alignment of the ruby text and ruby base contents relative to each other</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7595"/>
+        <location filename="../staticfunctions.cpp" line="7599"/>
         <source>Determines whether, and on which side, ruby text is allowed to partially overhang any adjacent text in addition to its own base, when the ruby text is wider than the ruby base</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7596"/>
+        <location filename="../staticfunctions.cpp" line="7600"/>
         <source>Controls the position of the ruby text with respect to its base</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7597"/>
+        <location filename="../staticfunctions.cpp" line="7601"/>
         <source>Controls the spanning behavior of annotation elements</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7598"/>
+        <location filename="../staticfunctions.cpp" line="7602"/>
         <source>Specifies the size and orientation of the containing box for page content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7600"/>
+        <location filename="../staticfunctions.cpp" line="7604"/>
         <source>Sets the layout algorithm to be used for a table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7601"/>
+        <location filename="../staticfunctions.cpp" line="7605"/>
         <source>A shorthand property for setting the target-name, target-new, and target-position properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7602"/>
+        <location filename="../staticfunctions.cpp" line="7606"/>
         <source>Specifies where to open links (target destination)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7603"/>
+        <location filename="../staticfunctions.cpp" line="7607"/>
         <source>Specifies whether new destination links should open in a new window or in a new tab of an existing window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7604"/>
+        <location filename="../staticfunctions.cpp" line="7608"/>
         <source>Specifies where new destination links should be placed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7605"/>
+        <location filename="../staticfunctions.cpp" line="7609"/>
         <source>Specifies the horizontal alignment of text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7606"/>
+        <location filename="../staticfunctions.cpp" line="7610"/>
         <source>Describes how the last line of a block or a line right before a forced line break is aligned when text-align is &apos;justify&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7607"/>
+        <location filename="../staticfunctions.cpp" line="7611"/>
         <source>Specifies the decoration added to text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7608"/>
+        <location filename="../staticfunctions.cpp" line="7612"/>
         <source>Sets the block-progression dimension of the text content area of an inline box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7609"/>
+        <location filename="../staticfunctions.cpp" line="7613"/>
         <source>Specifies the indentation of the first line in a text-block</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7610"/>
+        <location filename="../staticfunctions.cpp" line="7614"/>
         <source>Specifies the justification method used when text-align is &apos;justify&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7611"/>
+        <location filename="../staticfunctions.cpp" line="7615"/>
         <source>Specifies a text outline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7612"/>
+        <location filename="../staticfunctions.cpp" line="7616"/>
         <source>Specifies what should happen when text overflows the containing element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7613"/>
+        <location filename="../staticfunctions.cpp" line="7617"/>
         <source>Adds shadow to text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7614"/>
+        <location filename="../staticfunctions.cpp" line="7618"/>
         <source>Controls the capitalization of text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7615"/>
+        <location filename="../staticfunctions.cpp" line="7619"/>
         <source>Specifies line breaking rules for text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7616"/>
+        <location filename="../staticfunctions.cpp" line="7620"/>
         <source>Specifies the top position of a positioned element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7617"/>
+        <location filename="../staticfunctions.cpp" line="7621"/>
         <source>Applies a 2D or 3D transformation to an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7618"/>
+        <location filename="../staticfunctions.cpp" line="7622"/>
         <source>Allows you to change the position on transformed elements</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7619"/>
+        <location filename="../staticfunctions.cpp" line="7623"/>
         <source>Specifies how nested elements are rendered in 3D space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7620"/>
+        <location filename="../staticfunctions.cpp" line="7624"/>
         <source>A shorthand property for setting the four transition properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7621"/>
+        <location filename="../staticfunctions.cpp" line="7625"/>
         <source>Specifies when the transition effect will start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7622"/>
+        <location filename="../staticfunctions.cpp" line="7626"/>
         <source>Specifies how many seconds or milliseconds a transition effect takes to complete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7623"/>
+        <location filename="../staticfunctions.cpp" line="7627"/>
         <source>Specifies the name of the CSS property the transition effect is for</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7624"/>
+        <location filename="../staticfunctions.cpp" line="7628"/>
         <source>Specifies the speed curve of the transition effect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7626"/>
+        <location filename="../staticfunctions.cpp" line="7630"/>
         <source>Sets the vertical alignment of an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7627"/>
+        <location filename="../staticfunctions.cpp" line="7631"/>
         <source>Specifies whether or not an element is visible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7628"/>
+        <location filename="../staticfunctions.cpp" line="7632"/>
         <source>Specifies the balance between left and right channels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7629"/>
+        <location filename="../staticfunctions.cpp" line="7633"/>
         <source>Specifies how long it should take to render the selected element&apos;s content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7630"/>
+        <location filename="../staticfunctions.cpp" line="7634"/>
         <source>Specifies the average pitch (a frequency) of the speaking voice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7631"/>
+        <location filename="../staticfunctions.cpp" line="7635"/>
         <source>Specifies variation in average pitch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7632"/>
+        <location filename="../staticfunctions.cpp" line="7636"/>
         <source>Controls the speaking rate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7633"/>
+        <location filename="../staticfunctions.cpp" line="7637"/>
         <source>Indicates the strength of emphasis to be applied</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7634"/>
+        <location filename="../staticfunctions.cpp" line="7638"/>
         <source>Refers to the amplitude of the waveform output by the speech synthesises</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7635"/>
+        <location filename="../staticfunctions.cpp" line="7639"/>
         <source>Specifies how white-space inside an element is handled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7636"/>
+        <location filename="../staticfunctions.cpp" line="7640"/>
         <source>Sets the minimum number of lines that must be left at the top of a page when a page break occurs inside an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7637"/>
+        <location filename="../staticfunctions.cpp" line="7641"/>
         <source>Sets the width of an element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7638"/>
+        <location filename="../staticfunctions.cpp" line="7642"/>
         <source>Specifies line breaking rules for non-CJK scripts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7639"/>
+        <location filename="../staticfunctions.cpp" line="7643"/>
         <source>Increases or decreases the space between words in a text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7640"/>
+        <location filename="../staticfunctions.cpp" line="7644"/>
         <source>Allows long, unbreakable words to be broken and wrap to the next line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="7641"/>
+        <location filename="../staticfunctions.cpp" line="7645"/>
         <source>Sets the stack order of a positioned element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8084"/>
+        <location filename="../staticfunctions.cpp" line="8088"/>
         <source>Defines the document type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8085"/>
+        <location filename="../staticfunctions.cpp" line="8089"/>
         <source>Defines a hyperlink</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8086"/>
+        <location filename="../staticfunctions.cpp" line="8090"/>
         <source>Defines an abbreviation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8087"/>
+        <location filename="../staticfunctions.cpp" line="8091"/>
         <source>Not supported in HTML5. Defines an acronym</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8088"/>
+        <location filename="../staticfunctions.cpp" line="8092"/>
         <source>Defines contact information for the author/owner of a document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8089"/>
+        <location filename="../staticfunctions.cpp" line="8093"/>
         <source>Not supported in HTML5. Deprecated in HTML 4.01. Defines an embedded applet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8090"/>
+        <location filename="../staticfunctions.cpp" line="8094"/>
         <source>Defines an area inside an image-map</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8091"/>
+        <location filename="../staticfunctions.cpp" line="8095"/>
         <source>Defines an article</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8092"/>
+        <location filename="../staticfunctions.cpp" line="8096"/>
         <source>Defines content aside from the page content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8093"/>
+        <location filename="../staticfunctions.cpp" line="8097"/>
         <source>Defines sound content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8094"/>
+        <location filename="../staticfunctions.cpp" line="8098"/>
         <source>Defines bold text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8095"/>
+        <location filename="../staticfunctions.cpp" line="8099"/>
         <source>Specifies the base URL/target for all relative URLs in a document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8096"/>
+        <location filename="../staticfunctions.cpp" line="8100"/>
         <source>Not supported in HTML5. Deprecated in HTML 4.01. Specifies a default color, size, and font for all text in a document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8097"/>
+        <location filename="../staticfunctions.cpp" line="8101"/>
         <source>Isolates a part of text that might be formatted in a different direction from other text outside it</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8098"/>
+        <location filename="../staticfunctions.cpp" line="8102"/>
         <source>Overrides the current text direction</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8099"/>
+        <location filename="../staticfunctions.cpp" line="8103"/>
         <source>Not supported in HTML5. Defines big text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8100"/>
+        <location filename="../staticfunctions.cpp" line="8104"/>
         <source>Defines a section that is quoted from another source</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8101"/>
+        <location filename="../staticfunctions.cpp" line="8105"/>
         <source>Defines the document&apos;s body</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8102"/>
+        <location filename="../staticfunctions.cpp" line="8106"/>
         <source>Defines a single line break</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8103"/>
+        <location filename="../staticfunctions.cpp" line="8107"/>
         <source>Defines a clickable button</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8104"/>
+        <location filename="../staticfunctions.cpp" line="8108"/>
         <source>Used to draw graphics, on the fly, via scripting (usually JavaScript)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8105"/>
+        <location filename="../staticfunctions.cpp" line="8109"/>
         <source>Defines a table caption</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8106"/>
+        <location filename="../staticfunctions.cpp" line="8110"/>
         <source>Not supported in HTML5. Deprecated in HTML 4.01. Defines centered text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8107"/>
+        <location filename="../staticfunctions.cpp" line="8111"/>
         <source>Defines the title of a work</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8108"/>
+        <location filename="../staticfunctions.cpp" line="8112"/>
         <source>Defines a piece of computer code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8109"/>
+        <location filename="../staticfunctions.cpp" line="8113"/>
         <source>Specifies column properties for each column within a &lt;colgroup&gt; element </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8110"/>
+        <location filename="../staticfunctions.cpp" line="8114"/>
         <source>Specifies a group of one or more columns in a table for formatting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8111"/>
+        <location filename="../staticfunctions.cpp" line="8115"/>
         <source>Defines a command button that a user can invoke</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8112"/>
+        <location filename="../staticfunctions.cpp" line="8116"/>
         <source>Specifies a list of pre-defined options for input controls</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8113"/>
+        <location filename="../staticfunctions.cpp" line="8117"/>
         <source>Defines a description of an item in a definition list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8114"/>
+        <location filename="../staticfunctions.cpp" line="8118"/>
         <source>Defines text that has been deleted from a document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8115"/>
+        <location filename="../staticfunctions.cpp" line="8119"/>
         <source>Defines additional details that the user can view or hide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8116"/>
+        <location filename="../staticfunctions.cpp" line="8120"/>
         <source>Defines a definition term</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8117"/>
+        <location filename="../staticfunctions.cpp" line="8121"/>
         <source>Defines a dialog box or window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8118"/>
+        <location filename="../staticfunctions.cpp" line="8122"/>
         <source>Not supported in HTML5. Deprecated in HTML 4.01. Defines a directory list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8119"/>
-        <location filename="../staticfunctions.cpp" line="8179"/>
+        <location filename="../staticfunctions.cpp" line="8123"/>
         <location filename="../staticfunctions.cpp" line="8183"/>
+        <location filename="../staticfunctions.cpp" line="8187"/>
         <source>Defines a section in a document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8120"/>
+        <location filename="../staticfunctions.cpp" line="8124"/>
         <source>Defines a definition list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8121"/>
+        <location filename="../staticfunctions.cpp" line="8125"/>
         <source>Defines a term (an item) in a definition list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8122"/>
+        <location filename="../staticfunctions.cpp" line="8126"/>
         <source>Defines emphasized text </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8123"/>
+        <location filename="../staticfunctions.cpp" line="8127"/>
         <source>Defines a container for an external (non-HTML) application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8124"/>
+        <location filename="../staticfunctions.cpp" line="8128"/>
         <source>Groups related elements in a form</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8125"/>
+        <location filename="../staticfunctions.cpp" line="8129"/>
         <source>Defines a caption for a &lt;figure&gt; element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8126"/>
+        <location filename="../staticfunctions.cpp" line="8130"/>
         <source>Specifies self-contained content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8127"/>
+        <location filename="../staticfunctions.cpp" line="8131"/>
         <source>Not supported in HTML5. Deprecated in HTML 4.01. Defines font, color, and size for text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8128"/>
+        <location filename="../staticfunctions.cpp" line="8132"/>
         <source>Defines a footer for a document or section</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8129"/>
+        <location filename="../staticfunctions.cpp" line="8133"/>
         <source>Defines an HTML form for user input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8130"/>
+        <location filename="../staticfunctions.cpp" line="8134"/>
         <source>Not supported in HTML5. Defines a window (a frame) in a frameset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8131"/>
+        <location filename="../staticfunctions.cpp" line="8135"/>
         <source>Not supported in HTML5. Defines a set of frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8132"/>
-        <location filename="../staticfunctions.cpp" line="8133"/>
-        <location filename="../staticfunctions.cpp" line="8134"/>
-        <location filename="../staticfunctions.cpp" line="8135"/>
         <location filename="../staticfunctions.cpp" line="8136"/>
         <location filename="../staticfunctions.cpp" line="8137"/>
         <location filename="../staticfunctions.cpp" line="8138"/>
+        <location filename="../staticfunctions.cpp" line="8139"/>
+        <location filename="../staticfunctions.cpp" line="8140"/>
+        <location filename="../staticfunctions.cpp" line="8141"/>
+        <location filename="../staticfunctions.cpp" line="8142"/>
         <source>Defines HTML headings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8139"/>
+        <location filename="../staticfunctions.cpp" line="8143"/>
         <source>Defines information about the document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8140"/>
+        <location filename="../staticfunctions.cpp" line="8144"/>
         <source>Defines a header for a document or section</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8141"/>
+        <location filename="../staticfunctions.cpp" line="8145"/>
         <source>Groups heading (&lt;h1&gt; to &lt;h6&gt;) elements</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8142"/>
+        <location filename="../staticfunctions.cpp" line="8146"/>
         <source>Defines a thematic change in the content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8143"/>
+        <location filename="../staticfunctions.cpp" line="8147"/>
         <source>Defines the root of an HTML document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8144"/>
+        <location filename="../staticfunctions.cpp" line="8148"/>
         <source>Defines a part of text in an alternate voice or mood</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8145"/>
+        <location filename="../staticfunctions.cpp" line="8149"/>
         <source>Defines an inline frame</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8146"/>
+        <location filename="../staticfunctions.cpp" line="8150"/>
         <source>Defines an image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8147"/>
+        <location filename="../staticfunctions.cpp" line="8151"/>
         <source>Defines an input control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8148"/>
+        <location filename="../staticfunctions.cpp" line="8152"/>
         <source>Defines a text that has been inserted into a document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8149"/>
+        <location filename="../staticfunctions.cpp" line="8153"/>
         <source>Defines keyboard input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8150"/>
+        <location filename="../staticfunctions.cpp" line="8154"/>
         <source>Defines a key-pair generator field (for forms)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8151"/>
+        <location filename="../staticfunctions.cpp" line="8155"/>
         <source>Defines a label for an &lt;input&gt; element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8152"/>
+        <location filename="../staticfunctions.cpp" line="8156"/>
         <source>Defines a caption for a &lt;fieldset&gt;, &lt; figure&gt;, or &lt;details&gt; element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8153"/>
+        <location filename="../staticfunctions.cpp" line="8157"/>
         <source>Defines a list item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8154"/>
+        <location filename="../staticfunctions.cpp" line="8158"/>
         <source>Defines the relationship between a document and an external resource (most used to link to style sheets)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8155"/>
+        <location filename="../staticfunctions.cpp" line="8159"/>
         <source>Defines a client-side image-map</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8156"/>
+        <location filename="../staticfunctions.cpp" line="8160"/>
         <source>Defines marked/highlighted text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8157"/>
+        <location filename="../staticfunctions.cpp" line="8161"/>
         <source>Defines a list/menu of commands</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8158"/>
+        <location filename="../staticfunctions.cpp" line="8162"/>
         <source>Defines metadata about an HTML document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8159"/>
+        <location filename="../staticfunctions.cpp" line="8163"/>
         <source>Defines a scalar measurement within a known range (a gauge)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8160"/>
+        <location filename="../staticfunctions.cpp" line="8164"/>
         <source>Defines navigation links</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8161"/>
+        <location filename="../staticfunctions.cpp" line="8165"/>
         <source>Not supported in HTML5. Defines an alternate content for users that do not support frames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8162"/>
+        <location filename="../staticfunctions.cpp" line="8166"/>
         <source>Defines an alternate content for users that do not support client-side scripts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8163"/>
+        <location filename="../staticfunctions.cpp" line="8167"/>
         <source>Defines an embedded object</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8164"/>
+        <location filename="../staticfunctions.cpp" line="8168"/>
         <source>Defines an ordered list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8165"/>
+        <location filename="../staticfunctions.cpp" line="8169"/>
         <source>Defines a group of related options in a drop-down list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8166"/>
+        <location filename="../staticfunctions.cpp" line="8170"/>
         <source>Defines an option in a drop-down list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8167"/>
+        <location filename="../staticfunctions.cpp" line="8171"/>
         <source>Defines the result of a calculation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8168"/>
+        <location filename="../staticfunctions.cpp" line="8172"/>
         <source>Defines a paragraph</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8169"/>
+        <location filename="../staticfunctions.cpp" line="8173"/>
         <source>Defines a parameter for an object</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8170"/>
+        <location filename="../staticfunctions.cpp" line="8174"/>
         <source>Defines preformatted text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8171"/>
+        <location filename="../staticfunctions.cpp" line="8175"/>
         <source>Represents the progress of a task</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8172"/>
+        <location filename="../staticfunctions.cpp" line="8176"/>
         <source>Defines a short quotation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8173"/>
+        <location filename="../staticfunctions.cpp" line="8177"/>
         <source>Defines what to show in browsers that do not support ruby annotations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8174"/>
+        <location filename="../staticfunctions.cpp" line="8178"/>
         <source>Defines an explanation/pronunciation of characters (for East Asian typography)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8175"/>
+        <location filename="../staticfunctions.cpp" line="8179"/>
         <source>Defines a ruby annotation (for East Asian typography)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8176"/>
+        <location filename="../staticfunctions.cpp" line="8180"/>
         <source>Defines text that is no longer correct</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8177"/>
+        <location filename="../staticfunctions.cpp" line="8181"/>
         <source>Defines sample output from a computer program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8178"/>
+        <location filename="../staticfunctions.cpp" line="8182"/>
         <source>Defines a client-side script</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8180"/>
+        <location filename="../staticfunctions.cpp" line="8184"/>
         <source>Defines a drop-down list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8181"/>
+        <location filename="../staticfunctions.cpp" line="8185"/>
         <source>Defines smaller text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8182"/>
+        <location filename="../staticfunctions.cpp" line="8186"/>
         <source>Defines multiple media resources for media elements (&lt;video&gt; and &lt;audio&gt;)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8184"/>
+        <location filename="../staticfunctions.cpp" line="8188"/>
         <source>Not supported in HTML5. Deprecated in HTML 4.01. Defines strikethrough text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8185"/>
+        <location filename="../staticfunctions.cpp" line="8189"/>
         <source>Defines important text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8186"/>
+        <location filename="../staticfunctions.cpp" line="8190"/>
         <source>Defines style information for a document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8187"/>
+        <location filename="../staticfunctions.cpp" line="8191"/>
         <source>Defines subscripted text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8188"/>
+        <location filename="../staticfunctions.cpp" line="8192"/>
         <source>Defines a visible heading for a &lt;details&gt; element</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8189"/>
+        <location filename="../staticfunctions.cpp" line="8193"/>
         <source>Defines superscripted text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8190"/>
+        <location filename="../staticfunctions.cpp" line="8194"/>
         <source>Defines a table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8191"/>
+        <location filename="../staticfunctions.cpp" line="8195"/>
         <source>Groups the body content in a table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8192"/>
+        <location filename="../staticfunctions.cpp" line="8196"/>
         <source>Defines a cell in a table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8193"/>
+        <location filename="../staticfunctions.cpp" line="8197"/>
         <source>Defines a multiline input control (text area)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8194"/>
+        <location filename="../staticfunctions.cpp" line="8198"/>
         <source>Groups the footer content in a table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8195"/>
+        <location filename="../staticfunctions.cpp" line="8199"/>
         <source>Defines a header cell in a table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8196"/>
+        <location filename="../staticfunctions.cpp" line="8200"/>
         <source>Groups the header content in a table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8197"/>
+        <location filename="../staticfunctions.cpp" line="8201"/>
         <source>Defines a date/time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8198"/>
+        <location filename="../staticfunctions.cpp" line="8202"/>
         <source>Defines a title for the document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8199"/>
+        <location filename="../staticfunctions.cpp" line="8203"/>
         <source>Defines a row in a table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8200"/>
+        <location filename="../staticfunctions.cpp" line="8204"/>
         <source>Defines text tracks for media elements (&lt;video&gt; and &lt;audio&gt;)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8201"/>
+        <location filename="../staticfunctions.cpp" line="8205"/>
         <source>Not supported in HTML5. Defines teletype text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8202"/>
+        <location filename="../staticfunctions.cpp" line="8206"/>
         <source>Defines text that should be stylistically different from normal text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8203"/>
+        <location filename="../staticfunctions.cpp" line="8207"/>
         <source>Defines an unordered list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8204"/>
+        <location filename="../staticfunctions.cpp" line="8208"/>
         <source>Defines a variable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8205"/>
+        <location filename="../staticfunctions.cpp" line="8209"/>
         <source>Defines a video or movie</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8206"/>
+        <location filename="../staticfunctions.cpp" line="8210"/>
         <source>Defines a possible line-break</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8322"/>
+        <location filename="../staticfunctions.cpp" line="8326"/>
         <source>Uptime in days</source>
         <translation>Tiempo encendido en días</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8322"/>
+        <location filename="../staticfunctions.cpp" line="8326"/>
         <source>Variable</source>
         <translation>Variable</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8322"/>
+        <location filename="../staticfunctions.cpp" line="8326"/>
         <source>Value</source>
         <translation>Valor</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8324"/>
+        <location filename="../staticfunctions.cpp" line="8328"/>
         <source>Number of aborted client connections.</source>
         <translation>Número de conexiones de cliente abortados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8329"/>
+        <location filename="../staticfunctions.cpp" line="8333"/>
         <source>Number of aborted client connections per day.</source>
         <translation>Número de conexiones de cliente abortados por día.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8331"/>
+        <location filename="../staticfunctions.cpp" line="8335"/>
         <source>Number of failed server connection attempts.</source>
         <translation>Número de intentos de conexión fallidos servidor.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8333"/>
+        <location filename="../staticfunctions.cpp" line="8337"/>
         <source>Aborted connections per day</source>
         <translation>Conexiones abortadas por día</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8336"/>
+        <location filename="../staticfunctions.cpp" line="8340"/>
         <source>Number of failed server connection attempts per day.</source>
         <translation>Número de conexiones abortadas por día.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8338"/>
+        <location filename="../staticfunctions.cpp" line="8342"/>
         <source>Number of ROLLBACK commands executed.</source>
         <translation>Número de comandos ROLLBACK ejecutados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8343"/>
+        <location filename="../staticfunctions.cpp" line="8347"/>
         <source>Number of ROLLBACK commands executed every second.</source>
         <translation>Número de comandos ROLLBACK ejecutados cada segundo.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8345"/>
+        <location filename="../staticfunctions.cpp" line="8349"/>
         <source>Number of statements executed by the server.</source>
         <translation>Número de sentencias ejecutadas por el servidor.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8347"/>
+        <location filename="../staticfunctions.cpp" line="8351"/>
         <source>Number of on-disk temporary tables created.</source>
         <translation>Número de tablas temporales creadas en disco.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8349"/>
+        <location filename="../staticfunctions.cpp" line="8353"/>
         <source>Amount of free query cache memory.</source>
         <translation>La cantidad de memoria libre para la caché de consultas.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8351"/>
+        <location filename="../staticfunctions.cpp" line="8355"/>
         <source>Number of joins which did not use an index. If not zero, you may need to check table indexes.</source>
         <translation>Número de joins que no utilizaron un índice. Si no es cero, puede que tenga que comprobar los índices de tablas.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8357"/>
+        <location filename="../staticfunctions.cpp" line="8361"/>
         <source>Number of queries which took longer than long_query_time to run.</source>
         <translation>Número de consultas que tardaron más de LONG_QUERY_TIME para terminar.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8365"/>
+        <location filename="../staticfunctions.cpp" line="8369"/>
         <source>The maximum number of simultaneous client connections.</source>
         <translation>El número máximo permitido de conexiones de cliente simultáneas.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8367"/>
+        <location filename="../staticfunctions.cpp" line="8371"/>
         <source>Max number of connections ever open at the same time.</source>
         <translation>Número máximo de conexiones abiertas al mismo tiempo.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8369"/>
+        <location filename="../staticfunctions.cpp" line="8373"/>
         <source>DELETE commands executed</source>
         <translation>Comandos DELETE ejecutados</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8369"/>
+        <location filename="../staticfunctions.cpp" line="8373"/>
         <source>Number of DELETE commands executed.</source>
         <translation>Número de comandos DELETE ejectados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8371"/>
+        <location filename="../staticfunctions.cpp" line="8375"/>
         <source>INSERT commands executed</source>
         <translation>Comandos INSERT ejecutados</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8371"/>
+        <location filename="../staticfunctions.cpp" line="8375"/>
         <source>Number of INSERT commands executed.</source>
         <translation>Número de comandos INSERT ejectados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8373"/>
+        <location filename="../staticfunctions.cpp" line="8377"/>
         <source>UPDATE commands executed</source>
         <translation>Comandos UPDATE ejecutados</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8373"/>
+        <location filename="../staticfunctions.cpp" line="8377"/>
         <source>Number of UPDATE commands executed.</source>
         <translation>Número de comandos UPDATE ejectados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8375"/>
+        <location filename="../staticfunctions.cpp" line="8379"/>
         <source>SELECT commands executed</source>
         <translation>Comandos SELECT ejecutados</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8375"/>
+        <location filename="../staticfunctions.cpp" line="8379"/>
         <source>Number of SELECT commands executed.</source>
         <translation>Número de comandos SELECT ejectados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8377"/>
+        <location filename="../staticfunctions.cpp" line="8381"/>
         <source>Requests of the first index row</source>
         <translation>Solicitudes de la primera fila de índice</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8377"/>
+        <location filename="../staticfunctions.cpp" line="8381"/>
         <source>Number of requests to read the first row from an index. A high value indicates many full index scans.</source>
         <translation>Número de peticiones para leer la primera fila de un índice. Un valor alto indica muchas exploraciones de índices completos.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8379"/>
+        <location filename="../staticfunctions.cpp" line="8383"/>
         <source>Rate of SELECTs per full index scans</source>
         <translation>Tasa de SELECTs por exploraciones de índices completos</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8379"/>
+        <location filename="../staticfunctions.cpp" line="8383"/>
         <source>Rate of SELECTs per full index scans. A value higher than 100 means you do more table scan than SELECTs.</source>
         <translation>Tasa de SELECTs por exploraciones de índices completos. Un valor superior a 100 significa hacer más exploración de tabla de SELECTs.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8381"/>
+        <location filename="../staticfunctions.cpp" line="8385"/>
         <source>Read requests based on an index value</source>
         <translation>Solicitudes de lectura basadas en un valor de índice</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8381"/>
+        <location filename="../staticfunctions.cpp" line="8385"/>
         <source>Number of row read requests based on an index value. A high value indicates indexes are regularly being used.</source>
         <translation>Solicitudes de lectura basadas en un valor de índice. Un valor alto indica que los índices se utilizan regularmente.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8383"/>
+        <location filename="../staticfunctions.cpp" line="8387"/>
         <source>Wait timeout</source>
         <translation>Tiempo de espera</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8383"/>
+        <location filename="../staticfunctions.cpp" line="8387"/>
         <source>Time in seconds that the server waits for a connection to become active before closing it.</source>
         <translation>Tiempo en segundos que el servidor espera que una conexión se active antes de cerrarla.</translation>
     </message>
@@ -7313,22 +7333,22 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de días que el servidor ha estado en funcionamiento.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8322"/>
+        <location filename="../staticfunctions.cpp" line="8326"/>
         <source>Description</source>
         <translation>Descripción</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8322"/>
+        <location filename="../staticfunctions.cpp" line="8326"/>
         <source>Number of days the server has been running.</source>
         <translation>Número de días que el servidor ha estado funcionando.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8322"/>
+        <location filename="../staticfunctions.cpp" line="8326"/>
         <source>Variable mame</source>
         <translation>Nombre de la variable</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8324"/>
+        <location filename="../staticfunctions.cpp" line="8328"/>
         <source>Aborted clients</source>
         <translation>Clientes abortados</translation>
     </message>
@@ -7337,7 +7357,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de conexiones que han sido abortadas debido a que el cliente murió sin cerrar la conexión correctamente.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8326"/>
+        <location filename="../staticfunctions.cpp" line="8330"/>
         <source>Aborted clients per day</source>
         <translation>Clientes abortados por día</translation>
     </message>
@@ -7346,7 +7366,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Tasa de clientes abortados por día.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8331"/>
+        <location filename="../staticfunctions.cpp" line="8335"/>
         <source>Aborted connections</source>
         <translation>Conexiones abortadas</translation>
     </message>
@@ -7355,7 +7375,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de intentos fallidos de conectarse al servidor de base de datos.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8338"/>
+        <location filename="../staticfunctions.cpp" line="8342"/>
         <source>Executed rollbacks</source>
         <translation>Rollbacks ejecutados</translation>
     </message>
@@ -7364,7 +7384,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de veces que cada sentencia de rollback se ha ejecutado.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8345"/>
+        <location filename="../staticfunctions.cpp" line="8349"/>
         <source>Executed queries</source>
         <translation>Consultas ejecutadas</translation>
     </message>
@@ -7373,7 +7393,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de sentencias ejecutadas por el servidor.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8340"/>
+        <location filename="../staticfunctions.cpp" line="8344"/>
         <source>Rollbacks per second</source>
         <translation>Rollbacks por segundo</translation>
     </message>
@@ -7382,7 +7402,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Tasa de rollbacks por segundo.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8347"/>
+        <location filename="../staticfunctions.cpp" line="8351"/>
         <source>Temporary disk tables created</source>
         <translation>Tablas temporales de disco creadas</translation>
     </message>
@@ -7391,7 +7411,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de tablas temporales en disco internas creadas por el servidor mientras ejecuta las sentencias.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8349"/>
+        <location filename="../staticfunctions.cpp" line="8353"/>
         <source>Free cache memory</source>
         <translation>Memoria cache libre</translation>
     </message>
@@ -7400,7 +7420,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">La cantidad de memoria libre para la caché de consultas.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8351"/>
+        <location filename="../staticfunctions.cpp" line="8355"/>
         <source>Joins with full table scan</source>
         <translation>Joins con escaneo completo de tabla</translation>
     </message>
@@ -7409,27 +7429,27 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de joins que realizan escaneos de tablas porque que no utilizan índices.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8353"/>
+        <location filename="../staticfunctions.cpp" line="8357"/>
         <source>Log slow queries</source>
         <translation>Guardar consultas lentas</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8353"/>
+        <location filename="../staticfunctions.cpp" line="8357"/>
         <source>Is the slow queries logging enabled?</source>
         <translation>¿Está el loggeo de consultas habilitado?</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8355"/>
+        <location filename="../staticfunctions.cpp" line="8359"/>
         <source>Slow queries time in seconds</source>
         <translation>Tiempo de consultas lentas en segundos</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8355"/>
+        <location filename="../staticfunctions.cpp" line="8359"/>
         <source>The number of seconds that determinate a slow query.</source>
         <translation>El número de segundos para determinar que una consulta es lenta.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8357"/>
+        <location filename="../staticfunctions.cpp" line="8361"/>
         <source>Count of slow queries</source>
         <translation>Conteo de consultas lentas</translation>
     </message>
@@ -7438,37 +7458,37 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de consultas que han tardado más que el tiempo permitido.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8359"/>
+        <location filename="../staticfunctions.cpp" line="8363"/>
         <source>Idle connections</source>
         <translation>Conexiones inactivas</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8359"/>
+        <location filename="../staticfunctions.cpp" line="8363"/>
         <source>The number of connections that has been idle for more than 30 seconds.</source>
         <translation>El número de conexiones que ha estado inactivo durante más de 30 segundos.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8361"/>
+        <location filename="../staticfunctions.cpp" line="8365"/>
         <source>Active connections</source>
         <translation>Conexiones activas</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8361"/>
+        <location filename="../staticfunctions.cpp" line="8365"/>
         <source>The number of connections that has been idle for less than 30 seconds.</source>
         <translation>El número de conexiones que ha estado inactivo durante menos de 30 segundos.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8363"/>
+        <location filename="../staticfunctions.cpp" line="8367"/>
         <source>Total connections</source>
         <translation>Total de conexiones</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8363"/>
+        <location filename="../staticfunctions.cpp" line="8367"/>
         <source>The number of active connections on the server.</source>
         <translation>El número de conexiones activas en el servidor.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8365"/>
+        <location filename="../staticfunctions.cpp" line="8369"/>
         <source>Max connections aviable</source>
         <translation>Cantidad máxima de conexiones disponibles</translation>
     </message>
@@ -7477,7 +7497,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número máximo permitido de conexiones de cliente simultáneas.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8367"/>
+        <location filename="../staticfunctions.cpp" line="8371"/>
         <source>Used connections</source>
         <translation>Conexiones usadas</translation>
     </message>
@@ -7486,22 +7506,22 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número máximo de conexiones que han sido utilizadas simultáneamente desde que el servidor se inició.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8398"/>
+        <location filename="../staticfunctions.cpp" line="8402"/>
         <source>Date</source>
         <translation>Fecha</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8398"/>
+        <location filename="../staticfunctions.cpp" line="8402"/>
         <source>Day</source>
         <translation>Día</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8398"/>
+        <location filename="../staticfunctions.cpp" line="8402"/>
         <source>Total queries</source>
         <translation>Total de consultas</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="8399"/>
+        <location filename="../staticfunctions.cpp" line="8403"/>
         <source>Average (in seconds)</source>
         <translation>Promedio (en segundos)</translation>
     </message>

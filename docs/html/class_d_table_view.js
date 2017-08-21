@@ -17,5 +17,7 @@ var class_d_table_view =
     [ "setCurrentItem", "class_d_table_view.html#ac70d1724bc40dada075ee88f67839413", null ],
     [ "setHeaders", "class_d_table_view.html#aa8f9fcbfb5131aaa5d15d9b72a746fa2", null ],
     [ "setHeaders", "class_d_table_view.html#a33884601d485499a42c960e4fd836fd0", null ],
-    [ "setModelData", "class_d_table_view.html#a2541ce49075cb8ee46a5fd6812bcf2bb", null ]
+    [ "setModelData", "class_d_table_view.html#a2541ce49075cb8ee46a5fd6812bcf2bb", null ],
+    [ "sortingColumn", "class_d_table_view.html#a46bcccbdc7b4c2260c3c6e353700b951", null ],
+    [ "sortOrder", "class_d_table_view.html#a9347d211f49fd3f15e4ea27c4e7feb3a", null ]
 ];

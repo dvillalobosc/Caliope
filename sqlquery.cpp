@@ -491,12 +491,13 @@ QString SQLQuery::statement()
 void SQLQuery::executeStatement(QString statement)
 {
   if (!statement.isEmpty()) {
-    if (QMessageBox::question(this, tr("Script exectution"),
-                                    tr("Do you really want to execute the hole script?"),
-                                    QMessageBox::Ok | QMessageBox::Cancel, QMessageBox::Cancel) == QMessageBox::Cancel) {
-      QApplication::restoreOverrideCursor();
-      return;
-    }
+    if (!scriptEditor->textEditor->textCursor().hasSelection())
+      if (QMessageBox::question(this, tr("Script exectution"),
+                                tr("Do you really want to execute the hole script?"),
+                                QMessageBox::Ok | QMessageBox::Cancel, QMessageBox::Cancel) == QMessageBox::Cancel) {
+        QApplication::restoreOverrideCursor();
+        return;
+      }
     QApplication::setOverrideCursor(Qt::WaitCursor);
     if (statement.contains(QRegExp("(ALTER|CHANGE|CREATE|DELETE|DROP|GRANT|LOAD|RENAME|SET|START|STOP|TRUNCATE|UPDATE)", Qt::CaseInsensitive))
         && safeStatementsAction->isChecked()) {

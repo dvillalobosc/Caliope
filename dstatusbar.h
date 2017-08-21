@@ -25,7 +25,7 @@
 
 class QProgressBar;
 class QLabel;
-class QDeclarativeView;
+class QQuickView;
 
 class DStatusBar : public QStatusBar
 {
@@ -44,7 +44,7 @@ public slots:
 private:
   QProgressBar *progressBar;
   QLabel *labelPosition;
-  QDeclarativeView *qmlView;
+  QQuickView *qmlView;
 
 protected:
   /*! \brief Reilplements the closeEvent.

@@ -116,6 +116,12 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
   replicationVLayout->addWidget(dTitleLabelReplicationStatus);
   buttonGroupReplication = new QGroupBox(this);
   QHBoxLayout *groupBoxHLayout = new QHBoxLayout;
+  spinBoxReplicationRefreshRate = new QSpinBox;
+  spinBoxReplicationRefreshRate->setRange(0, 2147483647);
+  groupBoxHLayout->addWidget(spinBoxReplicationRefreshRate);
+  spinBoxReplicationRefreshRate->setValue(settings.value("ServerInformation/ReplicationRefreshRate", 1).toUInt());
+  connect(spinBoxReplicationRefreshRate, SIGNAL(valueChanged(int)), this, SLOT(replicationRefreshRateSlot(int)));
+
   pushButtonSkip0Error = new QPushButton;
   connect(pushButtonSkip0Error, SIGNAL(clicked()), this, SLOT(pushButtonSkip0ErrorClicked()));
   pushButtonSkip1Error = new QPushButton;
@@ -127,6 +133,9 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
   pushButtonSkip100Error = new QPushButton;
   pushButtonSkip100Error->setIcon(QIcon::fromTheme("media-skip-forward", QIcon(":/images/svg/media-skip-forward-8.svg")));
   connect(pushButtonSkip100Error, SIGNAL(clicked()), this, SLOT(pushButtonSkip100ErrorClicked()));
+  pushButtonSkip1000Error = new QPushButton;
+  pushButtonSkip1000Error->setIcon(QIcon::fromTheme("media-skip-forward", QIcon(":/images/svg/media-skip-forward-8.svg")));
+  connect(pushButtonSkip1000Error, SIGNAL(clicked()), this, SLOT(pushButtonSkip1000ErrorClicked()));
   pushButtonStopRefreshingReplicator = new QPushButton;
   pushButtonStopRefreshingReplicator->setIcon(QIcon::fromTheme("process-stop", QIcon(":/images/svg/process-stop-7.svg")));
   pushButtonStopRefreshingReplicator->setCheckable(true);
@@ -137,6 +146,7 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
   groupBoxHLayout->addWidget(pushButtonSkip1Error);
   groupBoxHLayout->addWidget(pushButtonSkip10Error);
   groupBoxHLayout->addWidget(pushButtonSkip100Error);
+  groupBoxHLayout->addWidget(pushButtonSkip1000Error);
 
   switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
@@ -361,6 +371,7 @@ void ServerInformation::retranslateUi()
   pushButtonSkip1Error->setText(tr("Skip 1"));
   pushButtonSkip10Error->setText(tr("Skip 10"));
   pushButtonSkip100Error->setText(tr("Skip 100"));
+  pushButtonSkip1000Error->setText(tr("Skip 1000"));
   pushButtonStopRefreshingReplicator->setText(tr("Stop refreshing"));
   serverInformationTab->setTabText(1, tr("Replication Status"));
   dTitleLabelGlobalVariables->setText(tr("Variables"));
@@ -385,6 +396,9 @@ void ServerInformation::retranslateUi()
   labelFilter->setText(tr("Filter:"));
   lineEditFilter->setPlaceholderText(tr("Three characters at least"));
   pushButtonServerGraphicsFullScreen->setText(tr("Full screen"));
+  spinBoxReplicationRefreshRate->setToolTip(tr("Refresh rate."));
+  spinBoxReplicationRefreshRate->setPrefix(tr("Refresh rate:") + " ");
+  spinBoxReplicationRefreshRate->setSuffix(" " + tr("seconds"));
 }
 
 void ServerInformation::setCurrentTab(unsigned int tabNumber)
@@ -452,6 +466,12 @@ void ServerInformation::changeDefaultMasterConnection(QString masterConnectionNa
 {
   serverConnection->replication()->changeDefaultMasterConnection(masterConnectionName);
   settings.setValue("Replication/LastMasterConnection", masterConnectionName);
+}
+
+void ServerInformation::replicationRefreshRateSlot(const int value)
+{
+  timerReplicationStatusTxt->setInterval(1000 * value);
+  settings.setValue("ServerInformation/ReplicationRefreshRate", value);
 }
 
 void ServerInformation::showInformation(int tabIndex)
@@ -631,6 +651,11 @@ void ServerInformation::pushButtonSkip10ErrorClicked()
 void ServerInformation::pushButtonSkip100ErrorClicked()
 {
   skipReplicationErrors(100);
+}
+
+void ServerInformation::pushButtonSkip1000ErrorClicked()
+{
+  skipReplicationErrors(1000);
 }
 
 void ServerInformation::spinBoxTableSizeValueChanged(int value)

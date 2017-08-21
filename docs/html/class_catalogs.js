@@ -9,9 +9,9 @@ var class_catalogs =
     [ "populateTableActionTriggered", "class_catalogs.html#ae06992075bb6b75e2295a2e2da52aa76", null ],
     [ "retranslateUi", "class_catalogs.html#a784e468691788e44a5ce4a290def082b", null ],
     [ "setReadOnly", "class_catalogs.html#a4cc4ddeee694b04b74550fa438ad3fc6", null ],
-    [ "statusBarMessage", "class_catalogs.html#ab5bf3f44c7867c02daa8b7ecea543892", null ],
-    [ "statusBarMessagePopup", "class_catalogs.html#ac1369741ed43ae5d231d058ecac5e493", null ],
-    [ "statusBarProgressMessage", "class_catalogs.html#aee605d72c63762804b2bc226eb5e275f", null ],
+    [ "statusBarMessage", "class_catalogs.html#a3fa8bdc453d488b0991139260431fde9", null ],
+    [ "statusBarMessagePopup", "class_catalogs.html#a5da7e5f4bdd0ddefb2da3d3db4505f84", null ],
+    [ "statusBarProgressMessage", "class_catalogs.html#a497c8df39ce4f08190a65c1681a70267", null ],
     [ "updateObjectInfo", "class_catalogs.html#a00b2c56c8cb271453f51b6e9369b58f6", null ],
     [ "readOnly", "class_catalogs.html#a8b631aa7ff8f2329655f665158c89c06", null ]
 ];

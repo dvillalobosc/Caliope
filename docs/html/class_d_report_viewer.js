@@ -6,5 +6,5 @@ var class_d_report_viewer =
     [ "retranslateUi", "class_d_report_viewer.html#a6f6a2ab899fc491b9e32aba6961ddc4b", null ],
     [ "setSqlQuery", "class_d_report_viewer.html#aca7a57c2b4a4215de8d2fc4c22239dce", null ],
     [ "showReportData", "class_d_report_viewer.html#aae63ac67d1f06509b0e4ba7ca04af573", null ],
-    [ "statusBarMessage", "class_d_report_viewer.html#a72fde84e974901554ef1485b9fda2001", null ]
+    [ "statusBarMessage", "class_d_report_viewer.html#ac21311bbb33a5014e695a62229019d9a", null ]
 ];

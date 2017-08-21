@@ -24,10 +24,10 @@
 #include <QUrl>
 #include <QSettings>
 #include <QSystemTrayIcon>
-#include <QWebPage>
+#include <QWebEnginePage>
 #include <QSslError>
 
-class QWebView;
+class QWebEnginePage;
 class QLineEdit;
 class QCompleter;
 class QToolBar;
@@ -40,10 +40,10 @@ class DWebView : public DMdiSubWindow
 
 public:
   DWebView(QString title, QUrl url = QUrl());
-  QWebPage *page();
+  QWebEnginePage *page();
 
 private:
-  QWebView *webView;
+  QWebEnginePage *webView;
   QLineEdit *urlLineEdit;
   QSettings settings;
   QCompleter *urlCompleter;

@@ -18,15 +18,17 @@
 *
 *****************************************************************************/
 
-#include <QWebView>
+#include <QWebEngineView>
 #include <QVBoxLayout>
 #include <QCompleter>
 #include <QLineEdit>
 #include <QToolBar>
 #include <QAction>
-#include <QWebFrame>
+#include <QWebEnginePage>
 #include <QDesktopServices>
 #include <QNetworkReply>
+#include <QWebEngineSettings>
+//#include <QTextEdit>
 
 #include "dwebview.h"
 
@@ -35,7 +37,7 @@ DWebView::DWebView(QString title, QUrl url)
   this->title = title;
   setWindowIcon(QIcon::fromTheme("applications-internet", QIcon(":/images/svg/applications-internet-5.svg")));
 
-  webView = new QWebView;
+  webView = new QWebEnginePage;
   connect(this, SIGNAL(loadStarted(QString,uint,double)), this, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
   connect(this, SIGNAL(loadFinished(QString,uint,double)), this, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
   connect(this, SIGNAL(loadProgress(QString,uint,double)), this, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
@@ -56,11 +58,11 @@ DWebView::DWebView(QString title, QUrl url)
   urlLineEdit->setCompleter(urlCompleter);
 
   mainToolBar = new QToolBar(tr("Actions"));
-  mainToolBar->addAction(webView->pageAction(QWebPage::Back));
-  mainToolBar->addAction(webView->pageAction(QWebPage::Forward));
-  mainToolBar->addAction(webView->pageAction(QWebPage::Reload));
+  mainToolBar->addAction(webView->action(QWebEnginePage::Back));
+  mainToolBar->addAction(webView->action(QWebEnginePage::Forward));
+  mainToolBar->addAction(webView->action(QWebEnginePage::Reload));
   mainToolBar->addWidget(urlLineEdit);
-  mainToolBar->addAction(webView->pageAction(QWebPage::Stop));
+  mainToolBar->addAction(webView->action(QWebEnginePage::Stop));
 
   showSourceCode = new QAction(this);
   showSourceCode->setIcon(QIcon::fromTheme("text-html", QIcon(":/images/svg/text-html.svg")));
@@ -73,14 +75,14 @@ DWebView::DWebView(QString title, QUrl url)
   mainToolBar->addAction(openInExternalBrowser);
 
 //  QNetworkProxyFactory::setUseSystemConfiguration(true);
-  QWebSettings::globalSettings()->setAttribute(QWebSettings::PluginsEnabled, true);
-  QWebSettings::globalSettings()->setAttribute(QWebSettings::AutoLoadImages, true);
-  QWebSettings::globalSettings()->enablePersistentStorage();
+  QWebEngineSettings::globalSettings()->setAttribute(QWebEngineSettings::PluginsEnabled, true);
+  QWebEngineSettings::globalSettings()->setAttribute(QWebEngineSettings::AutoLoadImages, true);
+//  QWebEngineSettings::globalSettings()->enablePersistentStorage();
 
   QVBoxLayout *mainVLayout = new QVBoxLayout;
   mainVLayout->setContentsMargins(0, 0, 0, 0);
   mainVLayout->addWidget(mainToolBar);
-  mainVLayout->addWidget(webView);
+  mainVLayout->addWidget(webView->view());
 
   QWidget *widMain = new QWidget;
   widMain->setLayout(mainVLayout);
@@ -93,9 +95,9 @@ DWebView::DWebView(QString title, QUrl url)
   webView->load(url);
 }
 
-QWebPage *DWebView::page()
+QWebEnginePage *DWebView::page()
 {
-  return webView->page();
+  return webView;
 }
 
 void DWebView::retranslateUi()
@@ -173,7 +175,9 @@ void DWebView::statusBarProgressMessageSlot(const QString &message, const unsign
 
 void DWebView::showSourceCodeTriggered()
 {
-  emit showPagesource(webView->page()->currentFrame()->toHtml());
+//  QTextEdit *textEdit = new QTextEdit;
+//  emit showPagesource(webView->toHtml([textEdit](const QString &result){ textEdit->setPlainText(result); }));
+  emit showPagesource(webView->title());
 }
 
 void DWebView::openInExternalBrowserTriggered()
