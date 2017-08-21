@@ -11,5 +11,6 @@ var class_s_q_l_query =
     [ "openURL", "class_s_q_l_query.html#aad7065c87757dfa2c53edcc68266ce63", null ],
     [ "retranslateUi", "class_s_q_l_query.html#ab96873da6b0d6568e061d77c3c645475", null ],
     [ "showResultTab", "class_s_q_l_query.html#a8a7a9b12b6cc51565f9c9011af54dbd5", null ],
-    [ "statusBarMessage", "class_s_q_l_query.html#ab99c1d6e651491e2748d396eda600a35", null ]
+    [ "statusBarMessage", "class_s_q_l_query.html#ab99c1d6e651491e2748d396eda600a35", null ],
+    [ "updatePrositionViewer", "class_s_q_l_query.html#a161e7dafa1e65a6f0e06b2abe00913aa", null ]
 ];

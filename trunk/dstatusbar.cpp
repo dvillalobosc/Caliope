@@ -23,7 +23,7 @@
 #include <QHBoxLayout>
 #include <QProgressBar>
 #include <QLabel>
-#include <QtDeclarative/QDeclarativeView>
+#include <QQuickView>
 #include <QGraphicsObject>
 
 #include "dstatusbar.h"
@@ -42,12 +42,12 @@ DStatusBar::DStatusBar()
   progressBar->setMaximum(100);
   progressBar->setMaximumWidth(200);
   addPermanentWidget(progressBar);
-  qmlView = new QDeclarativeView(QUrl("qrc:/messageBox.qml"));
+  qmlView = new QQuickView(QUrl("qrc:/messageBox.qml"));
   qmlView->setMaximumHeight(20);
-  qmlView->setStyleSheet("background: transparent");
-  qmlView->setAttribute(Qt::WA_TranslucentBackground);
-  qmlView->setWindowFlags(Qt::FramelessWindowHint);
-  addPermanentWidget(qmlView);
+//  qmlView->setStyleSheet("background: transparent");
+//  qmlView->setAttribute(Qt::WA_TranslucentBackground);
+//  qmlView->setWindowFlags(Qt::FramelessWindowHint);
+//  addPermanentWidget(qmlView);
 }
 
 void DStatusBar::mouseDoubleClickEvent(QMouseEvent *event)
@@ -89,6 +89,6 @@ void DStatusBar::resetStatusBar()
 
 void DStatusBar::showFancyMessage(const QString &text, int timeout)
 {
-  qmlView->rootObject()->setProperty("message", text);
+//  qmlView->rootObject()->setProperty("message", text);
   showMessage(text, timeout);
 }

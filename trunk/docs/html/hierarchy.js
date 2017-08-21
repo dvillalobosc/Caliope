@@ -18,6 +18,9 @@ var hierarchy =
     [ "QGraphicsItem", null, [
       [ "TableGraphicsItem", "class_table_graphics_item.html", null ]
     ] ],
+    [ "QHeaderView", null, [
+      [ "DheaderView", "class_dheader_view.html", null ]
+    ] ],
     [ "QItemDelegate", null, [
       [ "DItemDelegate", "class_d_item_delegate.html", null ]
     ] ],
@@ -39,7 +42,8 @@ var hierarchy =
         [ "DQueryLog", "class_d_query_log.html", null ],
         [ "DReportViewer", "class_d_report_viewer.html", null ],
         [ "DWebView", "class_d_web_view.html", null ],
-        [ "MySQLHelp", "class_my_s_q_l_help.html", null ],
+        [ "MariaDBHelp", "class_maria_d_b_help.html", null ],
+        [ "ObjectMigration", "class_object_migration.html", null ],
         [ "ObjectsDiagram", "class_objects_diagram.html", null ],
         [ "Preferences", "class_preferences.html", null ],
         [ "ProcessList", "class_process_list.html", null ],
@@ -50,15 +54,24 @@ var hierarchy =
         [ "SQLQuery", "class_s_q_l_query.html", null ],
         [ "SVNLog", "class_s_v_n_log.html", null ],
         [ "TableMaintenance", "class_table_maintenance.html", null ],
-        [ "TextEditor", "class_text_editor.html", null ],
         [ "Users", "class_users.html", null ]
       ] ]
     ] ],
     [ "QObject", null, [
       [ "Database", "class_database.html", null ],
+      [ "Databases", "class_databases.html", null ],
       [ "DBMS", "class_d_b_m_s.html", null ],
+      [ "Events", "class_events.html", null ],
+      [ "Fucntions", "class_fucntions.html", null ],
+      [ "Procedures", "class_procedures.html", null ],
+      [ "Processes", "class_processes.html", null ],
       [ "Projects", "class_projects.html", null ],
-      [ "StaticFunctions", "class_static_functions.html", null ]
+      [ "Replication", "class_replication.html", null ],
+      [ "StaticFunctions", "class_static_functions.html", null ],
+      [ "Tables", "class_tables.html", null ],
+      [ "Transaction", "class_transaction.html", null ],
+      [ "Triggers", "class_triggers.html", null ],
+      [ "Views", "class_views.html", null ]
     ] ],
     [ "QPlainTextEdit", null, [
       [ "BaseTextEditor", "class_base_text_editor.html", null ]
@@ -85,6 +98,7 @@ var hierarchy =
       [ "ApplicationTheme", "class_application_theme.html", null ],
       [ "BaseDiffFile", "class_base_diff_file.html", null ],
       [ "BaseSVNLog", "class_base_s_v_n_log.html", null ],
+      [ "CodeSnippets", "class_code_snippets.html", null ],
       [ "DBarChartWidget", "class_d_bar_chart_widget.html", null ],
       [ "DMessageLabel", "class_d_message_label.html", null ],
       [ "DPieChartWidget", "class_d_pie_chart_widget.html", null ],
@@ -93,7 +107,8 @@ var hierarchy =
       [ "FileSelector", "class_file_selector.html", null ],
       [ "LineNumberArea", "class_line_number_area.html", null ],
       [ "NetworkSettings", "class_network_settings.html", null ],
-      [ "SubversionedFile", "class_subversioned_file.html", null ]
+      [ "SubversionedFile", "class_subversioned_file.html", null ],
+      [ "TextEditor", "class_text_editor.html", null ]
     ] ],
     [ "ReportTypes", "class_report_types.html", null ],
     [ "Routine", "class_routine.html", null ],

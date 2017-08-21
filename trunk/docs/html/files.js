@@ -27,6 +27,10 @@ var files =
       [ "ItemEditor", "class_item_editor.html", "class_item_editor" ],
       [ "Catalogs", "class_catalogs.html", "class_catalogs" ]
     ] ],
+    [ "codesnippets.cpp", "codesnippets_8cpp.html", null ],
+    [ "codesnippets.h", "codesnippets_8h.html", [
+      [ "CodeSnippets", "class_code_snippets.html", "class_code_snippets" ]
+    ] ],
     [ "commitdialog.cpp", "commitdialog_8cpp.html", null ],
     [ "commitdialog.h", "commitdialog_8h.html", [
       [ "CommitDialog", "class_commit_dialog.html", "class_commit_dialog" ]
@@ -40,7 +44,25 @@ var files =
       [ "DatabaseComparision", "class_database_comparision.html", "class_database_comparision" ]
     ] ],
     [ "dbms.cpp", "dbms_8cpp.html", null ],
-    [ "dbms.h", "dbms_8h.html", "dbms_8h" ],
+    [ "dbms.h", "dbms_8h.html", [
+      [ "Databases", "class_databases.html", "class_databases" ],
+      [ "Procedures", "class_procedures.html", "class_procedures" ],
+      [ "Fucntions", "class_fucntions.html", "class_fucntions" ],
+      [ "Events", "class_events.html", "class_events" ],
+      [ "Views", "class_views.html", "class_views" ],
+      [ "Tables", "class_tables.html", "class_tables" ],
+      [ "Triggers", "class_triggers.html", "class_triggers" ],
+      [ "Transaction", "class_transaction.html", "class_transaction" ],
+      [ "Replication", "class_replication.html", "class_replication" ],
+      [ "Processes", "class_processes.html", "class_processes" ],
+      [ "ItemTypes", "class_item_types.html", "class_item_types" ],
+      [ "Table", "class_table.html", "class_table" ],
+      [ "View", "class_view.html", "class_view" ],
+      [ "Routine", "class_routine.html", "class_routine" ],
+      [ "Database", "class_database.html", "class_database" ],
+      [ "Event", "class_event.html", "class_event" ],
+      [ "DBMS", "class_d_b_m_s.html", "class_d_b_m_s" ]
+    ] ],
     [ "difffile.cpp", "difffile_8cpp.html", null ],
     [ "difffile.h", "difffile_8h.html", [
       [ "DiffFile", "class_diff_file.html", "class_diff_file" ]
@@ -85,6 +107,7 @@ var files =
     ] ],
     [ "dtableview.cpp", "dtableview_8cpp.html", null ],
     [ "dtableview.h", "dtableview_8h.html", [
+      [ "DheaderView", "class_dheader_view.html", "class_dheader_view" ],
       [ "DTableView", "class_d_table_view.html", "class_d_table_view" ]
     ] ],
     [ "dtablewidget.cpp", "dtablewidget_8cpp.html", null ],
@@ -131,9 +154,9 @@ var files =
     [ "mainwindow.h", "mainwindow_8h.html", [
       [ "MainWindow", "class_main_window.html", "class_main_window" ]
     ] ],
-    [ "mysqlhelp.cpp", "mysqlhelp_8cpp.html", null ],
-    [ "mysqlhelp.h", "mysqlhelp_8h.html", [
-      [ "MySQLHelp", "class_my_s_q_l_help.html", "class_my_s_q_l_help" ]
+    [ "mariadbhelp.cpp", "mariadbhelp_8cpp.html", null ],
+    [ "mariadbhelp.h", "mariadbhelp_8h.html", [
+      [ "MariaDBHelp", "class_maria_d_b_help.html", "class_maria_d_b_help" ]
     ] ],
     [ "networksettings.cpp", "networksettings_8cpp.html", null ],
     [ "networksettings.h", "networksettings_8h.html", [
@@ -142,6 +165,10 @@ var files =
     [ "newdatabase.cpp", "newdatabase_8cpp.html", null ],
     [ "newdatabase.h", "newdatabase_8h.html", [
       [ "NewDatabase", "class_new_database.html", "class_new_database" ]
+    ] ],
+    [ "objectmigration.cpp", "objectmigration_8cpp.html", null ],
+    [ "objectmigration.h", "objectmigration_8h.html", [
+      [ "ObjectMigration", "class_object_migration.html", "class_object_migration" ]
     ] ],
     [ "objectsdiagram.cpp", "objectsdiagram_8cpp.html", null ],
     [ "objectsdiagram.h", "objectsdiagram_8h.html", [

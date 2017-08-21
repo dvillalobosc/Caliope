@@ -17,6 +17,7 @@ var class_base_text_editor =
     [ "retranslateUi", "class_base_text_editor.html#a96acbbf511d215c5b2441aadc098f1ba", null ],
     [ "setPlainText", "class_base_text_editor.html#ab2affda67289e9bf1df42077da42b024", null ],
     [ "showHideLineNumbers", "class_base_text_editor.html#a5a4465edd9df3afb8754fc460e80581d", null ],
+    [ "wordList", "class_base_text_editor.html#a581e8a5ce429f061e41d397647b612b6", null ],
     [ "foldRowList", "class_base_text_editor.html#ab45026957f0a2befbc7fb6569126cae3", null ],
     [ "indentAction", "class_base_text_editor.html#afa95cb0513fd8f0dd4804b2f1b933655", null ],
     [ "insertLicenceTamplateAction", "class_base_text_editor.html#a731118108542ca9d164f07400c253e91", null ],

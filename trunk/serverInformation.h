@@ -107,6 +107,7 @@ private:
   QPushButton *pushButtonSkip1Error;
   QPushButton *pushButtonSkip10Error;
   QPushButton *pushButtonSkip100Error;
+  QPushButton *pushButtonSkip1000Error;
   QPushButton *pushButtonStopRefreshingReplicator;
   QPushButton *pushButtonStopRefreshingServerGraphicsTXT;
   QPushButton *pushButtonStopRefreshingServerGraphics;
@@ -148,6 +149,7 @@ private:
   DTableView *slowQueriesDTableView;
   QList<QStringList> *result;
   QComboBox *slavesListComboBox;
+  QSpinBox *spinBoxReplicationRefreshRate;
 
 public slots:
   void showInformation(int tabIndex);
@@ -163,6 +165,7 @@ private slots:
   void pushButtonSkip1ErrorClicked();
   void pushButtonSkip10ErrorClicked();
   void pushButtonSkip100ErrorClicked();
+  void pushButtonSkip1000ErrorClicked();
   void spinBoxTableSizeValueChanged(int value);
   void pushButtonShowGlobalVariablesSlot();
   void pushButtonShowGlobalStatusSlot();
@@ -172,6 +175,7 @@ private slots:
   void pushButtonServerGraphicsFullScreenSlot(bool checked = false);
   //void lineEditConnectioNameClicked();
   void changeDefaultMasterConnection(QString masterConnectionName);
+  void replicationRefreshRateSlot(const int value);
 };
 
 #endif // SERVERINFORMATION_H

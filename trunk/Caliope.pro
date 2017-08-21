@@ -133,13 +133,13 @@ OTHER_FILES += \
 
 TARGET = Caliope
 
-QT += declarative
+QT += qml quick
 QT += network
 QT += svg
 QT += sql
 QT += printsupport
-QT += webkitwidgets
 QT += xml
+QT += webenginewidgets
 CONFIG += qscintilla2
 
 #cd html; for file in *; do echo "/html/"$file >> ../filelist.txt; done; cd search; for file in *; do echo "/html/search/"$file >> ../../filelist.txt; done; cd ..; cd ..;

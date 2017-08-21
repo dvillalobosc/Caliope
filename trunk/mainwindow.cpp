@@ -29,7 +29,7 @@
 #include <QMdiSubWindow>
 #include <QSignalMapper>
 #include <QCoreApplication>
-#include <QWebView>
+#include <QWebEngineView>
 #include <QTranslator>
 #include <QFile>
 #include <QApplication>
@@ -41,11 +41,9 @@
 #include <QDialogButtonBox>
 #include <QDateTimeEdit>
 #include <QCloseEvent>
-//#include <QtDeclarative/QDeclarativeView>
 #include <QProcess>
 #include <QProgressDialog>
 #include <QTimer>
-//#include <QSplashScreen>
 #include <QImageWriter>
 #include <QWhatsThis>
 #include <QDesktopServices>
@@ -2265,7 +2263,7 @@ DWebView *MainWindow::newDWebView(QString title, QUrl url)
   connect(dWebView, SIGNAL(statusBarProgressMessage(QString,uint,double)), this, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
   connect(dWebView, SIGNAL(statusBarMessage(QString)), this, SLOT(statusBarMessage(QString)));
   connect(dWebView, SIGNAL(showPagesource(QString)), this, SLOT(viewDWebViewPageSource(QString)));
-  connect(dWebView->page()->networkAccessManager(), SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)) , dWebView, SLOT(sslErrors(QNetworkReply*,QList<QSslError>)));
+//  connect(dWebView->page()->networkAccessManager(), SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)) , dWebView, SLOT(sslErrors(QNetworkReply*,QList<QSslError>)));
   return dWebView;
 }
 
