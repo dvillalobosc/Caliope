@@ -53,6 +53,7 @@ int main(int argc, char *argv[])
   Q_INIT_RESOURCE(translations);
   Q_INIT_RESOURCE(styles);
   qInstallMessageHandler(myMessageOutput);
+  QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
   QApplication app(argc, argv);
   MainWindow *mainWindow = new MainWindow;
   mainWindow->show();
