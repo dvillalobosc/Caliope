@@ -1372,37 +1372,38 @@ Total progess: %5.</source>
 <context>
     <name>DWebView</name>
     <message>
+        <location filename="../dwebview.cpp" line="86"/>
         <source>URL to load</source>
-        <translation type="obsolete">URL a cargar</translation>
+        <translation>URL a cargar</translation>
     </message>
     <message>
-        <location filename="../dwebview.cpp" line="60"/>
+        <location filename="../dwebview.cpp" line="54"/>
         <source>Actions</source>
         <translation>Acciones</translation>
     </message>
     <message>
-        <location filename="../dwebview.cpp" line="107"/>
+        <location filename="../dwebview.cpp" line="100"/>
         <source>Show page source</source>
         <translation>Mostrar el fuente de la página</translation>
     </message>
     <message>
-        <location filename="../dwebview.cpp" line="108"/>
+        <location filename="../dwebview.cpp" line="101"/>
         <source>Open in external browser</source>
         <translation>Abrir en explorador externo</translation>
     </message>
     <message>
-        <location filename="../dwebview.cpp" line="123"/>
-        <location filename="../dwebview.cpp" line="148"/>
+        <location filename="../dwebview.cpp" line="116"/>
+        <location filename="../dwebview.cpp" line="134"/>
         <source>Loading page...</source>
         <translation>Cargando página...</translation>
     </message>
     <message>
-        <location filename="../dwebview.cpp" line="129"/>
+        <location filename="../dwebview.cpp" line="122"/>
         <source>Page loaded.</source>
         <translation>Página cargada.</translation>
     </message>
     <message>
-        <location filename="../dwebview.cpp" line="131"/>
+        <location filename="../dwebview.cpp" line="124"/>
         <source>Could not load page.</source>
         <translation>No se puede cargar la página.</translation>
     </message>

@@ -110,7 +110,6 @@ RESOURCES += icons.qrc \
     styles.qrc \
     translations.qrc \
     styles.qrc \
-    qmls.qrc \
     documentation.qrc
 TRANSLATIONS += translations/caliope_es_cr.ts
 SUBDIRS += images
@@ -128,12 +127,11 @@ win32:DEFINES += __LCC__
 
 OTHER_FILES += \
     TODO.txt \
-    styles/mainStyle.css \
-    messageBox.qml
+    styles/mainStyle.css
 
 TARGET = Caliope
 
-QT += qml quick
+QT += webkitwidgets
 QT += network
 QT += svg
 QT += sql
