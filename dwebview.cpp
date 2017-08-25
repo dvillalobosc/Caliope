@@ -83,7 +83,7 @@ DWebView::DWebView(QString title, QUrl url)
   setWidget(widMain);
 
   if (url.isEmpty())
-    url = QUrl(QInputDialog::getText(this, tr("URL to load"), tr("URL to load"), QLineEdit::Normal, "http://", 0, 0, Qt::ImhUrlCharactersOnly));
+    url = QUrl::fromUserInput(QInputDialog::getText(this, tr("URL to load"), tr("URL to load"), QLineEdit::Normal, "http://", 0, 0, Qt::ImhUrlCharactersOnly));
 
   webView->load(url);
 }

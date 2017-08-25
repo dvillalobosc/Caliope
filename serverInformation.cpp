@@ -106,7 +106,7 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
 
   //case 1
   timerReplicationStatusTxt = new QTimer(this);
-  timerReplicationStatusTxt->setInterval(settings.value("ServerInformation/ReplicationRefreshRate", 1).toUInt());
+  timerReplicationStatusTxt->setInterval(settings.value("ServerInformation/ReplicationRefreshRate", 1000).toUInt() * 1000);
   connect(timerReplicationStatusTxt, SIGNAL(timeout()), this, SLOT(replicationStatusTxt()));
   replicationStatus = new QPlainTextEdit;
   replicationStatus->setFont(StaticFunctions::fixedWidthFont());

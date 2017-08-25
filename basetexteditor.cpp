@@ -345,6 +345,13 @@ void BaseTextEditor::paintEvent(QPaintEvent *event)
   QPlainTextEdit::paintEvent(event);
 }
 
+void BaseTextEditor::mouseDoubleClickEvent(QMouseEvent *event)
+{
+  QPlainTextEdit::mouseDoubleClickEvent(event);
+  QTextCursor cursor = textCursor();
+  rehighlight(cursor.selectedText());
+}
+
 bool BaseTextEditor::handledCompletedAndSelected(QKeyEvent *event)
 {
   completedAndSelected = false;
