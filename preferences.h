@@ -64,7 +64,6 @@ private:
   FileAssociations *fileAssociationsTab;
   QCheckBox *checkBoxSaveQueryBeforeExecution;
   //QCheckBox *checkBoxShowTabsAndSpaces;
-  FileSelector *phpPHPCommand;
   DTitleLabel *dTitleLabel;
   QFormLayout *styleFLayout;
   QGroupBox *styleGroupBox;
@@ -78,7 +77,6 @@ private:
   ApplicationTheme *applicationTheme;
   FileSelector *fileSelectorBackgroundImage;
   QCheckBox *checkBoxAutoreconnect;
-  QLineEdit *phpOnlineHelpURLLineEdit;
   QLineEdit *mysqlOnlineHelpURLLineEdit;
   QLineEdit *mariadbOnlineHelpURLLineEdit;
   CodeSnippets *codeSnippets;
@@ -100,7 +98,6 @@ private slots:
   void checkBoxEnableQueryLogValueChanged(int value);
   void fileSelectorBackgroundImageSlot();
   void checkBoxAutoreconnectValueChanged(int value);
-  void phpOnlineHelpURLLineEdittextChangedSlot(const QString &text);
   void mysqlOnlineHelpURLLineEdittextChangedSlot(const QString &text);
   void mariadbOnlineHelpURLLineEdittextChangedSlot(const QString &text);
 };

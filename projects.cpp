@@ -256,32 +256,6 @@ QStringList Projects::getProjectFileList()
 
 QHash<QString, QString> Projects::getProjectFunctionListComplete()
 {
-//  switch(editorType) {
-//  case EditorTypes::SQLQuery:
-//    setWindowTitle(tr("SQL Query %1").arg(windowCount));
-//    break;
-//  case EditorTypes::PHP:
-//    setWindowTitle(tr("PHP Script %1").arg(windowCount));
-//    break;
-//  case EditorTypes::CSS:
-//    setWindowTitle(tr("CSS Script %1").arg(windowCount));
-//    break;
-//  case EditorTypes::HTML:
-//    setWindowTitle(tr("HTML Script %1").arg(windowCount));
-//    break;
-//  case EditorTypes::JavaScript:
-//    setWindowTitle(tr("JavaScript Script %1").arg(windowCount));
-//    break;
-//  case EditorTypes::NoEditor:
-//    setWindowTitle(tr("Text File %1").arg(windowCount));
-//    break;
-//  case EditorTypes::Diff:
-//  case EditorTypes::Commit:
-//  case EditorTypes::SVNLog:
-//    break;
-//  // case EditorTypes::Diff:
-//  // default: Q_ASSERT(false);
-//  }
   QHash<QString, QString> data;
   unsigned int lineNumber = 0;
   QString param1;

@@ -38,20 +38,12 @@ public:
 
 private:
   QLineEdit *sqlLineEdit;
-  QLineEdit *phpLineEdit;
-  QLineEdit *cssLineEdit;
-  QLineEdit *htmlLineEdit;
-  QLineEdit *javascriptLineEdit;
   QSettings settings;
   QString textTransformation(QString text);
   QFormLayout *formLayout;
 
 private slots:
   void sqlLineEditTextChangedSlot(QString newText);
-  void phpLineEditTextChangedSlot(QString newText);
-  void cssLineEditTextChangedSlot(QString newText);
-  void htmlLineEditTextChangedSlot(QString newText);
-  void javascriptLineEditTextChangedSlot(QString newText);
 
 };
 

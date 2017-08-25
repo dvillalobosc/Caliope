@@ -82,10 +82,6 @@ Preferences::Preferences(DBMS *serverConnection)
   checkBoxAutoreconnect->setCheckState(settings.value("DBMS/Reconnect", 1).toBool() ? Qt::Checked : Qt::Unchecked);
   connect(checkBoxAutoreconnect, SIGNAL(stateChanged(int)), this, SLOT(checkBoxAutoreconnectValueChanged(int)));
   styleFLayout->addRow(checkBoxAutoreconnect);
-  phpOnlineHelpURLLineEdit = new QLineEdit;
-  styleFLayout->addRow(" ", phpOnlineHelpURLLineEdit);
-  phpOnlineHelpURLLineEdit->setText(settings.value("General/HelpPage-PHP", qApp->property("HelpPage-PHP").toString()).toString());
-  connect(phpOnlineHelpURLLineEdit, SIGNAL(textChanged(QString)), this, SLOT(phpOnlineHelpURLLineEdittextChangedSlot(QString)));
   mysqlOnlineHelpURLLineEdit = new QLineEdit;
   styleFLayout->addRow(" ", mysqlOnlineHelpURLLineEdit);
   mysqlOnlineHelpURLLineEdit->setText(settings.value("General/HelpPage-MySQL", qApp->property("HelpPage-MySQL").toString()).toString());
@@ -194,16 +190,6 @@ Preferences::Preferences(DBMS *serverConnection)
   fileAssociations = new FileAssociations;
   dStackedWidget->addWidget(fileAssociations, QIcon(":/images/svg/server-database.svg"), tr("File Associations"));
 
-  //PHP Specific Settings
-  QVBoxLayout *vLayoutPHP = new QVBoxLayout;
-  phpPHPCommand = new FileSelector(FileSelectorContexts::PHPExecutable);
-  phpPHPCommand->setFileName(settings.value("PHP/Executable", "/usr/bin/php").toString());
-  vLayoutPHP->addWidget(phpPHPCommand);
-  vLayoutPHP->addStretch();
-  QWidget *phpWid = new QWidget;
-  phpWid->setLayout(vLayoutPHP);
-  dStackedWidget->addWidget(phpWid, QIcon(":/images/svg/php-logo.svg"), tr("PHP"));
-
   //Application Theme
   applicationTheme = new ApplicationTheme;
   dStackedWidget->addWidget(applicationTheme, QIcon(":/images/svg/preferences-desktop-theme-5.svg"), tr("Application Theme"));
@@ -253,10 +239,7 @@ void Preferences::retranslateUi()
   licenseTemplate->retranslateUi();
   networkSettings->retranslateUi();
   fileAssociations->retranslateUi();
-  phpPHPCommand->setText(tr("PHP CLI Command:"));
   checkBoxAutoreconnect->setText(tr("Use automatic reconnection"));
-  label = qobject_cast<QLabel *>(styleFLayout->labelForField(phpOnlineHelpURLLineEdit));
-  label->setText(tr("PHP On-Line Help:"));
   label = qobject_cast<QLabel *>(styleFLayout->labelForField(mysqlOnlineHelpURLLineEdit));
   label->setText(tr("MySQL On-Line Help:"));
   label = qobject_cast<QLabel *>(styleFLayout->labelForField(mariadbOnlineHelpURLLineEdit));
@@ -334,11 +317,6 @@ void Preferences::checkBoxAutoreconnectValueChanged(int value)
   settings.setValue("DBMS/Reconnect", value);
 }
 
-void Preferences::phpOnlineHelpURLLineEdittextChangedSlot(const QString &text)
-{
-  settings.setValue("General/HelpPage-PHP", text);
-}
-
 void Preferences::mysqlOnlineHelpURLLineEdittextChangedSlot(const QString &text)
 {
   settings.setValue("General/HelpPage-MySQL", text);
@@ -364,7 +342,6 @@ void Preferences::checkBoxOpenLastFileStateChanged()
   settings.setValue("General/OpenLastFile", checkBoxOpenLastFile->isChecked());
   if (!checkBoxOpenLastFile->isChecked()) {
     settings.setValue("General/LastMariaDBFile", "");
-    settings.setValue("General/LastPHPFile", "");
   }
 }
 

@@ -24,7 +24,7 @@
 class EditorTypes
 {
 public:
-  enum EditorType {SQLQuery, PHP, Diff, Commit, NoEditor, SVNLog, CSS, HTML, JavaScript};
+  enum EditorType {SQLQuery, Diff, Commit, NoEditor, SVNLog};
 };
 
 #endif // EDITORTYPES_H

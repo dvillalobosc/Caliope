@@ -41,8 +41,6 @@ FileSelector::FileSelector(FileSelectorContexts::FileSelectorContext context, QS
   case FileSelectorContexts::ProjectFile:
     setting = "Project/File";
     break;
-  case FileSelectorContexts::PHPExecutable:
-    setting = "PHP/Executable";
   case FileSelectorContexts::Image:
     setting = "LastFileImg";
     break;
@@ -76,9 +74,6 @@ void FileSelector::retranslateUi()
     break;
   case FileSelectorContexts::ProjectFile:
     title = tr("Project files (*.pro)");
-    break;
-  case FileSelectorContexts::PHPExecutable:
-    title = tr("Bin files (*)");
     break;
   case FileSelectorContexts::Image:
     title = tr("Image files (*.png *.jpg *.bmp)");

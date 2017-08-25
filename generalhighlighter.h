@@ -66,11 +66,7 @@ private:
   HighlightingRule rule;
   HighlightingRule findRule;
   void highlightProcedure(HighlightingRule rule, const QString &text);
-  void phpHighlightRules();
   void sqlHighlightRules();
-  void cssHighlightRules();
-  void htmlHighlightRules();
-  void javascriptHighlightRules();
   void diffHighlightRules();
   void svnHighlightRules();
   void commitHighlightRules();
