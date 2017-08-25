@@ -640,17 +640,10 @@ void BaseTextEditor::drawFoldMarks(const QTextBlock &block, QPainter &painter, c
     if (block.text().startsWith("CREATE", Qt::CaseInsensitive))
       drawFoldMark = true;
     break;
-  case EditorTypes::PHP:
-  case EditorTypes::JavaScript:
-    if (block.text().startsWith("FUNCTION", Qt::CaseInsensitive))
-      drawFoldMark = true;
-    break;
-  case EditorTypes::CSS:
   case EditorTypes::Diff:
   case EditorTypes::Commit:
   case EditorTypes::SVNLog:
   case EditorTypes::NoEditor:
-  case EditorTypes::HTML:
     break;
   // default: Q_ASSERT(false);
   }

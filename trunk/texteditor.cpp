@@ -237,24 +237,6 @@ void TextEditor::insertCompletionForPeriodCompeltion(const QString &completion)
   textEditor->setTextCursor(cursor);
 }
 
-void TextEditor::checkPHPSyntaxActionSlot()
-{
-  proc = new QProcess;
-  connect(proc, SIGNAL(readyReadStandardOutput()), this, SLOT(readyReadStandardOutputSlot()));
-  connect(proc, SIGNAL(readyReadStandardError()), this, SLOT(readyReadStandardErrorSlot()));
-//  connect(proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(finishedSlot(int)));
-  QStringList arguments;
-  arguments << "--syntax-check";
-  arguments << fileName;
-  procOutput->clear();
-  saveFileActionTriggered();
-  QApplication::setOverrideCursor(Qt::WaitCursor);
-  procOutput->show();
-  proc->start(settings.value("PHP/Executable", "/usr/bin/php").toString(), arguments);
-  proc->waitForFinished();
-  QApplication::restoreOverrideCursor();
-}
-
 void TextEditor::readyReadStandardErrorSlot()
 {
   procOutput->insertPlainText(proc->readAllStandardError());
@@ -325,20 +307,6 @@ void TextEditor::retranslateUi()
   case EditorTypes::SQLQuery:
     setWindowTitle(tr("SQL Query %1").arg(windowCount));
     fillMariaDBSymbolsAction->setText(tr("Fill MariaDB Symbols"));
-    break;
-  case EditorTypes::PHP:
-    executePHPScriptAction->setText(tr("Run PHP Script"));
-    checkPHPSyntaxAction->setText(tr("Check PHP Syntax"));
-    setWindowTitle(tr("PHP Script %1").arg(windowCount));
-    break;
-  case EditorTypes::CSS:
-    setWindowTitle(tr("CSS Script %1").arg(windowCount));
-    break;
-  case EditorTypes::HTML:
-    setWindowTitle(tr("HTML Script %1").arg(windowCount));
-    break;
-  case EditorTypes::JavaScript:
-    setWindowTitle(tr("JavaScript Script %1").arg(windowCount));
     break;
   case EditorTypes::NoEditor:
     setWindowTitle(tr("Text File %1").arg(windowCount));
@@ -514,18 +482,6 @@ void TextEditor::openLastOpenedFile()
     case EditorTypes::SQLQuery:
       openFile(settings.value("General/LastMariaDBFile", "").toString());
       break;
-    case EditorTypes::PHP:
-      openFile(settings.value("General/LastPHPFile", "").toString());
-      break;
-    case EditorTypes::CSS:
-      openFile(settings.value("General/LastCSSFile", "").toString());
-      break;
-    case EditorTypes::HTML:
-      openFile(settings.value("General/LastHTMLFile", "").toString());
-      break;
-    case EditorTypes::JavaScript:
-      openFile(settings.value("General/LastJavaScriptFile", "").toString());
-      break;
     case EditorTypes::Diff:
     case EditorTypes::Commit:
     case EditorTypes::SVNLog:
@@ -564,18 +520,6 @@ void TextEditor::openRecentFilesMenuAboutToShowSlot()
   case EditorTypes::SQLQuery:
     setting = "RecentMariaDBFiles/Files";
     break;
-  case EditorTypes::PHP:
-    setting = "RecentPHPFiles/Files";
-    break;
-  case EditorTypes::CSS:
-    setting = "RecentCSSFiles/Files";
-    break;
-  case EditorTypes::HTML:
-    setting = "RecentHTMLFiles/Files";
-    break;
-  case EditorTypes::JavaScript:
-    setting = "RecentJavaScriptFiles/Files";
-    break;
   case EditorTypes::Diff:
   case EditorTypes::Commit:
   case EditorTypes::SVNLog:
@@ -599,47 +543,11 @@ void TextEditor::insertCompletion(const QString &completion)
   cursor.movePosition(QTextCursor::EndOfWord, QTextCursor::KeepAnchor);
   QString sufix;
   switch(editorType) {
-  case EditorTypes::CSS:
-    if (StaticFunctions::cssProperties().contains(completion))
-      sufix = ": ";
-    cursor.insertText(completion + sufix);
-    break;
   case EditorTypes::SQLQuery:
     if (databaseSymbols.contains(completion)) {
       cursor.insertText("`" + completion + "`");
     } else {
       cursor.insertText(completion + sufix);
-    }
-    break;
-  case EditorTypes::PHP:
-    if (StaticFunctions::phpFunctions().contains(completion)) {
-      sufix = "()";
-      cursor.insertText(completion + sufix);
-      cursor.movePosition(QTextCursor::PreviousCharacter, QTextCursor::MoveAnchor);
-    } else {
-      cursor.insertText(completion + sufix);
-    }
-    break;
-  case EditorTypes::JavaScript:
-    if (StaticFunctions::javascriptFunctions().contains(completion)) {
-      sufix = "()";
-      cursor.insertText(completion + sufix);
-      cursor.movePosition(QTextCursor::PreviousCharacter, QTextCursor::MoveAnchor);
-    } else {
-      cursor.insertText(completion + sufix);
-    }
-    break;
-  case EditorTypes::HTML:
-    if (StaticFunctions::htmlTags().contains(completion)) {
-      sufix = "></" + completion + ">";
-      cursor.insertText(completion + sufix);
-      cursor.movePosition(QTextCursor::PreviousWord, QTextCursor::MoveAnchor, 2);
-      cursor.movePosition(QTextCursor::PreviousCharacter, QTextCursor::MoveAnchor, 2);
-    }
-    if (StaticFunctions::htmlAttributes().contains(completion)) {
-      sufix = "=\"\"";
-      cursor.insertText(completion + sufix);
-      cursor.movePosition(QTextCursor::PreviousCharacter, QTextCursor::MoveAnchor);
     }
     break;
   default:
@@ -812,25 +720,10 @@ void TextEditor::performCompletion()
       }
       message = message.arg(messageText);
       break;
-    case EditorTypes::PHP:
-      messageText = QString();
-      messageText = StaticFunctions::phpFunctionsComplete().value(text);
-      if (!messageText.isEmpty())
-        message = message.arg(StaticFunctions::phpFunctionsComplete().value(text));
-      else
-        message = message.arg(project->getProjectFunctionListComplete().value(text));
-      break;
-    case EditorTypes::JavaScript:
-      message = message.arg(StaticFunctions::javascriptFunctionsComplete().value(text));
-      break;
-    case EditorTypes::CSS:
-      message = message.arg(StaticFunctions::cssPropertiesComplete().value(text));
-      break;
     case EditorTypes::Diff:
     case EditorTypes::Commit:
     case EditorTypes::SVNLog:
     case EditorTypes::NoEditor:
-    case EditorTypes::HTML:
       break;
     // default: Q_ASSERT(false);
     }
@@ -882,32 +775,6 @@ void TextEditor::populateModel(const QString &completionPrefix)
       break;
     }
     break;
-  case EditorTypes::PHP:
-    foreach (QString item, StaticFunctions::phpKeywords().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
-      model->appendRow(new QStandardItem(QIcon(":/images/svg/application-pgp-keys.svg"), item));
-    foreach (QString item, StaticFunctions::phpFunctions().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
-      model->appendRow(new QStandardItem(QIcon(":/images/svg/server-database.svg"), item));
-    foreach (QString item, project->getProjectFunctionList().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
-      model->appendRow(new QStandardItem(QIcon(":/images/svg/server-database.svg"), item));
-    break;
-  case EditorTypes::CSS:
-    foreach (QString item, StaticFunctions::cssProperties().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
-      model->appendRow(new QStandardItem(QIcon::fromTheme("document-properties", QIcon(":/images/svg/document-properties-4.svg")), item));
-    foreach (QString item, StaticFunctions::cssKeywords().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
-      model->appendRow(new QStandardItem(QIcon(":/images/svg/application-pgp-keys.svg"), item));
-    break;
-  case EditorTypes::HTML:
-    foreach (QString item, StaticFunctions::htmlAttributes().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
-      model->appendRow(new QStandardItem(QIcon::fromTheme("document-properties", QIcon(":/images/svg/document-properties-4.svg")), item));
-    foreach (QString item, StaticFunctions::htmlTags().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
-      model->appendRow(new QStandardItem(QIcon(":/images/svg/application-pgp-keys.svg"), item));
-    break;
-  case EditorTypes::JavaScript:
-    foreach (QString item, StaticFunctions::javascriptFunctions().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
-      model->appendRow(new QStandardItem(QIcon(":/images/svg/server-database.svg"), item));
-    foreach (QString item, StaticFunctions::javascriptKeywords().filter(QRegExp(QString("^%1").arg(completionPrefix), Qt::CaseInsensitive)))
-      model->appendRow(new QStandardItem(QIcon(":/images/svg/application-pgp-keys.svg"), item));
-    break;
   case EditorTypes::Diff:
   case EditorTypes::Commit:
   case EditorTypes::SVNLog:
@@ -931,18 +798,6 @@ void TextEditor::updateRecentFiles(QString fileToSave)
   case EditorTypes::SQLQuery:
     setting = "RecentMariaDBFiles/Files";
     break;
-  case EditorTypes::PHP:
-    setting = "RecentPHPFiles/Files";
-    break;
-  case EditorTypes::CSS:
-    setting = "RecentCSSFiles/Files";
-    break;
-  case EditorTypes::HTML:
-    setting = "RecentHTMLFiles/Files";
-    break;
-  case EditorTypes::JavaScript:
-    setting = "RecentJavaScriptFiles/Files";
-    break;
   case EditorTypes::Diff:
   case EditorTypes::Commit:
   case EditorTypes::SVNLog:
@@ -958,18 +813,6 @@ void TextEditor::updateRecentFiles(QString fileToSave)
     switch(editorType) {
     case EditorTypes::SQLQuery:
       settings.setValue("General/LastMariaDBFile", fileToSave);
-      break;
-    case EditorTypes::PHP:
-      settings.setValue("General/LastPHPFile", fileToSave);
-      break;
-    case EditorTypes::CSS:
-      settings.setValue("General/LastCSSFile", fileToSave);
-      break;
-    case EditorTypes::HTML:
-      settings.setValue("General/LastHTMLFile", fileToSave);
-      break;
-    case EditorTypes::JavaScript:
-      settings.setValue("General/LastJavaScriptFile", fileToSave);
       break;
     case EditorTypes::Diff:
     case EditorTypes::Commit:
@@ -1136,25 +979,10 @@ void TextEditor::createActions()
     fillMariaDBSymbolsAction->setShortcut(QKeySequence(Qt::Key_F6));
     connect(fillMariaDBSymbolsAction, SIGNAL(triggered()), this, SLOT(fillMariaDBSymbolsActionSlot()));
     break;
-  case EditorTypes::PHP:
-    executePHPScriptAction = new QAction(this);
-    executePHPScriptAction->setIcon(QIcon(":/images/svg/system-run-5.svg"));
-    executePHPScriptAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Return));
-    connect(executePHPScriptAction, SIGNAL(triggered()), this, SLOT(executePHPScriptActionSlot()));
-    procOutput = new BaseTextEditor(EditorTypes::HTML);
-    procOutput->resize(400, 400);
-    checkPHPSyntaxAction = new QAction(this);
-    checkPHPSyntaxAction->setIcon(QIcon(":/images/svg/system-run-5.svg"));
-    //checkPHPSyntaxAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key));
-    connect(checkPHPSyntaxAction, SIGNAL(triggered()), this, SLOT(checkPHPSyntaxActionSlot()));
-    break;
   case EditorTypes::Diff:
   case EditorTypes::Commit:
   case EditorTypes::SVNLog:
   case EditorTypes::NoEditor:
-  case EditorTypes::CSS:
-  case EditorTypes::HTML:
-  case EditorTypes::JavaScript:
     break;
   // default: Q_ASSERT(false);
   }
@@ -1276,16 +1104,6 @@ QString TextEditor::commentString()
   case EditorTypes::SQLQuery:
     commentCharacters = "-- ";
     break;
-  case EditorTypes::PHP:
-  case EditorTypes::JavaScript:
-    commentCharacters = "// ";
-    break;
-  case EditorTypes::CSS:
-    commentCharacters = "/*";
-    break;
-  case EditorTypes::HTML:
-    commentCharacters = "<!--";
-    break;
   case EditorTypes::Diff:
   case EditorTypes::NoEditor:
   default:
@@ -1304,18 +1122,6 @@ bool TextEditor::okToClose()
     case EditorTypes::SQLQuery:
       settings.setValue("SQLQuery/LastQuery-" + qApp->property("ConnectionName").toString() +  windowTitle(), textEditor->toPlainText());
       msgBox.setWindowTitle(tr("SQL Query: Save file..."));
-      break;
-    case EditorTypes::PHP:
-      msgBox.setWindowTitle(tr("PHP Script: Save file..."));
-      break;
-    case EditorTypes::CSS:
-      msgBox.setWindowTitle(tr("CSS File: Save file..."));
-      break;
-    case EditorTypes::HTML:
-      msgBox.setWindowTitle(tr("HTML File: Save file..."));
-      break;
-    case EditorTypes::JavaScript:
-      msgBox.setWindowTitle(tr("JavaScript Script: Save file..."));
       break;
     case EditorTypes::Diff:
     case EditorTypes::Commit:
@@ -1373,18 +1179,6 @@ void TextEditor::clearRecentFilesActionTriggered()
   case EditorTypes::SQLQuery:
     settings.remove("General/RecentMariaDBFiles");
     break;
-  case EditorTypes::PHP:
-    settings.remove("General/RecentPHPFiles");
-    break;
-  case EditorTypes::CSS:
-    settings.remove("General/RecentCSSFiles");
-    break;
-  case EditorTypes::HTML:
-    settings.remove("General/RecentHTMLFiles");
-    break;
-  case EditorTypes::JavaScript:
-    settings.remove("General/RecentJavaScriptFiles");
-    break;
   case EditorTypes::Diff:
   case EditorTypes::Commit:
   case EditorTypes::SVNLog:
@@ -1416,15 +1210,6 @@ void TextEditor::symbolsMenuAboutToShowSlot()
   symbolsMenu->clear();
   int counter = 0;
   symbolsLineNumber.clear();
-  if (editorType == EditorTypes::PHP) {
-    foreach (QString line, textEditor->document()->toPlainText().split("\n", QString::KeepEmptyParts)) {
-      if (line.contains(QRegExp("^function.*\\("))) {
-        symbolsLineNumber.insert(line.mid(line.indexOf("function") + 9, line.indexOf("(") - 9), counter);
-        gotoLineActionGroup->addAction(symbolsMenu->addAction(QIcon(":/images/svg/server-database.svg"), line.mid(line.indexOf("function") + 9, line.indexOf("(") - 9)));
-      }
-      counter++;
-    }
-  }
   if (editorType == EditorTypes::SQLQuery) {
     QString icon;
     QString symbolName;
@@ -1507,18 +1292,6 @@ QString TextEditor::fileExtention()
   switch(editorType) {
   case EditorTypes::SQLQuery:
     type = tr("SQL files (*.sql)");
-    break;
-  case EditorTypes::PHP:
-    type = tr("PHP files (*.php *.inc *.module)");
-    break;
-  case EditorTypes::CSS:
-    type = tr("CSS files (*.css)");
-    break;
-  case EditorTypes::HTML:
-    type = tr("HTML files (*.html *.htm)");
-    break;
-  case EditorTypes::JavaScript:
-    type = tr("JavaScript files (*.js)");
     break;
   default:
     type = "";
@@ -1952,21 +1725,6 @@ bool TextEditor::event(QEvent *event)
         break;
       }
       break;
-    case EditorTypes::PHP:
-      matchedValue = StaticFunctions::phpFunctionsComplete().value(cursor.selectedText().toLower());
-      if (matchedValue.isEmpty())
-        matchedValue = project->getProjectFunctionListComplete().value(cursor.selectedText());
-      url = "http://php.net/manual/en/function." + cursor.selectedText().toLower() + ".php";
-      break;
-    case EditorTypes::HTML:
-      matchedValue = StaticFunctions::htmlTagsComplete().value(cursor.selectedText().toLower());
-      break;
-    case EditorTypes::JavaScript:
-      matchedValue = StaticFunctions::javascriptFunctionsComplete().value(cursor.selectedText().toLower());
-      break;
-    case EditorTypes::CSS:
-      matchedValue = StaticFunctions::cssPropertiesComplete().value(cursor.selectedText().toLower());
-      break;
     case EditorTypes::Diff:
     case EditorTypes::Commit:
     case EditorTypes::SVNLog:
@@ -2004,20 +1762,6 @@ bool TextEditor::event(QEvent *event)
       default:
         break;
       }
-      break;
-    case EditorTypes::PHP:
-      matchedValue = StaticFunctions::phpFunctionsComplete().value(cursor.selectedText().toLower());
-      if (matchedValue.isEmpty())
-        matchedValue = project->getProjectFunctionListComplete().value(cursor.selectedText());
-      break;
-    case EditorTypes::HTML:
-      matchedValue = StaticFunctions::htmlTagsComplete().value(cursor.selectedText().toLower());
-      break;
-    case EditorTypes::JavaScript:
-      matchedValue = StaticFunctions::javascriptFunctionsComplete().value(cursor.selectedText().toLower());
-      break;
-    case EditorTypes::CSS:
-      matchedValue = StaticFunctions::cssPropertiesComplete().value(cursor.selectedText().toLower());
       break;
     case EditorTypes::Diff:
     case EditorTypes::Commit:
@@ -2096,18 +1840,10 @@ void TextEditor::createMenu()
     optionsMenu->addAction(fillMariaDBSymbolsAction);
     optionsMenu->addAction(showMariaDBHelperAction);
     break;
-  case EditorTypes::PHP:
-    optionsMenu->addSeparator();
-    optionsMenu->addAction(executePHPScriptAction);
-    optionsMenu->addAction(checkPHPSyntaxAction);
-    break;
   case EditorTypes::Diff:
   case EditorTypes::Commit:
   case EditorTypes::SVNLog:
   case EditorTypes::NoEditor:
-  case EditorTypes::CSS:
-  case EditorTypes::HTML:
-  case EditorTypes::JavaScript:
     break;
   // default: Q_ASSERT(false);
   }
@@ -2196,30 +1932,6 @@ void TextEditor::normalizeTextActionTriggered()
   }
 }
 
-void TextEditor::executePHPScriptActionSlot()
-{
-  proc = new QProcess;
-
-//  ini_set('display_errors', 'On');
-//  error_reporting(E_ALL | E_STRICT);
-
-  connect(proc, SIGNAL(readyReadStandardOutput()), this, SLOT(readyReadStandardOutputSlot()));
-//  connect(proc, SIGNAL(readyReadStandardError()), this, SLOT(readyReadStandardErrorSlot()));
-//  connect(proc, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(finishedSlot(int)));
-  QStringList arguments;
-  arguments << "--file=" + fileName;
-//  arguments << "-s";
-//  arguments << "--timing";
-
-  procOutput->clear();
-  saveFileActionTriggered();
-  QApplication::setOverrideCursor(Qt::WaitCursor);
-  procOutput->show();
-  proc->start(settings.value("PHP/Executable", "/usr/bin/php").toString(), arguments);
-  proc->waitForFinished();
-  QApplication::restoreOverrideCursor();
-}
-
 void TextEditor::readyReadStandardOutputSlot()
 {
   procOutput->insertPlainText(proc->readAllStandardOutput());
@@ -2247,16 +1959,6 @@ void TextEditor::showSymbolsActionTriggered(bool checked)
   QString icon;
   QString symbolName;
   switch(editorType) {
-  case EditorTypes::PHP:
-  case EditorTypes::JavaScript:
-    foreach (QString line, textEditor->document()->toPlainText().split("\n", QString::KeepEmptyParts)) {
-      if (line.contains(QRegExp("^function.*\\("))) {
-        symbolsLineNumber.insert(line.mid(9, line.indexOf("(") - 9), counter);
-        listSymbols->addItem(new QListWidgetItem(QIcon(":/images/svg/server-database.svg"), line.mid(9, line.indexOf("(") - 9)));
-      }
-      counter++;
-    }
-    break;
   case EditorTypes::SQLQuery:
     foreach (QString line, textEditor->document()->toPlainText().split("\n", QString::KeepEmptyParts)) {
       icon = "";
@@ -2292,20 +1994,10 @@ void TextEditor::showSymbolsActionTriggered(bool checked)
       counter++;
     }
     break;
-  case EditorTypes::CSS:
-    foreach (QString line, textEditor->document()->toPlainText().split("\n", QString::KeepEmptyParts)) {
-      if (line.contains(QRegExp("^(\\.|#)"))) {
-        symbolsLineNumber.insert(line.mid(0, line.indexOf("{")), counter);
-        listSymbols->addItem(new QListWidgetItem(QIcon(":/images/svg/server-database.svg"), line.mid(0, line.indexOf("{"))));
-      }
-      counter++;
-    }
-    break;
   case EditorTypes::Diff:
   case EditorTypes::Commit:
   case EditorTypes::SVNLog:
   case EditorTypes::NoEditor:
-  case EditorTypes::HTML:
     break;
   // default: Q_ASSERT(false);
   }

@@ -84,7 +84,6 @@ MainWindow::MainWindow()
   QCoreApplication::setApplicationName("Calíope");
   QCoreApplication::setOrganizationName("DVC Software");
   qApp->setProperty("SessionId", StaticFunctions::randomString(10));
-  qApp->setProperty("HelpPage-PHP", "http://php.net/search.php/");
   qApp->setProperty("HelpPage-MySQL", "http://dev.mysql.com/doc/refman/5.5/en/");
   qApp->setProperty("HelpPage-MariaDB", "https://mariadb.com/kb/en/");
 
@@ -206,8 +205,6 @@ MainWindow::MainWindow()
         sqlScriptActionTriggered();
       if (window.startsWith(tr("Query")))
         queryActionTriggered();
-      if (window.startsWith(tr("PHP")) || window.endsWith(".php", Qt::CaseInsensitive))
-        phpScriptActionTriggered();
       if (window == tr("Database Comparision"))
         databaseComparisionActionTriggered();
     }
@@ -222,19 +219,6 @@ MainWindow::MainWindow()
         sqlScriptActionTriggered();
         sqlEditor->openFile(fileInfo.absoluteFilePath());
       }
-      if (fileCompleteSuffix == "inc" || fileCompleteSuffix == "php") {
-        phpScriptActionTriggered();
-        phpEditor->openFile(fileInfo.absoluteFilePath());
-      }
-      if (fileCompleteSuffix == "js") {
-        javasctiptEditorActionTriggered();
-        javascriptEditor->openFile(fileInfo.absoluteFilePath());
-      }
-      if (fileCompleteSuffix == "html") {
-        htmlEditorActionTriggered();
-        htmlEditor->openFile(fileInfo.absoluteFilePath());
-      }
-
     }
   }
 
@@ -318,10 +302,6 @@ void MainWindow::newConnectionPerformed()
   setTitle();
   sqlWindowCounter = 0;
   sqlQueryWindowCounter = 0;
-  htmlWindowCounter = 0;
-  phpWindowCounter = 0;
-  cssWindowCounter = 0;
-  javascriptWindowCounter = 0;
   textWindowCounter = 0;
 }
 
@@ -428,10 +408,6 @@ void MainWindow::createActions()
   mysqlScriptAction->setIcon(QIcon(":/images/svg/server-database.svg"));
   connect(mysqlScriptAction, SIGNAL(triggered()), this, SLOT(sqlScriptActionTriggered()));
 
-  phpScriptAction = new QAction(this);
-  phpScriptAction->setIcon(QIcon(":/images/svg/application-x-php.svg"));
-  connect(phpScriptAction, SIGNAL(triggered()), this, SLOT(phpScriptActionTriggered()));
-
   mariaDBGUIHelpAction = new QAction(this);
   mariaDBGUIHelpAction->setShortcut(QKeySequence(Qt::Key_F1));
   mariaDBGUIHelpAction->setIcon(QIcon(":/images/svg/server-database.svg"));
@@ -448,10 +424,6 @@ void MainWindow::createActions()
   mysqlOnLineHelpAction = new QAction(this);
   mysqlOnLineHelpAction->setIcon(QIcon(":/images/svg/mysql.svg"));
   connect(mysqlOnLineHelpAction, SIGNAL(triggered()), this, SLOT(mysqlOnLineHelpActionTriggered()));
-
-  phpOnLineHelpAction = new QAction(this);
-  phpOnLineHelpAction->setIcon(QIcon(":/images/svg/php-logo.svg"));
-  connect(phpOnLineHelpAction, SIGNAL(triggered()), this, SLOT(phpOnLineHelpActionTriggered()));
 
   preferencesAction = new QAction(this);
   preferencesAction->setIcon(QIcon::fromTheme("preferences-system", QIcon(":/images/svg/preferences-system-4.svg")));
@@ -502,18 +474,6 @@ void MainWindow::createActions()
   shutdownServerAction->setIcon(QIcon::fromTheme("system-shutdown", QIcon(":/images/svg/system-shutdown-6.svg")));
   shutdownServerAction->setDisabled(true);
   connect(shutdownServerAction, SIGNAL(triggered()), this, SLOT(shutdownServerActionTriggered()));
-
-  cssEditorAction = new QAction(this);
-  cssEditorAction->setIcon(QIcon(":/images/svg/text-css.svg"));
-  connect(cssEditorAction, SIGNAL(triggered()), this, SLOT(cssEditorActionTriggered()));
-
-  htmlEditorAction = new QAction(this);
-  htmlEditorAction->setIcon(QIcon::fromTheme("text-html", QIcon(":/images/svg/text-html.svg")));
-  connect(htmlEditorAction, SIGNAL(triggered()), this, SLOT(htmlEditorActionTriggered()));
-
-  javascriptEditorAction = new QAction(this);
-  javascriptEditorAction->setIcon(QIcon::fromTheme("text-x-generic", QIcon(":/images/svg/text-x-generic.svg")));
-  connect(javascriptEditorAction, SIGNAL(triggered()), this, SLOT(javasctiptEditorActionTriggered()));
 
   openExternalWebPage = new QAction(this);
   openExternalWebPage->setIcon(QIcon::fromTheme("applications-internet", QIcon(":/images/svg/applications-internet-5.svg")));
@@ -729,38 +689,6 @@ void MainWindow::openRecentFilesMenuAboutToShowSlot()
   foreach (QString file, fileList)
     if (!file.isEmpty() && fileCount++ < limit)
       recentFilesActionGroup->addAction(openRecentFilesMenu->addAction(StaticFunctions::iconFromFileName(file), file));
-  setting = "RecentPHPFiles/Files";
-  fileList = settings.value(setting, QStringList()).toStringList();
-  fileList.sort();
-  for(int counter = 0; counter < (fileList.size() / 2); counter++) fileList.swap(counter,fileList.size() - (1 + counter));
-  fileCount = 0;
-  foreach (QString file, fileList)
-    if (!file.isEmpty() && fileCount++ < limit)
-      recentFilesActionGroup->addAction(openRecentFilesMenu->addAction(StaticFunctions::iconFromFileName(file), file));
-  setting = "RecentCSSFiles/Files";
-  fileList = settings.value(setting, QStringList()).toStringList();
-  fileList.sort();
-  for(int counter = 0; counter < (fileList.size() / 2); counter++) fileList.swap(counter,fileList.size() - (1 + counter));
-  fileCount = 0;
-  foreach (QString file, fileList)
-    if (!file.isEmpty() && fileCount++ < limit)
-      recentFilesActionGroup->addAction(openRecentFilesMenu->addAction(StaticFunctions::iconFromFileName(file), file));
-  setting = "RecentHTMLFiles/Files";
-  fileList = settings.value(setting, QStringList()).toStringList();
-  fileList.sort();
-  for(int counter = 0; counter < (fileList.size() / 2); counter++) fileList.swap(counter,fileList.size() - (1 + counter));
-  fileCount = 0;
-  foreach (QString file, fileList)
-    if (!file.isEmpty() && fileCount++ < limit)
-      recentFilesActionGroup->addAction(openRecentFilesMenu->addAction(StaticFunctions::iconFromFileName(file), file));
-  setting = "RecentJavaScriptFiles/Files";
-  fileList = settings.value(setting, QStringList()).toStringList();
-  fileList.sort();
-  for(int counter = 0; counter < (fileList.size() / 2); counter++) fileList.swap(counter,fileList.size() - (1 + counter));
-  fileCount = 0;
-  foreach (QString file, fileList)
-    if (!file.isEmpty() && fileCount++ < limit)
-      recentFilesActionGroup->addAction(openRecentFilesMenu->addAction(StaticFunctions::iconFromFileName(file), file));
 }
 
 void MainWindow::recentFilesActionGroupTriggered(QAction *action)
@@ -789,30 +717,6 @@ void MainWindow::openFile(QString fileName, unsigned int line)
     if (line > 1)
       sqlEditor->gotoLine(line);
     break;
-  case EditorTypes::PHP:
-    phpScriptActionTriggered();
-    phpEditor->openFile(fileName);
-    if (line > 1)
-      phpEditor->gotoLine(line);
-    break;
-  case EditorTypes::CSS:
-    cssEditorActionTriggered();
-    cssEditor->openFile(fileName);
-    if (line > 1)
-      cssEditor->gotoLine(line);
-    break;
-  case EditorTypes::HTML:
-    htmlEditorActionTriggered();
-    htmlEditor->openFile(fileName);
-    if (line > 1)
-      htmlEditor->gotoLine(line);
-    break;
-  case EditorTypes::JavaScript:
-    javasctiptEditorActionTriggered();
-    javascriptEditor->openFile(fileName);
-    if (line > 1)
-      javascriptEditor->gotoLine(line);
-    break;
   case EditorTypes::NoEditor:
     textEditorActionTriggered();
     textEditor->openFile(fileName);
@@ -831,32 +735,6 @@ void MainWindow::openFile(QString fileName, unsigned int line)
 void MainWindow::setProgressBarProgressSlot(const double progress)
 {
   dStatusBar->setProgress(progress);
-}
-
-void MainWindow::javasctiptEditorActionTriggered()
-{
-//  if (optionsDock->isVisible())
-//    optionsDock->hide();
-  javascriptEditor = new TextEditor(projects, this->serverConnection, EditorTypes::JavaScript, ++javascriptWindowCounter);
-  connect(javascriptEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
-  connect(javascriptEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
-  connect(javascriptEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
-  connect(javascriptEditor, SIGNAL(windowClosed()), this, SLOT(decrementJavascriptWindowCounter()));
-  connect(this, SIGNAL(save()), javascriptEditor, SLOT(saveFileActionTriggered()));
-  addSubWindow(javascriptEditor);
-}
-
-void MainWindow::htmlEditorActionTriggered()
-{
-//  if (optionsDock->isVisible())
-//    optionsDock->hide();
-  htmlEditor = new TextEditor(projects, this->serverConnection, EditorTypes::HTML, ++htmlWindowCounter);
-  connect(htmlEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
-  connect(htmlEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
-  connect(htmlEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
-  connect(htmlEditor, SIGNAL(windowClosed()), this, SLOT(decrementHTMLWindowCounter()));
-  connect(this, SIGNAL(save()), htmlEditor, SLOT(saveFileActionTriggered()));
-  addSubWindow(htmlEditor);
 }
 
 void MainWindow::textEditorActionTriggered()
@@ -1246,14 +1124,14 @@ void MainWindow::caliopeSourceDocumentationActionTriggered()
 void MainWindow::viewDWebViewPageSource(QString pageSource)
 {
   QApplication::setOverrideCursor(Qt::WaitCursor);
-  htmlEditor = new TextEditor(projects, this->serverConnection, EditorTypes::HTML, ++htmlWindowCounter);
-  connect(htmlEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
-  connect(htmlEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
-  connect(htmlEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
-  connect(htmlEditor, SIGNAL(windowClosed()), this, SLOT(decrementHTMLWindowCounter()));
-  connect(this, SIGNAL(save()), htmlEditor, SLOT(saveFileActionTriggered()));
-  addSubWindow(htmlEditor);
-  htmlEditor->textEditor->setPlainText(pageSource);
+//  htmlEditor = new TextEditor(projects, this->serverConnection, EditorTypes::HTML, ++htmlWindowCounter);
+//  connect(htmlEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
+//  connect(htmlEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
+//  connect(htmlEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
+//  connect(htmlEditor, SIGNAL(windowClosed()), this, SLOT(decrementHTMLWindowCounter()));
+//  connect(this, SIGNAL(save()), htmlEditor, SLOT(saveFileActionTriggered()));
+//  addSubWindow(htmlEditor);
+//  htmlEditor->textEditor->setPlainText(pageSource);
   QApplication::restoreOverrideCursor();
 }
 
@@ -1385,26 +1263,6 @@ void MainWindow::reconnectionPerformedSlot()
 void MainWindow::decrementSQLWindowCounter()
 {
   --sqlWindowCounter;
-}
-
-void MainWindow::decrementHTMLWindowCounter()
-{
-  --htmlWindowCounter;
-}
-
-void MainWindow::decrementPHPWindowCounter()
-{
-  --phpWindowCounter;
-}
-
-void MainWindow::decrementCSSWindowCounter()
-{
-   --cssWindowCounter;
-}
-
-void MainWindow::decrementJavascriptWindowCounter()
-{
-  --javascriptWindowCounter;
 }
 
 void MainWindow::decrementSQLQueryWindowCounter()
@@ -1666,19 +1524,6 @@ void MainWindow::cancelDatabaseMigrationSlot()
 //  QMessageBox::warning(this, tr("Database migration"), tr("Migration process canceled"));
 }
 
-void MainWindow::cssEditorActionTriggered()
-{
-//  if (optionsDock->isVisible())
-//    optionsDock->hide();
-  cssEditor = new TextEditor(projects, this->serverConnection, EditorTypes::CSS, ++cssWindowCounter);
-  connect(cssEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
-  connect(cssEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
-  connect(cssEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
-  connect(cssEditor, SIGNAL(windowClosed()), this, SLOT(decrementCSSWindowCounter()));
-  connect(this, SIGNAL(save()), cssEditor, SLOT(saveFileActionTriggered()));
-  addSubWindow(cssEditor);
-}
-
 void MainWindow::shutdownServerActionTriggered()
 {
   if (serverConnection->shutdown())
@@ -1724,9 +1569,6 @@ void MainWindow::retranslateUi()
   mysqlScriptAction->setText(tr("SQL Script"));
   mysqlScriptAction->setStatusTip(mysqlScriptAction->text());
 
-  phpScriptAction->setText(tr("PHP Script"));
-  phpScriptAction->setStatusTip(phpScriptAction->text());
-
   mariaDBGUIHelpAction->setText(tr("Calíope"));
   mariaDBGUIHelpAction->setStatusTip(mariaDBGUIHelpAction->text());
 
@@ -1738,9 +1580,6 @@ void MainWindow::retranslateUi()
 
   mysqlOnLineHelpAction->setText(tr("MySQL On-Line Help"));
   mysqlOnLineHelpAction->setStatusTip(mysqlOnLineHelpAction->text());
-
-  phpOnLineHelpAction->setText(tr("PHP On-Line Help"));
-  phpOnLineHelpAction->setStatusTip(phpOnLineHelpAction->text());
 
   preferencesAction->setText(tr("Preferences"));
   preferencesAction->setStatusTip(preferencesAction->text());
@@ -1776,15 +1615,6 @@ void MainWindow::retranslateUi()
 
   shutdownServerAction->setText(tr("Shutdown Database Server"));
   shutdownServerAction->setStatusTip(shutdownServerAction->text());
-
-  cssEditorAction->setText(tr("CSS Editor"));
-  cssEditorAction->setStatusTip(cssEditorAction->text());
-
-  htmlEditorAction->setText(tr("HTML Editor"));
-  htmlEditorAction->setStatusTip(htmlEditorAction->text());
-
-  javascriptEditorAction->setText(tr("JavaScript Editor"));
-  javascriptEditorAction->setStatusTip(javascriptEditorAction->text());
 
   openExternalWebPage->setText(tr("Web site"));
   openExternalWebPage->setStatusTip(openExternalWebPage->text());
@@ -1944,14 +1774,6 @@ void MainWindow::createInitialSettings()
   QSettings settings;
   if (!settings.value("FileAssociations/SQLFiles", false).toBool())
     settings.setValue("FileAssociations/SQLFiles", "sql");
-  if (!settings.value("FileAssociations/PHPFiles", false).toBool())
-    settings.setValue("FileAssociations/PHPFiles", "php,inc,module");
-  if (!settings.value("FileAssociations/CSSFiles", false).toBool())
-    settings.setValue("FileAssociations/CSSFiles", "css");
-  if (!settings.value("FileAssociations/HTMLFiles", false).toBool())
-    settings.setValue("FileAssociations/HTMLFiles", "html,htm");
-  if (!settings.value("FileAssociations/JavaScriptFiles", false).toBool())
-    settings.setValue("FileAssociations/JavaScriptFiles", "js");
   if (!settings.value("TextEditor/DefaultPointSize", false).toBool())
     settings.setValue("TextEditor/DefaultPointSize", 11);
 }
@@ -2040,26 +1862,9 @@ void MainWindow::sqlScriptActionTriggered()
   addSubWindow(sqlEditor);
 }
 
-void MainWindow::phpScriptActionTriggered()
-{
-  phpEditor = new TextEditor(projects, this->serverConnection, EditorTypes::PHP, ++phpWindowCounter);
-  connect(phpEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
-  connect(phpEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
-  connect(phpEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
-  connect(phpEditor, SIGNAL(windowClosed()), this, SLOT(decrementPHPWindowCounter()));
-  connect(this, SIGNAL(save()), phpEditor, SLOT(saveFileActionTriggered()));
-  addSubWindow(phpEditor);
-}
-
 void MainWindow::externalWebPageActionTriggered()
 {
   addSubWindow(newDWebView(tr("External Web page")));
-}
-
-void MainWindow::phpOnLineHelpActionTriggered()
-{
-  QSettings settings;
-  addSubWindow(newDWebView(tr("PHP On-Line Help"), QUrl(settings.value("General/HelpPage-PHP", qApp->property("HelpPage-PHP").toString()).toString())));
 }
 
 void MainWindow::mysqlOnLineHelpActionTriggered()
@@ -2367,7 +2172,6 @@ void MainWindow::createToolBar()
   //  fileToolBar->addAction(restoreAction);
   //  fileToolBar->addAction(backupAction);
   //  fileToolBar->addAction(mysqlScriptAction);
-  //  fileToolBar->addAction(phpScriptAction);
   //  fileToolBar->addAction(tableMaintenanceAction);
   //  fileToolBar->addAction(showOptionsDockAction);
   fileToolbar->setIconSize(QSize(24, 24));
@@ -2406,10 +2210,6 @@ void MainWindow::createMenus()
   editorsMenu = new QMenu(this);
   editorsMenu->setIcon(QIcon::fromTheme("accessories-text-editor", QIcon(":/images/svg/accessories-text-editor-7.svg")));
   editorsMenu->addAction(mysqlScriptAction);
-  editorsMenu->addAction(phpScriptAction);
-  editorsMenu->addAction(cssEditorAction);
-  editorsMenu->addAction(htmlEditorAction);
-  editorsMenu->addAction(javascriptEditorAction);
   editorsMenu->addAction(textEditorAction);
 
 //  projectFilesMenu = new QMenu(this);
@@ -2555,8 +2355,6 @@ void MainWindow::createMenus()
   helpMenu->addAction(mariadbHelpAction);
   helpMenu->addSeparator();
   helpMenu->addAction(mysqlOnLineHelpAction);
-  helpMenu->addSeparator();
-  helpMenu->addAction(phpOnLineHelpAction);
   helpMenu->addSeparator();
   helpMenu->addAction(aboutQtAction);
   helpMenu->addAction(aboutMariaDBGUIAction);

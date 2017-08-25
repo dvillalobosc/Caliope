@@ -128,14 +128,12 @@ private slots:
   void itemClickedSlot(QListWidgetItem *item);
   void sortSymbolsSlot();
   void normalizeTextActionTriggered();
-  void executePHPScriptActionSlot();
   void readyReadStandardOutputSlot();
   void setTitle(QString title);
   void uppercaseKeywordsActionSlot();
   void lowercaseKeywordsActionSlot();
   void performPeriodCompletion(const QString &completionPrefix);
   void insertCompletionForPeriodCompeltion(const QString &completion);
-  void checkPHPSyntaxActionSlot();
   void readyReadStandardErrorSlot();
   void performCodeSnippetCompletion();
   void insertCompletionCodeSnippet(const QString &completion);
@@ -218,7 +216,6 @@ private:
   QLabel *labelPosition;
   QAction *sortSymbols;
   void fillMariaDBSymbols();
-  QAction *executePHPScriptAction;
   void openLastOpenedFile();
   QMenu *openRecentFilesMenu;
   QMenu *contextualMenu;
@@ -244,7 +241,6 @@ private:
   QStandardItemModel *modelForPeriodCompeltion;
   QCompleter *completerForPeriodCompeltion;
   QMenu *versionControlMenu;
-  QAction *checkPHPSyntaxAction;
   QCompleter *codeSnippetCompleter;
   QStandardItemModel *modelCodeSnippet;
 };
