@@ -54,6 +54,7 @@ protected:
   void keyPressEvent(QKeyEvent *event);
   void mousePressEvent(QMouseEvent *event);
   void paintEvent(QPaintEvent *event);
+  void mouseDoubleClickEvent(QMouseEvent *event);
 
 private slots:
   void updateLineNumberAreaWidth();
