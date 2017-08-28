@@ -3,7 +3,7 @@ var searchData=
   ['database',['Database',['../class_database.html#af0ac363666fa92227220adc23255c921',1,'Database::Database()'],['../class_d_b_m_s.html#a2c3abebc857f50d779f2d4645fe0a11e',1,'DBMS::database()']]],
   ['databasechanged',['databaseChanged',['../class_d_b_m_s.html#a63fbab6c62f3dec2c4710499e765ece0',1,'DBMS::databaseChanged()'],['../class_main_window.html#aaba45083ea0fb8846dcec754b47d4db2',1,'MainWindow::databaseChanged()']]],
   ['databasecomparision',['DatabaseComparision',['../class_database_comparision.html#a33a632a006ed5038aac9c042bb5cf021',1,'DatabaseComparision']]],
-  ['databases',['Databases',['../class_databases.html#ac1601c6ff8c753f61263702f798b4ea5',1,'Databases::Databases()'],['../class_d_b_m_s.html#ae7cc29fca44d7630ab699fff54ae6ce2',1,'DBMS::databases()']]],
+  ['databases',['databases',['../class_d_b_m_s.html#ae7cc29fca44d7630ab699fff54ae6ce2',1,'DBMS::databases()'],['../class_databases.html#ac1601c6ff8c753f61263702f798b4ea5',1,'Databases::Databases()']]],
   ['dbarchartwidget',['DBarChartWidget',['../class_d_bar_chart_widget.html#abca621a730ae74dc791a40f3310653d0',1,'DBarChartWidget']]],
   ['dbms',['DBMS',['../class_d_b_m_s.html#ae8354e45b9b9d23faa359c583c9d6363',1,'DBMS']]],
   ['dbmsdateformat',['DBMSDateFormat',['../class_static_functions.html#a8ead3af339e9b6d25b103d1a6ec229bf',1,'StaticFunctions']]],

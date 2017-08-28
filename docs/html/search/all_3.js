@@ -5,7 +5,7 @@ var searchData=
   ['databasecomparision',['DatabaseComparision',['../class_database_comparision.html',1,'DatabaseComparision'],['../class_database_comparision.html#a33a632a006ed5038aac9c042bb5cf021',1,'DatabaseComparision::DatabaseComparision()']]],
   ['databasecomparision_2ecpp',['databasecomparision.cpp',['../databasecomparision_8cpp.html',1,'']]],
   ['databasecomparision_2eh',['databasecomparision.h',['../databasecomparision_8h.html',1,'']]],
-  ['databases',['Databases',['../class_databases.html',1,'Databases'],['../class_databases.html#ac1601c6ff8c753f61263702f798b4ea5',1,'Databases::Databases()'],['../class_d_b_m_s.html#ae7cc29fca44d7630ab699fff54ae6ce2',1,'DBMS::databases()']]],
+  ['databases',['Databases',['../class_databases.html',1,'Databases'],['../class_d_b_m_s.html#ae7cc29fca44d7630ab699fff54ae6ce2',1,'DBMS::databases()'],['../class_databases.html#ac1601c6ff8c753f61263702f798b4ea5',1,'Databases::Databases()']]],
   ['datetime',['dateTime',['../class_d_b_m_s.html#a40ab9e0c3287bf95bc1b3868e2c77086',1,'DBMS']]],
   ['dbarchartwidget',['DBarChartWidget',['../class_d_bar_chart_widget.html',1,'DBarChartWidget'],['../class_d_bar_chart_widget.html#abca621a730ae74dc791a40f3310653d0',1,'DBarChartWidget::DBarChartWidget()']]],
   ['dbms',['DBMS',['../class_d_b_m_s.html',1,'DBMS'],['../class_d_b_m_s.html#ae8354e45b9b9d23faa359c583c9d6363',1,'DBMS::DBMS()']]],

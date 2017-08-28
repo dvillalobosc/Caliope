@@ -1,9 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"class_replication.html#af5088aada43de736e5bb8abca4d70edd":[0,0,57,13],
-"class_replication.html#af92fec47971c2bbd70f738a21366cf58":[0,0,57,1],
-"class_report_types.html":[0,0,58],
-"class_report_types.html#a284ccc290434e589cdb3c005d9b82550":[0,0,58,0],
 "class_report_types.html#a284ccc290434e589cdb3c005d9b82550a0924d0e538eecdf968aaff3d3b37dddf":[0,0,58,0,1],
 "class_report_types.html#a284ccc290434e589cdb3c005d9b82550a1b3c45ad079306e75ab97f03e2daa209":[0,0,58,0,0],
 "class_report_types.html#a284ccc290434e589cdb3c005d9b82550a595f2477dea103caf237ac9bef41bb64":[0,0,58,0,3],
@@ -249,5 +245,9 @@ var NAVTREEINDEX2 =
 "fileassociations_8h.html":[1,0,53],
 "fileassociations_8h_source.html":[1,0,53],
 "files.html":[1,0],
-"fileselector_8cpp.html":[1,0,54]
+"fileselector_8cpp.html":[1,0,54],
+"fileselector_8cpp_source.html":[1,0,54],
+"fileselector_8h.html":[1,0,55],
+"fileselector_8h_source.html":[1,0,55],
+"findreplace_8cpp.html":[1,0,56]
 };

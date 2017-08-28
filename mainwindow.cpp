@@ -1124,14 +1124,14 @@ void MainWindow::caliopeSourceDocumentationActionTriggered()
 void MainWindow::viewDWebViewPageSource(QString pageSource)
 {
   QApplication::setOverrideCursor(Qt::WaitCursor);
-//  htmlEditor = new TextEditor(projects, this->serverConnection, EditorTypes::HTML, ++htmlWindowCounter);
-//  connect(htmlEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
-//  connect(htmlEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
-//  connect(htmlEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
-//  connect(htmlEditor, SIGNAL(windowClosed()), this, SLOT(decrementHTMLWindowCounter()));
-//  connect(this, SIGNAL(save()), htmlEditor, SLOT(saveFileActionTriggered()));
-//  addSubWindow(htmlEditor);
-//  htmlEditor->textEditor->setPlainText(pageSource);
+  textEditor = new TextEditor(projects, this->serverConnection, EditorTypes::NoEditor, ++textWindowCounter);
+  connect(textEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
+  connect(textEditor, SIGNAL(updatePrositionViewer(int,int)), dStatusBar, SLOT(setPrositionViewer(int,int)));
+  connect(textEditor, SIGNAL(openURL(QString)), this, SLOT(openURLSlot(QString)));
+  connect(textEditor, SIGNAL(windowClosed()), this, SLOT(decrementTextWindowCounter()));
+  connect(this, SIGNAL(save()), textEditor, SLOT(saveFileActionTriggered()));
+  addSubWindow(textEditor);
+  textEditor->textEditor->setPlainText(pageSource);
   QApplication::restoreOverrideCursor();
 }
 
