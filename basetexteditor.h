@@ -55,6 +55,8 @@ protected:
   void mousePressEvent(QMouseEvent *event);
   void paintEvent(QPaintEvent *event);
   void mouseDoubleClickEvent(QMouseEvent *event);
+//  void mouseReleaseEvent(QMouseEvent *event);
+  void mouseMoveEvent(QMouseEvent *event);
 
 private slots:
   void updateLineNumberAreaWidth();
@@ -93,6 +95,7 @@ private:
   EditorTypes::EditorType editorType;
   bool folded;
   QTextBlock foldedBlockAt(const QPoint &point);
+  void rehighlightOnMouse();
 
 signals:
   void escKeyPressed();

@@ -348,8 +348,19 @@ void BaseTextEditor::paintEvent(QPaintEvent *event)
 void BaseTextEditor::mouseDoubleClickEvent(QMouseEvent *event)
 {
   QPlainTextEdit::mouseDoubleClickEvent(event);
-  QTextCursor cursor = textCursor();
-  rehighlight(cursor.selectedText());
+  rehighlightOnMouse();
+}
+
+//void BaseTextEditor::mouseReleaseEvent(QMouseEvent *event)
+//{
+//  QPlainTextEdit::mouseReleaseEvent(event);
+//  rehighlightOnMouse();
+//}
+
+void BaseTextEditor::mouseMoveEvent(QMouseEvent *event)
+{
+  QPlainTextEdit::mouseMoveEvent(event);
+  rehighlightOnMouse();
 }
 
 bool BaseTextEditor::handledCompletedAndSelected(QKeyEvent *event)
@@ -678,6 +689,13 @@ void BaseTextEditor::drawFoldMarks(const QTextBlock &block, QPainter &painter, c
   //    painter.drawImage(QRect(0, 0, 16, 16), QImage(":/images/svg/go-next-7.svg"));
   ////  qDebug() << cursor.blockNumber();
 
+}
+
+void BaseTextEditor::rehighlightOnMouse()
+{
+  // If mouse tracking is switched off, mouse move events only occur if a mouse button is pressed while the mouse is being moved. If mouse tracking is switched on, mouse move events occur even if no mouse button is pressed.
+  QTextCursor cursor = textCursor();
+  rehighlight(cursor.selectedText());
 }
 
 //QTextBlock BaseTextEditor::foldedBlockAt(const QPoint &point)
