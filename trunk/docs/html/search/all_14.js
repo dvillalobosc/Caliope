@@ -1,19 +1,9 @@
 var searchData=
 [
-  ['undefined',['Undefined',['../class_static_functions.html#a88600b088114bd8923325cbdc0f3cebfa31b35d78a499212a4d2f21c1496db9d4',1,'StaticFunctions']]],
-  ['unidentaction',['unidentAction',['../class_base_text_editor.html#a1c89347795a7a120e426404bba7434ec',1,'BaseTextEditor']]],
-  ['unquotesymbol',['unquoteSymbol',['../class_static_functions.html#a4ef3734eab1bc36948a532d1a85a1692',1,'StaticFunctions']]],
-  ['updateeditorgeometry',['updateEditorGeometry',['../class_d_item_delegate.html#a481930a6ef10c0c6e6112b3684994192',1,'DItemDelegate']]],
-  ['updateobjectinfo',['updateObjectInfo',['../class_catalogs.html#a00b2c56c8cb271453f51b6e9369b58f6',1,'Catalogs']]],
-  ['updateprositionviewer',['updatePrositionViewer',['../class_s_q_l_query.html#a161e7dafa1e65a6f0e06b2abe00913aa',1,'SQLQuery::updatePrositionViewer()'],['../class_text_editor.html#a23a1bca0b8b411492cd5810c1fefb1c8',1,'TextEditor::updatePrositionViewer()']]],
-  ['updateresult',['updateResult',['../class_result.html#aa0ea9b94bdb15bda53f5f9cf6c52c760',1,'Result']]],
-  ['updatetitle',['updateTitle',['../class_projects.html#a5ed09473707a8f08a876574f3eff3ac6',1,'Projects']]],
-  ['user',['User',['../class_item_types.html#abe6dc67e73ab3cb6e6082437914b9212a422a59fc43277b18d9b8d80436a6378c',1,'ItemTypes']]],
-  ['userhost',['UserHost',['../class_item_types.html#abe6dc67e73ab3cb6e6082437914b9212a0a200bfeeb743cca4404bf45689b5ce7',1,'ItemTypes']]],
-  ['userinfo',['userInfo',['../class_users.html#ad8b4e6a575b855d489ee30673fe564b9',1,'Users']]],
-  ['username',['userName',['../class_d_b_m_s.html#a74a07b57b5fd2138ea8681cc2f43c099',1,'DBMS']]],
-  ['users',['Users',['../class_users.html',1,'Users'],['../class_users.html#af1f5c371c3f1e7f9b14210ed0d3718bc',1,'Users::Users()']]],
-  ['users_2ecpp',['users.cpp',['../users_8cpp.html',1,'']]],
-  ['users_2eh',['users.h',['../users_8h.html',1,'']]],
-  ['userstab',['UsersTab',['../class_item_types.html#abe6dc67e73ab3cb6e6082437914b9212a8a99b7ca671e5056da3ff4af137a9622',1,'ItemTypes']]]
+  ['view',['View',['../class_view.html',1,'View'],['../class_d_b_m_s.html#a31e38b3284df0c9be3c20648a7ba4d29',1,'DBMS::view()'],['../class_item_editor_types.html#ade740b84be48d5cf9c683dcb804557a5ae4d57d7828d460aad0616709c0f74a7d',1,'ItemEditorTypes::View()'],['../class_item_types.html#abe6dc67e73ab3cb6e6082437914b9212a1cab1f65c08186dec2938b8099eac777',1,'ItemTypes::View()'],['../class_view.html#adb942064fe34fdcdecb1d5a526876dd9',1,'View::View()']]],
+  ['viewhorizoltalactiontriggered',['viewHorizoltalActionTriggered',['../class_text_editor.html#a420542eb6146c6db375705ea45dbcf65',1,'TextEditor']]],
+  ['viewnormalactiontriggered',['viewNormalActionTriggered',['../class_text_editor.html#ab8177a5ae6b7fa4bb9ee99f67149753f',1,'TextEditor']]],
+  ['views',['Views',['../class_views.html',1,'Views'],['../class_d_b_m_s.html#a8314227a9311febb72b739ace64a09a2',1,'DBMS::views()'],['../class_views.html#a9c255e6059eed7b03a5c015a4c7bde9c',1,'Views::Views()']]],
+  ['viewverticalactiontriggered',['viewVerticalActionTriggered',['../class_text_editor.html#ae8214a0764b965a1d6d802c67ba3774c',1,'TextEditor']]],
+  ['visualizespacesaction',['visualizeSpacesAction',['../class_base_text_editor.html#a62a9fa578b0e8dd9064f864f3f43e2a8',1,'BaseTextEditor']]]
 ];

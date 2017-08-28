@@ -1,19 +1,17 @@
 var searchData=
 [
-  ['objectmigration',['ObjectMigration',['../class_object_migration.html#a7c4e42006fa46744be8f5140e077dc24',1,'ObjectMigration']]],
-  ['objectsdiagram',['ObjectsDiagram',['../class_objects_diagram.html#afff9e72b6e6b6f6229ff972726a9cd7c',1,'ObjectsDiagram']]],
-  ['oktoclose',['okToClose',['../class_s_q_l_query.html#a9ed0565aa8a167faeb34cf6b8634beac',1,'SQLQuery::okToClose()'],['../class_text_editor.html#a50cc529cc374b300f62dea4bef215c1f',1,'TextEditor::okToClose()']]],
-  ['open',['open',['../class_d_b_m_s.html#a589e2f4ba8de716209b3ea1c6306f1bd',1,'DBMS']]],
-  ['openedproject',['openedProject',['../class_projects.html#aa5743d643cbf38703776f1218acd2f5a',1,'Projects']]],
-  ['openfile',['openFile',['../class_main_window.html#a38ac77b6be25323106bd8dce52278ad2',1,'MainWindow::openFile()'],['../class_project_find_replace.html#a7056e1b9d105f7dc39129402429a8c10',1,'ProjectFindReplace::openFile()'],['../class_projects.html#aefe07cac511eabb4258db5b10d526e2c',1,'Projects::openFile()'],['../class_text_editor.html#aa4b024a46cf6244fc136992a568b52ff',1,'TextEditor::openFile()']]],
-  ['openfileactiontriggered',['openFileActionTriggered',['../class_text_editor.html#a8dd56bcefebb833c5e4362c5f387114d',1,'TextEditor']]],
-  ['openurl',['openURL',['../class_item_editor.html#aa127d23d11798b7fa83bc240931305b4',1,'ItemEditor::openURL()'],['../class_s_q_l_query.html#aad7065c87757dfa2c53edcc68266ce63',1,'SQLQuery::openURL()'],['../class_text_editor.html#a8491f27456397f78fa1ecb59f5b58b54',1,'TextEditor::openURL()']]],
-  ['operator_21_3d',['operator!=',['../class_d_b_m_s.html#aa8d0387632bf7fe455f48f0fe724098a',1,'DBMS']]],
-  ['operator_3d_3d',['operator==',['../class_d_b_m_s.html#a49e375e14d21bdcefdf74ea90f3ecdae',1,'DBMS']]],
-  ['outputasg',['outputAsG',['../class_d_b_m_s.html#a71ea0d473e1c608007582a2ef43f0f76',1,'DBMS']]],
-  ['outputashtml',['outputAsHTML',['../class_d_b_m_s.html#ab5c8f08b06f870d0db0e390f0230103f',1,'DBMS']]],
-  ['outputastable',['outputAsTable',['../class_d_b_m_s.html#a0e8eb552b52689653941b05975367e57',1,'DBMS']]],
-  ['outputasv',['outputAsV',['../class_d_b_m_s.html#a959afdc4c39216abc494c14585b43e9a',1,'DBMS']]],
-  ['outputasvv',['outputAsVV',['../class_d_b_m_s.html#ab3e147450099c2b263418ccc85a40594',1,'DBMS']]],
-  ['outputasxml',['outputAsXML',['../class_d_b_m_s.html#adb759f5893f67a176c932acd80cfccd0',1,'DBMS']]]
+  ['page',['page',['../class_d_web_view.html#aecd789071b4da85381869b8955963637',1,'DWebView']]],
+  ['paint',['paint',['../class_table_graphics_item.html#accec8f613bb9581cee79f284b3591cbd',1,'TableGraphicsItem']]],
+  ['paintevent',['paintEvent',['../class_base_text_editor.html#abc6e1ee7cad0da5e564a32a4527f0b63',1,'BaseTextEditor::paintEvent()'],['../class_line_number_area.html#a56400934bfe272427deb3ffd975b3a7f',1,'LineNumberArea::paintEvent()'],['../class_d_pie_chart_widget.html#ac44859d9ced507e92546709d155443f0',1,'DPieChartWidget::paintEvent()'],['../class_d_bar_chart_widget.html#af7f7f236e7c2fe95f5f6b373f4adb4c1',1,'DBarChartWidget::paintEvent()']]],
+  ['password',['password',['../class_static_functions.html#a2d760d448b7093a047853373fa2b45bb',1,'StaticFunctions']]],
+  ['performperiodcompletion',['performPeriodCompletion',['../class_base_text_editor.html#ae5fa7e3534cc776777fde9b90102ec99',1,'BaseTextEditor']]],
+  ['ping',['ping',['../class_d_b_m_s.html#a6481b5dbee17fcb97b40b2dd85874cf9',1,'DBMS']]],
+  ['populatetableactiontriggered',['populateTableActionTriggered',['../class_catalogs.html#ae06992075bb6b75e2295a2e2da52aa76',1,'Catalogs']]],
+  ['preferences',['Preferences',['../class_preferences.html#a0a4c9f8277890349451049e58eef21ce',1,'Preferences']]],
+  ['procedures',['procedures',['../class_d_b_m_s.html#a133d0dd245802affee67d7636020e384',1,'DBMS::procedures()'],['../class_procedures.html#a6fc9a0db244b6a1d5bd3b58cf686f5c8',1,'Procedures::Procedures()']]],
+  ['processes',['processes',['../class_d_b_m_s.html#ac321c7c3c4366fc78434222df853733c',1,'DBMS::processes()'],['../class_processes.html#a894e75149ef83b3cd24b364ea8ad226f',1,'Processes::Processes()']]],
+  ['processlist',['ProcessList',['../class_process_list.html#a979c62f4f9ffd4bcafdc37494a39685c',1,'ProcessList']]],
+  ['projectfindreplace',['ProjectFindReplace',['../class_project_find_replace.html#af05d92fd70ac127a2039cb43bd5b514d',1,'ProjectFindReplace']]],
+  ['projects',['Projects',['../class_projects.html#a69d34a471fdbf8ea6f415fbdc2d1ad23',1,'Projects']]],
+  ['purgebinarylogs',['purgeBinaryLogs',['../class_replication.html#a40a30b184df351b47b726c01156c0078',1,'Replication']]]
 ];

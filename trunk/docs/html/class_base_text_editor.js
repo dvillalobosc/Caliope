@@ -9,6 +9,7 @@ var class_base_text_editor =
     [ "keyPressEvent", "class_base_text_editor.html#a7a96b1709bcd39058d9e8c4cd1af1065", null ],
     [ "lineNumberAreaPaintEvent", "class_base_text_editor.html#a8af2333d030258a16a61561b1af73073", null ],
     [ "lineNumberAreaWidth", "class_base_text_editor.html#a6e59504d6d70224b997aa082bc34bc26", null ],
+    [ "mouseDoubleClickEvent", "class_base_text_editor.html#affc28c3728e99e3758e36716b55363b7", null ],
     [ "mousePressEvent", "class_base_text_editor.html#a10e4f8638bbb10afc0cbe58d7746bac2", null ],
     [ "paintEvent", "class_base_text_editor.html#abc6e1ee7cad0da5e564a32a4527f0b63", null ],
     [ "performPeriodCompletion", "class_base_text_editor.html#ae5fa7e3534cc776777fde9b90102ec99", null ],

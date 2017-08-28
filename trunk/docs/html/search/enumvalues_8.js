@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['licensefile',['LicenseFile',['../class_file_selector_contexts.html#a1b498c8733dfb54849fc6ab565c77771ae0435ac41d575a8365bd8d6844d48efd',1,'FileSelectorContexts']]]
+  ['noeditor',['NoEditor',['../class_editor_types.html#a39331ac7248f3caec238e726edea03e9aa0dc50f3b214c6d2fda8e07a5d8a5dee',1,'EditorTypes']]],
+  ['none',['None',['../class_report_types.html#a284ccc290434e589cdb3c005d9b82550a595f2477dea103caf237ac9bef41bb64',1,'ReportTypes']]]
 ];
