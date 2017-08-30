@@ -359,7 +359,7 @@ QStringList DBMS::runQuerySingleColumn(QString queryToExecute, bool addHeaders)
   return rows;
 }
 
-QList<QStringList>* DBMS::runQuery(QString queryToExecute, bool addHeaders)
+QList<QStringList>* DBMS::runQuery(QString queryToExecute, bool addHeaders, bool emitNotificaction)
 {
   queryExecutionTime.restart();
   QList<QStringList> *rows = new QList<QStringList>();
@@ -422,7 +422,8 @@ QList<QStringList>* DBMS::runQuery(QString queryToExecute, bool addHeaders)
     //  for (int counter = 0; counter < rows->count(); counter++)
     //    qDebug() << "*" << rows->at(counter);
   }
-  emit statusBarMessage(rows->last().at(0));
+  if (emitNotificaction)
+    emit statusBarMessage(rows->last().at(0));
   return rows;
 }
 
@@ -539,7 +540,7 @@ int DBMS::query(QString queryToExecute)
   return valueToReturn;
 }
 
-QString DBMS::outputAsTable(QString queryToExecute, bool printExtraInfo, bool saveToFile, bool replaceReturns, bool splitQuery)
+QString DBMS::outputAsTable(QString queryToExecute, bool printExtraInfo, bool saveToFile, bool replaceReturns, bool splitQuery, bool emitNotificacion, QString delimiter)
 {
   int row = 0;
   int row2 = 0;
@@ -547,13 +548,13 @@ QString DBMS::outputAsTable(QString queryToExecute, bool printExtraInfo, bool sa
   QString output;
   QStringList queryList;
   if (splitQuery)
-    queryList = queryToExecute.split(QRegExp(";\\s+"), QString::SkipEmptyParts);
+    queryList = queryToExecute.split(QRegExp("\\" + delimiter + "\\s+"), QString::SkipEmptyParts);
   else
     queryList.append(queryToExecute);
 
   if (isOpened()) {
     foreach (QString statement, queryList) {
-      QList<QStringList> *rows = runQuery(statement, true);
+      QList<QStringList> *rows = runQuery(statement, true, emitNotificacion);
       //    for (int i = 0; i <= rows->count(); i++)
       //        qDebug() << rows->at(i);
 
@@ -628,14 +629,14 @@ void DBMS::saveOutputToFile(QString contents, QString filter, QString fileName)
   emit statusBarMessage(tr("Data exported to %1").arg(fileName));
 }
 
-QString DBMS::outputAsHTML(QString queryToExecute, bool saveToFile, bool replaceReturns, bool splitQuery)
+QString DBMS::outputAsHTML(QString queryToExecute, bool saveToFile, bool replaceReturns, bool splitQuery, QString delimiter)
 {
   QString output("<HTML>\n<BODY>\n");
   int row = 0;
   int row2 = 0;
   QStringList queryList;
   if (splitQuery)
-    queryList = queryToExecute.split(QRegExp(";\\s+"), QString::SkipEmptyParts);
+    queryList = queryToExecute.split(QRegExp("\\" + delimiter + "\\s+"), QString::SkipEmptyParts);
   else
     queryList.append(queryToExecute);
 
@@ -680,14 +681,14 @@ QString DBMS::outputAsHTML(QString queryToExecute, bool saveToFile, bool replace
   }
 }
 
-QString DBMS::outputAsXML(QString queryToExecute, bool saveToFile, bool replaceReturns, bool splitQuery)
+QString DBMS::outputAsXML(QString queryToExecute, bool saveToFile, bool replaceReturns, bool splitQuery, QString delimiter)
 {
   QString output;
   int row = 0;
   int row2 = 0;
   QStringList queryList;
   if (splitQuery)
-    queryList = queryToExecute.split(QRegExp(";\\s+"), QString::SkipEmptyParts);
+    queryList = queryToExecute.split(QRegExp("\\" + delimiter + "\\s+"), QString::SkipEmptyParts);
   else
     queryList.append(queryToExecute);
 
@@ -724,14 +725,14 @@ QString DBMS::outputAsXML(QString queryToExecute, bool saveToFile, bool replaceR
   }
 }
 
-QString DBMS::outputAsV(QString queryToExecute, bool printRowsInSet, bool saveToFile, bool replaceReturns, bool splitQuery, bool removeHeaders)
+QString DBMS::outputAsV(QString queryToExecute, bool printRowsInSet, bool saveToFile, bool replaceReturns, bool splitQuery, bool removeHeaders, QString delimiter)
 {
   int row = 0;
   int row2 = 0;
   QString output;
   QStringList queryList;
   if (splitQuery)
-    queryList = queryToExecute.split(QRegExp(";\\s+"), QString::SkipEmptyParts);
+    queryList = queryToExecute.split(QRegExp("\\" + delimiter + "\\s+"), QString::SkipEmptyParts);
   else
     queryList.append(queryToExecute);
 
@@ -772,7 +773,7 @@ QString DBMS::outputAsV(QString queryToExecute, bool printRowsInSet, bool saveTo
   }
 }
 
-QString DBMS::outputAsG(QString queryToExecute, bool saveToFile, bool replaceReturns, bool splitQuery)
+QString DBMS::outputAsG(QString queryToExecute, bool saveToFile, bool replaceReturns, bool splitQuery, bool emitNotificacion, QString delimiter)
 {
   QString output;
   int maxLength = 0;
@@ -780,13 +781,13 @@ QString DBMS::outputAsG(QString queryToExecute, bool saveToFile, bool replaceRet
   int row2 = 0;
   QStringList queryList;
   if (splitQuery)
-    queryList = queryToExecute.split(QRegExp(";\\s+"), QString::SkipEmptyParts);
+    queryList = queryToExecute.split(QRegExp("\\" + delimiter + "\\s+"), QString::SkipEmptyParts);
   else
     queryList.append(queryToExecute);
 
   if (isOpened()) {
     foreach (QString statement, queryList) {
-      QList<QStringList> *rows = runQuery(statement, true);
+      QList<QStringList> *rows = runQuery(statement, true, emitNotificacion);
 
       for (row = 0; row < rows->at(0).count(); row++)
         if (maxLength < rows->at(0).at(row).length())
@@ -830,9 +831,9 @@ QString DBMS::errorOnExecution(const QString message, const QString type)
   return tr("Could not execute statement. ") + message;
 }
 
-QString DBMS::outputAsVV(QString queryToExecute, bool saveToFile, bool replaceReturns, bool splitQuery)
+QString DBMS::outputAsVV(QString queryToExecute, bool saveToFile, bool replaceReturns, bool splitQuery, QString delimiter)
 {
-  return outputAsV(queryToExecute, true, saveToFile, replaceReturns, splitQuery);
+  return outputAsV(queryToExecute, true, saveToFile, replaceReturns, splitQuery, false, delimiter);
 }
 
 int DBMS::getPort()
@@ -1869,13 +1870,13 @@ QList<QStringList> *Processes::getProcessList()
 {
   switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
-    result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' ') FROM `information_schema`.`PROCESSLIST`");
+    result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' ') FROM `information_schema`.`PROCESSLIST`", false, false);
     break;
   case StaticFunctions::MariaDB:
     if (serverConnection->getMayorVersion() == 10 && serverConnection->getMinorVersion() == 1 && serverConnection->getMicroVersion() >= 5)
-      result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' '), `TIME_MS`, `STAGE`, `MAX_STAGE`, `PROGRESS`, `MEMORY_USED`, `EXAMINED_ROWS`, `QUERY_ID`, `INFO_BINARY` FROM `information_schema`.`PROCESSLIST`");
+      result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' '), `TIME_MS`, `STAGE`, `MAX_STAGE`, `PROGRESS`, `MEMORY_USED`, `EXAMINED_ROWS`, `QUERY_ID`, `INFO_BINARY` FROM `information_schema`.`PROCESSLIST`", false, false);
     else
-      result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' '), `TIME_MS`, `STAGE`, `MAX_STAGE`, `PROGRESS`, `MEMORY_USED`, `EXAMINED_ROWS`, `QUERY_ID`, '' FROM `information_schema`.`PROCESSLIST`");
+      result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' '), `TIME_MS`, `STAGE`, `MAX_STAGE`, `PROGRESS`, `MEMORY_USED`, `EXAMINED_ROWS`, `QUERY_ID`, '' FROM `information_schema`.`PROCESSLIST`", false, false);
     break;
   case StaticFunctions::Undefined:
   default:
@@ -1954,10 +1955,10 @@ QString Replication::getStatus()
   if (serverConnection->isOpened())
     switch(serverConnection->getDBMSType()) {
     case StaticFunctions::MySQL:
-      return serverConnection->outputAsTable("SHOW MASTER STATUS") + "\n" + serverConnection->outputAsG("SHOW SLAVE STATUS");
+      return serverConnection->outputAsTable("SHOW MASTER STATUS", false, false, true, true, false) + "\n" + serverConnection->outputAsG("SHOW SLAVE STATUS", false, true, true, false);
       break;
     case StaticFunctions::MariaDB:
-      return serverConnection->outputAsTable("SHOW MASTER STATUS") + "\n" + serverConnection->outputAsG("SHOW ALL SLAVES STATUS");
+      return serverConnection->outputAsTable("SHOW MASTER STATUS", false, false, true, true, false) + "\n" + serverConnection->outputAsG("SHOW ALL SLAVES STATUS", false, true, true, false);
       break;
     case StaticFunctions::Undefined:
     default:
@@ -2108,7 +2109,7 @@ QString Replication::getStatus(QString connectionName)
     case StaticFunctions::MySQL:
       break;
     case StaticFunctions::MariaDB:
-      return serverConnection->outputAsTable("SHOW MASTER STATUS") + "\n" + serverConnection->outputAsG("SHOW SLAVE '" + connectionName + "' STATUS");
+      return serverConnection->outputAsTable("SHOW MASTER STATUS", false, false, true, true, false) + "\n" + serverConnection->outputAsG("SHOW SLAVE '" + connectionName + "' STATUS", false, true, true, false);
       break;
     case StaticFunctions::Undefined:
     default:

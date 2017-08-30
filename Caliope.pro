@@ -138,7 +138,6 @@ QT += sql
 QT += printsupport
 QT += xml
 QT += webenginewidgets
-CONFIG += qscintilla2
 
 #cd html; for file in *; do echo "/html/"$file >> ../filelist.txt; done; cd search; for file in *; do echo "/html/search/"$file >> ../../filelist.txt; done; cd ..; cd ..;
 #!contains(QT_MAJOR_VERSION, 4)

@@ -54,7 +54,6 @@ class DStatusBar;
 class ObjectsDiagram;
 class Projects;
 class QPushButton;
-class QSettings;
 class QSystemTrayIcon;
 class DatabaseComparision;
 class QProcess;
@@ -283,7 +282,6 @@ private:
   TextEditor *textEditor;
   QAction *textEditorAction;
   void createInitialSettings();
-  QSettings settings;
   QMenu *replicationMenu;
   QAction *stopReplicationSlaveAction;
   QAction *startReplicationSlaveAction;
