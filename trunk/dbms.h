@@ -342,7 +342,7 @@ public:
   void close();
   bool open();
   bool isOpened();
-  QList<QStringList>* runQuery(QString queryToExecute, bool addHeaders = false);
+  QList<QStringList>* runQuery(QString queryToExecute, bool addHeaders = false, bool emitNotificaction = true);
   QList<QStringList>* runQuerySimpleResult(QString queryToExecute);
   QStringList runQuerySingleColumn(QString queryToExecute, bool addHeaders = false);
   QStringList getDatabases(bool skipMetaDatabases = false);
@@ -355,12 +355,12 @@ public:
   QStringList getEngines();
   QStringList getCollations();
   QList<QStringList>* getCharacterSets();
-  QString outputAsTable(QString queryToExecute, bool printExtraInfo = false, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true);
-  QString outputAsV(QString queryToExecute, bool printRowsInSet = false, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true, bool removeHeaders = false);
-  QString outputAsVV(QString queryToExecute, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true);
-  QString outputAsHTML(QString queryToExecute, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true);
-  QString outputAsXML(QString queryToExecute, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true);
-  QString outputAsG(QString queryToExecute, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true);
+  QString outputAsTable(QString queryToExecute, bool printExtraInfo = false, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true, bool emitNotificacion = true, QString delimiter = ";");
+  QString outputAsV(QString queryToExecute, bool printRowsInSet = false, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true, bool removeHeaders = false, QString delimiter = ";");
+  QString outputAsVV(QString queryToExecute, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true, QString delimiter = ";");
+  QString outputAsHTML(QString queryToExecute, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true, QString delimiter = ";");
+  QString outputAsXML(QString queryToExecute, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true, QString delimiter = ";");
+  QString outputAsG(QString queryToExecute, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true, bool emitNotificacion = true, QString delimiter = ";");
   bool testOpened();
   QStringList *executedQueries;
   bool oldVersion;

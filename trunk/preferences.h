@@ -51,7 +51,7 @@ public:
   Preferences(DBMS *serverConnection);
 
 private:
-  QComboBox *stylesCombo;
+//  QComboBox *stylesCombo;
   QSpinBox *tabSizeSpinBox;
   QCheckBox *checkBoxRememberWindows;
   QCheckBox *checkBoxOpenLastFile;
@@ -85,7 +85,7 @@ protected:
   void retranslateUi();
 
 private slots:
-  void stylesComboCurrentIndexChanged(const QString &text);
+//  void stylesComboCurrentIndexChanged(const QString &text);
   void checkBoxRememberWindowsStateChanged();
   void checkBoxOpenLastFileStateChanged();
   void tabSizeSpinBoxValueChanged(int value);

@@ -57,11 +57,11 @@ Preferences::Preferences(DBMS *serverConnection)
 
   //General
   styleFLayout = new QFormLayout;
-  stylesCombo = new QComboBox;
-  stylesCombo->addItems(QStyleFactory::keys());
-  stylesCombo->setCurrentIndex(stylesCombo->findText(settings.value("General/Style", QApplication::style()->objectName()).toString(), Qt::MatchFixedString));
-  connect(stylesCombo, SIGNAL(currentIndexChanged(QString)), this, SLOT(stylesComboCurrentIndexChanged(QString)));
-  styleFLayout->addRow(" ", stylesCombo);
+//  stylesCombo = new QComboBox;
+//  stylesCombo->addItems(QStyleFactory::keys());
+//  stylesCombo->setCurrentIndex(stylesCombo->findText(settings.value("General/Style", QApplication::style()->objectName()).toString(), Qt::MatchFixedString));
+//  connect(stylesCombo, SIGNAL(currentIndexChanged(QString)), this, SLOT(stylesComboCurrentIndexChanged(QString)));
+//  styleFLayout->addRow(" ", stylesCombo);
   checkBoxRememberWindows = new QCheckBox;
   checkBoxRememberWindows->setCheckState(settings.value("General/RememberOpenedWindows", false).toBool() ? Qt::Checked : Qt::Unchecked);
   connect(checkBoxRememberWindows, SIGNAL(stateChanged(int)), this, SLOT(checkBoxRememberWindowsStateChanged()));
@@ -222,8 +222,9 @@ void Preferences::retranslateUi()
   setWindowTitle(tr("Preferences"));
   setObjectName(windowTitle());
   dTitleLabel->setText(windowTitle());
-  QLabel *label = qobject_cast<QLabel *>(styleFLayout->labelForField(stylesCombo));
-  label->setText(tr("Select a style:"));
+  QLabel *label;
+//  QLabel *label = qobject_cast<QLabel *>(styleFLayout->labelForField(stylesCombo));
+//  label->setText(tr("Select a style:"));
   checkBoxRememberWindows->setText(tr("Remember opened windows"));
   checkBoxOpenLastFile->setText(tr("Open last file used in the modules"));
   checkBoxSaveQueryBeforeExecution->setText(tr("Save Queries before execution?"));
@@ -350,8 +351,8 @@ void Preferences::checkBoxRememberWindowsStateChanged()
   settings.setValue("General/RememberOpenedWindows", checkBoxRememberWindows->isChecked());
 }
 
-void Preferences::stylesComboCurrentIndexChanged(const QString &text)
-{
-  qApp->setStyle(text);
-  settings.setValue("General/Style", text);
-}
+//void Preferences::stylesComboCurrentIndexChanged(const QString &text)
+//{
+//  qApp->setStyle(text);
+//  settings.setValue("General/Style", text);
+//}

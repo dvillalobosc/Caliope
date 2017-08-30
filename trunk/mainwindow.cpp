@@ -48,6 +48,7 @@
 #include <QWhatsThis>
 #include <QDesktopServices>
 #include <QInputDialog>
+//#include <QSplashScreen>
 
 #include "mainwindow.h"
 #include "connectdialog.h"
@@ -106,15 +107,16 @@ MainWindow::MainWindow()
 //  qApp->processEvents();
 //  splash->showMessage("Task 2");
 //  qApp->processEvents();
-//  //splash->hide();
+//  // splash->hide();
 
-  QFile styleFile(":/styles/mainStyle.css");
-  if (!styleFile.open(QFile::ReadOnly | QFile::Text))
-    statusBarMessage(tr("Cannot read file %1:\n%2.").arg(":/styles/mainStyle.css").arg(styleFile.errorString()), QSystemTrayIcon::Critical);
   QSettings settings;
-  qApp->setStyle(settings.value("General/Style", QApplication::style()->objectName()).toString());
-  qApp->setStyleSheet(QString::fromUtf8(styleFile.readAll()));
-  styleFile.close();
+  /*Setting the style interfiers with the mouse, very strange*/
+//  QFile styleFile(":/styles/mainStyle.css");
+//  if (!styleFile.open(QFile::ReadOnly | QFile::Text))
+//    statusBarMessage(tr("Cannot read file %1:\n%2.").arg(":/styles/mainStyle.css").arg(styleFile.errorString()), QSystemTrayIcon::Critical);
+//  qApp->setStyle(settings.value("General/Style", QApplication::style()->objectName()).toString());
+//  qApp->setStyleSheet(QString::fromUtf8(styleFile.readAll()));
+//  styleFile.close();
   setGeometry(settings.value("MainWindow/Geometry", QRect(100, 100, 600, 400)).toRect());
   if (settings.value("MainWindow/Maximized", false).toBool())
     setWindowState(Qt::WindowMaximized);
@@ -330,8 +332,10 @@ void MainWindow::closeEvent(QCloseEvent *event)
       settings.setValue("General/OpenedWindows-" + qApp->property("ConnectionName").toString(), list);
     }
     QFile file(settings.fileName());
+    QFile backFile(settings.fileName() + ".back");
+    backFile.remove();
     if (!file.copy(settings.fileName() + ".back"))
-      statusBarMessage(tr("Error on saving application settings backup file."));
+      statusBarMessage(tr("Error on saving application settings backup file. ") + settings.fileName() + ".back");
     serverConnection->close();
     event->accept();
   } else {
@@ -1080,6 +1084,7 @@ void MainWindow::takeASnapShotActionTriggered()
   QString imageFormats;
   foreach(QString format, QImageWriter::supportedImageFormats())
     imageFormats += "*." + format + " ";
+  QSettings settings;
   QString file = fileDialog.getSaveFileName(this, tr("Save to Image"), settings.value("General/LastFileImg", QDir::home().absolutePath()).toString(), tr("Image files (%1)").arg(imageFormats));
   settings.setValue("General/LastFileImg", fileDialog.directory().filePath(file));
   QPixmap pixmap(this->size());
@@ -1388,6 +1393,7 @@ void MainWindow::databaseMetadataActionTriggered()
   QApplication::setOverrideCursor(Qt::WaitCursor);
   QFileDialog fileDialog;
   fileDialog.setDirectory(QDir::home());
+  QSettings settings;
   QString file = fileDialog.getSaveFileName(this, tr("Save to Pdf"), settings.value("General/LastFilePdf", QDir::home().absolutePath()).toString(), tr("Pdf & Ps files (*.pdf *.ps)"));
   settings.setValue("General/LastFilePdf", fileDialog.directory().filePath(file));
   QPrinter printer(QPrinter::HighResolution);

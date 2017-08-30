@@ -35,6 +35,7 @@ class QLabel;
 class QElapsedTimer;
 class QSqlDatabase;
 class Projects;
+class QComboBox;
 
 #include "dmdisubwindow.h"
 #include "dbms.h"
@@ -122,6 +123,7 @@ private:
   QAction *commitTransacctionAction;
   QAction *rollbackTransacctionAction;
   QAction *exportResultDataForInsertAction;
+  QComboBox *comboDelimiter;
 
 signals:
   void enableDisableAction();

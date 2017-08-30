@@ -33,6 +33,7 @@
 #include <QDateTime>
 #include <QInputDialog>
 #include <QFileDialog>
+#include <QComboBox>
 
 #include "sqlquery.h"
 #include "dtitlelabel.h"
@@ -75,12 +76,16 @@ SQLQuery::SQLQuery(Projects *project, DBMS *serverConnection, unsigned int windo
   radioPDF = new QRadioButton("PDF");
   radioG = new QRadioButton("G");
   queryToolBar = new QToolBar;
+  comboDelimiter = new QComboBox;
+  comboDelimiter->addItem(";");
+  comboDelimiter->addItem("|");
   queryToolBar->addAction(beginTransacctionAction);
   queryToolBar->addAction(rollbackTransacctionAction);
   queryToolBar->addAction(commitTransacctionAction);
   queryToolBar->addSeparator();
   queryToolBar->addAction(safeStatementsAction);
   queryToolBar->addAction(executeAction);
+  queryToolBar->addWidget(comboDelimiter);
   queryToolBar->addAction(exportAction);
   queryToolBar->addAction(concatenateOutputAction);
   queryToolBar->addAction(showStatementsErrorAction);
@@ -234,6 +239,8 @@ void SQLQuery::retranslateUi()
   rollbackTransacctionAction->setToolTip(rollbackTransacctionAction->text());
   commitTransacctionAction->setText(tr("Commit transaction"));
   commitTransacctionAction->setToolTip(commitTransacctionAction->text());
+
+  comboDelimiter->setToolTip(tr("Statement Delimiter"));
 
   scriptEditor->retranslateUi();
   resutlEditor->retranslateUi();
@@ -392,7 +399,7 @@ void SQLQuery::splitActionTriggered(bool triggered)
 
 void SQLQuery::startSQLPlayerActionTriggered()
 {
-  queriesToBePlayed = new QStringList(statement().split(QRegExp(";\\s+"), QString::SkipEmptyParts));
+  queriesToBePlayed = new QStringList(statement().split(QRegExp("\\" + comboDelimiter->currentText() + "\\s+"), QString::SkipEmptyParts));
   nextQueryToExecute = 0;
   emit enableDisableAction();
   timeLabel->setText("\n\n\n");
@@ -518,42 +525,51 @@ void SQLQuery::executeStatement(QString statement)
       resutlEditor->clear();
     if (radioT->isChecked())
       resutlEditor->setPlainText(serverConnection->outputAsTable(statement, false, exportAction->isChecked()
-                                                                 , showNewLinesAction->isChecked(), splitAction->isChecked())
+                                                                 , showNewLinesAction->isChecked(), splitAction->isChecked()
+                                                                 , true, comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioX->isChecked())
       resutlEditor->setPlainText(serverConnection->outputAsV(statement, false, exportAction->isChecked()
-                                                             , showNewLinesAction->isChecked(), splitAction->isChecked(), true)
+                                                             , showNewLinesAction->isChecked(), splitAction->isChecked(), true
+                                                             , comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioV->isChecked())
       resutlEditor->setPlainText(serverConnection->outputAsV(statement, false, exportAction->isChecked()
-                                                             , showNewLinesAction->isChecked(), splitAction->isChecked())
+                                                             , showNewLinesAction->isChecked(), splitAction->isChecked()
+                                                             , true, comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioVV->isChecked())
       resutlEditor->setPlainText(serverConnection->outputAsVV(statement, exportAction->isChecked()
-                                                              , showNewLinesAction->isChecked(), splitAction->isChecked())
+                                                              , showNewLinesAction->isChecked(), splitAction->isChecked()
+                                                              , comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioVVV->isChecked())
       resutlEditor->setPlainText(serverConnection->outputAsTable(statement, true, exportAction->isChecked()
-                                                                 , showNewLinesAction->isChecked(), splitAction->isChecked())
+                                                                 , showNewLinesAction->isChecked(), splitAction->isChecked()
+                                                                 , true, comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioHTML->isChecked())
       resutlEditor->setPlainText(serverConnection->outputAsHTML(statement, exportAction->isChecked()
-                                                                , showNewLinesAction->isChecked(), splitAction->isChecked())
+                                                                , showNewLinesAction->isChecked(), splitAction->isChecked()
+                                                                , comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioTXT->isChecked())
       resutlEditor->setPlainText(serverConnection->outputAsTable(statement, false, exportAction->isChecked()
-                                                                 , showNewLinesAction->isChecked(), splitAction->isChecked())
+                                                                 , showNewLinesAction->isChecked(), splitAction->isChecked()
+                                                                 , true, comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioXML->isChecked())
       resutlEditor->setPlainText(serverConnection->outputAsXML(statement, exportAction->isChecked()
-                                                               , showNewLinesAction->isChecked(), splitAction->isChecked())
+                                                               , showNewLinesAction->isChecked(), splitAction->isChecked()
+                                                               , comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioG->isChecked())
       resutlEditor->setPlainText(serverConnection->outputAsG(statement, exportAction->isChecked()
-                                                             , showNewLinesAction->isChecked(), splitAction->isChecked())
+                                                             , showNewLinesAction->isChecked(), splitAction->isChecked()
+                                                             , true, comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioPDF->isChecked()) {
-      resutlEditor->setPlainText(serverConnection->outputAsTable(statement, false, false, showNewLinesAction->isChecked(), splitAction->isChecked()));
+      resutlEditor->setPlainText(serverConnection->outputAsTable(statement, false, false, showNewLinesAction->isChecked(), splitAction->isChecked(), true, comboDelimiter->currentText()));
       QFileDialog fileDialog;
       fileDialog.setDirectory(QDir::home());
       QString file = fileDialog.getSaveFileName(this, tr("Save to Pdf"), settings.value("General/LastFilePdf", QDir::home().absolutePath()).toString(), tr("Pdf & Ps files (*.pdf *.ps)"));
@@ -655,7 +671,7 @@ void SQLQuery::exportTableDataForInsertActionTriggered()
   QString table;
 
   QApplication::setOverrideCursor(Qt::WaitCursor);
-  foreach (QString statement, scriptEditor->textEditor->textCursor().selection().toPlainText().split(QRegExp(";\\s+"), QString::SkipEmptyParts)) {
+  foreach (QString statement, scriptEditor->textEditor->textCursor().selection().toPlainText().split(QRegExp("\\" + comboDelimiter->currentText() + "\\s+"), QString::SkipEmptyParts)) {
     if (logStatements) //Use a variable here because is faster
       serverConnection->logStatement(statement);
     outPut = QString();
@@ -710,7 +726,7 @@ void SQLQuery::exportResultDataForInsertActionTriggered()
   QString table;
 
   QApplication::setOverrideCursor(Qt::WaitCursor);
-  foreach (QString statement, scriptEditor->textEditor->textCursor().selection().toPlainText().split(QRegExp(";\\s+"), QString::SkipEmptyParts)) {
+  foreach (QString statement, scriptEditor->textEditor->textCursor().selection().toPlainText().split(QRegExp("\\" + comboDelimiter->currentText() + "\\s+"), QString::SkipEmptyParts)) {
     if (logStatements) //Use a variable here because is faster
       serverConnection->logStatement(statement);
     outPut = QString();

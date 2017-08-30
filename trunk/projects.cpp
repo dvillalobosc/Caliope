@@ -35,6 +35,7 @@
 #include <QDomDocument>
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
+#include <QProcess>
 
 #include "projects.h"
 #include "dtitlelabel.h"
@@ -153,13 +154,24 @@ QString Projects::name()
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QTextStream in(&file);
     QString line;
+    QString name;
+    QString path;
     while (!in.atEnd()) {
       line = in.readLine();
       if (line.startsWith("Name"))
-        break;
+        name = line;
+      if (line.startsWith("Path"))
+        path = line;
     }
     file.close();
-    return line.split("=").at(1);
+    QProcess *process = new QProcess(this);
+    process->start("svnversion", QStringList() << path.split("=").at(1));
+    process->waitForFinished();
+    QByteArray output = process->readAll();
+    QString result;
+    for (int counter = 0; counter < output.size(); ++counter)
+      result += output.at(counter);
+    return name.split("=").at(1) + " - " + result;
   }
 }
 

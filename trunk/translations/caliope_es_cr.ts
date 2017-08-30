@@ -301,22 +301,22 @@
 <context>
     <name>BaseTextEditor</name>
     <message>
-        <location filename="../basetexteditor.cpp" line="418"/>
+        <location filename="../basetexteditor.cpp" line="429"/>
         <source>Indent</source>
         <translation>Indentar</translation>
     </message>
     <message>
-        <location filename="../basetexteditor.cpp" line="420"/>
+        <location filename="../basetexteditor.cpp" line="431"/>
         <source>Unindent</source>
         <translation>Desindentar</translation>
     </message>
     <message>
-        <location filename="../basetexteditor.cpp" line="422"/>
+        <location filename="../basetexteditor.cpp" line="433"/>
         <source>Insert licence template</source>
         <translation>Insertar plantilla de licencia</translation>
     </message>
     <message>
-        <location filename="../basetexteditor.cpp" line="424"/>
+        <location filename="../basetexteditor.cpp" line="435"/>
         <source>Visualize spaces</source>
         <translation>Visualizar espacios</translation>
     </message>
@@ -1010,35 +1010,35 @@
     </message>
     <message>
         <location filename="../dbms.cpp" line="419"/>
-        <location filename="../dbms.cpp" line="482"/>
+        <location filename="../dbms.cpp" line="483"/>
         <source>Undefined Database driver.</source>
         <translation>Controlador de Base de datos indefinido.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="498"/>
+        <location filename="../dbms.cpp" line="499"/>
         <source>Error:</source>
         <translation>Error:</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="506"/>
-        <location filename="../dbms.cpp" line="1523"/>
+        <location filename="../dbms.cpp" line="507"/>
+        <location filename="../dbms.cpp" line="1524"/>
         <source>No error code provided.</source>
         <translation>No hay código de error proporcionado.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="615"/>
+        <location filename="../dbms.cpp" line="616"/>
         <source>Select a file</source>
         <translation>Seleccione un archivo</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="624"/>
+        <location filename="../dbms.cpp" line="625"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>No es posible escribir en el archivo %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="628"/>
+        <location filename="../dbms.cpp" line="629"/>
         <source>Data exported to %1</source>
         <translation>Datos exportados a %1</translation>
     </message>
@@ -1054,7 +1054,7 @@
     </message>
     <message>
         <location filename="../dbms.cpp" line="55"/>
-        <location filename="../dbms.cpp" line="1121"/>
+        <location filename="../dbms.cpp" line="1122"/>
         <source>Query</source>
         <translation>Consulta</translation>
     </message>
@@ -1127,32 +1127,32 @@ Total progess: %5.</source>
         <translation>Filas en el resultado: %1. Tiempo transcurrido: %2.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="830"/>
+        <location filename="../dbms.cpp" line="831"/>
         <source>Could not execute statement. </source>
         <translation>No se puede ejecutar la sentencia. </translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1102"/>
+        <location filename="../dbms.cpp" line="1103"/>
         <source>Application started</source>
         <translation>Aplicación iniciada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1117"/>
+        <location filename="../dbms.cpp" line="1118"/>
         <source>Line Number</source>
         <translation>Número de línea</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1118"/>
+        <location filename="../dbms.cpp" line="1119"/>
         <source>Session Id</source>
         <translation>Id de Sesión</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1119"/>
+        <location filename="../dbms.cpp" line="1120"/>
         <source>Date</source>
         <translation>Fecha</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1120"/>
+        <location filename="../dbms.cpp" line="1121"/>
         <source>Connection</source>
         <translation>Conexión</translation>
     </message>
@@ -1165,7 +1165,7 @@ Total progess: %5.</source>
         <translation type="obsolete">Esta acción reiniciará su conexión a base de datos</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1448"/>
+        <location filename="../dbms.cpp" line="1449"/>
         <source>Could not change character set to: %1</source>
         <translation>No se puede cambiar el juego de caracteres a: %1</translation>
     </message>
@@ -1411,42 +1411,42 @@ Total progess: %5.</source>
 <context>
     <name>Database</name>
     <message>
-        <location filename="../dbms.cpp" line="1634"/>
+        <location filename="../dbms.cpp" line="1635"/>
         <source>Database: %1</source>
         <translation>Base de Datos: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1635"/>
+        <location filename="../dbms.cpp" line="1636"/>
         <source>Total of tables: %1</source>
         <translation>Total de tablas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1636"/>
+        <location filename="../dbms.cpp" line="1637"/>
         <source>Total of views: %1</source>
         <translation>Total de vistas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1637"/>
+        <location filename="../dbms.cpp" line="1638"/>
         <source>Total of triggers: %1</source>
         <translation>Total de disparadores: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1638"/>
+        <location filename="../dbms.cpp" line="1639"/>
         <source>Total of rutines: %1</source>
         <translation>Total de rutinas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1639"/>
+        <location filename="../dbms.cpp" line="1640"/>
         <source>Total of events: %1</source>
         <translation>Total de eventos: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1640"/>
+        <location filename="../dbms.cpp" line="1641"/>
         <source>Tables size: %1</source>
         <translation>Tamaño total de las tablas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1641"/>
+        <location filename="../dbms.cpp" line="1642"/>
         <source>Idexes: %1</source>
         <translation>Tamaño total de los índices: %1</translation>
     </message>
@@ -1717,10 +1717,9 @@ Total progess: %5.</source>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="113"/>
         <source>Cannot read file %1:
 %2.</source>
-        <translation>No es posible leer el archivo %1:
+        <translation type="vanished">No es posible leer el archivo %1:
 %2.</translation>
     </message>
     <message>
@@ -1728,29 +1727,29 @@ Total progess: %5.</source>
         <translation type="obsolete">Opciones</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="184"/>
-        <location filename="../mainwindow.cpp" line="1154"/>
-        <location filename="../mainwindow.cpp" line="1548"/>
-        <location filename="../mainwindow.cpp" line="1925"/>
+        <location filename="../mainwindow.cpp" line="186"/>
+        <location filename="../mainwindow.cpp" line="1159"/>
+        <location filename="../mainwindow.cpp" line="1554"/>
+        <location filename="../mainwindow.cpp" line="1931"/>
         <source>Server Information</source>
         <translation>Información del Servidor</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="186"/>
-        <location filename="../mainwindow.cpp" line="1551"/>
+        <location filename="../mainwindow.cpp" line="188"/>
+        <location filename="../mainwindow.cpp" line="1557"/>
         <source>User Administration</source>
         <translation>Administración de Usuarios</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="188"/>
-        <location filename="../mainwindow.cpp" line="1554"/>
-        <location filename="../mainwindow.cpp" line="1845"/>
+        <location filename="../mainwindow.cpp" line="190"/>
+        <location filename="../mainwindow.cpp" line="1560"/>
+        <location filename="../mainwindow.cpp" line="1851"/>
         <source>Backup</source>
         <translation>Respaldo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="190"/>
-        <location filename="../mainwindow.cpp" line="1833"/>
+        <location filename="../mainwindow.cpp" line="192"/>
+        <location filename="../mainwindow.cpp" line="1839"/>
         <source>Restore</source>
         <translation>Restaurar</translation>
     </message>
@@ -1759,17 +1758,17 @@ Total progess: %5.</source>
         <translation type="obsolete">Esquemas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="192"/>
-        <location filename="../mainwindow.cpp" line="273"/>
-        <location filename="../mainwindow.cpp" line="1560"/>
-        <location filename="../mainwindow.cpp" line="1937"/>
+        <location filename="../mainwindow.cpp" line="194"/>
+        <location filename="../mainwindow.cpp" line="275"/>
+        <location filename="../mainwindow.cpp" line="1566"/>
+        <location filename="../mainwindow.cpp" line="1943"/>
         <source>Catalogs</source>
         <translation>Catálogos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="194"/>
-        <location filename="../mainwindow.cpp" line="1566"/>
-        <location filename="../mainwindow.cpp" line="2016"/>
+        <location filename="../mainwindow.cpp" line="196"/>
+        <location filename="../mainwindow.cpp" line="1572"/>
+        <location filename="../mainwindow.cpp" line="2022"/>
         <source>Table Maintenance</source>
         <translation>Mantenimiento de Tablas</translation>
     </message>
@@ -1778,49 +1777,49 @@ Total progess: %5.</source>
         <translation type="obsolete">Metadata</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="196"/>
-        <location filename="../mainwindow.cpp" line="1885"/>
+        <location filename="../mainwindow.cpp" line="198"/>
+        <location filename="../mainwindow.cpp" line="1891"/>
         <source>Process List</source>
         <translation>Lista de Procesos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="286"/>
+        <location filename="../mainwindow.cpp" line="288"/>
         <source>In God we trust</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="287"/>
+        <location filename="../mainwindow.cpp" line="289"/>
         <source>In a world without walls and fences, who needs windows and gates?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="288"/>
+        <location filename="../mainwindow.cpp" line="290"/>
         <source>Wellcome!!! Have a nice day.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="289"/>
+        <location filename="../mainwindow.cpp" line="291"/>
         <source>MariaDB is great!!!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="290"/>
+        <location filename="../mainwindow.cpp" line="292"/>
         <source>Qt is great!!!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="291"/>
+        <location filename="../mainwindow.cpp" line="293"/>
         <source>Open space has more fresh air than closed Windows</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="292"/>
+        <location filename="../mainwindow.cpp" line="294"/>
         <source>Microsoft gives you &quot;Windows&quot;, Linux a &quot;home&quot;!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="206"/>
-        <location filename="../mainwindow.cpp" line="1563"/>
+        <location filename="../mainwindow.cpp" line="208"/>
+        <location filename="../mainwindow.cpp" line="1569"/>
         <source>Query</source>
         <translation>Consulta</translation>
     </message>
@@ -1833,49 +1832,49 @@ Total progess: %5.</source>
         <translation type="vanished">Acerca de Calíope</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1557"/>
+        <location filename="../mainwindow.cpp" line="1563"/>
         <source>Restore Backup</source>
         <translation>Restaurar Respaldo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1569"/>
+        <location filename="../mainwindow.cpp" line="1575"/>
         <source>SQL Script</source>
         <translation>Script SQL</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="204"/>
+        <location filename="../mainwindow.cpp" line="206"/>
         <source>SQL Query</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1692"/>
+        <location filename="../mainwindow.cpp" line="1698"/>
         <source>Refresh</source>
         <translation>Refrescar</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1695"/>
+        <location filename="../mainwindow.cpp" line="1701"/>
         <source>Read only</source>
         <translation>Solo lectura</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1698"/>
+        <location filename="../mainwindow.cpp" line="1704"/>
         <source>Create Database</source>
         <translation>Crear Base de Datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1701"/>
+        <location filename="../mainwindow.cpp" line="1707"/>
         <source>Delete Database</source>
         <translation>Borrar Base de Datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1689"/>
-        <location filename="../mainwindow.cpp" line="1707"/>
+        <location filename="../mainwindow.cpp" line="1695"/>
+        <location filename="../mainwindow.cpp" line="1713"/>
         <source>Select recent file...</source>
         <translation>Seleccionar un archivo reciente...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="208"/>
-        <location filename="../mainwindow.cpp" line="870"/>
+        <location filename="../mainwindow.cpp" line="210"/>
+        <location filename="../mainwindow.cpp" line="874"/>
         <source>Database Comparision</source>
         <translation>Comparación de Bases de Datos</translation>
     </message>
@@ -1884,23 +1883,23 @@ Total progess: %5.</source>
         <translation type="vanished">Ayuda en Línea de PostgreSQL</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1662"/>
-        <location filename="../mainwindow.cpp" line="1879"/>
+        <location filename="../mainwindow.cpp" line="1668"/>
+        <location filename="../mainwindow.cpp" line="1885"/>
         <source>MariaDB On-Line Help</source>
         <translation>Ayuda en Línea de MariaDB</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="832"/>
+        <location filename="../mainwindow.cpp" line="836"/>
         <source>External Web Page</source>
         <translation>Página Web Externa</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="840"/>
+        <location filename="../mainwindow.cpp" line="844"/>
         <source>Visited sites</source>
         <translation>Sitios visitados</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="858"/>
+        <location filename="../mainwindow.cpp" line="862"/>
         <source>The slave has been reset.</source>
         <translation>El esclavo ha sido reestablecido.</translation>
     </message>
@@ -1909,136 +1908,141 @@ Total progess: %5.</source>
         <translation type="obsolete">Comparación de Bases de Datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="943"/>
-        <location filename="../mainwindow.cpp" line="1366"/>
+        <location filename="../mainwindow.cpp" line="947"/>
+        <location filename="../mainwindow.cpp" line="1371"/>
         <source>Migrating data</source>
         <translation>Migrando datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="943"/>
-        <location filename="../mainwindow.cpp" line="1366"/>
+        <location filename="../mainwindow.cpp" line="947"/>
+        <location filename="../mainwindow.cpp" line="1371"/>
         <source>Abort</source>
         <translation>Abortar</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="956"/>
-        <location filename="../mainwindow.cpp" line="1381"/>
-        <location filename="../mainwindow.cpp" line="1493"/>
-        <location filename="../mainwindow.cpp" line="1500"/>
-        <location filename="../mainwindow.cpp" line="1510"/>
+        <location filename="../mainwindow.cpp" line="960"/>
+        <location filename="../mainwindow.cpp" line="1386"/>
+        <location filename="../mainwindow.cpp" line="1499"/>
+        <location filename="../mainwindow.cpp" line="1506"/>
+        <location filename="../mainwindow.cpp" line="1516"/>
         <source>Database migration</source>
         <translation>Migración de bases de datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="956"/>
-        <location filename="../mainwindow.cpp" line="1381"/>
+        <location filename="../mainwindow.cpp" line="960"/>
+        <location filename="../mainwindow.cpp" line="1386"/>
         <source>Database migration is only aviable for MariaDB and MySQL.</source>
         <translation>La migración de bases de datos solo está dispobible para MariaDB y MySQL.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="963"/>
+        <location filename="../mainwindow.cpp" line="967"/>
         <source>Table count: %1</source>
         <translation>Conteo de tablas: %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="198"/>
-        <location filename="../mainwindow.cpp" line="1046"/>
+        <location filename="../mainwindow.cpp" line="200"/>
+        <location filename="../mainwindow.cpp" line="1050"/>
         <source>Query Log</source>
         <translation>Log de Sentencias</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1072"/>
-        <location filename="../mainwindow.cpp" line="1682"/>
+        <location filename="../mainwindow.cpp" line="338"/>
+        <source>Error on saving application settings backup file. </source>
+        <translation>Error al guardar el archivo de respaldo de las configuraciones de la aplicación.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1076"/>
+        <location filename="../mainwindow.cpp" line="1688"/>
         <source>Database information</source>
         <translation>Información de la base de datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1083"/>
+        <location filename="../mainwindow.cpp" line="1088"/>
         <source>Save to Image</source>
         <translation>Guardar en Imagen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1083"/>
+        <location filename="../mainwindow.cpp" line="1088"/>
         <source>Image files (%1)</source>
         <translation>Archivos de imagen (%1)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1089"/>
-        <location filename="../mainwindow.cpp" line="1283"/>
-        <location filename="../mainwindow.cpp" line="1291"/>
-        <location filename="../mainwindow.cpp" line="1402"/>
+        <location filename="../mainwindow.cpp" line="1094"/>
+        <location filename="../mainwindow.cpp" line="1288"/>
+        <location filename="../mainwindow.cpp" line="1296"/>
+        <location filename="../mainwindow.cpp" line="1408"/>
         <source>File saved at: %1</source>
         <translation>Archivo guardado en: %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1163"/>
-        <location filename="../mainwindow.cpp" line="1728"/>
+        <location filename="../mainwindow.cpp" line="1168"/>
+        <location filename="../mainwindow.cpp" line="1734"/>
         <source>HDD Usage Graphics</source>
         <translation>Gráfico de uso de HDD</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1172"/>
-        <location filename="../mainwindow.cpp" line="1731"/>
+        <location filename="../mainwindow.cpp" line="1177"/>
+        <location filename="../mainwindow.cpp" line="1737"/>
         <source>Executed Queries</source>
         <translation>Consultas Ejecutadas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1181"/>
-        <location filename="../mainwindow.cpp" line="1734"/>
+        <location filename="../mainwindow.cpp" line="1186"/>
+        <location filename="../mainwindow.cpp" line="1740"/>
         <source>Data Sent/Received</source>
         <translation>Datos Enviados/Recibidos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1190"/>
-        <location filename="../mainwindow.cpp" line="1202"/>
+        <location filename="../mainwindow.cpp" line="1195"/>
+        <location filename="../mainwindow.cpp" line="1207"/>
         <source>Custom reports</source>
         <translation>Reportes personalizados</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1233"/>
-        <location filename="../mainwindow.cpp" line="1740"/>
+        <location filename="../mainwindow.cpp" line="1238"/>
+        <location filename="../mainwindow.cpp" line="1746"/>
         <source>Slow Queries</source>
         <translation>Consultas lentas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1248"/>
+        <location filename="../mainwindow.cpp" line="1253"/>
         <source>All the replication slaves have been started.</source>
         <translation>Todos los esclavos de replicación han sido iniciados.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1254"/>
+        <location filename="../mainwindow.cpp" line="1259"/>
         <source>All the replication slaves hava been stoped.</source>
         <translation>Todos los esclavos de replicación han sido detenidos.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1281"/>
-        <location filename="../mainwindow.cpp" line="1289"/>
+        <location filename="../mainwindow.cpp" line="1286"/>
+        <location filename="../mainwindow.cpp" line="1294"/>
         <source>Save file</source>
         <translation>Guardar archivo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1281"/>
-        <location filename="../mainwindow.cpp" line="1289"/>
+        <location filename="../mainwindow.cpp" line="1286"/>
+        <location filename="../mainwindow.cpp" line="1294"/>
         <source>Settings files (*)</source>
         <translation>Archivos de configuración (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1297"/>
+        <location filename="../mainwindow.cpp" line="1302"/>
         <source>All editors saved</source>
         <translation>Todos los editores guardados</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1493"/>
+        <location filename="../mainwindow.cpp" line="1499"/>
         <source>Migration done.</source>
         <translation>Migración realizada.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1530"/>
+        <location filename="../mainwindow.cpp" line="1536"/>
         <source>The database server has been shutdown.</source>
         <translation>El servidor de base de datos ha sido apagado.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1540"/>
+        <location filename="../mainwindow.cpp" line="1546"/>
         <source>Shows the About dialog for Qt.</source>
         <translation>Muestra el cuadro de diálogo de Acerda de Qt.</translation>
     </message>
@@ -2047,12 +2051,12 @@ Total progess: %5.</source>
         <translation type="vanished">Muestra el cuadro de diálogo de Acerda de Calíope.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1545"/>
+        <location filename="../mainwindow.cpp" line="1551"/>
         <source>Connect to Server...</source>
         <translation>Conectarse al Servidor...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1546"/>
+        <location filename="../mainwindow.cpp" line="1552"/>
         <source>Connect to a Database Server.</source>
         <translation>Conectarse a un Servidor de Base de Datos.</translation>
     </message>
@@ -2065,14 +2069,14 @@ Total progess: %5.</source>
         <translation type="vanished">Ayuda de MySQL</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1578"/>
+        <location filename="../mainwindow.cpp" line="1584"/>
         <source>View query log</source>
         <translation>Ver el log de consultas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1581"/>
-        <location filename="../mainwindow.cpp" line="1873"/>
-        <location filename="../mainwindow.cpp" line="1897"/>
+        <location filename="../mainwindow.cpp" line="1587"/>
+        <location filename="../mainwindow.cpp" line="1879"/>
+        <location filename="../mainwindow.cpp" line="1903"/>
         <source>MySQL On-Line Help</source>
         <translation>Ayuda en Línea de MySQL</translation>
     </message>
@@ -2081,53 +2085,53 @@ Total progess: %5.</source>
         <translation type="vanished">Ayuda en Línea de PHP</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1584"/>
-        <location filename="../mainwindow.cpp" line="1810"/>
+        <location filename="../mainwindow.cpp" line="1590"/>
+        <location filename="../mainwindow.cpp" line="1816"/>
         <source>Preferences</source>
         <translation>Preferencias</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1587"/>
+        <location filename="../mainwindow.cpp" line="1593"/>
         <source>Processes</source>
         <translation>Procesos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1589"/>
+        <location filename="../mainwindow.cpp" line="1595"/>
         <source>&amp;File Toolbar</source>
         <translation>Barra de Herramientas de &amp;Archivo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1595"/>
+        <location filename="../mainwindow.cpp" line="1601"/>
         <source>&amp;Close connection</source>
         <translation>&amp;Cerrar conexión</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1596"/>
+        <location filename="../mainwindow.cpp" line="1602"/>
         <source>Close current database connection</source>
         <translation>Cerrar conexión de base de datos actual</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1598"/>
+        <location filename="../mainwindow.cpp" line="1604"/>
         <source>Cascade windows</source>
         <translation>Ventanas en cascada</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1601"/>
+        <location filename="../mainwindow.cpp" line="1607"/>
         <source>Next window</source>
         <translation>Próxima ventana</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1604"/>
+        <location filename="../mainwindow.cpp" line="1610"/>
         <source>Previous window</source>
         <translation>Ventana previa</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1607"/>
+        <location filename="../mainwindow.cpp" line="1613"/>
         <source>Close current window</source>
         <translation>Cerrar ventana actual</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1610"/>
+        <location filename="../mainwindow.cpp" line="1616"/>
         <source>Close all windows</source>
         <translation>Cerrar todas las ventanas</translation>
     </message>
@@ -2136,7 +2140,7 @@ Total progess: %5.</source>
         <translation type="obsolete">Ordenar por título</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1616"/>
+        <location filename="../mainwindow.cpp" line="1622"/>
         <source>Shutdown Database Server</source>
         <translation>Apagar el Servidor de Base de Datos</translation>
     </message>
@@ -2153,52 +2157,52 @@ Total progess: %5.</source>
         <translation type="vanished">Editor JavaScript</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1619"/>
+        <location filename="../mainwindow.cpp" line="1625"/>
         <source>Web site</source>
         <translation>Sitio web</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1622"/>
+        <location filename="../mainwindow.cpp" line="1628"/>
         <source>Full screen</source>
         <translation>Pantalla completa</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1625"/>
+        <location filename="../mainwindow.cpp" line="1631"/>
         <source>Objects diagram</source>
         <translation>Diagrama de Objetos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1628"/>
+        <location filename="../mainwindow.cpp" line="1634"/>
         <source>Open file</source>
         <translation>Abrir archivo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1632"/>
+        <location filename="../mainwindow.cpp" line="1638"/>
         <source>Text Editor</source>
         <translation>Editor de Texto</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1635"/>
+        <location filename="../mainwindow.cpp" line="1641"/>
         <source>Stop Slave</source>
         <translation>Detener Esclavo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1641"/>
+        <location filename="../mainwindow.cpp" line="1647"/>
         <source>Start Slave</source>
         <translation>Iniciar Esclavo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1644"/>
+        <location filename="../mainwindow.cpp" line="1650"/>
         <source>Restart Slave</source>
         <translation>Reiniciar Esclavo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1647"/>
+        <location filename="../mainwindow.cpp" line="1653"/>
         <source>Replication Information</source>
         <translation>Información de la Replicación</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1719"/>
+        <location filename="../mainwindow.cpp" line="1725"/>
         <source>Take a snapshot</source>
         <translation>Tomar una instantánea</translation>
     </message>
@@ -2207,202 +2211,201 @@ Total progess: %5.</source>
         <translation type="vanished">Documentación fuente de Calíope</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2387"/>
+        <location filename="../mainwindow.cpp" line="2393"/>
         <source>Cannot load the translation.</source>
         <translation>No es posible cargar la traducción.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="791"/>
-        <location filename="../mainwindow.cpp" line="1656"/>
+        <location filename="../mainwindow.cpp" line="795"/>
+        <location filename="../mainwindow.cpp" line="1662"/>
         <source>Time Difference</source>
         <translation>Diferencia de Tiempo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1659"/>
+        <location filename="../mainwindow.cpp" line="1665"/>
         <source>Show the Slow Log</source>
         <translation>Mostrar el Slow Log</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="664"/>
+        <location filename="../mainwindow.cpp" line="668"/>
         <source>Objects Diagram</source>
         <translation>Diagrama de Objetos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="202"/>
-        <location filename="../mainwindow.cpp" line="1477"/>
-        <location filename="../mainwindow.cpp" line="1767"/>
+        <location filename="../mainwindow.cpp" line="204"/>
+        <location filename="../mainwindow.cpp" line="1483"/>
+        <location filename="../mainwindow.cpp" line="1773"/>
         <source>Object Migration</source>
         <translation>Migración de Objetos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="293"/>
+        <location filename="../mainwindow.cpp" line="295"/>
         <source>I&apos;d rather be at $HOME</source>
         <translation>I&apos;d rather be at $HOME</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="334"/>
         <source>Error on saving application settings backup file.</source>
-        <translation>Error al guardar el archivo de respaldo de las configuraciones de la aplicación.</translation>
+        <translation type="vanished">Error al guardar el archivo de respaldo de las configuraciones de la aplicación.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="710"/>
+        <location filename="../mainwindow.cpp" line="714"/>
         <source>Open a file</source>
         <translation>Abrir un archivo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="756"/>
+        <location filename="../mainwindow.cpp" line="760"/>
         <source>The replication slave has been stoped.</source>
         <translation>El esclavo de replicación ha sido detenido.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="762"/>
+        <location filename="../mainwindow.cpp" line="766"/>
         <source>The replication slave has been started.</source>
         <translation>El esclavo de replicación ha sido iniciado.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="768"/>
+        <location filename="../mainwindow.cpp" line="772"/>
         <source>The replication slave has been rebooted.</source>
         <translation>El esclavo de replicación ha sido reiniciado.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="780"/>
+        <location filename="../mainwindow.cpp" line="784"/>
         <source>Privileges flushed.</source>
         <translation>Privilegios refrescados.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="786"/>
+        <location filename="../mainwindow.cpp" line="790"/>
         <source>Logs purged.</source>
         <translation>Logs purgados.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="792"/>
+        <location filename="../mainwindow.cpp" line="796"/>
         <source>Seconds of difference: %1</source>
         <translation>Segundos de diferencia: %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="800"/>
+        <location filename="../mainwindow.cpp" line="804"/>
         <source>Select a date</source>
         <translation>Seleccione una fecha</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="864"/>
+        <location filename="../mainwindow.cpp" line="868"/>
         <source>Logs flushed.</source>
         <translation>Registros limpiados.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1120"/>
-        <location filename="../mainwindow.cpp" line="1722"/>
+        <location filename="../mainwindow.cpp" line="1125"/>
+        <location filename="../mainwindow.cpp" line="1728"/>
         <source>Calíope source documentation</source>
         <translation>Documentación del código fuente de Calíope</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1326"/>
+        <location filename="../mainwindow.cpp" line="1331"/>
         <source>Select a table</source>
         <translation>Seleccione una tabla</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1326"/>
+        <location filename="../mainwindow.cpp" line="1331"/>
         <source>Table:</source>
         <translation>Tabla:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1391"/>
+        <location filename="../mainwindow.cpp" line="1397"/>
         <source>Save to Pdf</source>
         <translation>Guardar en Pdf</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1391"/>
+        <location filename="../mainwindow.cpp" line="1397"/>
         <source>Pdf &amp; Ps files (*.pdf *.ps)</source>
         <translation>Archivos Pdf &amp; Ps (*.pdf *.ps)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1419"/>
+        <location filename="../mainwindow.cpp" line="1425"/>
         <source>Stop %1</source>
         <translation>Detener %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1424"/>
+        <location filename="../mainwindow.cpp" line="1430"/>
         <source>Start %1</source>
         <translation>Iniciar %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1429"/>
+        <location filename="../mainwindow.cpp" line="1435"/>
         <source>Reset %1</source>
         <translation>Restablecer %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1434"/>
+        <location filename="../mainwindow.cpp" line="1440"/>
         <source>Restart %1</source>
         <translation>Reiniciar %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1440"/>
+        <location filename="../mainwindow.cpp" line="1446"/>
         <source>All connections</source>
         <translation>Todas las conexiones</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1536"/>
+        <location filename="../mainwindow.cpp" line="1542"/>
         <source>&amp;Quit</source>
         <translation>&amp;Salir</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1537"/>
+        <location filename="../mainwindow.cpp" line="1543"/>
         <source>Exits the application.</source>
         <translation>Sale de laplicación.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1539"/>
+        <location filename="../mainwindow.cpp" line="1545"/>
         <source>About &amp;Qt</source>
         <translation>Acerca de &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1542"/>
-        <location filename="../mainwindow.cpp" line="2410"/>
+        <location filename="../mainwindow.cpp" line="1548"/>
+        <location filename="../mainwindow.cpp" line="2416"/>
         <source>About Calíope</source>
         <translation>Aceca de Calíope</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1543"/>
+        <location filename="../mainwindow.cpp" line="1549"/>
         <source>Shows the About dialog for Calíope.</source>
         <translation>Muestra el diálogo Acerca de Calíope.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1572"/>
+        <location filename="../mainwindow.cpp" line="1578"/>
         <source>Calíope</source>
         <translation>Calíope</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1575"/>
+        <location filename="../mainwindow.cpp" line="1581"/>
         <source>MariaDB Help</source>
         <translation>Ayuda de MariaDB</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1613"/>
+        <location filename="../mainwindow.cpp" line="1619"/>
         <source>Tile windows</source>
         <translation>Ventanas en mosaico</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1638"/>
+        <location filename="../mainwindow.cpp" line="1644"/>
         <source>Reset Slave</source>
         <translation>Restablecer esclavo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1672"/>
+        <location filename="../mainwindow.cpp" line="1678"/>
         <source>&amp;Connection</source>
         <translation>&amp;Conexión</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1681"/>
+        <location filename="../mainwindow.cpp" line="1687"/>
         <source>Recent connections</source>
         <translation>Conexiones recientes</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1683"/>
+        <location filename="../mainwindow.cpp" line="1689"/>
         <source>Reports</source>
         <translation>Reportes</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1704"/>
+        <location filename="../mainwindow.cpp" line="1710"/>
         <source>Populate table</source>
         <translation>Poblar tabla</translation>
     </message>
@@ -2419,22 +2422,22 @@ Total progess: %5.</source>
         <translation type="obsolete">Aplicación iniciada</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1821"/>
+        <location filename="../mainwindow.cpp" line="1827"/>
         <source>Users</source>
         <translation>Usuarios</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1867"/>
+        <location filename="../mainwindow.cpp" line="1873"/>
         <source>External Web page</source>
         <translation>Página Web externa</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="300"/>
+        <location filename="../mainwindow.cpp" line="302"/>
         <source>Connected successfully to: %1</source>
         <translation>Conectado satisfactoriamente a: %1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2029"/>
+        <location filename="../mainwindow.cpp" line="2035"/>
         <source>Result</source>
         <translation>Resultado</translation>
     </message>
@@ -2443,34 +2446,34 @@ Total progess: %5.</source>
         <translation type="obsolete">Bases de Datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1666"/>
-        <location filename="../mainwindow.cpp" line="1686"/>
+        <location filename="../mainwindow.cpp" line="1672"/>
+        <location filename="../mainwindow.cpp" line="1692"/>
         <source>Editors</source>
         <translation>Editores</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1687"/>
+        <location filename="../mainwindow.cpp" line="1693"/>
         <source>Project files</source>
         <translation>Archivos de proyecto</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1668"/>
+        <location filename="../mainwindow.cpp" line="1674"/>
         <source>Open external web page</source>
         <translation>Abrir una página web externa</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1669"/>
-        <location filename="../mainwindow.cpp" line="2223"/>
+        <location filename="../mainwindow.cpp" line="1675"/>
+        <location filename="../mainwindow.cpp" line="2229"/>
         <source>&amp;File</source>
         <translation>&amp;Archivo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1670"/>
+        <location filename="../mainwindow.cpp" line="1676"/>
         <source>Recent files</source>
         <translation>Archivos recientes</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1671"/>
+        <location filename="../mainwindow.cpp" line="1677"/>
         <source>&amp;Projects</source>
         <translation>&amp;Proyectos</translation>
     </message>
@@ -2479,139 +2482,139 @@ Total progess: %5.</source>
         <translation type="obsolete">&amp;Conexión</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1673"/>
+        <location filename="../mainwindow.cpp" line="1679"/>
         <source>Change character set</source>
         <translation>Cambiar conjunto de caracteres</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1674"/>
+        <location filename="../mainwindow.cpp" line="1680"/>
         <source>Change database</source>
         <translation>Cambiar base de datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1675"/>
-        <location filename="../mainwindow.cpp" line="2302"/>
+        <location filename="../mainwindow.cpp" line="1681"/>
+        <location filename="../mainwindow.cpp" line="2308"/>
         <source>Replication</source>
         <translation>Replicación</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1676"/>
+        <location filename="../mainwindow.cpp" line="1682"/>
         <source>Maintenance</source>
         <translation>Mantenimiento</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1677"/>
+        <location filename="../mainwindow.cpp" line="1683"/>
         <source>&amp;View</source>
         <translation>&amp;Ver</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1678"/>
+        <location filename="../mainwindow.cpp" line="1684"/>
         <source>&amp;Languaje</source>
         <translation>&amp;Idioma</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1679"/>
+        <location filename="../mainwindow.cpp" line="1685"/>
         <source>&amp;Window</source>
         <translation>&amp;Ventana</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1680"/>
+        <location filename="../mainwindow.cpp" line="1686"/>
         <source>&amp;Help</source>
         <translation>&amp;Ayuda</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1710"/>
+        <location filename="../mainwindow.cpp" line="1716"/>
         <source>Clear recent files</source>
         <translation>Limpiar archivos recientes</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1713"/>
+        <location filename="../mainwindow.cpp" line="1719"/>
         <source>Database comparation</source>
         <translation>Comparación de Bases de Datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1716"/>
+        <location filename="../mainwindow.cpp" line="1722"/>
         <source>Migrate database</source>
         <translation>Migrar base de datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1039"/>
-        <location filename="../mainwindow.cpp" line="1996"/>
+        <location filename="../mainwindow.cpp" line="1043"/>
+        <location filename="../mainwindow.cpp" line="2002"/>
         <source>Cannot connect to the server</source>
         <translation>No es posible conectarse al servidor</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1725"/>
+        <location filename="../mainwindow.cpp" line="1731"/>
         <source>Server information</source>
         <translation>Información del Servidor</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1737"/>
+        <location filename="../mainwindow.cpp" line="1743"/>
         <source>Create a custom report</source>
         <translation>Crear un reporte personalizado</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1743"/>
+        <location filename="../mainwindow.cpp" line="1749"/>
         <source>Tell us your comments</source>
         <translation>Dígamos sus comentarios</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1746"/>
+        <location filename="../mainwindow.cpp" line="1752"/>
         <source>Stop all Slaves</source>
         <translation>Detener todos los Esclavos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1749"/>
+        <location filename="../mainwindow.cpp" line="1755"/>
         <source>Start all Slaves</source>
         <translation>Iniciar todos los Esclavos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1752"/>
+        <location filename="../mainwindow.cpp" line="1758"/>
         <source>Export settings file</source>
         <translation>Exportar archivo de configuración</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1755"/>
+        <location filename="../mainwindow.cpp" line="1761"/>
         <source>Import settings file</source>
         <translation>Importar archivo de configuración</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1758"/>
+        <location filename="../mainwindow.cpp" line="1764"/>
         <source>Save all</source>
         <translation>Guardar todo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1761"/>
+        <location filename="../mainwindow.cpp" line="1767"/>
         <source>Migrate table</source>
         <translation>Migrar tabla</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1764"/>
+        <location filename="../mainwindow.cpp" line="1770"/>
         <source>Database metadata</source>
         <translation>Metadatos de la base de datos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2299"/>
+        <location filename="../mainwindow.cpp" line="2305"/>
         <source>General</source>
         <translation>General</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2305"/>
+        <location filename="../mainwindow.cpp" line="2311"/>
         <source>Logs</source>
         <translation>Registros</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2437"/>
+        <location filename="../mainwindow.cpp" line="2443"/>
         <source>Windows</source>
         <translation>Ventanas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2449"/>
+        <location filename="../mainwindow.cpp" line="2455"/>
         <source>Windows options</source>
         <translation>Opciones de ventanas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="2508"/>
+        <location filename="../mainwindow.cpp" line="2514"/>
         <source>Character set changed to: %1</source>
         <translation>Conjunto de caracteres cambiado a: %1</translation>
     </message>
@@ -2812,27 +2815,26 @@ Total progess: %5.</source>
         <translation>Preferencias</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="226"/>
         <source>Select a style:</source>
-        <translation>Seleccione un estilo:</translation>
+        <translation type="vanished">Seleccione un estilo:</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="227"/>
+        <location filename="../preferences.cpp" line="228"/>
         <source>Remember opened windows</source>
         <translation>Recordar ventanas abiertas</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="228"/>
+        <location filename="../preferences.cpp" line="229"/>
         <source>Open last file used in the modules</source>
         <translation>Abrir el último archivo usado en los módulos</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="229"/>
+        <location filename="../preferences.cpp" line="230"/>
         <source>Save Queries before execution?</source>
         <translation>¿Guardar Consultas antes de la ejecución?</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="230"/>
+        <location filename="../preferences.cpp" line="231"/>
         <source>Appilcation Style</source>
         <translation>Estilo de la Aplicación</translation>
     </message>
@@ -2882,32 +2884,32 @@ Total progess: %5.</source>
         <translation>Fragmentos de código</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="231"/>
+        <location filename="../preferences.cpp" line="232"/>
         <source>Spaces</source>
         <translation>Espacios</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="233"/>
+        <location filename="../preferences.cpp" line="234"/>
         <source>Tab size:</source>
         <translation>Tamaño del tabulador:</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="234"/>
+        <location filename="../preferences.cpp" line="235"/>
         <source>Enable automatic indentation.</source>
         <translation>Habilitar indentación automática.</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="235"/>
+        <location filename="../preferences.cpp" line="236"/>
         <source>Clean white spaces at the end of the line.</source>
         <translation>Limpiar espacios en blanco al final de la línea.</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="236"/>
+        <location filename="../preferences.cpp" line="237"/>
         <source>Save a backup copy before save a file.</source>
         <translation>Guardar una copia de seguridad antes de guardar el archivo.</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="242"/>
+        <location filename="../preferences.cpp" line="243"/>
         <source>Use automatic reconnection</source>
         <translation>Usar reconexión automática</translation>
     </message>
@@ -2916,12 +2918,12 @@ Total progess: %5.</source>
         <translation type="vanished">Ayuda en Línea de PHP:</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="244"/>
+        <location filename="../preferences.cpp" line="245"/>
         <source>MySQL On-Line Help:</source>
         <translation>Ayuda en Línea de MySQL:</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="246"/>
+        <location filename="../preferences.cpp" line="247"/>
         <source>MariaDB On-Line Help:</source>
         <translation>Ayuda en Línea de MariaDB:</translation>
     </message>
@@ -2990,7 +2992,7 @@ Total progess: %5.</source>
         <translation>Asociaciones de Archivo</translation>
     </message>
     <message>
-        <location filename="../preferences.cpp" line="238"/>
+        <location filename="../preferences.cpp" line="239"/>
         <source>Enable query log</source>
         <translation>Habilitar el log de sentencias</translation>
     </message>
@@ -3237,27 +3239,27 @@ Total progess: %5.</source>
 <context>
     <name>Projects</name>
     <message>
-        <location filename="../projects.cpp" line="315"/>
+        <location filename="../projects.cpp" line="327"/>
         <source>New Project...</source>
         <translation>Nuevo Proyecto...</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="317"/>
+        <location filename="../projects.cpp" line="329"/>
         <source>Open Project...</source>
         <translation>Abrir Proyecto...</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="319"/>
+        <location filename="../projects.cpp" line="331"/>
         <source>Recent files</source>
         <translation>Archivos recientes</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="321"/>
+        <location filename="../projects.cpp" line="333"/>
         <source>Clear recent files</source>
         <translation>Limpiar archivos recientes</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="323"/>
+        <location filename="../projects.cpp" line="335"/>
         <source>Close current project</source>
         <translation>Cerrar el proyecto actual</translation>
     </message>
@@ -3266,116 +3268,116 @@ Total progess: %5.</source>
         <translation type="obsolete">Encontrar en el proyecto actual</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="325"/>
+        <location filename="../projects.cpp" line="337"/>
         <source>Find in project</source>
         <translation>Encontrar en el proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="327"/>
+        <location filename="../projects.cpp" line="339"/>
         <source>Project files</source>
         <translation>Archivos de proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="328"/>
+        <location filename="../projects.cpp" line="340"/>
         <source>Subversion</source>
         <translation>Subversion</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="329"/>
+        <location filename="../projects.cpp" line="341"/>
         <source>Add new file to project</source>
         <translation>Agregar un archivo nuevo al proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="331"/>
+        <location filename="../projects.cpp" line="343"/>
         <source>Add existing file to project</source>
         <translation>Agregar un archivo existente al proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="119"/>
+        <location filename="../projects.cpp" line="120"/>
         <source>Clean</source>
         <translation>Limpiar</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="150"/>
+        <location filename="../projects.cpp" line="151"/>
         <source>No projet</source>
         <translation>Sin proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="333"/>
+        <location filename="../projects.cpp" line="345"/>
         <source>Version &amp;control</source>
         <translation>Control de &amp;versiones</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="342"/>
+        <location filename="../projects.cpp" line="354"/>
         <source>Open a project</source>
         <translation>Abrir proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="342"/>
+        <location filename="../projects.cpp" line="354"/>
         <source>Project files (*.pro)</source>
         <translation>Archivos de Proyecto (*.pro)</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="416"/>
+        <location filename="../projects.cpp" line="428"/>
         <source>New project...</source>
         <translation>Nuevo proyecto...</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="425"/>
+        <location filename="../projects.cpp" line="437"/>
         <source>&amp;Name:</source>
         <translation>&amp;Nombre:</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="426"/>
+        <location filename="../projects.cpp" line="438"/>
         <source>Destination:</source>
         <translation>Destino:</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="428"/>
+        <location filename="../projects.cpp" line="440"/>
         <source>Poject information</source>
         <translation>Información del proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="432"/>
+        <location filename="../projects.cpp" line="444"/>
         <source>Load files</source>
         <translation>Cargar archivos</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="444"/>
+        <location filename="../projects.cpp" line="456"/>
         <source>Poject files</source>
         <translation>Archivos de proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="452"/>
+        <location filename="../projects.cpp" line="464"/>
         <source>Create new Project</source>
         <translation>Crear un nuevo Proyecto</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="465"/>
-        <location filename="../projects.cpp" line="556"/>
-        <location filename="../projects.cpp" line="567"/>
+        <location filename="../projects.cpp" line="477"/>
+        <location filename="../projects.cpp" line="568"/>
+        <location filename="../projects.cpp" line="579"/>
         <source>Info saved.</source>
         <translation>Información guardada.</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="522"/>
+        <location filename="../projects.cpp" line="534"/>
         <source>Select files</source>
         <translation>Seleccionar archivos</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="554"/>
+        <location filename="../projects.cpp" line="566"/>
         <source>File name</source>
         <translation>Nombre del archivo</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="559"/>
+        <location filename="../projects.cpp" line="571"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>No es posible escribir en el archivo %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../projects.cpp" line="566"/>
+        <location filename="../projects.cpp" line="578"/>
         <source>Select a file</source>
         <translation>Seleccione un archivo</translation>
     </message>
@@ -3545,7 +3547,7 @@ Total progess: %5.</source>
 <context>
     <name>SQLQuery</name>
     <message>
-        <location filename="../sqlquery.cpp" line="163"/>
+        <location filename="../sqlquery.cpp" line="168"/>
         <source>Query %1</source>
         <translation>Consulta: %1</translation>
     </message>
@@ -3554,281 +3556,286 @@ Total progess: %5.</source>
         <translation type="obsolete">Barra de herramientas de consulta</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="166"/>
+        <location filename="../sqlquery.cpp" line="171"/>
         <source>Run</source>
         <translation>Correr</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="167"/>
+        <location filename="../sqlquery.cpp" line="172"/>
         <source>Runs a query</source>
         <translation>Correr como consulta</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="168"/>
+        <location filename="../sqlquery.cpp" line="173"/>
         <source>Export</source>
         <translation>Exportar</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="169"/>
+        <location filename="../sqlquery.cpp" line="174"/>
         <source>Export query output</source>
         <translation>Exportar salida de la consulta</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="170"/>
+        <location filename="../sqlquery.cpp" line="175"/>
         <source>History</source>
         <translation>Historial</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="172"/>
+        <location filename="../sqlquery.cpp" line="177"/>
         <source>Show New Lines</source>
         <translation>Mostrar Nuevas Líneas</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="174"/>
+        <location filename="../sqlquery.cpp" line="179"/>
         <source>Start SQL Player</source>
         <translation>Iniciar el SQL Player</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="176"/>
+        <location filename="../sqlquery.cpp" line="181"/>
         <source>Split query</source>
         <translation>Dividir consulta</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="178"/>
+        <location filename="../sqlquery.cpp" line="183"/>
         <source>Actions</source>
         <translation>Acciones</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="180"/>
+        <location filename="../sqlquery.cpp" line="185"/>
         <source>Start/Pause execution</source>
         <translation>Iniciar/Pausar ejecución</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="192"/>
+        <location filename="../sqlquery.cpp" line="197"/>
         <source>Concatenate query output</source>
         <translation>Concatenar la salida de la consulta</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="194"/>
+        <location filename="../sqlquery.cpp" line="199"/>
         <source>Export table data for INSERT</source>
         <translation>Exportar los datos de la tabla para INSERT</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="196"/>
+        <location filename="../sqlquery.cpp" line="201"/>
         <source>Export result data for INSERT</source>
         <translation>Exportar datos resultantes para INSERT</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="198"/>
+        <location filename="../sqlquery.cpp" line="203"/>
         <source>Explain SELECT</source>
         <translation>Explicar SELECT</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="200"/>
+        <location filename="../sqlquery.cpp" line="205"/>
         <source>Explain INSERT</source>
         <translation>Explicar INSERT</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="202"/>
+        <location filename="../sqlquery.cpp" line="207"/>
         <source>Safe statements</source>
         <translation>Consultas seguras</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="204"/>
+        <location filename="../sqlquery.cpp" line="209"/>
         <source>Show statements with error</source>
         <translation>Mostrar sentencias con error</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="206"/>
+        <location filename="../sqlquery.cpp" line="211"/>
         <source>Explain UPDATE</source>
         <translation>Explicar UPDATE</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="208"/>
+        <location filename="../sqlquery.cpp" line="213"/>
         <source>Repeate execution</source>
         <translation>Repetir ejecución</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="210"/>
+        <location filename="../sqlquery.cpp" line="215"/>
         <source>Word wrap on result</source>
         <translation>Ajuste de línea en el resultado</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="211"/>
+        <location filename="../sqlquery.cpp" line="216"/>
         <source>Log statements</source>
         <translation>Loguear sentencias</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="213"/>
+        <location filename="../sqlquery.cpp" line="218"/>
         <source>TRIM columns in table</source>
         <translation>Recortar las columnas en la tabla</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="215"/>
+        <location filename="../sqlquery.cpp" line="220"/>
         <source>Check tables status</source>
         <translation>Revisar el estado de las tablas</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="217"/>
+        <location filename="../sqlquery.cpp" line="222"/>
         <source>Explain SELECT with Alias</source>
         <translation>Explicar SELECT con Alias</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="220"/>
+        <location filename="../sqlquery.cpp" line="225"/>
         <source>Output as table.</source>
         <translation>Salida como tabla.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="221"/>
+        <location filename="../sqlquery.cpp" line="226"/>
         <source>Same output as -v but with no headers.</source>
         <translation>Misma salida que -v pero sin encabezados.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="222"/>
+        <location filename="../sqlquery.cpp" line="227"/>
         <source>Same output as -vv but with no query.</source>
         <translation>Misma salida que -vv pero sin la consulta.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="225"/>
+        <location filename="../sqlquery.cpp" line="230"/>
         <source>Output as HTML.</source>
         <translation>Salida enHTML. </translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="226"/>
+        <location filename="../sqlquery.cpp" line="231"/>
         <source>Output as text.</source>
         <translation>Salida en texto.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="227"/>
+        <location filename="../sqlquery.cpp" line="232"/>
         <source>Output as XML.</source>
         <translation>Salida en XML.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="228"/>
+        <location filename="../sqlquery.cpp" line="233"/>
         <source>Output in PDF.</source>
         <translation>Salida en PDF.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="495"/>
+        <location filename="../sqlquery.cpp" line="243"/>
+        <source>Statement Delimiter</source>
+        <translation>Delimitador de sentencias</translation>
+    </message>
+    <message>
+        <location filename="../sqlquery.cpp" line="502"/>
         <source>Script exectution</source>
         <translation>Ejecución de script</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="496"/>
+        <location filename="../sqlquery.cpp" line="503"/>
         <source>Do you really want to execute the hole script?</source>
         <translation>¿Realmente desea ejecutar el script completo?</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="752"/>
+        <location filename="../sqlquery.cpp" line="768"/>
         <source>Incorrect use of the EXPORT RESULT FOR INSERT Option. Example: EXPORT RESULT SELECT * FROM `PartitionedTale` PARTITION (`Partition1`), it only works for the current database and on SELECT *.</source>
         <translation>Uso incorrecto de la Opción EXPORT RESULT FOR INSERT. Ejemplo EXPORT RESULT SELECT * FROM `PartitionedTale` PARTITION (`Partition1`), sólo trabaja en la base de datos actual y con SELECT *.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="957"/>
+        <location filename="../sqlquery.cpp" line="973"/>
         <source>Commit transacction</source>
         <translation>Guardar transacción</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="957"/>
+        <location filename="../sqlquery.cpp" line="973"/>
         <source>Do you really want to commint changes?</source>
         <translation>¿Realmente desea aplicar los cambios?</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="970"/>
+        <location filename="../sqlquery.cpp" line="986"/>
         <source>Do you really want to rollback changes?</source>
         <translation>¿Realmente desea revertir los cambios?</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="970"/>
+        <location filename="../sqlquery.cpp" line="986"/>
         <source>Rollback transacction</source>
         <translation>Revertir transacción</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="223"/>
+        <location filename="../sqlquery.cpp" line="228"/>
         <source>Output TAB separated with the query.</source>
         <translation>Salida separada con TAB con la consulta.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="224"/>
+        <location filename="../sqlquery.cpp" line="229"/>
         <source>Same output as -t but with the query.</source>
         <translation>Misma salida que -t pero con la consulta.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="229"/>
+        <location filename="../sqlquery.cpp" line="234"/>
         <source>Outputs columns as rows.</source>
         <translation>Salida en columnas como filas.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="231"/>
+        <location filename="../sqlquery.cpp" line="236"/>
         <source>Begin transaction</source>
         <translation>Iniciar transacción</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="233"/>
+        <location filename="../sqlquery.cpp" line="238"/>
         <source>Rollback transaction</source>
         <translation>Revertir transacción</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="235"/>
+        <location filename="../sqlquery.cpp" line="240"/>
         <source>Commit transaction</source>
         <translation>Guardar transacción</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="504"/>
+        <location filename="../sqlquery.cpp" line="511"/>
         <source>Could not execute statement on safe mode.</source>
         <translation>No es posible ejecutar esta consulta en modo seguro.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="505"/>
+        <location filename="../sqlquery.cpp" line="512"/>
         <source>Safe mode</source>
         <translation>Modo seguro</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="559"/>
+        <location filename="../sqlquery.cpp" line="575"/>
         <source>Save to Pdf</source>
         <translation>Guardar en Pdf</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="559"/>
+        <location filename="../sqlquery.cpp" line="575"/>
         <source>Pdf &amp; Ps files (*.pdf *.ps)</source>
         <translation>Archivos Pdf &amp; Ps (*.pdf *.ps)</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="565"/>
+        <location filename="../sqlquery.cpp" line="581"/>
         <source>File saved at: %1</source>
         <translation>Archivo guardado en: %1</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="686"/>
-        <location filename="../sqlquery.cpp" line="741"/>
+        <location filename="../sqlquery.cpp" line="702"/>
+        <location filename="../sqlquery.cpp" line="757"/>
         <source>Select a file</source>
         <translation>Seleccione un archivo</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="689"/>
-        <location filename="../sqlquery.cpp" line="744"/>
+        <location filename="../sqlquery.cpp" line="705"/>
+        <location filename="../sqlquery.cpp" line="760"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>No es posible escribir en el archivo %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="697"/>
+        <location filename="../sqlquery.cpp" line="713"/>
         <source>Incorrect use of the EXPORT DATA FOR INSERT Option. Example: EXPORT DATA FOR INSERT `columns_pri`, it only works for the current database.</source>
         <translation>Uso incorrecto de la Opción Exportar los datos de la tabla para INSERT. Ejemplo: EXPORT DATA FOR INSERT `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="601"/>
+        <location filename="../sqlquery.cpp" line="617"/>
         <source>Incorrect use of the EXPLAIN SELECT Option. Example: SELECT * FROM `columns_pri`, it only works for the current database, the asterisk must be selected.</source>
         <translation>Uso incorrecto de la Opción Explicar SELECT. Ejemplo: SELECT * FROM `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="780"/>
+        <location filename="../sqlquery.cpp" line="796"/>
         <source>Incorrect use of the EXPLAIN INSERT Option. Example: INSERT INTO `columns_pri`, it only works for the current database.</source>
         <translation>Uso incorrecto de la Opción Explicar INSERT. Ejemplo: INSERT INTO `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="908"/>
+        <location filename="../sqlquery.cpp" line="924"/>
         <source>Incorrect use of the TRIM columns Option. Example: TRIM COLUMNS IN `columns_pri`, it only works for the current database.</source>
         <translation>Uso incorrecto de la Opción Recortar las columnas. Ejemplo: TRIM COLUMNS IN `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
@@ -3837,30 +3844,30 @@ Total progess: %5.</source>
         <translation type="obsolete">Mal uso de la opción: Exportar los datos de la tabla para INSERT.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="793"/>
+        <location filename="../sqlquery.cpp" line="809"/>
         <source>seconds</source>
         <translation>segundos</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="797"/>
-        <location filename="../sqlquery.cpp" line="802"/>
+        <location filename="../sqlquery.cpp" line="813"/>
+        <location filename="../sqlquery.cpp" line="818"/>
         <source>minutes</source>
         <translation>minutos</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="804"/>
+        <location filename="../sqlquery.cpp" line="820"/>
         <source>Elapsed: %1 %2. Remaining: %3 %4.
 Total of queries: %5, remaining: %6.
 Queries per second: %7.</source>
         <translation>Transcurrido: %1 %2. Restante: %3 %4.\nTotal de sentencias: %5, restantes: %6.\nConsultas por segundo: %7.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="860"/>
+        <location filename="../sqlquery.cpp" line="876"/>
         <source>Incorrect use of the EXPLAIN UPDATE Option. Example: UPDATE `columns_pri`, it only works for the current database.</source>
         <translation>Uso incorrecto de la Opción Explicar UPDATE. Ejemplo: UPDATE `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="869"/>
+        <location filename="../sqlquery.cpp" line="885"/>
         <source>Repeat time in seconds</source>
         <translation>Tiempo de repetición en segundos</translation>
     </message>
@@ -3878,27 +3885,27 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Ejecutar consulta</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="182"/>
+        <location filename="../sqlquery.cpp" line="187"/>
         <source>Stop execution</source>
         <translation>Detener ejecución</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="184"/>
+        <location filename="../sqlquery.cpp" line="189"/>
         <source>Run previous query</source>
         <translation>Ejecutar consulta previa</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="186"/>
+        <location filename="../sqlquery.cpp" line="191"/>
         <source>Run next query</source>
         <translation>Ejecutar próxima consulta</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="188"/>
+        <location filename="../sqlquery.cpp" line="193"/>
         <source>Run first query</source>
         <translation>Ejecutar la primera consulta</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="190"/>
+        <location filename="../sqlquery.cpp" line="195"/>
         <source>Run last query</source>
         <translation>Ejecutar la última consulta</translation>
     </message>
@@ -5831,17 +5838,17 @@ Total of queries: %5, remaining: %6.</source>
 <context>
     <name>Transaction</name>
     <message>
-        <location filename="../dbms.cpp" line="2212"/>
+        <location filename="../dbms.cpp" line="2213"/>
         <source>Transaction started</source>
         <translation>Transacción iniciada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="2227"/>
+        <location filename="../dbms.cpp" line="2228"/>
         <source>Transaction commited</source>
         <translation>Transacción guardada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="2242"/>
+        <location filename="../dbms.cpp" line="2243"/>
         <source>Transaction rollbacked</source>
         <translation>Transacción revertida</translation>
     </message>

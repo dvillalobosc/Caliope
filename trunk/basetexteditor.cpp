@@ -695,7 +695,7 @@ void BaseTextEditor::rehighlightOnMouse()
 {
   // If mouse tracking is switched off, mouse move events only occur if a mouse button is pressed while the mouse is being moved. If mouse tracking is switched on, mouse move events occur even if no mouse button is pressed.
   QTextCursor cursor = textCursor();
-  rehighlight(cursor.selectedText());
+  //rehighlight(cursor.selectedText());
 }
 
 //QTextBlock BaseTextEditor::foldedBlockAt(const QPoint &point)
@@ -807,6 +807,7 @@ void LineNumberArea::mouseDoubleClickEvent(QMouseEvent *event)
 
 void LineNumberArea::mousePressEvent(QMouseEvent *event)
 {
+  /* Code folding happens here*/
   QTextCursor cursor = codeEditor->cursorForPosition(QPoint(event->x(), event->y()));
   if (codeEditor->foldRowList->contains(cursor.blockNumber())) {
 //    QTextBlock block = cursor.block();
