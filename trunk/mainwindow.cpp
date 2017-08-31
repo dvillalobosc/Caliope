@@ -307,6 +307,36 @@ void MainWindow::newConnectionPerformed()
   textWindowCounter = 0;
 }
 
+QUrl MainWindow::prepareHTMLDocumentation(QString filelistPath, QString filePath)
+{
+  QDir tempDir(QDir::tempPath() + "/html");
+  tempDir.removeRecursively();
+  tempDir.mkpath(QDir::tempPath() + "/html/search");
+  QFile fileList(filelistPath);
+  fileList.open(QIODevice::ReadOnly | QIODevice::Text);
+  QTextStream stream(&fileList);
+  while (!stream.atEnd()) {
+    QString fileName(stream.readLine());
+    QFile fileToOpen(filePath + fileName);
+    if (!fileToOpen.open(QIODevice::ReadOnly | QIODevice::Text))
+      qDebug() << fileName << fileToOpen.error();
+    //Work arround since fileToOpen.copy is not coping HTML file correctly.
+    if (fileName.endsWith(".html") || fileName.endsWith(".css") || fileName.endsWith(".js")) {
+      QFile fileToSave(QDir::tempPath() + fileName);
+      if (!fileToSave.open(QIODevice::WriteOnly | QIODevice::Text))
+        qDebug() << fileName << fileToOpen.error();
+      QTextStream out(&fileToSave);
+      out << fileToOpen.readAll();
+      fileToSave.close();
+      fileToOpen.close();
+    } else {
+      if (!fileToOpen.copy(QDir::tempPath() + fileName))
+        qDebug() << fileName << fileToOpen.error();
+    }
+  }
+  return QUrl("file://" + tempDir.absolutePath() + "/index.html");
+}
+
 bool MainWindow::okToClose()
 {
   foreach (QMdiSubWindow *subWindow, mdiMain->subWindowList()) {
@@ -1097,32 +1127,7 @@ void MainWindow::takeASnapShotActionTriggered()
 void MainWindow::caliopeSourceDocumentationActionTriggered()
 {
   QApplication::setOverrideCursor(Qt::WaitCursor);
-  QDir tempDir(QDir::tempPath() + "/html");
-  tempDir.removeRecursively();
-  tempDir.mkpath(QDir::tempPath() + "/html/search");
-  QFile fileList(":/documentation/docs/filelist.txt");
-  fileList.open(QIODevice::ReadOnly | QIODevice::Text);
-  QTextStream stream(&fileList);
-  while (!stream.atEnd()) {
-    QString fileName(stream.readLine());
-    QFile fileToOpen(":/documentation/docs" + fileName);
-    if (!fileToOpen.open(QIODevice::ReadOnly | QIODevice::Text))
-      qDebug() << fileName << fileToOpen.error();
-    //Work arround since fileToOpen.copy is not coping HTML file correctly.
-    if (fileName.endsWith(".html") || fileName.endsWith(".css") || fileName.endsWith(".js")) {
-      QFile fileToSave(QDir::tempPath() + fileName);
-      if (!fileToSave.open(QIODevice::WriteOnly | QIODevice::Text))
-        qDebug() << fileName << fileToOpen.error();
-      QTextStream out(&fileToSave);
-      out << fileToOpen.readAll();
-      fileToSave.close();
-      fileToOpen.close();
-    } else {
-      if (!fileToOpen.copy(QDir::tempPath() + fileName))
-        qDebug() << fileName << fileToOpen.error();
-    }
-  }
-  addSubWindow(newDWebView(tr("Calíope source documentation"), QUrl("file:///tmp/html/index.html")));
+  addSubWindow(newDWebView(tr("Calíope source documentation"), prepareHTMLDocumentation(":/documentation/docs/filelist.txt", ":/documentation/docs/")));
   QApplication::restoreOverrideCursor();
 }
 
@@ -1142,7 +1147,9 @@ void MainWindow::viewDWebViewPageSource(QString pageSource)
 
 void MainWindow::mariaDBGUIHelpActionTriggered()
 {
-
+  QApplication::setOverrideCursor(Qt::WaitCursor);
+  addSubWindow(newDWebView(tr("Calíope"), prepareHTMLDocumentation(":/documentation/docs/caliope/filelist.txt", ":/documentation/docs/caliope")));
+  QApplication::restoreOverrideCursor();
 }
 
 void MainWindow::openURLSlot(QString url)

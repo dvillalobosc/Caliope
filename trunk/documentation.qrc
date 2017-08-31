@@ -1192,5 +1192,7 @@
         <file>docs/html/users_8h.html</file>
         <file>docs/html/users_8h_source.html</file>
         <file>docs/filelist.txt</file>
+        <file>docs/caliope/html/index.html</file>
+        <file>docs/caliope/filelist.txt</file>
     </qresource>
 </RCC>
