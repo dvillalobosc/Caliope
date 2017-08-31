@@ -1133,7 +1133,7 @@ bool TextEditor::okToClose()
     int option = QMessageBox::Discard;
     msgBox.setText(tr("The document has been modified."));
     msgBox.setInformativeText(tr("Do you want to save the changes?"));
-    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard);
     msgBox.setDefaultButton(QMessageBox::Save);
     option = msgBox.exec();
     switch (option) {
@@ -1789,15 +1789,15 @@ bool TextEditor::event(QEvent *event)
 //  QMdiSubWindow::event(event);
 //}
 
-void TextEditor::closeEvent(QCloseEvent *event)
-{
-  if (okToClose())
-    event->accept();
-  else
-    event->ignore();
-  QWidget::closeEvent(event);
-  emit windowClosed();
-}
+//void TextEditor::closeEvent(QCloseEvent *event)
+//{
+//  if (okToClose())
+//    event->accept();
+//  else
+//    event->ignore();
+//  QWidget::closeEvent(event);
+//  emit windowClosed();
+//}
 
 ///*! \brief Try to close the widgets and set the focus
 // * to the Editor.

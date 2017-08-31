@@ -78,7 +78,7 @@ protected:
   bool event(QEvent *event);
 //  void showEvent(QShowEvent *event);
 //  void closeEvent(QCloseEvent *event);
-  void closeEvent(QCloseEvent *event);
+//  void closeEvent(QCloseEvent *event);
 
 signals:
   void changeTitle(QString title);

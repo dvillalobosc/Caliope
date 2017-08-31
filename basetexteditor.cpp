@@ -695,7 +695,8 @@ void BaseTextEditor::rehighlightOnMouse()
 {
   // If mouse tracking is switched off, mouse move events only occur if a mouse button is pressed while the mouse is being moved. If mouse tracking is switched on, mouse move events occur even if no mouse button is pressed.
   QTextCursor cursor = textCursor();
-  //rehighlight(cursor.selectedText());
+  if (editorType != EditorTypes::NoEditor)
+    rehighlight(cursor.selectedText());
 }
 
 //QTextBlock BaseTextEditor::foldedBlockAt(const QPoint &point)

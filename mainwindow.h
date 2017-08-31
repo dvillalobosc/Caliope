@@ -365,6 +365,7 @@ private:
   void fillWindowMenu();
   void showWelcomeMessage();
   void newConnectionPerformed();
+  QUrl prepareHTMLDocumentation(QString filelistPath, QString filePath);
 };
 
 #endif // MAINWINDOW_H
