@@ -76,7 +76,7 @@ QList<QStringList> *DTableView::getHeaders()
   return headersList;
 }
 
-void DTableView::setModelData(QList<QStringList> *modelData, bool readOnly, unsigned int orderColumn)
+void DTableView::setModelData(QList<QStringList> *modelData, bool readOnly, unsigned int orderColumn, bool modelDataHasIcons)
 {
   QApplication::setOverrideCursor(Qt::WaitCursor);
   this->readOnly = readOnly;
@@ -85,14 +85,20 @@ void DTableView::setModelData(QList<QStringList> *modelData, bool readOnly, unsi
   itemModel = new QStandardItemModel(modelData->count(), headersList->count());
   itemModel->blockSignals(true);
   connect(itemModel, SIGNAL(itemChanged(QStandardItem*)), this, SLOT(itemChangedSlot(QStandardItem*)));
+  int handleIconsOnModelData;
+  if (modelDataHasIcons)
+    handleIconsOnModelData = 1;
+  else
+    handleIconsOnModelData = 0;
   for (int row = 0; row < modelData->count(); row++) {
     for (int column = 0; column < headersList->count(); column++) {
       itemModel->setHorizontalHeaderItem(column, new QStandardItem(QIcon(headersList->at(column).at(2)), headersList->at(column).at(0)));
       QStandardItem *item;
       if (column == 0)
-        item = new QStandardItem(QIcon(modelData->at(row).at(0)), modelData->at(row).at(column + 1));
+        item = new QStandardItem(QIcon(modelData->at(row).at(0)), modelData->at(row).at(column + handleIconsOnModelData));
       else
-        item = new QStandardItem(modelData->at(row).at(column + 1));
+        item = new QStandardItem(modelData->at(row).at(column + handleIconsOnModelData));
+
       if (headersList->at(column).at(3) == "Right")
         item->setTextAlignment(Qt::AlignRight | Qt::AlignVCenter);
       if (headersList->at(column).at(3) == "ToBytes") {
@@ -101,7 +107,7 @@ void DTableView::setModelData(QList<QStringList> *modelData, bool readOnly, unsi
       }
       itemModel->setItem(row, column, item);
       if (!this->readOnly)
-        itemModel->setData(itemModel->index(row, column, QModelIndex()), modelData->at(row).at(column + 1), Qt::UserRole);
+        itemModel->setData(itemModel->index(row, column, QModelIndex()), modelData->at(row).at(column + handleIconsOnModelData), Qt::UserRole);
     }
     emit loadProgress(tr("Loading records..."), 0, row * 100 / modelData->count());
   }

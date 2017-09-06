@@ -359,8 +359,8 @@ void TextEditor::gotoLine(unsigned int line)
 
 void TextEditor::matchBracket()
 {
-  QList<QTextEdit::ExtraSelection> selections = textEditor->extraSelections();
-  textEditor->setExtraSelections(selections);
+  //QList<QTextEdit::ExtraSelection> selections = textEditor->extraSelections();
+  //textEditor->setExtraSelections(selections);
   TextBlockData *data = static_cast<TextBlockData *>(textEditor->textCursor().block().userData());
   if (data) {
     QVector<BracketInfo *> infos = data->brackets();

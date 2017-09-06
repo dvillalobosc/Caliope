@@ -30,6 +30,7 @@ class QGroupBox;
 class DTitleLabel;
 class QPushButton;
 class QSpinBox;
+class QRadioButton;
 
 class ProcessList : public DMdiSubWindow
 {
@@ -56,6 +57,12 @@ private:
   QSettings settings;
   QSpinBox *spinBoxRefreshRate;
   QAction *killQuery;
+  QList<QStringList> *headers;
+  bool useTable;
+  QRadioButton *optionPROCESSLIST;
+  QRadioButton *optionPROCESSES;
+  void setHeaders();
+  void reSetHeaders(bool checked);
 
 private slots:
   void reloadData();
@@ -63,6 +70,8 @@ private slots:
   void killIdleThreadsSlot();
   void refreshRateSlot(const int value);
   void killQuerySlot();
+  void optionPROCESSLISTClicked(bool checked);
+  void optionPROCESSESClicked(bool checked);
 
 protected:
   void contextMenuEvent(QContextMenuEvent *event);

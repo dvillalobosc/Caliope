@@ -638,6 +638,7 @@ QStringList StaticFunctions::mariadbKeywords()
       << "MEDIUM"
       << "MERGE"
       << "MEMORY"
+      << "MESSAGE_TEXT"
       << "MINUTE"
       << "MOD"
       << "MODE"
