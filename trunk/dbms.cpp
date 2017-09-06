@@ -1866,17 +1866,15 @@ Processes::Processes(DBMS *serverConnection)
   this->serverConnection = serverConnection;
 }
 
-QList<QStringList> *Processes::getProcessList()
+QList<QStringList> *Processes::getProcessList(bool useTable)
 {
   switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
-    result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' ') FROM `information_schema`.`PROCESSLIST`", false, false);
-    break;
   case StaticFunctions::MariaDB:
-    if (serverConnection->getMayorVersion() == 10 && serverConnection->getMinorVersion() == 1 && serverConnection->getMicroVersion() >= 5)
-      result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' '), `TIME_MS`, `STAGE`, `MAX_STAGE`, `PROGRESS`, `MEMORY_USED`, `EXAMINED_ROWS`, `QUERY_ID`, `INFO_BINARY` FROM `information_schema`.`PROCESSLIST`", false, false);
+    if (useTable)
+      result = serverConnection->runQuery("SELECT * FROM `information_schema`.`PROCESSLIST`", false, false);
     else
-      result = serverConnection->runQuery("SELECT '', `ID`, `USER`, `HOST`, `DB`, `COMMAND`, `TIME`, `STATE`, REPLACE(`INFO`, '\n', ' '), `TIME_MS`, `STAGE`, `MAX_STAGE`, `PROGRESS`, `MEMORY_USED`, `EXAMINED_ROWS`, `QUERY_ID`, '' FROM `information_schema`.`PROCESSLIST`", false, false);
+      result = serverConnection->runQuery("SHOW FULL PROCESSLIST", false, false);
     break;
   case StaticFunctions::Undefined:
   default:
@@ -1884,6 +1882,23 @@ QList<QStringList> *Processes::getProcessList()
   }
   result->takeLast(); //Remove the "Affected rows" line.
   return result;
+}
+
+QStringList Processes::getHeaderList(bool useTable)
+{
+  switch(serverConnection->getDBMSType()) {
+  case StaticFunctions::MySQL:
+  case StaticFunctions::MariaDB:
+    if (useTable)
+      return serverConnection->runQuery("SELECT * FROM `information_schema`.`PROCESSLIST`", true, false)->takeFirst();
+    else
+      return serverConnection->runQuery("SHOW FULL PROCESSLIST", true, false)->takeFirst();
+    break;
+  case StaticFunctions::Undefined:
+  default:
+    break;
+  }
+  return QStringList();
 }
 
 void Processes::killThread(long long thread)

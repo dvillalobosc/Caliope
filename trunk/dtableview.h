@@ -51,7 +51,7 @@ class DTableView : public QTableView
 
 public:
   DTableView(QList<QStringList> *headers, QAbstractItemView::SelectionMode selectionMode = QAbstractItemView::SingleSelection);
-  void setModelData(QList<QStringList> *modelData, bool readOnly = true, unsigned int orderColumn = 0);
+  void setModelData(QList<QStringList> *modelData, bool readOnly = true, unsigned int orderColumn = 0, bool modelDataHasIcons = true);
   QVariant indexData(const QModelIndex &index, int role = Qt::DisplayRole, int column = -1);
   QVariant indexData(const unsigned int row, const unsigned int column, int role = Qt::DisplayRole);
   void setHeaders(QList<QStringList> *headers);

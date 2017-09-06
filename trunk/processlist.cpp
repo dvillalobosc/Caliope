@@ -27,7 +27,7 @@
 #include <QApplication>
 #include <QGroupBox>
 #include <QPushButton>
-#include <QPushButton>
+#include <QRadioButton>
 #include <QSpinBox>
 
 #include "processlist.h"
@@ -42,47 +42,49 @@ ProcessList::ProcessList(DBMS *serverConnection)
   this->serverConnection = serverConnection;
   setWindowIcon(QIcon(":/images/svg/server-database.svg"));
 
-  /**
-  * Pending translation
-  */
-  QList<QStringList> *headers = new QList<QStringList>;
-  switch(serverConnection->getDBMSType()) {
-  case StaticFunctions::MySQL:
-    headers->append(QStringList() << tr("Id") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("User") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Host") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Database") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Command") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Time") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("State") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Info") << "NoDelegate"  << "" << "Left");
-    break;
-  case StaticFunctions::MariaDB:
-    headers->append(QStringList() << tr("Id") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("User") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Host") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Database") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Command") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Time") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("State") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Info") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Milliseconds") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Stage") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Max Stage") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Progress") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Memory") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Examined Rows") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Query Id") << "NoDelegate"  << "" << "Left");
-    headers->append(QStringList() << tr("Binary data information") << "NoDelegate"  << "" << "Left");
-    break;
-  case StaticFunctions::Undefined:
-  default:
-    break;
-  }
+  useTable = settings.value("Processes/UseTable", false).toBool();
+
+//  /**
+//  * Pending translation
+//  */
+//  switch(serverConnection->getDBMSType()) {
+//  case StaticFunctions::MySQL:
+//    headers->append(QStringList() << tr("Id") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("User") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Host") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Database") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Command") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Time") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("State") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Info") << "NoDelegate"  << "" << "Left");
+//    break;
+//  case StaticFunctions::MariaDB:
+//    headers->append(QStringList() << tr("Id") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("User") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Host") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Database") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Command") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Time") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("State") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Info") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Milliseconds") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Stage") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Max Stage") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Progress") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Memory") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Examined Rows") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Query Id") << "NoDelegate"  << "" << "Left");
+//    headers->append(QStringList() << tr("Binary data information") << "NoDelegate"  << "" << "Left");
+//    break;
+//  case StaticFunctions::Undefined:
+//  default:
+//    break;
+//  }
 
   timerRefresh = new QTimer(this);
   connect(timerRefresh, SIGNAL(timeout()), this, SLOT(reloadData()));
   timerRefresh->setInterval(1000);
+  setHeaders();
   processTable = new DTableView(headers);
 //  connect(processTable, SIGNAL(loadStarted(QString,uint,double)), parentWidget, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
 //  connect(processTable, SIGNAL(loadFinished(QString,uint,double)), parentWidget, SLOT(statusBarProgressMessageSlot(QString,uint,double)));
@@ -112,6 +114,16 @@ ProcessList::ProcessList(DBMS *serverConnection)
   groupBoxHLayout->addWidget(spinBoxRefreshRate);
   spinBoxRefreshRate->setValue(settings.value("Processes/RefreshRate", 1).toUInt());
   connect(spinBoxRefreshRate, SIGNAL(valueChanged(int)), this, SLOT(refreshRateSlot(int)));
+
+  optionPROCESSLIST = new QRadioButton();
+  optionPROCESSLIST->setChecked(!useTable);
+  connect(optionPROCESSLIST, SIGNAL(clicked(bool)), this, SLOT(optionPROCESSLISTClicked(bool)));
+  optionPROCESSES = new QRadioButton();
+  optionPROCESSES->setChecked(useTable);
+  connect(optionPROCESSES, SIGNAL(clicked(bool)), this, SLOT(optionPROCESSESClicked(bool)));
+  groupBoxHLayout->addWidget(optionPROCESSLIST);
+  groupBoxHLayout->addWidget(optionPROCESSES);
+
   groupBoxHLayout->addStretch(1);
   buttonGroup->setLayout(groupBoxHLayout);
   mainLayout->addWidget(buttonGroup);
@@ -152,6 +164,27 @@ void ProcessList::retranslateUi()
   spinBoxRefreshRate->setSuffix(" " + tr("seconds"));
   killQuery->setText(tr("Kill query"));
   killQuery->setToolTip(tr("Kills the given query."));
+  optionPROCESSLIST->setText(tr("Process list"));
+  optionPROCESSLIST->setToolTip(optionPROCESSLIST->text());
+  optionPROCESSES->setText(tr("Process table"));
+  optionPROCESSES->setToolTip(optionPROCESSES->text());
+}
+
+void ProcessList::setHeaders()
+{
+  QStringList headerList = this->serverConnection->processes()->getHeaderList(useTable);
+  headers = new QList<QStringList>;
+  for (int counter = 0; counter < headerList.count(); counter++) {
+    headers->append(QStringList() << headerList.at(counter) << "NoDelegate"  << "" << "Left");
+  }
+}
+
+void ProcessList::reSetHeaders(bool checked)
+{
+  useTable = checked;
+  settings.setValue("Processes/UseTable", useTable);
+  setHeaders();
+  processTable->setHeaders(headers);
 }
 
 void ProcessList::killThreadSlot()
@@ -176,11 +209,21 @@ void ProcessList::killQuerySlot()
   serverConnection->processes()->killQuery(killQuery->text().split(": ").at(1).toLongLong());
 }
 
+void ProcessList::optionPROCESSLISTClicked(bool checked)
+{
+  reSetHeaders(!checked);
+}
+
+void ProcessList::optionPROCESSESClicked(bool checked)
+{
+  reSetHeaders(checked);
+}
+
 void ProcessList::reloadData()
 {
-  result = serverConnection->processes()->getProcessList();
+  result = serverConnection->processes()->getProcessList(useTable);
   if (result->count() > 0)
-    processTable->setModelData(result);
+    processTable->setModelData(result, true, 0, false);
   if (pushButtonStopRefreshing->isChecked())
     timerRefresh->stop();
 }

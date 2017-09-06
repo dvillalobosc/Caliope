@@ -1358,13 +1358,13 @@ Total progess: %5.</source>
     <name>DTableView</name>
     <message>
         <location filename="../dtableview.cpp" line="84"/>
-        <location filename="../dtableview.cpp" line="106"/>
+        <location filename="../dtableview.cpp" line="112"/>
         <source>Loading records...</source>
         <translatorcomment>Registros cargados.</translatorcomment>
         <translation>Cargando registros...</translation>
     </message>
     <message>
-        <location filename="../dtableview.cpp" line="118"/>
+        <location filename="../dtableview.cpp" line="124"/>
         <source>Records loaded.</source>
         <translation>Registros cargados.</translation>
     </message>
@@ -3005,161 +3005,147 @@ Total progess: %5.</source>
 <context>
     <name>ProcessList</name>
     <message>
-        <location filename="../processlist.cpp" line="139"/>
+        <location filename="../processlist.cpp" line="151"/>
         <source>Process List</source>
         <translation>Lista de Procesos</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="51"/>
-        <location filename="../processlist.cpp" line="61"/>
         <source>Id</source>
-        <translation>Id</translation>
+        <translation type="vanished">Id</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="52"/>
-        <location filename="../processlist.cpp" line="62"/>
         <source>User</source>
-        <translation>Usuario</translation>
+        <translation type="vanished">Usuario</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="53"/>
-        <location filename="../processlist.cpp" line="63"/>
         <source>Host</source>
-        <translation>Huésped</translation>
+        <translation type="vanished">Huésped</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="54"/>
-        <location filename="../processlist.cpp" line="64"/>
         <source>Database</source>
-        <translation>Base de Datos</translation>
+        <translation type="vanished">Base de Datos</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="55"/>
-        <location filename="../processlist.cpp" line="65"/>
         <source>Command</source>
-        <translation>Comando</translation>
+        <translation type="vanished">Comando</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="56"/>
-        <location filename="../processlist.cpp" line="66"/>
         <source>Time</source>
-        <translation>Tiempo</translation>
+        <translation type="vanished">Tiempo</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="57"/>
-        <location filename="../processlist.cpp" line="67"/>
         <source>State</source>
-        <translation>Estado</translation>
+        <translation type="vanished">Estado</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="58"/>
-        <location filename="../processlist.cpp" line="68"/>
         <source>Info</source>
-        <translation>Info</translation>
+        <translation type="vanished">Info</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="69"/>
         <source>Milliseconds</source>
-        <translation>Milisegundos</translation>
+        <translation type="vanished">Milisegundos</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="70"/>
         <source>Stage</source>
-        <translation>Etapa</translation>
+        <translation type="vanished">Etapa</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="71"/>
         <source>Max Stage</source>
-        <translation>Máxima Etapa</translation>
+        <translation type="vanished">Máxima Etapa</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="72"/>
         <source>Progress</source>
-        <translation>Progreso</translation>
+        <translation type="vanished">Progreso</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="73"/>
         <source>Memory</source>
-        <translation>Memoria</translation>
+        <translation type="vanished">Memoria</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="74"/>
         <source>Examined Rows</source>
-        <translation>Filas Examinadas</translation>
+        <translation type="vanished">Filas Examinadas</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="75"/>
         <source>Query Id</source>
-        <translation>Consulta Id</translation>
+        <translation type="vanished">Consulta Id</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="76"/>
         <source>Binary data information</source>
-        <translation>Información de datos binarios</translation>
+        <translation type="vanished">Información de datos binarios</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="149"/>
-        <location filename="../processlist.cpp" line="152"/>
+        <location filename="../processlist.cpp" line="161"/>
+        <location filename="../processlist.cpp" line="164"/>
         <source>seconds</source>
         <translation>segundos</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="151"/>
+        <location filename="../processlist.cpp" line="163"/>
         <source>Refresh rate:</source>
         <translation>Taza de refrescado:</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="142"/>
+        <location filename="../processlist.cpp" line="154"/>
         <source>Actions</source>
         <translation>Acciones</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="143"/>
+        <location filename="../processlist.cpp" line="155"/>
         <source>Stop refreshing</source>
         <translation>Detener refrescado</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="144"/>
+        <location filename="../processlist.cpp" line="156"/>
         <source>Kill thread</source>
         <translation>Matar hilo</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="145"/>
+        <location filename="../processlist.cpp" line="157"/>
         <source>Kills the given thread.</source>
         <translation>Mata el proceso dado.</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="146"/>
+        <location filename="../processlist.cpp" line="158"/>
         <source>Kill idle threads</source>
         <translation>Matar hilos inactivos</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="147"/>
+        <location filename="../processlist.cpp" line="159"/>
         <source>Kills thread exeding the given seconds inactive.</source>
         <translation>Mata los hilos que exedan el tiempo dado en segundos de inactividad.</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="148"/>
+        <location filename="../processlist.cpp" line="160"/>
         <source>Time to kill threads.</source>
         <translation>Tiempo para matar los hios.</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="150"/>
+        <location filename="../processlist.cpp" line="162"/>
         <source>Refresh rate.</source>
         <translation>Taza de refrescado.</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="153"/>
+        <location filename="../processlist.cpp" line="165"/>
         <source>Kill query</source>
         <translation>Matar consulta</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="154"/>
+        <location filename="../processlist.cpp" line="166"/>
         <source>Kills the given query.</source>
         <translation>Mata la consulta dada.</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="191"/>
+        <location filename="../processlist.cpp" line="167"/>
+        <source>Process list</source>
+        <translation>Lista de procesos</translation>
+    </message>
+    <message>
+        <location filename="../processlist.cpp" line="169"/>
+        <source>Process table</source>
+        <translation>Tabla de procesos</translation>
+    </message>
+    <message>
+        <location filename="../processlist.cpp" line="234"/>
         <source>Kill query: %1</source>
         <translation>Matar consulta %1</translation>
     </message>
@@ -3168,7 +3154,7 @@ Total progess: %5.</source>
         <translation type="obsolete">Mata los hilos que exceden 30 inactivos.</translation>
     </message>
     <message>
-        <location filename="../processlist.cpp" line="190"/>
+        <location filename="../processlist.cpp" line="233"/>
         <source>Kill thread: %1</source>
         <translation>Matar hilo: %1</translation>
     </message>
@@ -4884,167 +4870,167 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1497"/>
+        <location filename="../staticfunctions.cpp" line="1498"/>
         <source>Uptime in days</source>
         <translation>Tiempo encendido en días</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1497"/>
+        <location filename="../staticfunctions.cpp" line="1498"/>
         <source>Variable</source>
         <translation>Variable</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1497"/>
+        <location filename="../staticfunctions.cpp" line="1498"/>
         <source>Value</source>
         <translation>Valor</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1499"/>
+        <location filename="../staticfunctions.cpp" line="1500"/>
         <source>Number of aborted client connections.</source>
         <translation>Número de conexiones de cliente abortados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1504"/>
+        <location filename="../staticfunctions.cpp" line="1505"/>
         <source>Number of aborted client connections per day.</source>
         <translation>Número de conexiones de cliente abortados por día.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1506"/>
+        <location filename="../staticfunctions.cpp" line="1507"/>
         <source>Number of failed server connection attempts.</source>
         <translation>Número de intentos de conexión fallidos servidor.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1508"/>
+        <location filename="../staticfunctions.cpp" line="1509"/>
         <source>Aborted connections per day</source>
         <translation>Conexiones abortadas por día</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1511"/>
+        <location filename="../staticfunctions.cpp" line="1512"/>
         <source>Number of failed server connection attempts per day.</source>
         <translation>Número de conexiones abortadas por día.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1513"/>
+        <location filename="../staticfunctions.cpp" line="1514"/>
         <source>Number of ROLLBACK commands executed.</source>
         <translation>Número de comandos ROLLBACK ejecutados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1518"/>
+        <location filename="../staticfunctions.cpp" line="1519"/>
         <source>Number of ROLLBACK commands executed every second.</source>
         <translation>Número de comandos ROLLBACK ejecutados cada segundo.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1520"/>
+        <location filename="../staticfunctions.cpp" line="1521"/>
         <source>Number of statements executed by the server.</source>
         <translation>Número de sentencias ejecutadas por el servidor.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1522"/>
+        <location filename="../staticfunctions.cpp" line="1523"/>
         <source>Number of on-disk temporary tables created.</source>
         <translation>Número de tablas temporales creadas en disco.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1524"/>
+        <location filename="../staticfunctions.cpp" line="1525"/>
         <source>Amount of free query cache memory.</source>
         <translation>La cantidad de memoria libre para la caché de consultas.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1526"/>
+        <location filename="../staticfunctions.cpp" line="1527"/>
         <source>Number of joins which did not use an index. If not zero, you may need to check table indexes.</source>
         <translation>Número de joins que no utilizaron un índice. Si no es cero, puede que tenga que comprobar los índices de tablas.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1532"/>
+        <location filename="../staticfunctions.cpp" line="1533"/>
         <source>Number of queries which took longer than long_query_time to run.</source>
         <translation>Número de consultas que tardaron más de LONG_QUERY_TIME para terminar.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1540"/>
+        <location filename="../staticfunctions.cpp" line="1541"/>
         <source>The maximum number of simultaneous client connections.</source>
         <translation>El número máximo permitido de conexiones de cliente simultáneas.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1542"/>
+        <location filename="../staticfunctions.cpp" line="1543"/>
         <source>Max number of connections ever open at the same time.</source>
         <translation>Número máximo de conexiones abiertas al mismo tiempo.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1544"/>
+        <location filename="../staticfunctions.cpp" line="1545"/>
         <source>DELETE commands executed</source>
         <translation>Comandos DELETE ejecutados</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1544"/>
+        <location filename="../staticfunctions.cpp" line="1545"/>
         <source>Number of DELETE commands executed.</source>
         <translation>Número de comandos DELETE ejectados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1546"/>
+        <location filename="../staticfunctions.cpp" line="1547"/>
         <source>INSERT commands executed</source>
         <translation>Comandos INSERT ejecutados</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1546"/>
+        <location filename="../staticfunctions.cpp" line="1547"/>
         <source>Number of INSERT commands executed.</source>
         <translation>Número de comandos INSERT ejectados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1548"/>
+        <location filename="../staticfunctions.cpp" line="1549"/>
         <source>UPDATE commands executed</source>
         <translation>Comandos UPDATE ejecutados</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1548"/>
+        <location filename="../staticfunctions.cpp" line="1549"/>
         <source>Number of UPDATE commands executed.</source>
         <translation>Número de comandos UPDATE ejectados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1550"/>
+        <location filename="../staticfunctions.cpp" line="1551"/>
         <source>SELECT commands executed</source>
         <translation>Comandos SELECT ejecutados</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1550"/>
+        <location filename="../staticfunctions.cpp" line="1551"/>
         <source>Number of SELECT commands executed.</source>
         <translation>Número de comandos SELECT ejectados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1552"/>
+        <location filename="../staticfunctions.cpp" line="1553"/>
         <source>Requests of the first index row</source>
         <translation>Solicitudes de la primera fila de índice</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1552"/>
+        <location filename="../staticfunctions.cpp" line="1553"/>
         <source>Number of requests to read the first row from an index. A high value indicates many full index scans.</source>
         <translation>Número de peticiones para leer la primera fila de un índice. Un valor alto indica muchas exploraciones de índices completos.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1554"/>
+        <location filename="../staticfunctions.cpp" line="1555"/>
         <source>Rate of SELECTs per full index scans</source>
         <translation>Tasa de SELECTs por exploraciones de índices completos</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1554"/>
+        <location filename="../staticfunctions.cpp" line="1555"/>
         <source>Rate of SELECTs per full index scans. A value higher than 100 means you do more table scan than SELECTs.</source>
         <translation>Tasa de SELECTs por exploraciones de índices completos. Un valor superior a 100 significa hacer más exploración de tabla de SELECTs.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1556"/>
+        <location filename="../staticfunctions.cpp" line="1557"/>
         <source>Read requests based on an index value</source>
         <translation>Solicitudes de lectura basadas en un valor de índice</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1556"/>
+        <location filename="../staticfunctions.cpp" line="1557"/>
         <source>Number of row read requests based on an index value. A high value indicates indexes are regularly being used.</source>
         <translation>Solicitudes de lectura basadas en un valor de índice. Un valor alto indica que los índices se utilizan regularmente.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1558"/>
+        <location filename="../staticfunctions.cpp" line="1559"/>
         <source>Wait timeout</source>
         <translation>Tiempo de espera</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1558"/>
+        <location filename="../staticfunctions.cpp" line="1559"/>
         <source>Time in seconds that the server waits for a connection to become active before closing it.</source>
         <translation>Tiempo en segundos que el servidor espera que una conexión se active antes de cerrarla.</translation>
     </message>
@@ -5053,22 +5039,22 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de días que el servidor ha estado en funcionamiento.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1497"/>
+        <location filename="../staticfunctions.cpp" line="1498"/>
         <source>Description</source>
         <translation>Descripción</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1497"/>
+        <location filename="../staticfunctions.cpp" line="1498"/>
         <source>Number of days the server has been running.</source>
         <translation>Número de días que el servidor ha estado funcionando.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1497"/>
+        <location filename="../staticfunctions.cpp" line="1498"/>
         <source>Variable mame</source>
         <translation>Nombre de la variable</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1499"/>
+        <location filename="../staticfunctions.cpp" line="1500"/>
         <source>Aborted clients</source>
         <translation>Clientes abortados</translation>
     </message>
@@ -5077,7 +5063,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de conexiones que han sido abortadas debido a que el cliente murió sin cerrar la conexión correctamente.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1501"/>
+        <location filename="../staticfunctions.cpp" line="1502"/>
         <source>Aborted clients per day</source>
         <translation>Clientes abortados por día</translation>
     </message>
@@ -5086,7 +5072,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Tasa de clientes abortados por día.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1506"/>
+        <location filename="../staticfunctions.cpp" line="1507"/>
         <source>Aborted connections</source>
         <translation>Conexiones abortadas</translation>
     </message>
@@ -5095,7 +5081,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de intentos fallidos de conectarse al servidor de base de datos.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1513"/>
+        <location filename="../staticfunctions.cpp" line="1514"/>
         <source>Executed rollbacks</source>
         <translation>Rollbacks ejecutados</translation>
     </message>
@@ -5104,7 +5090,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de veces que cada sentencia de rollback se ha ejecutado.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1520"/>
+        <location filename="../staticfunctions.cpp" line="1521"/>
         <source>Executed queries</source>
         <translation>Consultas ejecutadas</translation>
     </message>
@@ -5113,7 +5099,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de sentencias ejecutadas por el servidor.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1515"/>
+        <location filename="../staticfunctions.cpp" line="1516"/>
         <source>Rollbacks per second</source>
         <translation>Rollbacks por segundo</translation>
     </message>
@@ -5122,7 +5108,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Tasa de rollbacks por segundo.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1522"/>
+        <location filename="../staticfunctions.cpp" line="1523"/>
         <source>Temporary disk tables created</source>
         <translation>Tablas temporales de disco creadas</translation>
     </message>
@@ -5131,7 +5117,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de tablas temporales en disco internas creadas por el servidor mientras ejecuta las sentencias.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1524"/>
+        <location filename="../staticfunctions.cpp" line="1525"/>
         <source>Free cache memory</source>
         <translation>Memoria cache libre</translation>
     </message>
@@ -5140,7 +5126,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">La cantidad de memoria libre para la caché de consultas.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1526"/>
+        <location filename="../staticfunctions.cpp" line="1527"/>
         <source>Joins with full table scan</source>
         <translation>Joins con escaneo completo de tabla</translation>
     </message>
@@ -5149,27 +5135,27 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de joins que realizan escaneos de tablas porque que no utilizan índices.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1528"/>
+        <location filename="../staticfunctions.cpp" line="1529"/>
         <source>Log slow queries</source>
         <translation>Guardar consultas lentas</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1528"/>
+        <location filename="../staticfunctions.cpp" line="1529"/>
         <source>Is the slow queries logging enabled?</source>
         <translation>¿Está el loggeo de consultas habilitado?</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1530"/>
+        <location filename="../staticfunctions.cpp" line="1531"/>
         <source>Slow queries time in seconds</source>
         <translation>Tiempo de consultas lentas en segundos</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1530"/>
+        <location filename="../staticfunctions.cpp" line="1531"/>
         <source>The number of seconds that determinate a slow query.</source>
         <translation>El número de segundos para determinar que una consulta es lenta.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1532"/>
+        <location filename="../staticfunctions.cpp" line="1533"/>
         <source>Count of slow queries</source>
         <translation>Conteo de consultas lentas</translation>
     </message>
@@ -5178,37 +5164,37 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de consultas que han tardado más que el tiempo permitido.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1534"/>
+        <location filename="../staticfunctions.cpp" line="1535"/>
         <source>Idle connections</source>
         <translation>Conexiones inactivas</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1534"/>
+        <location filename="../staticfunctions.cpp" line="1535"/>
         <source>The number of connections that has been idle for more than 30 seconds.</source>
         <translation>El número de conexiones que ha estado inactivo durante más de 30 segundos.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1536"/>
+        <location filename="../staticfunctions.cpp" line="1537"/>
         <source>Active connections</source>
         <translation>Conexiones activas</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1536"/>
+        <location filename="../staticfunctions.cpp" line="1537"/>
         <source>The number of connections that has been idle for less than 30 seconds.</source>
         <translation>El número de conexiones que ha estado inactivo durante menos de 30 segundos.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1538"/>
+        <location filename="../staticfunctions.cpp" line="1539"/>
         <source>Total connections</source>
         <translation>Total de conexiones</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1538"/>
+        <location filename="../staticfunctions.cpp" line="1539"/>
         <source>The number of active connections on the server.</source>
         <translation>El número de conexiones activas en el servidor.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1540"/>
+        <location filename="../staticfunctions.cpp" line="1541"/>
         <source>Max connections aviable</source>
         <translation>Cantidad máxima de conexiones disponibles</translation>
     </message>
@@ -5217,7 +5203,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número máximo permitido de conexiones de cliente simultáneas.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1542"/>
+        <location filename="../staticfunctions.cpp" line="1543"/>
         <source>Used connections</source>
         <translation>Conexiones usadas</translation>
     </message>
@@ -5226,22 +5212,22 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número máximo de conexiones que han sido utilizadas simultáneamente desde que el servidor se inició.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1573"/>
+        <location filename="../staticfunctions.cpp" line="1574"/>
         <source>Date</source>
         <translation>Fecha</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1573"/>
+        <location filename="../staticfunctions.cpp" line="1574"/>
         <source>Day</source>
         <translation>Día</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1573"/>
+        <location filename="../staticfunctions.cpp" line="1574"/>
         <source>Total queries</source>
         <translation>Total de consultas</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1574"/>
+        <location filename="../staticfunctions.cpp" line="1575"/>
         <source>Average (in seconds)</source>
         <translation>Promedio (en segundos)</translation>
     </message>
@@ -5839,17 +5825,17 @@ Total of queries: %5, remaining: %6.</source>
 <context>
     <name>Transaction</name>
     <message>
-        <location filename="../dbms.cpp" line="2213"/>
+        <location filename="../dbms.cpp" line="2228"/>
         <source>Transaction started</source>
         <translation>Transacción iniciada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="2228"/>
+        <location filename="../dbms.cpp" line="2243"/>
         <source>Transaction commited</source>
         <translation>Transacción guardada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="2243"/>
+        <location filename="../dbms.cpp" line="2258"/>
         <source>Transaction rollbacked</source>
         <translation>Transacción revertida</translation>
     </message>

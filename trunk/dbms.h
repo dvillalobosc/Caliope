@@ -191,7 +191,8 @@ class Processes : public QObject
 
 public:
   Processes(DBMS *serverConnection);
-  QList<QStringList>* getProcessList();
+  QList<QStringList>* getProcessList(bool useTable = false);
+  QStringList getHeaderList(bool useTable = false);
   void killThread(long long int thread);
   void killQuery(long long int thread);
 
