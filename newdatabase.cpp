@@ -39,6 +39,7 @@ NewDatabase::NewDatabase(DBMS *serverConnection)
   lineEditName = new QLineEdit;
   comboCharacterset = new QComboBox;
   comboCharacterset->addItems(serverConnection->getCollations());
+  comboCharacterset->setCurrentText(this->serverConnection->getServerCollation());
   QFormLayout *formLayout = new QFormLayout;
   formLayout->addRow(tr("Name:"), lineEditName);
   formLayout->addRow(tr("Collation"), comboCharacterset);

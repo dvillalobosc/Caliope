@@ -536,7 +536,7 @@ void SQLQuery::executeStatement(QString statement)
     if (radioV->isChecked())
       resutlEditor->setPlainText(serverConnection->outputAsV(statement, false, exportAction->isChecked()
                                                              , showNewLinesAction->isChecked(), splitAction->isChecked()
-                                                             , true, comboDelimiter->currentText())
+                                                             , false, comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioVV->isChecked())
       resutlEditor->setPlainText(serverConnection->outputAsVV(statement, exportAction->isChecked()
