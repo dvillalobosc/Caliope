@@ -130,7 +130,7 @@ bool DBMS::open()
     if (opened) {
       //setCharacterSet(settings.value("DBMS/CharacterSet", "utf8").toString());
       //setCharacterSet(p_charset);
-      setCharsetAndCollation(getCharacterSet(), getCollation());
+      setCharsetAndCollation(getCharacterSet(), getConnectionCollation());
       if (getMinorVersion() < 1 || getMayorVersion() < 5) {
         oldVersion = true;
         QMessageBox::warning(0, tr("MySQL Version"), tr("Your version of MySQL seems to be less than 5.1."));
@@ -140,7 +140,7 @@ bool DBMS::open()
   case StaticFunctions::MariaDB:
     if (opened) {
       //setCharacterSet(getCharacterSet());
-      setCharsetAndCollation(getCharacterSet(), getCollation());
+      setCharsetAndCollation(getCharacterSet(), getConnectionCollation());
     }
   case StaticFunctions::Undefined:
   default:
@@ -278,9 +278,24 @@ void DBMS::setCollation(QString collation)
   p_collation = collation;
 }
 
-QString DBMS::getCollation()
+QString DBMS::getConnectionCollation()
 {
   return p_collation;
+}
+
+QString DBMS::getServerCollation()
+{
+  if (isOpened())
+    switch(p_DBMSType) {
+    case StaticFunctions::MySQL:
+    case StaticFunctions::MariaDB:
+      return runQuerySingleColumn("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'COLLATION_SERVER'").at(0);
+      break;
+    case StaticFunctions::Undefined:
+    default:
+      break;
+    }
+  return QString();
 }
 
 QStringList DBMS::getDatabases(bool skipMetaDatabases)

@@ -304,7 +304,7 @@ class DBMS : public QObject
   Q_PROPERTY(QString userName READ getUserName WRITE setUserName)
   Q_PROPERTY(QString characterSet READ getCharacterSet WRITE setCharacterSet)
   Q_PROPERTY(QString database READ getDatabase WRITE setDatabase)
-  Q_PROPERTY(QString collation READ getCollation WRITE setCollation)
+  Q_PROPERTY(QString collation READ getConnectionCollation WRITE setCollation)
   Q_PROPERTY(StaticFunctions::dbmsTypes DBMSType READ getDBMSType WRITE setDBMSType)
 
 public:
@@ -317,7 +317,8 @@ public:
   void setUserName(QString name);
 
   void setCollation(QString collation);
-  QString getCollation();
+  QString getConnectionCollation();
+  QString getServerCollation();
   QString getFullUserName();
   QString getHostName();
   void setHostName(QString name);

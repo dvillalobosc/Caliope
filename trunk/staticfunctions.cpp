@@ -203,6 +203,7 @@ QHash<QString, QString> StaticFunctions::mariadbFunctionsComplete()
   //  data.insert("CRC32", QString("<u>CRC32</u>(<b></b>) <br />%1").arg(tr("")));
   data.insert("CURDATE", QString("<u>CURDATE</u>() <br />%1").arg(tr("Returns the current date as a value in 'YYYY-MM-DD' or YYYYMMDD format, depending on whether the function is used in a string or numeric context.")));
   data.insert("CURRENT_DATE", QString("<u>CURRENT_DATE</u>() <br />%1").arg(tr("Returns the current date as a value in 'YYYY-MM-DD' or YYYYMMDD format, depending on whether the function is used in a string or numeric context.")));
+  data.insert("CURRENT_ROLE", QString("<u>CURRENT_ROLE</u>() <br />%1").arg(tr("Returns the current role name. ")));
   //  data.insert("CURRENT_TIME", QString("<u>CURRENT_TIME</u>(<b></b>) <br />%1").arg(tr("")));
   data.insert("CURRENT_TIMESTAMP", QString("<u>CURRENT_TIMESTAMP</u>() <br />%1").arg(tr("Returns the current date and time as a value in 'YYYY-MM-DD HH:MM:SS' or YYYYMMDDHHMMSS.uuuuuu format, <br />depending on whether the function is used in a string or numeric context.<br />The value is expressed in the current time zone.")));
   data.insert("CURRENT_USER", QString("<u>CURRENT_USER</u>() <br />%1").arg(tr("Returns the user name and host name combination for the MySQL account that the server used to authenticate the current client.")));
@@ -724,6 +725,7 @@ QStringList StaticFunctions::mariadbKeywords()
       << "REVOKE"
       << "RIGHT"
       << "RLIKE"
+      << "ROLE"
       << "ROLLBACK"
       << "ROLLUP"
       << "ROUTINE"
