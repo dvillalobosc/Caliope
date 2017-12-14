@@ -67,7 +67,7 @@ DBMS::DBMS(bool enableQueryLog)
       QMessageBox::critical(0, tr("Cannot open database"), tr("Unable to establish a database connection."), QMessageBox::Cancel);
     if (dbSQLite.open()) {
       QSqlQuery querySQLite;
-      if (!querySQLite.exec("CREATE TABLE IF NOT EXISTS executedqueries (LineNumber INTEGER, SessionId TEXT, Date TEXT, Connection TEXT, Query TEXT, PRIMARY KEY(LineNumber DESC))"))
+      if (!querySQLite.exec("CREATE TABLE IF NOT EXISTS executedqueries (LineNumber INTEGER, SessionId TEXT, Date TEXT, Connection TEXT, Query TEXT, Result TEXT, PRIMARY KEY(LineNumber DESC))"))
         errorMessage->showMessage(querySQLite.lastError().text(), "LogExecutedQueries");
     }
   }
@@ -526,11 +526,6 @@ int DBMS::query(QString queryToExecute)
 {
   //qDebug() << queryToExecute;
   int valueToReturn = 0;
-
-  //QSqlQuery querySQLite;
-  //dateTime = QDateTime::currentDateTime();
-  //querySQLite.exec(QString("INSERT INTO executedqueries VALUES ('%1', '%2', '%3')").arg(dateTime.toString(Qt::ISODate)).arg(queryToExecute).arg(getConnectionString()));
-
   QTextCodec *tc;
 #ifndef QT_NO_TEXTCODEC
     tc = QTextCodec::codecForLocale();
@@ -1118,9 +1113,9 @@ void DBMS::logApplicationStarted()
   logExecutedQueries(tr("Application started"));
 }
 
-void DBMS::logStatement(QString statement)
+void DBMS::logStatement(QString statement, QString result)
 {
-  logExecutedQueries(statement);
+  logExecutedQueries(statement, result);
 }
 
 QSqlTableModel *DBMS::sqliteTableModel()
@@ -1151,7 +1146,6 @@ void DBMS::clearSQLiteQueryLog()
 {
   if (settings.value("General/EnableQueryLog", false).toBool())
     if (dbSQLite.open()) {
-      dateTime = QDateTime::currentDateTime();
       QSqlQuery querySQLite;
       if (!querySQLite.exec("DELETE FROM executedqueries"))
         errorMessage->showMessage(querySQLite.lastError().text(), "LogExecutedQueries");
@@ -1172,19 +1166,19 @@ void DBMS::setCharsetAndCollation(QString charset, QString collation)
     }
 }
 
-void DBMS::logExecutedQueries(QString query)
+void DBMS::logExecutedQueries(QString query, QString result)
 {
   if (settings.value("General/EnableQueryLog", false).toBool())
     if (!dbSQLite.isOpen())
       dbSQLite.open();
     if (dbSQLite.isOpen()) {
-      dateTime = QDateTime::currentDateTime();
       QSqlQuery querySQLite;
-      querySQLite.prepare("INSERT INTO executedqueries (sessionid, date, connection, query) VALUES (:sessionid, :date, :connection, :query)");
+      querySQLite.prepare("INSERT INTO executedqueries (sessionid, date, connection, query, result) VALUES (:sessionid, :date, :connection, :query, :result)");
       querySQLite.bindValue(":sessionid", qApp->property("SessionId").toString());
-      querySQLite.bindValue(":date", dateTime.toString(Qt::ISODate));
+      querySQLite.bindValue(":date", QDateTime::currentDateTime());
       querySQLite.bindValue(":connection", getConnectionString());
       querySQLite.bindValue(":query", query);
+      querySQLite.bindValue(":result", result.mid(0, 5000));
       if (!querySQLite.exec())
         errorMessage->showMessage(querySQLite.lastError().text(), "LogExecutedQueries");
     }

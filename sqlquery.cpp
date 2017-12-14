@@ -128,9 +128,9 @@ SQLQuery::SQLQuery(Projects *project, DBMS *serverConnection, unsigned int windo
   connect(scriptEditor, SIGNAL(updatePrositionViewer(int,int)), this, SLOT(emitUpdatePrositionViewer(int,int)));
   ///connect(scriptEditor, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), project, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
   mainSplitter->addWidget(scriptEditor);
-  resutlEditor = new BaseTextEditor(EditorTypes::NoEditor);
-  resutlEditor->setWordWrapMode(settings.value("SQLQuery/WordWrapOnResul", false).toBool() ? QTextOption::WordWrap : QTextOption::NoWrap);
-  mainSplitter->addWidget(resutlEditor);
+  resultEditor = new BaseTextEditor(EditorTypes::NoEditor);
+  resultEditor->setWordWrapMode(settings.value("SQLQuery/WordWrapOnResul", false).toBool() ? QTextOption::WordWrap : QTextOption::NoWrap);
+  mainSplitter->addWidget(resultEditor);
   queriesToBePlayed = new QStringList();
   dialogQueryPlayer = new QDialog;
 //   dialogQueryPlayer->setWindowFlags(Qt::FramelessWindowHint);
@@ -243,7 +243,7 @@ void SQLQuery::retranslateUi()
   comboDelimiter->setToolTip(tr("Statement Delimiter"));
 
   scriptEditor->retranslateUi();
-  resutlEditor->retranslateUi();
+  resultEditor->retranslateUi();
 }
 
 void SQLQuery::createActions()
@@ -510,66 +510,64 @@ void SQLQuery::executeStatement(QString statement)
         && safeStatementsAction->isChecked()) {
       QString message(tr("Could not execute statement on safe mode."));
       QMessageBox::warning(this, tr("Safe mode"), message);
-      resutlEditor->setPlainText(message + "\n" + statement);
+      resultEditor->setPlainText(message + "\n" + statement);
       QApplication::restoreOverrideCursor();
       return;
     }
     QSettings settings;
     settings.sync();
-    if (logStatements) //Use a variable here because is faster
-      serverConnection->logStatement(statement);
     serverConnection->executedQueries->append(statement);
     if (settings.value("General/SaveQueriesBeforeExecution", true).toBool())
       settings.setValue("SQLQuery/LastQuery-" + qApp->property("ConnectionName").toString() + windowTitle(), scriptEditor->textEditor->toPlainText().trimmed());
     if (!concatenateOutputAction->isChecked())
-      resutlEditor->clear();
+      resultEditor->clear();
     if (radioT->isChecked())
-      resutlEditor->setPlainText(serverConnection->outputAsTable(statement, false, exportAction->isChecked()
+      resultEditor->setPlainText(serverConnection->outputAsTable(statement, false, exportAction->isChecked()
                                                                  , showNewLinesAction->isChecked(), splitAction->isChecked()
                                                                  , true, comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioX->isChecked())
-      resutlEditor->setPlainText(serverConnection->outputAsV(statement, false, exportAction->isChecked()
+      resultEditor->setPlainText(serverConnection->outputAsV(statement, false, exportAction->isChecked()
                                                              , showNewLinesAction->isChecked(), splitAction->isChecked(), true
                                                              , comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioV->isChecked())
-      resutlEditor->setPlainText(serverConnection->outputAsV(statement, false, exportAction->isChecked()
+      resultEditor->setPlainText(serverConnection->outputAsV(statement, false, exportAction->isChecked()
                                                              , showNewLinesAction->isChecked(), splitAction->isChecked()
                                                              , false, comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioVV->isChecked())
-      resutlEditor->setPlainText(serverConnection->outputAsVV(statement, exportAction->isChecked()
+      resultEditor->setPlainText(serverConnection->outputAsVV(statement, exportAction->isChecked()
                                                               , showNewLinesAction->isChecked(), splitAction->isChecked()
                                                               , comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioVVV->isChecked())
-      resutlEditor->setPlainText(serverConnection->outputAsTable(statement, true, exportAction->isChecked()
+      resultEditor->setPlainText(serverConnection->outputAsTable(statement, true, exportAction->isChecked()
                                                                  , showNewLinesAction->isChecked(), splitAction->isChecked()
                                                                  , true, comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioHTML->isChecked())
-      resutlEditor->setPlainText(serverConnection->outputAsHTML(statement, exportAction->isChecked()
+      resultEditor->setPlainText(serverConnection->outputAsHTML(statement, exportAction->isChecked()
                                                                 , showNewLinesAction->isChecked(), splitAction->isChecked()
                                                                 , comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioTXT->isChecked())
-      resutlEditor->setPlainText(serverConnection->outputAsTable(statement, false, exportAction->isChecked()
+      resultEditor->setPlainText(serverConnection->outputAsTable(statement, false, exportAction->isChecked()
                                                                  , showNewLinesAction->isChecked(), splitAction->isChecked()
                                                                  , true, comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioXML->isChecked())
-      resutlEditor->setPlainText(serverConnection->outputAsXML(statement, exportAction->isChecked()
+      resultEditor->setPlainText(serverConnection->outputAsXML(statement, exportAction->isChecked()
                                                                , showNewLinesAction->isChecked(), splitAction->isChecked()
                                                                , comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioG->isChecked())
-      resutlEditor->setPlainText(serverConnection->outputAsG(statement, exportAction->isChecked()
+      resultEditor->setPlainText(serverConnection->outputAsG(statement, exportAction->isChecked()
                                                              , showNewLinesAction->isChecked(), splitAction->isChecked()
                                                              , true, comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
     if (radioPDF->isChecked()) {
-      resutlEditor->setPlainText(serverConnection->outputAsTable(statement, false, false, showNewLinesAction->isChecked(), splitAction->isChecked(), true, comboDelimiter->currentText()));
+      resultEditor->setPlainText(serverConnection->outputAsTable(statement, false, false, showNewLinesAction->isChecked(), splitAction->isChecked(), true, comboDelimiter->currentText()));
       QFileDialog fileDialog;
       fileDialog.setDirectory(QDir::home());
       QString file = fileDialog.getSaveFileName(this, tr("Save to Pdf"), settings.value("General/LastFilePdf", QDir::home().absolutePath()).toString(), tr("Pdf & Ps files (*.pdf *.ps)"));
@@ -577,10 +575,12 @@ void SQLQuery::executeStatement(QString statement)
       QPrinter printer(QPrinter::HighResolution);
       printer.setOutputFileName(file);
       printer.setOutputFormat(file.endsWith(".pdf") ? QPrinter::PdfFormat : QPrinter::NativeFormat);
-      resutlEditor->document()->print(&printer);
+      resultEditor->document()->print(&printer);
       emit statusBarMessage(tr("File saved at: %1").arg(file));
     }
-    //resutlEditor->setPlainText(statement);
+    if (logStatements) //Use a variable here because is faster
+      serverConnection->logStatement(statement, resultEditor->toPlainText());
+    //resultEditor->setPlainText(statement);
     QApplication::restoreOverrideCursor();
   }
 }
@@ -614,7 +614,7 @@ void SQLQuery::explainSELECT(bool withAlias)
       outPut += (withAlias ? "`a`.`" : "`") + column + "`, ";
     cursor.insertText(outPut.mid(0, outPut.length() - 2));
   } else {
-    resutlEditor->setPlainText(tr("Incorrect use of the EXPLAIN SELECT Option. Example: SELECT * FROM `columns_pri`, it only works for the current database, the asterisk must be selected."));
+    resultEditor->setPlainText(tr("Incorrect use of the EXPLAIN SELECT Option. Example: SELECT * FROM `columns_pri`, it only works for the current database, the asterisk must be selected."));
   }
 }
 
@@ -672,8 +672,6 @@ void SQLQuery::exportTableDataForInsertActionTriggered()
 
   QApplication::setOverrideCursor(Qt::WaitCursor);
   foreach (QString statement, scriptEditor->textEditor->textCursor().selection().toPlainText().split(QRegExp("\\" + comboDelimiter->currentText() + "\\s+"), QString::SkipEmptyParts)) {
-    if (logStatements) //Use a variable here because is faster
-      serverConnection->logStatement(statement);
     outPut = QString();
     fields = QString();
     table = QString();
@@ -707,14 +705,14 @@ void SQLQuery::exportTableDataForInsertActionTriggered()
         out << outPut.toUtf8();
         file.close();
       } else {
-        resutlEditor->setPlainText(resutlEditor->toPlainText() + "\n" + outPut);
+        resultEditor->setPlainText(resultEditor->toPlainText() + "\n" + outPut);
       }
     } else {
-      resutlEditor->setPlainText(tr("Incorrect use of the EXPORT DATA FOR INSERT Option. Example: EXPORT DATA FOR INSERT `columns_pri`, it only works for the current database."));
+      resultEditor->setPlainText(tr("Incorrect use of the EXPORT DATA FOR INSERT Option. Example: EXPORT DATA FOR INSERT `columns_pri`, it only works for the current database."));
     }
   }
   if (exportAction->isChecked()) {
-    serverConnection->saveOutputToFile(resutlEditor->toPlainText(), "Text Files (*.txt)", settings.value("General/LastTextFile", "").toString());
+    serverConnection->saveOutputToFile(resultEditor->toPlainText(), "Text Files (*.txt)", settings.value("General/LastTextFile", "").toString());
   }
   QApplication::restoreOverrideCursor();
 }
@@ -727,8 +725,6 @@ void SQLQuery::exportResultDataForInsertActionTriggered()
 
   QApplication::setOverrideCursor(Qt::WaitCursor);
   foreach (QString statement, scriptEditor->textEditor->textCursor().selection().toPlainText().split(QRegExp("\\" + comboDelimiter->currentText() + "\\s+"), QString::SkipEmptyParts)) {
-    if (logStatements) //Use a variable here because is faster
-      serverConnection->logStatement(statement);
     outPut = QString();
     fields = QString();
     table = QString();
@@ -762,14 +758,16 @@ void SQLQuery::exportResultDataForInsertActionTriggered()
         out << outPut.toUtf8();
         file.close();
       } else {
-        resutlEditor->setPlainText(resutlEditor->toPlainText() + "\n" + outPut);
+        resultEditor->setPlainText(resultEditor->toPlainText() + "\n" + outPut);
       }
     } else {
-      resutlEditor->setPlainText(tr("Incorrect use of the EXPORT RESULT FOR INSERT Option. Example: EXPORT RESULT SELECT * FROM `PartitionedTale` PARTITION (`Partition1`), it only works for the current database and on SELECT *."));
+      resultEditor->setPlainText(tr("Incorrect use of the EXPORT RESULT FOR INSERT Option. Example: EXPORT RESULT SELECT * FROM `PartitionedTale` PARTITION (`Partition1`), it only works for the current database and on SELECT *."));
     }
+    if (logStatements) //Use a variable here because is faster
+      serverConnection->logStatement(statement, resultEditor->toPlainText());
   }
   if (exportAction->isChecked()) {
-    serverConnection->saveOutputToFile(resutlEditor->toPlainText(), "Text Files (*.txt)", settings.value("General/LastTextFile", "").toString());
+    serverConnection->saveOutputToFile(resultEditor->toPlainText(), "Text Files (*.txt)", settings.value("General/LastTextFile", "").toString());
   }
   QApplication::restoreOverrideCursor();
 }
@@ -793,7 +791,7 @@ void SQLQuery::explainInsertActionTriggered()
       outPut += "TRIM('" + column + "'), ";
     cursor.insertText(" VALUES (" + outPut.mid(0, outPut.length() - 2) + ");");
   } else {
-    resutlEditor->setPlainText(tr("Incorrect use of the EXPLAIN INSERT Option. Example: INSERT INTO `columns_pri`, it only works for the current database."));
+    resultEditor->setPlainText(tr("Incorrect use of the EXPLAIN INSERT Option. Example: INSERT INTO `columns_pri`, it only works for the current database."));
   }
 }
 
@@ -846,7 +844,7 @@ void SQLQuery::runQueryActionTriggered()
 
 void SQLQuery::showStatementsErrorActionTriggered()
 {
-  resutlEditor->setPlainText(serverConnection->getfailedQueries());
+  resultEditor->setPlainText(serverConnection->getfailedQueries());
 }
 
 void SQLQuery::errorAcceptedSlot()
@@ -873,7 +871,7 @@ void SQLQuery::explainUpdateActionTriggered()
       outPut += "`" + column + "` = TRIM('" + column + "') AND ";
     cursor.insertText(outPut.mid(0, outPut.length() - 5) + ";");
   } else {
-    resutlEditor->setPlainText(tr("Incorrect use of the EXPLAIN UPDATE Option. Example: UPDATE `columns_pri`, it only works for the current database."));
+    resultEditor->setPlainText(tr("Incorrect use of the EXPLAIN UPDATE Option. Example: UPDATE `columns_pri`, it only works for the current database."));
   }
 }
 
@@ -892,7 +890,7 @@ void SQLQuery::repeatQueryExecutionActionTriggered()
 
 void SQLQuery::wordWrapOnResultActionToggled()
 {
-  resutlEditor->setWordWrapMode(wordWrapOnResultAction->isChecked() ? QTextOption::WordWrap : QTextOption::NoWrap);
+  resultEditor->setWordWrapMode(wordWrapOnResultAction->isChecked() ? QTextOption::WordWrap : QTextOption::NoWrap);
   settings.setValue("SQLQuery/WordWrapOnResul", wordWrapOnResultAction->isChecked());
 }
 
@@ -919,9 +917,9 @@ void SQLQuery::trimColumnsActionTriggered()
     QString outPut("UPDATE `" + expression.capturedTexts().at(0).mid(1, expression.capturedTexts().at(0).length() - 2) + "` SET ");
     foreach (QString column, serverConnection->runQuerySingleColumn(queryString))
       outPut += "`" + column + "` = TRIM(`" + column + "`), ";
-    resutlEditor->setPlainText(outPut.mid(0, outPut.length() - 2) + ";");
+    resultEditor->setPlainText(outPut.mid(0, outPut.length() - 2) + ";");
   } else {
-    resutlEditor->setPlainText(tr("Incorrect use of the TRIM columns Option. Example: TRIM COLUMNS IN `columns_pri`, it only works for the current database."));
+    resultEditor->setPlainText(tr("Incorrect use of the TRIM columns Option. Example: TRIM COLUMNS IN `columns_pri`, it only works for the current database."));
   }
 }
 

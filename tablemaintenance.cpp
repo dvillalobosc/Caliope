@@ -108,9 +108,9 @@ TableMaintenance::TableMaintenance(DBMS *serverConnection)
   secondLayout->addWidget(tablesListWidget);
   secondLayout->addWidget(groupBoxAction);
   mainVLayout->addLayout(secondLayout);
-  resutlEditor = new BaseTextEditor(EditorTypes::NoEditor);
-  resutlEditor->setWordWrapMode(QTextOption::NoWrap);
-  secondLayout->addWidget(resutlEditor);
+  resultEditor = new BaseTextEditor(EditorTypes::NoEditor);
+  resultEditor->setWordWrapMode(QTextOption::NoWrap);
+  secondLayout->addWidget(resultEditor);
   retranslateUi();
   widMain->setLayout(mainVLayout);
   setWidget(widMain);
@@ -147,7 +147,7 @@ QString TableMaintenance::tableList()
 void TableMaintenance::executeStatement(const QString statement)
 {
   QApplication::setOverrideCursor(Qt::WaitCursor);
-  resutlEditor->setPlainText(serverConnection->outputAsTable(statement));
+  resultEditor->setPlainText(serverConnection->outputAsTable(statement));
   QApplication::restoreOverrideCursor();
 }
 

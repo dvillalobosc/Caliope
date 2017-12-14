@@ -84,7 +84,7 @@ MainWindow::MainWindow()
 {
   QCoreApplication::setApplicationName("Calíope");
   QCoreApplication::setOrganizationName("DVC Software");
-  qApp->setProperty("SessionId", StaticFunctions::randomString(10));
+  qApp->setProperty("SessionId", QDateTime::currentDateTime());
   qApp->setProperty("HelpPage-MySQL", "http://dev.mysql.com/doc/refman/5.5/en/");
   qApp->setProperty("HelpPage-MariaDB", "https://mariadb.com/kb/en/");
 

@@ -48,7 +48,7 @@ protected:
 private:
   DBMS *serverConnection;
   QTreeWidget *tablesListWidget;
-  BaseTextEditor *resutlEditor;
+  BaseTextEditor *resultEditor;
   QPushButton *analyzePushButton;
   QPushButton *checkPushButton;
   QPushButton *checksumPushButton;

@@ -52,7 +52,7 @@ public:
 
 private:
   TextEditor *scriptEditor;
-  BaseTextEditor *resutlEditor;
+  BaseTextEditor *resultEditor;
   DBMS *serverConnection;
   QToolBar *queryToolBar;
   Projects *project;

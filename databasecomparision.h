@@ -45,7 +45,7 @@ private:
   QList<QTreeWidgetItem *> secondaryTables;
   QTreeWidget *tablesListWidget;
   QTreeWidget *secondaryTablesListWidget;
-  BaseTextEditor *resutlEditor;
+  BaseTextEditor *resultEditor;
   QPushButton *pushButtonPrimaryCompare;
   QPushButton *pushButtonSecondaryCompare;
   void comparision(bool primary = true);

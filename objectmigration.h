@@ -28,7 +28,7 @@ private:
   DBMS *secondaryServerConnection;
   DTitleLabel *dTitleLabel;
   QTreeWidget *objectsListWidget;
-  BaseTextEditor *resutlEditor;
+  BaseTextEditor *resultEditor;
   QPushButton *migratePushButton;
   QList<QTreeWidgetItem *> databases;
   QCheckBox *optionDROP;

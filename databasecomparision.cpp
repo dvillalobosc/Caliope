@@ -69,12 +69,12 @@ DatabaseComparision::DatabaseComparision(DBMS *serverConnection)
   secondaryTablesListWidget = new QTreeWidget;
   connect(secondaryTablesListWidget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), this, SLOT(secondaryItemActivatedSlot(QTreeWidgetItem*,int)));
   connect(secondaryTablesListWidget, SIGNAL(itemChanged(QTreeWidgetItem*,int)), this, SLOT(secondaryItemActivatedSlot(QTreeWidgetItem*,int)));
-  resutlEditor = new BaseTextEditor(EditorTypes::NoEditor);
-  resutlEditor->setWordWrapMode(QTextOption::NoWrap);
+  resultEditor = new BaseTextEditor(EditorTypes::NoEditor);
+  resultEditor->setWordWrapMode(QTextOption::NoWrap);
   mainSplitter->addWidget(tablesListWidget);
   mainSplitter->addWidget(secondaryTablesListWidget);
   secondSplitter->addWidget(mainSplitter);
-  secondSplitter->addWidget(resutlEditor);
+  secondSplitter->addWidget(resultEditor);
   secondLayout->addWidget(secondSplitter);
   mainVLayout->addWidget(secondSplitter);
   widMain->setLayout(mainVLayout);
@@ -293,7 +293,7 @@ void DatabaseComparision::comparision(bool primary)
   for (row = 0; row < rows->at(0).count(); row++)
     output +=  QString('-').repeated(maxWidthList.at(row) + 2) + "+";
 
-  resutlEditor->setPlainText(output);
+  resultEditor->setPlainText(output);
   QApplication::restoreOverrideCursor();
 }
 
