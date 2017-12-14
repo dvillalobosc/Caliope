@@ -378,9 +378,8 @@ public:
   QString getConnectionString();
   QString getfailedQueries();
   QSqlDatabase dbSQLite;
-  QDateTime dateTime;
   void logApplicationStarted();
-  void logStatement(QString statement);
+  void logStatement(QString statement, QString result = QString());
   QSqlTableModel *sqliteTableModel();
   QSqlQueryModel *sqliteFilterQueryModel();
   void clearSQLiteQueryLog();
@@ -444,7 +443,7 @@ private:
   QSettings settings;
   QList<QStringList>* failedQueries;
   QErrorMessage *errorMessage;
-  void logExecutedQueries(QString query);
+  void logExecutedQueries(QString query, QString result = QString());
   static void printQueryProgress(const MYSQL *mysql, uint stage, uint max_stage, double progress, const char *proc_info, uint proc_info_length);
   QTime queryExecutionTime;
   QString millisecondsToTime(unsigned int milliseconds);

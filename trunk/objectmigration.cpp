@@ -51,9 +51,9 @@ ObjectMigration::ObjectMigration(DBMS *serverConnection)
   connect(objectsListWidget, SIGNAL(itemChanged(QTreeWidgetItem*,int)), this, SLOT(itemActivatedSlot(QTreeWidgetItem*,int)));
   secondLayout->addWidget(objectsListWidget);
   mainVLayout->addLayout(secondLayout);
-  resutlEditor = new BaseTextEditor(EditorTypes::NoEditor);
-  resutlEditor->setWordWrapMode(QTextOption::NoWrap);
-  secondLayout->addWidget(resutlEditor);
+  resultEditor = new BaseTextEditor(EditorTypes::NoEditor);
+  resultEditor->setWordWrapMode(QTextOption::NoWrap);
+  secondLayout->addWidget(resultEditor);
 
   retranslateUi();
   widMain->setLayout(mainVLayout);
@@ -260,8 +260,8 @@ void ObjectMigration::migratePushButtonSlot()
 void ObjectMigration::statementsToExecuteSlot()
 {
   if (statementsToExecute->count() > counter) {
-    resutlEditor->appendPlainText(statementsToExecute->at(counter) + "\n");
-    //resutlEditor->appendPlainText(secondaryServerConnection->outputAsTable(statementsToExecute->at(counter), true, false, false, false) + "\n");
+    resultEditor->appendPlainText(statementsToExecute->at(counter) + "\n");
+    //resultEditor->appendPlainText(secondaryServerConnection->outputAsTable(statementsToExecute->at(counter), true, false, false, false) + "\n");
     emit loadProgress((int) (counter * 100 / statementsToExecute->count()));
     counter++;
     QTimer::singleShot(100, this, SLOT(statementsToExecuteSlot()));
