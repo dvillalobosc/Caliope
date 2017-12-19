@@ -35,6 +35,7 @@ ObjectMigration::ObjectMigration(DBMS *serverConnection)
 
   migratePushButton = new QPushButton;
   connect(migratePushButton, SIGNAL(clicked()), this, SLOT(migratePushButtonSlot()));
+  migratePushButton->setIcon(QIcon::fromTheme("find-next", QIcon(":/images/svg/go-next-view.svg")));
   thirdLayout->addWidget(migratePushButton);
   optionDROP = new QCheckBox;
   thirdLayout->addWidget(optionDROP);
@@ -42,6 +43,15 @@ ObjectMigration::ObjectMigration(DBMS *serverConnection)
   thirdLayout->addWidget(optionExportData);
   optionFOREIGN_KEY_CHECKS = new QCheckBox;
   thirdLayout->addWidget(optionFOREIGN_KEY_CHECKS);
+  optionPreview = new QCheckBox;
+  thirdLayout->addWidget(optionPreview);
+  stopMigrationPushButton = new QPushButton;
+  connect(stopMigrationPushButton, SIGNAL(clicked()), this, SLOT(stopMigrationPushButtonSlot()));
+  stopMigrationPushButton->setIcon(QIcon::fromTheme("process-stop", QIcon(":/images/svg/process-stop-7.svg")));
+  QFrame* separatorFrame = new QFrame();
+  separatorFrame->setFrameShape(QFrame::VLine);
+  thirdLayout->addWidget(separatorFrame);
+  thirdLayout->addWidget(stopMigrationPushButton);
 
   thirdLayout->addStretch();
   QHBoxLayout *secondLayout = new QHBoxLayout;
@@ -52,6 +62,7 @@ ObjectMigration::ObjectMigration(DBMS *serverConnection)
   secondLayout->addWidget(objectsListWidget);
   mainVLayout->addLayout(secondLayout);
   resultEditor = new BaseTextEditor(EditorTypes::NoEditor);
+  resultEditor->setMaximumBlockCount(5000);
   resultEditor->setWordWrapMode(QTextOption::NoWrap);
   secondLayout->addWidget(resultEditor);
 
@@ -74,6 +85,8 @@ void ObjectMigration::retranslateUi()
   migratePushButton->setText(tr("Migrate"));
   optionExportData->setText(tr("Export data"));
   optionFOREIGN_KEY_CHECKS->setText(tr("Skip Foreign Key checks"));
+  optionPreview->setText(tr("Preview"));
+  stopMigrationPushButton->setText(tr("Stop migration"));
 }
 
 void ObjectMigration::fillDatabasesSlot()
@@ -224,49 +237,59 @@ void ObjectMigration::migratePushButtonSlot()
   QApplication::restoreOverrideCursor();
 
   ConnectDialog *connectFrom = new ConnectDialog(secondaryServerConnection);
-  if (connectFrom->exec() == QDialog::Accepted) {
-    if (!connectFrom->getConnectionPerformed()) {
-      if (secondaryServerConnection->isOpened())
-        secondaryServerConnection->close();
-      //0 - Connection name
-      //1 - User
-      //2 - Host
-      //3 - Port
-      //4 - Database
-      //5 - Conexion count
-      //6 - Collation
-      //7 - UseSSL
-      //8 - KeyFile
-      //9 - CertFile
-      //10 - Password
-      secondaryServerConnection->setUserName(connectFrom->getValues().at(1));
-      secondaryServerConnection->setHostName(connectFrom->getValues().at(2));
-      secondaryServerConnection->setPassword(connectFrom->getValues().at(10));
-      secondaryServerConnection->setDatabase(connectFrom->getValues().at(4));
-      secondaryServerConnection->setPort(connectFrom->getValues().at(3).toUInt());
-      secondaryServerConnection->setCharacterSet(connectFrom->getValues().at(6).split("|").at(0));
-      secondaryServerConnection->setCollation(connectFrom->getValues().at(6).split("|").at(1));
-      secondaryServerConnection->setUseSSL(connectFrom->getValues().at(7).toInt());
-      secondaryServerConnection->setKeyFile(connectFrom->getValues().at(8));
-      secondaryServerConnection->setCertFile(connectFrom->getValues().at(9));
-      if (!secondaryServerConnection->open())
-        QMessageBox::critical(this, tr("Cannot connect to the server"), secondaryServerConnection->lastError());
+  if (!optionPreview->isChecked()) {
+    if (connectFrom->exec() == QDialog::Accepted) {
+      if (!connectFrom->getConnectionPerformed()) {
+        if (secondaryServerConnection->isOpened())
+          secondaryServerConnection->close();
+        //0 - Connection name
+        //1 - User
+        //2 - Host
+        //3 - Port
+        //4 - Database
+        //5 - Conexion count
+        //6 - Collation
+        //7 - UseSSL
+        //8 - KeyFile
+        //9 - CertFile
+        //10 - Password
+        secondaryServerConnection->setUserName(connectFrom->getValues().at(1));
+        secondaryServerConnection->setHostName(connectFrom->getValues().at(2));
+        secondaryServerConnection->setPassword(connectFrom->getValues().at(10));
+        secondaryServerConnection->setDatabase(connectFrom->getValues().at(4));
+        secondaryServerConnection->setPort(connectFrom->getValues().at(3).toUInt());
+        secondaryServerConnection->setCharacterSet(connectFrom->getValues().at(6).split("|").at(0));
+        secondaryServerConnection->setCollation(connectFrom->getValues().at(6).split("|").at(1));
+        secondaryServerConnection->setUseSSL(connectFrom->getValues().at(7).toInt());
+        secondaryServerConnection->setKeyFile(connectFrom->getValues().at(8));
+        secondaryServerConnection->setCertFile(connectFrom->getValues().at(9));
+        if (!secondaryServerConnection->open())
+          QMessageBox::critical(this, tr("Cannot connect to the server"), secondaryServerConnection->lastError());
+      }
     }
   }
-  if (secondaryServerConnection->isOpened())
-    QTimer::singleShot(0, this, SLOT(statementsToExecuteSlot()));
+  resultEditor->clear();
+  QTimer::singleShot(0, this, SLOT(statementsToExecuteSlot()));
 }
 
 void ObjectMigration::statementsToExecuteSlot()
 {
   if (statementsToExecute->count() > counter) {
-    resultEditor->appendPlainText(statementsToExecute->at(counter) + "\n");
-    //resultEditor->appendPlainText(secondaryServerConnection->outputAsTable(statementsToExecute->at(counter), true, false, false, false) + "\n");
+    if (optionPreview->isChecked())
+      resultEditor->appendPlainText(statementsToExecute->at(counter));
+    else
+      resultEditor->appendPlainText(secondaryServerConnection->outputAsVV(statementsToExecute->at(counter)));
     emit loadProgress((int) (counter * 100 / statementsToExecute->count()));
     counter++;
-    QTimer::singleShot(100, this, SLOT(statementsToExecuteSlot()));
+    QTimer::singleShot(0, this, SLOT(statementsToExecuteSlot()));
   } else {
     emit loadProgress(100);
   }
+}
+
+void ObjectMigration::stopMigrationPushButtonSlot()
+{
+  counter = statementsToExecute->count() + 1;
+  emit loadProgress(0);
 }
 

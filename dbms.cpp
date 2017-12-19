@@ -156,7 +156,8 @@ void DBMS::printQueryProgress(const MYSQL *mysql, uint stage, uint max_stage, do
   Q_UNUSED(mysql);
   Q_UNUSED(proc_info_length);
 
-  qDebug() << tr("Stage: %1 of %2 '%3'. %4% of stage done.\nTotal progess: %5.").arg(stage).arg(max_stage).arg(proc_info).arg(progress)
+  qDebug() << tr("Stage: %1 of %2 '%3'. %4% of stage done.\nTotal progess: %5.")
+              .arg(stage).arg(max_stage).arg(proc_info).arg(progress)
               .arg(((stage -1) / (double) max_stage * 100.00 + progress / max_stage) * 2);
 
 //  uint length= printf("Stage: %d of %d '%.*s' %6.3g%% of stage done",
