@@ -324,7 +324,7 @@
 <context>
     <name>Catalogs</name>
     <message>
-        <location filename="../catalogs.cpp" line="249"/>
+        <location filename="../catalogs.cpp" line="246"/>
         <source>Catalogs</source>
         <translation>Catálogos</translation>
     </message>
@@ -743,22 +743,22 @@
         <translation>Eventos</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="274"/>
+        <location filename="../catalogs.cpp" line="271"/>
         <source>The column %1 cannot be modified.</source>
         <translation>La columna %1 no puede ser modificada.</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="278"/>
+        <location filename="../catalogs.cpp" line="275"/>
         <source>Changes applied.</source>
         <translation>Cambios aplicados.</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="281"/>
+        <location filename="../catalogs.cpp" line="278"/>
         <source>Tables in Read-Only mode, no changes will be applied.</source>
         <translation>Las tablas están en modo Solo-Lectura, los cambios no se aplicarán.</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="292"/>
+        <location filename="../catalogs.cpp" line="289"/>
         <source>Catalogs in %1</source>
         <translation>Catálogos en %1</translation>
     </message>
@@ -767,88 +767,88 @@
         <translation type="obsolete">Refrescar</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="343"/>
+        <location filename="../catalogs.cpp" line="340"/>
         <source>Routine deletion</source>
         <translation>Borrado de rutina</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="344"/>
+        <location filename="../catalogs.cpp" line="341"/>
         <source>Do you really want to delete the routine?&lt;BR /&gt;</source>
         <translation>¿Realmente desea borrar la rutina?&lt;BR /&gt;</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="417"/>
+        <location filename="../catalogs.cpp" line="414"/>
         <source>Delete a database</source>
         <translation>Borrar base de datos</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="418"/>
+        <location filename="../catalogs.cpp" line="415"/>
         <source>Select a database to delete:</source>
         <translation>Seleccione una base de datos para borrar:</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="445"/>
+        <location filename="../catalogs.cpp" line="442"/>
         <source>Rows to be inserted</source>
         <translation>Filas a ser insertadas</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="446"/>
-        <location filename="../catalogs.cpp" line="467"/>
+        <location filename="../catalogs.cpp" line="443"/>
+        <location filename="../catalogs.cpp" line="464"/>
         <source>Inserting records...</source>
         <translation>Insertando filas...</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="469"/>
+        <location filename="../catalogs.cpp" line="466"/>
         <source>Records inserted.</source>
         <translation>Registros insertados.</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="478"/>
+        <location filename="../catalogs.cpp" line="475"/>
         <source>New table</source>
         <translation>Nueva tabla</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="481"/>
+        <location filename="../catalogs.cpp" line="478"/>
         <source>New view</source>
         <translation>Nueva vista</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="484"/>
+        <location filename="../catalogs.cpp" line="481"/>
         <source>New index</source>
         <translation>Nuevo índice</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="487"/>
+        <location filename="../catalogs.cpp" line="484"/>
         <source>New field</source>
         <translation>Nuevo campo</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="490"/>
+        <location filename="../catalogs.cpp" line="487"/>
         <source>New routine</source>
         <translation>Nueva rutina</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="493"/>
+        <location filename="../catalogs.cpp" line="490"/>
         <source>New trigger</source>
         <translation>Nuevo trigger</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="496"/>
+        <location filename="../catalogs.cpp" line="493"/>
         <source>New event</source>
         <translation>Nuevo evento</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="580"/>
+        <location filename="../catalogs.cpp" line="577"/>
         <source>Indexes on: %1</source>
         <translation>Indices en: %1</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="582"/>
+        <location filename="../catalogs.cpp" line="579"/>
         <source>Fields on: %1</source>
         <translation>Campos en: %1</translation>
     </message>
     <message>
-        <location filename="../catalogs.cpp" line="584"/>
+        <location filename="../catalogs.cpp" line="581"/>
         <source>Triggers on: %1</source>
         <translation>Disparadores en: %1</translation>
     </message>
@@ -991,8 +991,8 @@
         <translation type="obsolete">Su versión de MariaDB parece ser mejor a 5.1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="239"/>
         <location filename="../dbms.cpp" line="240"/>
+        <location filename="../dbms.cpp" line="241"/>
         <source>Connection is not opened.</source>
         <translation>La conexión no está abierta.</translation>
     </message>
@@ -1009,36 +1009,36 @@
         <translation type="obsolete">Filas en el resultado: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="419"/>
-        <location filename="../dbms.cpp" line="483"/>
+        <location filename="../dbms.cpp" line="435"/>
+        <location filename="../dbms.cpp" line="499"/>
         <source>Undefined Database driver.</source>
         <translation>Controlador de Base de datos indefinido.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="499"/>
+        <location filename="../dbms.cpp" line="515"/>
         <source>Error:</source>
         <translation>Error:</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="507"/>
-        <location filename="../dbms.cpp" line="1524"/>
+        <location filename="../dbms.cpp" line="523"/>
+        <location filename="../dbms.cpp" line="1534"/>
         <source>No error code provided.</source>
         <translation>No hay código de error proporcionado.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="616"/>
+        <location filename="../dbms.cpp" line="627"/>
         <source>Select a file</source>
         <translation>Seleccione un archivo</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="625"/>
+        <location filename="../dbms.cpp" line="636"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>No es posible escribir en el archivo %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="629"/>
+        <location filename="../dbms.cpp" line="640"/>
         <source>Data exported to %1</source>
         <translation>Datos exportados a %1</translation>
     </message>
@@ -1054,7 +1054,7 @@
     </message>
     <message>
         <location filename="../dbms.cpp" line="55"/>
-        <location filename="../dbms.cpp" line="1122"/>
+        <location filename="../dbms.cpp" line="1133"/>
         <source>Query</source>
         <translation>Consulta</translation>
     </message>
@@ -1090,69 +1090,69 @@ Total progess: %5.</source>
         <translation>Etapa: %1 de %2 &apos;%3&apos;. %4% de la etapa realizado.\nProgreso total: %5.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="176"/>
+        <location filename="../dbms.cpp" line="177"/>
         <source>%1 milliseconds</source>
         <translation>%1 milisegundos</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="178"/>
+        <location filename="../dbms.cpp" line="179"/>
         <source>%1 seconds</source>
         <translation>%1 segundos</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="180"/>
+        <location filename="../dbms.cpp" line="181"/>
         <source>%1 minutes</source>
         <translation>%1 minutos</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="182"/>
+        <location filename="../dbms.cpp" line="183"/>
         <source>%1 hours</source>
         <translation>%1 horas</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="199"/>
+        <location filename="../dbms.cpp" line="200"/>
         <source>Application closed</source>
         <translation>Aplicación cerrada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="393"/>
-        <location filename="../dbms.cpp" line="398"/>
+        <location filename="../dbms.cpp" line="409"/>
+        <location filename="../dbms.cpp" line="414"/>
         <source>Rows in set: %1. Elapsed time: %2.</source>
         <translation>Filas en el resultado: %1. Tiempo transcurrido: %2.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="408"/>
-        <location filename="../dbms.cpp" line="414"/>
+        <location filename="../dbms.cpp" line="424"/>
+        <location filename="../dbms.cpp" line="430"/>
         <source>Rows in set: %1. Elapsed time: %2 seconds.</source>
         <translation>Filas en el resultado: %1. Tiempo transcurrido: %2.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="831"/>
+        <location filename="../dbms.cpp" line="842"/>
         <source>Could not execute statement. </source>
         <translation>No se puede ejecutar la sentencia. </translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1103"/>
+        <location filename="../dbms.cpp" line="1114"/>
         <source>Application started</source>
         <translation>Aplicación iniciada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1118"/>
+        <location filename="../dbms.cpp" line="1129"/>
         <source>Line Number</source>
         <translation>Número de línea</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1119"/>
+        <location filename="../dbms.cpp" line="1130"/>
         <source>Session Id</source>
         <translation>Id de Sesión</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1120"/>
+        <location filename="../dbms.cpp" line="1131"/>
         <source>Date</source>
         <translation>Fecha</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1121"/>
+        <location filename="../dbms.cpp" line="1132"/>
         <source>Connection</source>
         <translation>Conexión</translation>
     </message>
@@ -1165,7 +1165,7 @@ Total progess: %5.</source>
         <translation type="obsolete">Esta acción reiniciará su conexión a base de datos</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1449"/>
+        <location filename="../dbms.cpp" line="1459"/>
         <source>Could not change character set to: %1</source>
         <translation>No se puede cambiar el juego de caracteres a: %1</translation>
     </message>
@@ -1411,42 +1411,42 @@ Total progess: %5.</source>
 <context>
     <name>Database</name>
     <message>
-        <location filename="../dbms.cpp" line="1635"/>
+        <location filename="../dbms.cpp" line="1645"/>
         <source>Database: %1</source>
         <translation>Base de Datos: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1636"/>
+        <location filename="../dbms.cpp" line="1646"/>
         <source>Total of tables: %1</source>
         <translation>Total de tablas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1637"/>
+        <location filename="../dbms.cpp" line="1647"/>
         <source>Total of views: %1</source>
         <translation>Total de vistas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1638"/>
+        <location filename="../dbms.cpp" line="1648"/>
         <source>Total of triggers: %1</source>
         <translation>Total de disparadores: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1639"/>
+        <location filename="../dbms.cpp" line="1649"/>
         <source>Total of rutines: %1</source>
         <translation>Total de rutinas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1640"/>
+        <location filename="../dbms.cpp" line="1650"/>
         <source>Total of events: %1</source>
         <translation>Total de eventos: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1641"/>
+        <location filename="../dbms.cpp" line="1651"/>
         <source>Tables size: %1</source>
         <translation>Tamaño total de las tablas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1642"/>
+        <location filename="../dbms.cpp" line="1652"/>
         <source>Idexes: %1</source>
         <translation>Tamaño total de los índices: %1</translation>
     </message>
@@ -2740,12 +2740,12 @@ Total progess: %5.</source>
         <translation>Nueva base de Datos</translation>
     </message>
     <message>
-        <location filename="../newdatabase.cpp" line="43"/>
+        <location filename="../newdatabase.cpp" line="44"/>
         <source>Name:</source>
         <translation>Nombre:</translation>
     </message>
     <message>
-        <location filename="../newdatabase.cpp" line="44"/>
+        <location filename="../newdatabase.cpp" line="45"/>
         <source>Collation</source>
         <translation>Colación</translation>
     </message>
@@ -2753,42 +2753,52 @@ Total progess: %5.</source>
 <context>
     <name>ObjectMigration</name>
     <message>
-        <location filename="../objectmigration.cpp" line="67"/>
+        <location filename="../objectmigration.cpp" line="75"/>
         <source>Object Migration</source>
         <translation>Migración de Objetos</translation>
     </message>
     <message>
-        <location filename="../objectmigration.cpp" line="70"/>
+        <location filename="../objectmigration.cpp" line="78"/>
         <source>Options</source>
         <translation>Opciones</translation>
     </message>
     <message>
-        <location filename="../objectmigration.cpp" line="71"/>
+        <location filename="../objectmigration.cpp" line="79"/>
         <source>Objects</source>
         <translation>Objetos</translation>
     </message>
     <message>
-        <location filename="../objectmigration.cpp" line="73"/>
+        <location filename="../objectmigration.cpp" line="81"/>
         <source>Replace on destination</source>
         <translation>Reemplazar en el destino</translation>
     </message>
     <message>
-        <location filename="../objectmigration.cpp" line="74"/>
+        <location filename="../objectmigration.cpp" line="82"/>
         <source>Migrate</source>
         <translation>Migrar</translation>
     </message>
     <message>
-        <location filename="../objectmigration.cpp" line="75"/>
+        <location filename="../objectmigration.cpp" line="83"/>
         <source>Export data</source>
         <translation>Exportar datos</translation>
     </message>
     <message>
-        <location filename="../objectmigration.cpp" line="76"/>
+        <location filename="../objectmigration.cpp" line="84"/>
         <source>Skip Foreign Key checks</source>
         <translation>Saltar la revisión de llaves foráneas</translation>
     </message>
     <message>
-        <location filename="../objectmigration.cpp" line="253"/>
+        <location filename="../objectmigration.cpp" line="85"/>
+        <source>Preview</source>
+        <translation>Previsualización</translation>
+    </message>
+    <message>
+        <location filename="../objectmigration.cpp" line="86"/>
+        <source>Stop migration</source>
+        <translation>Detener migración</translation>
+    </message>
+    <message>
+        <location filename="../objectmigration.cpp" line="264"/>
         <source>Cannot connect to the server</source>
         <translation>No es posible conectarse al servidor</translation>
     </message>
@@ -3713,27 +3723,27 @@ Total progess: %5.</source>
         <translation>¿Realmente desea ejecutar el script completo?</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="768"/>
+        <location filename="../sqlquery.cpp" line="764"/>
         <source>Incorrect use of the EXPORT RESULT FOR INSERT Option. Example: EXPORT RESULT SELECT * FROM `PartitionedTale` PARTITION (`Partition1`), it only works for the current database and on SELECT *.</source>
         <translation>Uso incorrecto de la Opción EXPORT RESULT FOR INSERT. Ejemplo EXPORT RESULT SELECT * FROM `PartitionedTale` PARTITION (`Partition1`), sólo trabaja en la base de datos actual y con SELECT *.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="973"/>
+        <location filename="../sqlquery.cpp" line="971"/>
         <source>Commit transacction</source>
         <translation>Guardar transacción</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="973"/>
+        <location filename="../sqlquery.cpp" line="971"/>
         <source>Do you really want to commint changes?</source>
         <translation>¿Realmente desea aplicar los cambios?</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="986"/>
+        <location filename="../sqlquery.cpp" line="984"/>
         <source>Do you really want to rollback changes?</source>
         <translation>¿Realmente desea revertir los cambios?</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="986"/>
+        <location filename="../sqlquery.cpp" line="984"/>
         <source>Rollback transacction</source>
         <translation>Revertir transacción</translation>
     </message>
@@ -3778,36 +3788,36 @@ Total progess: %5.</source>
         <translation>Modo seguro</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="575"/>
+        <location filename="../sqlquery.cpp" line="573"/>
         <source>Save to Pdf</source>
         <translation>Guardar en Pdf</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="575"/>
+        <location filename="../sqlquery.cpp" line="573"/>
         <source>Pdf &amp; Ps files (*.pdf *.ps)</source>
         <translation>Archivos Pdf &amp; Ps (*.pdf *.ps)</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="581"/>
+        <location filename="../sqlquery.cpp" line="579"/>
         <source>File saved at: %1</source>
         <translation>Archivo guardado en: %1</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="702"/>
-        <location filename="../sqlquery.cpp" line="757"/>
+        <location filename="../sqlquery.cpp" line="700"/>
+        <location filename="../sqlquery.cpp" line="753"/>
         <source>Select a file</source>
         <translation>Seleccione un archivo</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="705"/>
-        <location filename="../sqlquery.cpp" line="760"/>
+        <location filename="../sqlquery.cpp" line="703"/>
+        <location filename="../sqlquery.cpp" line="756"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>No es posible escribir en el archivo %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="713"/>
+        <location filename="../sqlquery.cpp" line="711"/>
         <source>Incorrect use of the EXPORT DATA FOR INSERT Option. Example: EXPORT DATA FOR INSERT `columns_pri`, it only works for the current database.</source>
         <translation>Uso incorrecto de la Opción Exportar los datos de la tabla para INSERT. Ejemplo: EXPORT DATA FOR INSERT `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
@@ -3817,12 +3827,12 @@ Total progess: %5.</source>
         <translation>Uso incorrecto de la Opción Explicar SELECT. Ejemplo: SELECT * FROM `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="796"/>
+        <location filename="../sqlquery.cpp" line="794"/>
         <source>Incorrect use of the EXPLAIN INSERT Option. Example: INSERT INTO `columns_pri`, it only works for the current database.</source>
         <translation>Uso incorrecto de la Opción Explicar INSERT. Ejemplo: INSERT INTO `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="924"/>
+        <location filename="../sqlquery.cpp" line="922"/>
         <source>Incorrect use of the TRIM columns Option. Example: TRIM COLUMNS IN `columns_pri`, it only works for the current database.</source>
         <translation>Uso incorrecto de la Opción Recortar las columnas. Ejemplo: TRIM COLUMNS IN `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
@@ -3831,30 +3841,30 @@ Total progess: %5.</source>
         <translation type="obsolete">Mal uso de la opción: Exportar los datos de la tabla para INSERT.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="809"/>
+        <location filename="../sqlquery.cpp" line="807"/>
         <source>seconds</source>
         <translation>segundos</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="813"/>
-        <location filename="../sqlquery.cpp" line="818"/>
+        <location filename="../sqlquery.cpp" line="811"/>
+        <location filename="../sqlquery.cpp" line="816"/>
         <source>minutes</source>
         <translation>minutos</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="820"/>
+        <location filename="../sqlquery.cpp" line="818"/>
         <source>Elapsed: %1 %2. Remaining: %3 %4.
 Total of queries: %5, remaining: %6.
 Queries per second: %7.</source>
         <translation>Transcurrido: %1 %2. Restante: %3 %4.\nTotal de sentencias: %5, restantes: %6.\nConsultas por segundo: %7.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="876"/>
+        <location filename="../sqlquery.cpp" line="874"/>
         <source>Incorrect use of the EXPLAIN UPDATE Option. Example: UPDATE `columns_pri`, it only works for the current database.</source>
         <translation>Uso incorrecto de la Opción Explicar UPDATE. Ejemplo: UPDATE `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="885"/>
+        <location filename="../sqlquery.cpp" line="883"/>
         <source>Repeat time in seconds</source>
         <translation>Tiempo de repetición en segundos</translation>
     </message>
@@ -4586,166 +4596,166 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="207"/>
-        <location filename="../staticfunctions.cpp" line="288"/>
+        <location filename="../staticfunctions.cpp" line="208"/>
+        <location filename="../staticfunctions.cpp" line="289"/>
         <source>Returns the current date and time as a value in &apos;YYYY-MM-DD HH:MM:SS&apos; or YYYYMMDDHHMMSS.uuuuuu format, &lt;br /&gt;depending on whether the function is used in a string or numeric context.&lt;br /&gt;The value is expressed in the current time zone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="208"/>
+        <location filename="../staticfunctions.cpp" line="209"/>
         <source>Returns the user name and host name combination for the MySQL account that the server used to authenticate the current client.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="211"/>
+        <location filename="../staticfunctions.cpp" line="212"/>
         <source>Returns a string containing the date in the specified format.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="213"/>
+        <location filename="../staticfunctions.cpp" line="214"/>
         <source>Returns expr1 - expr2 expressed as a value in days from one date to the other.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="218"/>
+        <location filename="../staticfunctions.cpp" line="219"/>
         <source>Returns the name of the weekday for date.&lt;br /&gt;The language used for the name is controlled by the value of the lc_time_names system variable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="237"/>
+        <location filename="../staticfunctions.cpp" line="238"/>
         <source>Returns the largest integer value not greater than x.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="238"/>
+        <location filename="../staticfunctions.cpp" line="239"/>
         <source>Formats the number X to a format like &apos;#,###,###.##&apos;, rounded to D decimal places, and returns the result as a string.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="241"/>
+        <location filename="../staticfunctions.cpp" line="242"/>
         <source>Returns a representation of the unix_timestamp argument as a value in &apos;YYYY-MM-DD HH:MM:SS&apos; or YYYYMMDDHHMMSS.uuuuuu format,&lt;br /&gt;depending on whether the function is used in a string or numeric context.&lt;br /&gt;If format is given, the result is formatted according to the format string</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="245"/>
+        <location filename="../staticfunctions.cpp" line="246"/>
         <source>This function returns a string result with the concatenated non-NULL values from a group. It returns NULL if there are no non-NULL values.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="250"/>
+        <location filename="../staticfunctions.cpp" line="251"/>
         <source>If expr1 is not NULL, IFNULL() returns expr1; otherwise it returns expr2.&lt;br /&gt;IFNULL() returns a numeric or string value, depending on the context in which it is used.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="251"/>
+        <location filename="../staticfunctions.cpp" line="252"/>
         <source>Given the dotted-quad representation of an IPv4 network address as a string, returns an integer that represents the numeric value of the address in network byte order (big endian).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="252"/>
+        <location filename="../staticfunctions.cpp" line="253"/>
         <source>Given a numeric IPv4 network address in network byte order, returns the dotted-quad representation of the address as a binary string.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="253"/>
+        <location filename="../staticfunctions.cpp" line="254"/>
         <source>Returns the position of the first occurrence of substring substr in string str.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="257"/>
+        <location filename="../staticfunctions.cpp" line="258"/>
         <source>If expr is NULL, ISNULL() returns 1, otherwise it returns 0.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="260"/>
+        <location filename="../staticfunctions.cpp" line="261"/>
         <source>Returns the string str with all characters changed to lowercase according to the current character set mapping.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="263"/>
+        <location filename="../staticfunctions.cpp" line="264"/>
         <source>Returns the length of the string str, measured in bytes. &lt;br /&gt;A multi-byte character counts as multiple bytes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="267"/>
+        <location filename="../staticfunctions.cpp" line="268"/>
         <source>Returns the position of the first occurrence of substring substr in string str, starting at position pos.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="271"/>
+        <location filename="../staticfunctions.cpp" line="272"/>
         <source>Returns the string str with all characters changed to lowercase according to the current character set mapping. </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="272"/>
+        <location filename="../staticfunctions.cpp" line="273"/>
         <source>Returns the string str, left-padded with the string padstr to a length of len characters.&lt;br /&gt;If str is longer than len, the return value is shortened to len characters.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="278"/>
+        <location filename="../staticfunctions.cpp" line="279"/>
         <source>Returns the maximum value of expr.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="279"/>
+        <location filename="../staticfunctions.cpp" line="280"/>
         <source>Calculates an MD5 128-bit checksum for the string. The value is returned as a string of 32 hex digits, or NULL if the argument was NULL.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="280"/>
+        <location filename="../staticfunctions.cpp" line="281"/>
         <source>Returns the microseconds from the time or datetime expression expr as a number in the range from 0 to 999999.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="281"/>
-        <location filename="../staticfunctions.cpp" line="330"/>
-        <location filename="../staticfunctions.cpp" line="332"/>
+        <location filename="../staticfunctions.cpp" line="282"/>
+        <location filename="../staticfunctions.cpp" line="331"/>
+        <location filename="../staticfunctions.cpp" line="333"/>
         <source>The forms without a len argument return a substring from string str starting at position pos. &lt;br /&gt;The forms with a len argument return a substring len characters long from string str, starting at position pos.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="282"/>
+        <location filename="../staticfunctions.cpp" line="283"/>
         <source>Returns the minimum value of expr.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="285"/>
+        <location filename="../staticfunctions.cpp" line="286"/>
         <source>Returns the month for date, in the range 1 to 12 for January to December.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="289"/>
+        <location filename="../staticfunctions.cpp" line="290"/>
         <source>Returns NULL if expr1 = expr2 is true, otherwise returns expr1.&lt;br /&gt;This is the same as CASE WHEN expr1 = expr2 THEN NULL ELSE expr1 END.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="304"/>
+        <location filename="../staticfunctions.cpp" line="305"/>
         <source>Returns a random floating-point value v in the range 0 &lt;= v &lt; 1.0. If a constant integer argument N is specified, it is used as the seed value, which produces a repeatable sequence of column values.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="309"/>
+        <location filename="../staticfunctions.cpp" line="310"/>
         <source>Returns the number of rows changed, deleted, or inserted by the last statement.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="310"/>
+        <location filename="../staticfunctions.cpp" line="311"/>
         <source>Returns the string str, right-padded with the string padstr to a length of len characters.&lt;br /&gt;If str is longer than len, the return value is shortened to len characters.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="312"/>
+        <location filename="../staticfunctions.cpp" line="313"/>
         <source>Returns the seconds argument, converted to hours, minutes, and seconds, as a TIME value.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="331"/>
+        <location filename="../staticfunctions.cpp" line="332"/>
         <source>Returns the substring from string str before count occurrences of the delimiter delim. &lt;br /&gt;If count is positive, everything to the left of the final delimiter (counting from the left) is returned. &lt;br /&gt;If count is negative, everything to the right of the final delimiter (counting from the right) is returned.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="210"/>
-        <location filename="../staticfunctions.cpp" line="212"/>
+        <location filename="../staticfunctions.cpp" line="211"/>
+        <location filename="../staticfunctions.cpp" line="213"/>
         <source>These functions perform date arithmetic.&lt;br /&gt;The date argument specifies the starting date or datetime value.&lt;br /&gt;expr is an expression specifying the interval value to be added or subtracted from the starting date.&lt;br /&gt;expr is a string; it may start with a “-” for negative intervals.&lt;br /&gt;unit is a keyword indicating the units in which the expression should be interpreted.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4770,267 +4780,272 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="246"/>
+        <location filename="../staticfunctions.cpp" line="206"/>
+        <source>Returns the current role name. </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../staticfunctions.cpp" line="247"/>
         <source>For a string argument str, HEX() returns a hexadecimal string representation of str where each byte of each character in str is converted to two hexadecimal digits.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="259"/>
+        <location filename="../staticfunctions.cpp" line="260"/>
         <source>Returns a value representing the first automatically generated value successfully inserted for an AUTO_INCREMENT column as a result of the most recently executed INSERT statement.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="276"/>
+        <location filename="../staticfunctions.cpp" line="277"/>
         <source>Returns a time value calculated from the hour, minute, and second arguments. </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="308"/>
+        <location filename="../staticfunctions.cpp" line="309"/>
         <source>Rounds the argument X to D decimal places.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="318"/>
+        <location filename="../staticfunctions.cpp" line="319"/>
         <source>Sleeps (pauses) for the number of seconds given by the duration argument, then returns 0.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="333"/>
+        <location filename="../staticfunctions.cpp" line="334"/>
         <source>Returns expr1 – expr2 expressed as a value in the same format as expr1.&lt;br /&gt;expr1 is a time or datetime expression, and expr2 is a time expression.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="337"/>
+        <location filename="../staticfunctions.cpp" line="338"/>
         <source>Returns a string containing the time in the specified format.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="338"/>
+        <location filename="../staticfunctions.cpp" line="339"/>
         <source>Returns the time argument, converted to seconds.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="339"/>
+        <location filename="../staticfunctions.cpp" line="340"/>
         <source>Returns expr1 - expr2 expressed as a time value.&lt;br /&gt;expr1 and expr2 are time or date-and-time expressions, but both must be of the same type.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="341"/>
+        <location filename="../staticfunctions.cpp" line="342"/>
         <source>Returns datetime_expr2 - datetime_expr1, where datetime_expr1 and datetime_expr2 are date or datetime expressions.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="342"/>
+        <location filename="../staticfunctions.cpp" line="343"/>
         <source>Returns a day number (the number of days since year 0).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="343"/>
+        <location filename="../staticfunctions.cpp" line="344"/>
         <source>Returns the string str with all remstr prefixes or suffixes removed.&lt;br /&gt;If none of the specifiers BOTH, LEADING, or TRAILING is given, BOTH is assumed. remstr is optional and, if not specified, spaces are removed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="344"/>
+        <location filename="../staticfunctions.cpp" line="345"/>
         <source>Returns the number X, truncated to D decimal places.&lt;br /&gt;If D is 0, the result has no decimal point or fractional part.&lt;br /&gt;D can be negative to cause D digits left of the decimal point of the value X to become zero.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="345"/>
+        <location filename="../staticfunctions.cpp" line="346"/>
         <source>Returns the string str with all characters changed to uppercase according to the current character set mapping.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="349"/>
+        <location filename="../staticfunctions.cpp" line="350"/>
         <source>If called with no argument, returns a Unix timestamp (seconds since &apos;1970-01-01 00:00:00&apos; UTC) as an unsigned integer.&lt;br /&gt;If UNIX_TIMESTAMP() is called with a date argument, it returns the value of the argument as seconds since &apos;1970-01-01 00:00:00&apos; UTC.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="352"/>
+        <location filename="../staticfunctions.cpp" line="353"/>
         <source>Returns the current MySQL user name and host name.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="356"/>
+        <location filename="../staticfunctions.cpp" line="357"/>
         <source>Returns a Universal Unique Identifier (UUID) generated according to RFC 4122</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="360"/>
+        <location filename="../staticfunctions.cpp" line="361"/>
         <source>Returns a string that indicates the MySQL server version.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="361"/>
+        <location filename="../staticfunctions.cpp" line="362"/>
         <source>This function returns the week number for date.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="368"/>
+        <location filename="../staticfunctions.cpp" line="369"/>
         <source>If expr is greater than or equal to min and expr is less than or equal to max, BETWEEN returns 1, otherwise it returns 0.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1498"/>
+        <location filename="../staticfunctions.cpp" line="1500"/>
         <source>Uptime in days</source>
         <translation>Tiempo encendido en días</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1498"/>
+        <location filename="../staticfunctions.cpp" line="1500"/>
         <source>Variable</source>
         <translation>Variable</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1498"/>
+        <location filename="../staticfunctions.cpp" line="1500"/>
         <source>Value</source>
         <translation>Valor</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1500"/>
+        <location filename="../staticfunctions.cpp" line="1502"/>
         <source>Number of aborted client connections.</source>
         <translation>Número de conexiones de cliente abortados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1505"/>
+        <location filename="../staticfunctions.cpp" line="1507"/>
         <source>Number of aborted client connections per day.</source>
         <translation>Número de conexiones de cliente abortados por día.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1507"/>
+        <location filename="../staticfunctions.cpp" line="1509"/>
         <source>Number of failed server connection attempts.</source>
         <translation>Número de intentos de conexión fallidos servidor.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1509"/>
+        <location filename="../staticfunctions.cpp" line="1511"/>
         <source>Aborted connections per day</source>
         <translation>Conexiones abortadas por día</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1512"/>
+        <location filename="../staticfunctions.cpp" line="1514"/>
         <source>Number of failed server connection attempts per day.</source>
         <translation>Número de conexiones abortadas por día.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1514"/>
+        <location filename="../staticfunctions.cpp" line="1516"/>
         <source>Number of ROLLBACK commands executed.</source>
         <translation>Número de comandos ROLLBACK ejecutados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1519"/>
+        <location filename="../staticfunctions.cpp" line="1521"/>
         <source>Number of ROLLBACK commands executed every second.</source>
         <translation>Número de comandos ROLLBACK ejecutados cada segundo.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1521"/>
+        <location filename="../staticfunctions.cpp" line="1523"/>
         <source>Number of statements executed by the server.</source>
         <translation>Número de sentencias ejecutadas por el servidor.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1523"/>
+        <location filename="../staticfunctions.cpp" line="1525"/>
         <source>Number of on-disk temporary tables created.</source>
         <translation>Número de tablas temporales creadas en disco.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1525"/>
+        <location filename="../staticfunctions.cpp" line="1527"/>
         <source>Amount of free query cache memory.</source>
         <translation>La cantidad de memoria libre para la caché de consultas.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1527"/>
+        <location filename="../staticfunctions.cpp" line="1529"/>
         <source>Number of joins which did not use an index. If not zero, you may need to check table indexes.</source>
         <translation>Número de joins que no utilizaron un índice. Si no es cero, puede que tenga que comprobar los índices de tablas.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1533"/>
+        <location filename="../staticfunctions.cpp" line="1535"/>
         <source>Number of queries which took longer than long_query_time to run.</source>
         <translation>Número de consultas que tardaron más de LONG_QUERY_TIME para terminar.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1541"/>
+        <location filename="../staticfunctions.cpp" line="1543"/>
         <source>The maximum number of simultaneous client connections.</source>
         <translation>El número máximo permitido de conexiones de cliente simultáneas.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1543"/>
+        <location filename="../staticfunctions.cpp" line="1545"/>
         <source>Max number of connections ever open at the same time.</source>
         <translation>Número máximo de conexiones abiertas al mismo tiempo.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1545"/>
+        <location filename="../staticfunctions.cpp" line="1547"/>
         <source>DELETE commands executed</source>
         <translation>Comandos DELETE ejecutados</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1545"/>
+        <location filename="../staticfunctions.cpp" line="1547"/>
         <source>Number of DELETE commands executed.</source>
         <translation>Número de comandos DELETE ejectados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1547"/>
+        <location filename="../staticfunctions.cpp" line="1549"/>
         <source>INSERT commands executed</source>
         <translation>Comandos INSERT ejecutados</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1547"/>
+        <location filename="../staticfunctions.cpp" line="1549"/>
         <source>Number of INSERT commands executed.</source>
         <translation>Número de comandos INSERT ejectados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1549"/>
+        <location filename="../staticfunctions.cpp" line="1551"/>
         <source>UPDATE commands executed</source>
         <translation>Comandos UPDATE ejecutados</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1549"/>
+        <location filename="../staticfunctions.cpp" line="1551"/>
         <source>Number of UPDATE commands executed.</source>
         <translation>Número de comandos UPDATE ejectados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1551"/>
+        <location filename="../staticfunctions.cpp" line="1553"/>
         <source>SELECT commands executed</source>
         <translation>Comandos SELECT ejecutados</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1551"/>
+        <location filename="../staticfunctions.cpp" line="1553"/>
         <source>Number of SELECT commands executed.</source>
         <translation>Número de comandos SELECT ejectados.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1553"/>
+        <location filename="../staticfunctions.cpp" line="1555"/>
         <source>Requests of the first index row</source>
         <translation>Solicitudes de la primera fila de índice</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1553"/>
+        <location filename="../staticfunctions.cpp" line="1555"/>
         <source>Number of requests to read the first row from an index. A high value indicates many full index scans.</source>
         <translation>Número de peticiones para leer la primera fila de un índice. Un valor alto indica muchas exploraciones de índices completos.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1555"/>
+        <location filename="../staticfunctions.cpp" line="1557"/>
         <source>Rate of SELECTs per full index scans</source>
         <translation>Tasa de SELECTs por exploraciones de índices completos</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1555"/>
+        <location filename="../staticfunctions.cpp" line="1557"/>
         <source>Rate of SELECTs per full index scans. A value higher than 100 means you do more table scan than SELECTs.</source>
         <translation>Tasa de SELECTs por exploraciones de índices completos. Un valor superior a 100 significa hacer más exploración de tabla de SELECTs.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1557"/>
+        <location filename="../staticfunctions.cpp" line="1559"/>
         <source>Read requests based on an index value</source>
         <translation>Solicitudes de lectura basadas en un valor de índice</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1557"/>
+        <location filename="../staticfunctions.cpp" line="1559"/>
         <source>Number of row read requests based on an index value. A high value indicates indexes are regularly being used.</source>
         <translation>Solicitudes de lectura basadas en un valor de índice. Un valor alto indica que los índices se utilizan regularmente.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1559"/>
+        <location filename="../staticfunctions.cpp" line="1561"/>
         <source>Wait timeout</source>
         <translation>Tiempo de espera</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1559"/>
+        <location filename="../staticfunctions.cpp" line="1561"/>
         <source>Time in seconds that the server waits for a connection to become active before closing it.</source>
         <translation>Tiempo en segundos que el servidor espera que una conexión se active antes de cerrarla.</translation>
     </message>
@@ -5039,22 +5054,22 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de días que el servidor ha estado en funcionamiento.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1498"/>
+        <location filename="../staticfunctions.cpp" line="1500"/>
         <source>Description</source>
         <translation>Descripción</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1498"/>
+        <location filename="../staticfunctions.cpp" line="1500"/>
         <source>Number of days the server has been running.</source>
         <translation>Número de días que el servidor ha estado funcionando.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1498"/>
+        <location filename="../staticfunctions.cpp" line="1500"/>
         <source>Variable mame</source>
         <translation>Nombre de la variable</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1500"/>
+        <location filename="../staticfunctions.cpp" line="1502"/>
         <source>Aborted clients</source>
         <translation>Clientes abortados</translation>
     </message>
@@ -5063,7 +5078,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de conexiones que han sido abortadas debido a que el cliente murió sin cerrar la conexión correctamente.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1502"/>
+        <location filename="../staticfunctions.cpp" line="1504"/>
         <source>Aborted clients per day</source>
         <translation>Clientes abortados por día</translation>
     </message>
@@ -5072,7 +5087,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Tasa de clientes abortados por día.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1507"/>
+        <location filename="../staticfunctions.cpp" line="1509"/>
         <source>Aborted connections</source>
         <translation>Conexiones abortadas</translation>
     </message>
@@ -5081,7 +5096,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de intentos fallidos de conectarse al servidor de base de datos.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1514"/>
+        <location filename="../staticfunctions.cpp" line="1516"/>
         <source>Executed rollbacks</source>
         <translation>Rollbacks ejecutados</translation>
     </message>
@@ -5090,7 +5105,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de veces que cada sentencia de rollback se ha ejecutado.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1521"/>
+        <location filename="../staticfunctions.cpp" line="1523"/>
         <source>Executed queries</source>
         <translation>Consultas ejecutadas</translation>
     </message>
@@ -5099,7 +5114,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de sentencias ejecutadas por el servidor.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1516"/>
+        <location filename="../staticfunctions.cpp" line="1518"/>
         <source>Rollbacks per second</source>
         <translation>Rollbacks por segundo</translation>
     </message>
@@ -5108,7 +5123,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Tasa de rollbacks por segundo.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1523"/>
+        <location filename="../staticfunctions.cpp" line="1525"/>
         <source>Temporary disk tables created</source>
         <translation>Tablas temporales de disco creadas</translation>
     </message>
@@ -5117,7 +5132,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de tablas temporales en disco internas creadas por el servidor mientras ejecuta las sentencias.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1525"/>
+        <location filename="../staticfunctions.cpp" line="1527"/>
         <source>Free cache memory</source>
         <translation>Memoria cache libre</translation>
     </message>
@@ -5126,7 +5141,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">La cantidad de memoria libre para la caché de consultas.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1527"/>
+        <location filename="../staticfunctions.cpp" line="1529"/>
         <source>Joins with full table scan</source>
         <translation>Joins con escaneo completo de tabla</translation>
     </message>
@@ -5135,27 +5150,27 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de joins que realizan escaneos de tablas porque que no utilizan índices.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1529"/>
+        <location filename="../staticfunctions.cpp" line="1531"/>
         <source>Log slow queries</source>
         <translation>Guardar consultas lentas</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1529"/>
+        <location filename="../staticfunctions.cpp" line="1531"/>
         <source>Is the slow queries logging enabled?</source>
         <translation>¿Está el loggeo de consultas habilitado?</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1531"/>
+        <location filename="../staticfunctions.cpp" line="1533"/>
         <source>Slow queries time in seconds</source>
         <translation>Tiempo de consultas lentas en segundos</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1531"/>
+        <location filename="../staticfunctions.cpp" line="1533"/>
         <source>The number of seconds that determinate a slow query.</source>
         <translation>El número de segundos para determinar que una consulta es lenta.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1533"/>
+        <location filename="../staticfunctions.cpp" line="1535"/>
         <source>Count of slow queries</source>
         <translation>Conteo de consultas lentas</translation>
     </message>
@@ -5164,37 +5179,37 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número de consultas que han tardado más que el tiempo permitido.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1535"/>
+        <location filename="../staticfunctions.cpp" line="1537"/>
         <source>Idle connections</source>
         <translation>Conexiones inactivas</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1535"/>
+        <location filename="../staticfunctions.cpp" line="1537"/>
         <source>The number of connections that has been idle for more than 30 seconds.</source>
         <translation>El número de conexiones que ha estado inactivo durante más de 30 segundos.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1537"/>
+        <location filename="../staticfunctions.cpp" line="1539"/>
         <source>Active connections</source>
         <translation>Conexiones activas</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1537"/>
+        <location filename="../staticfunctions.cpp" line="1539"/>
         <source>The number of connections that has been idle for less than 30 seconds.</source>
         <translation>El número de conexiones que ha estado inactivo durante menos de 30 segundos.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1539"/>
+        <location filename="../staticfunctions.cpp" line="1541"/>
         <source>Total connections</source>
         <translation>Total de conexiones</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1539"/>
+        <location filename="../staticfunctions.cpp" line="1541"/>
         <source>The number of active connections on the server.</source>
         <translation>El número de conexiones activas en el servidor.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1541"/>
+        <location filename="../staticfunctions.cpp" line="1543"/>
         <source>Max connections aviable</source>
         <translation>Cantidad máxima de conexiones disponibles</translation>
     </message>
@@ -5203,7 +5218,7 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número máximo permitido de conexiones de cliente simultáneas.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1543"/>
+        <location filename="../staticfunctions.cpp" line="1545"/>
         <source>Used connections</source>
         <translation>Conexiones usadas</translation>
     </message>
@@ -5212,22 +5227,22 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">El número máximo de conexiones que han sido utilizadas simultáneamente desde que el servidor se inició.</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1574"/>
+        <location filename="../staticfunctions.cpp" line="1576"/>
         <source>Date</source>
         <translation>Fecha</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1574"/>
+        <location filename="../staticfunctions.cpp" line="1576"/>
         <source>Day</source>
         <translation>Día</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1574"/>
+        <location filename="../staticfunctions.cpp" line="1576"/>
         <source>Total queries</source>
         <translation>Total de consultas</translation>
     </message>
     <message>
-        <location filename="../staticfunctions.cpp" line="1575"/>
+        <location filename="../staticfunctions.cpp" line="1577"/>
         <source>Average (in seconds)</source>
         <translation>Promedio (en segundos)</translation>
     </message>
@@ -5825,17 +5840,17 @@ Total of queries: %5, remaining: %6.</source>
 <context>
     <name>Transaction</name>
     <message>
-        <location filename="../dbms.cpp" line="2228"/>
+        <location filename="../dbms.cpp" line="2238"/>
         <source>Transaction started</source>
         <translation>Transacción iniciada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="2243"/>
+        <location filename="../dbms.cpp" line="2253"/>
         <source>Transaction commited</source>
         <translation>Transacción guardada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="2258"/>
+        <location filename="../dbms.cpp" line="2268"/>
         <source>Transaction rollbacked</source>
         <translation>Transacción revertida</translation>
     </message>

@@ -37,12 +37,15 @@ private:
   QStringList *statementsToExecute;
   int counter;
   QCheckBox *optionFOREIGN_KEY_CHECKS;
+  QCheckBox *optionPreview;
+  QPushButton *stopMigrationPushButton;
 
 private slots:
   void fillDatabasesSlot();
   void itemActivatedSlot(QTreeWidgetItem *item, int column);
   void migratePushButtonSlot();
   void statementsToExecuteSlot();
+  void stopMigrationPushButtonSlot();
 
 signals:
   void loadProgress(const int progress);
