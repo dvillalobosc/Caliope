@@ -28,6 +28,7 @@
 #include <QCheckBox>
 #include <QRadioButton>
 #include <QTreeWidgetItemIterator>
+#include <QSplitter>
 
 #include "tablemaintenance.h"
 #include "dtitlelabel.h"
@@ -48,6 +49,7 @@ TableMaintenance::TableMaintenance(DBMS *serverConnection)
   mainVLayout->addWidget(dTitleLabel);
 //  mainVLayout->addWidget(new TableMaintenanceWizard(parent));
 
+  QSplitter *mainSplitter = new QSplitter(Qt::Horizontal);
   groupBoxAction = new QGroupBox(this);
   QVBoxLayout *thirdLayout = new QVBoxLayout;
   analyzePushButton = new QPushButton;
@@ -99,18 +101,42 @@ TableMaintenance::TableMaintenance(DBMS *serverConnection)
   thirdLayout->addWidget(selectAllLocalTablesPushButton);
 
   thirdLayout->addStretch();
+  //QSizePolicy sizePolicy;//(QSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred));
+  //sizePolicy.setVerticalPolicy(QSizePolicy::Minimum);
+  //groupBoxAction->setSizePolicy(sizePolicy);
+
+  //qDebug() << groupBoxAction->sizePolicy();
+
   groupBoxAction->setLayout(thirdLayout);
-  QHBoxLayout *secondLayout = new QHBoxLayout;
+
+  //analyzePushButton->setp
+
+  QSizePolicy sizePolicy = groupBoxAction->sizePolicy();
+  sizePolicy.setHorizontalStretch(0);
+  sizePolicy.setVerticalStretch(0);
+  groupBoxAction->setSizePolicy(sizePolicy);
+  //QHBoxLayout *secondLayout = new QHBoxLayout;
   tablesListWidget = new QTreeWidget;
-  tablesListWidget->setFixedWidth(300);
+  //tablesListWidget->setFixedWidth(300);
   connect(tablesListWidget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), this, SLOT(itemActivatedSlot(QTreeWidgetItem*,int)));
   connect(tablesListWidget, SIGNAL(itemChanged(QTreeWidgetItem*,int)), this, SLOT(itemActivatedSlot(QTreeWidgetItem*,int)));
-  secondLayout->addWidget(tablesListWidget);
-  secondLayout->addWidget(groupBoxAction);
-  mainVLayout->addLayout(secondLayout);
+
+  //secondLayout->addWidget(tablesListWidget);
+  //secondLayout->addWidget(groupBoxAction);
+
+  //mainVLayout->addLayout(secondLayout);
+
+  mainSplitter->addWidget(tablesListWidget);
+  mainSplitter->addWidget(groupBoxAction);
+
   resultEditor = new BaseTextEditor(EditorTypes::NoEditor);
   resultEditor->setWordWrapMode(QTextOption::NoWrap);
-  secondLayout->addWidget(resultEditor);
+  //secondLayout->addWidget(resultEditor);
+  mainSplitter->addWidget(resultEditor);
+
+  //mainSplitter->setStretchFactor(1, 0);
+
+  mainVLayout->addWidget(mainSplitter);
   retranslateUi();
   widMain->setLayout(mainVLayout);
   setWidget(widMain);
