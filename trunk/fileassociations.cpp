@@ -29,6 +29,7 @@ FileAssociations::FileAssociations()
   formLayout = new QFormLayout;
   sqlLineEdit = new QLineEdit;
   sqlLineEdit->setText(settings.value("FileAssociations/SQLFiles", "sql").toString());
+  sqlLineEdit->setToolTip(sqlLineEdit->text());
   connect(sqlLineEdit, SIGNAL(textChanged(QString)), this, SLOT(sqlLineEditTextChangedSlot(QString)));
   formLayout->addRow(" ", sqlLineEdit);
   setLayout(formLayout);
@@ -38,6 +39,7 @@ void FileAssociations::retranslateUi()
 {
   QLabel *label = qobject_cast<QLabel *>(formLayout->labelForField(sqlLineEdit));
   label->setText(tr("SQL files:"));
+  label->setToolTip(label->text());
 }
 
 QString FileAssociations::FileAssociationsList()

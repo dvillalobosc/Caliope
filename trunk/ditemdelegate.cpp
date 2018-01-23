@@ -97,6 +97,7 @@ void DItemDelegate::setEditorData(QWidget *editor, const QModelIndex &index) con
   if (delegateType == StaticFunctions::DelegateTypePassword()) {
     QLineEdit *widEditor = static_cast<QLineEdit*>(editor);
     widEditor->setText(value.toString());
+    widEditor->setToolTip(widEditor->text());
   }
 }
 

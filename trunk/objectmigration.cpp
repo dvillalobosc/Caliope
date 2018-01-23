@@ -78,15 +78,24 @@ void ObjectMigration::retranslateUi()
   setWindowTitle(tr("Object Migration"));
   setObjectName(windowTitle());
   dTitleLabel->setText(windowTitle());
+  dTitleLabel->setToolTip(dTitleLabel->text());
   groupBoxAction->setTitle(tr("Options"));
+  groupBoxAction->setToolTip(groupBoxAction->title());
   objectsListWidget->setWindowTitle(tr("Objects"));
+  objectsListWidget->setToolTip(objectsListWidget->windowTitle());
   objectsListWidget->setHeaderLabel(objectsListWidget->windowTitle());
   optionDROP->setText(tr("Replace on destination"));
+  optionDROP->setToolTip(optionDROP->text());
   migratePushButton->setText(tr("Migrate"));
+  migratePushButton->setToolTip(migratePushButton->text());
   optionExportData->setText(tr("Export data"));
+  optionExportData->setToolTip(optionExportData->text());
   optionFOREIGN_KEY_CHECKS->setText(tr("Skip Foreign Key checks"));
+  optionFOREIGN_KEY_CHECKS->setToolTip(optionFOREIGN_KEY_CHECKS->text());
   optionPreview->setText(tr("Preview"));
+  optionPreview->setToolTip(optionPreview->text());
   stopMigrationPushButton->setText(tr("Stop migration"));
+  stopMigrationPushButton->setToolTip(stopMigrationPushButton->text());
 }
 
 void ObjectMigration::fillDatabasesSlot()

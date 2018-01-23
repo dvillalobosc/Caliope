@@ -97,6 +97,7 @@ public slots:
   void viewNormalActionTriggered();
   void viewVerticalActionTriggered();
   void viewHorizoltalActionTriggered();
+  void addCodeToSnippetActionSlot();
 
 private slots:
   void insertCompletion(const QString &completion);
@@ -243,6 +244,7 @@ private:
   QMenu *versionControlMenu;
   QCompleter *codeSnippetCompleter;
   QStandardItemModel *modelCodeSnippet;
+  QAction *addCodeToSnippetAction;
 };
 
 #endif // TEXTEDITOR_H

@@ -98,7 +98,9 @@ void DWebView::retranslateUi()
   setWindowTitle(title);
   setObjectName(windowTitle());
   showSourceCode->setText(tr("Show page source"));
+  showSourceCode->setToolTip(showSourceCode->text());
   openInExternalBrowser->setText(tr("Open in external browser"));
+  openInExternalBrowser->setToolTip(openInExternalBrowser->text());
 }
 
 void DWebView::sslErrors(QNetworkReply *reply, const QList<QSslError> &errors)

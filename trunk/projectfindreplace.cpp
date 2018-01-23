@@ -112,14 +112,21 @@ void ProjectFindReplace::retranslateUi()
   mainGroupBox->setTitle(windowTitle());
   QLabel *label = qobject_cast<QLabel *>(formLayout->labelForField(lineEditTextToFind));
   label->setText(tr("Text to find:"));
+  label->setToolTip(label->text());
   label = qobject_cast<QLabel *>(formLayout->labelForField(lineEditTextToReplace));
   label->setText(tr("Text to replace:"));
+  label->setToolTip(label->text());
   pushButtonFind->setText(tr("Find"));
+  pushButtonFind->setToolTip(pushButtonFind->text());
   checkBoxCaseSensitive->setText(tr("Case sensitive"));
+  checkBoxCaseSensitive->setToolTip(checkBoxCaseSensitive->text());
   checkBoxWholeWords->setText(tr("Whole words"));
+  checkBoxWholeWords->setToolTip(checkBoxWholeWords->text());
   checkBoxRegularExp->setText(tr("Regular expression"));
+  checkBoxRegularExp->setToolTip(checkBoxRegularExp->text());
   findsListWidget->setHeaderLabel(tr("Results"));
   pushButtonReplace->setText(tr("Replace"));
+  pushButtonReplace->setToolTip(pushButtonReplace->text());
 }
 
 bool ProjectFindReplace::eventFilter(QObject *obj, QEvent *event)

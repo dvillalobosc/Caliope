@@ -16,6 +16,7 @@ public:
   void retranslateUi();
   QStringList getCodeSnippets();
   QString getCodeSnippet(const QString key);
+  void addSnippet(QString snippet, QString title);
 
 private:
   QSettings settings;

@@ -186,6 +186,7 @@ void TextEditor::setTitle(QString title)
 {
   setWindowTitle(title);
   dTitleLabel->setText(title);
+  dTitleLabel->setToolTip(dTitleLabel->text());
 }
 
 void TextEditor::uppercaseKeywordsActionSlot()
@@ -268,45 +269,80 @@ void TextEditor::insertCompletionCodeSnippet(const QString &completion)
 void TextEditor::retranslateUi()
 {
   openRecentFilesMenu->setTitle(tr("Recent files"));
+  openRecentFilesMenu->setToolTip(openRecentFilesMenu->title());
   symbolsMenu->setTitle(tr("Symbols"));
+  symbolsMenu->setToolTip(symbolsMenu->title());
   sortSymbols->setText(tr("Sort by name"));
   sortSymbols->setToolTip(sortSymbols->text());
   contextualMenuSeparatorAction->setText(tr("Edit Menu"));
+  contextualMenuSeparatorAction->setToolTip(contextualMenuSeparatorAction->text());
   exportMenu->setTitle(tr("&Export"));
+  exportMenu->setToolTip(exportMenu->title());
   fileMenu->setTitle(tr("&File"));
+  fileMenu->setToolTip(fileMenu->title());
   editMenu->setTitle(tr("&Edit"));
+  editMenu->setToolTip(editMenu->title());
   optionsMenu->setTitle(tr("&Options"));
+  optionsMenu->setToolTip(optionsMenu->title());
   subversionMenu->setTitle(tr("&Subversion"));
+  subversionMenu->setToolTip(subversionMenu->title());
   viewMenu->setTitle(tr("&View"));
+  viewMenu->setToolTip(viewMenu->title());
   viewMenuSeparatorActionView->setText(tr("View"));
+  viewMenuSeparatorActionView->setToolTip(viewMenuSeparatorActionView->text());
   viewMenuSeparatorActionSymbols->setText(tr("Symbols"));
+  viewMenuSeparatorActionSymbols->setToolTip(viewMenuSeparatorActionSymbols->text());
   clearAction->setText(tr("Clear"));
+  clearAction->setToolTip(clearAction->text());
   openAction->setText(tr("Open"));
+  openAction->setToolTip(openAction->text());
   saveAction->setText(tr("Save"));
+  saveAction->setToolTip(saveAction->text());
   saveAsAction->setText(tr("Save as..."));
+  saveAsAction->setToolTip(saveAsAction->text());
   copyAction->setText(tr("Copy"));
+  copyAction->setToolTip(copyAction->text());
   cutAction->setText(tr("Cut"));
+  cutAction->setToolTip(cutAction->text());
   pasteAction->setText(tr("Paste"));
+  pasteAction->setToolTip(pasteAction->text());
   undoAction->setText(tr("Undo"));
+  undoAction->setToolTip(undoAction->text());
   redoAction->setText(tr("Redo"));
+  redoAction->setToolTip(redoAction->text());
   wordWrapAction->setText(tr("Word wrap"));
+  wordWrapAction->setToolTip(wordWrapAction->text());
   zoomInAction->setText(tr("In"));
+  zoomInAction->setToolTip(zoomInAction->text());
   zoomOutAction->setText(tr("Out"));
+  zoomOutAction->setToolTip(zoomOutAction->text());
   restoreZoomAction->setText(tr("Restore"));
+  restoreZoomAction->setToolTip(restoreZoomAction->text());
   gotoLineAction->setText(tr("Line..."));
+  gotoLineAction->setToolTip(gotoLineAction->text());
   selectAllAction->setText(tr("Select all"));
   clearRecentFilesAction->setText(tr("Clear recent files"));
+  clearRecentFilesAction->setToolTip(clearRecentFilesAction->text());
   printAction->setText(tr("Print..."));
+  printAction->setToolTip(printAction->text());
   reloadFile->setText(tr("Reload file"));
+  reloadFile->setToolTip(reloadFile->text());
   disableCompletionAction->setText(tr("Disable completion"));
+  disableCompletionAction->setToolTip(disableCompletionAction->text());
   showHideLineNumbersAction->setText(tr("Show/Hide line numbers"));
+  showHideLineNumbersAction->setToolTip(showHideLineNumbersAction->text());
   cutLineAction->setText(tr("Cut line"));
+  cutLineAction->setToolTip(cutLineAction->text());
   versionControlMenu->setTitle(tr("Version &control"));
+  versionControlMenu->setToolTip(versionControlMenu->title());
 
   switch(editorType) {
   case EditorTypes::SQLQuery:
     setWindowTitle(tr("SQL Query %1").arg(windowCount));
     fillMariaDBSymbolsAction->setText(tr("Fill MariaDB Symbols"));
+    fillMariaDBSymbolsAction->setToolTip(fillMariaDBSymbolsAction->text());
+    addCodeToSnippetAction->setText(tr("Add selected code to Code Snippets"));
+    addCodeToSnippetAction->setToolTip(addCodeToSnippetAction->text());
     break;
   case EditorTypes::NoEditor:
     setWindowTitle(tr("Text File %1").arg(windowCount));
@@ -322,21 +358,35 @@ void TextEditor::retranslateUi()
   showMariaDBHelperAction->setText(tr("Show SQL Helpers in the completion"));
   showMariaDBHelperAction->setToolTip(showMariaDBHelperAction->text());
   exportoToPdfOrPsAction->setText(tr("Export to Pdf"));
+  exportoToPdfOrPsAction->setToolTip(exportoToPdfOrPsAction->text());
   exportoToOdtAction->setText(tr("Export to Odt"));
+  exportoToOdtAction->setToolTip(exportoToOdtAction->text());
   exportoToHtmlAction->setText(tr("Export to Html"));
+  exportoToHtmlAction->setToolTip(exportoToHtmlAction->text());
   exportoToSvgAction->setText(tr("Export to Svg"));
+  exportoToSvgAction->setToolTip(exportoToSvgAction->text());
   exportoToImgAction->setText(tr("Export to Image"));
+  exportoToImgAction->setText(exportoToImgAction->text());
   toggleCommentAction->setText(tr("Toggle Comment"));
+  toggleCommentAction->setText(toggleCommentAction->text());
   highlightCurrentLineAction->setText(tr("Highlight current line"));
+  highlightCurrentLineAction->setToolTip(highlightCurrentLineAction->text());
   viewNormalAction->setText(tr("Normal"));
+  viewNormalAction->setToolTip(viewNormalAction->text());
   viewVerticalAction->setText(tr("Vertical"));
+  viewVerticalAction->setToolTip(viewVerticalAction->text());
   viewHorizoltalAction->setText(tr("Horizontal"));
+  viewHorizoltalAction->setToolTip(viewHorizoltalAction->text());
   showSymbolsAction->setText(tr("&Show Symols"));
+  showSymbolsAction->setToolTip(showSymbolsAction->text());
   normalizeTextAction->setText(tr("&Normalize text"));
+  normalizeTextAction->setToolTip(normalizeTextAction->text());
   readOnlyTextEditor->retranslateUi();
   textEditor->retranslateUi();
   uppercaseKeywordsAction->setText(tr("Uppercase keywords"));
+  uppercaseKeywordsAction->setToolTip(uppercaseKeywordsAction->text());
   lowercaseKeywordsAction->setText(tr("Lowercase keywords"));
+  lowercaseKeywordsAction->setToolTip(lowercaseKeywordsAction->text());
 
   setObjectName(windowTitle());
   dTitleLabel->setText(windowTitle());
@@ -978,6 +1028,9 @@ void TextEditor::createActions()
     fillMariaDBSymbolsAction->setIcon(QIcon(":/images/svg/application-pgp-keys.svg"));
     fillMariaDBSymbolsAction->setShortcut(QKeySequence(Qt::Key_F6));
     connect(fillMariaDBSymbolsAction, SIGNAL(triggered()), this, SLOT(fillMariaDBSymbolsActionSlot()));
+    addCodeToSnippetAction = new QAction(this);
+    addCodeToSnippetAction->setIcon(QIcon::fromTheme("list-add", QIcon(":/images/svg/list-add-5.svg")));
+    connect(addCodeToSnippetAction, SIGNAL(triggered()), this, SLOT(addCodeToSnippetActionSlot()));
     break;
   case EditorTypes::Diff:
   case EditorTypes::Commit:
@@ -1839,6 +1892,7 @@ void TextEditor::createMenu()
     optionsMenu->addSeparator();
     optionsMenu->addAction(fillMariaDBSymbolsAction);
     optionsMenu->addAction(showMariaDBHelperAction);
+    optionsMenu->addAction(addCodeToSnippetAction);
     break;
   case EditorTypes::Diff:
   case EditorTypes::Commit:
@@ -1907,6 +1961,15 @@ void TextEditor::viewHorizoltalActionTriggered()
   secondSplitter->setOrientation(Qt::Horizontal);
   secondSplitter->widget(1)->show();
   updateReadOnlyEditor();
+}
+
+void TextEditor::addCodeToSnippetActionSlot()
+{
+  QTextCursor cursor = textEditor->textCursor();
+  if (cursor.hasSelection()) {
+    CodeSnippets codeSnippets;
+    codeSnippets.addSnippet(cursor.selectedText(), QInputDialog::getText(this, tr("Snippet name"), tr("Snippet name"), QLineEdit::Normal));
+  }
 }
 
 void TextEditor::itemClickedSlot(QListWidgetItem *item)

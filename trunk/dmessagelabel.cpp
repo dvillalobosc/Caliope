@@ -58,4 +58,5 @@ void DMessageLabel::setEnabled(bool enabled)
 void DMessageLabel::setText(QString message)
 {
   label->setText("<B>" + message + "</B>");
+  label->setToolTip(label->text());
 }

@@ -107,6 +107,7 @@ void Backup::retranslateUi()
   dMessageLabel->setText(tr("Note that there are options that exclude others."));
   fileSelector->setText(tr("&File:"));
   backItUpPushButton->setText(tr("Create Backup"));
+  backItUpPushButton->setToolTip(backItUpPushButton->text());
 }
 
 void Backup::disbaleBackItIp()

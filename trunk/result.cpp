@@ -89,11 +89,17 @@ void Result::retranslateUi()
   setWindowTitle(tr("Result"));
   setObjectName(windowTitle());
   refreshAction->setText(tr("Refresh"));
+  refreshAction->setToolTip(refreshAction->text());
   applyStatementsAction->setText(tr("Apply changes"));
+  applyStatementsAction->setToolTip(applyStatementsAction->text());
   discardStatementsAction->setText(tr("Discard changes"));
+  discardStatementsAction->setToolTip(discardStatementsAction->text());
   deleteCurrentLineAction->setText(tr("Delete line: %1"));
+  deleteCurrentLineAction->setToolTip(deleteCurrentLineAction->text());
   viewChangesAction->setText(tr("History"));
+  viewChangesAction->setToolTip(viewChangesAction->text());
   addRowAction->setText(tr("Add a row"));
+  addRowAction->setToolTip(addRowAction->text());
 }
 
 void Result::createActions()
@@ -190,6 +196,7 @@ void Result::updateResult()
   if (headers->count() > 0) {
     resultDTableView->setModelData(result, false);
     dTitleLabel->setText(tr("Result for: %1.%2").arg(p_database).arg(p_table));
+    dTitleLabel->setToolTip(dTitleLabel->text());
     resultDTableView->blockSignals(false);
   } else {
     emit statusBarMessagePopup(tr("Database or table does not exist."));
@@ -250,6 +257,7 @@ void Result::deleteCurrentLineActionTriggered()
 void Result::contextMenuEvent(QContextMenuEvent *event)
 {
   deleteCurrentLineAction->setText(tr("Delete line: %1").arg(resultDTableView->currentIndexItem().row() + 1));
+  deleteCurrentLineAction->setToolTip(deleteCurrentLineAction->text());
   menu->exec(event->globalPos());
 }
 

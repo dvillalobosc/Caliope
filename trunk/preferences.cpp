@@ -222,18 +222,24 @@ void Preferences::retranslateUi()
   setWindowTitle(tr("Preferences"));
   setObjectName(windowTitle());
   dTitleLabel->setText(windowTitle());
+  dTitleLabel->setToolTip(dTitleLabel->windowTitle());
   QLabel *label;
 //  QLabel *label = qobject_cast<QLabel *>(styleFLayout->labelForField(stylesCombo));
 //  label->setText(tr("Select a style:"));
   checkBoxRememberWindows->setText(tr("Remember opened windows"));
+  checkBoxRememberWindows->setToolTip(checkBoxRememberWindows->text());
   checkBoxOpenLastFile->setText(tr("Open last file used in the modules"));
+  checkBoxOpenLastFile->setToolTip(checkBoxOpenLastFile->text());
   checkBoxSaveQueryBeforeExecution->setText(tr("Save Queries before execution?"));
   styleGroupBox->setTitle(tr("Appilcation Style"));
   tabSizeSpinBox->setSuffix(" " + tr("Spaces"));
   label = qobject_cast<QLabel *>(textEditorFLayout->labelForField(tabSizeSpinBox));
   label->setText(tr("Tab size:"));
+  label->setToolTip(label->text());
   checkBoxAutomaticIndentation->setText(tr("Enable automatic indentation."));
+  checkBoxAutomaticIndentation->setToolTip(checkBoxAutomaticIndentation->text());
   checkBoxCleanwhiteSpaces->setText(tr("Clean white spaces at the end of the line."));
+  checkBoxCleanwhiteSpaces->setToolTip(checkBoxCleanwhiteSpaces->text());
   checkBoxSaveABackupFile->setText(tr("Save a backup copy before save a file."));
   //checkBoxShowTabsAndSpaces->setText(tr("Show Tabs and Spaces."));
   checkBoxEnableQueryLog->setText(tr("Enable query log"));
@@ -241,10 +247,13 @@ void Preferences::retranslateUi()
   networkSettings->retranslateUi();
   fileAssociations->retranslateUi();
   checkBoxAutoreconnect->setText(tr("Use automatic reconnection"));
+  checkBoxAutoreconnect->setToolTip(checkBoxAutoreconnect->text());
   label = qobject_cast<QLabel *>(styleFLayout->labelForField(mysqlOnlineHelpURLLineEdit));
   label->setText(tr("MySQL On-Line Help:"));
+  label->setToolTip(label->text());
   label = qobject_cast<QLabel *>(styleFLayout->labelForField(mariadbOnlineHelpURLLineEdit));
   label->setText(tr("MariaDB On-Line Help:"));
+  label->setToolTip(label->text());
 }
 
 void Preferences::checkBoxCleanwhiteSpacesValueChanged(int value)

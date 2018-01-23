@@ -185,9 +185,13 @@ void DReportViewer::showReportData()
 void DReportViewer::retranslateUi()
 {
   pushButtonExportToPDF->setText(tr("Export to PDF"));
+  pushButtonExportToPDF->setToolTip(pushButtonExportToPDF->text());
   pushButtonRefresh->setText(tr("Refresh"));
+  pushButtonRefresh->setToolTip(pushButtonRefresh->text());
   pushButtonExportToImage->setText(tr("Export to Image"));
+  pushButtonExportToImage->setToolTip(pushButtonExportToImage->text());
   pushButtonExportToTXT->setText(tr("Export to TXT"));
+  pushButtonExportToTXT->setToolTip(pushButtonExportToTXT->text());
 }
 
 void DReportViewer::pushButtonExportToPDFClicked()

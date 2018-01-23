@@ -90,6 +90,7 @@ void DQueryLog::getFileInfo()
 {
   QFileInfo fileInfo = QFileInfo(qApp->property("LocalDatabase").toString());
   labelFileSize->setText(tr("File size: %1 Mb. File path: %2.").arg(fileInfo.size() / 1024.0 / 1024.0).arg(fileInfo.path()));
+  labelFileSize->setToolTip(labelFileSize->text());
 }
 
 void DQueryLog::pushButtonRefreshClicked()
@@ -126,9 +127,14 @@ void DQueryLog::retranslateUi()
   setWindowTitle(tr("Query Log"));
   setObjectName(windowTitle());
   dTitleLabel->setText(windowTitle());
+  dTitleLabel->setToolTip(dTitleLabel->text());
   buttonBox->setTitle(tr("Actions"));
+  buttonBox->setToolTip(buttonBox->title());
   pushButtonRefresh->setText(tr("Refresh"));
+  pushButtonRefresh->setToolTip(pushButtonRefresh->text());
   pushButtonClearQueryLog->setText(tr("Clear log"));
+  pushButtonClearQueryLog->setToolTip(pushButtonClearQueryLog->text());
   lineEditFilter->setPlaceholderText(tr("Three characters at least"));
   filterByQuery->setText(tr("Filter by query:"));
+  filterByQuery->setToolTip(filterByQuery->text());
 }

@@ -183,14 +183,18 @@ void ConnectDialog::fillLineEdits(const QString &text)
   //10 - Password
   comboConnectionType->setCurrentIndex(comboConnectionType->findText(params.at(0)));
   lineEditUser->setText(params.at(1));
+  lineEditUser->setToolTip(lineEditUser->text());
   lineEditServer->setText(params.at(2));
+  lineEditServer->setToolTip(lineEditServer->text());
   spinBoxPort->setValue(params.at(3).toUInt());
   lineEditDatabase->setText(params.at(4));
+  lineEditDatabase->setToolTip(lineEditDatabase->text());
   if (storePasswords->isChecked())
     lineEditPassword->setText(StaticFunctions::password(params.at(10)));
   setDBMS();
   count = params.at(5).toInt();
   lineEditCollation->setText(params.at(6));
+  lineEditCollation->setToolTip(lineEditCollation->text());
   useASSLConnection->setCheckState(params.at(7) == "1" ? Qt::Checked : Qt::Unchecked);
   fileSelectorClientKey->setFileName(params.at(8));
   fileSelectorClientCert->setFileName(params.at(9));
@@ -236,6 +240,7 @@ void ConnectDialog::databasesMenuSlot()
 void ConnectDialog::changeDatabaseSlot(QString database)
 {
   lineEditDatabase->setText(database);
+  lineEditDatabase->setToolTip(lineEditDatabase->text());
   serverConnection->changeDatabase(database);
   getValues();
 }
@@ -272,6 +277,7 @@ void ConnectDialog::collatoinsMenuSlot()
 void ConnectDialog::changeCollationSlot(QString collation)
 {
   lineEditCollation->setText(collation);
+  lineEditCollation->setToolTip(lineEditCollation->text());
   serverConnection->setCharsetAndCollation(collation.split("|").at(0), collation.split("|").at(1));
   getValues();
 }

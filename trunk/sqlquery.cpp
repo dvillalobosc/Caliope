@@ -168,6 +168,7 @@ void SQLQuery::retranslateUi()
   setWindowTitle(tr("Query %1").arg(windowCount));
   setObjectName(windowTitle());
   dTitleLabel->setText(windowTitle());
+  dTitleLabel->setToolTip(dTitleLabel->text());
   executeAction->setText(tr("Run"));
   executeAction->setToolTip(tr("Runs a query"));
   exportAction->setText(tr("Export"));
@@ -213,6 +214,7 @@ void SQLQuery::retranslateUi()
   repeatQueryExecutionAction->setText(tr("Repeate execution"));
   repeatQueryExecutionAction->setToolTip(repeatQueryExecutionAction->text());
   wordWrapOnResultAction->setText(tr("Word wrap on result"));
+  wordWrapOnResultAction->setToolTip(wordWrapOnResultAction->text());
   logStatementsAction->setText(tr("Log statements"));
   logStatementsAction->setToolTip(logStatementsAction->text());
   trimColumnsAction->setText(tr("TRIM columns in table"));
