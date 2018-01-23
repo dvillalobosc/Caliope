@@ -105,6 +105,7 @@ void Restore::retranslateUi()
   setWindowTitle(tr("Restore"));
   setObjectName(windowTitle());
   dTitleLabel->setText(windowTitle());
+  dTitleLabel->setToolTip(dTitleLabel->text());
   dMessageLabel->setText(tr("Unfortunately read backup files is a very complex process."
                             " Especially when finding objects names. Therefore we recommend that only"
                             " use backup files created with this application. But restore an entire"
@@ -113,16 +114,24 @@ void Restore::retranslateUi()
   fileGroupBox->setTitle(tr("File information"));
   QLabel *label = qobject_cast<QLabel *>(fileGroupBoxLayout->labelForField(fileLabel));
   label->setText(tr("File:"));
+  label->setToolTip(label->text());
   label = qobject_cast<QLabel *>(fileGroupBoxLayout->labelForField(schemasLabel));
   label->setText(tr("Total schemas:"));
+  label->setToolTip(label->text());
   label = qobject_cast<QLabel *>(fileGroupBoxLayout->labelForField(tablesLabel));
   label->setText(tr("Total tables:"));
+  label->setToolTip(label->text());
   label = qobject_cast<QLabel *>(fileGroupBoxLayout->labelForField(dataLengthLabel));
   label->setText(tr("Total data length:"));
+  label->setToolTip(label->text());
   optionsGroupBox->setTitle(tr("Options"));
+  optionsGroupBox->setToolTip(optionsGroupBox->title());
   ignoreErrorsCheckBox->setText(tr("Ignore errors"));
+  ignoreErrorsCheckBox->setToolTip(ignoreErrorsCheckBox->text());
   restoreEntireFileCheckBox->setText(tr("Restore the entire file"));
+  restoreEntireFileCheckBox->setToolTip(restoreEntireFileCheckBox->text());
   selectionGroupBox->setTitle(tr("Object selection"));
+  selectionGroupBox->setToolTip(selectionGroupBox->title());
 }
 
 void Restore::restoreEntireFileSlot(int state)
@@ -178,7 +187,11 @@ void Restore::getFileInfo(QString file)
       addView(line.mid(line.indexOf("`") + 1, line.indexOf("`", line.indexOf("`") + 1) - line.indexOf("`") -1 ));
   }
   schemasLabel->setText(QString("%1").arg(databaseList.count()));
+  schemasLabel->setToolTip(schemasLabel->text());
   fileLabel->setText(fileSelector->getFileName());
+  fileLabel->setToolTip(fileLabel->text());
   tablesLabel->setText(QString("%1").arg(tableList.count()));
+  tablesLabel->setToolTip(tablesLabel->text());
   dataLengthLabel->setText("~" + StaticFunctions::bytesConvertor(QString("%1").arg(fileInfo.size())));
+  dataLengthLabel->setToolTip(dataLengthLabel->text());
 }

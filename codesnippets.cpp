@@ -61,6 +61,19 @@ QString CodeSnippets::getCodeSnippet(const QString key)
   return settings.value("CodeSnippets/" + key, "").toString();
 }
 
+void CodeSnippets::addSnippet(QString snippet, QString title)
+{
+  QStringList data;
+  QString out(loadCodeSnippets() + "\n\n###" + title + "$$$\n" + snippet);
+  settings.beginGroup("CodeSnippets");
+  settings.group().clear();
+  foreach (QString snippet, out.split("###", QString::SkipEmptyParts)) {
+    data = snippet.split("$$$", QString::SkipEmptyParts);
+    settings.setValue(data.at(0), data.at(1).trimmed());
+  }
+  settings.endGroup();
+}
+
 QString CodeSnippets::loadCodeSnippets()
 {
   QString out;

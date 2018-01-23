@@ -145,6 +145,7 @@ void FindReplace::showEvent(QShowEvent *event)
   if (plainTextEdit->textEditor->textCursor().hasSelection())
     findLineEdit->setText(plainTextEdit->textEditor->textCursor().selection().toPlainText());
   findLineEdit->selectAll();
+  findLineEdit->setToolTip(findLineEdit->text());
 }
 
 void FindReplace::keyPressEvent(QKeyEvent *event)

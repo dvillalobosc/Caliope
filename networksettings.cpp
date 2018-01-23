@@ -68,17 +68,23 @@ void NetworkSettings::retranslateUi()
   checkBoxUseProxy->setText(tr("Use proxy for Internet connections."));
   QLabel *label = qobject_cast<QLabel *>(formLayout->labelForField(serverLineEdit));
   label->setText(tr("Proxy address:"));
+  label->setToolTip(label->text());
   label = qobject_cast<QLabel *>(formLayout->labelForField(spinBoxPort));
   label->setText(tr("Port:"));
+  label->setToolTip(label->text());
   userLineEdit->setPlaceholderText(tr("Leave it blank if is not needed"));
   label = qobject_cast<QLabel *>(formLayout->labelForField(userLineEdit));
   label->setText(tr("Username:"));
+  label->setToolTip(label->text());
   passwordLineEdit->setPlaceholderText(tr("Leave it blank if is not needed"));
   label = qobject_cast<QLabel *>(formLayout->labelForField(userLineEdit));
   label->setText(tr("Username:"));
+  label->setToolTip(label->text());
   label = qobject_cast<QLabel *>(formLayout->labelForField(passwordLineEdit));
   label->setText(tr("Password:"));
+  label->setToolTip(label->text());
   applyProxySettings->setText(tr("Apply changes"));
+  applyProxySettings->setToolTip(applyProxySettings->text());
   dMessageLabel->setText(tr("Settings will be applied when application restarts."));
 }
 

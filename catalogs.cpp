@@ -289,6 +289,7 @@ void Catalogs::setTitle()
   setWindowTitle(tr("Catalogs in %1").arg(serverConnection->getDatabase()));
   setObjectName(windowTitle());
   dTitleLabel->setText(windowTitle());
+  dTitleLabel->setToolTip(dTitleLabel->text());
 }
 
 QString Catalogs::valueToPopulate(QString dataType, unsigned int length)

@@ -42,10 +42,12 @@ CommitDialog::CommitDialog(QString file)
 
   lineEditUser = new QLineEdit;
   lineEditUser->setText(settings.value("Subversion/LastUser", "").toString());
+  lineEditUser->setToolTip(lineEditUser->text());
 
   lineEditPassword = new QLineEdit;
   lineEditPassword->setText(StaticFunctions::password(settings.value("Subversion/LastPassword", "").toString()));
   lineEditPassword->setEchoMode(QLineEdit::Password);
+  lineEditPassword->setToolTip(lineEditPassword->text());
 
   QVBoxLayout *diffVLayout = new QVBoxLayout;
   diffVLayout->addWidget(new BaseDiffFile(file));

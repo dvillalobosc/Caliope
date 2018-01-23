@@ -55,6 +55,7 @@ void ObjectsDiagram::retranslateUi()
   setWindowTitle(tr("Objects Diagram"));
   setObjectName(windowTitle());
   dTitleLabel->setText(windowTitle());
+  dTitleLabel->setToolTip(dTitleLabel->windowTitle());
 }
 
 /************************************************************************************/

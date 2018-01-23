@@ -148,17 +148,28 @@ void TableMaintenance::retranslateUi()
   setWindowTitle(tr("Table Maintenance"));
   setObjectName(windowTitle());
   dTitleLabel->setText(windowTitle());
+  dTitleLabel->setToolTip(dTitleLabel->text());
   groupBoxAction->setTitle(tr("Actions"));
+  groupBoxAction->setToolTip(groupBoxAction->title());
   analyzePushButton->setText(tr("Analyze"));
+  analyzePushButton->setToolTip(analyzePushButton->text());
   checkPushButton->setText(tr("Check"));
+  checkPushButton->setToolTip(checkPushButton->text());
   checksumPushButton->setText(tr("Checksum"));
+  checksumPushButton->setToolTip(checksumPushButton->text());
   optimizePushButton->setText(tr("Optimize"));
+  optimizePushButton->setToolTip(optimizePushButton->text());
   repairPushButton->setText(tr("Repair"));
+  repairPushButton->setToolTip(repairPushButton->text());
   tablesListWidget->setWindowTitle(tr("Databases"));
+  tablesListWidget->setToolTip(tablesListWidget->windowTitle());
   tablesListWidget->setHeaderLabel(tablesListWidget->windowTitle());
   clearSelectionPushButton->setText(tr("Clear selection"));
+  clearSelectionPushButton->setToolTip(clearSelectionPushButton->text());
   selectAllTablesPushButton->setText(tr("Select all"));
+  selectAllTablesPushButton->setToolTip(selectAllTablesPushButton->text());
   selectAllLocalTablesPushButton->setText(tr("Select local tables"));
+  selectAllLocalTablesPushButton->setToolTip(selectAllLocalTablesPushButton->text());
 }
 
 QString TableMaintenance::tableList()

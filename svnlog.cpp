@@ -50,4 +50,5 @@ void SVNLog::retranslateUi()
   setWindowTitle(tr("Log file") + ": " + svnFile->completeBaseName() + "." + svnFile->completeSuffix());
   setObjectName(windowTitle());
   dTitleLabel->setText(windowTitle());
+  dTitleLabel->setToolTip(dTitleLabel->text());
 }

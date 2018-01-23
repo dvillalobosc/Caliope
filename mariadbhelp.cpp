@@ -81,6 +81,7 @@ void MariaDBHelp::retranslateUi()
   setWindowTitle(tr("MariaDB Help"));
   setObjectName(windowTitle());
   dTitleLabel->setText(windowTitle());
+  dTitleLabel->setToolTip(dTitleLabel->text());
   helpTreeWidget->setHeaderLabel(tr("Topics"));
   lineEditFilter->setPlaceholderText(tr("Enter a Keyword"));
 }

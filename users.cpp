@@ -109,14 +109,19 @@ void Users::retranslateUi()
   setWindowTitle(tr("User Administration"));
   setObjectName(windowTitle());
   dTitleLabel->setText(windowTitle());
+  dTitleLabel->setToolTip(dTitleLabel->text());
   loginGroupBox->setTitle(tr("Login informaction"));
+  loginGroupBox->setToolTip(loginGroupBox->title());
   QLabel *label = qobject_cast<QLabel *>(loginLayput->labelForField(usernameLineEdit));
   label->setText(tr("Username:"));
+  label->setToolTip(label->text());
   label = qobject_cast<QLabel *>(loginLayput->labelForField(passwordLineEdit));
   label->setText(tr("Password:"));
+  label->setToolTip(label->text());
 }
 
 void Users::userInfo(QString user)
 {
   usernameLineEdit->setText(user);
+  usernameLineEdit->setToolTip(usernameLineEdit->text());
 }

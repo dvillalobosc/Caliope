@@ -114,11 +114,13 @@ void FileSelector::selectFileSlot()
     lineEditFile->setText(QFileDialog::getOpenFileName(this, tr("Open a file"), "", title));
   if (settings.value("General/OpenLastFile", false).toBool())
     settings.setValue(setting, lineEditFile->text());
+  lineEditFile->setToolTip(lineEditFile->text());
 }
 
 void FileSelector::setFileName(QString text)
 {
   lineEditFile->setText(text);
+  lineEditFile->setToolTip(lineEditFile->text());
 }
 
 QString FileSelector::fileText()
@@ -135,4 +137,5 @@ QString FileSelector::fileText()
 void FileSelector::setText(QString name)
 {
   fileLabel->setText(name);
+  fileLabel->setToolTip(fileLabel->text());
 }

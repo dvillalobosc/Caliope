@@ -104,6 +104,7 @@ void DTableView::setModelData(QList<QStringList> *modelData, bool readOnly, unsi
       if (headersList->at(column).at(3) == "ToBytes") {
         item->setText(StaticFunctions::bytesConvertor(item->text()));
         item->setTextAlignment(Qt::AlignRight | Qt::AlignVCenter);
+        item->setToolTip(item->text());
       }
       itemModel->setItem(row, column, item);
       if (!this->readOnly)

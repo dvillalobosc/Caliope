@@ -88,6 +88,7 @@ void DatabaseComparision::retranslateUi()
   setWindowTitle(tr("Database Comparision"));
   setObjectName(windowTitle());
   dTitleLabel->setText(windowTitle());
+  dTitleLabel->setToolTip(dTitleLabel->text());
   buttonGroup->setTitle(tr("Actions"));
   pushButtonPrimaryCompare->setText(tr("Primary compare"));
   pushButtonPrimaryCompare->setToolTip(pushButtonPrimaryCompare->text());

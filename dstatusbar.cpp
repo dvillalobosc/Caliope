@@ -71,6 +71,7 @@ void DStatusBar::setProgress(const int progress)
 void DStatusBar::setPrositionViewer(const int x, const int y)
 {
   labelPosition->setText(QString(" %1 : %2 ").arg(x + 1).arg(y + 1));
+  labelPosition->setToolTip(labelPosition->text());
 }
 
 void DStatusBar::resetStatusBar()
