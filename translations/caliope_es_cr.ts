@@ -2005,14 +2005,12 @@ Total progess: %5.</source>
         <translation>Consultas lentas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1260"/>
         <source>All the replication slaves have been started.</source>
-        <translation>Todos los esclavos de replicación han sido iniciados.</translation>
+        <translation type="vanished">Todos los esclavos de replicación han sido iniciados.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1266"/>
         <source>All the replication slaves hava been stoped.</source>
-        <translation>Todos los esclavos de replicación han sido detenidos.</translation>
+        <translation type="vanished">Todos los esclavos de replicación han sido detenidos.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1293"/>
@@ -2297,6 +2295,16 @@ Total progess: %5.</source>
         <location filename="../mainwindow.cpp" line="1735"/>
         <source>Calíope source documentation</source>
         <translation>Documentación del código fuente de Calíope</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1260"/>
+        <source>All the replication slaves have been stoped.</source>
+        <translation>Todos los esclavos de replicación han sido detenidos.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1266"/>
+        <source>All the replication slaves hava been started.</source>
+        <translation>Todos los esclavos de replicación han sido iniciados.</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1338"/>
