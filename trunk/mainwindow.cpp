@@ -1257,13 +1257,13 @@ void MainWindow::tellUsYourCommentsActionTriggered()
 void MainWindow::stopAllReplicationSlavesActionTriggered()
 {
   serverConnection->replication()->stopAllSlaves();
-  statusBarMessage(tr("All the replication slaves have been started."));
+  statusBarMessage(tr("All the replication slaves have been stoped."));
 }
 
 void MainWindow::startAllReplicationSlavesActionTriggered()
 {
   serverConnection->replication()->startAllSlaves();
-  statusBarMessage(tr("All the replication slaves hava been stoped."));
+  statusBarMessage(tr("All the replication slaves hava been started."));
 }
 
 void MainWindow::reconnectionPerformedSlot()
