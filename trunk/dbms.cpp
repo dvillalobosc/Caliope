@@ -551,7 +551,7 @@ int DBMS::query(QString queryToExecute)
   return valueToReturn;
 }
 
-QString DBMS::outputAsTable(QString queryToExecute, bool printExtraInfo, bool saveToFile, bool replaceReturns, bool splitQuery, bool emitNotificacion, QString delimiter)
+QString DBMS::outputAsTable(QString queryToExecute, bool printExtraInfo, bool saveToFile, bool replaceReturns, bool splitQuery, bool emitNotificacion, QString delimiter, bool alternateOutput)
 {
   int row = 0;
   int row2 = 0;
@@ -581,35 +581,50 @@ QString DBMS::outputAsTable(QString queryToExecute, bool printExtraInfo, bool sa
         output += "--------------\n" + statement + "\n--------------\n";
 
       //Prints the headres and theirs borders
-      output += "+";
+      if (!alternateOutput) {
+        output += "+";
+        for (row = 0; row < rows->at(0).count(); row++)
+          output +=  QString('-').repeated(maxWidthList.at(row) + 2) + "+";
+        output += "\n|";
+      } else {
+        output += "\n";
+      }
+      for (row = 0; row < rows->at(0).count(); row++)
+        output +=  " " + replaceReturnsAndTabs(rows->at(0).at(row)).leftJustified(maxWidthList.at(row), ' ') + ((((row + 1) == rows->at(0).count()) && alternateOutput) ? "" : " |");
+      output += "\n";
+      if (!alternateOutput)
+        output += "+";
       for (row = 0; row < rows->at(0).count(); row++)
         output +=  QString('-').repeated(maxWidthList.at(row) + 2) + "+";
-      output += "\n|";
-      for (row = 0; row < rows->at(0).count(); row++)
-        output +=  " " + replaceReturnsAndTabs(rows->at(0).at(row)).leftJustified(maxWidthList.at(row), ' ') + " |";
-      output += "\n+";
-      for (row = 0; row < rows->at(0).count(); row++)
-        output +=  QString('-').repeated(maxWidthList.at(row) + 2) + "+";
+      if (alternateOutput)
+        output = output.left(output.size() - 2);
 
       //Print the data
       if (replaceReturns) {
         for (row = 1; row < rows->count() - 1; row++) {
-          output += "\n|";
+          output += "\n";
+          if (!alternateOutput)
+            output += "|";
           for (row2 = 0; row2 < rows->at(row).count(); row2++)
-            output +=  " " + replaceReturnsAndTabs(rows->at(row).at(row2)).leftJustified(maxWidthList.at(row2), ' ') + " |";
+            output +=  " " + replaceReturnsAndTabs(rows->at(row).at(row2)).leftJustified(maxWidthList.at(row2), ' ') + ((((row2 + 1) == rows->at(0).count()) && alternateOutput) ? "" : " |");
         }
       } else {
         for (row = 1; row < rows->count() - 1; row++) {
-          output += "\n|";
+          output += "\n";
+          if (!alternateOutput)
+            output += "|";
           for (row2 = 0; row2 < rows->at(row).count(); row2++)
-            output +=  " " + QString::fromUtf8(rows->at(row).at(row2).toUtf8()).leftJustified(maxWidthList.at(row2), ' ') + " |";
+            output +=  " " + QString::fromUtf8(rows->at(row).at(row2).toUtf8()).leftJustified(maxWidthList.at(row2), ' ') + ((((row2 + 1) == rows->at(0).count()) && alternateOutput) ? "" : " |");
         }
       }
 
-      //Print the botton border
-      output += "\n+";
-      for (row = 0; row < rows->at(0).count(); row++)
-        output +=  QString('-').repeated(maxWidthList.at(row) + 2) + "+";
+      output += "\n";
+      if (!alternateOutput) {
+        //Print the botton border
+        output += "+";
+        for (row = 0; row < rows->at(0).count(); row++)
+          output +=  QString('-').repeated(maxWidthList.at(row) + 2) + "+";
+      }
 
       output += "\n" +  rows->last().at(0) + "\n";
     }
@@ -724,7 +739,7 @@ QString DBMS::outputAsXML(QString queryToExecute, bool saveToFile, bool replaceR
           output += "  </row>\n";
         }
       }
-      output += "  <row>\n    <field name=\"" + rows->last().at(0) + "\">" + rows->last().at(1) + "</field>\n  </row>\n";
+      output += "  <row>\n    <field name=\"" + rows->last().at(0) + "\">" + rows->last().at(0) + "</field>\n  </row>\n";
       output += "</resultset>\n";
     }
   }

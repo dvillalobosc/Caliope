@@ -357,7 +357,7 @@ public:
   QStringList getEngines();
   QStringList getCollations();
   QList<QStringList>* getCharacterSets();
-  QString outputAsTable(QString queryToExecute, bool printExtraInfo = false, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true, bool emitNotificacion = true, QString delimiter = ";");
+  QString outputAsTable(QString queryToExecute, bool printExtraInfo = false, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true, bool emitNotificacion = true, QString delimiter = ";", bool alternateOutput = false);
   QString outputAsV(QString queryToExecute, bool printRowsInSet = false, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true, bool removeHeaders = false, QString delimiter = ";");
   QString outputAsVV(QString queryToExecute, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true, QString delimiter = ";");
   QString outputAsHTML(QString queryToExecute, bool saveToFile = false, bool replaceReturns = true, bool splitQuery = true, QString delimiter = ";");

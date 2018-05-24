@@ -25,7 +25,6 @@
 
 class BaseTextEditor;
 class QHBoxLayout;
-class QRadioButton;
 class QToolBar;
 class Statements;
 class TextEditor;
@@ -64,20 +63,11 @@ private:
   void createActions();
   QString statement();
 
-  QRadioButton *radioT;
-  QRadioButton *radioX;
-  QRadioButton *radioV;
-  QRadioButton *radioVV;
-  QRadioButton *radioVVV;
   QHBoxLayout *toolbarHorizontalLayout;
   QWidget *widToolbar;
-  QRadioButton *radioG;
   QAction *executeAction;
   QAction *exportAction;
   QAction *viewHistoryAction;
-  QRadioButton *radioHTML;
-  QRadioButton *radioTXT;
-  QRadioButton *radioXML;
   Statements *statementsDialog;
   QSettings settings;
   QAction *showNewLinesAction;
@@ -111,7 +101,6 @@ private:
   QAction *explainUpdateAction;
   QAction *repeatQueryExecutionAction;
   unsigned int repeatQueryExecutionTime;
-  QRadioButton *radioPDF;
   QAction *wordWrapOnResultAction;
   QAction *logStatementsAction;
   bool logStatements;
@@ -124,6 +113,7 @@ private:
   QAction *rollbackTransacctionAction;
   QAction *exportResultDataForInsertAction;
   QComboBox *comboDelimiter;
+  QComboBox *comboOutput;
 
 signals:
   void enableDisableAction();

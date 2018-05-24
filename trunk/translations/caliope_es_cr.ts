@@ -1021,24 +1021,24 @@
     </message>
     <message>
         <location filename="../dbms.cpp" line="523"/>
-        <location filename="../dbms.cpp" line="1534"/>
+        <location filename="../dbms.cpp" line="1538"/>
         <source>No error code provided.</source>
         <translation>No hay código de error proporcionado.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="627"/>
+        <location filename="../dbms.cpp" line="631"/>
         <source>Select a file</source>
         <translation>Seleccione un archivo</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="636"/>
+        <location filename="../dbms.cpp" line="640"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>No es posible escribir en el archivo %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="640"/>
+        <location filename="../dbms.cpp" line="644"/>
         <source>Data exported to %1</source>
         <translation>Datos exportados a %1</translation>
     </message>
@@ -1054,7 +1054,7 @@
     </message>
     <message>
         <location filename="../dbms.cpp" line="55"/>
-        <location filename="../dbms.cpp" line="1133"/>
+        <location filename="../dbms.cpp" line="1137"/>
         <source>Query</source>
         <translation>Consulta</translation>
     </message>
@@ -1127,32 +1127,32 @@ Total progess: %5.</source>
         <translation>Filas en el resultado: %1. Tiempo transcurrido: %2.</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="842"/>
+        <location filename="../dbms.cpp" line="846"/>
         <source>Could not execute statement. </source>
         <translation>No se puede ejecutar la sentencia. </translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1114"/>
+        <location filename="../dbms.cpp" line="1118"/>
         <source>Application started</source>
         <translation>Aplicación iniciada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1129"/>
+        <location filename="../dbms.cpp" line="1133"/>
         <source>Line Number</source>
         <translation>Número de línea</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1130"/>
+        <location filename="../dbms.cpp" line="1134"/>
         <source>Session Id</source>
         <translation>Id de Sesión</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1131"/>
+        <location filename="../dbms.cpp" line="1135"/>
         <source>Date</source>
         <translation>Fecha</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1132"/>
+        <location filename="../dbms.cpp" line="1136"/>
         <source>Connection</source>
         <translation>Conexión</translation>
     </message>
@@ -1165,7 +1165,7 @@ Total progess: %5.</source>
         <translation type="obsolete">Esta acción reiniciará su conexión a base de datos</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1459"/>
+        <location filename="../dbms.cpp" line="1463"/>
         <source>Could not change character set to: %1</source>
         <translation>No se puede cambiar el juego de caracteres a: %1</translation>
     </message>
@@ -1411,42 +1411,42 @@ Total progess: %5.</source>
 <context>
     <name>Database</name>
     <message>
-        <location filename="../dbms.cpp" line="1645"/>
+        <location filename="../dbms.cpp" line="1649"/>
         <source>Database: %1</source>
         <translation>Base de Datos: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1646"/>
+        <location filename="../dbms.cpp" line="1650"/>
         <source>Total of tables: %1</source>
         <translation>Total de tablas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1647"/>
+        <location filename="../dbms.cpp" line="1651"/>
         <source>Total of views: %1</source>
         <translation>Total de vistas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1648"/>
+        <location filename="../dbms.cpp" line="1652"/>
         <source>Total of triggers: %1</source>
         <translation>Total de disparadores: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1649"/>
+        <location filename="../dbms.cpp" line="1653"/>
         <source>Total of rutines: %1</source>
         <translation>Total de rutinas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1650"/>
+        <location filename="../dbms.cpp" line="1654"/>
         <source>Total of events: %1</source>
         <translation>Total de eventos: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1651"/>
+        <location filename="../dbms.cpp" line="1655"/>
         <source>Tables size: %1</source>
         <translation>Tamaño total de las tablas: %1</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="1652"/>
+        <location filename="../dbms.cpp" line="1656"/>
         <source>Idexes: %1</source>
         <translation>Tamaño total de los índices: %1</translation>
     </message>
@@ -3552,7 +3552,7 @@ Total progess: %5.</source>
 <context>
     <name>SQLQuery</name>
     <message>
-        <location filename="../sqlquery.cpp" line="168"/>
+        <location filename="../sqlquery.cpp" line="170"/>
         <source>Query %1</source>
         <translation>Consulta: %1</translation>
     </message>
@@ -3561,286 +3561,291 @@ Total progess: %5.</source>
         <translation type="obsolete">Barra de herramientas de consulta</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="172"/>
+        <location filename="../sqlquery.cpp" line="174"/>
         <source>Run</source>
         <translation>Correr</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="173"/>
+        <location filename="../sqlquery.cpp" line="175"/>
         <source>Runs a query</source>
         <translation>Correr como consulta</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="174"/>
+        <location filename="../sqlquery.cpp" line="176"/>
         <source>Export</source>
         <translation>Exportar</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="175"/>
+        <location filename="../sqlquery.cpp" line="177"/>
         <source>Export query output</source>
         <translation>Exportar salida de la consulta</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="176"/>
+        <location filename="../sqlquery.cpp" line="178"/>
         <source>History</source>
         <translation>Historial</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="178"/>
+        <location filename="../sqlquery.cpp" line="180"/>
         <source>Show New Lines</source>
         <translation>Mostrar Nuevas Líneas</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="180"/>
+        <location filename="../sqlquery.cpp" line="182"/>
         <source>Start SQL Player</source>
         <translation>Iniciar el SQL Player</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="182"/>
+        <location filename="../sqlquery.cpp" line="184"/>
         <source>Split query</source>
         <translation>Dividir consulta</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="184"/>
+        <location filename="../sqlquery.cpp" line="186"/>
         <source>Actions</source>
         <translation>Acciones</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="186"/>
+        <location filename="../sqlquery.cpp" line="188"/>
         <source>Start/Pause execution</source>
         <translation>Iniciar/Pausar ejecución</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="198"/>
+        <location filename="../sqlquery.cpp" line="200"/>
         <source>Concatenate query output</source>
         <translation>Concatenar la salida de la consulta</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="200"/>
+        <location filename="../sqlquery.cpp" line="202"/>
         <source>Export table data for INSERT</source>
         <translation>Exportar los datos de la tabla para INSERT</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="202"/>
+        <location filename="../sqlquery.cpp" line="204"/>
         <source>Export result data for INSERT</source>
         <translation>Exportar datos resultantes para INSERT</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="204"/>
+        <location filename="../sqlquery.cpp" line="206"/>
         <source>Explain SELECT</source>
         <translation>Explicar SELECT</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="206"/>
+        <location filename="../sqlquery.cpp" line="208"/>
         <source>Explain INSERT</source>
         <translation>Explicar INSERT</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="208"/>
+        <location filename="../sqlquery.cpp" line="210"/>
         <source>Safe statements</source>
         <translation>Consultas seguras</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="210"/>
+        <location filename="../sqlquery.cpp" line="212"/>
         <source>Show statements with error</source>
         <translation>Mostrar sentencias con error</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="212"/>
+        <location filename="../sqlquery.cpp" line="214"/>
         <source>Explain UPDATE</source>
         <translation>Explicar UPDATE</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="214"/>
+        <location filename="../sqlquery.cpp" line="216"/>
         <source>Repeate execution</source>
         <translation>Repetir ejecución</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="216"/>
+        <location filename="../sqlquery.cpp" line="218"/>
         <source>Word wrap on result</source>
         <translation>Ajuste de línea en el resultado</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="218"/>
+        <location filename="../sqlquery.cpp" line="220"/>
         <source>Log statements</source>
         <translation>Loguear sentencias</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="220"/>
+        <location filename="../sqlquery.cpp" line="222"/>
         <source>TRIM columns in table</source>
         <translation>Recortar las columnas en la tabla</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="222"/>
+        <location filename="../sqlquery.cpp" line="224"/>
         <source>Check tables status</source>
         <translation>Revisar el estado de las tablas</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="224"/>
+        <location filename="../sqlquery.cpp" line="226"/>
         <source>Explain SELECT with Alias</source>
         <translation>Explicar SELECT con Alias</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="227"/>
+        <location filename="../sqlquery.cpp" line="229"/>
         <source>Output as table.</source>
         <translation>Salida como tabla.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="228"/>
+        <location filename="../sqlquery.cpp" line="230"/>
+        <source>Alternate output as table.</source>
+        <translation>Salida alternativa como tabla.</translation>
+    </message>
+    <message>
+        <location filename="../sqlquery.cpp" line="231"/>
         <source>Same output as -v but with no headers.</source>
         <translation>Misma salida que -v pero sin encabezados.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="229"/>
+        <location filename="../sqlquery.cpp" line="232"/>
         <source>Same output as -vv but with no query.</source>
         <translation>Misma salida que -vv pero sin la consulta.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="232"/>
+        <location filename="../sqlquery.cpp" line="235"/>
         <source>Output as HTML.</source>
         <translation>Salida enHTML. </translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="233"/>
+        <location filename="../sqlquery.cpp" line="236"/>
         <source>Output as text.</source>
         <translation>Salida en texto.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="234"/>
+        <location filename="../sqlquery.cpp" line="237"/>
         <source>Output as XML.</source>
         <translation>Salida en XML.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="235"/>
+        <location filename="../sqlquery.cpp" line="238"/>
         <source>Output in PDF.</source>
         <translation>Salida en PDF.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="245"/>
+        <location filename="../sqlquery.cpp" line="248"/>
         <source>Statement Delimiter</source>
         <translation>Delimitador de sentencias</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="504"/>
+        <location filename="../sqlquery.cpp" line="507"/>
         <source>Script exectution</source>
         <translation>Ejecución de script</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="505"/>
+        <location filename="../sqlquery.cpp" line="508"/>
         <source>Do you really want to execute the hole script?</source>
         <translation>¿Realmente desea ejecutar el script completo?</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="766"/>
+        <location filename="../sqlquery.cpp" line="774"/>
         <source>Incorrect use of the EXPORT RESULT FOR INSERT Option. Example: EXPORT RESULT SELECT * FROM `PartitionedTale` PARTITION (`Partition1`), it only works for the current database and on SELECT *.</source>
         <translation>Uso incorrecto de la Opción EXPORT RESULT FOR INSERT. Ejemplo EXPORT RESULT SELECT * FROM `PartitionedTale` PARTITION (`Partition1`), sólo trabaja en la base de datos actual y con SELECT *.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="973"/>
+        <location filename="../sqlquery.cpp" line="981"/>
         <source>Commit transacction</source>
         <translation>Guardar transacción</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="973"/>
+        <location filename="../sqlquery.cpp" line="981"/>
         <source>Do you really want to commint changes?</source>
         <translation>¿Realmente desea aplicar los cambios?</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="986"/>
+        <location filename="../sqlquery.cpp" line="994"/>
         <source>Do you really want to rollback changes?</source>
         <translation>¿Realmente desea revertir los cambios?</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="986"/>
+        <location filename="../sqlquery.cpp" line="994"/>
         <source>Rollback transacction</source>
         <translation>Revertir transacción</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="230"/>
+        <location filename="../sqlquery.cpp" line="233"/>
         <source>Output TAB separated with the query.</source>
         <translation>Salida separada con TAB con la consulta.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="231"/>
+        <location filename="../sqlquery.cpp" line="234"/>
         <source>Same output as -t but with the query.</source>
         <translation>Misma salida que -t pero con la consulta.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="236"/>
+        <location filename="../sqlquery.cpp" line="239"/>
         <source>Outputs columns as rows.</source>
         <translation>Salida en columnas como filas.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="238"/>
+        <location filename="../sqlquery.cpp" line="241"/>
         <source>Begin transaction</source>
         <translation>Iniciar transacción</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="240"/>
+        <location filename="../sqlquery.cpp" line="243"/>
         <source>Rollback transaction</source>
         <translation>Revertir transacción</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="242"/>
+        <location filename="../sqlquery.cpp" line="245"/>
         <source>Commit transaction</source>
         <translation>Guardar transacción</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="513"/>
+        <location filename="../sqlquery.cpp" line="516"/>
         <source>Could not execute statement on safe mode.</source>
         <translation>No es posible ejecutar esta consulta en modo seguro.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="514"/>
+        <location filename="../sqlquery.cpp" line="517"/>
         <source>Safe mode</source>
         <translation>Modo seguro</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="575"/>
+        <location filename="../sqlquery.cpp" line="583"/>
         <source>Save to Pdf</source>
         <translation>Guardar en Pdf</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="575"/>
+        <location filename="../sqlquery.cpp" line="583"/>
         <source>Pdf &amp; Ps files (*.pdf *.ps)</source>
         <translation>Archivos Pdf &amp; Ps (*.pdf *.ps)</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="581"/>
+        <location filename="../sqlquery.cpp" line="589"/>
         <source>File saved at: %1</source>
         <translation>Archivo guardado en: %1</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="702"/>
-        <location filename="../sqlquery.cpp" line="755"/>
+        <location filename="../sqlquery.cpp" line="710"/>
+        <location filename="../sqlquery.cpp" line="763"/>
         <source>Select a file</source>
         <translation>Seleccione un archivo</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="705"/>
-        <location filename="../sqlquery.cpp" line="758"/>
+        <location filename="../sqlquery.cpp" line="713"/>
+        <location filename="../sqlquery.cpp" line="766"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>No es posible escribir en el archivo %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="713"/>
+        <location filename="../sqlquery.cpp" line="721"/>
         <source>Incorrect use of the EXPORT DATA FOR INSERT Option. Example: EXPORT DATA FOR INSERT `columns_pri`, it only works for the current database.</source>
         <translation>Uso incorrecto de la Opción Exportar los datos de la tabla para INSERT. Ejemplo: EXPORT DATA FOR INSERT `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="619"/>
+        <location filename="../sqlquery.cpp" line="627"/>
         <source>Incorrect use of the EXPLAIN SELECT Option. Example: SELECT * FROM `columns_pri`, it only works for the current database, the asterisk must be selected.</source>
         <translation>Uso incorrecto de la Opción Explicar SELECT. Ejemplo: SELECT * FROM `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="796"/>
+        <location filename="../sqlquery.cpp" line="804"/>
         <source>Incorrect use of the EXPLAIN INSERT Option. Example: INSERT INTO `columns_pri`, it only works for the current database.</source>
         <translation>Uso incorrecto de la Opción Explicar INSERT. Ejemplo: INSERT INTO `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="924"/>
+        <location filename="../sqlquery.cpp" line="932"/>
         <source>Incorrect use of the TRIM columns Option. Example: TRIM COLUMNS IN `columns_pri`, it only works for the current database.</source>
         <translation>Uso incorrecto de la Opción Recortar las columnas. Ejemplo: TRIM COLUMNS IN `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
@@ -3849,30 +3854,30 @@ Total progess: %5.</source>
         <translation type="obsolete">Mal uso de la opción: Exportar los datos de la tabla para INSERT.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="809"/>
+        <location filename="../sqlquery.cpp" line="817"/>
         <source>seconds</source>
         <translation>segundos</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="813"/>
-        <location filename="../sqlquery.cpp" line="818"/>
+        <location filename="../sqlquery.cpp" line="821"/>
+        <location filename="../sqlquery.cpp" line="826"/>
         <source>minutes</source>
         <translation>minutos</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="820"/>
+        <location filename="../sqlquery.cpp" line="828"/>
         <source>Elapsed: %1 %2. Remaining: %3 %4.
 Total of queries: %5, remaining: %6.
 Queries per second: %7.</source>
         <translation>Transcurrido: %1 %2. Restante: %3 %4.\nTotal de sentencias: %5, restantes: %6.\nConsultas por segundo: %7.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="876"/>
+        <location filename="../sqlquery.cpp" line="884"/>
         <source>Incorrect use of the EXPLAIN UPDATE Option. Example: UPDATE `columns_pri`, it only works for the current database.</source>
         <translation>Uso incorrecto de la Opción Explicar UPDATE. Ejemplo: UPDATE `columns_pri`, solo funciona para la base de datos actual.</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="885"/>
+        <location filename="../sqlquery.cpp" line="893"/>
         <source>Repeat time in seconds</source>
         <translation>Tiempo de repetición en segundos</translation>
     </message>
@@ -3890,27 +3895,27 @@ Total of queries: %5, remaining: %6.</source>
         <translation type="obsolete">Ejecutar consulta</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="188"/>
+        <location filename="../sqlquery.cpp" line="190"/>
         <source>Stop execution</source>
         <translation>Detener ejecución</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="190"/>
+        <location filename="../sqlquery.cpp" line="192"/>
         <source>Run previous query</source>
         <translation>Ejecutar consulta previa</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="192"/>
+        <location filename="../sqlquery.cpp" line="194"/>
         <source>Run next query</source>
         <translation>Ejecutar próxima consulta</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="194"/>
+        <location filename="../sqlquery.cpp" line="196"/>
         <source>Run first query</source>
         <translation>Ejecutar la primera consulta</translation>
     </message>
     <message>
-        <location filename="../sqlquery.cpp" line="196"/>
+        <location filename="../sqlquery.cpp" line="198"/>
         <source>Run last query</source>
         <translation>Ejecutar la última consulta</translation>
     </message>
@@ -5858,17 +5863,17 @@ Total of queries: %5, remaining: %6.</source>
 <context>
     <name>Transaction</name>
     <message>
-        <location filename="../dbms.cpp" line="2238"/>
+        <location filename="../dbms.cpp" line="2242"/>
         <source>Transaction started</source>
         <translation>Transacción iniciada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="2253"/>
+        <location filename="../dbms.cpp" line="2257"/>
         <source>Transaction commited</source>
         <translation>Transacción guardada</translation>
     </message>
     <message>
-        <location filename="../dbms.cpp" line="2268"/>
+        <location filename="../dbms.cpp" line="2272"/>
         <source>Transaction rollbacked</source>
         <translation>Transacción revertida</translation>
     </message>

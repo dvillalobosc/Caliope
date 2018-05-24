@@ -20,7 +20,6 @@
 
 #include <QVBoxLayout>
 #include <QToolBar>
-#include <QRadioButton>
 #include <QAction>
 #include <QSplitter>
 #include <QTextDocumentFragment>
@@ -64,18 +63,8 @@ SQLQuery::SQLQuery(Projects *project, DBMS *serverConnection, unsigned int windo
   elapsedSeconds = 0;
   repeatQueryExecutionTime = 0;
   createActions();
-  radioT = new QRadioButton("-t");
-  radioT->setChecked(true);
-  radioX = new QRadioButton("-X");
-  radioV = new QRadioButton("-v");
-  radioVV = new QRadioButton("-vv");
-  radioVVV = new QRadioButton("-vvv");
-  radioHTML = new QRadioButton("HTML");
-  radioTXT = new QRadioButton("TXT");
-  radioXML = new QRadioButton("XML");
-  radioPDF = new QRadioButton("PDF");
-  radioG = new QRadioButton("G");
   queryToolBar = new QToolBar;
+  comboOutput = new QComboBox;
   comboDelimiter = new QComboBox;
   comboDelimiter->addItem(";");
   comboDelimiter->addItem("|");
@@ -90,16 +79,8 @@ SQLQuery::SQLQuery(Projects *project, DBMS *serverConnection, unsigned int windo
   queryToolBar->addAction(concatenateOutputAction);
   queryToolBar->addAction(showStatementsErrorAction);
   queryToolBar->addSeparator();
-  queryToolBar->addWidget(radioPDF);
-  queryToolBar->addWidget(radioHTML);
-  queryToolBar->addWidget(radioTXT);
-  queryToolBar->addWidget(radioXML);
-  queryToolBar->addWidget(radioG);
-  queryToolBar->addWidget(radioX);
-  queryToolBar->addWidget(radioV);
-  queryToolBar->addWidget(radioVV);
-  queryToolBar->addWidget(radioVVV);
-  queryToolBar->addWidget(radioT);
+  queryToolBar->addWidget(comboOutput);
+  queryToolBar->addSeparator();
   queryToolBar->addAction(showNewLinesAction);
   queryToolBar->addAction(splitAction);
   queryToolBar->addSeparator();
@@ -146,7 +127,6 @@ SQLQuery::SQLQuery(Projects *project, DBMS *serverConnection, unsigned int windo
   widMain->setLayout(mainVLayout);
   retranslateUi();
   setWidget(widMain);
-  radioVVV->setChecked(true);
   scriptEditor->setFocus();
   scriptEditor->setWindowFlags(Qt::FramelessWindowHint);
 
@@ -224,16 +204,17 @@ void SQLQuery::retranslateUi()
   explainSelectActionWithAliasAction->setText(tr("Explain SELECT with Alias"));
   explainSelectActionWithAliasAction->setToolTip(explainSelectActionWithAliasAction->text());
 
-  radioT->setToolTip(tr("Output as table."));
-  radioX->setToolTip(tr("Same output as -v but with no headers."));
-  radioV->setToolTip(tr("Same output as -vv but with no query."));
-  radioVV->setToolTip(tr("Output TAB separated with the query."));
-  radioVVV->setToolTip(tr("Same output as -t but with the query."));
-  radioHTML->setToolTip(tr("Output as HTML."));
-  radioTXT->setToolTip(tr("Output as text."));
-  radioXML->setToolTip(tr("Output as XML."));
-  radioPDF->setToolTip(tr("Output in PDF."));
-  radioG->setToolTip(tr("Outputs columns as rows."));
+//  radioT->setToolTip(tr("Output as table."));
+//  radioT2->setToolTip(tr("Alternate output as table."));
+//  radioX->setToolTip(tr("Same output as -v but with no headers."));
+//  radioV->setToolTip(tr("Same output as -vv but with no query."));
+//  radioVV->setToolTip(tr("Output TAB separated with the query."));
+//  radioVVV->setToolTip(tr("Same output as -t but with the query."));
+//  radioHTML->setToolTip(tr("Output as HTML."));
+//  radioTXT->setToolTip(tr("Output as text."));
+//  radioXML->setToolTip(tr("Output as XML."));
+//  radioPDF->setToolTip(tr("Output in PDF."));
+//  radioG->setToolTip(tr("Outputs columns as rows."));
 
   beginTransacctionAction->setText(tr("Begin transaction"));
   beginTransacctionAction->setToolTip(beginTransacctionAction->text());
@@ -242,7 +223,21 @@ void SQLQuery::retranslateUi()
   commitTransacctionAction->setText(tr("Commit transaction"));
   commitTransacctionAction->setToolTip(commitTransacctionAction->text());
 
-  comboDelimiter->setToolTip(tr("Statement Delimiter"));
+  comboDelimiter->setToolTip(tr("Statement delimiter"));
+
+  comboOutput->setToolTip(tr("Output type"));
+  comboOutput->clear();
+  comboOutput->addItem(tr("-t (Table)"), "-t");
+  comboOutput->addItem("-A (Alternative)", "-A");
+  comboOutput->addItem("-x (Spreadsheet)", "-x");
+  comboOutput->addItem("-v (Verbose 1)", "-v");
+  comboOutput->addItem("-vv (Verbose 2)", "-vv");
+  comboOutput->addItem("-vvv (Verbose 3)", "-vvv");
+  comboOutput->addItem("-HTML", "HTML");
+  comboOutput->addItem("-TXT (Text)", "-TXT");
+  comboOutput->addItem("-XML", "-XML");
+  comboOutput->addItem("-PDF", "-PDF");
+  comboOutput->addItem("-G (Columnar)", "-G");
 
   scriptEditor->retranslateUi();
   resultEditor->retranslateUi();
@@ -523,52 +518,57 @@ void SQLQuery::executeStatement(QString statement)
       settings.setValue("SQLQuery/LastQuery-" + qApp->property("ConnectionName").toString() + windowTitle(), scriptEditor->textEditor->toPlainText().trimmed());
     if (!concatenateOutputAction->isChecked())
       resultEditor->clear();
-    if (radioT->isChecked())
+    if (comboOutput->currentData() == "-t")
       resultEditor->setPlainText(serverConnection->outputAsTable(statement, false, exportAction->isChecked()
                                                                  , showNewLinesAction->isChecked(), splitAction->isChecked()
                                                                  , true, comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
-    if (radioX->isChecked())
+    if (comboOutput->currentData() == "-A")
+      resultEditor->setPlainText(serverConnection->outputAsTable(statement, false, exportAction->isChecked()
+                                                                 , showNewLinesAction->isChecked(), splitAction->isChecked()
+                                                                 , true, comboDelimiter->currentText(), true)
+                                 , concatenateOutputAction->isChecked());
+    if (comboOutput->currentData() == "-x")
       resultEditor->setPlainText(serverConnection->outputAsV(statement, false, exportAction->isChecked()
                                                              , showNewLinesAction->isChecked(), splitAction->isChecked(), true
                                                              , comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
-    if (radioV->isChecked())
+    if (comboOutput->currentData() == "-v")
       resultEditor->setPlainText(serverConnection->outputAsV(statement, false, exportAction->isChecked()
                                                              , showNewLinesAction->isChecked(), splitAction->isChecked()
                                                              , false, comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
-    if (radioVV->isChecked())
+    if (comboOutput->currentData() == "-vv")
       resultEditor->setPlainText(serverConnection->outputAsVV(statement, exportAction->isChecked()
                                                               , showNewLinesAction->isChecked(), splitAction->isChecked()
                                                               , comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
-    if (radioVVV->isChecked())
+    if (comboOutput->currentData() == "-vvv")
       resultEditor->setPlainText(serverConnection->outputAsTable(statement, true, exportAction->isChecked()
                                                                  , showNewLinesAction->isChecked(), splitAction->isChecked()
                                                                  , true, comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
-    if (radioHTML->isChecked())
+    if (comboOutput->currentData() == "-HTML")
       resultEditor->setPlainText(serverConnection->outputAsHTML(statement, exportAction->isChecked()
                                                                 , showNewLinesAction->isChecked(), splitAction->isChecked()
                                                                 , comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
-    if (radioTXT->isChecked())
+    if (comboOutput->currentData() == "-TXT")
       resultEditor->setPlainText(serverConnection->outputAsTable(statement, false, exportAction->isChecked()
                                                                  , showNewLinesAction->isChecked(), splitAction->isChecked()
                                                                  , true, comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
-    if (radioXML->isChecked())
+    if (comboOutput->currentData() == "-XML")
       resultEditor->setPlainText(serverConnection->outputAsXML(statement, exportAction->isChecked()
                                                                , showNewLinesAction->isChecked(), splitAction->isChecked()
                                                                , comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
-    if (radioG->isChecked())
+    if (comboOutput->currentData() == "-G")
       resultEditor->setPlainText(serverConnection->outputAsG(statement, exportAction->isChecked()
                                                              , showNewLinesAction->isChecked(), splitAction->isChecked()
                                                              , true, comboDelimiter->currentText())
                                  , concatenateOutputAction->isChecked());
-    if (radioPDF->isChecked()) {
+    if (comboOutput->currentData() == "-PDF") {
       resultEditor->setPlainText(serverConnection->outputAsTable(statement, false, false, showNewLinesAction->isChecked(), splitAction->isChecked(), true, comboDelimiter->currentText()));
       QFileDialog fileDialog;
       fileDialog.setDirectory(QDir::home());
@@ -698,7 +698,7 @@ void SQLQuery::exportTableDataForInsertActionTriggered()
         outPut += rowData + rowTMP.mid(0, rowTMP.length() - 2) + ");\n";
         rowTMP = "";
       }
-      if (radioTXT->isChecked()) {
+      if (comboOutput->currentData() == "-TXT") {
         QString fileName = QFileDialog::getSaveFileName(this, tr("Select a file"), settings.value("General/LastSQLFile", "").toString(), "SQL Files (*.sql)");
         QFile file(fileName);
         if (!file.open(QFile::WriteOnly | QFile::Text))
@@ -751,7 +751,7 @@ void SQLQuery::exportResultDataForInsertActionTriggered()
         outPut += rowData + rowTMP.mid(0, rowTMP.length() - 2) + ");\n";
         rowTMP = "";
       }
-      if (radioTXT->isChecked()) {
+      if (comboOutput->currentData() == "-TXT") {
         QString fileName = QFileDialog::getSaveFileName(this, tr("Select a file"), settings.value("General/LastSQLFile", "").toString(), "SQL Files (*.sql)");
         QFile file(fileName);
         if (!file.open(QFile::WriteOnly | QFile::Text))
