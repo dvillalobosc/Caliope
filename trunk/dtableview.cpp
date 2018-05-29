@@ -50,6 +50,13 @@ void DTableView::setHeaders(QList<QStringList> *headers)
   setHeaders();
 }
 
+void DTableView::setHeaders(QStringList headers)
+{
+  for (int counter = 0; counter < headers.count(); counter++)
+    headersList->append(QStringList() << headers.at(counter) << StaticFunctions::DelegateTypeNoDelegate() << "" << "Left");
+  setHeaders();
+}
+
 void DTableView::setHeaders()
 {
   if (!this->readOnly) {

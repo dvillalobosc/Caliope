@@ -112,6 +112,9 @@ SQLQuery::SQLQuery(Projects *project, DBMS *serverConnection, unsigned int windo
   resultEditor = new BaseTextEditor(EditorTypes::NoEditor);
   resultEditor->setWordWrapMode(settings.value("SQLQuery/WordWrapOnResul", false).toBool() ? QTextOption::WordWrap : QTextOption::NoWrap);
   mainSplitter->addWidget(resultEditor);
+  dTableViewResult = new DTableView();
+  dTableViewResult->setVisible(false);
+  mainSplitter->addWidget(dTableViewResult);
   queriesToBePlayed = new QStringList();
   dialogQueryPlayer = new QDialog;
 //   dialogQueryPlayer->setWindowFlags(Qt::FramelessWindowHint);
@@ -238,6 +241,7 @@ void SQLQuery::retranslateUi()
   comboOutput->addItem("-XML", "-XML");
   comboOutput->addItem("-PDF", "-PDF");
   comboOutput->addItem("-G (Columnar)", "-G");
+  comboOutput->addItem("DTableView", "DTableView");
 
   scriptEditor->retranslateUi();
   resultEditor->retranslateUi();
@@ -579,6 +583,17 @@ void SQLQuery::executeStatement(QString statement)
       printer.setOutputFormat(file.endsWith(".pdf") ? QPrinter::PdfFormat : QPrinter::NativeFormat);
       resultEditor->document()->print(&printer);
       emit statusBarMessage(tr("File saved at: %1").arg(file));
+    }
+    if (comboOutput->currentData() == "DTableView") {
+      resultEditor->setVisible(false);
+      dTableViewResult->setVisible(true);
+      QList<QStringList> *rows = serverConnection->runQuery(statement, true, false);
+      dTableViewResult->setHeaders(rows->takeFirst());
+      rows->takeLast();
+      dTableViewResult->setModelData(rows, true, 0, false);
+    } else {
+      resultEditor->setVisible(true);
+      dTableViewResult->setVisible(false);
     }
     if (logStatements) //Use a variable here because is faster
       serverConnection->logStatement(statement, resultEditor->toPlainText());
