@@ -50,11 +50,12 @@ class DTableView : public QTableView
   Q_OBJECT
 
 public:
-  DTableView(QList<QStringList> *headers, QAbstractItemView::SelectionMode selectionMode = QAbstractItemView::SingleSelection);
+  DTableView(QList<QStringList> *headers = new QList<QStringList>(), QAbstractItemView::SelectionMode selectionMode = QAbstractItemView::SingleSelection);
   void setModelData(QList<QStringList> *modelData, bool readOnly = true, unsigned int orderColumn = 0, bool modelDataHasIcons = true);
   QVariant indexData(const QModelIndex &index, int role = Qt::DisplayRole, int column = -1);
   QVariant indexData(const unsigned int row, const unsigned int column, int role = Qt::DisplayRole);
   void setHeaders(QList<QStringList> *headers);
+  void setHeaders(QStringList headers);
   void setHeaders();
   QList<QStringList> *getHeaders();
   QModelIndex currentIndexItem();
@@ -66,7 +67,7 @@ public:
 
 private:
   QStandardItemModel *itemModel;
-  QList<QStringList> *headersList;
+  QList<QStringList> *headersList; //tablesDTableViewHeaders->append(QStringList() << tr("Version") << NoDelegate << "" << "Right");
   bool readOnly;
   QMenu *mainMenu;
   QAction *removeRow;

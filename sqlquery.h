@@ -38,6 +38,7 @@ class QComboBox;
 
 #include "dmdisubwindow.h"
 #include "dbms.h"
+#include "dtableview.h"
 
 class SQLQuery : public DMdiSubWindow
 {
@@ -52,6 +53,7 @@ public:
 private:
   TextEditor *scriptEditor;
   BaseTextEditor *resultEditor;
+  DTableView *dTableViewResult;
   DBMS *serverConnection;
   QToolBar *queryToolBar;
   Projects *project;
