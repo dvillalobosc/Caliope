@@ -125,6 +125,7 @@ bool DBMS::open()
   default:
     opened = false;
   }
+  qDebug() << getVersion() << getMayorVersion() << getMinorVersion() << getMicroVersion();
   switch(p_DBMSType) {
   case StaticFunctions::MySQL:
     if (opened) {
@@ -1235,7 +1236,7 @@ int unsigned DBMS::getMayorVersion()
     switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
-      return QString(runQuerySingleColumn("SELECT SUBSTRING_INDEX(VERSION(), '.', 1)").at(0)).toInt();
+      return QString(runQuerySingleColumn("SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(VERSION(), '-', 1), '.', 1)").at(0)).toInt();
       break;
     case StaticFunctions::Undefined:
     default:
@@ -1250,7 +1251,7 @@ int unsigned DBMS::getMinorVersion()
     switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
-      return QString(runQuerySingleColumn("SELECT SUBSTRING_INDEX(VERSION(), '.', 2)").at(0)).toInt();
+      return QString(runQuerySingleColumn("SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(VERSION(), '-', 1), '.', 2), '.', -1)").at(0)).toInt();
       break;
     case StaticFunctions::Undefined:
     default:
@@ -1265,7 +1266,7 @@ int unsigned DBMS::getMicroVersion()
     switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
-      return QString(runQuerySingleColumn("SELECT SUBSTRING_INDEX(VERSION(), '.', 3)").at(0)).toInt();
+      return QString(runQuerySingleColumn("SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(VERSION(), '-', 1), '.', -1)").at(0)).toInt();
       break;
     case StaticFunctions::Undefined:
     default:
