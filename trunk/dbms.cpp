@@ -125,7 +125,7 @@ bool DBMS::open()
   default:
     opened = false;
   }
-  qDebug() << getVersion() << getMayorVersion() << getMinorVersion() << getMicroVersion();
+  //qDebug() << getVersion() << getMayorVersion() << getMinorVersion() << getMicroVersion();
   switch(p_DBMSType) {
   case StaticFunctions::MySQL:
     if (opened) {
@@ -235,6 +235,22 @@ bool DBMS::operator!=(DBMS *serverConnection)
   return !operator==(serverConnection);
 }
 
+QString DBMS::getGlobalStatusTable()
+{
+  if (getVersion().left(3) == "5.7")
+    return "`performance_schema`.`GLOBAL_STATUS`";
+  else
+    return "`information_schema`.`GLOBAL_STATUS`";
+}
+
+QString DBMS::getGlobalVariablesTable()
+{
+  if (getVersion().left(3) == "5.7")
+    return "`performance_schema`.`GLOBAL_VARIALBES`";
+  else
+    return "`information_schema`.`GLOBAL_VARIALBES`";
+}
+
 bool DBMS::testOpened()
 {
   if (!isOpened()) {
@@ -291,7 +307,7 @@ QString DBMS::getServerCollation()
     switch(p_DBMSType) {
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
-      return runQuerySingleColumn("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'COLLATION_SERVER'").at(0);
+      return runQuerySingleColumn("SELECT `VARIABLE_VALUE` FROM " + getGlobalVariablesTable() + " WHERE `VARIABLE_NAME` = 'COLLATION_SERVER'").at(0);
       break;
     case StaticFunctions::Undefined:
     default:
@@ -929,7 +945,7 @@ QString DBMS::getHostName()
 //    switch(p_DBMSType) {
 //    case StaticFunctions::MySQL:
 //    case StaticFunctions::MariaDB:
-//      return runQuerySingleColumn("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'HOSTNAME'").at(0);
+//      return runQuerySingleColumn("SELECT `VARIABLE_VALUE` FROM " + getGlobalVariablesTable() + " WHERE `VARIABLE_NAME` = 'HOSTNAME'").at(0);
 //      break;
 //    case StaticFunctions::Undefined:
 //    default:
@@ -981,9 +997,9 @@ QString DBMS::getGlobalStatus(QString filter)
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       if (!filter.isEmpty())
-        return outputAsTable("SELECT * FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` LIKE '%" + filter + "%' ORDER BY `VARIABLE_NAME`");
+        return outputAsTable("SELECT * FROM " + getGlobalStatusTable() + " WHERE `VARIABLE_NAME` LIKE '%" + filter + "%' ORDER BY `VARIABLE_NAME`");
       else
-        return outputAsTable("SELECT * FROM `information_schema`.`GLOBAL_STATUS` ORDER BY `VARIABLE_NAME`");
+        return outputAsTable("SELECT * FROM " + getGlobalStatusTable() + " ORDER BY `VARIABLE_NAME`");
       break;
     case StaticFunctions::Undefined:
     default:
@@ -999,9 +1015,9 @@ QString DBMS::getGlobalVariables(QString filter)
     case StaticFunctions::MySQL:
     case StaticFunctions::MariaDB:
       if (!filter.isEmpty())
-        return outputAsTable("SELECT * FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` LIKE '%" + filter + "%' ORDER BY `VARIABLE_NAME`");
+        return outputAsTable("SELECT * FROM " + getGlobalVariablesTable() + " WHERE `VARIABLE_NAME` LIKE '%" + filter + "%' ORDER BY `VARIABLE_NAME`");
       else
-        return outputAsTable("SELECT * FROM `information_schema`.`GLOBAL_VARIABLES` ORDER BY `VARIABLE_NAME`");
+        return outputAsTable("SELECT * FROM " + getGlobalVariablesTable() + " ORDER BY `VARIABLE_NAME`");
       break;
     case StaticFunctions::Undefined:
     default:
@@ -1221,7 +1237,7 @@ QString DBMS::getVersion()
 //  switch(p_DBMSType) {
 //  case StaticFunctions::MySQL:
 //  case StaticFunctions::MariaDB:
-//    return runQuerySingleColumn("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_VARIABLES` WHERE `VARIABLE_NAME` = 'VERSION_COMMENT'").at(0);
+//    return runQuerySingleColumn("SELECT `VARIABLE_VALUE` FROM " + getGlobalVariablesTable() + " WHERE `VARIABLE_NAME` = 'VERSION_COMMENT'").at(0);
 //    break;
 //  case StaticFunctions::Undefined:
 //  default:

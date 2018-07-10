@@ -313,6 +313,8 @@ public:
   bool operator==(DBMS *serverConnection);
   bool operator!=(DBMS *serverConnection);
 
+  QString getGlobalStatusTable();
+  QString getGlobalVariablesTable();
   QString getUserName();
   void setUserName(QString name);
 
