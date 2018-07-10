@@ -1183,7 +1183,7 @@ void MainWindow::actionReportExecutedQueriesTriggered()
 {
   dReportViewerExecutedQueries = new DReportViewer(serverConnection, tr("Executed Queries"), ReportTypes::PieChart, "queries");
   connect(dReportViewerExecutedQueries, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
-  dReportViewerExecutedQueries->setSqlQuery("SELECT `VARIABLE_NAME`, `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` IN ('COM_DELETE', 'COM_INSERT', 'COM_SELECT', 'COM_UPDATE', 'COM_ROLLBACK') ORDER BY CAST(`VARIABLE_VALUE` AS UNSIGNED) DESC");
+  dReportViewerExecutedQueries->setSqlQuery("SELECT `VARIABLE_NAME`, `VARIABLE_VALUE` FROM " + serverConnection-> getGlobalStatusTable() + " WHERE `VARIABLE_NAME` IN ('COM_DELETE', 'COM_INSERT', 'COM_SELECT', 'COM_UPDATE', 'COM_ROLLBACK') ORDER BY CAST(`VARIABLE_VALUE` AS UNSIGNED) DESC");
   addSubWindow(dReportViewerExecutedQueries);
   dReportViewerExecutedQueries->showReportData();
 }
@@ -1192,7 +1192,7 @@ void MainWindow::actionReportDataSentReceivedTriggered()
 {
   dReportViewerDataSentReceived = new DReportViewer(serverConnection, tr("Data Sent/Received"), ReportTypes::PieChart, "MB");
   connect(dReportViewerDataSentReceived, SIGNAL(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)), this, SLOT(statusBarMessage(QString,QSystemTrayIcon::MessageIcon,int)));
-  dReportViewerDataSentReceived->setSqlQuery("SELECT `VARIABLE_NAME`, `VARIABLE_VALUE` / 1024 / 1024 FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` IN ('BYTES_RECEIVED', 'BYTES_SENT')");
+  dReportViewerDataSentReceived->setSqlQuery("SELECT `VARIABLE_NAME`, `VARIABLE_VALUE` / 1024 / 1024 FROM " + serverConnection-> getGlobalStatusTable() + " WHERE `VARIABLE_NAME` IN ('BYTES_RECEIVED', 'BYTES_SENT')");
   addSubWindow(dReportViewerDataSentReceived);
   dReportViewerDataSentReceived->showReportData();
 }

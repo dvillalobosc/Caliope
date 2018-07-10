@@ -331,8 +331,8 @@ ServerInformation::ServerInformation(DBMS *serverConnection)
   switch(serverConnection->getDBMSType()) {
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
-    kbSentGraph1 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'BYTES_SENT'")->at(0).at(0).toDouble();
-    executedQueriesGraph1 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'QUERIES'")->at(0).at(0).toDouble();
+    kbSentGraph1 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM " + serverConnection-> getGlobalStatusTable() + " WHERE `VARIABLE_NAME` = 'BYTES_SENT'")->at(0).at(0).toDouble();
+    executedQueriesGraph1 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM " + serverConnection-> getGlobalStatusTable() + " WHERE `VARIABLE_NAME` = 'QUERIES'")->at(0).at(0).toDouble();
     break;
   case StaticFunctions::Undefined:
   default:
@@ -456,7 +456,7 @@ QString ServerInformation::serverGraphsDataTxtMariaDB()
   tBytesSent2 = tBytesSent1;
   tBytesSent1 = tBytesSent0;
   rateBytesSent = tBytesSent0;
-  tBytesSent0 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'BYTES_SENT'")->at(0).at(0).toULongLong();
+  tBytesSent0 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM " + serverConnection-> getGlobalStatusTable() + " WHERE `VARIABLE_NAME` = 'BYTES_SENT'")->at(0).at(0).toULongLong();
   statementServerGraphs = QString("SELECT '%1' AS `T`, '%2' AS `T-1`, '%3' AS `T-2`, '%4' AS `T-3`, '%5' AS `T-4`, '%6' AS `T-5`")
       .arg(StaticFunctions::bytesConvertor(tBytesSent0))
       .arg(StaticFunctions::bytesConvertor(tBytesSent1))
@@ -475,7 +475,7 @@ QString ServerInformation::serverGraphsDataTxtMariaDB()
   tBytesReceived2 = tBytesReceived1;
   tBytesReceived1 = tBytesReceived0;
   rateBytesReceived = tBytesReceived0;
-  tBytesReceived0 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'BYTES_RECEIVED'")->at(0).at(0).toULongLong();
+  tBytesReceived0 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM " + serverConnection-> getGlobalStatusTable() + " WHERE `VARIABLE_NAME` = 'BYTES_RECEIVED'")->at(0).at(0).toULongLong();
   statementServerGraphs = QString("SELECT '%1' AS `T`, '%2' AS `T-1`, '%3' AS `T-2`, '%4' AS `T-3`, '%5' AS `T-4`, '%6' AS `T-5`")
       .arg(StaticFunctions::bytesConvertor(tBytesReceived0))
       .arg(StaticFunctions::bytesConvertor(tBytesReceived1))
@@ -489,7 +489,7 @@ QString ServerInformation::serverGraphsDataTxtMariaDB()
 
   //Misc Values
   out += "\n\n" + tr("Miscellaneous values.");
-  out += "\n" + serverConnection->outputAsTable("SELECT `VARIABLE_NAME`, LPAD(FORMAT(`VARIABLE_VALUE`, 0), 14, ' ') AS `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` IN ("
+  out += "\n" + serverConnection->outputAsTable("SELECT `VARIABLE_NAME`, LPAD(FORMAT(`VARIABLE_VALUE`, 0), 14, ' ') AS `VARIABLE_VALUE` FROM " + serverConnection-> getGlobalStatusTable() + " WHERE `VARIABLE_NAME` IN ("
                                                               "'OPEN_TABLES', 'COM_DELETE', 'COM_INSERT', 'COM_SELECT'"
                                                               ", 'COM_UPDATE', 'SLOW_QUERIES', 'TABLE_LOCKS_IMMEDIATE'"
                                                               ", 'TABLE_LOCKS_WAITED', 'THREADS_CONNECTED', 'THREADS_RUNNING')");
@@ -561,10 +561,10 @@ void ServerInformation::serverGraphsData()
   case StaticFunctions::MySQL:
   case StaticFunctions::MariaDB:
     kbSentGraph2 = kbSentGraph1;
-    kbSentGraph1 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'BYTES_SENT'")->at(0).at(0).toDouble();
+    kbSentGraph1 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM " + serverConnection-> getGlobalStatusTable() + " WHERE `VARIABLE_NAME` = 'BYTES_SENT'")->at(0).at(0).toDouble();
     executedQueriesGraph2 = executedQueriesGraph1;
-    executedQueriesGraph1 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'QUERIES'")->at(0).at(0).toDouble();
-    graphicsWidget->addPoints(serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'THREADS_CONNECTED'")->at(0).at(0).toDouble()
+    executedQueriesGraph1 = serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM " + serverConnection-> getGlobalStatusTable() + " WHERE `VARIABLE_NAME` = 'QUERIES'")->at(0).at(0).toDouble();
+    graphicsWidget->addPoints(serverConnection->runQuery("SELECT `VARIABLE_VALUE` FROM " + serverConnection-> getGlobalStatusTable() + " WHERE `VARIABLE_NAME` = 'THREADS_CONNECTED'")->at(0).at(0).toDouble()
                              , (kbSentGraph1 - kbSentGraph2) / 1024, executedQueriesGraph1 - executedQueriesGraph2);
     break;
   case StaticFunctions::Undefined:
@@ -661,7 +661,7 @@ void ServerInformation::serverSlowQueriesTxt()
   case StaticFunctions::MariaDB:
     serverStatus->setVisible(false);
     slowQueriesDTableView->setVisible(true);
-    result = serverConnection->runQuery("SELECT '', `start_time`, `user_host`, `query_time`, `sql_text` FROM `mysql`.`slow_log` WHERE `start_time` >= (SELECT FROM_UNIXTIME((SELECT UNIX_TIMESTAMP(CURRENT_TIMESTAMP())) - (SELECT `VARIABLE_VALUE` FROM `information_schema`.`GLOBAL_STATUS` WHERE `VARIABLE_NAME` = 'UPTIME')))");
+    result = serverConnection->runQuery("SELECT '', `start_time`, `user_host`, `query_time`, `sql_text` FROM `mysql`.`slow_log` WHERE `start_time` >= (SELECT FROM_UNIXTIME((SELECT UNIX_TIMESTAMP(CURRENT_TIMESTAMP())) - (SELECT `VARIABLE_VALUE` FROM " + serverConnection-> getGlobalStatusTable() + " WHERE `VARIABLE_NAME` = 'UPTIME')))");
     result->takeLast(); //Remove the "Affected rows" line.
     slowQueriesDTableView->setModelData(result);
     break;
