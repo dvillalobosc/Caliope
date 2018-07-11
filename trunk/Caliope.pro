@@ -50,7 +50,8 @@ HEADERS += \
     dpiechartwidget.h \
     mariadbhelp.h \
     codesnippets.h \
-    objectmigration.h
+    objectmigration.h \
+    dicon.h
 SOURCES += \
     main.cpp \
     connectdialog.cpp \
@@ -104,7 +105,8 @@ SOURCES += \
     dpiechartwidget.cpp \
     mariadbhelp.cpp \
     codesnippets.cpp \
-    objectmigration.cpp
+    objectmigration.cpp \
+    dicon.cpp
 FORMS +=
 RESOURCES += icons.qrc \
     styles.qrc \
