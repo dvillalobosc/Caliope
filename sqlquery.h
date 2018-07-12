@@ -1,7 +1,7 @@
 /*****************************************************************************
 *
 * This file is part of Calíope Database Administrator.
-* Copyright (c) 2008-2018 David Villalobos Cambronero (dvillalobosc@yahoo.com).
+* Copyright (c) 2008-2018 David Villalobos Cambronero (david.villalobos.c@gmail.com).
 *
 * Calíope is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ class QComboBox;
 
 #include "dmdisubwindow.h"
 #include "dbms.h"
-#include "dtableview.h"
+#include "dtablewidget.h"
 
 class SQLQuery : public DMdiSubWindow
 {
@@ -53,7 +53,7 @@ public:
 private:
   TextEditor *scriptEditor;
   BaseTextEditor *resultEditor;
-  DTableView *dTableViewResult;
+  DTableWidget *dTableWidgetResult;
   DBMS *serverConnection;
   QToolBar *queryToolBar;
   Projects *project;
@@ -165,6 +165,7 @@ private slots:
   void beginTransacctionActionTriggered();
   void commitTransacctionActionTriggered();
   void rollbackTransacctionActionTriggered();
+  void executeStatements(QStringList statements);
 
 protected:
   /*! \brief Reilplements the closeEvent.
