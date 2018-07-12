@@ -1,7 +1,7 @@
 /*****************************************************************************
 *
 * This file is part of Calíope Database Administrator.
-* Copyright (c) 2008-2018 David Villalobos Cambronero (dvillalobosc@yahoo.com).
+* Copyright (c) 2008-2018 David Villalobos Cambronero (david.villalobos.c@gmail.com).
 *
 * Calíope is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -23,15 +23,40 @@
 
 #include <QTableWidget>
 
+#include "dbms.h"
+
 class DTableWidget : public QTableWidget
 {
   Q_OBJECT
 
+  Q_PROPERTY(QString tableName READ getTableName WRITE setTableName)
+
 public:
-  DTableWidget(QStringList headers, QAbstractItemView::SelectionMode selectionMode = QAbstractItemView::SingleSelection);
+  DTableWidget(QStringList headers = QStringList(), QAbstractItemView::SelectionMode selectionMode = QAbstractItemView::SingleSelection);
+  void setHeaders(QStringList headers);
+  void fillTable(QList<QStringList> *rows);
+  void retranslateUi();
+  void setPasteActionEnabled(bool enabled = true);
+  void setTableName(QString tableName);
+  QString getTableName();
+
+private:
+  QMenu *mainMenu;
+  QAction *copyAction;
+  QAction *pasteAction;
+  QString tableName;
+  QStringList statementsToExecute;
+
+signals:
+  void executeStatements(QStringList statements);
 
 public slots:
   void cellClickedSlot();
+  void copy();
+  void paste();
+
+protected:
+  void contextMenuEvent(QContextMenuEvent *event);
 };
 
 #endif // DTABLEWIDGET_H

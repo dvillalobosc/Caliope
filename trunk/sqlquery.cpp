@@ -1,7 +1,7 @@
 /*****************************************************************************
 *
 * This file is part of Calíope Database Administrator.
-* Copyright (c) 2008-2018 David Villalobos Cambronero (dvillalobosc@yahoo.com).
+* Copyright (c) 2008-2018 David Villalobos Cambronero (david.villalobos.c@gmail.com).
 *
 * Calíope is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -112,9 +112,10 @@ SQLQuery::SQLQuery(Projects *project, DBMS *serverConnection, unsigned int windo
   resultEditor = new BaseTextEditor(EditorTypes::NoEditor);
   resultEditor->setWordWrapMode(settings.value("SQLQuery/WordWrapOnResul", false).toBool() ? QTextOption::WordWrap : QTextOption::NoWrap);
   mainSplitter->addWidget(resultEditor);
-  dTableViewResult = new DTableView();
-  dTableViewResult->setVisible(false);
-  mainSplitter->addWidget(dTableViewResult);
+  dTableWidgetResult = new DTableWidget(QStringList(), QAbstractItemView::MultiSelection);
+  connect(dTableWidgetResult, SIGNAL(executeStatements(QStringList)), this, SLOT(executeStatements(QStringList)));
+  dTableWidgetResult->setVisible(false);
+  mainSplitter->addWidget(dTableWidgetResult);
   queriesToBePlayed = new QStringList();
   dialogQueryPlayer = new QDialog;
 //   dialogQueryPlayer->setWindowFlags(Qt::FramelessWindowHint);
@@ -241,7 +242,7 @@ void SQLQuery::retranslateUi()
   comboOutput->addItem("-XML", "-XML");
   comboOutput->addItem("-PDF", "-PDF");
   comboOutput->addItem("-G (Columnar)", "-G");
-  comboOutput->addItem("DTableView", "DTableView");
+  comboOutput->addItem("DTableWidget", "DTableWidget");
 
   scriptEditor->retranslateUi();
   resultEditor->retranslateUi();
@@ -584,16 +585,32 @@ void SQLQuery::executeStatement(QString statement)
       resultEditor->document()->print(&printer);
       emit statusBarMessage(tr("File saved at: %1").arg(file));
     }
-    if (comboOutput->currentData() == "DTableView") {
+    if (comboOutput->currentData() == "DTableWidget") {
+      dTableWidgetResult->clear();
+      QList<QStringList> *rows = new QList<QStringList>();
+      dTableWidgetResult->setTableName(QString());
+      if (statement.contains(QRegExp("SELECT \\* FROM `[A-Za-z_\\d%]*`.`[A-Za-z_\\d%]*`", Qt::CaseInsensitive))) {
+        dTableWidgetResult->setPasteActionEnabled(true);
+        rows = serverConnection->runQuery(statement, true, false);
+        dTableWidgetResult->setHeaders(rows->takeFirst());
+        rows->takeLast();
+        QRegExp expression("`[A-Za-z_\\d%]*`.`[A-Za-z_\\d%]*`");
+        expression.indexIn(statement);
+        if (expression.capturedTexts().count() == 1) {
+          dTableWidgetResult->setTableName(expression.capturedTexts().at(0));
+        } else {
+          QMessageBox::information(this, "DTableWidget", tr("Error determining the table name."));
+        }
+      } else {
+        QMessageBox::information(this, "DTableWidget", tr("This option is only available fully qualified table names on SELECT * FROM `Database`.`Table` queries. Paste action will be disabled."));
+        dTableWidgetResult->setPasteActionEnabled(false);
+      }
       resultEditor->setVisible(false);
-      dTableViewResult->setVisible(true);
-      QList<QStringList> *rows = serverConnection->runQuery(statement, true, false);
-      dTableViewResult->setHeaders(rows->takeFirst());
-      rows->takeLast();
-      dTableViewResult->setModelData(rows, true, 0, false);
+      dTableWidgetResult->setVisible(true);
+      dTableWidgetResult->fillTable(rows);
     } else {
       resultEditor->setVisible(true);
-      dTableViewResult->setVisible(false);
+      dTableWidgetResult->setVisible(false);
     }
     if (logStatements) //Use a variable here because is faster
       serverConnection->logStatement(statement, resultEditor->toPlainText());
@@ -1007,4 +1024,10 @@ void SQLQuery::rollbackTransacctionActionTriggered()
     commitTransacctionAction->setEnabled(false);
     rollbackTransacctionAction->setEnabled(false);
   }
+}
+
+void SQLQuery::executeStatements(QStringList statements)
+{
+  for (int counter = 0; counter < statements.count(); counter++)
+    serverConnection->executeQuery(statements.at(counter));
 }
